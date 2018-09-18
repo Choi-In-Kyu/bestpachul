@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><?php echo $this->title?></title>
+  <link rel="stylesheet" href="<?php echo _CSS?>common.css">
+<!--  jquery-->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <!--  jquery-->
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+      $( function() {
+          var availableTags = [
+              "ActionScript",
+              "AppleScript",
+              "Asp",
+              "BASIC",
+              "C",
+              "C++",
+              "Clojure",
+              "COBOL",
+              "ColdFusion",
+              "Erlang",
+              "Fortran",
+              "Groovy",
+              "Haskell",
+              "Java",
+              "JavaScript",
+              "Lisp",
+              "Perl",
+              "PHP",
+              "Python",
+              "Ruby",
+              "Scala",
+              "Scheme"
+          ];
+          $( "#tags" ).autocomplete({
+              source: availableTags
+          });
+      } );
+  </script>
+</head>
+<body>
+<header id="header">
+  <div>
+    <div class="row">
+      <div class="dropdown col-md-3">
+        <button class="dropbtn" onClick = 'location.href="<?php echo _URL?>company"'>HOME
+          <i class="fa fa-caret-down"></i>
+        </button>
+      </div>
+      <div class="dropdown col-md-3">
+        <button class="dropbtn">업체관리
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content col-md-3">
+          <a href=<?php echo _URL?>company>업체관리</a>
+          <a href=<?php echo _URL?>board>삭제된 업체관리</a>
+        </div>
+      </div>
+      <div class="dropdown col-md-3">
+        <button class="dropbtn">인력관리
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="#">인력관리</a>
+          <a href="#">삭제된 인력관리</a>
+          <a href="#">인력현황</a>
+          <a href="#">펑크관리</a>
+        </div>
+      </div>
+      <div class="dropdown col-md-3">
+        <button class="dropbtn">콜관리
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="#">콜 관리</a>
+        </div>
+      </div>
+      <div class="dropdown col-md-3">
+        <button class="dropbtn">기타
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="#">블랙리스트 관리</a>
+        </div>
+      </div>
+    </div>
+    </div>
+
+  <nav id="gnb">
+    <ul>
+      <li><a href="<?php echo _URL?>board">게시판1</a></li>
+      <li><a href="<?php echo _URL?>schedule">일정관리</a></li>
+      <li><a href="<?php echo _URL?>chat">채팅</a></li>
+    </ul>
+  </nav>
+</header>
+
+
+</body>
+</html>
