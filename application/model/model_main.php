@@ -1,5 +1,3 @@
 <?php
-Class Model_main extends Model {
-}
+Class Model_main extends Model {}
 ?>
-

@@ -1,12 +1,7 @@
 <?php
-//alert
-function alert($str){
-  echo "<script>alert('{$str}');</script>";
-}
-
-function getLog($str){
-  echo "<script>console.log('{$str}');</script>";
-}
+//script functions
+function alert($str){echo "<script>alert('{$str}');</script>";}
+function getLog($str){echo "<script>console.log('{$str}');</script>";}
 //move
 function move($str = false){
   echo "<script>";

@@ -1,6 +1,4 @@
 <?php
-
-
 Class Model
 {
 //변수
@@ -10,9 +8,9 @@ Class Model
   var $param;
   var $action;
   var $sql;
-
   //커스텀 변수
   var $tableArr;
+  var $tableName;
 
 //생성자
   function __construct($param)
@@ -34,7 +32,7 @@ Class Model
     }
   }
 
-//query
+//PDO
   function query($sql)
   {
     $sql && $this->sql = $sql;
@@ -49,49 +47,24 @@ Class Model
       echo "</pre>";
     }
   }
+  function fetch(){return $this->query($this->sql)->fetch();}
+  function fetchAll(){return $this->query($this->sql)->fetchAll();}
+  function cnt(){return $this->query($this->sql)->rowCount();}
 
-//fetch
-  function fetch($sql)
-  {
-//    $sql && $this->sql = $sql;
-    return $this->query($this->sql)->fetch();
-  }
+  //커스텀 함수
+  function getList($condition = null, $order = null){
+    $this->sql = "SELECT * FROM {$this->tableName} ";
+    if (isset($condition)) {$this->sql .= $condition;}
+    if (isset($order) && $order != "") {$this->sql .= " ORDER BY {$order}";}
+    return $this->fetchAll();}
 
-//fetchAll
-  function fetchAll($sql)
-  {
-//    $sql && $this->sql = $sql;
-    return $this->query($this->sql)->fetchAll();
-  }
+  function getListNum($condition=null){
+    $this->sql = "SELECT * FROM {$this->tableName} ";
+    if (isset($condition)) {$this->sql .= $condition;}
+    return $this->cnt();}
 
-//cnt
-  function cnt($sql)
-  {
-//    $sql && $this->sql = $sql;
-    return $this->query($this->sql)->rowCount();
-  }
 
-//column
-  function getColumn($arr, $cancel)
-  {
-    $column = '';
-    $cancel = explode("/", $cancel);
-    foreach ($arr as $key => $value) {
-      if (!in_array($key, $cancel)) {
-        //$column .= ", {$key} = :{$key}\n";
-        $column .= ", {$key} = '{$value}'\n";
-        $this->column[$key] = $value;
-      }
-    }
-    return $column = substr($column, 2);
-  }
-
-  function getTable($str)
-  {
-    $this->sql = $str;
-    return $this->fetchAll();
-  }
-
+  function getTable($sql){$this->sql = $sql;return $this->fetchAll();}
   function myInsert($post)
   {
     $table = array();
@@ -116,10 +89,9 @@ Class Model
     }
     foreach ($sql as $k2=>$v2){
       $this->sql = $v2;
-      $this->fetch($this->sql);
+      $this->fetch();
     }
   }
-
 }
 
 ?>
