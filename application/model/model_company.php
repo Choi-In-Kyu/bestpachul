@@ -12,14 +12,25 @@ Class Model_company extends Model
     header("Content-type:text/html;charset=utf8");
     $msg = "완료되었습니다.";
     $url = $this->param->get_page;
+    $companyName = $_POST['company-companyName'];
+
     switch ($_POST['action']) {
       case 'insert' :
+        $companyNameList =$this->getColumnList($this->getList(),'companyName');
+        while (in_array($companyName,$companyNameList))
+        {
+          $companyName.="(중복됨)";
+          continue;
+        }
+        $_POST['company-companyName'] = $companyName;
         $this->myInsert($_POST);
         break;
       case 'update' :
         $url .= "/view/{$this->param->idx}";
     }
-    access(!$this->query(), $msg, $url);
+    alert($msg);
+    move($url);
+//    access(!$this->query(), $msg, $url);
   }
 
 }

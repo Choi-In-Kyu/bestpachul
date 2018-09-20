@@ -135,39 +135,33 @@ $this->list = $this->db->getList($condition, $order);
     </thead>
     <tbody>
 
-
     <?php
-    foreach ($this->db->getList($deadlineCondition) as $key => $value) {
-      $deadlineArray[] = $value->companyID;
-    }
-    foreach ($this->db->getList($expiredCondition) as $key => $value) {
-      $expiredArray[] = $value->companyID;
-    }
+    $deadlineArray = $this->db->getColumnList($this->db->getList($deadlineCondition),'companyID');
+    $expiredArray = $this->db->getColumnList($this->db->getList($expiredCondition),'companyID');
     ?>
-
 
     <?php foreach ($this->list as $key => $data): ?>
       <?php
       $color = "ivory";
-      if (in_array(($data->companyID), $expiredArray) != null) {
+      if (in_array(($data['companyID']), $expiredArray) != null) {
         $color = "orangered";
       }
-      if (in_array(($data->companyID), $deadlineArray) != null) {
+      if (in_array(($data['companyID']), $deadlineArray) != null) {
         $color = "orange";
       }
       ?>
       <tr style="cursor:pointer; background-color: <?php echo $color ?>"
-          onClick='location.href="<?php echo "{$this->param->get_page}/view/{$data->companyID}" ?>"'>
-        <td class="al_c"><?php echo $data->companyID ?></td>
+          onClick='location.href="<?php echo "{$this->param->get_page}/view/{$data['companyID']}" ?>"'>
+        <td class="al_c"><?php echo $data['companyID'] ?></td>
         <!--상호명-->
         <td class="al_l">
-          <a href="<?php echo "{$this->param->get_page}/view/{$data->companyID}" ?>">
-            <?php echo $data->companyName ?>
+          <a href="<?php echo "{$this->param->get_page}/view/{$data['companyID']}" ?>">
+            <?php echo $data['companyName'] ?>
           </a>
         </td>
-        <td class="al_l"><?php echo $data->address ?></td>
-        <td class="al_l"><?php echo $data->businessType ?></td>
-        <td class="al_l"><?php echo $data->grade ?></td>
+        <td class="al_l"><?php echo $data['address'] ?></td>
+        <td class="al_l"><?php echo $data['businessType'] ?></td>
+        <td class="al_l"><?php echo $data['grade'] ?></td>
       </tr>
     <?php endforeach ?>
     </tbody>

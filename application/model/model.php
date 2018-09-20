@@ -23,7 +23,7 @@ Class Model
     $this->column = NULL;
     $this->param = $param;
     $this->db = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $this->db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
+    $this->db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     $this->db->exec("set names utf8");
 
     if (isset($_POST['action'])) {
@@ -63,8 +63,17 @@ Class Model
     if (isset($condition)) {$this->sql .= $condition;}
     return $this->cnt();}
 
-
   function getTable($sql){$this->sql = $sql;return $this->fetchAll();}
+  function getColumnList($array,$column){
+    foreach ($array as $key=>$value){
+      $result[] = $value[$column];
+    }
+    if(isset($result)){
+      return $result;
+    }
+    else return null;
+  }
+
   function myInsert($post)
   {
     $table = array();
@@ -80,7 +89,7 @@ Class Model
       $lastValue = end(array_keys($v));
       foreach ($v as $k1 => $v1) {
         if ($k1 == $lastValue) {
-          $sql[$k] .= $v1 . ";";
+          $sql[$k] .= $v1;
         } else {
           $sql[$k] .= $v1 . ", ";
         }

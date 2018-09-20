@@ -1,7 +1,7 @@
 <html>
 <body>
 <footer id="footer">
-  copyright (c) 2017 Junil-hwang all right reserved.
+  copyright (c) 2018 으뜸파출
 </footer>
 </body>
 </html>
