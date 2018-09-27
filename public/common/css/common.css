@@ -240,3 +240,9 @@ span.middle.all ~ * { display: inline-block; vertical-align: middle; }
 .col .col-md-6{width: 60%;}
 .col .col-md-7{width: 70%;}
 
+#join_company_table{
+    display: none;
+}
+#join_call_table{
+    display: none;
+}

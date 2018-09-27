@@ -15,4 +15,3 @@ define('_CSS',_URL.'public/common/css/');
 //define('_JS',_URL.'public/common/js/');
 require_once(_CONFIG."lib.php");
 new Application();
-?>

@@ -53,8 +53,10 @@ Class Model
 
   //커스텀 함수
   function getList($condition = null, $order = null){
-    $this->sql = "SELECT * FROM {$this->tableName} ";
-    if (isset($condition)) {$this->sql .= $condition;}
+    $this->sql = "SELECT * FROM {$this->tableName}";
+    if (isset($condition)) {
+      $this->sql .= $condition;
+    }
     if (isset($order) && $order != "") {$this->sql .= " ORDER BY {$order}";}
     return $this->fetchAll();}
 
@@ -76,6 +78,8 @@ Class Model
 
   function myInsert($post)
   {
+    alert(json_encode($post));
+    
     $table = array();
     foreach ($post as $key => $value) {
       if (!in_array($key, ['action', 'table', 'idx'])) {
@@ -100,6 +104,11 @@ Class Model
       $this->sql = $v2;
       $this->fetch();
     }
+  }
+  
+  function myDelete($tableName, $id){
+    $this->sql = "UPDATE `{$tableName}` SET deleted = 1, activated = 0  WHERE `{$tableName}`.{$tableName}ID = {$id} LIMIT 1";
+    $this->fetch();
   }
 }
 
