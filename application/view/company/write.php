@@ -1,11 +1,16 @@
-<?php alert(json_encode($_POST)) ?>
+<?php include_once 'table_join.php'; ?>
+<?php
+function getValue(){
+
+}
+?>
+
 
 <div class="board_view auto-center">
-    <!--  Company Info-->
+    <h1>업체 정보 입력</h1>
     <div class="form-style-2">
         <form action="" method="post" enctype=''>
             <fieldset>
-                <legend>글작성</legend>
                 <input type="hidden" name="action" value="<?php echo $action ?>">
                 <div class="table">
                     <div class="tr">
@@ -15,11 +20,16 @@
                         </div>
                         <div class="td">
                             대표자명
-                            <input type="text" name="ceo-ceoName" size="20" required>
+                            <input type="text" list="ceoList" name="ceo-ceoName" size="20" required>
+                            <datalist id="ceoList" class="input-field">
+                              <?php foreach ($this->ceoList as $key => $data): ?>
+                                  <option value="<?php echo $data['ceoName'] ?>"></option>
+                              <?php endforeach ?>
+                            </datalist>
                         </div>
                         <div class="td">
                             업종
-                            <input type="text" list="businessTypeList" name="company-businessType">
+                            <input type="text" list="businessTypeList" name="company-businessType" size="20" required>
                             <datalist id="businessTypeList" class="input-field">
                               <?php foreach ($this->businessTypeList as $key => $data): ?>
                                   <option value="<?php echo $data['businessType'] ?>"></option>
@@ -40,7 +50,7 @@
                     <div class="tr">
                         <div class="td">
                             간단주소
-                            <input list="addressList" name="company-address">
+                            <input type="text" list="addressList" name="company-address">
                             <datalist id="addressList">
                               <?php foreach ($this->addressList as $key => $data): ?>
                                   <option value="<?php echo $data['address'] ?>"></option>
@@ -54,78 +64,48 @@
                     </div>
                     <div class="tr">
                         <div class="td">
-                            비고
-                            <textarea name="join_company-detail"></textarea>
-                        </div>
-                        <div class="td">
                             업체점수
                             <input type="text" name="company-grade" size="20" required value="<?php echo $name ?>">
                         </div>
                         <div class="td">
                             비고
-                            <textarea name="company-detail"></textarea>
+                            <textarea name="join_company-detail"></textarea>
                         </div>
                     </div>
                 </div>
-                <button type="button" id="btn_gujwa" onclick="type_toggle('gujwa')">구좌</button>
-                <button type="button" id="btn_deposit" onclick="type_toggle('deposit')">보증금</button>
-                <button type="button" id="btn_point" onclick="type_toggle('point')">포인트</button>
-                <table id="detail_table"></table>
                 <div class="btn_group">
                     <a class="btn btn-default" href="<?php echo $this->param->get_page ?>">취소</a>
                     <button class="btn btn-submit" type="submit">완료</button>
                 </div>
+                <br/>
+
+                <h1>가입 정보 입력</h1>
+              <?php if (!isset($this->param->idx)) : ?>
+                  <button type="button" id="btn_gujwa" onclick="type_toggle('gujwa')">구좌</button>
+                  <button type="button" id="btn_deposit" onclick="type_toggle('deposit')">보증금</button>
+                  <button type="button" id="btn_point" onclick="type_toggle('point')">포인트</button>
+              <?php endif; ?>
+                <div id="detail_table"></div>
+
             </fieldset>
         </form>
     </div>
+
 </div>
+
 
 <script>
     function type_toggle(argument) {
         let detail_table = document.getElementById('detail_table');
         switch (argument) {
             case 'gujwa':
-                detail_table.innerHTML
-                    = "    <tr>\n" +
-                    "        <td>가입시작일</td>\n" +
-                    "        <td><input type=\"date\" name=\"join_company-startDate\"></td>\n" +
-                    "        <td>가입만기일</td>\n" +
-                    "        <td><input type=\"date\" name=\"join_company-endDate\"></td>\n" +
-                    "    </tr>\n" +
-                    "    <tr>\n" +
-                    "        <td>가입금액</td>\n" +
-                    "        <td><input type=\"number\" name=\"join_company-price\" ></td>\n" +
-                    "        <td>가입비고</td>\n" +
-                    "        <td><textarea name=\"join_company-detail\"></textarea></td>\n" +
-                    "    </tr>";
+                detail_table.innerHTML = document.getElementById('table_join_gujwa').innerHTML;
                 break;
             case 'deposit':
-                detail_table.innerHTML
-                    = "<tr>\n" +
-                    "        <td>가입일</td>\n" +
-                    "        <td><input type=\"date\" name=\"join_company-startDate\" ></td>\n" +
-                    "        <td>보증금</td>\n" +
-                    "        <td><input type=\"number\" name=\"join_company-deposit\" ></td>\n" +
-                    "    </tr>\n" +
-                    "    <tr>\n" +
-                    "        <td>비고</td>\n" +
-                    "        <td><textarea name=\"join_company-detail\"></textarea></td>\n" +
-                    "    </tr>";
+                detail_table.innerHTML = document.getElementById('table_join_deposit').innerHTML;
                 break;
             case 'point':
-                detail_table.innerHTML
-                    = "<tr>\n" +
-                    "        <td>가입일</td>\n" +
-                    "        <td><input type=\"date\" name=\"join_company-startDate\" ></td>\n" +
-                    "        <td>가입금액</td>\n" +
-                    "        <td><input type=\"number\" name=\"join_company-price\" ></td>\n" +
-                    "        <td>포인트</td>\n" +
-                    "        <td><input type=\"number\" name=\"join_company-point\" ></td>\n" +
-                    "    </tr>\n" +
-                    "    <tr>\n" +
-                    "        <td>비고</td>\n" +
-                    "        <td><textarea name=\"join_company-detail\"></textarea></td>\n" +
-                    "    </tr>";
+                detail_table.innerHTML = document.getElementById('table_join_point').innerHTML;
                 break;
         }
     }

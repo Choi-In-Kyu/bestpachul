@@ -4,15 +4,15 @@
   <div class="table">
     <div class="tr">
       <div class="lbl">작성자</div>
-      <div class="desc"><?php echo $data->name?></div>
+      <div class="desc"><?php echo $data['name']?></div>
     </div>
     <div class="tr">
       <div class="lbl">제목</div>
-      <div class="desc"><?php echo $data->subject?></div>
+      <div class="desc"><?php echo $data['subject']?></div>
     </div>
     <div class="tr">
       <div class="lbl">내용</div>
-      <div class="desc content"><?php echo nl2br($data->content)?></div>
+      <div class="desc content"><?php echo nl2br($data['content'])?></div>
     </div>
   </div>
   <div class="btn_group">

@@ -138,13 +138,12 @@
             </th>
         </tr>
         </thead>
-        <tbody>
         
+        <tbody>
         <?php
           $deadlineArray = $this->db->getColumnList($this->db->getList($deadlineCondition), 'companyID');
           $expiredArray = $this->db->getColumnList($this->db->getList($expiredCondition), 'companyID');
         ?>
-        
         <?php foreach ($this->list as $key => $data): ?>
           <?php
           $color = "ivory";
@@ -156,7 +155,9 @@
           }
           ?>
             <tr style="background-color: <?php echo $color ?>">
-                <td class="al_c"><?php echo $data['companyID'] ?></td>
+                <td class="al_c"><?php echo $data['companyID'] ?>
+                    <a href="<?php echo "{$this->param->get_page}/view/{$data['idx']}"?>">
+                </td>
                 <td class="al_l" style="cursor: pointer;"
                     onClick='location.href="<?php echo "{$this->param->get_page}/view/{$data['companyID']}" ?>"'>
                       <?php echo $data['companyName'] ?>
@@ -177,5 +178,3 @@
         </tbody>
     </table>
 </div>
-
-

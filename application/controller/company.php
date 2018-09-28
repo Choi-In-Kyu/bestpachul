@@ -21,8 +21,9 @@ Class Company extends Controller
       $this->data = $this->db->getView();
     }
     $this->action = isset($this->param->idx) ? 'update' : 'insert';
-    $this->businessTypeList = $this->db->getTable("SELECT * FROM `businessType`");
-    $this->addressList = $this->db->getTable("SELECT * FROM `address`");
+    $this->businessTypeList   = $this->db->getTable("SELECT * FROM `businessType`");
+    $this->addressList        = $this->db->getTable("SELECT * FROM `address`");
+    $this->ceoList            = $this->db->getTable("SELECT * FROM `ceo`");
   }
   function delete(){
     $this->db->myDelete('company',$this->param->idx);

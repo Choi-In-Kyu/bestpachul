@@ -78,8 +78,6 @@ Class Model
 
   function myInsert($post)
   {
-    alert(json_encode($post));
-    
     $table = array();
     foreach ($post as $key => $value) {
       if (!in_array($key, ['action', 'table', 'idx'])) {
@@ -89,16 +87,7 @@ Class Model
     }
     $sql = array();
     foreach ($table as $k => $v) {
-      $sql[$k] = "INSERT INTO {$k} SET ";
-      $lastValue = end(array_keys($v));
-      foreach ($v as $k1 => $v1) {
-        if ($k1 == $lastValue) {
-          $sql[$k] .= $v1;
-        } else {
-          $sql[$k] .= $v1 . ", ";
-        }
-      }
-      substr($sql[$k], 0, -3);
+      $sql[$k] = "INSERT INTO {$k} SET ".implode(',',$v);
     }
     foreach ($sql as $k2=>$v2){
       $this->sql = $v2;
