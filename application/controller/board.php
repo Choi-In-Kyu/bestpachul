@@ -6,6 +6,8 @@ Class Board extends Controller {
   var $subject;
   var $name;
   var $content;
+  var $action;
+  
 //basic : list
   function basic(){
     $this->list = $this->db->getList();

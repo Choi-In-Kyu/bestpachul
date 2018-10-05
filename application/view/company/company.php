@@ -2,30 +2,30 @@
     <div class="row" style="width: 100%">
         <div class="col">
             <form class="form-default" action="" method="post">
-                <input type="hidden" name="condition" value="<?php echo $defaultCondition; ?>">
+                <input type="hidden" name="condition" value="<?php echo $this->defaultCondition; ?>">
                 <input class="btn btn-default" type="submit"
-                       value="전체 업체: <?php echo $this->db->getListNum($defaultCondition) ?>">
+                       value="전체 업체: <?php echo $this->db->getListNum($this->defaultCondition) ?>">
             </form>
         </div>
         <div class="col">
             <form class="form-default" action="" method="post">
-                <input type="hidden" name="condition" value="<?php echo $activatedCondition; ?>">
+                <input type="hidden" name="condition" value="<?php echo $this->activatedCondition; ?>">
                 <input class="btn btn-default" type="submit"
-                       value="활성화 업체 : <?php echo $this->db->getListNum($activatedCondition) ?>">
+                       value="활성화 업체 : <?php echo $this->db->getListNum($this->activatedCondition) ?>">
             </form>
         </div>
         <div class="col">
             <form class="form-default" action="" method="post">
-                <input type="hidden" name="condition" value="<?php echo $deadlineCondition ?>">
+                <input type="hidden" name="condition" value="<?php echo $this->deadlineCondition ?>">
                 <input class="btn btn-default" type="submit"
-                       value="만기임박 업체 : <?php echo $this->db->getListNum($deadlineCondition) ?>">
+                       value="만기임박 업체 : <?php echo $this->db->getListNum($this->deadlineCondition) ?>">
             </form>
         </div>
         <div class="col">
             <form class="form-default" action="" method="post">
-                <input type="hidden" name="condition" value="<?php echo $expiredCondition ?>">
+                <input type="hidden" name="condition" value="<?php echo $this->expiredCondition ?>">
                 <input class="btn btn-default" type="submit"
-                       value="만기된 업체 : <?php echo $this->db->getListNum($expiredCondition) ?>">
+                       value="만기된 업체 : <?php echo $this->db->getListNum($this->expiredCondition) ?>">
             </form>
         </div>
         <div class="col">
@@ -106,8 +106,8 @@
         
         <tbody>
         <?php
-          $deadlineArray = $this->db->getColumnList($this->db->getList($deadlineCondition), 'companyID');
-          $expiredArray = $this->db->getColumnList($this->db->getList($expiredCondition), 'companyID');
+          $deadlineArray = $this->db->getColumnList($this->db->getList($this->deadlineCondition), 'companyID');
+          $expiredArray = $this->db->getColumnList($this->db->getList($this->expiredCondition), 'companyID');
         ?>
         <?php foreach ($this->list as $key => $data): ?>
           <?php

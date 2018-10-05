@@ -49,40 +49,23 @@
       }
     }
     
-    function fetch()
-    {
-      return $this->query($this->sql)->fetch();
-    }
-    
-    function fetchAll()
-    {
-      return $this->query($this->sql)->fetchAll();
-    }
-    
-    function cnt()
-    {
-      return $this->query($this->sql)->rowCount();
-    }
+    function fetch(){return $this->query($this->sql)->fetch();}
+    function fetchAll(){return $this->query($this->sql)->fetchAll();}
+    function cnt(){return $this->query($this->sql)->rowCount();}
     
     //커스텀 함수
     function getList($condition = null, $order = null)
     {
       $this->sql = "SELECT * FROM {$this->tableName}";
-      if (isset($condition)) {
-        $this->sql .= $condition;
-      }
-      if (isset($order) && $order != "") {
-        $this->sql .= " ORDER BY {$order}";
-      }
+      if (isset($condition))$this->sql .= $condition;
+      if (isset($order) && $order != "")$this->sql .= " ORDER BY {$order}";
       return $this->fetchAll();
     }
     
     function getListNum($condition = null)
     {
-      $this->sql = "SELECT * FROM {$this->tableName} ";
-      if (isset($condition)) {
-        $this->sql .= $condition;
-      }
+      $this->sql = "SELECT * FROM {$this->tableName}";
+      if (isset($condition))$this->sql .= $condition;
       return $this->cnt();
     }
     
@@ -97,15 +80,40 @@
       foreach ($array as $key => $value) {
         $result[] = $value[$column];
       }
-      if (isset($result)) {
-        return $result;
-      } else return null;
+      if (isset($result)) {return $result;}
+      else return null;
+    }
+    
+    function getLastValue($table, $column){
+      $sql = "SELECT `{$column}` FROM `{$table}` ORDER BY `createdTime` DESC LIMIT 1";
+      return $this->getTable($sql);
     }
     
     function companyInsert($post)
     {
+      alert(json_encode($post));
+  
       $table = array();
       $sql = array();
+      $companyName=$post['company-companyName'];
+      $companyNameList = $this->getColumnList($this->getList(), 'companyName');
+      while (in_array($companyName, $companyNameList)) {
+        $companyName .= "(중복됨)";
+        continue;
+      }
+      $post['company-companyName'] = $companyName;
+      
+      $ceoName = $post['ceo-ceoName'];
+      $ceoNameList = $this->getColumnList($this->getTable("SELECT * FROM ceo"), 'ceoName');
+      if(in_array($ceoName, $ceoNameList)){
+        $post['company-ceoID'] = $this->getTable("SELECT `ceoID` FROM ceo WHERE `ceoName`= '{$ceoName}' LIMIT 1")[0]['ceoID'];
+        $post['ceo-ceoName'] = null;
+      }
+      else{
+        $post['company-ceoID'] = $this->getLastValue('ceo','ceoID')+1;
+      }
+      
+      
       foreach ($post as $key => $value) {
         if (!in_array($key, ['action', 'table', 'idx'])) {
           $arr = explode("-", $key);
@@ -117,10 +125,12 @@
           foreach ($table as $k => $v) {
             $sql[$k] = "INSERT INTO {$k} SET " . implode(',', $v);
           }
+          break;
         case 'update':
           foreach ($table as $key => $value) {
             $sql[$key] = "UPDATE {$key} SET " . implode(',', $value)." WHERE {$key}.{$key}ID = {$this->param->idx}";
           }
+          break;
       }
       foreach ($sql as $k2 => $v2) {
         $this->sql = $v2;

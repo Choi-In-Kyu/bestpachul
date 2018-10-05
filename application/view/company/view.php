@@ -1,7 +1,6 @@
-
 <?php include_once 'write.php' ?>
-
 <div class="board_list auto-center">
+    <h1>가입 내역</h1>
     <table width="100%">
         <colgroup>
             <col width="5%">

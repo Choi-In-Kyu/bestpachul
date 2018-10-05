@@ -1,4 +1,4 @@
-<div class="table" id="table_join_gujwa" style="display: none;">
+<table id="table_join_gujwa" style="display: none;">
     <tr>
         <td>가입시작일</td>
         <td><input type="date" name="join_company-startDate"></td>
@@ -11,7 +11,7 @@
         <td>가입비고</td>
         <td><textarea name="join_company-detail"></textarea></td>
     </tr>
-</div>
+</table>
 
 <table id="table_join_deposit" style="display: none;">
     <tr>
