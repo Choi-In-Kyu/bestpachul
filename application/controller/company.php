@@ -46,15 +46,16 @@
       if (isset($this->keyword) && $this->keyword != "") $this->condition = " WHERE `companyName` LIKE '%{$this->keyword}%' OR `address` LIKE '%{$this->keyword}%' ";
       
       //order
-      $order = $_POST['order'];
-      if (isset($order) && $order != "") $order = " {$_POST['order']} {$this->direction}";
-      else $order = null;
       $this->direction = $_POST['direction'];
       if ($this->direction == "ASC") $this->direction = "DESC";
       else $this->direction = "ASC";
+      $this->order = $_POST['order'];
+      if (isset($this->order) && $this->order != "") $this->order = " {$_POST['order']} {$this->direction}";
+      else $this->order = null;
+      
       
       //get list
-      $this->list = $this->db->getList($this->condition, $order);
+      $this->list = $this->db->getList($this->condition, $this->order);
     }
     
     //bestpachul.com/company/view
