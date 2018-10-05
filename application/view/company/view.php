@@ -1,20 +1,4 @@
-<?php
-  $companyID = $this->param->idx;
-  $this->list = $this->db->getTable("SELECT * FROM company WHERE companyID = '{$companyID}'");
-  $this->joinList = $this->db->getTable("SELECT * FROM join_company WHERE companyID = '{$companyID}' order by endDate DESC");
-  alert(json_encode($this->joinList));
-  function get_joinType($data){
-      if(isset($data['price']) && $data['price']!=0){
-          return "구좌";
-      }
-      elseif (isset($data['deposit']) && $data['deposit']!=0){
-          return "보증금+콜비";
-      }
-      elseif(isset($data['point']) && $data['point']!=0){
-          return "포인트";
-      }
-  }
-?>
+
 <?php include_once 'write.php' ?>
 
 <div class="board_list auto-center">
@@ -42,7 +26,7 @@
             <tr>
                 <td class="al_c"><?php echo $data['joinID'] ?></td>
                 <td class="al_l"><?php echo get_joinType($data) ?></td>
-                <td class="al_l"><?php echo $data['price']."원" ?></td>
+                <td class="al_l"><?php echo $data['price']." 원" ?></td>
                 <td class="al_l"><?php echo $data['startDate'] ?></td>
                 <td class="al_l"><?php echo $data['endDate'] ?></td>
                 <td class="al_l"><?php echo $data['detail'] ?></td>
@@ -51,3 +35,7 @@
         </tbody>
     </table>
 </div>
+
+<script>
+
+</script>

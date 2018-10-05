@@ -1,6 +1,5 @@
 <div class="board_view auto-center">
   <h3>글보기</h3>
-  <h1>정보: <?php echo json_encode($this)?></h1>
   <div class="table">
     <div class="tr">
       <div class="lbl">작성자</div>

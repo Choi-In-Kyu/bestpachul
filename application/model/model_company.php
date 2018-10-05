@@ -26,10 +26,11 @@
             continue;
           }
           $_POST['company-companyName'] = $companyName;
-          $this->myInsert($_POST);
+          $this->companyInsert($_POST);
           break;
         case 'update' :
           $url .= "/view/{$this->param->idx}";
+          $this->companyInsert($_POST);
           break;
       }
       alert($msg);

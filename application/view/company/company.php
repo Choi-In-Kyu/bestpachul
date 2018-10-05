@@ -1,38 +1,3 @@
-<?php
-  $condition = $_POST['condition'];
-  $keyword = $_POST['keyword'];
-  
-  $activatedCondition   = " WHERE activated = 1";
-  $expiredCondition     = " WHERE activated = 0";
-  $deadlineCondition    = "
-                        LEFT JOIN `join_company`
-                        ON `company`.companyID = `join_company`.companyID
-                        WHERE
-                        DATE_ADD(CURDATE(), interval -15 day) < CURDATE() < `endDate`
-                        ORDER BY endDate ASC
-                        limit 1
-                        ";
-  
-  if (isset($keyword) && $keyword != "") {
-    $condition = "WHERE `companyName` LIKE '%{$keyword}%' OR `address` LIKE '%{$keyword}%' ";
-  }
-  $direction = $_POST['direction'];
-  
-  if ($direction == "ASC") {
-    $direction = "DESC";
-  } else {
-    $direction = "ASC";
-  }
-  $order = $_POST['order'];
-  
-  if (isset($order) && $order != "") {
-    $order = " {$_POST['order']} {$direction}";
-  } else {
-    $order = null;
-  }
-  $this->list = $this->db->getList($condition, $order);
-?>
-
 <div class="board_list auto-center">
     <div class="row" style="width: 100%">
         <div class="col">
@@ -71,10 +36,10 @@
         </div>
         <div class="col" style="float: right">
             <form class="form-default" action="" method="post">
-                <input type="hidden" name="condition" value=<?php echo $condition ?>>
-                <input type="hidden" name="order" value=<?php echo $order ?>>
-                <input type="hidden" name="direction" value=<?php echo $direction ?>>
-                <input type="hidden" name="keyword" value=<?php echo $keyword ?>>
+                <input type="hidden" name="condition" value=<?php echo $this->condition ?>>
+                <input type="hidden" name="order" value=<?php echo $this->order ?>>
+                <input type="hidden" name="direction" value=<?php echo $this->direction ?>>
+                <input type="hidden" name="keyword" value=<?php echo $this->keyword ?>>
                 <input type="text" name="keyword">
                 <input class="btn btn-submit" type="submit" value="검색"/>
             </form>
@@ -96,40 +61,40 @@
             <form action="" method="post">
                 <th>
                     <input type="hidden" name="order" value="companyID">
-                    <input type="hidden" name="direction" value=<?php echo $direction ?>>
-                    <input type="hidden" name="keyword" value=<?php echo $keyword ?>>
+                    <input type="hidden" name="direction" value=<?php echo $this->direction ?>>
+                    <input type="hidden" name="keyword" value=<?php echo $this->keyword ?>>
                     <input type="submit" value="#">
                 </th>
             </form>
             <form action="" method="post">
                 <th>
                     <input type="hidden" name="order" value="companyName">
-                    <input type="hidden" name="direction" value=<?php echo $direction ?>>
-                    <input type="hidden" name="keyword" value=<?php echo $keyword ?>>
+                    <input type="hidden" name="direction" value=<?php echo $this->direction ?>>
+                    <input type="hidden" name="keyword" value=<?php echo $this->keyword ?>>
                     <input type="submit" value="상호명">
                 </th>
             </form>
             <form action="" method="post">
                 <th>
                     <input type="hidden" name="order" value="address">
-                    <input type="hidden" name="direction" value=<?php echo $direction ?>>
-                    <input type="hidden" name="keyword" value=<?php echo $keyword ?>>
+                    <input type="hidden" name="direction" value=<?php echo $this->direction ?>>
+                    <input type="hidden" name="keyword" value=<?php echo $this->keyword ?>>
                     <input type="submit" value="간단주소">
                 </th>
             </form>
             <form action="" method="post">
                 <th>
                     <input type="hidden" name="order" value="businessType">
-                    <input type="hidden" name="direction" value=<?php echo $direction ?>>
-                    <input type="hidden" name="keyword" value=<?php echo $keyword ?>>
+                    <input type="hidden" name="direction" value=<?php echo $this->direction ?>>
+                    <input type="hidden" name="keyword" value=<?php echo $this->keyword ?>>
                     <input type="submit" value="업종">
                 </th>
             </form>
             <form action="" method="post">
                 <th>
                     <input type="hidden" name="order" value="grade">
-                    <input type="hidden" name="direction" value=<?php echo $direction ?>>
-                    <input type="hidden" name="keyword" value=<?php echo $keyword ?>>
+                    <input type="hidden" name="direction" value=<?php echo $this->direction ?>>
+                    <input type="hidden" name="keyword" value=<?php echo $this->keyword ?>>
                     <input type="submit" value="점수">
                 </th>
             </form>

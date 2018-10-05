@@ -47,4 +47,3 @@ Class Controller {
     $this->title = '으뜸 파출';
   }
 }
-?>
