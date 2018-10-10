@@ -2,18 +2,15 @@
   
   Class Model
   {
-//변수
     var $db;
     var $column;
     var $table;
     var $param;
     var $action;
     var $sql;
-    //커스텀 변수
     var $tableArr;
     var $tableName;
-
-//생성자
+    
     function __construct($param)
     {
       $servername = "localhost";
@@ -32,8 +29,7 @@
         $this->action();
       }
     }
-
-//PDO
+    
     function query($sql)
     {
       $sql && $this->sql = $sql;
@@ -49,23 +45,39 @@
       }
     }
     
-    function fetch(){return $this->query($this->sql)->fetch();}
-    function fetchAll(){return $this->query($this->sql)->fetchAll();}
-    function cnt(){return $this->query($this->sql)->rowCount();}
+    function fetch()
+    {
+      return $this->query($this->sql)->fetch();
+    }
     
-    //커스텀 함수
+    function fetchAll()
+    {
+      return $this->query($this->sql)->fetchAll();
+    }
+    
+    function cnt()
+    {
+      return $this->query($this->sql)->rowCount();
+    }
+    
     function getList($condition = null, $order = null)
     {
       $this->sql = "SELECT * FROM {$this->tableName}";
-      if (isset($condition))$this->sql .= $condition;
-      if (isset($order) && $order != "")$this->sql .= " ORDER BY {$order}";
+      if (isset($condition)){
+        $getCondition = $condition;
+      }
+      else {
+        $getCondition = " WHERE deleted = 0";
+      }
+      $this->sql .= $getCondition;
+      if (isset($order) && $order != "") $this->sql .= " ORDER BY {$order}";
       return $this->fetchAll();
     }
     
     function getListNum($condition = null)
     {
       $this->sql = "SELECT * FROM {$this->tableName}";
-      if (isset($condition))$this->sql .= $condition;
+      if (isset($condition)) $this->sql .= $condition;
       return $this->cnt();
     }
     
@@ -80,63 +92,80 @@
       foreach ($array as $key => $value) {
         $result[] = $value[$column];
       }
-      if (isset($result)) {return $result;}
-      else return null;
+      if (isset($result)) {
+        return $result;
+      } else return null;
     }
     
-    function getLastValue($table, $column){
-      $sql = "SELECT `{$column}` FROM `{$table}` ORDER BY `createdTime` DESC LIMIT 1";
-      return $this->getTable($sql);
-    }
-    
-    function companyInsert($post)
+    function getLastValue($table, $column)
     {
-      alert(json_encode($post));
-  
+      $sql = "SELECT `{$column}` FROM `{$table}` ORDER BY `createdTime` DESC LIMIT 1";
+      $table = $this->getTable($sql);
+      return intval($table[0][$column]);
+    }
+    
+    function extractPost($post, $tableName)
+    {
       $table = array();
-      $sql = array();
-      $companyName=$post['company-companyName'];
-      $companyNameList = $this->getColumnList($this->getList(), 'companyName');
-      while (in_array($companyName, $companyNameList)) {
-        $companyName .= "(중복됨)";
-        continue;
-      }
-      $post['company-companyName'] = $companyName;
-      
-      $ceoName = $post['ceo-ceoName'];
-      $ceoNameList = $this->getColumnList($this->getTable("SELECT * FROM ceo"), 'ceoName');
-      if(in_array($ceoName, $ceoNameList)){
-        $post['company-ceoID'] = $this->getTable("SELECT `ceoID` FROM ceo WHERE `ceoName`= '{$ceoName}' LIMIT 1")[0]['ceoID'];
-        $post['ceo-ceoName'] = null;
-      }
-      else{
-        $post['company-ceoID'] = $this->getLastValue('ceo','ceoID')+1;
-      }
-      
-      
       foreach ($post as $key => $value) {
-        if (!in_array($key, ['action', 'table', 'idx'])) {
+        if (isset($value)) {
           $arr = explode("-", $key);
-          $table[$arr[0]][] = "{$arr[1]} = '{$value}' ";
+          if ($tableName == $arr[0]) {
+            $table[$tableName][] = "{$arr[1]} = '{$value}' ";
+          }
         }
       }
-      switch ($post['action']){
-        case 'insert':
-          foreach ($table as $k => $v) {
-            $sql[$k] = "INSERT INTO {$k} SET " . implode(',', $v);
-          }
-          break;
-        case 'update':
-          foreach ($table as $key => $value) {
-            $sql[$key] = "UPDATE {$key} SET " . implode(',', $value)." WHERE {$key}.{$key}ID = {$this->param->idx}";
-          }
-          break;
-      }
-      foreach ($sql as $k2 => $v2) {
-        $this->sql = $v2;
+      return $table;
+    }
+    
+    function getQuery($post, $tableName, $focus = null)
+    {
+      $table = $this->extractPost($post, $tableName);
+      if ( (isset($table[$tableName])) && ($table[$tableName]!="")) {
+        switch ($post['action']) {
+          case 'insert':
+            $sql = "INSERT INTO ";
+            break;
+          case 'update':
+            $sql = "UPDATE ";
+            break;
+          case 'new_insert':
+            $sql = "INSERT INTO ";
+          default :
+            $sql = "INSERT INTO ";
+            break;
+        }
+        $sql .= "{$tableName} SET ";
+        $sql .= implode(",", $table[$tableName]);
+        if ($post['action'] == 'update') {
+          $sql .= " WHERE {$tableName}.{$tableName}ID = {$post[$tableName.'-'.$tableName.'ID']}";
+        }
+//        if($post['action'] == 'new_insert'){
+//          $sql .= " WHERE {$focus}.{$focus}ID = {$post[$tableName.'-'.$focus.'ID']}";
+//        }
+        $this->sql = $sql;
         $this->fetch();
       }
     }
+    
+    function removeDuplicate($post, $table, $column)
+    {
+      //중복된 업체명 처리
+      $result = $post["{$table}-{$column}"];
+      $columnList = $this->getColumnList($this->getList(), $column);
+      while (in_array($result, $columnList)) {
+        $result .= "(중복됨)";
+        continue;
+      }
+      return $result;
+    }
+    
+    function executeSQL($string)
+    {
+      $this->sql = $string;
+      $this->fetch();
+    }
+    
     
     function myDelete($tableName, $id)
     {

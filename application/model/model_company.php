@@ -1,13 +1,67 @@
 <?php
+  
   Class Model_company extends Model
   {
     var $tableName = "company";
+    var $sql2;
     
     function getView()
     {
-      $this->sql =
-        "SELECT * FROM `company` join `ceo` ON company.ceoID = ceo.ceoID WHERE company.companyID='{$this->param->idx}'";
+      $this->sql = "SELECT * FROM `company` join `ceo` ON company.ceoID = ceo.ceoID WHERE company.companyID='{$this->param->idx}'";
       return $this->fetch();
+    }
+    
+    function companyInsert($post)
+    {
+      alert(json_encode($post));
+      //insert <-> update
+      switch ($post['action']) {
+        case 'insert':
+          //신규 등록 시 user 추가
+          $post['user-userName'] = $post['company-companyName'];
+          $post['user-userPW'] = $post['ceo-ceoPhoneNumber'];
+  
+          //업체명 중복 배제
+          $post['company-companyName'] = $this->removeDuplicate($post,'company','companyName');
+  
+          //ceo 이름 처리
+          $ceoName = $post['ceo-ceoName'];
+          $ceoNameList = $this->getColumnList($this->getTable("SELECT * FROM ceo"), 'ceoName');
+          //기존 ceo 이름 입력 시
+          if (in_array($ceoName, $ceoNameList)) {
+            $post['company-ceoID'] = $this->getTable("SELECT `ceoID` FROM ceo WHERE `ceoName`= '{$ceoName}' LIMIT 1")[0]['ceoID'];
+            $post['ceo-ceoName'] = null;
+            $post['ceo-ceoPhoneNumber'] = null;
+            //ceo 입력
+            $this->getQuery($post, 'ceo');
+            $this->getQuery($post, 'company');
+          }
+          //새로운 ceo 이름 입력 시
+          else{
+            //ceo 입력
+            $this->getQuery($post, 'ceo');
+            //company 입력
+            $post['company-ceoID'] = $this->db->lastInsertId();
+            $this->getQuery($post, 'company');
+          }
+          //join_company, user 입력
+          $post['join_company-companyID'] = $this->db->lastInsertId();
+          $post['user-companyID'] = $this->db->lastInsertId();
+          $post['user-userCategory'] = "ceo";
+          $post['user-userName'] = $post['company-companyName'];
+          $post['user-userPW'] = $post['ceo-ceoPhoneNumber'];
+          $this->getQuery($post, 'join_company');
+          $this->getQuery($post, 'user');
+          break;
+        case 'update':
+          //업체명 중복 배제
+          $post['company-companyName'] = $this->removeDuplicate($post,'company','companyName');
+          $this->getQuery($post, 'ceo');
+          $this->getQuery($post, 'company');
+          break;
+        case 'new_insert':
+          $this->getQuery($post, 'join_company', 'company');
+      }
     }
     
     function action()
@@ -19,10 +73,18 @@
       switch ($_POST['action']) {
         case 'insert' :
           $this->companyInsert($_POST);
+          $msg.="입력되었습니다";
           break;
         case 'update' :
           $url .= "/view/{$this->param->idx}";
           $this->companyInsert($_POST);
+          $msg.="수정되었습니다";
+          break;
+        case 'new_insert':
+          $url .= "/view/{$this->param->idx}";
+          $this ->companyInsert($_POST);
+          $msg.="추가되었습니다";
+        case 'delete' :
           break;
       }
       alert($msg);

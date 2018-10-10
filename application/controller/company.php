@@ -6,12 +6,11 @@
     var $data;
     var $name;
     
-    var $companyList;
     var $ceoList;
     var $businessTypeList;
     var $addressList;
     var $joinList;
-    
+  
     var $companyData;
     var $ceoData;
     
@@ -65,11 +64,11 @@
       $this->submitButtonName = "수정";
       $this->companyID = $this->param->idx;
       
-      $this->companyList      = $this->db->getTable("SELECT * FROM company WHERE companyID = '{$this->companyID}'");
+      $this->companyData      = $this->db->getTable("SELECT * FROM company WHERE companyID = '{$this->companyID}'");
       $this->ceoList          = $this->db->getTable("SELECT * FROM `ceo`");
       $this->businessTypeList = $this->db->getTable("SELECT * FROM `businessType`");
       $this->addressList      = $this->db->getTable("SELECT * FROM `address`");
-      $this->ceoData          = $this->db->getTable("SELECT * FROM ceo WHERE ceoID = '{$this->companyList[0]['ceoID']}'");
+      $this->ceoData          = $this->db->getTable("SELECT * FROM ceo WHERE ceoID = '{$this->companyData[0]['ceoID']}'");
       $this->joinList         = $this->db->getTable("SELECT * FROM join_company WHERE companyID = '{$this->companyID}' order by endDate DESC");
       
       $this->data = $this->db->getView();
@@ -85,7 +84,7 @@
     function write()
     {
       $this->action = 'insert';
-      $this->submitButtonName = "추가!!!";
+      $this->submitButtonName = "추가";
       $this->businessTypeList = $this->db->getTable("SELECT * FROM `businessType`");
       $this->addressList = $this->db->getTable("SELECT * FROM `address`");
       $this->ceoList = $this->db->getTable("SELECT * FROM `ceo`");
