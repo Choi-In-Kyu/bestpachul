@@ -63,10 +63,9 @@
     function getList($condition = null, $order = null)
     {
       $this->sql = "SELECT * FROM {$this->tableName}";
-      if (isset($condition)){
+      if (isset($condition)) {
         $getCondition = $condition;
-      }
-      else {
+      } else {
         $getCondition = " WHERE deleted = 0";
       }
       $this->sql .= $getCondition;
@@ -121,7 +120,7 @@
     function getQuery($post, $tableName, $focus = null)
     {
       $table = $this->extractPost($post, $tableName);
-      if ( (isset($table[$tableName])) && ($table[$tableName]!="")) {
+      if ((isset($table[$tableName])) && ($table[$tableName] != "")) {
         switch ($post['action']) {
           case 'insert':
             $sql = "INSERT INTO ";
