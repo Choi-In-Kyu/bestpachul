@@ -37,16 +37,16 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="55" />
-          <entry key="php" value="15507" />
+          <entry key="css" value="65" />
+          <entry key="php" value="17694" />
           <entry key="txt" value="29" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="55" />
+          <entry key="CSS" value="65" />
           <entry key="HTML" value="3" />
-          <entry key="PHP" value="15503" />
+          <entry key="PHP" value="17690" />
           <entry key="PLAIN_TEXT" value="29" />
           <entry key="SQL" value="1" />
         </counts>
@@ -57,8 +57,8 @@
       <usages-collector id="statistics.php.composer.command.options" />
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="2" />
-          <entry key="PHP" value="74" />
+          <entry key="CSS" value="3" />
+          <entry key="PHP" value="81" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
@@ -66,8 +66,8 @@
       <usages-collector id="statistics.php.rename.constructor" />
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="2" />
-          <entry key="php" value="74" />
+          <entry key="css" value="3" />
+          <entry key="php" value="81" />
         </counts>
       </usages-collector>
     </session>
@@ -77,17 +77,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controller/company.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="678">
-              <caret line="66" column="19" lean-forward="true" selection-start-line="66" selection-start-column="19" selection-end-line="66" selection-end-column="19" />
+            <state relative-caret-position="453">
+              <caret line="35" column="25" lean-forward="true" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/model/model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="423">
-              <caret line="71" column="25" selection-start-line="71" selection-start-column="25" selection-end-line="71" selection-end-column="25" />
+            <state relative-caret-position="315">
+              <caret line="145" column="9" selection-end-line="170" selection-end-column="2" />
               <folding>
                 <element signature="n#__construct#0;n#Model#0;n#!!top" />
                 <element signature="n#query#0;n#Model#0;n#!!top" />
@@ -99,8 +99,49 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/model/model_company.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+            <state relative-caret-position="1387">
+              <caret line="73" column="21" lean-forward="true" selection-start-line="73" selection-start-column="21" selection-end-line="73" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controller/controller.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="513">
+              <caret line="27" column="20" lean-forward="true" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/view/company/company.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="113" column="27" lean-forward="true" selection-start-line="113" selection-start-column="27" selection-end-line="113" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controller/board.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="380">
+              <caret line="20" column="19" lean-forward="true" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/view/company/view.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="513">
+              <caret line="41" column="20" lean-forward="true" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
+              <folding>
+                <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -115,43 +156,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/view/company/company.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="123" column="65" selection-start-line="123" selection-start-column="65" selection-end-line="123" selection-end-column="65" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/model/model_board.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="209">
               <caret line="11" column="9" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/view/company/view.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="78" column="9" lean-forward="true" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
-              <caret line="60" column="61" selection-start-line="60" selection-start-column="61" selection-end-line="60" selection-end-column="61" />
-              <folding>
-                <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/common/css/common.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="107" column="5" selection-start-line="107" selection-start-column="1" selection-end-line="107" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -170,15 +178,6 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/view/company/write.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1309">
-              <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -191,36 +190,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getList</find>
-      <find>order by cre</find>
-      <find>getlist</find>
-      <find>grade</find>
-      <find>user</find>
-      <find>join</find>
-      <find>myinsert</find>
-      <find>ex</find>
-      <find>extract</find>
-      <find>query</find>
-      <find>완료</find>
-      <find>db</find>
-      <find>exec</find>
-      <find>insert</find>
-      <find>ceoList</find>
-      <find>ceoData</find>
-      <find>추가</find>
-      <find>companyData</find>
-      <find>btn-</find>
-      <find>companyList</find>
-      <find>display</find>
-      <find>table_join</find>
-      <find>form</find>
-      <find>alert</find>
-      <find>new_insert</find>
-      <find>getQuery</find>
-      <find>url</find>
       <find>submit</find>
       <find>select *</find>
+      <find>구좌</find>
       <find>new</find>
+      <find>delete</find>
+      <find>x</find>
+      <find>open</find>
+      <find>modal</find>
+      <find>style</find>
+      <find>common</find>
+      <find>close</find>
+      <find>insert</find>
+      <find>action</find>
+      <find>val</find>
+      <find>deleteDetail</find>
+      <find>deadline</find>
+      <find>포인트</find>
+      <find>보증금</find>
+      <find>modalBtn</find>
+      <find>bootstrap</find>
+      <find>deleted</find>
+      <find>area</find>
+      <find>color</find>
+      <find>hidden</find>
+      <find>btnModal</find>
+      <find>myBtn</find>
+      <find>myModal</find>
+      <find>textarea</find>
+      <find>\&lt;\?php\n  \n  Class Model\n  \{\n    var \$db\;\n    var \$column\;\n    var \$table\;\n    var \$param\;\n    var \$action\;\n    var \$sql\;\n    var \$tableArr\;\n    var \$tableName\;\n    \n    function __construct\(\$param\)\n    \{\n      \$servername \= \&quot;localhost\&quot;\;\n      \$dbname \= \&quot;informationsys\&quot;\;\n      \$username \= \&quot;informationsys\&quot;\;\n      \$password \= \&quot;ingee440\&quot;\;\n      \n      \$this\-\&gt;column \= NULL\;\n      \$this\-\&gt;param \= \$param\;\n      \$this\-\&gt;db \= new PDO\(\&quot;mysql\:host\=\$servername\;dbname\=\$dbname\&quot;\, \$username\, \$password\)\;\n      \$this\-\&gt;db\-\&gt;setAttribute\(PDO\:\:ATTR_DEFAULT_FETCH_MODE\, PDO\:\:FETCH_ASSOC\)\;\n      \$this\-\&gt;db\-\&gt;exec\(\&quot;set names utf8\&quot;\)\;\n      \n      if \(isset\(\$_POST\[\'action\'\]\)\) \{\n        \$this\-\&gt;action \= \$_POST\[\'action\'\]\;\n        \$this\-\&gt;action\(\)\;\n      \}\n    \}\n    \n    function query\(\$sql\)\n    \{\n      \$sql \&amp;\&amp; \$this\-\&gt;sql \= \$sql\;\n      \$res \= \$this\-\&gt;db\-\&gt;prepare\(\$this\-\&gt;sql\)\;\n      if \(\$res\-\&gt;execute\(\$this\-\&gt;column\)\) \{\n        return \$res\;\n      \} else \{\n        echo \&quot;\&lt;pre\&gt;\&quot;\;\n        echo \$this\-\&gt;sql\;\n        print_r\(\$this\-\&gt;column\)\;\n        print_r\(\$this\-\&gt;db\-\&gt;errorInfo\(\)\)\;\n        echo \&quot;\&lt;\/pre\&gt;\&quot;\;\n      \}\n    \}\n    \n    function fetch\(\)\n    \{\n      return \$this\-\&gt;query\(\$this\-\&gt;sql\)\-\&gt;fetch\(\)\;\n    \}\n    \n    function fetchAll\(\)\n    \{\n      return \$this\-\&gt;query\(\$this\-\&gt;sql\)\-\&gt;fetchAll\(\)\;\n    \}\n    \n    function cnt\(\)\n    \{\n      return \$this\-\&gt;query\(\$this\-\&gt;sql\)\-\&gt;rowCount\(\)\;\n    \}\n    \n    function getList\(\$condition \= null\, \$order \= null\)\n    \{\n      \$this\-\&gt;sql \= \&quot;SELECT \* FROM \{\$this\-\&gt;tableName\}\&quot;\;\n      if \(isset\(\$condition\)\)\{\n        \$getCondition \= \$condition\;\n      \}\n      else \{\n        \$getCondition \= \&quot; WHERE deleted \= 0\&quot;\;\n      \}\n      \$this\-\&gt;sql \.\= \$getCondition\;\n      if \(isset\(\$order\) \&amp;\&amp; \$order \!\= \&quot;\&quot;\) \$this\-\&gt;sql \.\= \&quot; ORDER BY \{\$order\}\&quot;\;\n      return \$this\-\&gt;fetchAll\(\)\;\n    \}\n    \n    function getListNum\(\$condition \= null\)\n    \{\n      \$this\-\&gt;sql \= \&quot;SELECT \* FROM \{\$this\-\&gt;tableName\}\&quot;\;\n      if \(isset\(\$condition\)\) \$this\-\&gt;sql \.\= \$condition\;\n      return \$this\-\&gt;cnt\(\)\;\n    \}\n    \n    function getTable\(\$sql\)\n    \{\n      \$this\-\&gt;sql \= \$sql\;\n      return \$this\-\&gt;fetchAll\(\)\;\n    \}\n    \n    function getColumnList\(\$array\, \$column\)\n    \{\n      foreach \(\$array as \$key \=\&gt; \$value\) \{\n        \$result\[\] \= \$value\[\$column\]\;\n      \}\n      if \(isset\(\$result\)\) \{\n        return \$result\;\n      \} else return null\;\n    \}\n    \n    function getLastValue\(\$table\, \$column\)\n    \{\n      \$sql \= \&quot;SELECT \`\{\$column\}\` FROM \`\{\$table\}\` ORDER BY \`createdTime\` DESC LIMIT 1\&quot;\;\n      \$table \= \$this\-\&gt;getTable\(\$sql\)\;\n      return intval\(\$table\[0\]\[\$column\]\)\;\n    \}\n    \n    function extractPost\(\$post\, \$tableName\)\n    \{\n      \$table \= array\(\)\;\n      foreach \(\$post as \$key \=\&gt; \$value\) \{\n        if \(isset\(\$value\)\) \{\n          \$arr \= explode\(\&quot;\-\&quot;\, \$key\)\;\n          if \(\$tableName \=\= \$arr\[0\]\) \{\n            \$table\[\$tableName\]\[\] \= \&quot;\{\$arr\[1\]\} \= \'\{\$value\}\' \&quot;\;\n          \}\n        \}\n      \}\n      return \$table\;\n    \}\n    \n    function getQuery\(\$post\, \$tableName\, \$focus \= null\)\n    \{\n      \$table \= \$this\-\&gt;extractPost\(\$post\, \$tableName\)\;\n      if \( \(isset\(\$table\[\$tableName\]\)\) \&amp;\&amp; \(\$table\[\$tableName\]\!\=\&quot;\&quot;\)\) \{\n        switch \(\$post\[\'action\'\]\) \{\n          case \'insert\'\:\n            \$sql \= \&quot;INSERT INTO \&quot;\;\n            break\;\n          case \'update\'\:\n            \$sql \= \&quot;UPDATE \&quot;\;\n            break\;\n          case \'new_insert\'\:\n            \$sql \= \&quot;INSERT INTO \&quot;\;\n            break\;\n          case \'delete\'\:\n            \$sql \= \&quot;UPDATE \&quot;\;\n            break\;\n          default \:\n            \$sql \= \&quot;INSERT INTO \&quot;\;\n            break\;\n        \}\n        \$sql \.\= \&quot;\{\$tableName\} SET \&quot;\;\n        \$sql \.\= implode\(\&quot;\,\&quot;\, \$table\[\$tableName\]\)\;\n        if \(\$post\[\'action\'\] \=\= \'update\' or \$post\[\'action\'\] \=\= \'delete\'\) \{\n          \$sql \.\= \&quot; WHERE \{\$tableName\}\.\{\$tableName\}ID \= \{\$post\[\$tableName\.\'\-\'\.\$tableName\.\'ID\'\]\} LIMIT 1\&quot;\;\n        \}\n        \$this\-\&gt;sql \= \$sql\;\n        \$this\-\&gt;fetch\(\)\;\n      \}\n    \}\n    \n    function removeDuplicate\(\$post\, \$table\, \$column\)\n    \{\n      \/\/중복된 업체명 처리\n      \$result \= \$post\[\&quot;\{\$table\}\-\{\$column\}\&quot;\]\;\n      \$columnList \= \$this\-\&gt;getColumnList\(\$this\-\&gt;getList\(\)\, \$column\)\;\n      while \(in_array\(\$result\, \$columnList\)\) \{\n        \$result \.\= \&quot;\(중복됨\)\&quot;\;\n        continue\;\n      \}\n      return \$result\;\n    \}\n    \n    function executeSQL\(\$string\)\n    \{\n      \$this\-\&gt;sql \= \$string\;\n      \$this\-\&gt;fetch\(\)\;\n    \}\n  \}\n\n\?\&gt;</find>
+      <find>orange</find>
     </findStrings>
     <replaceStrings>
       <replace>&lt;/div&gt;</replace>
@@ -275,9 +274,7 @@
         <option value="$PROJECT_DIR$/application/controller/main.php" />
         <option value="$PROJECT_DIR$/application/view/company/write_join.php" />
         <option value="$PROJECT_DIR$/application/config/lib.php" />
-        <option value="$PROJECT_DIR$/public/common/css/common.css" />
         <option value="$PROJECT_DIR$/application/model/model_main.php" />
-        <option value="$PROJECT_DIR$/application/view/header.php" />
         <option value="$PROJECT_DIR$/application/view/footer.php" />
         <option value="$PROJECT_DIR$/application/index.php" />
         <option value="$PROJECT_DIR$/application/view/board/view.php" />
@@ -286,12 +283,14 @@
         <option value="$PROJECT_DIR$/application/config/db.php" />
         <option value="$PROJECT_DIR$/application/view/company/table_join.php" />
         <option value="$PROJECT_DIR$/application/controller/board.php" />
-        <option value="$PROJECT_DIR$/application/view/company/company.php" />
-        <option value="$PROJECT_DIR$/application/controller/company.php" />
         <option value="$PROJECT_DIR$/application/view/company/write.php" />
-        <option value="$PROJECT_DIR$/application/model/model_company.php" />
+        <option value="$PROJECT_DIR$/application/view/header.php" />
+        <option value="$PROJECT_DIR$/public/common/css/common.css" />
         <option value="$PROJECT_DIR$/application/view/company/view.php" />
         <option value="$PROJECT_DIR$/application/model/model.php" />
+        <option value="$PROJECT_DIR$/application/model/model_company.php" />
+        <option value="$PROJECT_DIR$/application/view/company/company.php" />
+        <option value="$PROJECT_DIR$/application/controller/company.php" />
       </list>
     </option>
   </component>
@@ -304,11 +303,10 @@
   <component name="PhpServers">
     <servers />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2125" />
-    <option name="y" value="112" />
-    <option name="width" value="1440" />
-    <option name="height" value="780" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1913" />
+    <option name="width" value="974" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -452,18 +450,18 @@
       <workItem from="1538107996772" duration="10527000" />
       <workItem from="1538725815834" duration="8430000" />
       <workItem from="1538805020837" duration="35198000" />
-      <workItem from="1539130081287" duration="20733000" />
+      <workItem from="1539130081287" duration="43028000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="385677000" />
+    <option name="totallyTimeSpent" value="407972000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="1913" y="0" width="974" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13272922" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2286652" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -593,20 +591,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/view/header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-411">
-          <caret line="10" column="72" selection-start-line="10" selection-start-column="72" selection-end-line="10" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/view/footer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
@@ -642,13 +626,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controller/board.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="20" column="19" lean-forward="true" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/view/board/view.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
@@ -670,38 +647,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/controller/controller.php">
+    <entry file="file://$PROJECT_DIR$/application/view/header.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="23" column="52" selection-start-line="23" selection-start-column="52" selection-end-line="23" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controller/company.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="678">
-          <caret line="66" column="19" lean-forward="true" selection-start-line="66" selection-start-column="19" selection-end-line="66" selection-end-column="19" />
+        <state relative-caret-position="342">
+          <caret line="18" column="42" lean-forward="true" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/common/css/common.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="107" column="5" selection-start-line="107" selection-start-column="1" selection-end-line="107" selection-end-column="5" />
+        <state relative-caret-position="757">
+          <caret line="271" column="1" lean-forward="true" selection-start-line="271" selection-start-column="1" selection-end-line="271" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/view/company/company.php">
+    <entry file="file://$PROJECT_DIR$/application/view/footer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="123" column="65" selection-start-line="123" selection-start-column="65" selection-end-line="123" selection-end-column="65" />
+        <state relative-caret-position="57">
+          <caret line="3" column="25" lean-forward="true" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/model/model_board.php">
+    <entry file="file://$PROJECT_DIR$/application/view/company/write.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="9" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="9" />
+        <state relative-caret-position="95">
+          <caret line="5" column="82" selection-start-line="5" selection-start-column="76" selection-end-line="5" selection-end-column="82" />
         </state>
       </provider>
     </entry>
@@ -712,10 +682,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/view/company/write.php">
+    <entry file="file://$PROJECT_DIR$/application/model/model_board.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1309">
-          <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
+        <state relative-caret-position="209">
+          <caret line="11" column="9" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -731,11 +701,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/application/controller/board.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="20" column="19" lean-forward="true" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/view/company/view.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="78" column="9" lean-forward="true" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
-          <caret line="60" column="61" selection-start-line="60" selection-start-column="61" selection-end-line="60" selection-end-column="61" />
+        <state relative-caret-position="513">
+          <caret line="41" column="20" lean-forward="true" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
           <folding>
             <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -744,21 +720,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/application/controller/controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="27" column="20" lean-forward="true" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controller/company.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="453">
+          <caret line="35" column="25" lean-forward="true" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/model/model_company.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+        <state relative-caret-position="1387">
+          <caret line="73" column="21" lean-forward="true" selection-start-line="73" selection-start-column="21" selection-end-line="73" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/model/model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="71" column="25" selection-start-line="71" selection-start-column="25" selection-end-line="71" selection-end-column="25" />
+        <state relative-caret-position="315">
+          <caret line="145" column="9" selection-end-line="170" selection-end-column="2" />
           <folding>
             <element signature="n#__construct#0;n#Model#0;n#!!top" />
             <element signature="n#query#0;n#Model#0;n#!!top" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/view/company/company.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="113" column="27" lean-forward="true" selection-start-line="113" selection-start-column="27" selection-end-line="113" selection-end-column="27" />
         </state>
       </provider>
     </entry>

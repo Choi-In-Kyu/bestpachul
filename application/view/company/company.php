@@ -131,15 +131,40 @@
                 <td class="al_l"><?php echo $data['businessType'] ?></td>
                 <td class="al_l"><?php echo $data['grade'] ?></td>
                 <td class="al_c">
-                    <form action="" method="post">
-                        <input type="hidden">
-                    </form>
-                    <button class="btn btn-danger" type="button" id="<?php echo $data['companyID'] ?>"
-                    onClick='location.href="<?php echo $this->param->get_page?>/delete/<?php echo $data['companyID']?>"'>X
-                    </button>
+                    <!-- Trigger/Open The Modal -->
+                    <button id="myBtn" class="btnModal" value="<?php echo $data['companyID']?>">X</button>
                 </td>
             </tr>
         <?php endforeach ?>
         </tbody>
     </table>
 </div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <form action="" method="post">
+            <input type="hidden" name="action" value="delete">
+            <input id="modal-companyID" type="hidden" name="company-companyID">
+            <textarea name="company-deleteDetail" size="200"></textarea>
+            <input class="btn btn-danger" type="button" id="closeModal" value="close">
+            <input class="btn btn-insert" type="submit" value="submit">
+        </form>
+    </div>
+</div>
+
+<script>
+    
+     $('.btnModal').click(function () {
+         alert("abc");
+         $('#myModal').show();
+         $('#modal-companyID').val(this.value);
+     })
+    $('#closeModal').click(function () {
+        $('#myModal').hide();
+    })
+    
+    
+
+</script>

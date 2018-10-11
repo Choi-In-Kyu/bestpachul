@@ -13,7 +13,6 @@
     
     function companyInsert($post)
     {
-      alert(json_encode($post));
       //insert <-> update
       switch ($post['action']) {
         case 'insert':
@@ -61,7 +60,15 @@
           break;
         case 'new_insert':
           $this->getQuery($post, 'join_company', 'company');
+          break;
       }
+    }
+    
+    function companyDelete($post){
+      $post['company-deleted'] = 1;
+      $post['company-activated'] = 0;
+      $post['company-deletedDate'] = date("Ymd");
+      $this->getQuery($post,'company');
     }
     
     function action()
@@ -84,7 +91,10 @@
           $url .= "/view/{$this->param->idx}";
           $this ->companyInsert($_POST);
           $msg.="추가되었습니다";
+          break;
         case 'delete' :
+          $this->companyDelete($_POST);
+          $msg.="삭제되었습니다";
           break;
       }
       alert($msg);

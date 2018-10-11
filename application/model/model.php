@@ -131,18 +131,19 @@
             break;
           case 'new_insert':
             $sql = "INSERT INTO ";
+            break;
+          case 'delete':
+            $sql = "UPDATE ";
+            break;
           default :
             $sql = "INSERT INTO ";
             break;
         }
         $sql .= "{$tableName} SET ";
         $sql .= implode(",", $table[$tableName]);
-        if ($post['action'] == 'update') {
-          $sql .= " WHERE {$tableName}.{$tableName}ID = {$post[$tableName.'-'.$tableName.'ID']}";
+        if ($post['action'] == 'update' or $post['action'] == 'delete') {
+          $sql .= " WHERE {$tableName}.{$tableName}ID = {$post[$tableName.'-'.$tableName.'ID']} LIMIT 1";
         }
-//        if($post['action'] == 'new_insert'){
-//          $sql .= " WHERE {$focus}.{$focus}ID = {$post[$tableName.'-'.$focus.'ID']}";
-//        }
         $this->sql = $sql;
         $this->fetch();
       }
@@ -163,13 +164,6 @@
     function executeSQL($string)
     {
       $this->sql = $string;
-      $this->fetch();
-    }
-    
-    
-    function myDelete($tableName, $id)
-    {
-      $this->sql = "UPDATE `{$tableName}` SET deleted = 1, activated = 0  WHERE `{$tableName}`.{$tableName}ID = {$id} LIMIT 1";
       $this->fetch();
     }
   }

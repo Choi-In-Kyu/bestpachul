@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title><?php echo $this->title?></title>
-  <link rel="stylesheet" href="<?php echo _CSS?>common.css">
+  <link rel="stylesheet" href="<?php echo _CSS?>common.css?<?php echo time(); ?>">
 <!--  jquery-->
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <!--  jquery-->

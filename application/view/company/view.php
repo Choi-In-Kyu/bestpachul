@@ -26,7 +26,21 @@
             <tr>
                 <td class="al_c"><?php echo $data['joinID'] ?></td>
                 <td class="al_l"><?php echo get_joinType($data) ?></td>
-                <td class="al_l"><?php echo $data['price'] . " 원" ?></td>
+                <td class="al_l">
+                  <?php
+                      switch (get_joinType($data)){
+                        case '구좌':
+                          echo $data['price']." 원";
+                          break;
+                        case '보증금+콜비':
+                          echo "{$data['deposit']} 원 (보증금)";
+                          break;
+                        case '포인트':
+                            echo "{$data['point']} 원 (포인트)";
+                            break;
+                      }
+                  ?>
+                </td>
                 <td class="al_l"><?php echo $data['startDate'] ?></td>
                 <td class="al_l"><?php echo $data['endDate'] ?></td>
                 <td class="al_l"><?php echo $data['detail'] ?></td>

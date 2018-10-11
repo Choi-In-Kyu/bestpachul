@@ -10,7 +10,7 @@
     var $businessTypeList;
     var $addressList;
     var $joinList;
-  
+    
     var $companyData;
     var $ceoData;
     
@@ -34,14 +34,19 @@
       $this->condition = $_POST['condition'];
       $this->keyword = $_POST['keyword'];
       $this->activatedCondition = " WHERE activated = 1";
-      $this->expiredCondition = " WHERE activated = 0";
-      $this->deadlineCondition =
+      $this->expiredCondition =
         " LEFT JOIN `join_company`
         ON `company`.companyID = `join_company`.companyID
-        WHERE
-        DATE_ADD(CURDATE(), interval -15 day) < CURDATE() < `endDate`
-        ORDER BY endDate ASC
-        limit 1";
+        WHERE company.`activated` = 0
+        OR `endDate` < CURDATE()";
+      $this->deadlineCondition =
+        " LEFT JOIN `join_company`
+          ON `company`.companyID = `join_company`.companyID
+          WHERE
+          (DATE_ADD(`endDate`, interval -15 day) < CURDATE())
+          AND
+          (CURDATE()<`endDate`)
+          ORDER BY endDate ASC LIMIT 1";
       if (isset($this->keyword) && $this->keyword != "") $this->condition = " WHERE `companyName` LIKE '%{$this->keyword}%' OR `address` LIKE '%{$this->keyword}%' ";
       
       //order
@@ -64,19 +69,24 @@
       $this->submitButtonName = "수정";
       $this->companyID = $this->param->idx;
       
-      $this->companyData      = $this->db->getTable("SELECT * FROM company WHERE companyID = '{$this->companyID}'");
-      $this->ceoList          = $this->db->getTable("SELECT * FROM `ceo`");
+      $this->companyData = $this->db->getTable("SELECT * FROM company WHERE companyID = '{$this->companyID}'");
+      $this->ceoList = $this->db->getTable("SELECT * FROM `ceo`");
       $this->businessTypeList = $this->db->getTable("SELECT * FROM `businessType`");
-      $this->addressList      = $this->db->getTable("SELECT * FROM `address`");
-      $this->ceoData          = $this->db->getTable("SELECT * FROM ceo WHERE ceoID = '{$this->companyData[0]['ceoID']}'");
-      $this->joinList         = $this->db->getTable("SELECT * FROM join_company WHERE companyID = '{$this->companyID}' order by endDate DESC");
+      $this->addressList = $this->db->getTable("SELECT * FROM `address`");
+      $this->ceoData = $this->db->getTable("SELECT * FROM ceo WHERE ceoID = '{$this->companyData[0]['ceoID']}'");
+      $this->joinList = $this->db->getTable("SELECT * FROM join_company WHERE companyID = '{$this->companyID}' order by endDate DESC");
       
       $this->data = $this->db->getView();
       
-      function get_joinType($data){
-          if(isset($data['price']) && $data['price']!=0){return "구좌";}
-          elseif (isset($data['deposit']) && $data['deposit']!=0){return "보증금+콜비";}
-          elseif(isset($data['point']) && $data['point']!=0){return "포인트";}
+      function get_joinType($data)
+      {
+        if (isset($data['deposit']) && $data['deposit'] != 0) {
+          return "보증금+콜비";
+        } elseif (isset($data['point']) && $data['point'] != 0) {
+          return "포인트";
+        } elseif (isset($data['price']) && $data['price'] != 0) {
+          return "구좌";
+        }
       }
     }
     
@@ -89,7 +99,7 @@
       $this->addressList = $this->db->getTable("SELECT * FROM `address`");
       $this->ceoList = $this->db->getTable("SELECT * FROM `ceo`");
     }
-  
+    
     //bestpachul.com/company/delete
     function delete()
     {
