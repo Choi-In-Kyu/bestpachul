@@ -3,8 +3,6 @@
   Class Model_company extends Model
   {
     var $tableName = "company";
-    var $sql2;
-    
     function getView()
     {
       $this->sql = "SELECT * FROM `company` join `ceo` ON company.ceoID = ceo.ceoID WHERE company.companyID='{$this->param->idx}'";
@@ -65,10 +63,17 @@
     }
     
     function companyDelete($post){
-      $post['company-deleted'] = 1;
-      $post['company-activated'] = 0;
-      $post['company-deletedDate'] = date("Ymd");
-      $this->getQuery($post,'company');
+  
+      if(!isset ($post['join_company-join_companyID'])){
+        alert("companyDelete");
+        $post['company-deleted'] = 1;
+        $post['company-activated'] = 0;
+        $post['company-deletedDate'] = date("Ymd");
+        $this->getQuery($post,'company');
+      }
+      else{
+        $this->getQuery($post,'join_company');
+      }
     }
     
     function action()
@@ -93,6 +98,7 @@
           $msg.="추가되었습니다";
           break;
         case 'delete' :
+          if(isset($this->param->idx)) $url .= "/view/{$this->param->idx}";
           $this->companyDelete($_POST);
           $msg.="삭제되었습니다";
           break;

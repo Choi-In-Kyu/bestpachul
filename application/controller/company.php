@@ -104,6 +104,7 @@
       $this->ceoList = $this->db->getTable("SELECT * FROM `ceo`");
       $this->businessTypeList = $this->db->getTable("SELECT * FROM `businessType`");
       $this->addressList = $this->db->getTable("SELECT * FROM `address`");
+      
       $this->ceoData = $this->db->getTable("SELECT * FROM ceo WHERE ceoID = '{$this->companyData['ceoID']}'")[0];
       $this->joinList = $this->db->getTable("SELECT * FROM join_company WHERE companyID = '{$this->companyID}' order by endDate DESC");
       $this->data = $this->db->getView();

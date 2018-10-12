@@ -154,7 +154,6 @@
 
 <script>
     $('.btnModal').click(function () {
-        alert("abc");
         $('#myModal').show();
         $('#modal-companyID').val(this.value);
     })
