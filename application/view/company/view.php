@@ -9,7 +9,8 @@
             <col width="10%">
             <col width="10%">
             <col width="10%">
-            <col width="55%">
+            <col width="50%">
+            <col width="5%">
         </colgroup>
         <thead>
         <tr>
@@ -19,6 +20,7 @@
             <th>가입 시작일</th>
             <th>가입 만기일</th>
             <th>비고</th>
+            <th>삭제</th>
         </tr>
         </thead>
         <tbody>
@@ -30,13 +32,13 @@
                   <?php
                       switch (get_joinType($data)){
                         case '구좌':
-                          echo $data['price']." 원";
+                          echo number_format($data['price'])." 원";
                           break;
                         case '보증금+콜비':
-                          echo "{$data['deposit']} 원 (보증금)";
+                          echo number_format($data['deposit'])." 원 (보증금)";
                           break;
                         case '포인트':
-                            echo "{$data['point']} 원 (포인트)";
+                            echo number_format($data['point'])." 원 (포인트)";
                             break;
                       }
                   ?>
@@ -44,11 +46,28 @@
                 <td class="al_l"><?php echo $data['startDate'] ?></td>
                 <td class="al_l"><?php echo $data['endDate'] ?></td>
                 <td class="al_l"><?php echo $data['detail'] ?></td>
+                <td class="al_c">
+                    <button id="myBtn" class="btnModal" value="<?php echo $data['joinID']?>">X</button>
+                </td>
             </tr>
         <?php endforeach ?>
         </tbody>
     </table>
     <br/>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <form action="" method="post">
+                <input type="hidden" name="action" value="delete">
+                <input id="modal-companyID" type="hidden" name="company-companyID">
+                <textarea name="company-deleteDetail" size="200"></textarea>
+                <input class="btn btn-danger" type="button" id="closeModal" value="close">
+                <input class="btn btn-insert" type="submit" value="submit">
+            </form>
+        </div>
+    </div>
     
 <!--가입 추가-->
   <?php include_once 'table_join.php'; ?>
@@ -70,6 +89,7 @@
         </div>
     </form>
 </div>
+
 <script>
     function type_toggle(argument) {
         let detail_table = document.getElementById('detail_table');
@@ -90,4 +110,12 @@
         document.getElementById('join_form_btn_group').style.display = 'block';
         document.getElementById('new_join_form').style.display = 'block';
     }
+    $('.btnModal').click(function () {
+        alert("abc");
+        $('#myModal').show();
+        $('#modal-companyID').val(this.value);
+    })
+    $('#closeModal').click(function () {
+        $('#myModal').hide();
+    })
 </script>

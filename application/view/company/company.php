@@ -18,7 +18,7 @@
             <form class="form-default" action="" method="post">
                 <input type="hidden" name="condition" value="<?php echo $this->deadlineCondition ?>">
                 <input class="btn btn-default" type="submit"
-                       value="만기임박 업체 : <?php echo $this->db->getListNum($this->deadlineCondition) ?>">
+                       value="(만기임박 업체) : <?php echo $this->db->getListNum($this->deadlineCondition) ?>">
             </form>
         </div>
         <div class="col">
@@ -26,6 +26,13 @@
                 <input type="hidden" name="condition" value="<?php echo $this->expiredCondition ?>">
                 <input class="btn btn-default" type="submit"
                        value="만기된 업체 : <?php echo $this->db->getListNum($this->expiredCondition) ?>">
+            </form>
+        </div>
+        <div class="col">
+            <form class="form-default" action="" method="post">
+                <input type="hidden" name="condition" value="<?php echo $this->deletedCondition ?>">
+                <input class="btn btn-default" type="submit"
+                       value="삭제된 업체 : <?php echo $this->db->getListNum($this->deletedCondition) ?>">
             </form>
         </div>
         <div class="col">
@@ -68,6 +75,7 @@
             </form>
             <form action="" method="post">
                 <th>
+                    <input type="hidden" name="condition" value=<?php echo $this->condition?>>
                     <input type="hidden" name="order" value="companyName">
                     <input type="hidden" name="direction" value=<?php echo $this->direction ?>>
                     <input type="hidden" name="keyword" value=<?php echo $this->keyword ?>>
@@ -76,6 +84,7 @@
             </form>
             <form action="" method="post">
                 <th>
+                    <input type="hidden" name="condition" value=<?php echo $this->condition?>>
                     <input type="hidden" name="order" value="address">
                     <input type="hidden" name="direction" value=<?php echo $this->direction ?>>
                     <input type="hidden" name="keyword" value=<?php echo $this->keyword ?>>
@@ -84,6 +93,7 @@
             </form>
             <form action="" method="post">
                 <th>
+                    <input type="hidden" name="condition" value=<?php echo $this->condition?>>
                     <input type="hidden" name="order" value="businessType">
                     <input type="hidden" name="direction" value=<?php echo $this->direction ?>>
                     <input type="hidden" name="keyword" value=<?php echo $this->keyword ?>>
@@ -92,6 +102,7 @@
             </form>
             <form action="" method="post">
                 <th>
+                    <input type="hidden" name="condition" value=<?php echo $this->condition?>>
                     <input type="hidden" name="order" value="grade">
                     <input type="hidden" name="direction" value=<?php echo $this->direction ?>>
                     <input type="hidden" name="keyword" value=<?php echo $this->keyword ?>>
@@ -103,36 +114,23 @@
             </th>
         </tr>
         </thead>
-        
+
         <tbody>
-        <?php
-          $deadlineArray = $this->db->getColumnList($this->db->getList($this->deadlineCondition), 'companyID');
-          $expiredArray = $this->db->getColumnList($this->db->getList($this->expiredCondition), 'companyID');
-        ?>
         <?php foreach ($this->list as $key => $data): ?>
-          <?php
-          $color = "ivory";
-          if (in_array(($data['companyID']), $expiredArray) != null) {
-            $color = "orangered";
-          }
-          if (in_array(($data['companyID']), $deadlineArray) != null) {
-            $color = "orange";
-          }
-          ?>
-            <tr style="background-color: <?php echo $color ?>">
+            <tr style="background-color: <?php echo $data['color'] ?>">
                 <td class="al_c"><?php echo $data['companyID'] ?>
-                    <a href="<?php echo "{$this->param->get_page}/view/{$data['idx']}"?>">
+                    <a href="<?php echo "{$this->param->get_page}/view/{$data['idx']}" ?>">
                 </td>
                 <td class="al_l" style="cursor: pointer;"
                     onClick='location.href="<?php echo "{$this->param->get_page}/view/{$data['companyID']}" ?>"'>
-                      <?php echo $data['companyName'] ?>
+                  <?php echo $data['companyName'] ?>
                 </td>
                 <td class="al_l"><?php echo $data['address'] ?></td>
                 <td class="al_l"><?php echo $data['businessType'] ?></td>
                 <td class="al_l"><?php echo $data['grade'] ?></td>
                 <td class="al_c">
                     <!-- Trigger/Open The Modal -->
-                    <button id="myBtn" class="btnModal" value="<?php echo $data['companyID']?>">X</button>
+                    <button id="myBtn" class="btnModal" value="<?php echo $data['companyID'] ?>">X</button>
                 </td>
             </tr>
         <?php endforeach ?>
@@ -155,16 +153,12 @@
 </div>
 
 <script>
-    
-     $('.btnModal').click(function () {
-         alert("abc");
-         $('#myModal').show();
-         $('#modal-companyID').val(this.value);
-     })
+    $('.btnModal').click(function () {
+        alert("abc");
+        $('#myModal').show();
+        $('#modal-companyID').val(this.value);
+    })
     $('#closeModal').click(function () {
         $('#myModal').hide();
     })
-    
-    
-
 </script>

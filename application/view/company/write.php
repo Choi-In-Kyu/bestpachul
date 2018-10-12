@@ -1,5 +1,10 @@
 <div class="board_view auto-center">
-    <h1>업체 정보</h1>
+    <h1>
+      <?php
+        if(isset ($this->companyData)) echo "업체정보 - ".$this->companyData['companyName']."(".$this->companyData['actCondition'].")";
+        else echo "업체 정보";
+      ?>
+    </h1>
     <div class="form-style-2">
         <form id="company_form" action="" method="post" enctype=''>
             <fieldset>
@@ -11,12 +16,12 @@
                         <div class="td">
                             업체명
                             <input type="text" name="company-companyName" size="20" required autofocus
-                                   value="<?php echo $this->companyData[0]['companyName']; ?>">
+                                   value="<?php echo $this->companyData['companyName']; ?>">
                         </div>
                         <div class="td">
                             대표자명
                             <input type="text" list="ceoList" name="ceo-ceoName" size="20" required
-                                   value="<?php echo $this->ceoData[0]['ceoName']; ?>">
+                                   value="<?php echo $this->ceoData['ceoName']; ?>">
                             <datalist id="ceoList" class="input-field">
                               <?php foreach ($this->ceoList as $key => $data): ?>
                                   <option value="<?php echo $data['ceoName'] ?>"></option>
@@ -26,7 +31,7 @@
                         <div class="td">
                             업종
                             <input type="text" list="businessTypeList" name="company-businessType" size="20" required
-                                   value="<?php echo $this->companyData[0]['businessType']; ?>">
+                                   value="<?php echo $this->companyData['businessType']; ?>">
                             <datalist id="businessTypeList" class="input-field">
                               <?php foreach ($this->businessTypeList as $key => $data): ?>
                                   <option value="<?php echo $data['businessType'] ?>"></option>
@@ -38,19 +43,19 @@
                         <div class="td">
                             업체전화
                             <input type="text" name="company-companyPhoneNumber" size="20" required
-                                   value="<?php echo $this->companyData[0]['companyPhoneNumber']; ?>">
+                                   value="<?php echo $this->companyData['companyPhoneNumber']; ?>">
                         </div>
                         <div class="td">
                             사장 전화
                             <input type="text" name="ceo-ceoPhoneNumber" size="20" required
-                                   value="<?php echo $this->ceoData[0]['ceoPhoneNumber']; ?>">
+                                   value="<?php echo $this->ceoData['ceoPhoneNumber']; ?>">
                         </div>
                     </div>
                     <div class="tr">
                         <div class="td">
                             간단주소
                             <input type="text" list="addressList" name="company-address"
-                                   value="<?php echo $this->companyData[0]['address']; ?>">
+                                   value="<?php echo $this->companyData['address']; ?>">
                             <datalist id="addressList">
                               <?php foreach ($this->addressList as $key => $data): ?>
                                   <option value="<?php echo $data['address'] ?>"></option>
@@ -60,19 +65,25 @@
                         <div class="td">
                             상세주소
                             <input type="text" name="company-detailAddress" size="20" required
-                                   value="<?php echo $this->companyData[0]['detailAddress']; ?>">
+                                   value="<?php echo $this->companyData['detailAddress']; ?>">
                         </div>
                     </div>
                     <div class="tr">
                         <div class="td">
                             업체점수
                             <input type="text" name="company-grade" size="20" required
-                                   value="<?php echo $this->companyData[0]['grade']; ?>">
+                                   value="<?php echo $this->companyData['grade']; ?>">
                         </div>
                         <div class="td">
                             비고
-                            <textarea name="company-detail"><?php echo $this->companyData[0]['detail']; ?></textarea>
+                            <textarea name="company-detail"><?php echo $this->companyData['detail']; ?></textarea>
                         </div>
+                        <?php if($this->companyData['actCondition']=="삭제됨") : ?>
+                        <div class="td">
+                            삭제비고
+                            <textarea name="company-deleteDetail"><?php echo $this->companyData['deleteDetail']; ?></textarea>
+                        </div>
+                        <?php endif;?>
                     </div>
                 </div>
   
