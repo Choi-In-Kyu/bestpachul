@@ -73,10 +73,31 @@
       }
     }
     
+    function initActCondition($list){
+      $today = date("Y-m-d");
+      foreach ($list as $key => $value){
+        $companyID = $value['companyID'];
+        $endDateArray = $this->db->getTable("SELECT * from `join_company` WHERE companyID = {$companyID}");
+        foreach ($endDateArray as $key => $value) {
+          $endDate = $value['endDate'];
+//          $joinID = $value['join_companyID'];
+          if($today>$endDate){
+            $this->db->executeSQL("UPDATE company SET activated = 0, deleted = 0 WHERE companyID = {$companyID} LIMIT 1");
+          }
+          else{
+            $this->db->executeSQL("UPDATE company SET activated = 1, deleted = 0 WHERE companyID = {$companyID} LIMIT 1");
+            break;
+          }
+        }
+      }
+      return $list;
+    }
+    
     //bestpachul.com/company
     function basic()
     {
-      //condition
+      //condition - 필터링, 검색, 정렬 기능
+      if(isset($_POST['condition']))
       $this->condition = $_POST['condition'];
       $this->keyword = $_POST['keyword'];
       if (isset($this->keyword) && $this->keyword != "") $this->condition = " WHERE `companyName` LIKE '%{$this->keyword}%' OR `address` LIKE '%{$this->keyword}%' ";
@@ -89,7 +110,9 @@
       else $this->order = null;
       //get list
       $this->list = $this->db->getList($this->condition, $this->order);
+      $this->list = $this->initActCondition($this->list);
       $this->list = $this->getActCondition($this->list);
+      getLog($this->condition);
     }
     
     //bestpachul.com/company/view

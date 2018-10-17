@@ -1,9 +1,6 @@
 @charset "UTF-8";
 /* config */
 @media (min-width: 1500px) { .auto-center, #header > div, #main-content { width: 1500px; margin: 0 10%; } }
-/* 초기화 */
-
-
 
 /*html*/
 html, body { margin: 0; padding: 0; }
@@ -120,11 +117,8 @@ span.middle.all ~ * { display: inline-block; vertical-align: middle; }
 .table > .tr > .lbl label { display: block; vertical-align: middle; cursor: pointer; }
 .table > .tr > .desc { width: 30%; }
 .table > .tr > .desc.content { min-height: 300px; }
-
 .table > .tr > .td{width: 30%;}
 .table > .tr > .td > .lbl{width: 30%;}
-
-
 
 /*dropdown, navigation*/
 .navbar {
@@ -142,7 +136,6 @@ span.middle.all ~ * { display: inline-block; vertical-align: middle; }
     font-size: 16px;
     border: none;
     outline: none;
-    color: var(--yellow-color);
     padding: 14px 16px;
     background-color: blanchedalmond;
     min-width: 160px;
@@ -151,7 +144,6 @@ span.middle.all ~ * { display: inline-block; vertical-align: middle; }
     margin: 0;
 }
 .navbar a:hover, .dropdown:hover .dropbtn {
-    background-color: var(--strong-color);
 }
 .dropdown-content {
     display: none;
@@ -163,13 +155,11 @@ span.middle.all ~ * { display: inline-block; vertical-align: middle; }
 }
 .dropdown-content a {
     float: none;
-    color: var(--strong-color);
     padding: 12px 16px;
     text-decoration: none;
     display: block;
     text-align: left;
 }
-.dropdown-content a:hover {background-color: var(--yellow-color);  }
 .dropdown:hover .dropdown-content {display: block;}
 
 /*form*/
@@ -269,4 +259,10 @@ span.middle.all ~ * { display: inline-block; vertical-align: middle; }
     padding: 20px;
     border: 1px solid #888;
     width: 40%;
+}
+
+input[type="checkbox"]{
+    width: 30px; /*Desired width*/
+    height: 30px; /*Desired height*/
+    cursor: pointer;
 }

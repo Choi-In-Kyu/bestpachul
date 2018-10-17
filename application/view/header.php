@@ -15,29 +15,13 @@
   <div>
     <div class="row">
       <div class="dropdown col-md-3">
-        <button class="dropbtn" onClick = 'location.href="<?php echo _URL?>company"'>HOME
-          <i class="fa fa-caret-down"></i>
-        </button>
+        <button class="dropbtn" onClick = 'location.href="<?php echo _URL?>company"'>HOME</button>
       </div>
       <div class="dropdown col-md-3">
-        <button class="dropbtn">업체관리
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content col-md-3">
-          <a href=<?php echo _URL?>company>업체관리</a>
-          <a href=<?php echo _URL?>board>삭제된 업체관리</a>
-        </div>
+        <button class="dropbtn" onClick = 'location.href="<?php echo _URL?>company"'>업체관리</button>
       </div>
       <div class="dropdown col-md-3">
-        <button class="dropbtn">인력관리
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-          <a href="#">인력관리</a>
-          <a href="#">삭제된 인력관리</a>
-          <a href="#">인력현황</a>
-          <a href="#">펑크관리</a>
-        </div>
+        <button class="dropbtn" onClick = 'location.href="<?php echo _URL?>employee"'>인력관리</button>
       </div>
       <div class="dropdown col-md-3">
         <button class="dropbtn">콜관리

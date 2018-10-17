@@ -17,10 +17,8 @@
           //신규 등록 시 user 추가
           $post['user-userName'] = $post['company-companyName'];
           $post['user-userPW'] = $post['ceo-ceoPhoneNumber'];
-  
           //업체명 중복 배제
           $post['company-companyName'] = $this->removeDuplicate($post,'company','companyName');
-  
           //ceo 이름 처리
           $ceoName = $post['ceo-ceoName'];
           $ceoNameList = $this->getColumnList($this->getTable("SELECT * FROM ceo"), 'ceoName');
@@ -63,7 +61,6 @@
     }
     
     function companyDelete($post){
-  
       if(!isset ($post['join_company-join_companyID'])){
         alert("companyDelete");
         $post['company-deleted'] = 1;

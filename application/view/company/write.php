@@ -9,8 +9,8 @@
         <form id="company_form" action="" method="post" enctype=''>
             <fieldset>
                 <input type="hidden" name="action" value="<?php echo $this->action ?>">
-                <input type="hidden" name="company-companyID" value="<?php echo $this->companyData[0]['companyID'] ?>">
-                <input type="hidden" name="ceo-ceoID" value="<?php echo $this->ceoData[0]['ceoID'] ?>">
+                <input type="hidden" name="company-companyID" value="<?php echo $this->companyData['companyID'] ?>">
+                <input type="hidden" name="ceo-ceoID" value="<?php echo $this->ceoData['ceoID'] ?>">
                 <div class="table">
                     <div class="tr">
                         <div class="td">

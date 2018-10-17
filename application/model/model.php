@@ -11,25 +11,25 @@
     var $tableArr;
     var $tableName;
     
+    //생성자
     function __construct($param)
     {
       $servername = "localhost";
       $dbname = "informationsys";
       $username = "informationsys";
       $password = "ingee440";
-      
       $this->column = NULL;
       $this->param = $param;
       $this->db = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
       $this->db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
       $this->db->exec("set names utf8");
-      
       if (isset($_POST['action'])) {
         $this->action = $_POST['action'];
         $this->action();
       }
     }
     
+    //SQL 함수
     function query($sql)
     {
       $sql && $this->sql = $sql;
@@ -44,22 +44,11 @@
         echo "</pre>";
       }
     }
+    function fetch() {return $this->query($this->sql)->fetch();}
+    function fetchAll(){return $this->query($this->sql)->fetchAll();}
+    function cnt(){return $this->query($this->sql)->rowCount();}
     
-    function fetch()
-    {
-      return $this->query($this->sql)->fetch();
-    }
-    
-    function fetchAll()
-    {
-      return $this->query($this->sql)->fetchAll();
-    }
-    
-    function cnt()
-    {
-      return $this->query($this->sql)->rowCount();
-    }
-    
+    //커스텀 함수
     function getList($condition = null, $order = null)
     {
       $this->sql = "SELECT * FROM {$this->tableName}";
@@ -141,8 +130,14 @@
         $sql .= "{$tableName} SET ";
         $sql .= implode(",", $table[$tableName]);
         if ($post['action'] == 'update' or $post['action'] == 'delete') {
-          $sql .= " WHERE {$tableName}.{$tableName}ID = {$post[$tableName.'-'.$tableName.'ID']} LIMIT 1";
+          if(!isset($focus)){
+            $sql .= " WHERE {$tableName}.{$tableName}ID = {$post[$tableName.'-'.$tableName.'ID']} LIMIT 1";
+          }
+          if (isset($focus)){
+            $sql .= " WHERE {$tableName}.{$focus}ID = {$post[$focus.'-'.$focus.'ID']} LIMIT 1";
+          }
         }
+        alert($sql);
         $this->sql = $sql;
         $this->fetch();
       }
@@ -150,7 +145,7 @@
     
     function removeDuplicate($post, $table, $column)
     {
-      //중복된 업체명 처리
+      //중복된 이름 처리
       $result = $post["{$table}-{$column}"];
       $columnList = $this->getColumnList($this->getList(), $column);
       while (in_array($result, $columnList)) {
@@ -165,6 +160,8 @@
       $this->sql = $string;
       $this->fetch();
     }
+  
+
   }
 
 ?>
