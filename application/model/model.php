@@ -49,23 +49,46 @@
     function cnt(){return $this->query($this->sql)->rowCount();}
     
     //커스텀 함수
-    function getList($condition = null, $order = null)
+//    function getList($condition = null, $order = null)
+//    {
+//      $this->sql = "SELECT * FROM {$this->tableName}";
+//      if (isset($condition)) {
+//        $getCondition = $condition;
+//      } else {
+//        $getCondition = " WHERE deleted = 0";
+//      }
+//      $this->sql .= $getCondition;
+//      if (isset($order) && $order != "") $this->sql .= " ORDER BY {$order}";
+//      return $this->fetchAll();
+//    }
+    
+    function getList($conditionArray = null, $order = null, $join)
     {
       $this->sql = "SELECT * FROM {$this->tableName}";
-      if (isset($condition)) {
-        $getCondition = $condition;
+      if(isset($join)){
+        $this->sql .= $join;
+      }
+      if (isset($conditionArray)) {
+        $getCondition = " WHERE ".implode(" AND ", $conditionArray);
       } else {
         $getCondition = " WHERE deleted = 0";
       }
       $this->sql .= $getCondition;
-      if (isset($order) && $order != "") $this->sql .= " ORDER BY {$order}";
+      if (isset($order) && $order != ""){
+        $this->sql .= " ORDER BY {$order}";
+      }
       return $this->fetchAll();
     }
     
-    function getListNum($condition = null)
+    function getListNum($conditionArray = null, $join = null)
     {
       $this->sql = "SELECT * FROM {$this->tableName}";
-      if (isset($condition)) $this->sql .= $condition;
+      if(isset($join)){
+        $this->sql .= $join;
+      }
+      if (isset($conditionArray)){
+        $this->sql .= " WHERE ".implode(" AND ", $conditionArray);
+      }
       return $this->cnt();
     }
     

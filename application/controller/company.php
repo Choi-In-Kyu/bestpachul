@@ -6,6 +6,9 @@
     var $data;
     var $name;
     
+    var $filterColor;
+    var $filterBgColor;
+    
     var $ceoList;
     var $businessTypeList;
     var $addressList;
@@ -19,28 +22,24 @@
     
     var $direction;
     var $condition;
+    var $join;
     var $order;
     var $keyword;
     var $companyID;
     
-    public $activatedCondition = " WHERE activated = 1 AND deleted = 0 ";
-    public $expiredCondition = " WHERE activated = 0 AND deleted = 0 ";
-    public $deletedCondition = " WHERE activated = 0 AND deleted = 1 ";
-    public $deadlineCondition =
-      " LEFT JOIN `join_company`
-          ON `company`.companyID = `join_company`.companyID
-          WHERE
-          (DATE_ADD(`endDate`, interval -15 day) < CURDATE())
-          AND
-          (CURDATE()<`endDate`)
-          ORDER BY endDate ASC LIMIT 1";
+    public $defaultCondition    = array("filter" => " (deleted = 0) ");
+    public $activatedCondition  = array("filter" => " (activated = 1 AND deleted = 0) ");
+    public $expiredCondition    = array("filter" => " (activated = 0 AND deleted = 0) ");
+    public $deletedCondition    = array("filter" => " (activated = 0 AND deleted = 1) ");
+    public $deadlineJoin        = " LEFT JOIN `join_company` ON `company`.companyID = `join_company`.companyID ";
+    public $deadlineCondition   = array("filter" => "(DATE_ADD(`endDate`, interval -15 day) < CURDATE()) AND (CURDATE()<`endDate`) ORDER BY endDate ASC LIMIT 1");
     
     
     function getActCondition($list)
     {
-      $deadlineArray = $this->db->getColumnList($this->db->getList($this->deadlineCondition), 'companyID');
-      $expiredArray = $this->db->getColumnList($this->db->getList($this->expiredCondition), 'companyID');
-      $deletedArray = $this->db->getColumnList($this->db->getList($this->deletedCondition), 'companyID');
+      $deadlineArray  = $this->db->getColumnList($this->db->getList($this->deadlineCondition, null, $this->deadlineJoin), 'companyID');
+      $expiredArray   = $this->db->getColumnList($this->db->getList($this->expiredCondition), 'companyID');
+      $deletedArray   = $this->db->getColumnList($this->db->getList($this->deletedCondition), 'companyID');
       foreach ($list as $key => $value) {
         $companyID = $list[$key]['companyID'];
         if (in_array($companyID, $expiredArray)) {
@@ -96,23 +95,36 @@
     //bestpachul.com/company
     function basic()
     {
+      $this->join       = $_POST['join'];
+      $this->keyword    = $_POST['keyword'];
+      $this->order      = $_POST['order'];
+      $this->direction  = $_POST['direction'];
       //condition - 필터링, 검색, 정렬 기능
-      if(isset($_POST['condition']))
-      $this->condition = $_POST['condition'];
-      $this->keyword = $_POST['keyword'];
-      if (isset($this->keyword) && $this->keyword != "") $this->condition = " WHERE `companyName` LIKE '%{$this->keyword}%' OR `address` LIKE '%{$this->keyword}%' ";
+      if(isset($_POST['filterCondition'])){
+        $this->condition['filter'] = $_POST['filterCondition'];
+      }
+      if (isset($_POST['keyword']) && $_POST['keyword'] != ""){
+        $this->condition['keyword'] = " (`companyName` LIKE '%{$this->keyword}%' OR `address` LIKE '%{$this->keyword}%') ";
+      }
       //order
-      $this->direction = $_POST['direction'];
-      if ($this->direction == "ASC") $this->direction = "DESC";
-      else $this->direction = "ASC";
-      $this->order = $_POST['order'];
-      if (isset($this->order) && $this->order != "") $this->order = " {$_POST['order']} {$this->direction}";
-      else $this->order = null;
+      if(isset($this->direction) && isset($this->order)){
+        if ($this->direction == "ASC") $this->direction = "DESC";
+        else $this->direction = "ASC";
+        if (isset($this->order) && $this->order != "") $this->order = " {$_POST['order']} {$this->direction}";
+        else $this->order = null;
+      }
       //get list
-      $this->list = $this->db->getList($this->condition, $this->order);
+      $this->list = $this->db->getList($this->condition, $this->order, $this->join);
       $this->list = $this->initActCondition($this->list);
       $this->list = $this->getActCondition($this->list);
-      getLog($this->condition);
+      
+      switch ($this->condition['filter']){
+        case $this->defaultCondition['filter']:   $this->filterBgColor['default'] = "white"; $this->filterColor['default'] = "black"; break;
+        case $this->activatedCondition['filter']: $this->filterBgColor['activated'] = "ivory"; $this->filterColor['activated'] = "black"; break;
+        case $this->deadlineCondition['filter']:  $this->filterBgColor['deadline'] = "orange"; $this->filterColor['deadline'] = "black"; break;
+        case $this->expiredCondition['filter']:   $this->filterBgColor['expired'] = "pink"; $this->filterColor['expired'] = "black"; break;
+        case $this->deletedCondition['filter']:   $this->filterBgColor['deleted'] = "gray"; break;
+      }
     }
     
     //bestpachul.com/company/view
@@ -136,6 +148,14 @@
         if (isset($data['deposit']) && $data['deposit'] != 0) return "보증금+콜비";
         elseif (isset($data['point']) && $data['point'] != 0) return "포인트";
         elseif (isset($data['price']) && $data['price'] != 0) return "구좌";
+      }
+      
+      function getMoney($joinID){
+        $paid = null;
+        switch ($paid){
+          case 1:
+          case 0:
+        }
       }
     }
     

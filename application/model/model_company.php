@@ -50,7 +50,9 @@
           break;
         case 'update':
           //업체명 중복 배제
-          $post['company-companyName'] = $this->removeDuplicate($post,'company','companyName');
+          if($post['company-companyID'] != $this->getTable("SELECT companyID from company WHERE companyName = '{$post['company-companyName']}' LIMIT 1")[0]['companyID']){
+            $post['company-companyName'] = $this->removeDuplicate($post,'company','companyName');
+          }
           $this->getQuery($post, 'ceo');
           $this->getQuery($post, 'company');
           break;
@@ -62,7 +64,6 @@
     
     function companyDelete($post){
       if(!isset ($post['join_company-join_companyID'])){
-        alert("companyDelete");
         $post['company-deleted'] = 1;
         $post['company-activated'] = 0;
         $post['company-deletedDate'] = date("Ymd");

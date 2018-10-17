@@ -9,7 +9,8 @@
             <col width="20%">
             <col width="20%">
             <col width="20%">
-            <col width="15%">
+            <col width="5%">
+            <col width="10%">
         </colgroup>
         <thead>
         <tr>
@@ -18,6 +19,7 @@
             <th>가입 만기일</th>
             <th>가입금액</th>
             <th>비고</th>
+            <th>수금</th>
             <th>삭제</th>
         </tr>
         </thead>
@@ -33,11 +35,26 @@
                 <td class="al_l">
                   <?php
                     echo $data['detail'];
-                    if ($data['deleted'] == 1) echo " (삭제사유: " . $data['deleteDetail'] . ")";
+                    if ($data['deleted'] == 1) echo "<br/> .(삭제사유: " . $data['deleteDetail'] . ")";
                   ?>
                 </td>
                 <td class="al_c">
+                  <?php if ($data['paid'] == 0): ?>
+                      <form action="" method="post">
+                          <input type="hidden" name="action" value="getMoney">
+                          <input type="hidden" name="joinID" value="<?php echo $data['join_employeeID']?>">
+                          <input class="btn" type="submit" value="수금">
+                      </form>
+                  <?php else: ?>
+                      수금완료
+                  <?php endif; ?>
+                </td>
+                <td class="al_c">
+                    <?php if($data['deleted'] == 0): ?>
                     <button id="myBtn" class="btnModal" value="<?php echo $data['join_employeeID']; ?>">X</button>
+                    <?else:?>
+                      <?php echo $data['deletedDate']?>
+                    <?php endif;?>
                 </td>
             </tr>
         <?php endforeach ?>
@@ -60,7 +77,9 @@
                     <td><input type="date" id="startDate" name="join_employee-startDate" required></td>
                     <td>가입만기일</td>
                     <td><input type="date" id="endDate" name="join_employee-endDate" required></td>
-                    <td><button type="button" class="btn btn-insert" onclick="auto_insert()">자동 입력</td>
+                    <td>
+                        <button type="button" class="btn btn-insert" onclick="auto_insert()">자동 입력
+                    </td>
                 </tr>
                 <tr>
                     <td>가입금액</td>
@@ -87,6 +106,7 @@
         <form action="" method="post">
             <input type="hidden" name="action" value="delete">
             <input type="hidden" name="join_employee-deleted" value=1>
+            <input type="hidden" name="join_employee-deletedDate" value="<?php echo date("Y-m-d")?>">
             <input id="modal-joinID" type="hidden" name="join_employee-join_employeeID">
             <textarea name="join_employee-deleteDetail" size="200"></textarea>
             <input class="btn btn-default" type="button" id="closeModal" value="취소">

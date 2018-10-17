@@ -33,7 +33,9 @@
           break;
         case 'update':
           //인력명 중복 배제
-          $post['employee-employeeName'] = $this->removeDuplicate($post,'employee','employeeName');
+          if($post['employee-employeeID'] != $this->getTable("SELECT employeeID from employee WHERE employeeName = '{$post['employee-employeeName']}' LIMIT 1")[0]['employeeID']){
+            $post['employee-employeeName'] = $this->removeDuplicate($post,'employee','employeeName');
+          }
           $this->getQuery($post, 'employee');
           $this->getQuery($post, 'employee_available_day', 'employee');
           break;
@@ -81,6 +83,10 @@
           $this->employeeDelete($_POST);
           $msg.="삭제되었습니다";
           break;
+        case 'getMoney' :
+          $url .= "/view/{$this->param->idx}";
+          $this->executeSQL("UPDATE join_employee SET paid = '1' WHERE join_employeeID = {$_POST['joinID']} LIMIT 1");
+          $msg.="수금완료!";
       }
       alert($msg);
       move($url);

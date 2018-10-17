@@ -1,37 +1,43 @@
 <div class="board_list auto-center">
     <div class="row" style="width: 100%">
         <div class="col">
-            <form class="form-default" action="" method="post">
-                <input type="hidden" name="condition" value="<?php echo $this->defaultCondition; ?>">
+            <form class="form-default" action="" method="post" >
+                <input type="hidden" name="filterCondition" value="<?php echo $this->defaultCondition['filter']; ?>">
                 <input class="btn btn-default" type="submit"
+                       style="background-color: <?php echo $this->filterBgColor['default']?>; color: <?php echo $this->filterColor['default']?>;"
                        value="전체 업체: <?php echo $this->db->getListNum($this->defaultCondition) ?>">
             </form>
         </div>
         <div class="col">
             <form class="form-default" action="" method="post">
-                <input type="hidden" name="condition" value="<?php echo $this->activatedCondition; ?>">
+                <input type="hidden" name="filterCondition" value="<?php echo $this->activatedCondition['filter']; ?>">
                 <input class="btn btn-default" type="submit"
+                       style="background-color: <?php echo $this->filterBgColor['activated']?>; color: <?php echo $this->filterColor['activated']?>"
                        value="활성화 업체 : <?php echo $this->db->getListNum($this->activatedCondition) ?>">
             </form>
         </div>
         <div class="col">
             <form class="form-default" action="" method="post">
-                <input type="hidden" name="condition" value="<?php echo $this->deadlineCondition ?>">
+                <input type="hidden" name="filterCondition" value="<?php echo $this->deadlineCondition['filter'] ?>">
+                <input type="hidden" name="join" value="<?php echo $this->deadlineJoin ?>">
                 <input class="btn btn-default" type="submit"
-                       value="(만기임박 업체) : <?php echo $this->db->getListNum($this->deadlineCondition) ?>">
+                       style="background-color: <?php echo $this->filterBgColor['deadline']?>; color: <?php echo $this->filterColor['deadline']?>;"
+                       value="(만기임박 업체) : <?php echo $this->db->getListNum($this->deadlineCondition, $this->deadlineJoin) ?>">
             </form>
         </div>
         <div class="col">
             <form class="form-default" action="" method="post">
-                <input type="hidden" name="condition" value="<?php echo $this->expiredCondition ?>">
+                <input type="hidden" name="filterCondition" value="<?php echo $this->expiredCondition['filter'] ?>">
                 <input class="btn btn-default" type="submit"
+                       style="background-color: <?php echo $this->filterBgColor['expired']?>; color: <?php echo $this->filterColor['expired']?>;"
                        value="만기된 업체 : <?php echo $this->db->getListNum($this->expiredCondition) ?>">
             </form>
         </div>
         <div class="col">
             <form class="form-default" action="" method="post">
-                <input type="hidden" name="condition" value="<?php echo $this->deletedCondition ?>">
+                <input type="hidden" name="filterCondition" value="<?php echo $this->deletedCondition['filter'] ?>">
                 <input class="btn btn-default" type="submit"
+                       style="background-color: <?php echo $this->filterBgColor['deleted']?>"
                        value="삭제된 업체 : <?php echo $this->db->getListNum($this->deletedCondition) ?>">
             </form>
         </div>
@@ -43,10 +49,9 @@
         </div>
         <div class="col" style="float: right">
             <form class="form-default" action="" method="post">
-                <input type="hidden" name="condition" value=<?php echo $this->condition ?>>
+                <input type="hidden" name="filterCondition" value="<?php echo $this->condition['filter'] ?>">
                 <input type="hidden" name="order" value=<?php echo $this->order ?>>
                 <input type="hidden" name="direction" value=<?php echo $this->direction ?>>
-                <input type="hidden" name="keyword" value=<?php echo $this->keyword ?>>
                 <input type="text" name="keyword">
                 <input class="btn btn-submit" type="submit" value="검색"/>
             </form>
@@ -68,6 +73,7 @@
             <form action="" method="post">
                 <th>
                     <input type="hidden" name="order" value="companyID">
+                    <input type="hidden" name="filterCondition" value="<?php echo $this->condition['filter']?>">
                     <input type="hidden" name="direction" value=<?php echo $this->direction ?>>
                     <input type="hidden" name="keyword" value=<?php echo $this->keyword ?>>
                     <input type="submit" value="#">
@@ -75,7 +81,7 @@
             </form>
             <form action="" method="post">
                 <th>
-                    <input type="hidden" name="condition" value=<?php echo $this->condition?>>
+                    <input type="hidden" name="filterCondition" value="<?php echo $this->condition['filter']?>">
                     <input type="hidden" name="order" value="companyName">
                     <input type="hidden" name="direction" value=<?php echo $this->direction ?>>
                     <input type="hidden" name="keyword" value=<?php echo $this->keyword ?>>
@@ -84,7 +90,7 @@
             </form>
             <form action="" method="post">
                 <th>
-                    <input type="hidden" name="condition" value=<?php echo $this->condition?>>
+                    <input type="hidden" name="filterCondition" value="<?php echo $this->condition['filter']?>">
                     <input type="hidden" name="order" value="address">
                     <input type="hidden" name="direction" value=<?php echo $this->direction ?>>
                     <input type="hidden" name="keyword" value=<?php echo $this->keyword ?>>
@@ -93,7 +99,7 @@
             </form>
             <form action="" method="post">
                 <th>
-                    <input type="hidden" name="condition" value=<?php echo $this->condition?>>
+                    <input type="hidden" name="filterCondition" value="<?php echo $this->condition['filter']?>">
                     <input type="hidden" name="order" value="businessType">
                     <input type="hidden" name="direction" value=<?php echo $this->direction ?>>
                     <input type="hidden" name="keyword" value=<?php echo $this->keyword ?>>
@@ -102,7 +108,7 @@
             </form>
             <form action="" method="post">
                 <th>
-                    <input type="hidden" name="condition" value=<?php echo $this->condition?>>
+                    <input type="hidden" name="filterCondition" value="<?php echo $this->condition['filter']?>">
                     <input type="hidden" name="order" value="grade">
                     <input type="hidden" name="direction" value=<?php echo $this->direction ?>>
                     <input type="hidden" name="keyword" value=<?php echo $this->keyword ?>>
@@ -135,6 +141,7 @@
             </tr>
         <?php endforeach ?>
         </tbody>
+        
     </table>
 </div>
 
