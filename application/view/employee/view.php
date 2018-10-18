@@ -24,6 +24,7 @@
         </tr>
         </thead>
         <tbody>
+        <?php alert(json_encode($this->joinList))?>
         <?php foreach ($this->joinList as $key => $data): ?>
             <tr>
                 <td class="al_c"><?php echo $data['join_employeeID'] ?></td>
@@ -35,7 +36,7 @@
                 <td class="al_l">
                   <?php
                     echo $data['detail'];
-                    if ($data['deleted'] == 1) echo "<br/> .(삭제사유: " . $data['deleteDetail'] . ")";
+                    if ($data['deleted'] == 1) echo "<br/>(삭제사유: " . $data['deleteDetail'] . ")";
                   ?>
                 </td>
                 <td class="al_c">
@@ -107,6 +108,7 @@
             <input type="hidden" name="action" value="delete">
             <input type="hidden" name="join_employee-deleted" value=1>
             <input type="hidden" name="join_employee-deletedDate" value="<?php echo date("Y-m-d")?>">
+            <input type="hidden" name="join_employee-endDate" value="<?php echo date("Y-m-d")?>">
             <input id="modal-joinID" type="hidden" name="join_employee-join_employeeID">
             <textarea name="join_employee-deleteDetail" size="200"></textarea>
             <input class="btn btn-default" type="button" id="closeModal" value="취소">

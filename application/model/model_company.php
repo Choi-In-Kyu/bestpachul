@@ -64,9 +64,6 @@
     
     function companyDelete($post){
       if(!isset ($post['join_company-join_companyID'])){
-        $post['company-deleted'] = 1;
-        $post['company-activated'] = 0;
-        $post['company-deletedDate'] = date("Ymd");
         $this->getQuery($post,'company');
       }
       else{
@@ -100,6 +97,9 @@
           $this->companyDelete($_POST);
           $msg.="삭제되었습니다";
           break;
+        case 'restore' :
+          $this->executeSQL("UPDATE company SET activated = '1', deleted = '0', deleteDetail=null, deletedDate = null WHERE companyID = '{$_POST['companyID']}' LIMIT 1");
+          $msg.="복구완료!";
       }
       alert($msg);
       move($url);

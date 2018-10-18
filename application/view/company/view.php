@@ -8,9 +8,9 @@
             <col width="10%">
             <col width="10%">
             <col width="10%">
+            <col width="15%">
+            <col width="35%">
             <col width="10%">
-            <col width="50%">
-            <col width="5%">
         </colgroup>
         <thead>
         <tr>
@@ -25,36 +25,58 @@
         </thead>
         <tbody>
         <?php foreach ($this->joinList as $key => $data): ?>
-        <tr>
-            <td class="al_c"><?php echo $data['join_companyID'] ?></td>
-            <td class="al_l"><?php echo get_joinType($data) ?></td>
-            <td class="al_l">
-              <?php
-                switch (get_joinType($data)) {
-                  case '구좌':
-                    echo number_format($data['price']) . " 원";
-                    break;
-                  case '보증금+콜비':
-                    echo number_format($data['deposit']) . " 원 (보증금)";
-                    break;
-                  case '포인트':
-                    echo number_format($data['point']) . " 원 (포인트)";
-                    break;
-                }
-              ?>
-            </td>
-            <td class="al_l"><?php echo $data['startDate'] ?></td>
-            <td class="al_l"><?php echo $data['endDate'] ?></td>
-            <td class="al_l">
-              <?php
-                echo $data['detail'];
-                if ($data['deleted'] == 1) echo " (삭제사유: ".$data['deleteDetail'].")";
-              ?>
-            </td>
-            <td class="al_c">
-                <button id="myBtn" class="btnModal" value="<?php echo $data['join_companyID']; ?>">X</button>
-            </td>
-        </tr>
+            <tr style="background-color:
+        <?php
+              if ($data['activated'] == 0) echo "gray";
+              elseif (
+                strtotime($data['endDate'] . " -15 days") < strtotime(date('Y-m-d'))
+                && strtotime(date('Y-m-d')) < strtotime($data['endDate']))
+                echo "orange";
+            ?>">
+                <td class="al_c"><?php echo $data['join_companyID'] ?></td>
+                <td class="al_l"><?php echo get_joinType($data) ?></td>
+                <td class="al_l">
+                  <?php
+                    switch (get_joinType($data)) {
+                      case '구좌':
+                        echo number_format($data['price']) . " 원";
+                        break;
+                      case '보증금+콜비':
+                        echo number_format($data['deposit']) . " 원 (보증금)";
+                        break;
+                      case '포인트':
+                        echo number_format($data['point']) . " 원 (포인트)";
+                        break;
+                    }
+                  ?>
+                </td>
+                <td class="al_l"><?php echo $data['startDate'] ?></td>
+                <td class="al_l">
+                  <?php
+                    echo $data['endDate'];
+                    if (
+                      strtotime($data['endDate'] . " -15 days") < strtotime(date('Y-m-d'))
+                      && strtotime(date('Y-m-d')) < strtotime($data['endDate']))
+                      echo " (D-" . date('j', strtotime($data['endDate']) - strtotime(date('Y-m-d'))) . ")";
+                  ?>
+                </td>
+                <td class="al_l">
+                  <?php
+                    echo $data['detail'];
+                    if ($data['deleted'] == 1) echo "<br/>(삭제사유: " . $data['deleteDetail'] . ")";
+                    elseif ($data['deleted'] == 0 && $data['activated'] == 0) {
+                      echo "<br/>(가입 만기됨)";
+                    }
+                  ?>
+                </td>
+                <td class="al_c">
+                  <?php if ($data['activated'] == 1): ?>
+                      <button id="myBtn" class="btnModal" value="<?php echo $data['join_companyID']; ?>">X</button>
+                  <? else: ?>
+                    <?php echo $data['deletedDate'] ?>
+                  <?php endif; ?>
+                </td>
+            </tr>
         <?php endforeach ?>
         </tbody>
     </table>
@@ -88,6 +110,7 @@
         <form action="" method="post">
             <input type="hidden" name="action" value="delete">
             <input type="hidden" name="join_company-deleted" value=1>
+            <input type="hidden" name="join_company-deletedDate" value="<?php echo date("Y-m-d") ?>">
             <input id="modal-joinID" type="hidden" name="join_company-join_companyID">
             <textarea name="join_company-deleteDetail" size="200"></textarea>
             <input class="btn btn-default" type="button" id="closeModal" value="취소">

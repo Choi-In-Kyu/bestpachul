@@ -23,6 +23,7 @@
     var $direction;
     var $condition;
     var $join;
+    var $group;
     var $order;
     var $keyword;
     var $companyID;
@@ -32,12 +33,12 @@
     public $expiredCondition    = array("filter" => " (activated = 0 AND deleted = 0) ");
     public $deletedCondition    = array("filter" => " (activated = 0 AND deleted = 1) ");
     public $deadlineJoin        = " LEFT JOIN `join_company` ON `company`.companyID = `join_company`.companyID ";
-    public $deadlineCondition   = array("filter" => "(DATE_ADD(`endDate`, interval -15 day) < CURDATE()) AND (CURDATE()<`endDate`) ORDER BY endDate ASC LIMIT 1");
-    
+    public $deadlineCondition   = array("filter" => " (DATE_ADD(`endDate`, interval -15 day) < CURDATE()) AND (CURDATE()<`endDate`)");
+    public $deadlineGroup       = "companyName";
     
     function getActCondition($list)
     {
-      $deadlineArray  = $this->db->getColumnList($this->db->getList($this->deadlineCondition, null, $this->deadlineJoin), 'companyID');
+      $deadlineArray  = $this->db->getColumnList($this->db->getList($this->deadlineCondition, null, $this->deadlineJoin, $this->deadlineGroup), 'companyID');
       $expiredArray   = $this->db->getColumnList($this->db->getList($this->expiredCondition), 'companyID');
       $deletedArray   = $this->db->getColumnList($this->db->getList($this->deletedCondition), 'companyID');
       foreach ($list as $key => $value) {
@@ -61,31 +62,16 @@
       return $list;
     }
     
-    function getCompanyTable($list, $companyID)
-    {
-      foreach ($list as $key => $value) {
-        if ($list[$key]['companyID'] == $companyID) {
-          return $list[$key];
-        } else {
-          return null;
-        }
-      }
-    }
-    
     function initActCondition($list){
+      $this->db->executeSQL("UPDATE join_company SET activated = 0 WHERE endDate < CURDATE()");
       $today = date("Y-m-d");
       foreach ($list as $key => $value){
         $companyID = $value['companyID'];
         $endDateArray = $this->db->getTable("SELECT * from `join_company` WHERE companyID = {$companyID}");
         foreach ($endDateArray as $key => $value) {
           $endDate = $value['endDate'];
-//          $joinID = $value['join_companyID'];
           if($today>$endDate){
-            $this->db->executeSQL("UPDATE company SET activated = 0, deleted = 0 WHERE companyID = {$companyID} LIMIT 1");
-          }
-          else{
-            $this->db->executeSQL("UPDATE company SET activated = 1, deleted = 0 WHERE companyID = {$companyID} LIMIT 1");
-            break;
+            $this->db->executeSQL("UPDATE company SET activated = 0 WHERE companyID = {$companyID} LIMIT 1");
           }
         }
       }
@@ -98,11 +84,13 @@
       $this->join       = $_POST['join'];
       $this->keyword    = $_POST['keyword'];
       $this->order      = $_POST['order'];
+      $this->group      = $_POST['group'];
       $this->direction  = $_POST['direction'];
       //condition - 필터링, 검색, 정렬 기능
       if(isset($_POST['filterCondition'])){
         $this->condition['filter'] = $_POST['filterCondition'];
       }
+      else{$this->condition['filter'] = $this->defaultCondition['filter'];}
       if (isset($_POST['keyword']) && $_POST['keyword'] != ""){
         $this->condition['keyword'] = " (`companyName` LIKE '%{$this->keyword}%' OR `address` LIKE '%{$this->keyword}%') ";
       }
@@ -114,7 +102,7 @@
         else $this->order = null;
       }
       //get list
-      $this->list = $this->db->getList($this->condition, $this->order, $this->join);
+      $this->list = $this->db->getList($this->condition, $this->order, $this->join, $this->group);
       $this->list = $this->initActCondition($this->list);
       $this->list = $this->getActCondition($this->list);
       
@@ -148,14 +136,6 @@
         if (isset($data['deposit']) && $data['deposit'] != 0) return "보증금+콜비";
         elseif (isset($data['point']) && $data['point'] != 0) return "포인트";
         elseif (isset($data['price']) && $data['price'] != 0) return "구좌";
-      }
-      
-      function getMoney($joinID){
-        $paid = null;
-        switch ($paid){
-          case 1:
-          case 0:
-        }
       }
     }
     

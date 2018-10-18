@@ -78,7 +78,7 @@
                             비고
                             <textarea name="company-detail"><?php echo $this->companyData['detail']; ?></textarea>
                         </div>
-                        <?php if($this->companyData['actCondition']=="삭제됨") : ?>
+                        <?php if($this->companyData['deleted']==1) : ?>
                         <div class="td">
                             삭제비고
                             <textarea name="company-deleteDetail"><?php echo $this->companyData['deleteDetail']; ?></textarea>
