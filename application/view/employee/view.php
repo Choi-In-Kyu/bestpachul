@@ -24,39 +24,15 @@
         </tr>
         </thead>
         <tbody>
-        <?php alert(json_encode($this->joinList))?>
         <?php foreach ($this->joinList as $key => $data): ?>
             <tr>
                 <td class="al_c"><?php echo $data['join_employeeID'] ?></td>
                 <td class="al_l"><?php echo $data['startDate'] ?></td>
                 <td class="al_l"><?php echo $data['endDate'] ?></td>
-                <td class="al_l">
-                  <? echo number_format($data['price']) . " 원"; ?>
-                </td>
-                <td class="al_l">
-                  <?php
-                    echo $data['detail'];
-                    if ($data['deleted'] == 1) echo "<br/>(삭제사유: " . $data['deleteDetail'] . ")";
-                  ?>
-                </td>
-                <td class="al_c">
-                  <?php if ($data['paid'] == 0): ?>
-                      <form action="" method="post">
-                          <input type="hidden" name="action" value="getMoney">
-                          <input type="hidden" name="joinID" value="<?php echo $data['join_employeeID']?>">
-                          <input class="btn" type="submit" value="수금">
-                      </form>
-                  <?php else: ?>
-                      수금완료
-                  <?php endif; ?>
-                </td>
-                <td class="al_c">
-                    <?php if($data['deleted'] == 0): ?>
-                    <button id="myBtn" class="btnModal" value="<?php echo $data['join_employeeID']; ?>">X</button>
-                    <?else:?>
-                      <?php echo $data['deletedDate']?>
-                    <?php endif;?>
-                </td>
+                <td class="al_l"><?php echo $this->get_joinPrice($data); ?></td>
+                <td class="al_l"><?php echo $this->get_detail($data); ?></td>
+                <td class="al_c"><?php echo $this->get_paidBtn($data); ?></td>
+                <td class="al_c"><?php echo $this->get_deleteBtn($data,'employee'); ?></td>
             </tr>
         <?php endforeach ?>
         </tbody>
@@ -84,7 +60,7 @@
                 </tr>
                 <tr>
                     <td>가입금액</td>
-                    <td><input type="number" name="join_employee-price" required></td>
+                    <td><input type="number" id="price" name="join_employee-price" value="50000" required></td>
                     <td>가입비고</td>
                     <td><textarea name="join_employee-detail" required></textarea></td>
                     <td>
@@ -106,6 +82,7 @@
     <div class="modal-content">
         <form action="" method="post">
             <input type="hidden" name="action" value="delete">
+            <input type="hidden" name="join_employee-activated" value=0>
             <input type="hidden" name="join_employee-deleted" value=1>
             <input type="hidden" name="join_employee-deletedDate" value="<?php echo date("Y-m-d")?>">
             <input type="hidden" name="join_employee-endDate" value="<?php echo date("Y-m-d")?>">
@@ -133,6 +110,7 @@
     function auto_insert() {
         $('#startDate').val('<?php echo date("Y-m-d")?>');
         $('#endDate').val('<?php echo date("Y-m-d", strtotime("+1 month -1 day"));?>')
+        $('#price').val(50000);
     }
 
     $('.btnModal').click(function () {

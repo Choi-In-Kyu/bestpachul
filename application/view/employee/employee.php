@@ -53,7 +53,6 @@
                 <input type="hidden" name="filterCondition" value="<?php echo $this->condition['filter'] ?>">
                 <input type="hidden" name="order" value="<?php echo $this->order ?>">
                 <input type="hidden" name="direction" value="<?php echo $this->direction ?>">
-                <input type="hidden" name="keyword" value="<?php echo $this->keyword ?>">
                 <input type="hidden" name="join" value="<?php echo $this->join ?>">
                 <input type="hidden" name="group" value="<?php echo $this->group ?>">
                 <input type="text" name="keyword">
@@ -77,6 +76,7 @@
         <tr>
             <form action="" method="post">
                 <th>
+                    <input type="hidden" name="filterCondition" value="<?php echo $this->condition['filter'] ?>">
                     <input type="hidden" name="order" value="employeeID">
                     <input type="hidden" name="direction" value=<?php echo $this->direction ?>>
                     <input type="hidden" name="keyword" value=<?php echo $this->keyword ?>>
@@ -87,8 +87,8 @@
             </form>
             <form action="" method="post">
                 <th>
-                    <input type="hidden" name="order" value="employeeName">
                     <input type="hidden" name="filterCondition" value="<?php echo $this->condition['filter'] ?>">
+                    <input type="hidden" name="order" value="employeeName">
                     <input type="hidden" name="direction" value=<?php echo $this->direction ?>>
                     <input type="hidden" name="keyword" value=<?php echo $this->keyword ?>>
                     <input type="hidden" name="join" value="<?php echo $this->join ?>">
@@ -98,8 +98,8 @@
             </form>
             <form action="" method="post">
                 <th>
-                    <input type="hidden" name="order" value="employeeName">
                     <input type="hidden" name="filterCondition" value="<?php echo $this->condition['filter'] ?>">
+                    <input type="hidden" name="order" value="birthDate">
                     <input type="hidden" name="direction" value="<?php echo $this->direction ?>">
                     <input type="hidden" name="keyword" value="<?php echo $this->keyword ?>">
                     <input type="hidden" name="join" value="<?php echo $this->join ?>">
@@ -109,8 +109,8 @@
             </form>
             <form action="" method="post">
                 <th>
-                    <input type="hidden" name="order" value="address">
                     <input type="hidden" name="filterCondition" value="<?php echo $this->condition['filter'] ?>">
+                    <input type="hidden" name="order" value="address">
                     <input type="hidden" name="direction" value="<?php echo $this->direction ?>">
                     <input type="hidden" name="keyword" value="<?php echo $this->keyword ?>">
                     <input type="hidden" name="join" value="<?php echo $this->join ?>">
@@ -120,19 +120,19 @@
             </form>
             <form action="" method="post">
                 <th>
-                    <input type="hidden" name="order" value="workField1">
                     <input type="hidden" name="filterCondition" value="<?php echo $this->condition['filter'] ?>">
+                    <input type="hidden" name="order" value="employeePhoneNumber">
                     <input type="hidden" name="direction" value="<?php echo $this->direction ?>">
                     <input type="hidden" name="keyword" value="<?php echo $this->keyword ?>">
                     <input type="hidden" name="join" value="<?php echo $this->join ?>">
                     <input type="hidden" name="group" value="<?php echo $this->group ?>">
-                    <input type="submit" value="업종">
+                    <input type="submit" value="전화번호">
                 </th>
             </form>
             <form action="" method="post">
                 <th>
-                    <input type="hidden" name="order" value="grade">
                     <input type="hidden" name="filterCondition" value="<?php echo $this->condition['filter'] ?>">
+                    <input type="hidden" name="order" value="grade">
                     <input type="hidden" name="direction" value="<?php echo $this->direction ?>">
                     <input type="hidden" name="keyword" value="<?php echo $this->keyword ?>">
                     <input type="hidden" name="join" value="<?php echo $this->join ?>">
@@ -158,7 +158,7 @@
                 </td>
                 <td class="al_l"><?php echo $this->db->getAge($data['birthDate']) ?></td>
                 <td class="al_l"><?php echo $data['address'] ?></td>
-                <td class="al_l"><?php echo $data['workType'] ?></td>
+                <td class="al_l"><?php echo $data['employeePhoneNumber'] ?></td>
                 <td class="al_l"><?php echo $data['grade'] ?></td>
                 <td class="al_c">
                     <!-- Trigger/Open The Modal -->
@@ -178,9 +178,9 @@
         <form action="" method="post">
             <input type="hidden" name="action" value="delete">
             <input id="modal-employeeID" type="hidden" name="employee-employeeID">
-            <textarea name="employee-deleteDetail" size="200"></textarea>
-            <input class="btn btn-danger" type="button" id="closeModal" value="close">
-            <input class="btn btn-insert" type="submit" value="submit">
+            <textarea name="employee-deleteDetail" size="200">안해</textarea>
+            <input class="btn btn-danger" type="button" id="closeModal" value="닫기">
+            <input class="btn btn-insert" type="submit" value="삭제">
         </form>
     </div>
 </div>

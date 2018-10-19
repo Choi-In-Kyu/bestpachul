@@ -1,6 +1,7 @@
 @charset "UTF-8";
 /* config */
-@media (min-width: 1500px) { .auto-center, #header > div, #main-content { width: 1500px; margin: 0 10%; } }
+/*@media (min-width: 1500px) { .auto-center, #header > div, #main-content { width: 1500px; margin: 0 10%; } }*/
+@media (min-width: 1500px) { .auto-center, #header > div, #main-content {} }
 
 /*html*/
 html, body { margin: 0; padding: 0; }
@@ -110,15 +111,18 @@ span.middle.all ~ * { display: inline-block; vertical-align: middle; }
 
 /*table*/
 .table { border-top: 2px solid #666; }
-.table > .tr { border-bottom: 1px solid #ddd; line-height: 30px; }
+.table > .tr { padding:10px; border-bottom: 1px solid #ddd; line-height: 30px; }
 .table > .tr:after { content: ""; display: block; clear: both; }
-.table > .tr > div { float: left; padding: 10px 20px 0 0; }
+.table > .tr > div { float: left; padding: 0; }
 .table > .tr > .lbl { width: 5%; font-weight: bold; }
 .table > .tr > .lbl label { display: block; vertical-align: middle; cursor: pointer; }
 .table > .tr > .desc { width: 30%; }
 .table > .tr > .desc.content { min-height: 300px; }
-.table > .tr > .td{width: 30%;}
+.table > .tr > .td-label{width: 5%;}
+.table > .tr > .td{width: 20%;}
+.table > .tr > .td-detail{width: 100%; height:150px; padding-bottom:20px;}
 .table > .tr > .td > .lbl{width: 30%;}
+.td-detail > .textarea-detail{width:100%; height: 100%;}
 
 /*dropdown, navigation*/
 .navbar {
@@ -137,7 +141,6 @@ span.middle.all ~ * { display: inline-block; vertical-align: middle; }
     border: none;
     outline: none;
     padding: 14px 16px;
-    background-color: blanchedalmond;
     min-width: 160px;
     height:auto;
     font-family: inherit;
@@ -223,7 +226,7 @@ span.middle.all ~ * { display: inline-block; vertical-align: middle; }
 .form-style-2 input[type=button]:hover{background:#EA7B00; color:#fff;}
 
 /*grid*/
-.row{width: 80%;}
+.row{width: 100%;}
 .row .col{height: auto; float:left;}
 .col .col-md-3{width: 30%;}
 .col .col-md-4{width: 40%;}
@@ -266,3 +269,5 @@ input[type="checkbox"]{
     height: 30px; /*Desired height*/
     cursor: pointer;
 }
+
+.table_title{display:inline;}

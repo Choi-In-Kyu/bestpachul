@@ -12,13 +12,13 @@
                 <input type="hidden" name="employee-employeeID" value="<?php echo $this->employeeData['employeeID'] ?>">
                 <div class="table">
                     <div class="tr">
+                        <div class="td-label">인력명</div>
                         <div class="td">
-                            인력명
                             <input type="text" name="employee-employeeName" size="20" required autofocus
                                    value="<?php echo $this->employeeData['employeeName']; ?>">
                         </div>
+                        <div class="td-label">성별</div>
                         <div class="td">
-                            성별
                             <input type="text" list="sexList" name="employee-sex" size="2" required autofocus
                                    value="<?php if (isset ($this->employeeData['sex'])) {
                                      echo $this->employeeData['sex'];
@@ -28,16 +28,16 @@
                                 <option value="남"></option>
                             </datalist>
                         </div>
+                        <div class="td-label">생일</div>
                         <div class="td">
-                            생년월일
                             <input type="date" name="employee-birthDate" size="20" required autofocus
                                    value="<?php echo $this->employeeData['birthDate']; ?>">
                         </div>
                     </div>
                     <div class="tr">
+                        <div class="td-label">업종1</div>
                         <div class="td">
-                            업종1
-                            <input type="text" list="workFieldList" name="employee-workField1" size="20" required
+                            <input type="text" list="workFieldList" name="employee-workField1" size="20"
                                    value="<?php echo $this->employeeData['workField1']; ?>">
                             <datalist id="workFieldList" class="input-field">
                               <?php foreach ($this->workFieldList as $key => $data): ?>
@@ -45,9 +45,9 @@
                               <?php endforeach ?>
                             </datalist>
                         </div>
+                        <div class="td-label">업종2</div>
                         <div class="td">
-                            업종2
-                            <input type="text" list="workFieldList" name="employee-workField2" size="20" required
+                            <input type="text" list="workFieldList" name="employee-workField2" size="20"
                                    value="<?php echo $this->employeeData['workField2']; ?>">
                             <datalist id="workFieldList" class="input-field">
                               <?php foreach ($this->workFieldList as $key => $data): ?>
@@ -55,9 +55,9 @@
                               <?php endforeach ?>
                             </datalist>
                         </div>
+                        <div class="td-label">업종3</div>
                         <div class="td">
-                            업종3
-                            <input type="text" list="workFieldList" name="employee-workField3" size="20" required
+                            <input type="text" list="workFieldList" name="employee-workField3" size="20"
                                    value="<?php echo $this->employeeData['workField3']; ?>">
                             <datalist id="workFieldList" class="input-field">
                               <?php foreach ($this->workFieldList as $key => $data): ?>
@@ -65,15 +65,15 @@
                               <?php endforeach ?>
                             </datalist>
                         </div>
+                        <div class="td-label">전화번호</div>
                         <div class="td">
-                            전화번호
                             <input type="text" name="employee-employeePhoneNumber" size="20" required
                                    value="<?php echo $this->employeeData['employeePhoneNumber']; ?>">
                         </div>
                     </div>
                     <div class="tr">
+                        <div class="td-label">간단주소</div>
                         <div class="td">
-                            간단주소
                             <input type="text" list="addressList" name="employee-address"
                                    value="<?php echo $this->employeeData['address']; ?>">
                             <datalist id="addressList">
@@ -82,13 +82,13 @@
                               <?php endforeach ?>
                             </datalist>
                         </div>
+                        <div class="td-label">상세주소</div>
                         <div class="td">
-                            상세주소
-                            <input type="text" name="employee-detailAddress" size="20" required
+                            <input type="text" name="employee-detailAddress" size="20"
                                    value="<?php echo $this->employeeData['detailAddress']; ?>">
                         </div>
+                        <div class="td-label">희망근무지</div>
                         <div class="td">
-                            희망 근무지
                             <input type="text" list="addressList" name="employee-workPlace"
                                    value="<?php echo $this->employeeData['workPlace']; ?>">
                             <datalist id="addressList">
@@ -99,8 +99,8 @@
                         </div>
                     </div>
                     <div class="tr">
+                        <div class="td-label">한국어</div>
                         <div class="td">
-                            한국어능력
                             <input type="text" list="languageList" name="employee-language" size="2" required
                                    value="<?php echo $this->employeeData['language']; ?>">
                             <datalist id="languageList" class="input-field">
@@ -109,17 +109,19 @@
                                 <option value="하"></option>
                             </datalist>
                         </div>
+                        <div class="td-label">점수</div>
                         <div class="td">
-                            인력점수
                             <input type="text" name="employee-grade" size="20" required
-                                   value="<?php echo $this->employeeData['grade']; ?>">
+                                   value="<?php if(isset($this->employeeData['grade'])) echo $this->employeeData['grade']; else echo "100" ?>">
                         </div>
-                        <div class="td">
-                            비고
-                            <textarea name="employee-detail"><?php echo $this->employeeData['detail']; ?></textarea>
+                    </div>
+                    <div class="tr">
+                        <div class="td-label">비고</div>
+                        <div class="td-detail">
+                            <textarea class="textarea-detail" name="employee-detail"><?php echo $this->employeeData['detail']; ?></textarea>
                         </div>
                       <?php if ($this->employeeData['actCondition'] == "삭제됨") : ?>
-                          <div class="td">
+                          <div class="td-detail">
                               삭제비고
                               <textarea
                                       name="employee-deleteDetail"><?php echo $this->employeeData['deleteDetail']; ?></textarea>
@@ -208,6 +210,7 @@
 <script>
     function auto_insert() {
         $('#startDate').val('<?php echo date("Y-m-d")?>');
-        $('#endDate').val('<?php echo date("Y-m-d", strtotime("+1 month -1 day"));?>')
+        $('#endDate').val('<?php echo date("Y-m-d", strtotime("+1 month -1 day"));?>');
+        $('#startDate').val(50000);
     }
 </script>

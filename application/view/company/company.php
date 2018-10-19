@@ -51,8 +51,8 @@
         <div class="col" style="float: right">
             <form class="form-default" action="" method="post">
                 <input type="hidden" name="filterCondition" value="<?php echo $this->condition['filter'] ?>">
-                <input type="hidden" name="order" value=<?php echo $this->order ?>>
-                <input type="hidden" name="direction" value=<?php echo $this->direction ?>>
+                <input type="hidden" name="order" value="<?php echo $this->order ?>">
+                <input type="hidden" name="direction" value="<?php echo $this->direction ?>">
                 <input type="hidden" name="join" value="<?php echo $this->join ?>">
                 <input type="hidden" name="group" value="<?php echo $this->group ?>">
                 <input type="text" name="keyword">
@@ -75,8 +75,8 @@
         <tr>
             <form action="" method="post">
                 <th>
-                    <input type="hidden" name="order" value="company.companyID">
                     <input type="hidden" name="filterCondition" value="<?php echo $this->condition['filter'] ?>">
+                    <input type="hidden" name="order" value="company.companyID">
                     <input type="hidden" name="direction" value=<?php echo $this->direction ?>>
                     <input type="hidden" name="keyword" value=<?php echo $this->keyword ?>>
                     <input type="hidden" name="join" value="<?php echo $this->join ?>">
@@ -162,7 +162,6 @@
             </tr>
         <?php endforeach ?>
         </tbody>
-
     </table>
 </div>
 
@@ -178,8 +177,8 @@
             <input type="hidden" name="company-deleted" value="1">
             <input id="modal-companyID" type="hidden" name="company-companyID">
             <textarea name="company-deleteDetail" size="200"></textarea>
-            <input class="btn btn-danger" type="button" id="closeModal" value="close">
-            <input class="btn btn-insert" type="submit" value="submit">
+            <input class="btn btn-danger" type="button" id="closeModal" value="닫기">
+            <input class="btn btn-insert" type="submit" value="삭제하기">
         </form>
     </div>
 </div>

@@ -1,6 +1,2 @@
 <?php
-Class Main extends Controller {
-  function basic(){
-  }
-}
-?>
+Class Main extends Controller {}
