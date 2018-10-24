@@ -1,5 +1,5 @@
 <?php
-  
+
   Class Company extends Controller
   {
     var $list;
@@ -23,12 +23,14 @@
     //bestpachul.com/company
     function basic()
     {
+      $this->initJoin('company');
       $this->getBasicFunction('company');
     }
     
     //bestpachul.com/company/view
     function view()
     {
+//      $this->initJoin('company');
       $this->action = 'update';
       $this->submitButtonName = "수정";
       

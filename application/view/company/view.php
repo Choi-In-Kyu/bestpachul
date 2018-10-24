@@ -25,21 +25,14 @@
         </thead>
         <tbody>
         <?php foreach ($this->joinList as $key => $data): ?>
-            <tr style="background-color:
-        <?php
-              if ($data['activated'] == 0) echo "gray";
-              elseif (
-                strtotime($data['endDate'] . " -15 days") < strtotime(date('Y-m-d'))
-                && strtotime(date('Y-m-d')) < strtotime($data['endDate']))
-                echo "orange";
-            ?>">
+            <tr style="background-color:<?php echo $this->joinColor($data);?>">
                 <td class="al_c"><?php echo $data['join_companyID'] ?></td>
                 <td class="al_l"><?php echo $this->get_joinType($data); ?></td>
                 <td class="al_l"><?php echo $this->get_joinPrice($data); ?></td>
                 <td class="al_l"><?php echo $data['startDate'] ?></td>
                 <td class="al_l"><?php echo $this->get_endDate($data); ?></td>
-                <td class="al_l"><?php echo $this->get_detail($data); ?></td>
-                <td class="al_c"><?php echo $this->get_deleteBtn($data,'company'); ?></td>
+                <td class="al_l"><?php echo $this->get_joinDetail($data); ?></td>
+                <td class="al_c"><?php echo $this->get_joinDeleteBtn($data,'company'); ?></td>
             </tr>
         <?php endforeach ?>
         </tbody>
@@ -59,7 +52,7 @@
     <form action="" id="new_join_form" style="display:none;" method="post" enctype=''>
         <input type="hidden" name="action" value="new_insert">
         <input type="hidden" name="join_company-companyID" value="<?php echo $this->companyData['companyID'] ?>">
-        <div id="detail_table"></div>
+        <div class="table" id="detail_table"></div>
         <div class="btn_group">
             <a class="btn btn-default" href="<?php echo $this->param->get_page ?>">취소</a>
             <button class="btn btn-submit" type="submit">가입 추가</button>
@@ -84,6 +77,7 @@
     </div>
 </div>
 
+<script src="/public/js/common.js"></script>
 <script>
     function type_toggle(argument) {
         let detail_table = document.getElementById('detail_table');
@@ -99,7 +93,6 @@
                 break;
         }
     }
-
     function show_join_form() {
         document.getElementById('join_button').style.display = 'none';
         document.getElementById('join_form_btn_group').style.display = 'block';
@@ -108,9 +101,6 @@
 
     $('.btnModal').click(function () {
         $('#myModal').show();
-        $('#modal-joinID').val(this.value);
-    })
-    $('#closeModal').click(function () {
-        $('#myModal').hide();
+        $('#modal-companyID').val(this.value);
     })
 </script>

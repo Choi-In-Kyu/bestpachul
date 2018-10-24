@@ -42,9 +42,8 @@
           //join_company, user 입력
           $post['join_company-companyID'] = $this->db->lastInsertId();
           $post['user-companyID'] = $this->db->lastInsertId();
-          $post['user-userCategory'] = "ceo";
-          $post['user-userName'] = $post['company-companyName'];
-          $post['user-userPW'] = $post['ceo-ceoPhoneNumber'];
+          //$post['user-userName'] = $post['company-companyName'];
+          //$post['user-userPW'] = $post['ceo-ceoPhoneNumber'];
           $this->getQuery($post, 'join_company');
           $this->getQuery($post, 'user');
           break;

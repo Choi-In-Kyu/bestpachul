@@ -102,7 +102,7 @@
                         <div class="td-label">한국어</div>
                         <div class="td">
                             <input type="text" list="languageList" name="employee-language" size="2" required
-                                   value="<?php echo $this->employeeData['language']; ?>">
+                                   value="<?php if (isset($this->employeeData['language'])) echo $this->employeeData['language']; else echo "상"; ?>">
                             <datalist id="languageList" class="input-field">
                                 <option value="상"></option>
                                 <option value="중"></option>
@@ -112,13 +112,14 @@
                         <div class="td-label">점수</div>
                         <div class="td">
                             <input type="text" name="employee-grade" size="20" required
-                                   value="<?php if(isset($this->employeeData['grade'])) echo $this->employeeData['grade']; else echo "100" ?>">
+                                   value="<?php if (isset($this->employeeData['grade'])) echo $this->employeeData['grade']; else echo "100"; ?>">
                         </div>
                     </div>
                     <div class="tr">
                         <div class="td-label">비고</div>
                         <div class="td-detail">
-                            <textarea class="textarea-detail" name="employee-detail"><?php echo $this->employeeData['detail']; ?></textarea>
+                            <textarea class="textarea-detail"
+                                      name="employee-detail"><?php echo $this->employeeData['detail']; ?></textarea>
                         </div>
                       <?php if ($this->employeeData['actCondition'] == "삭제됨") : ?>
                           <div class="td-detail">
@@ -142,33 +143,61 @@
                             </tr>
                             <tr>
                                 <th>오전</th>
-                                <td><input type="checkbox" name="employee_available_day-mon" value="오전" <?php echo $this->getDay('mon','오전')?> ></td>
-                                <td><input type="checkbox" name="employee_available_day-tue" value="오전" <?php echo $this->getDay('tue','오전')?> ></td>
-                                <td><input type="checkbox" name="employee_available_day-wed" value="오전" <?php echo $this->getDay('wed','오전')?> ></td>
-                                <td><input type="checkbox" name="employee_available_day-thu" value="오전" <?php echo $this->getDay('thu','오전')?> ></td>
-                                <td><input type="checkbox" name="employee_available_day-fri" value="오전" <?php echo $this->getDay('fri','오전')?> ></td>
-                                <td><input type="checkbox" name="employee_available_day-sat" value="오전" <?php echo $this->getDay('sat','오전')?> ></td>
-                                <td><input type="checkbox" name="employee_available_day-sun" value="오전" <?php echo $this->getDay('sun','오전')?> ></td>
+                                <td><input class="bn mon" type="checkbox" name="employee_available_day-mon" value="오전"
+                                    <?php echo $this->getDay('mon', '오전') ?> ></td>
+                                <td><input class="bn tue" type="checkbox" name="employee_available_day-tue" value="오전"
+                                    <?php echo $this->getDay('tue', '오전') ?> ></td>
+                                <td><input class="bn wed" type="checkbox" name="employee_available_day-wed" value="오전"
+                                    <?php echo $this->getDay('wed', '오전') ?> ></td>
+                                <td><input class="bn thu" type="checkbox" name="employee_available_day-thu" value="오전"
+                                    <?php echo $this->getDay('thu', '오전') ?> ></td>
+                                <td><input class="bn fri" type="checkbox" name="employee_available_day-fri" value="오전"
+                                    <?php echo $this->getDay('fri', '오전') ?> ></td>
+                                <td><input class="bn sat" type="checkbox" name="employee_available_day-sat" value="오전"
+                                    <?php echo $this->getDay('sat', '오전') ?> ></td>
+                                <td><input class="bn sun" type="checkbox" name="employee_available_day-sun" value="오전"
+                                    <?php echo $this->getDay('sun', '오전') ?> ></td>
                             </tr>
                             <tr>
                                 <th>오후</th>
-                                <td><input type="checkbox" name="employee_available_day-mon" value="오후" <?php echo $this->getDay('mon','오후')?> ></td>
-                                <td><input type="checkbox" name="employee_available_day-tue" value="오후" <?php echo $this->getDay('tue','오후')?> ></td>
-                                <td><input type="checkbox" name="employee_available_day-wed" value="오후" <?php echo $this->getDay('wed','오후')?> ></td>
-                                <td><input type="checkbox" name="employee_available_day-thu" value="오후" <?php echo $this->getDay('thu','오후')?> ></td>
-                                <td><input type="checkbox" name="employee_available_day-fri" value="오후" <?php echo $this->getDay('fri','오후')?> ></td>
-                                <td><input type="checkbox" name="employee_available_day-sat" value="오후" <?php echo $this->getDay('sat','오후')?> ></td>
-                                <td><input type="checkbox" name="employee_available_day-sun" value="오후" <?php echo $this->getDay('sun','오후')?> ></td>
+                                <td><input class="an mon" type="checkbox" name="employee_available_day-mon" value="오후"
+                                    <?php echo $this->getDay('mon', '오후') ?> ></td>
+                                <td><input class="an tue" type="checkbox" name="employee_available_day-tue" value="오후"
+                                    <?php echo $this->getDay('tue', '오후') ?> ></td>
+                                <td><input class="an wed" type="checkbox" name="employee_available_day-wed" value="오후"
+                                    <?php echo $this->getDay('wed', '오후') ?> ></td>
+                                <td><input class="an thu" type="checkbox" name="employee_available_day-thu" value="오후"
+                                    <?php echo $this->getDay('thu', '오후') ?> ></td>
+                                <td><input class="an fri" type="checkbox" name="employee_available_day-fri" value="오후"
+                                    <?php echo $this->getDay('fri', '오후') ?> ></td>
+                                <td><input class="an sat" type="checkbox" name="employee_available_day-sat" value="오후"
+                                    <?php echo $this->getDay('sat', '오후') ?> ></td>
+                                <td><input class="an sun" type="checkbox" name="employee_available_day-sun" value="오후"
+                                    <?php echo $this->getDay('sun', '오후') ?> ></td>
                             </tr>
                             <tr>
                                 <th>종일</th>
-                                <td><input type="checkbox" name="employee_available_day-mon" value="종일" <?php echo $this->getDay('mon','종일')?> ></td>
-                                <td><input type="checkbox" name="employee_available_day-tue" value="종일" <?php echo $this->getDay('tue','종일')?> ></td>
-                                <td><input type="checkbox" name="employee_available_day-wed" value="종일" <?php echo $this->getDay('wed','종일')?> ></td>
-                                <td><input type="checkbox" name="employee_available_day-thu" value="종일" <?php echo $this->getDay('thu','종일')?> ></td>
-                                <td><input type="checkbox" name="employee_available_day-fri" value="종일" <?php echo $this->getDay('fri','종일')?> ></td>
-                                <td><input type="checkbox" name="employee_available_day-sat" value="종일" <?php echo $this->getDay('sat','종일')?> ></td>
-                                <td><input type="checkbox" name="employee_available_day-sun" value="종일" <?php echo $this->getDay('sun','종일')?> ></td>
+                                <td><input class="ad mon" type="checkbox" name="employee_available_day-mon" value="종일"
+                                    <?php echo $this->getDay('mon', '종일') ?> >
+                                </td>
+                                <td><input class="ad tue" type="checkbox" name="employee_available_day-tue" value="종일"
+                                    <?php echo $this->getDay('tue', '종일') ?> >
+                                </td>
+                                <td><input class="ad wed" type="checkbox" name="employee_available_day-wed" value="종일"
+                                    <?php echo $this->getDay('wed', '종일') ?> >
+                                </td>
+                                <td><input class="ad thu" type="checkbox" name="employee_available_day-thu" value="종일"
+                                    <?php echo $this->getDay('thu', '종일') ?> >
+                                </td>
+                                <td><input class="ad fri" type="checkbox" name="employee_available_day-fri" value="종일"
+                                    <?php echo $this->getDay('fri', '종일') ?> >
+                                </td>
+                                <td><input class="ad sat" type="checkbox" name="employee_available_day-sat" value="종일"
+                                    <?php echo $this->getDay('sat', '종일') ?> >
+                                </td>
+                                <td><input class="ad sun" type="checkbox" name="employee_available_day-sun" value="종일"
+                                    <?php echo $this->getDay('sun', '종일') ?> >
+                                </td>
                             </tr>
                         </table>
                     </div>
@@ -183,15 +212,17 @@
                           <td><input type="date" id="startDate" name="join_employee-startDate" required></td>
                           <td>가입만기일</td>
                           <td><input type="date" id="endDate" name="join_employee-endDate" required></td>
-                          <td><button type="button" class="btn btn-insert" onclick="auto_insert()">자동 입력</td>
+                          <td>
+                              <button type="button" class="btn btn-insert" onclick="auto_insert()">자동 입력
+                          </td>
                       </tr>
                       <tr>
                           <td>가입금액</td>
-                          <td><input type="number" name="join_employee-price" required></td>
+                          <td><input type="number" id="price" name="join_employee-price" required></td>
                           <td>가입비고</td>
-                          <td><textarea name="join_employee-detail" required></textarea></td>
+                          <td><textarea name="join_employee-detail"></textarea></td>
                           <td>
-                              <input type="checkbox" name="join_employee-paid" value="1">회비 수금 여부
+                              <input type="checkbox" id="paid" name="join_employee-paid" value="1">회비 수금 여부
                           </td>
                       </tr>
                   </table>
@@ -211,6 +242,7 @@
     function auto_insert() {
         $('#startDate').val('<?php echo date("Y-m-d")?>');
         $('#endDate').val('<?php echo date("Y-m-d", strtotime("+1 month -1 day"));?>');
-        $('#startDate').val(50000);
+        $('#price').val(50000);
+        document.getElementById('paid').checked = true;
     }
 </script>

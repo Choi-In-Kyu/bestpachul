@@ -147,18 +147,7 @@
                 <td class="al_l"><?php echo $data['address'] ?></td>
                 <td class="al_l"><?php echo $data['businessType'] ?></td>
                 <td class="al_l"><?php echo $data['grade'] ?></td>
-                <td class="al_c">
-                    <!-- Trigger/Open The Modal -->
-                  <?php if ($data['deleted'] == 0) : ?>
-                      <button id="myBtn" class="btnModal" value="<?php echo $data['companyID'] ?>">X</button>
-                  <?php else: ?>
-                      <form action="" method="post">
-                          <input type="hidden" name="action" value="restore">
-                          <input type="hidden" name="companyID" value="<?php echo $data['companyID']?>">
-                          <input class="btn" type="submit" value="복구">
-                      </form>
-                  <?php endif; ?>
-                </td>
+                <td class="al_c"><?php echo $this->get_DeleteBtn($data,'company') ?></td>
             </tr>
         <?php endforeach ?>
         </tbody>
@@ -188,7 +177,5 @@
         $('#myModal').show();
         $('#modal-companyID').val(this.value);
     })
-    $('#closeModal').click(function () {
-        $('#myModal').hide();
-    })
 </script>
+<script src="/public/js/common.js"></script>

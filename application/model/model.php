@@ -14,15 +14,12 @@
     //생성자
     function __construct($param)
     {
-      $servername = "localhost";
-      $dbname = "informationsys";
-      $username = "informationsys";
-      $password = "ingee440";
       $this->column = NULL;
       $this->param = $param;
-      $this->db = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+      $this->db = new PDO("mysql:host="._SERVERNAME.";dbname="._DBNAME."", _DBUSER, _DBPW);
       $this->db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
       $this->db->exec("set names utf8");
+      //post로 받은 action에 따른 동작 실행
       if (isset($_POST['action'])) {
         $this->action = $_POST['action'];
         $this->action();
@@ -154,7 +151,6 @@
             $sql .= " WHERE {$tableName}.{$focus}ID = {$post[$focus.'-'.$focus.'ID']} LIMIT 1";
           }
         }
-        alert($sql);
         $this->sql = $sql;
         $this->fetch();
       }
@@ -177,8 +173,5 @@
       $this->sql = $string;
       $this->fetch();
     }
-  
-
+    
   }
-
-?>

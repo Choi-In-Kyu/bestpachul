@@ -11,13 +11,14 @@
     var $addressList;
     var $joinList;
     var $dayList;
+    var $employeeList;
     var $employeeData;
     var $action;
     var $submitButtonName;
     var $employeeID;
     
     public $deadlineJoin = " LEFT JOIN `join_employee` ON `employee`.employeeID = `join_employee`.employeeID ";
-    public $deadlineCondition = array("filter" => " (DATE_ADD(`endDate`, interval -15 day) < CURDATE()) AND (CURDATE()<`endDate`)");
+    public $deadlineCondition = array("filter" => " (DATE_ADD(`endDate`, interval -5 day) < CURDATE()) AND (CURDATE()<`endDate`)");
     public $deadlineGroup = "employeeName";
     
     function getDay($day, $type)
@@ -58,5 +59,12 @@
       $this->db->myDelete('employee', $this->param->idx);
       alert("삭제되었습니다");
       move($this->param->get_page);
+    }
+    
+//bestpachul.com/employee/delete
+    function available_date(){
+      $this->action = 'insert_date';
+      $this->employeeList = $this->db->getTable("SELECT * FROM employee WHERE deleted = 0");
+      $this->availableDateList = $this->db->getTable("SELECT * FROM employee_available_date");
     }
   }

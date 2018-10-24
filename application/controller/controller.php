@@ -11,14 +11,15 @@
     var $condition;
     var $keyword;
     var $order;
+    var $orderBy;
     var $direction;
     var $join;
     var $group;
     
-    public $defaultCondition = array("filter" => " (deleted = 0) ");
-    public $activatedCondition = array("filter" => " (activated = 1 AND deleted = 0) ");
-    public $expiredCondition = array("filter" => " (activated = 0 AND deleted = 0) ");
-    public $deletedCondition = array("filter" => " (activated = 0 AND deleted = 1) ");
+    public $defaultCondition =    array("filter" => " (deleted = 0) ");
+    public $activatedCondition =  array("filter" => " (activated = 1 AND deleted = 0) ");
+    public $expiredCondition =    array("filter" => " (activated = 0 AND deleted = 0) ");
+    public $deletedCondition =    array("filter" => " (activated = 0 AND deleted = 1) ");
 
 //생성자
     function __construct($param)
@@ -35,14 +36,19 @@
 //index
     function index()
     {
+      $mobile = ('login' || 'ceo');
       //따로 action 파라미터가 없으면 method == basic
       $method = isset($this->param->action) ? $this->param->action : 'basic';
       //basic 메소드를 포함한 메소드 실행
       if (method_exists($this, $method)) $this->$method();
       $this->getTitle();
-      $this->header();
+      if ($this->param->page_type) {
+        $this->header();
+      }
       $this->content();
-      $this->footer();
+      if ($this->param->page_type) {
+        $this->footer();
+      }
     }
 
 //header
@@ -56,7 +62,7 @@
     {
       $this->setAjax || require_once(_VIEW . "footer.php");
     }
-
+    
 //content
     function content()
     {
@@ -72,6 +78,20 @@
       $this->title = '으뜸 파출';
     }
     
+    function initJoin($tableName)
+    {
+      $joinList = $this->db->getTable("SELECT * FROM join_{$tableName}");
+      $today = date("Y-m-d");
+      foreach ($joinList as $key => $value) {
+        $endDate = $value['endDate'];
+        $joinID = "join_" . $tableName . "ID";
+        $joinID = $value[$joinID];
+        if ($today > $endDate) {
+          $this->db->executeSQL("UPDATE join_{$tableName} SET activated = 0 WHERE join_{$tableName}ID = {$joinID} LIMIT 1");
+        }
+      }
+    }
+    
     function initActCondition($list, $tableName)
     {
       $this->db->executeSQL("UPDATE join_{$tableName} SET activated = 0 WHERE endDate < CURDATE()");
@@ -79,12 +99,21 @@
       foreach ($list as $key => $value) {
         $tableID = $tableName . "ID";
         $tableID = $value[$tableID];
-        $endDateArray = $this->db->getTable("SELECT * FROM `join_{$tableName}` WHERE {$tableName}ID = {$tableID}");
-        foreach ($endDateArray as $key => $value) {
+        $joinList = $this->db->getTable("SELECT * FROM `join_{$tableName}` WHERE {$tableName}ID = {$tableID}");
+        if ($joinList == null) {
+          $this->db->executeSQL("UPDATE {$tableName} SET activated = 0 WHERE {$tableName}ID = {$tableID} LIMIT 1");
+        }
+        foreach ($joinList as $key => $value) {
           $endDate = $value['endDate'];
           if ($today > $endDate) {
             $this->db->executeSQL("UPDATE {$tableName} SET activated = 0 WHERE {$tableName}ID = {$tableID} LIMIT 1");
-          } else {break;}
+            continue;
+          } else {
+//            if($value['deleted']!=1){
+            $this->db->executeSQL("UPDATE {$tableName} SET activated = 1 WHERE {$tableName}ID = {$tableID} LIMIT 1");
+            break;
+//            }
+          }
         }
       }
       return $list;
@@ -138,13 +167,14 @@
         if ($this->direction == "ASC") $this->direction = "DESC";
         else $this->direction = "ASC";
         if (isset($this->order) && $this->order != "")
-          $this->order = " {$_POST['order']} {$this->direction}";
-        else $this->order = null;
+          $this->orderBy = " {$_POST['order']} {$_POST['direction']}";
       }
       //get list
-      $this->list = $this->db->getList($this->condition, $this->order, $this->join, $this->group);
+      $this->list = $this->db->getList($this->condition, $this->orderBy, $this->join, $this->group);
       $this->list = $this->initActCondition($this->list, $tableName);
       $this->list = $this->getActCondition($this->list, $tableName);
+      
+      
       //filter color
       switch ($this->condition['filter']) {
         case $this->defaultCondition['filter']:
@@ -193,11 +223,14 @@
     
     function get_endDate($data)
     {
-      echo $data['endDate'];
-      if (
-        strtotime($data['endDate'] . " -15 days") < strtotime(date('Y-m-d'))
-        && strtotime(date('Y-m-d')) < strtotime($data['endDate']))
-        echo " (D-" . date('j', strtotime($data['endDate']) - strtotime(date('Y-m-d'))) . ")";
+      $condition1 = strtotime($data['endDate'] . " -15 days") < strtotime(date('Y-m-d'));
+      $condition2 = strtotime(date('Y-m-d')) < strtotime($data['endDate']);
+      $string = $data['endDate'];
+      $leftDays = date('j', strtotime($data['endDate']) - strtotime(date('Y-m-d'))) - 1;
+      if ($condition1 && $condition2) {
+        $string .= " (D-{$leftDays})";
+      }
+      return $string;
     }
     
     function get_joinDetail($data)
@@ -209,18 +242,37 @@
       }
     }
     
-    function get_deleteBtn($data, $tableName)
+    function get_joinDeleteBtn($data, $tableName)
     {
       if ($data['activated'] == 1) {
         $id = "join_" . $tableName . "ID";
-        return "<button id = \"myBtn\" class=\"btnModal\" value = \"{$data[$id]}\" > X</button >";
-      } else return $data['deletedDate'];
+        return "<button id = \"myBtn\" class=\"btnModal\" value = \"{$data[$id]}\" > X</button>";
+      } else {
+        return $data['deletedDate'];
+      }
+    }
+    
+    function get_deleteBtn($data, $tableName)
+    {
+      $tableID = $tableName . "ID";
+      if ($data['deleted'] == 0) {
+        return <<<HTML
+          <button id="myBtn" class="btnModal" value="{$data[$tableID]}">X</button>
+HTML;
+      } else {
+        return <<<HTML
+        <form action="" method="post">
+              <input type="hidden" name="action" value="restore">
+              <input type="hidden" name="{$tableID}" value="{$data[$tableID]}">
+              <input class="btn" type="submit" value="복구">
+        </form>
+HTML;
+      }
     }
     
     function get_paidBtn($data)
     {
       if ($data['paid'] == 0) {
-        
         return <<<HTML
           <form action= "" method="post">
               <input type="hidden" name="action" value="getMoney">
@@ -240,5 +292,17 @@ HTML;
         $default = "aaa:\nbbb:\nbbb:\nbbb:\nbbb:\n";
         return $default;
       }
+    }
+    
+    function joinColor($data, $tableName)
+    {
+      $today = date('Y-m-d');
+      $deadline = 15;
+      if ($tableName == 'employee') $deadline = 5;
+      if ($data['activated'] == 0) echo "gray";
+      elseif (
+        strtotime($data['endDate'] . " -{$deadline} days") < strtotime($today)
+        && strtotime($today) < strtotime($data['endDate']))
+        echo "orange";
     }
   }

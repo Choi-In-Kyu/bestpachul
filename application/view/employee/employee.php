@@ -160,16 +160,12 @@
                 <td class="al_l"><?php echo $data['address'] ?></td>
                 <td class="al_l"><?php echo $data['employeePhoneNumber'] ?></td>
                 <td class="al_l"><?php echo $data['grade'] ?></td>
-                <td class="al_c">
-                    <!-- Trigger/Open The Modal -->
-                    <button id="myBtn" class="btnModal" value="<?php echo $data['employeeID'] ?>">X</button>
-                </td>
+                <td class="al_c"><?php echo $this->get_DeleteBtn($data,'employee') ?></td>
             </tr>
         <?php endforeach ?>
         </tbody>
     </table>
 </div>
-
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
@@ -185,12 +181,4 @@
     </div>
 </div>
 
-<script>
-    $('.btnModal').click(function () {
-        $('#myModal').show();
-        $('#modal-employeeID').val(this.value);
-    })
-    $('#closeModal').click(function () {
-        $('#myModal').hide();
-    })
-</script>
+<script src="/public/js/common.js"></script>

@@ -78,7 +78,8 @@
                     <div class="tr">
                         <div class="td-label">비고</div>
                         <div class="td-detail">
-                            <textarea class="textarea-detail" name="company-detail"><?php echo $this->get_detail($this->companyData); ?></textarea>
+                            <textarea class="textarea-detail"
+                                      name="company-detail"><?php echo $this->get_detail($this->companyData); ?></textarea>
                         </div>
                       <?php if ($this->companyData['deleted'] == 1) : ?>
                           <div class="td-label">삭제비고</div>
@@ -93,15 +94,12 @@
               <?php if (!isset($this->param->idx)) : ?>
                   <br/>
                   <h1 class="table_title">가입 정보</h1>
-                <div class="btn_group" style="margin: 0; display: inline-block;">
-                    <button type="button" id="btn_gujwa" onclick="type_toggle('gujwa')">구좌</button>
-                    <button type="button" id="btn_deposit" onclick="type_toggle('deposit')">보증금</button>
-                    <button type="button" id="btn_point" onclick="type_toggle('point')">포인트</button>
-                </div>
-                  
-                  <!--                  <div id="detail_table"></div>-->
+                  <div class="btn_group" style="margin: 0; display: inline-block;">
+                      <button type="button" id="btn_gujwa" onclick="type_toggle('gujwa')">구좌</button>
+                      <button type="button" id="btn_deposit" onclick="type_toggle('deposit')">보증금</button>
+                      <button type="button" id="btn_point" onclick="type_toggle('point')">포인트</button>
+                  </div>
                   <div class="table" id="detail_table"></div>
-              
               <?php endif; ?>
 
                 <div class="btn_group">

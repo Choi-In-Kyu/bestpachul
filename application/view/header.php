@@ -14,25 +14,25 @@
 <header id="header">
   <div>
     <div class="row">
-      <div class="dropdown col-md-3">
+      <div class="dropdown col-md-2">
         <button class="dropbtn" onClick = 'location.href="<?php echo _URL?>company"'>HOME</button>
       </div>
-      <div class="dropdown col-md-3">
+      <div class="dropdown col-md-2">
         <button class="dropbtn" onClick = 'location.href="<?php echo _URL?>company"'>업체관리</button>
       </div>
-      <div class="dropdown col-md-3">
+      <div class="dropdown col-md-2">
         <button class="dropbtn" onClick = 'location.href="<?php echo _URL?>employee"'>인력관리</button>
           <div class="dropdown-content">
-              <a href="<?php echo _URL?>employee">근무 가능일/불가능일</a>
+              <a href="<?php echo _URL?>employee/available_date">근무 가능일/불가능일</a>
           </div>
       </div>
-      <div class="dropdown col-md-3">
+      <div class="dropdown col-md-2">
         <button class="dropbtn">콜관리</button>
         <div class="dropdown-content">
           <a href="#">콜 관리</a>
         </div>
       </div>
-      <div class="dropdown col-md-3">
+      <div class="dropdown col-md-2">
         <button class="dropbtn">기타
           <i class="fa fa-caret-down"></i>
         </button>

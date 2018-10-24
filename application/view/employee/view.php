@@ -25,14 +25,14 @@
         </thead>
         <tbody>
         <?php foreach ($this->joinList as $key => $data): ?>
-            <tr>
+            <tr style="background-color:<?php echo $this->joinColor($data);?>">
                 <td class="al_c"><?php echo $data['join_employeeID'] ?></td>
                 <td class="al_l"><?php echo $data['startDate'] ?></td>
-                <td class="al_l"><?php echo $data['endDate'] ?></td>
+                <td class="al_l"><?php echo $this->get_endDate($data) ?></td>
                 <td class="al_l"><?php echo $this->get_joinPrice($data); ?></td>
                 <td class="al_l"><?php echo $this->get_detail($data); ?></td>
                 <td class="al_c"><?php echo $this->get_paidBtn($data); ?></td>
-                <td class="al_c"><?php echo $this->get_deleteBtn($data,'employee'); ?></td>
+                <td class="al_c"><?php echo $this->get_joinDeleteBtn($data,'employee'); ?></td>
             </tr>
         <?php endforeach ?>
         </tbody>
@@ -62,7 +62,7 @@
                     <td>가입금액</td>
                     <td><input type="number" id="price" name="join_employee-price" value="50000" required></td>
                     <td>가입비고</td>
-                    <td><textarea name="join_employee-detail" required></textarea></td>
+                    <td><textarea name="join_employee-detail"></textarea></td>
                     <td>
                         <input type="checkbox" name="join_employee-paid" value="1">회비 수금 여부
                     </td>

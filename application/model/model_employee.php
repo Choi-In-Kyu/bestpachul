@@ -3,13 +3,15 @@
   Class Model_employee extends Model
   {
     var $tableName = "employee";
+    
     function getView()
     {
       $this->sql = "SELECT * FROM `employee` WHERE employee.employeeID='{$this->param->idx}'";
       return $this->fetch();
     }
-  
-    function getAge($date){
+    
+    function getAge($date)
+    {
       $birthDate = new DateTime($date);
       $now = new DateTime();
       $difference = $now->diff($birthDate);
@@ -23,7 +25,7 @@
       switch ($post['action']) {
         case 'insert':
           //인력명 중복 배제
-          $post['employee-employeeName'] = $this->removeDuplicate($post,'employee','employeeName');
+          $post['employee-employeeName'] = $this->removeDuplicate($post, 'employee', 'employeeName');
           $this->getQuery($post, 'employee');
           //join_employee 입력
           $post['join_employee-employeeID'] = $this->db->lastInsertId();
@@ -33,8 +35,8 @@
           break;
         case 'update':
           //인력명 중복 배제
-          if($post['employee-employeeID'] != $this->getTable("SELECT employeeID from employee WHERE employeeName = '{$post['employee-employeeName']}' LIMIT 1")[0]['employeeID']){
-            $post['employee-employeeName'] = $this->removeDuplicate($post,'employee','employeeName');
+          if ($post['employee-employeeID'] != $this->getTable("SELECT employeeID from employee WHERE employeeName = '{$post['employee-employeeName']}' LIMIT 1")[0]['employeeID']) {
+            $post['employee-employeeName'] = $this->removeDuplicate($post, 'employee', 'employeeName');
           }
           $this->getQuery($post, 'employee');
           $this->getQuery($post, 'employee_available_day', 'employee');
@@ -42,18 +44,21 @@
         case 'new_insert':
           $this->getQuery($post, 'join_employee', 'employee');
           break;
+        case 'date_insert':
+          $post['employee_available_date-employeeID'] = $this->getTable("SELECT employeeID from employee WHERE employeeName = '{$post['employee_available_date-employeeID']}'")[0]['employeeID'];
+          $this->getQuery($post, 'employee_available_date');
       }
     }
     
-    function employeeDelete($post){
-      if(!isset ($post['join_employee-join_employeeID'])){
+    function employeeDelete($post)
+    {
+      if (!isset ($post['join_employee-join_employeeID'])) {
         $post['employee-deleted'] = 1;
         $post['employee-activated'] = 0;
         $post['employee-deletedDate'] = date("Ymd");
-        $this->getQuery($post,'employee');
-      }
-      else{
-        $this->getQuery($post,'join_employee');
+        $this->getQuery($post, 'employee');
+      } else {
+        $this->getQuery($post, 'join_employee');
       }
     }
     
@@ -66,27 +71,33 @@
       switch ($_POST['action']) {
         case 'insert' :
           $this->employeeInsert($_POST);
-          $msg.="입력되었습니다";
+          $msg .= "입력되었습니다";
           break;
         case 'update' :
           $url .= "/view/{$this->param->idx}";
           $this->employeeInsert($_POST);
-          $msg.="수정되었습니다";
+          $msg .= "수정되었습니다";
           break;
         case 'new_insert':
           $url .= "/view/{$this->param->idx}";
-          $this ->employeeInsert($_POST);
-          $msg.="추가되었습니다";
+          $this->employeeInsert($_POST);
+          $msg .= "추가되었습니다";
           break;
         case 'delete' :
-          if(isset($this->param->idx)) $url .= "/view/{$this->param->idx}";
+          if (isset($this->param->idx)) $url .= "/view/{$this->param->idx}";
           $this->employeeDelete($_POST);
-          $msg.="삭제되었습니다";
+          $msg .= "삭제되었습니다";
           break;
         case 'getMoney' :
           $url .= "/view/{$this->param->idx}";
           $this->executeSQL("UPDATE join_employee SET paid = '1' WHERE join_employeeID = {$_POST['joinID']} LIMIT 1");
-          $msg.="수금완료!";
+          $msg .= "수금완료!";
+        case 'insert_day':
+          $url .= "/available_date";
+          $employeeID = $this->getTable("SELECT employeeID from employee WHERE employeeName = '{$_POST['employeeName']}' ")[0]['employeeID'];
+          $string ="INSERT INTO employee_available_date (employeeID,availableDate,notAvailableDate,detail)
+                    VALUES ('{$employeeID}','{$_POST['availableDate']}','{$_POST['notAvailableDate']}','{$_POST['detail']}') ";
+          $this->executeSQL($string);
       }
       alert($msg);
       move($url);
