@@ -1,3 +1,31 @@
-<p>New Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non a voluptatibus, ex odit totam cumque nihil eos asperiores ea, labore rerum. Doloribus tenetur quae impedit adipisci, laborum dolorum eaque ratione quaerat, eos dicta consequuntur atque ex facere voluptate cupiditate incidunt.</p>
+<div class="mobile_view">
+    <h1>업체명: <?php echo $this->companyData['companyName'] ?></h1>
+    <div class="table">
+        <div class="tr">
+            <div class="lbl">가입유형 :</div>
+            <div class="td"><?php echo $this->get_joinType($this->joinData) ?></div>
+        </div>
+      <?php foreach ($this->joinData as $key => $value): ?>
+          <div class="tr">
+              <div class="lbl"><?php echo "가입" . ($key + 1) . " : " ?></div>
+              <div class="td">
+                <?php echo $value['startDate'] . " ~ " . $value['endDate'] ?>
+                
+                <?php if ($this->leftDays($value['endDate']) > 0) echo "(만기)";
+                else echo $this->leftDays($value['endDate'])
+                ?>
 
-<p>New Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non a voluptatibus, ex odit totam cumque nihil eos asperiores ea, labore rerum. Doloribus tenetur quae impedit adipisci, laborum dolorum eaque ratione quaerat, eos dicta consequuntur atque ex facere voluptate cupiditate incidunt.</p>
+              </div>
+          </div>
+      <?php endforeach; ?>
+
+        <div class="tr">
+            <div class="lbl">남은 콜 :</div>
+            <div class="td"></div>
+        </div>
+        <div class="tr">
+            <div class="lbl"><?php echo date('n') ?>월 콜비 :</div>
+            <div class="td"></div>
+        </div>
+    </div>
+</div>

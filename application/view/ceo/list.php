@@ -1,3 +1,27 @@
-<p>Gallery Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque tenetur aut, cupiditate, libero eius rerum incidunt dolorem quo in officia.</p>
-
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ipsa vero, culpa doloremque voluptatum consectetur mollitia, atque expedita unde excepturi id, molestias maiores delectus quos molestiae. Ab iure provident adipisci eveniet quisquam ratione libero nam inventore error pariatur optio facilis assumenda sint atque cumque, omnis perspiciatis. Maxime minus quam voluptatum provident aliquam voluptatibus vel rerum. Soluta nulla tempora aspernatur maiores! Animi accusamus officiis neque exercitationem dolore ipsum maiores delectus asperiores reprehenderit pariatur placeat, quaerat sed illum optio qui enim odio temporibus, nulla nihil nemo quod dicta consectetur obcaecati vel. Perspiciatis animi corrupti quidem fugit deleniti, atque mollitia labore excepturi ut.</p>
+<div class="mobile_view">
+    <h1>콜 목록</h1>
+    <div class="mobile_list">
+        <table>
+            <thead>
+            <tr>
+                <th>근무일</th>
+                <th>시작</th>
+                <th>끝</th>
+                <th>직종</th>
+                <th>배정</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($this->callList as $key => $value): ?>
+                <tr>
+                    <td><?php echo $value['workDate'] ?></td>
+                    <td><?php echo $value['startTime'] ?></td>
+                    <td><?php echo $value['endTime'] ?></td>
+                    <td><?php echo $value['workField'] ?></td>
+                    <td><?php echo $value['employeeID'] ?></td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>

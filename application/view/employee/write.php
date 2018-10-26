@@ -119,7 +119,7 @@
                         <div class="td-label">비고</div>
                         <div class="td-detail">
                             <textarea class="textarea-detail"
-                                      name="employee-detail"><?php echo $this->employeeData['detail']; ?></textarea>
+                                      name="employee-detail"><?php echo $this->get_detail($this->employeeData,'employee'); ?></textarea>
                         </div>
                       <?php if ($this->employeeData['actCondition'] == "삭제됨") : ?>
                           <div class="td-detail">

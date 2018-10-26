@@ -2,7 +2,7 @@
     <img src="/public/img/logo.png" alt="Avatar" class="avatar">
 </div>
 <div class="container">
-    <form action="/application/model/login_ok.php" method="post">
+    <form action="" method="post">
         <input type="hidden" name="action" value="login">
         <label for="userName"><b>업체명</b></label>
         <input type="text" placeholder="가게 이름을 입력하세요" name="userName" required>

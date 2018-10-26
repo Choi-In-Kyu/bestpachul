@@ -79,7 +79,7 @@
                         <div class="td-label">비고</div>
                         <div class="td-detail">
                             <textarea class="textarea-detail"
-                                      name="company-detail"><?php echo $this->get_detail($this->companyData); ?></textarea>
+                                      name="company-detail"><?php echo $this->get_detail($this->companyData,'company'); ?></textarea>
                         </div>
                       <?php if ($this->companyData['deleted'] == 1) : ?>
                           <div class="td-label">삭제비고</div>

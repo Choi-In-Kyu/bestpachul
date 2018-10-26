@@ -1,15 +1,3 @@
-//bestpachul.com//company
-window.onscroll = function() {windowScroll()};
-let header = document.getElementById("header");
-let sticky = header.offsetTop;
-function windowScroll() {
-    if (window.pageYOffset >= sticky) {
-        header.classList.add("sticky")
-    } else {
-        header.classList.remove("sticky");
-    }
-}
-
 //bestpachul.com/company/view
 function type_toggle(argument) {
     let detail_table = document.getElementById('detail_table');

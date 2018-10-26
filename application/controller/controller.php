@@ -15,11 +15,17 @@
     var $direction;
     var $join;
     var $group;
+    var $today;
+    var $tomorrow;
+    var $afterTomorrow;
+    var $addressList;
+    var $workFieldList;
+    var $day;
     
-    public $defaultCondition =    array("filter" => " (deleted = 0) ");
-    public $activatedCondition =  array("filter" => " (activated = 1 AND deleted = 0) ");
-    public $expiredCondition =    array("filter" => " (activated = 0 AND deleted = 0) ");
-    public $deletedCondition =    array("filter" => " (activated = 0 AND deleted = 1) ");
+    public $defaultCondition    = array("filter" => " (deleted = 0) ");
+    public $activatedCondition  = array("filter" => " (activated = 1 AND deleted = 0) ");
+    public $expiredCondition    = array("filter" => " (activated = 0 AND deleted = 0) ");
+    public $deletedCondition    = array("filter" => " (activated = 0 AND deleted = 1) ");
 
 //생성자
     function __construct($param)
@@ -30,52 +36,37 @@
       $this->db = new $modelName($this->param);
       $this->setAjax = false;
       //항상 index 함수를 실행
-      $this->index();
+      if($this->param->page_type != 'login'){$this->index();}
+    }
+    
+//모든 페이지에서 쓰이는 변수
+    function getFunctions(){
+      $this->workFieldList = $this->db->getTable("SELECT * FROM `workField`");
+      $this->addressList = $this->db->getTable("SELECT * FROM `address`");
+      $this->day = array('일','월','화','수','목','금','토');
     }
 
 //index
     function index()
     {
-      $mobile = ('login' || 'ceo');
       //따로 action 파라미터가 없으면 method == basic
       $method = isset($this->param->action) ? $this->param->action : 'basic';
       //basic 메소드를 포함한 메소드 실행
       if (method_exists($this, $method)) $this->$method();
-      $this->getTitle();
-      if ($this->param->page_type) {
-        $this->header();
-      }
+      $this->title = '으뜸 파출';
+      if ($this->param->page_type !='ceo') $this->setAjax || require_once(_VIEW . "header.php");
       $this->content();
-      if ($this->param->page_type) {
-        $this->footer();
-      }
+      if ($this->param->page_type !='ceo') $this->setAjax || require_once(_VIEW . "footer.php");
     }
 
-//header
-    function header()
-    {
-      $this->setAjax || require_once(_VIEW . "header.php");
-    }
-
-//footer
-    function footer()
-    {
-      $this->setAjax || require_once(_VIEW . "footer.php");
-    }
-    
-//content
+//content - ex)view/company/company.php 불러오기
     function content()
     {
       $this_arr = (array)$this;
       extract($this_arr);
+      //page의 action이 없으면 page type의 이름을 가진 view 불러옴
       $dir = _VIEW . "{$this->param->page_type}/{$this->param->include_file}.php";
       if (file_exists($dir)) require_once($dir);
-    }
-
-//getTitle
-    function getTitle()
-    {
-      $this->title = '으뜸 파출';
     }
     
     function initJoin($tableName)
@@ -283,15 +274,31 @@ HTML;
       } else return "수금완료";
     }
     
-    function get_detail($data)
+    function makeDetail($array)
     {
+      foreach ($array as $key => $value) {
+        $value .= " : ";
+        $newArray[] = $value;
+      }
+      $string = implode("\n", $newArray);
+      return $string;
+    }
+    
+    function get_detail($data, $tableName)
+    {
+      $companyDetail = array('좌탁여부', '테이블수', '그릇종류', '식기세척기', '상주직원수', '주방환경', '교통환경', '주요업무', '가입경로', '기타사항');
+      $employeeDetail = array('경력', '특기', '체류비자', '월급제', '4대보험', '자차소유', '추천인', '외모', '이상여부', '지각', '빵꾸', '기타사항');
       if (isset($data['detail'])) {
         return $data['detail'];
       } else {
-        
-        $default = "aaa:\nbbb:\nbbb:\nbbb:\nbbb:\n";
-        return $default;
+        switch ($tableName) {
+          case 'company':
+            return $this->makeDetail($companyDetail);
+          case 'employee':
+            return $this->makeDetail($employeeDetail);
+        }
       }
+      
     }
     
     function joinColor($data, $tableName)

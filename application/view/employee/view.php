@@ -30,7 +30,7 @@
                 <td class="al_l"><?php echo $data['startDate'] ?></td>
                 <td class="al_l"><?php echo $this->get_endDate($data) ?></td>
                 <td class="al_l"><?php echo $this->get_joinPrice($data); ?></td>
-                <td class="al_l"><?php echo $this->get_detail($data); ?></td>
+                <td class="al_l"><?php echo $this->get_joinDetail($data); ?></td>
                 <td class="al_c"><?php echo $this->get_paidBtn($data); ?></td>
                 <td class="al_c"><?php echo $this->get_joinDeleteBtn($data,'employee'); ?></td>
             </tr>

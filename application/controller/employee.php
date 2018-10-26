@@ -7,11 +7,10 @@
     var $name;
     var $filterColor;
     var $filterBgColor;
-    var $workFieldList;
-    var $addressList;
     var $joinList;
     var $dayList;
     var $employeeList;
+    var $availableDateList;
     var $employeeData;
     var $action;
     var $submitButtonName;
@@ -21,15 +20,12 @@
     public $deadlineCondition = array("filter" => " (DATE_ADD(`endDate`, interval -5 day) < CURDATE()) AND (CURDATE()<`endDate`)");
     public $deadlineGroup = "employeeName";
     
-    function getDay($day, $type)
-    {
-      if ($this->dayList[0][$day] == $type) return "checked";
-      return false;
-    }
 //bestpachul.com/employee
     function basic()
     {
       $this->getBasicFunction('employee');
+      $this->employeeList = $this->db->getTable("SELECT * FROM employee WHERE deleted = 0");
+      $this->availableDateList = $this->db->getTable("SELECT * FROM employee_available_date");
     }
 //bestpachul.com/employee/view
     function view()
@@ -39,8 +35,6 @@
       $this->employeeID = $this->param->idx;
       $this->employeeData = $this->db->getTable("SELECT * FROM employee WHERE employeeID = '{$this->employeeID}'");
       $this->employeeData = $this->getActCondition($this->employeeData, 'employee')[0];
-      $this->workFieldList = $this->db->getTable("SELECT * FROM `workField`");
-      $this->addressList = $this->db->getTable("SELECT * FROM `address`");
       $this->dayList = $this->db->getTable("SELECT * FROM employee_available_day WHERE employeeID = '{$this->employeeID}'");
       $this->joinList = $this->db->getTable("SELECT * FROM join_employee WHERE employeeID = '{$this->employeeID}' order by endDate DESC");
       $this->data = $this->db->getView();
@@ -50,8 +44,6 @@
     {
       $this->action = 'insert';
       $this->submitButtonName = "추가";
-      $this->workFieldList = $this->db->getTable("SELECT * FROM `workField`");
-      $this->addressList = $this->db->getTable("SELECT * FROM `address`");
     }
 //bestpachul.com/employee/delete
     function delete()
@@ -64,7 +56,11 @@
 //bestpachul.com/employee/delete
     function available_date(){
       $this->action = 'insert_date';
-      $this->employeeList = $this->db->getTable("SELECT * FROM employee WHERE deleted = 0");
-      $this->availableDateList = $this->db->getTable("SELECT * FROM employee_available_date");
+    }
+    
+    function getDay($day, $type)
+    {
+      if ($this->dayList[0][$day] == $type) return "checked";
+      return false;
     }
   }
