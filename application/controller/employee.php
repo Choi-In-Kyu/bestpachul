@@ -9,23 +9,21 @@
     var $filterBgColor;
     var $joinList;
     var $dayList;
-    var $employeeList;
-    var $availableDateList;
     var $employeeData;
     var $action;
     var $submitButtonName;
     var $employeeID;
     
-    public $deadlineJoin = " LEFT JOIN `join_employee` ON `employee`.employeeID = `join_employee`.employeeID ";
-    public $deadlineCondition = array("filter" => " (DATE_ADD(`endDate`, interval -5 day) < CURDATE()) AND (CURDATE()<`endDate`)");
-    public $deadlineGroup = "employeeName";
-    
+    public function __construct($param)
+    {
+      parent::__construct($param);
+    }
+
 //bestpachul.com/employee
     function basic()
     {
+      $this->initJoin('employee');
       $this->getBasicFunction('employee');
-      $this->employeeList = $this->db->getTable("SELECT * FROM employee WHERE deleted = 0");
-      $this->availableDateList = $this->db->getTable("SELECT * FROM employee_available_date");
     }
 //bestpachul.com/employee/view
     function view()
@@ -60,7 +58,16 @@
     
     function getDay($day, $type)
     {
-      if ($this->dayList[0][$day] == $type) return "checked";
-      return false;
+      if(isset($type)){
+        if($type != '종일'){
+          if (($this->dayList[0][$day] == $type) || ($this->dayList[0][$day] == '반반')) return "checked";
+        }
+        else{
+          if($this->dayList[0][$day] == $type)
+            return "checked";
+        }
+      }
+      else return $this->dayList[0][$day];
+      
     }
   }

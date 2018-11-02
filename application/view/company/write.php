@@ -52,7 +52,8 @@
                         </div>
                     </div>
                     <div class="tr">
-                        <div class="td-label">간단주소</div>
+                        <div class="td-label">간단주소
+                        </div>
                         <div class="td">
                             <input type="text" list="addressList" name="company-address"
                                    value="<?php echo $this->companyData['address']; ?>">

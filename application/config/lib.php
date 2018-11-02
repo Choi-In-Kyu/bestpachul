@@ -2,8 +2,6 @@
 //script functions
 function alert($str){echo "<script>alert('{$str}');</script>";}
 function getLog($str){echo "<script>console.log('{$str}');</script>";}
-function test($str){echo "<script>alert('{$str}');</script>";echo "<script>console.log('{$str}');</script>";echo $str;
-}
 //move
 function move($str = false){
   echo "<script>";
@@ -18,7 +16,6 @@ function access($bool,$msg,$url = false){
     move($url);
   }
 }
-
 //클래스 자동로딩 함수
 function __autoload($className){
   $className = strtolower($className);

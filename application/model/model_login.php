@@ -7,7 +7,8 @@
       $this->getUser($_POST);
       $userData = $this->getUser($_POST);
       if (isset($userData)) {//로그인 성공
-        setcookie('userID',$userData['userID'],time()+(86400*365),'/');
+        setcookie('userID',$userData['userID'],time()+(3600*24*365),'/');
+        //3600*24*365 -> 1년 자동 로그인
         if (!isset($userData['companyID'])) {//관리자 로그인
           move("company");
         } else {//사장님 로그인

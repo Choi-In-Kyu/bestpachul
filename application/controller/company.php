@@ -15,19 +15,20 @@
     var $action;
     var $submitButtonName;
     var $companyID;
-    public $deadlineJoin = " LEFT JOIN `join_company` ON `company`.companyID = `join_company`.companyID ";
-    public $deadlineCondition = array("filter" => " (DATE_ADD(`endDate`, interval -15 day) < CURDATE()) AND (CURDATE()<`endDate`)");
-    public $deadlineGroup = "companyName";
-
+  
+    public function __construct($param)
+    {
+      parent::__construct($param);
+    }
+  
     //bestpachul.com/company
     function basic()
     {
       $this->initJoin('company');
       $this->getBasicFunction('company');
-      $this->getFunctions();
       $this->ceoList = $this->db->getTable("SELECT * FROM `ceo`");
       $this->businessTypeList = $this->db->getTable("SELECT * FROM `businessType`");
-  
+      $this->addressList = $this->db->getTable("SELECT * FROM `address`");
     }
     
     //bestpachul.com/company/view

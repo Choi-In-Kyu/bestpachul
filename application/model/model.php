@@ -64,7 +64,6 @@
       if (isset($order) && $order != ""){
         $this->sql .= " ORDER BY {$order}";
       }
-      getLog($this->sql);
       return $this->fetchAll();
     }
     

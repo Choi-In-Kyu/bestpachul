@@ -20,12 +20,15 @@
     var $afterTomorrow;
     var $addressList;
     var $workFieldList;
+    var $availableDateList;
+    var $employeeList;
     var $day;
     
-    public $defaultCondition    = array("filter" => " (deleted = 0) ");
-    public $activatedCondition  = array("filter" => " (activated = 1 AND deleted = 0) ");
-    public $expiredCondition    = array("filter" => " (activated = 0 AND deleted = 0) ");
-    public $deletedCondition    = array("filter" => " (activated = 0 AND deleted = 1) ");
+    public $defaultCondition = array("filter" => " (deleted = 0) ");
+    public $activatedCondition = array("filter" => " (activated = 1 AND deleted = 0) ");
+    public $expiredCondition = array("filter" => " (activated = 0 AND deleted = 0) ");
+    public $deletedCondition = array("filter" => " (activated = 0 AND deleted = 1) ");
+    public $deadlineCondition = array("filter" => " (activated = 1 AND bookmark = 1) ");
 
 //생성자
     function __construct($param)
@@ -36,14 +39,20 @@
       $this->db = new $modelName($this->param);
       $this->setAjax = false;
       //항상 index 함수를 실행
-      if($this->param->page_type != 'login'){$this->index();}
+      $this->getFunctions();
+      if ($this->param->page_type != 'login') {
+        $this->index();
+      }
     }
-    
+
 //모든 페이지에서 쓰이는 변수
-    function getFunctions(){
+    function getFunctions()
+    {
       $this->workFieldList = $this->db->getTable("SELECT * FROM `workField`");
       $this->addressList = $this->db->getTable("SELECT * FROM `address`");
-      $this->day = array('일','월','화','수','목','금','토');
+      $this->availableDateList = $this->db->getTable("SELECT * FROM employee_available_date");
+      $this->day = array('일', '월', '화', '수', '목', '금', '토');
+      $this->employeeList = $this->db->getTable("SELECT * FROM employee WHERE deleted = 0");
     }
 
 //index
@@ -54,9 +63,9 @@
       //basic 메소드를 포함한 메소드 실행
       if (method_exists($this, $method)) $this->$method();
       $this->title = '으뜸 파출';
-      if ($this->param->page_type !='ceo') $this->setAjax || require_once(_VIEW . "header.php");
+      if ($this->param->page_type != 'ceo') $this->setAjax || require_once(_VIEW . "header.php");
       $this->content();
-      if ($this->param->page_type !='ceo') $this->setAjax || require_once(_VIEW . "footer.php");
+      if ($this->param->page_type != 'ceo') $this->setAjax || require_once(_VIEW . "footer.php");
     }
 
 //content - ex)view/company/company.php 불러오기
@@ -71,13 +80,26 @@
     
     function initJoin($tableName)
     {
-      $joinList = $this->db->getTable("SELECT * FROM join_{$tableName}");
-      $today = date("Y-m-d");
+      $todayTime = strtotime(date("Y-m-d"));
+      switch ($tableName) {
+        case 'company':
+          $days = 15;
+          $joinList = $this->db->getTable("SELECT * FROM join_{$tableName} WHERE deleted = 0 AND point IS NULL AND deposit IS NULL");
+          break;
+        case 'employee':
+          $days = 5;
+          $joinList = $this->db->getTable("SELECT * FROM join_{$tableName} WHERE deleted = 0");
+          break;
+      }
       foreach ($joinList as $key => $value) {
-        $endDate = $value['endDate'];
-        $joinID = "join_" . $tableName . "ID";
-        $joinID = $value[$joinID];
-        if ($today > $endDate) {
+        $joinID = $value["join_" . $tableName . "ID"];
+        $endTime = strtotime($value['endDate']);
+        $targetTime = strtotime($value['endDate'] . " -{$days} days");
+        //bookmark(만기임박)
+        if (($targetTime < $todayTime && $todayTime < $endTime) || ($tableName == 'employee' && $value['paid'] == 0)) {
+          $this->db->executeSQL("UPDATE join_{$tableName} SET bookmark = 1 WHERE join_{$tableName}ID = {$joinID} LIMIT 1");
+        } //가입 자동 만기시킴
+        else if ($todayTime >= $endTime) {
           $this->db->executeSQL("UPDATE join_{$tableName} SET activated = 0 WHERE join_{$tableName}ID = {$joinID} LIMIT 1");
         }
       }
@@ -85,26 +107,18 @@
     
     function initActCondition($list, $tableName)
     {
-      $this->db->executeSQL("UPDATE join_{$tableName} SET activated = 0 WHERE endDate < CURDATE()");
-      $today = date("Y-m-d");
       foreach ($list as $key => $value) {
-        $tableID = $tableName . "ID";
-        $tableID = $value[$tableID];
-        $joinList = $this->db->getTable("SELECT * FROM `join_{$tableName}` WHERE {$tableName}ID = {$tableID}");
-        if ($joinList == null) {
-          $this->db->executeSQL("UPDATE {$tableName} SET activated = 0 WHERE {$tableName}ID = {$tableID} LIMIT 1");
-        }
-        foreach ($joinList as $key => $value) {
-          $endDate = $value['endDate'];
-          if ($today > $endDate) {
-            $this->db->executeSQL("UPDATE {$tableName} SET activated = 0 WHERE {$tableName}ID = {$tableID} LIMIT 1");
-            continue;
-          } else {
-//            if($value['deleted']!=1){
-            $this->db->executeSQL("UPDATE {$tableName} SET activated = 1 WHERE {$tableName}ID = {$tableID} LIMIT 1");
-            break;
-//            }
+        $tableID = $value[$tableName . "ID"];
+        $joinList = $this->db->getTable("SELECT * FROM `join_{$tableName}` WHERE {$tableName}ID = {$tableID} AND activated = 1");
+        if (sizeof($joinList) > 0) {
+          foreach ($joinList as $key2 => $data) {
+            if ($data['bookmark'] == 1) {
+              $this->db->executeSQL("UPDATE {$tableName} SET activated = 1, bookmark = 1 WHERE {$tableName}ID = {$tableID} LIMIT 1");
+              break;
+            }
           }
+        } else {
+          $this->db->executeSQL("UPDATE {$tableName} SET activated = 0 WHERE {$tableName}ID = {$tableID} LIMIT 1");
         }
       }
       return $list;
@@ -112,9 +126,10 @@
     
     function getActCondition($list, $tableName)
     {
-      $deadlineArray = $this->db->getColumnList($this->db->getList($this->deadlineCondition, null, $this->deadlineJoin, $this->deadlineGroup), $tableName . 'ID');
-      $expiredArray = $this->db->getColumnList($this->db->getList($this->expiredCondition), $tableName . 'ID');
-      $deletedArray = $this->db->getColumnList($this->db->getList($this->deletedCondition), $tableName . 'ID');
+      $tableID = $tableName . 'ID';
+      $deadlineArray = $this->db->getColumnList($this->db->getList($this->deadlineCondition), $tableID);
+      $expiredArray = $this->db->getColumnList($this->db->getList($this->expiredCondition), $tableID);
+      $deletedArray = $this->db->getColumnList($this->db->getList($this->deletedCondition), $tableID);
       foreach ($list as $key => $value) {
         $tableID = $tableName . 'ID';
         $tableID = $list[$key][$tableID];
@@ -148,7 +163,7 @@
       if (isset($_POST['filterCondition'])) {
         $this->condition['filter'] = $_POST['filterCondition'];
       } else {
-        $this->condition['filter'] = $this->defaultCondition['filter'];
+        $this->condition['filter'] = $this->activatedCondition['filter'];
       }
       if (isset($_POST['keyword']) && $_POST['keyword'] != "") {
         $this->condition['keyword'] = " (`{$tableName}Name` LIKE '%{$this->keyword}%' OR `address` LIKE '%{$this->keyword}%') ";
@@ -212,9 +227,17 @@
       }
     }
     
-    function get_endDate($data)
+    function get_endDate($data, $tableName)
     {
-      $condition1 = strtotime($data['endDate'] . " -15 days") < strtotime(date('Y-m-d'));
+      switch ($tableName) {
+        case 'company':
+          $days = 15;
+          break;
+        case 'employee':
+          $days = 5;
+          break;
+      }
+      $condition1 = strtotime($data['endDate'] . " -{$days} days") < strtotime(date('Y-m-d'));
       $condition2 = strtotime(date('Y-m-d')) < strtotime($data['endDate']);
       $string = $data['endDate'];
       $leftDays = date('j', strtotime($data['endDate']) - strtotime(date('Y-m-d'))) - 1;
@@ -304,12 +327,19 @@ HTML;
     function joinColor($data, $tableName)
     {
       $today = date('Y-m-d');
-      $deadline = 15;
-      if ($tableName == 'employee') $deadline = 5;
+      switch ($tableName) {
+        case 'company' :
+          $deadline = 15;
+          break;
+        case 'employee':
+          $deadline = 5;
+          break;
+      }
       if ($data['activated'] == 0) echo "gray";
       elseif (
         strtotime($data['endDate'] . " -{$deadline} days") < strtotime($today)
         && strtotime($today) < strtotime($data['endDate']))
         echo "orange";
+      else echo "white";
     }
   }

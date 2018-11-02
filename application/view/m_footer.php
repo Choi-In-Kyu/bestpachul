@@ -1,1 +1,0 @@
-  <script src="/public/js/mobile.js"></script> <!-- Resource JavaScript -->

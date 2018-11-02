@@ -4,31 +4,40 @@ html {font-size: 62.5%;}
 body {font-size: 1.6rem;font-family: "PT Sans", sans-serif;color: black;background-color: #004E38;}
 a {color: #004E38;text-decoration: none;}
 img, embed, object, video, svg {max-width: 100%;}
-input, textarea {font-family: inherit;font-size: 1.6rem;}
+input, textarea {width:100%; font-family: inherit;font-size: 1.6rem;}
 
 /* ----------------------------------------------Responsive Tabbed Navigation - by CodyHouse.co---------------------------------------------- */
 header {position: relative;height: 160px;line-height: 180px;text-align: center;}
 header h1 {font-size: 2rem;}
 
 .mobile_list { padding: 0; }
-.mobile_list table { width: 100%; text-align: center; }
+.mobile_list container { width: 100%; text-align: center; }
 .mobile_list th, .mobile_list td { border-bottom: 1px solid #ddd; line-height: 30px;}
 .mobile_list th { background: #f5f5f5; }
 
 .mobile_view { padding: 10px 10px; font-size: 1.5rem;}
 .mobile_view h1 { padding-bottom: 10px; font-size: 1.8rem; }
 .mobile_view h2 { padding-bottom: 10px; font-size: 1.3rem; display: inline-block;}
-.mobile_view .table { border-top: 2px solid #666; }
-.mobile_view .table .tr { padding:10px; border-bottom: 1px solid #ddd; line-height: 30px; }
-.mobile_view .table .tr .lbl { width: 30%; font-weight: bold; }
+
+.mobile_view .table .tr .lbl{width: 30%; font-size: 0.7em;}
 .mobile_view .table .tr .td{width: 70%;}
-.mobile_view .table .tr-merged{display:grid; grid-template-columns: 30% 70%;}
-.mobile_view .table .tr-merged .lbl-2row{grid-row: span 4; width:100%}
-.mobile_view .table .tr-merged .td{width:100%}
-.mobile_view button{width:30%;  height:40px;}
-.mobile_view input[type='date']{width:100%;  height:40px;}
-.mobile_view input[type='time']{width:40%;  height:40px;}
-.mobile_view select{height: 3rem; font-size: 2rem;}
+
+.mobile_view .container { padding:10px; border-bottom: 2px solid #ddd; border-top: 0;}
+.mobile_view .container .tr { padding:0; border-bottom: 0;}
+.mobile_view .container .tr-title { padding:0px; border-bottom: 0; line-height: normal; }
+.mobile_view .container .tr .lbl {font-weight: bold; }
+.mobile_view .container .tr .td{display: inline-block;}
+.mobile_view .container .tr-body .td-50{width: 49%; }
+.mobile_view .container .tr-body .td-30{width: 29%; }
+.mobile_view .container .tr-body .td-70{width: 69%; }
+
+.mobile_view .time{height: 60px;}
+.mobile_view .hour{width:45%;}
+.mobile_view .minute{width:45%;}
+.mobile_view .timeSelect{width: 100%; height: 40px;}
+
+.mobile_view .date{width: 100%;height: 40px; font-size: 1.6rem;}
+.mobile_view .btn-day{width: 45%;height: 40px; font-size: 1.2rem;}
 
 .cd-tabs nav {overflow: auto;-webkit-overflow-scrolling: touch;background: #f8f7ee;}
 .cd-tabs_navigation {width: 100%;}

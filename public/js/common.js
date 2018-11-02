@@ -13,18 +13,12 @@ function type_toggle(argument) {
             break;
     }
 }
-
 function show_join_form() {
     document.getElementById('join_button').style.display = 'none';
     document.getElementById('join_form_btn_group').style.display = 'block';
     document.getElementById('new_join_form').style.display = 'block';
 }
 
-$('.btnModal').click(function () {
-    $('#myModal').show();
-    $('#modal-companyID').val(this.value);
-    $('#modal-joinID').val(this.value);
-})
 $('#closeModal').click(function () {
     $('#myModal').hide();
-})
+});

@@ -218,7 +218,7 @@
             </tr>
             <tr>
               <td>가입금액</td>
-              <td><input type="number" id="price" name="join_employee-price" required></td>
+              <td><input type="number" id="price" name="join_employee-price"  required></td>
               <td>가입비고</td>
               <td><textarea name="join_employee-detail"></textarea></td>
               <td>

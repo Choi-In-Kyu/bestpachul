@@ -19,11 +19,9 @@
         <div class="col">
             <form class="form-default" action="" method="post">
                 <input type="hidden" name="filterCondition" value="<?php echo $this->deadlineCondition['filter'] ?>">
-                <input type="hidden" name="join" value="<?php echo $this->deadlineJoin ?>">
-                <input type="hidden" name="group" value="<?php echo $this->deadlineGroup ?>">
                 <input class="btn btn-default" type="submit"
                        style="background-color: <?php echo $this->filterBgColor['deadline']?>; color: <?php echo $this->filterColor['deadline']?>;"
-                       value="(만기임박 인력) : <?php echo $this->db->getListNum($this->deadlineCondition, $this->deadlineJoin) ?>">
+                       value="(만기임박 인력) : <?php echo $this->db->getListNum($this->deadlineCondition, $this->deadlineJoin, $this->deadlineGroup) ?>">
             </form>
         </div>
         <div class="col">
@@ -173,7 +171,7 @@
     <div class="modal-content">
         <form action="" method="post">
             <input type="hidden" name="action" value="delete">
-            <input id="modal-employeeID" type="hidden" name="employee-employeeID">
+            <input id="modal-employeeID" type="hidden" name="employeeID">
             <textarea name="employee-deleteDetail" size="200">안해</textarea>
             <input class="btn btn-danger" type="button" id="closeModal" value="닫기">
             <input class="btn btn-insert" type="submit" value="삭제">
@@ -181,4 +179,10 @@
     </div>
 </div>
 
+<script>
+    $('.btnModal').click(function () {
+        $('#myModal').show();
+        $('#modal-employeeID').val(this.value);
+    })
+</script>
 <script src="/public/js/common.js"></script>

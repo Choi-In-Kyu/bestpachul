@@ -25,12 +25,12 @@
         </thead>
         <tbody>
         <?php foreach ($this->joinList as $key => $data): ?>
-            <tr style="background-color:<?php echo $this->joinColor($data);?>">
+            <tr style="background-color:<?php echo $this->joinColor($data, 'company');?>">
                 <td class="al_c"><?php echo $data['join_companyID'] ?></td>
                 <td class="al_l"><?php echo $this->get_joinType($data); ?></td>
                 <td class="al_l"><?php echo $this->get_joinPrice($data); ?></td>
                 <td class="al_l"><?php echo $data['startDate'] ?></td>
-                <td class="al_l"><?php echo $this->get_endDate($data); ?></td>
+                <td class="al_l"><?php echo $this->get_endDate($data,'company'); ?></td>
                 <td class="al_l"><?php echo $this->get_joinDetail($data); ?></td>
                 <td class="al_c"><?php echo $this->get_joinDeleteBtn($data,'company'); ?></td>
             </tr>
@@ -66,18 +66,14 @@
     <div class="modal-content">
         <form action="" method="post">
             <input type="hidden" name="action" value="delete">
-            <input type="hidden" name="join_company-activated" value=0>
-            <input type="hidden" name="join_company-deleted" value=1>
-            <input type="hidden" name="join_company-deletedDate" value="<?php echo date("Y-m-d") ?>">
-            <input id="modal-joinID" type="hidden" name="join_company-join_companyID">
-            <textarea name="join_company-deleteDetail" size="200"></textarea>
+            <input id="modal-joinID" type="hidden" name="joinID">
+            <textarea name="deleteDetail" size="200"></textarea>
             <input class="btn btn-default" type="button" id="closeModal" value="취소">
             <input class="btn btn-danger" type="submit" value="삭제">
         </form>
     </div>
 </div>
 
-<script src="/public/js/common.js"></script>
 <script>
     function type_toggle(argument) {
         let detail_table = document.getElementById('detail_table');
@@ -101,6 +97,7 @@
 
     $('.btnModal').click(function () {
         $('#myModal').show();
-        $('#modal-companyID').val(this.value);
+        $('#modal-joinID').val(this.value);
     })
 </script>
+<script src="/public/js/common.js"></script>

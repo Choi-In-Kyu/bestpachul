@@ -19,8 +19,6 @@
         <div class="col">
             <form class="form-default" action="" method="post">
                 <input type="hidden" name="filterCondition" value="<?php echo $this->deadlineCondition['filter'] ?>">
-                <input type="hidden" name="join" value="<?php echo $this->deadlineJoin ?>">
-                <input type="hidden" name="group" value="<?php echo $this->deadlineGroup ?>">
                 <input class="btn btn-default" type="submit"
                        style="background-color: <?php echo $this->filterBgColor['deadline'] ?>; color: <?php echo $this->filterColor['deadline'] ?>;"
                        value="(만기임박 업체) : <?php echo $this->db->getListNum($this->deadlineCondition, $this->deadlineJoin, $this->deadlineGroup) ?>">
@@ -160,12 +158,8 @@
     <div class="modal-content">
         <form action="" method="post">
             <input type="hidden" name="action" value="delete">
-            <input type="hidden" name="company-deleted" value=1>
-            <input type="hidden" name="company-activated" value="0">
-            <input type="hidden" name="company-deletedDate" value="<?php echo date("Y-m-d") ?>">
-            <input type="hidden" name="company-deleted" value="1">
-            <input id="modal-companyID" type="hidden" name="company-companyID">
-            <textarea name="company-deleteDetail" size="200"></textarea>
+            <input id="modal-companyID" type="hidden" name="companyID">
+            <textarea name="deleteDetail" size="200"></textarea>
             <input class="btn btn-danger" type="button" id="closeModal" value="닫기">
             <input class="btn btn-insert" type="submit" value="삭제하기">
         </form>

@@ -52,13 +52,15 @@
     
     function employeeDelete($post)
     {
-      if (!isset ($post['join_employee-join_employeeID'])) {
-        $post['employee-deleted'] = 1;
-        $post['employee-activated'] = 0;
-        $post['employee-deletedDate'] = date("Ymd");
-        $this->getQuery($post, 'employee');
-      } else {
-        $this->getQuery($post, 'join_employee');
+      $deletedDate = date("Ymd");
+      //인력 삭제
+      if (!isset ($post['joinID'])) {
+        $this->executeSQL("UPDATE employee SET deleted=1, activated=0, deletedDate= '{$deletedDate}', deleteDetail = '{$post['deleteDetail']}' WHERE employeeID = '{$post['employeeID']}'");
+        $this->executeSQL("UPDATE join_employee SET deleted=1, activated=0, deletedDate= '{$deletedDate}', deleteDetail = '인력삭제({$deletedDate})' WHERE employeeID = '{$post['employeeID']}'");
+      }
+      //가입 삭제
+      else {
+        $this->executeSQL("UPDATE join_employee SET deleted=1, activated=0, deletedDate= '{$deletedDate}', deleteDetail = '{$post['deleteDetail']}' WHERE join_employeeID = '{$post['joinID']}'");
       }
     }
     
@@ -98,6 +100,9 @@
           $string ="INSERT INTO employee_available_date (employeeID,availableDate,notAvailableDate,detail)
                     VALUES ('{$employeeID}','{$_POST['availableDate']}','{$_POST['notAvailableDate']}','{$_POST['detail']}') ";
           $this->executeSQL($string);
+        case 'restore' :
+          $this->executeSQL("UPDATE employee SET activated = '1', deleted = '0', deleteDetail=null, deletedDate = null WHERE employeeID = '{$_POST['employeeID']}' LIMIT 1");
+          $msg.="복구완료!";
       }
       alert($msg);
       move($url);

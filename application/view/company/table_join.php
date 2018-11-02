@@ -16,7 +16,7 @@
         <td>가입일</td>
         <td><input type="date" name="join_company-startDate" required></td>
         <td>보증금</td>
-        <td><input type="number" name="join_company-deposit" required></td>
+        <td><input type="number" name="join_company-deposit"  required></td>
     </tr>
     <tr>
         <td>비고</td>
@@ -29,9 +29,9 @@
         <td>가입일</td>
         <td><input type="date" name="join_company-startDate" required></td>
         <td>가입금액</td>
-        <td><input type="number" name="join_company-price" required></td>
+        <td><input type="number" name="join_company-price"  required></td>
         <td>포인트</td>
-        <td><input type="number" name="join_company-point" required></td>
+        <td><input type="number" name="join_company-point"  required></td>
     </tr>
     <tr>
         <td>비고</td>

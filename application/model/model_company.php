@@ -61,19 +61,25 @@
       }
     }
     
-    function companyDelete($post){
-      if(!isset ($post['join_company-join_companyID'])){
-        $this->getQuery($post,'company');
+    function companyDelete($post)
+    {
+      $deletedDate = date("Ymd");
+      //인력 삭제
+      if (!isset ($post['joinID'])) {
+        $this->executeSQL("UPDATE company SET deleted=1, activated=0, deletedDate= '{$deletedDate}', deleteDetail = '{$post['deleteDetail']}' WHERE companyID = '{$post['companyID']}'");
+        $this->executeSQL("UPDATE join_company SET deleted=1, activated=0, deletedDate= '{$deletedDate}', deleteDetail = '업체삭제({$deletedDate})' WHERE companyID = '{$post['companyID']}' AND activated=1");
       }
-      else{
-        $this->getQuery($post,'join_company');
+      //가입 삭제
+      else {
+        $this->executeSQL("UPDATE join_company SET deleted=1, activated=0, deletedDate= '{$deletedDate}', deleteDetail = '{$post['deleteDetail']}' WHERE join_companyID = '{$post['joinID']}'");
       }
     }
-    
+
+  
     function action()
     {
       header("Content-type:text/html;charset=utf8");
-      $msg = "완료되었습니다.";
+      $msg ="[SYSTEM]";
       $url = $this->param->get_page;
       
       switch ($_POST['action']) {

@@ -25,10 +25,10 @@
         </thead>
         <tbody>
         <?php foreach ($this->joinList as $key => $data): ?>
-            <tr style="background-color:<?php echo $this->joinColor($data);?>">
+            <tr style="background-color:<?php echo $this->joinColor($data, 'employee');?>">
                 <td class="al_c"><?php echo $data['join_employeeID'] ?></td>
                 <td class="al_l"><?php echo $data['startDate'] ?></td>
-                <td class="al_l"><?php echo $this->get_endDate($data) ?></td>
+                <td class="al_l"><?php echo $this->get_endDate($data,'employee') ?></td>
                 <td class="al_l"><?php echo $this->get_joinPrice($data); ?></td>
                 <td class="al_l"><?php echo $this->get_joinDetail($data); ?></td>
                 <td class="al_c"><?php echo $this->get_paidBtn($data); ?></td>
@@ -60,7 +60,7 @@
                 </tr>
                 <tr>
                     <td>가입금액</td>
-                    <td><input type="number" id="price" name="join_employee-price" value="50000" required></td>
+                    <td><input type="number" id="price" name="join_employee-price" value="50000"  required></td>
                     <td>가입비고</td>
                     <td><textarea name="join_employee-detail"></textarea></td>
                     <td>
@@ -82,12 +82,22 @@
     <div class="modal-content">
         <form action="" method="post">
             <input type="hidden" name="action" value="delete">
-            <input type="hidden" name="join_employee-activated" value=0>
-            <input type="hidden" name="join_employee-deleted" value=1>
-            <input type="hidden" name="join_employee-deletedDate" value="<?php echo date("Y-m-d")?>">
-            <input type="hidden" name="join_employee-endDate" value="<?php echo date("Y-m-d")?>">
-            <input id="modal-joinID" type="hidden" name="join_employee-join_employeeID">
-            <textarea name="join_employee-deleteDetail" size="200"></textarea>
+            <input id="modal-joinID" type="hidden" name="joinID">
+            <textarea name="deleteDetail" size="200"></textarea>
+            <input class="btn btn-default" type="button" id="closeModal" value="취소">
+            <input class="btn btn-danger" type="submit" value="삭제">
+        </form>
+    </div>
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <form action="" method="post">
+            <input type="hidden" name="action" value="delete">
+            <input id="modal-joinID" type="hidden" name="joinID">
+            <textarea name="deleteDetail" size="200"></textarea>
             <input class="btn btn-default" type="button" id="closeModal" value="취소">
             <input class="btn btn-danger" type="submit" value="삭제">
         </form>
@@ -116,8 +126,6 @@
     $('.btnModal').click(function () {
         $('#myModal').show();
         $('#modal-joinID').val(this.value);
-    })
-    $('#closeModal').click(function () {
-        $('#myModal').hide();
-    })
+    });
 </script>
+<script src="/public/js/common.js"></script>
