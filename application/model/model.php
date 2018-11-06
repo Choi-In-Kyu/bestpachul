@@ -172,5 +172,4 @@
       $this->sql = $string;
       $this->fetch();
     }
-    
   }

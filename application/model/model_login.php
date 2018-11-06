@@ -4,15 +4,19 @@
   {
     function action()
     {
-      $this->getUser($_POST);
       $userData = $this->getUser($_POST);
+      $companyID = $userData['companyID'];
+      $activated = $this->getTable("SELECT activated FROM company WHERE companyID = '{$companyID}'")[0]['activated'];
+      
+      
       if (isset($userData)) {//로그인 성공
         setcookie('userID',$userData['userID'],time()+(3600*24*365),'/');
-        //3600*24*365 -> 1년 자동 로그인
-        if (!isset($userData['companyID'])) {//관리자 로그인
+        if ($userData['userID']==1) {//관리자 로그인
           move("company");
-        } else {//사장님 로그인
-          move("ceo");
+        }
+        else {//사장님 로그인
+          if($activated==1)move("ceo");
+          else alert("로그인에 실패했습니다. 관리자에게 문의하세요.");
         }
       }
       else {//로그인 실패

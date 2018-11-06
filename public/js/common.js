@@ -13,11 +13,11 @@ function type_toggle(argument) {
             break;
     }
 }
-function show_join_form() {
-    document.getElementById('join_button').style.display = 'none';
-    document.getElementById('join_form_btn_group').style.display = 'block';
-    document.getElementById('new_join_form').style.display = 'block';
-}
+// function show_join_form() {
+//     document.getElementById('join_button').style.display = 'none';
+//     document.getElementById('join_form_btn_group').style.display = 'block';
+//     document.getElementById('new_join_form').style.display = 'block';
+// }
 
 $('#closeModal').click(function () {
     $('#myModal').hide();

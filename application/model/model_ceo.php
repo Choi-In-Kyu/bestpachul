@@ -27,39 +27,17 @@
     {
       $this->callFunctions();
       switch ($_POST['action']) {
-        //콜 보내기
         case 'call':
           switch ($this->joinType()) {
-            case 'gujwa':
-              $this->call_gujwa($_POST);
-              break;
-            case 'point':
-              $this->call($_POST);
-              break;
-            case 'deposit':
-              $this->call($_POST);
-              break;
-            case 'deactivated':
-              break;
-            default:
+            case 'gujwa':$this->call_gujwa($_POST);break;
+            case 'point':$this->call_point($_POST);break;
+            case 'deposit':$this->call_deposit($_POST);break;
+            case 'deactivated':alert("만기됨");unset($_POST);move('ceo');break;
           }
-        //콜 취소
-        case 'cancel':
-          break;
-        case 'paidCall':
-          alert('유료콜!!!!');
-
-//          $this->call($_POST);
-          //unset($_POST);
-//          move('ceo');
-          break;
-        case 'reset':
-          unset($_POST);
-          move('ceo');
+        case 'cancel':break;
+        case 'paidCall': $this->call($_POST);break;
+        case 'reset':unset($_POST);move('ceo');break;
       }
-      //콜 초기화 및 돌아가기
-//      unset($_POST);
-//      move('ceo');
     }
     
     function sqlImplode($post, $glue)
@@ -83,47 +61,59 @@
       $columns = $this->arrayToString($this->sqlImplode(array_keys($post), "`"));
       $values = $this->arrayToString($this->sqlImplode($post, "'"));
       $this->executeSQL("INSERT INTO `call` ({$columns}) VALUES ($values)");
-      alert("콜을 보냈습니다!");
+      alert("콜을 요청했습니다.");
+      unset($post);
+      move('ceo');
     }
     
     function call_gujwa($post)
     {
-      if ($this->isWeekend($post['workDate'])) $point = 10000; else $point = 8000;
+      if ($this->isWeekend($post['workDate'])) {$point = 10000;
+      } else {$point = 8000;}
       $nowgujwa = $this->getTable("SELECT * FROM  `join_company` WHERE companyID = {$this->companyID} AND activated =1 AND price >0 AND  `point` IS NULL AND endDate > '{$post['workDate']}'");
       if (sizeof($nowgujwa) > 0) {
         if ($this->thisweekPoint($post) + $point <= 26000 * sizeof($this->gujwaTable)) {
           $this->call($post);
-        } else {
-          alert("콜 수 초과");
+        }
+        else {
+          alert("이번주 콜 수가 초과되었습니다.");
           $_POST['action'] = 'paidCall';
         }
-      } else alert('가입기간이 만료됨');
-    }
-    
-    
-    function confirm()
-    {
-      $url = 'http://bestpachul.com/ceo';
-      $fields = array(
-        'action' => 'paidCall',
-        'field2' => '222',
-      );
-      $vars = http_build_query($fields);
-      $ch = curl_init();
-      curl_setopt($ch, CURLOPT_URL, $url);
-      curl_setopt($ch, CURLOPT_POST, count($fields));
-      curl_setopt($ch, CURLOPT_POSTFIELDS, $vars);
-      curl_exec($ch);
+      }
+      else{
+        alert('가입만기일 이후의 콜입니다.');
+        unset($post);
+        move('ceo');
+      }
     }
     
     function call_point($post)
     {
+      if($this->isWeekend($post['workDate'])){$point = 8;}
+      else{$point = 6;}
+      $myPoint = $this->getTable("SELECT point FROM join_company WHERE companyID = '{$this->companyID}'")[0]['point'];
+      if($point>$myPoint){
+        alert(($point-$myPoint).' 포인트가 부족합니다.');
+        unset($post);
+        move('ceo');
+      }
+      else{
+        $post['point'] = $point;
+        $this->executeSQL("UPDATE join_company SET point = point-'{$point}' WHERE companyID = '{$this->companyID}' LIMIT 1");
+        $this->call($post);
+      }
+    }
     
+    function call_deposit($post){
+      if($this->isWeekend($post['workDate'])){$price = 8000;}
+      else{$price = 6000;}
+      $post['price'] = $price;
+      $this->call($post);
     }
     
     function isWeekend($date)
     {
-      if ((date('w', $date) == 0) || (date('w', $date) == 6)) return true;
+      if ((date('w', strtotime($date)) == 0) || (date('w', strtotime($date)) == 6)) return true;
       elseif (sizeof($this->getTable("SELECT * FROM `holiday` where holiday = '{$date}'"))) {
         return true;
       } else return false;

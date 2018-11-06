@@ -40,9 +40,10 @@
       $this->setAjax = false;
       //항상 index 함수를 실행
       $this->getFunctions();
-      if ($this->param->page_type != 'login') {
-        $this->index();
-      }
+//      if ($this->param->page_type != 'login') {
+//        $this->index();
+//      }
+      $this->index();
     }
 
 //모든 페이지에서 쓰이는 변수
@@ -111,6 +112,7 @@
         $tableID = $value[$tableName . "ID"];
         $joinList = $this->db->getTable("SELECT * FROM `join_{$tableName}` WHERE {$tableName}ID = {$tableID} AND activated = 1");
         if (sizeof($joinList) > 0) {
+          $this->db->executeSQL("UPDATE {$tableName} SET activated = 1 WHERE {$tableName}ID = {$tableID} LIMIT 1");
           foreach ($joinList as $key2 => $data) {
             if ($data['bookmark'] == 1) {
               $this->db->executeSQL("UPDATE {$tableName} SET activated = 1, bookmark = 1 WHERE {$tableName}ID = {$tableID} LIMIT 1");
@@ -118,7 +120,7 @@
             }
           }
         } else {
-          $this->db->executeSQL("UPDATE {$tableName} SET activated = 0 WHERE {$tableName}ID = {$tableID} LIMIT 1");
+          $this->db->executeSQL("UPDATE {$tableName} SET activated = 0, bookmark = 0 WHERE {$tableName}ID = {$tableID} LIMIT 1");
         }
       }
       return $list;
@@ -207,9 +209,10 @@
     
     function get_joinType($data)
     {
-      if (isset($data['deposit'])) return "보증금+콜비";
-      elseif (isset($data['point'])) return "포인트";
-      elseif (isset($data['price'])) return "구좌";
+      if (isset($data['deposit'])){return "보증금+콜비";}
+      elseif (isset($data['point'])){return "포인트";}
+      elseif (isset($data['price'])){return "구좌";}
+      else{return "만기됨";}
     }
     
     function get_joinPrice($data)

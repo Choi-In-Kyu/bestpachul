@@ -163,7 +163,7 @@
                             </tr>
                             <tr>
                                 <th>종일</th>
-                                <td><input class="day ad tue" type="checkbox"<?php echo $this->getDay('mon', '종일') ?> ></td>
+                                <td><input class="day ad mon" type="checkbox"<?php echo $this->getDay('mon', '종일') ?> ></td>
                                 <td><input class="day ad tue" type="checkbox"<?php echo $this->getDay('tue', '종일') ?> ></td>
                                 <td><input class="day ad wed" type="checkbox"<?php echo $this->getDay('wed', '종일') ?> ></td>
                                 <td><input class="day ad thu" type="checkbox"<?php echo $this->getDay('thu', '종일') ?> ></td>
@@ -239,6 +239,11 @@
                     $("input[name=employee_available_day-" + day + "]").val("오후");
                 }
             }
+            if(ab === 'ad'){
+                $('.' + day).prop('checked', false);
+                $(this).prop('checked', true);
+                $("input[name=employee_available_day-" + day + "]").val("종일");
+            }
         }
         else {
             if (ab === 'bn') {
@@ -257,17 +262,24 @@
                     $("input[name=employee_available_day-" + day + "]").val('null');
                 }
             }
+            if(ab === 'ad'){
+                $(this).prop('checked', false);
+                $("input[name=employee_available_day-" + day + "]").val("null");
+            }
         }
     });
 
-    $('.ad').on('change', function () {
-        if (this.checked) {
-            let day = $(this).attr('class').split(' ')[2];
-            $('.' + day).prop('checked', false);
-            $(this).prop('checked', true);
-            $("input[name=employee_available_day-" + day + "]").val("종일");
-        }
-    });
+    // $('.ad').on('change', function () {
+    //     if (this.checked) {
+    //         let day = $(this).attr('class').split(' ')[2];
+    //         $('.' + day).prop('checked', false);
+    //         $(this).prop('checked', true);
+    //         $("input[name=employee_available_day-" + day + "]").val("종일");
+    //     }
+    //     else{
+    //         $("input[name=employee_available_day-" + day + "]").val("null");
+    //     }
+    // });
 
     function auto_insert() {
         $('#startDate').val('<?php echo date("Y-m-d")?>');

@@ -26,7 +26,7 @@
             </thead>
             <tbody>
             <?php foreach ($this->callList as $key => $value): ?>
-                <tr>
+                <tr class="callList" id="<?php echo $value['callID']?>">
                     <td class="workDate"><?php echo $value['workDate'] ?></td>
                     <td><?php echo $value['startTime'] ?></td>
                     <td><?php echo $value['endTime'] ?></td>
@@ -51,6 +51,12 @@
     $('#month').on('change',function () {
         $('#month').val($(this).val());
         change();
+    });
+    $('.callList').click(function () {
+
+        let callList = JSON.parse('<?php echo json_encode($this->callList)?>');
+        let index = $(this).index();
+        alert('요청사항 : '+callList[index]['detail']);
     });
     
     function change() {

@@ -22,22 +22,41 @@
           <?php $i = $i + 1; ?>
         <?php endif; ?>
       <?php endforeach; ?>
-
+        <?php if($this->get_joinTypes($this->joinData)!='보증금'):?>
         <div class="tr">
             <div class="lbl">
                 금주 부른 콜 :
             </div>
             <div class="td">
-                평일 : <?php echo sizeof($this->weekdayCount)?> 콜 /
-                주말 : <?php echo sizeof($this->weekendCount)?> 콜
+                평일 : <?php echo sizeof($this->weekdayCount)?> 콜 / 주말 : <?php echo sizeof($this->weekendCount)?> 콜
             </div>
         </div>
+        <?php endif;?>
+      <?php if($this->get_joinTypes($this->joinData)!='포인트'):?>
+        <div class="tr">
+            <div class="lbl">
+                금주 유료 콜 :
+            </div>
+            <div class="td">
+                평일 : <?php echo sizeof($this->weekdayPaidCount)?> 콜 / 주말 : <?php echo sizeof($this->weekendPaidCount)?> 콜
+            </div>
+        </div>
+        <?php endif;?>
+        <?php if($this->get_joinTypes($this->joinData)!='포인트'):?>
         <div class="tr">
             <div class="lbl">콜비 누적 :</div>
             <div class="td">
                 <?php echo $this->callPrice;?>
             </div>
         </div>
+          <?php else:?>
+            <div class="tr">
+                <div class="lbl">잔여 포인트 :</div>
+                <div class="td">
+                  <?php echo $this->joinData[0]['point'];?>
+                </div>
+            </div>
+        <?php endif;?>
     </div>
 </div>
 

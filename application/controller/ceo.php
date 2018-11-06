@@ -14,7 +14,7 @@
     var $callPriceList;
     var $callPrice;
   
-    public function __construct($param)
+    function __construct($param)
     {
       parent::__construct($param);
     }
@@ -28,11 +28,26 @@
       $this->callList     = $this->db->getTable("SELECT * FROM `call` WHERE companyID = '{$this->companyID}'");
       $this->holidayList  = $this->db->getColumnList($this->db->getTable("SELECT * FROM `holiday`"), 'holiday');
       $this->weekendCount = $this->db->getTable(
-        "SELECT * FROM  `call` WHERE companyID ={$this->companyID} AND YEARWEEK( workDate, 1 ) = YEARWEEK( CURDATE( ) , 1 ) AND ( DAYOFWEEK( workDate ) =7 OR DAYOFWEEK( workDate ) =1)");
+        "SELECT * FROM  `call` WHERE companyID ={$this->companyID} AND YEARWEEK( workDate, 1 ) = YEARWEEK( CURDATE( ) , 1 )
+AND ( DAYOFWEEK( workDate ) =7 OR DAYOFWEEK( workDate ) =1) AND price IS NULL");
       $this->weekdayCount = $this->db->getTable(
-        "SELECT * FROM  `call` WHERE companyID ={$this->companyID} AND YEARWEEK( workDate, 1 ) = YEARWEEK( CURDATE( ) , 1 ) AND NOT (DAYOFWEEK( workDate ) =7 OR DAYOFWEEK( workDate ) =1)");
-      $this->callPriceList = $this->db->getTable("SELECT * FROM `call`  WHERE companyID =  '{$this->companyID}' AND paid = 0 AND price >0");
+        "SELECT * FROM  `call` WHERE companyID ={$this->companyID} AND YEARWEEK( workDate, 1 ) = YEARWEEK( CURDATE( ) , 1 )
+AND NOT (DAYOFWEEK( workDate ) =7 OR DAYOFWEEK( workDate ) =1) AND price IS NULL");
+      $this->weekendPaidCount = $this->db->getTable(
+        "SELECT * FROM  `call` WHERE companyID ={$this->companyID} AND YEARWEEK( workDate, 1 ) = YEARWEEK( CURDATE( ) , 1 )
+AND ( DAYOFWEEK( workDate ) =7 OR DAYOFWEEK( workDate ) =1) AND price>0");
+      $this->weekdayPaidCount = $this->db->getTable(
+        "SELECT * FROM  `call` WHERE companyID ={$this->companyID} AND YEARWEEK( workDate, 1 ) = YEARWEEK( CURDATE( ) , 1 )
+AND NOT (DAYOFWEEK( workDate ) =7 OR DAYOFWEEK( workDate ) =1) AND price>0");
+      $this->callPriceList = $this->db->getTable("SELECT * FROM `call`  WHERE companyID =  '{$this->companyID}' AND price >=0");
       $this->callPrice = $this->addAll($this->callPriceList);
+    }
+    
+    function lastJoinDate(){
+      if($this->get_joinTypes($this->joinData)=='구좌'){
+        return $this->db->getTable("SELECT * FROM join_company WHERE companyID = '{$this->companyID}' ORDER BY endDate DESC")[0]['endDate'];
+      }
+      else return null;
     }
     
     function leftDays($date)
@@ -63,24 +78,27 @@
     
     function get_joinTypes($list){
       $result = array();
-      foreach ($list as $key => $value){
-        if(isset($value['point'])){
-          if(!in_array('포인트',$result)){
-            $result[] = '포인트';
+      if(isset ($list[0])){
+        foreach ($list as $key => $value){
+          if(isset($value['point'])){
+            if(!in_array('포인트',$result)){
+              $result[] = '포인트';
+            }
+          }
+          elseif(isset($value['deposit'])){
+            if(!in_array('보증금',$result)){
+              $result[] = '보증금';
+            }
+          }
+          elseif(isset($value['price'])) {
+            if (!in_array('구좌', $result)) {
+              $result[] = '구좌';
+            }
           }
         }
-        elseif(isset($value['deposit'])){
-          if(!in_array('보증금',$result)){
-            $result[] = '보증금';
-          }
-        }
-        elseif(isset($value['price'])){
-          if(!in_array('구좌',$result)){
-            $result[] ='구좌';
-          }
-        }
+        return implode(',',$result);
       }
-      return implode(',',$result);
+      else return '만기됨';
     }
     
     function addAll($array){
