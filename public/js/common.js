@@ -18,7 +18,6 @@ function type_toggle(argument) {
 //     document.getElementById('join_form_btn_group').style.display = 'block';
 //     document.getElementById('new_join_form').style.display = 'block';
 // }
-
 $('#closeModal').click(function () {
     $('#myModal').hide();
 });

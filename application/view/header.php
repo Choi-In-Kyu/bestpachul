@@ -28,8 +28,8 @@
       <div class="dropdown col-md-2">
           <button class="dropbtn" onClick = 'location.href="<?php echo _URL?>call"'>콜관리</button>
         <div class="dropdown-content">
-            <a href="<?php echo _URL?>employee/available_date">배정관리</a>
-            <a href="<?php echo _URL?>employee/available_date">유료콜관리</a>
+            <a href="<?php echo _URL?>call/assign">배정관리</a>
+            <a href="<?php echo _URL?>call/paid">유료콜관리</a>
         </div>
       </div>
       <div class="dropdown col-md-2">

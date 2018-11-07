@@ -116,6 +116,7 @@
 <?php include_once 'table_join.php'; ?>
 
 <script>
+    // type_toggle('gujwa');
     function type_toggle(argument) {
         let detail_table = document.getElementById('detail_table');
         switch (argument) {

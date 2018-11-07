@@ -76,20 +76,6 @@
     </form>
 </div>
 
-<!-- The Modal -->
-<div id="myModal" class="modal">
-    <!-- Modal content -->
-    <div class="modal-content">
-        <form action="" method="post">
-            <input type="hidden" name="action" value="delete">
-            <input id="modal-joinID" type="hidden" name="joinID">
-            <textarea name="deleteDetail" size="200"></textarea>
-            <input class="btn btn-default" type="button" id="closeModal" value="취소">
-            <input class="btn btn-danger" type="submit" value="삭제">
-        </form>
-    </div>
-</div>
-
 <!-- Update Join Modal -->
 <div id="joinModal" class="modal">
     <!-- Modal content -->

@@ -8,7 +8,7 @@
                     <div class="tr">
                         <div class="td-label">인력명</div>
                         <div class="td">
-                            <input type="text" list="employeeList" name="employeeName">
+                            <input id="employeeName" type="text" list="employeeList" name="employeeName">
                             <datalist id="employeeList" class="input-field">
                               <?php foreach ($this->employeeList as $key => $data): ?>
                                   <option value="<?php echo $data['employeeName'] ?>"></option>

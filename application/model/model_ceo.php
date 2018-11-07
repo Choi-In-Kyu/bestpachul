@@ -15,12 +15,12 @@
       if(isset($_COOKIE['userID'])){
         if($_COOKIE['userID']==1){
           alert('관리자페이지로 이동합니다.');
-          move('company');
+          move(_URL.'company');
         }
       }
       else{
         alert('로그인이 필요한 서비스입니다.');
-        move ('login');
+        move (_URL.'login');
       }
     }
     
@@ -85,6 +85,8 @@
       }
       $this->executeSQL("UPDATE `call` SET `cancelled` = 1 WHERE `callID` = '{$post['callID']}' LIMIT 1");
       alert('콜을 취소했습니다.');
+      unset($post);
+      move('ceo');
     }
     
     function call_gujwa($post)
@@ -119,7 +121,7 @@
         move('ceo');
       }
       else{
-        $point = $post['point'];
+        $post['point']=$point;
         $this->executeSQL("UPDATE join_company SET point = point-'{$point}' WHERE companyID = '{$this->companyID}' LIMIT 1");
         $this->call($post);
       }
@@ -151,9 +153,10 @@
     function thisweekPoint($post)
     {
       $workDate = $post['workDate'];
-      $weekendList = $this->getTable("SELECT * FROM  `call` WHERE companyID ={$this->companyID} AND YEARWEEK( workDate, 1 ) = YEARWEEK( '{$workDate}' , 1 ) AND ( DAYOFWEEK( workDate ) =7 OR DAYOFWEEK( workDate ) =1)");
-      $weekdayList = $this->getTable("SELECT * FROM  `call` WHERE companyID ={$this->companyID} AND YEARWEEK( workDate, 1 ) = YEARWEEK( '{$workDate}' , 1 ) AND NOT( DAYOFWEEK( workDate ) =7 OR DAYOFWEEK( workDate ) =1)");
+      $weekendList = $this->getTable("SELECT * FROM  `call` WHERE companyID ={$this->companyID} AND YEARWEEK( workDate, 1 ) = YEARWEEK( '{$workDate}' , 1 ) AND ( DAYOFWEEK( workDate ) =7 OR DAYOFWEEK( workDate ) =1) AND `cancelled`=0");
+      $weekdayList = $this->getTable("SELECT * FROM  `call` WHERE companyID ={$this->companyID} AND YEARWEEK( workDate, 1 ) = YEARWEEK( '{$workDate}' , 1 ) AND NOT( DAYOFWEEK( workDate ) =7 OR DAYOFWEEK( workDate ) =1) AND `cancelled`=0");
       $point = (sizeof($weekdayList) * 8000) + (sizeof($weekendList) * 10000);
+      alert($point);
       return $point;
     }
     

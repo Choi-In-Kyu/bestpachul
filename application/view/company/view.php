@@ -26,12 +26,12 @@
         <tbody>
         <?php foreach ($this->joinList as $key => $data): ?>
             <tr style="background-color:<?php echo $this->joinColor($data, 'company');?>">
-                <td class="al_c"><?php echo $data['join_companyID'] ?></td>
+                <td class="al_c update join_id"><?php echo $data['join_companyID'] ?></td>
                 <td class="al_l"><?php echo $this->get_joinType($data); ?></td>
-                <td class="al_l"><?php echo $this->get_joinPrice($data); ?></td>
+                <td class="al_l update join_price"><?php echo $this->get_joinPrice($data); ?></td>
                 <td class="al_l"><?php echo $data['startDate'] ?></td>
                 <td class="al_l"><?php echo $this->get_endDate($data,'company'); ?></td>
-                <td class="al_l"><?php echo $this->get_joinDetail($data); ?></td>
+                <td class="al_l update join_detail"><?php echo $this->get_joinDetail($data); ?></td>
                 <td class="al_c"><?php echo $this->get_joinDeleteBtn($data,'company'); ?></td>
             </tr>
         <?php endforeach ?>
@@ -74,6 +74,21 @@
     </div>
 </div>
 
+<!-- Update Join Modal -->
+<div id="joinModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <form action="" method="post">
+            <input type="hidden" name="action" value="join_update">
+            <input id="updateID" type="hidden" name="joinID">
+            <input type="number" id="updatePrice" name="price">
+            <textarea id="updateDetail" name="detail" size="200"></textarea>
+            <input class="btn btn-default" type="button" id="closeJoinModal" value="취소">
+            <input class="btn btn-insert" type="submit" value="수정">
+        </form>
+    </div>
+</div>
+
 <script>
     function type_toggle(argument) {
         let detail_table = document.getElementById('detail_table');
@@ -94,10 +109,21 @@
         document.getElementById('join_form_btn_group').style.display = 'block';
         document.getElementById('new_join_form').style.display = 'block';
     }
-
     $('.btnModal').click(function () {
         $('#myModal').show();
         $('#modal-joinID').val(this.value);
-    })
+    });
+    $('#closeJoinModal').click(function () {
+        $('#joinModal').hide();
+    });
+    $('.update').click(function () {
+        let id = $(this).parent().children('.join_id').html();
+        let price = $(this).parent().children('.join_price').html();
+        let detail = $(this).parent().children('.join_detail').html();
+        $('#joinModal').show();
+        $('#updateID').val(id);
+        $('#updatePrice').val(parseInt(price.replace(',','')));
+        $('#updateDetail').text(detail.replace('<br>','\n'));
+    });
 </script>
 <script src="/public/js/common.js"></script>

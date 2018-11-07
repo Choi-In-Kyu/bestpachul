@@ -23,6 +23,7 @@
     var $availableDateList;
     var $employeeList;
     var $blackList;//
+    var $callList;
     var $day;
     
     public $defaultCondition = array("filter" => " (deleted = 0) ");
@@ -51,9 +52,10 @@
       $this->addressList = $this->db->getTable("SELECT * FROM `address`");
       $this->availableDateList = $this->db->getTable("SELECT * FROM employee_available_date");
       $this->day = array('일', '월', '화', '수', '목', '금', '토');
-      $this->employeeList = $this->db->getTable("SELECT * FROM employee WHERE activated = 1 AND deleted = 0 ORDER BY employeeName ASC");
-      $this->companyList = $this->db->getTable("SELECT * FROM company WHERE activated = 1 AND deleted = 0 ORDER BY companyName ASC");
+      $this->employeeList = $this->db->getTable("SELECT * FROM employee ORDER BY employeeName ASC");
+      $this->companyList = $this->db->getTable("SELECT * FROM company ORDER BY companyName ASC");
       $this->blackList = $this->db->getTable("SELECT * FROM `blackList` ORDER BY createdTime DESC");
+      $this->callList = $this->db->getTable("SELECT * FROM `call` ORDER BY createdTime DESC");
     }
 
 //index
