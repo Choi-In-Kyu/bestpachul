@@ -8,10 +8,20 @@
     var $pointTable;
     var $depositTable;
     var $error;
-    
+  
     function __construct($param)
     {
       parent::__construct($param);
+      if(isset($_COOKIE['userID'])){
+        if($_COOKIE['userID']==1){
+          alert('관리자페이지로 이동합니다.');
+          move('company');
+        }
+      }
+      else{
+        alert('로그인이 필요한 서비스입니다.');
+        move ('login');
+      }
     }
     
     function callFunctions()
@@ -34,7 +44,8 @@
             case 'deposit':$this->call_deposit($_POST);break;
             case 'deactivated':alert("만기됨");unset($_POST);move('ceo');break;
           }
-        case 'cancel':break;
+          break;//
+        case 'cancel':$this->cancel($_POST);break;
         case 'paidCall': $this->call($_POST);break;
         case 'reset':unset($_POST);move('ceo');break;
       }
@@ -64,6 +75,16 @@
       alert("콜을 요청했습니다.");
       unset($post);
       move('ceo');
+    }
+    
+    function cancel($post){
+      $callID = $post['callID'];
+      $point = $this->getTable("SELECT * FROM `call` WHERE `callID` = '{$callID}'")[0]['point'];
+      if(isset($point)){
+        $this->executeSQL("UPDATE join_company SET point = point+'{$point}' WHERE companyID = '{$this->companyID}' LIMIT 1");
+      }
+      $this->executeSQL("UPDATE `call` SET `cancelled` = 1 WHERE `callID` = '{$post['callID']}' LIMIT 1");
+      alert('콜을 취소했습니다.');
     }
     
     function call_gujwa($post)
@@ -98,7 +119,7 @@
         move('ceo');
       }
       else{
-        $post['point'] = $point;
+        $point = $post['point'];
         $this->executeSQL("UPDATE join_company SET point = point-'{$point}' WHERE companyID = '{$this->companyID}' LIMIT 1");
         $this->call($post);
       }

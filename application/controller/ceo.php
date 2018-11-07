@@ -13,11 +13,6 @@
     var $weekdayCount;
     var $callPriceList;
     var $callPrice;
-  
-    function __construct($param)
-    {
-      parent::__construct($param);
-    }
     
     function basic()
     {
@@ -29,17 +24,17 @@
       $this->holidayList  = $this->db->getColumnList($this->db->getTable("SELECT * FROM `holiday`"), 'holiday');
       $this->weekendCount = $this->db->getTable(
         "SELECT * FROM  `call` WHERE companyID ={$this->companyID} AND YEARWEEK( workDate, 1 ) = YEARWEEK( CURDATE( ) , 1 )
-AND ( DAYOFWEEK( workDate ) =7 OR DAYOFWEEK( workDate ) =1) AND price IS NULL");
+AND ( DAYOFWEEK( workDate ) =7 OR DAYOFWEEK( workDate ) =1) AND price IS NULL AND cancelled=0");
       $this->weekdayCount = $this->db->getTable(
         "SELECT * FROM  `call` WHERE companyID ={$this->companyID} AND YEARWEEK( workDate, 1 ) = YEARWEEK( CURDATE( ) , 1 )
-AND NOT (DAYOFWEEK( workDate ) =7 OR DAYOFWEEK( workDate ) =1) AND price IS NULL");
+AND NOT (DAYOFWEEK( workDate ) =7 OR DAYOFWEEK( workDate ) =1) AND price IS NULL AND cancelled=0");
       $this->weekendPaidCount = $this->db->getTable(
         "SELECT * FROM  `call` WHERE companyID ={$this->companyID} AND YEARWEEK( workDate, 1 ) = YEARWEEK( CURDATE( ) , 1 )
-AND ( DAYOFWEEK( workDate ) =7 OR DAYOFWEEK( workDate ) =1) AND price>0");
+AND ( DAYOFWEEK( workDate ) =7 OR DAYOFWEEK( workDate ) =1) AND price>0 AND cancelled=0");
       $this->weekdayPaidCount = $this->db->getTable(
         "SELECT * FROM  `call` WHERE companyID ={$this->companyID} AND YEARWEEK( workDate, 1 ) = YEARWEEK( CURDATE( ) , 1 )
-AND NOT (DAYOFWEEK( workDate ) =7 OR DAYOFWEEK( workDate ) =1) AND price>0");
-      $this->callPriceList = $this->db->getTable("SELECT * FROM `call`  WHERE companyID =  '{$this->companyID}' AND price >=0");
+AND NOT (DAYOFWEEK( workDate ) =7 OR DAYOFWEEK( workDate ) =1) AND price>0 AND cancelled=0");
+      $this->callPriceList = $this->db->getTable("SELECT * FROM `call`  WHERE companyID =  '{$this->companyID}' AND price >=0 AND cancelled=0");
       $this->callPrice = $this->addAll($this->callPriceList);
     }
     
@@ -115,5 +110,9 @@ AND NOT (DAYOFWEEK( workDate ) =7 OR DAYOFWEEK( workDate ) =1) AND price>0");
         $array[$year][] = date('m',strtotime($value['workDate']));
       }
       return $array;
+    }
+    
+    function employeeName($id){
+      return $this->db->getTable("SELECT * FROM employee WHERE employeeID = '{$id}'")[0]['employeeName'];
     }
   }

@@ -26,9 +26,10 @@
           </div>
       </div>
       <div class="dropdown col-md-2">
-        <button class="dropbtn">콜관리</button>
+          <button class="dropbtn" onClick = 'location.href="<?php echo _URL?>call"'>콜관리</button>
         <div class="dropdown-content">
-          <a href="#">콜 관리</a>
+            <a href="<?php echo _URL?>employee/available_date">배정관리</a>
+            <a href="<?php echo _URL?>employee/available_date">유료콜관리</a>
         </div>
       </div>
       <div class="dropdown col-md-2">
@@ -36,7 +37,7 @@
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-          <a href="#">블랙리스트 관리</a>
+          <a href="<?php echo _URL?>manage/black">블랙리스트 관리</a>
         </div>
       </div>
     </div>

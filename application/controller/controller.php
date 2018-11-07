@@ -22,6 +22,7 @@
     var $workFieldList;
     var $availableDateList;
     var $employeeList;
+    var $blackList;//
     var $day;
     
     public $defaultCondition = array("filter" => " (deleted = 0) ");
@@ -40,9 +41,6 @@
       $this->setAjax = false;
       //항상 index 함수를 실행
       $this->getFunctions();
-//      if ($this->param->page_type != 'login') {
-//        $this->index();
-//      }
       $this->index();
     }
 
@@ -53,7 +51,9 @@
       $this->addressList = $this->db->getTable("SELECT * FROM `address`");
       $this->availableDateList = $this->db->getTable("SELECT * FROM employee_available_date");
       $this->day = array('일', '월', '화', '수', '목', '금', '토');
-      $this->employeeList = $this->db->getTable("SELECT * FROM employee WHERE deleted = 0");
+      $this->employeeList = $this->db->getTable("SELECT * FROM employee WHERE activated = 1 AND deleted = 0 ORDER BY employeeName ASC");
+      $this->companyList = $this->db->getTable("SELECT * FROM company WHERE activated = 1 AND deleted = 0 ORDER BY companyName ASC");
+      $this->blackList = $this->db->getTable("SELECT * FROM `blackList` ORDER BY createdTime DESC");
     }
 
 //index

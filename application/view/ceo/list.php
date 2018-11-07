@@ -31,7 +31,21 @@
                     <td><?php echo $value['startTime'] ?></td>
                     <td><?php echo $value['endTime'] ?></td>
                     <td><?php echo $value['workField'] ?></td>
-                    <td><?php echo $value['employeeID'] ?></td>
+                    <td>
+                      <?php if (isset($value['employeeID'])): ?>
+                        <?php echo $this->employeeName($value['employeeID']);?>
+                      <?php else: ?>
+                        <?php if ($value['cancelled'] == 1): ?>
+                          (취소됨)
+                        <?php else: ?>
+                              <form action="" method="post">
+                                  <input type="hidden" name="action" value="cancel">
+                                  <input type="hidden" name="callID" value="<?php echo $value['callID'] ?>">
+                                  <input class="btn" type="submit" value="취소">
+                              </form>
+                        <?php endif; ?>
+                      <?php endif; ?>
+                    </td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
@@ -65,6 +79,7 @@
         let endTime = new Date(new Date(parseInt($('#year').val()) + "/" + parseInt($('#month').val()) + "/01").setMonth(new Date(parseInt($('#year').val()) + "/" + parseInt($('#month').val()) + "/01").getMonth()+1));
         let rows = $('.workDate');
         let yearArray = JSON.parse('<?php echo json_encode($this->getDate($this->callList))?>');
+        console.log(typeof(yearArray));
         for (let i = 0; i<$('.month').length; i++){
             if(yearArray[$('#year').val()].map(Number).includes(i+1)){
                 $('.month').eq(i).css('display','block');
