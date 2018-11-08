@@ -8,9 +8,6 @@
   
   Class Manage extends Controller
   {
-//    var $blackList;
-    
     function basic(){
-//      $this->blackList = $this->db->getTable("SELECT * FROM `blackList`");
     }
   }

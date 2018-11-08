@@ -6,7 +6,7 @@
     ?>
   </h1>
   <div class="form-style-2">
-    <form id="employee_form" action="" method="post" enctype=''>
+    <form id="employee_form" action="" method="post">
       <fieldset>
         <input type="hidden" name="action" value="<?php echo $this->action ?>">
         <input type="hidden" name="employee-employeeID" value="<?php echo $this->employeeData['employeeID'] ?>">
@@ -77,7 +77,7 @@
               <input type="text" list="addressList" name="employee-address"
                      value="<?php echo $this->employeeData['address']; ?>">
               <datalist id="addressList">
-                <?php foreach ($this->addressList as $key => $data): ?>
+                <?php foreach ($this->address_List as $key => $data): ?>
                   <option value="<?php echo $data['address'] ?>"></option>
                 <?php endforeach ?>
               </datalist>
@@ -92,7 +92,7 @@
               <input type="text" list="addressList" name="employee-workPlace"
                      value="<?php echo $this->employeeData['workPlace']; ?>">
               <datalist id="addressList">
-                <?php foreach ($this->addressList as $key => $data): ?>
+                <?php foreach ($this->address_List as $key => $data): ?>
                   <option value="<?php echo $data['address'] ?>"></option>
                 <?php endforeach ?>
               </datalist>

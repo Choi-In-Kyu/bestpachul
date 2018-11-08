@@ -35,37 +35,6 @@
       return $age;
     }
     
-    function employeeInsert($post)
-    {
-      //insert <-> update
-      switch ($post['action']) {
-        case 'insert':
-          //인력명 중복 배제
-          $post['employee-employeeName'] = $this->removeDuplicate($post, 'employee', 'employeeName');
-          $this->getQuery($post, 'employee');
-          //join_employee 입력
-          $post['join_employee-employeeID'] = $this->db->lastInsertId();
-          $post['employee_available_day-employeeID'] = $this->db->lastInsertId();
-          $this->getQuery($post, 'join_employee');
-          $this->getQuery($post, 'employee_available_day');
-          break;
-        case 'update':
-          //인력명 중복 배제
-          if ($post['employee-employeeID'] != $this->getTable("SELECT employeeID from employee WHERE employeeName = '{$post['employee-employeeName']}' LIMIT 1")[0]['employeeID']) {
-            $post['employee-employeeName'] = $this->removeDuplicate($post, 'employee', 'employeeName');
-          }
-          $this->getQuery($post, 'employee');
-          $this->getQuery($post, 'employee_available_day', 'employee');
-          break;
-        case 'new_insert':
-          $this->getQuery($post, 'join_employee', 'employee');
-          break;
-        case 'date_insert':
-          $post['employee_available_date-employeeID'] = $this->getTable("SELECT employeeID from employee WHERE employeeName = '{$post['employee_available_date-employeeID']}'")[0]['employeeID'];
-          $this->getQuery($post, 'employee_available_date');
-      }
-    }
-    
     function employeeDelete($post)
     {
       $deletedDate = date("Ymd");
@@ -83,23 +52,36 @@
     function action()
     {
       header("Content-type:text/html;charset=utf8");
-      $msg = "완료되었습니다.";
+      $msg = "[SYSTEM] ";
       $url = $this->param->get_page;
-      
       switch ($_POST['action']) {
         case 'insert' :
-          $this->employeeInsert($_POST);
+          $_POST['employee-employeeName'] = $this->removeDuplicate($_POST, 'employee', 'employeeName');
+          $this->getQuery($_POST, 'employee');
+          //join_employee 입력
+          $_POST['join_employee-employeeID'] = $this->db->lastInsertId();
+          $_POST['employee_available_day-employeeID'] = $this->db->lastInsertId();
+          $this->getQuery($_POST, 'join_employee');
+          $this->getQuery($_POST, 'employee_available_day');
           $msg .= "입력되었습니다";
           break;
         case 'update' :
+          if ($_POST['employee-employeeID'] != $this->getTable("SELECT employeeID from employee WHERE employeeName = '{$_POST['employee-employeeName']}' LIMIT 1")[0]['employeeID']) {
+            $_POST['employee-employeeName'] = $this->removeDuplicate($_POST, 'employee', 'employeeName');
+          }
+          $this->getQuery($_POST, 'employee');
+          $this->getQuery($_POST, 'employee_available_day', 'employee');
           $url .= "/view/{$this->param->idx}";
-          $this->employeeInsert($_POST);
           $msg .= "수정되었습니다";
           break;
         case 'new_insert':
+          $this->getQuery($_POST, 'join_employee', 'employee');
           $url .= "/view/{$this->param->idx}";
-          $this->employeeInsert($_POST);
           $msg .= "추가되었습니다";
+          break;
+        case 'date_insert':
+          $post['employee_available_date-employeeID'] = $this->getTable("SELECT employeeID from employee WHERE employeeName = '{$_POST['employee_available_date-employeeID']}'")[0]['employeeID'];
+          $this->getQuery($post, 'employee_available_date');
           break;
         case 'delete' :
           if (isset($this->param->idx)) $url .= "/view/{$this->param->idx}";

@@ -16,4 +16,5 @@ function __autoload($className){
   require_once("{$dir}{$className}.php");
 }
 
-//function access($bool,$msg,$url = false){if(!$bool){alert($msg);move($url);}}
+$today = date("Y-m-d");
+$tomorrow = date("Y-m-d", strtotime('+1 day'));

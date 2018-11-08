@@ -51,8 +51,6 @@
                 <input type="hidden" name="filterCondition" value="<?php echo $this->condition['filter'] ?>">
                 <input type="hidden" name="order" value="<?php echo $this->order ?>">
                 <input type="hidden" name="direction" value="<?php echo $this->direction ?>">
-                <input type="hidden" name="join" value="<?php echo $this->join ?>">
-                <input type="hidden" name="group" value="<?php echo $this->group ?>">
                 <input type="text" name="keyword">
                 <input class="btn btn-submit" type="submit" value="검색"/>
             </form>
@@ -77,8 +75,6 @@
                     <input type="hidden" name="order" value="company.companyID">
                     <input type="hidden" name="direction" value=<?php echo $this->direction ?>>
                     <input type="hidden" name="keyword" value=<?php echo $this->keyword ?>>
-                    <input type="hidden" name="join" value="<?php echo $this->join ?>">
-                    <input type="hidden" name="group" value="<?php echo $this->group ?>">
                     <input type="submit" value="#">
                 </th>
             </form>
@@ -88,8 +84,6 @@
                     <input type="hidden" name="order" value="company.companyName">
                     <input type="hidden" name="direction" value=<?php echo $this->direction ?>>
                     <input type="hidden" name="keyword" value=<?php echo $this->keyword ?>>
-                    <input type="hidden" name="join" value="<?php echo $this->join ?>">
-                    <input type="hidden" name="group" value="<?php echo $this->group ?>">
                     <input type="submit" value="상호명">
                 </th>
             </form>
@@ -99,8 +93,6 @@
                     <input type="hidden" name="order" value="address">
                     <input type="hidden" name="direction" value=<?php echo $this->direction ?>>
                     <input type="hidden" name="keyword" value=<?php echo $this->keyword ?>>
-                    <input type="hidden" name="join" value="<?php echo $this->join ?>">
-                    <input type="hidden" name="group" value="<?php echo $this->group ?>">
                     <input type="submit" value="간단주소">
                 </th>
             </form>
@@ -110,8 +102,6 @@
                     <input type="hidden" name="order" value="businessType">
                     <input type="hidden" name="direction" value=<?php echo $this->direction ?>>
                     <input type="hidden" name="keyword" value=<?php echo $this->keyword ?>>
-                    <input type="hidden" name="join" value="<?php echo $this->join ?>">
-                    <input type="hidden" name="group" value="<?php echo $this->group ?>">
                     <input type="submit" value="업종">
                 </th>
             </form>
@@ -121,8 +111,6 @@
                     <input type="hidden" name="order" value="grade">
                     <input type="hidden" name="direction" value=<?php echo $this->direction ?>>
                     <input type="hidden" name="keyword" value=<?php echo $this->keyword ?>>
-                    <input type="hidden" name="join" value="<?php echo $this->join ?>">
-                    <input type="hidden" name="group" value="<?php echo $this->group ?>">
                     <input type="submit" value="점수">
                 </th>
             </form>

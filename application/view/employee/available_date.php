@@ -1,7 +1,7 @@
 <div class="board_view auto-center" style="margin: 0 200px;">
     <h1>근무 가능일 / 근무 불가능일</h1>
     <div class="form-style-2">
-        <form id="employee_form" action="" method="post" enctype=''>
+        <form id="employee_form" action="" method="post">
             <fieldset>
                 <input type="hidden" name="action" value="insert_day">
                 <input type="hidden" name="employee-employeeID" value="<?php echo $this->employeeData['employeeID'] ?>">
@@ -11,7 +11,7 @@
                         <div class="td">
                             <input type="text" list="employeeList" name="employeeName">
                             <datalist id="employeeList" class="input-field">
-                              <?php foreach ($this->employeeList as $key => $data): ?>
+                              <?php foreach ($this->employee_List as $key => $data): ?>
                                   <option value="<?php echo $data['employeeName'] ?>"></option>
                               <?php endforeach ?>
                             </datalist>
@@ -56,10 +56,10 @@
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($this->availableDateList as $key => $data): ?>
+        <?php foreach ($this->employee_available_date_List as $key => $data): ?>
             <tr>
                 <td class="al_c"><?php echo $data['employeeID'] ?></td>
-                <?php $employeeName = $this->db->getTable("SELECT * FROM employee WHERE employeeID = {$data['employeeID']}")[0]['employeeName']?>
+                <?php $employeeName = $this->db->select('employee',"employeeID = $data[employeeID]",'employeeName');?>
                 <td class="al_c"><?php echo $employeeName ?></td>
                 <td class="al_c"><?php echo $data['availableDate'] ?></td>
                 <td class="al_c"><?php echo $data['notAvailableDate'] ?></td>

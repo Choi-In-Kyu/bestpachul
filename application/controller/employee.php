@@ -63,6 +63,5 @@
         }
       }
       else return $this->dayList[0][$day];
-      
     }
   }

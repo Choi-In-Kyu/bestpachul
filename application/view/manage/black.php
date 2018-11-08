@@ -1,17 +1,17 @@
 <div class="board_view auto-center" style="margin: 0 200px;">
     <h1>블랙리스트 관리</h1>
     <div class="form-style-2">
-        <form id="employee_form" action="" method="post" enctype=''>
+        <form id="company_form" action="" method="post" enctype=''>
             <fieldset>
                 <input type="hidden" name="action" value="black">
                 <div class="table">
                     <div class="tr">
                         <div class="td-label">인력명</div>
                         <div class="td">
-                            <input id="employeeName" type="text" list="employeeList" name="employeeName">
-                            <datalist id="employeeList" class="input-field">
-                              <?php foreach ($this->employeeList as $key => $data): ?>
-                                  <option value="<?php echo $data['employeeName'] ?>"></option>
+                            <input id="companyName" type="text" list="companyList" name="companyName">
+                            <datalist id="companyList" class="input-field">
+                              <?php foreach ($this->company_List as $key => $data): ?>
+                                  <option value="<?php echo $data['companyName'] ?>"></option>
                               <?php endforeach ?>
                             </datalist>
                         </div>
@@ -19,7 +19,7 @@
                         <div class="td">
                             <input type="text" list="companyList" name="companyName">
                             <datalist id="companyList" class="input-field">
-                              <?php foreach ($this->companyList as $key => $data): ?>
+                              <?php foreach ($this->company_List as $key => $data): ?>
                                   <option value="<?php echo $data['companyName'] ?>"></option>
                               <?php endforeach ?>
                             </datalist>
@@ -62,13 +62,13 @@
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($this->blackList as $key => $data): ?>
+        <?php foreach ($this->blackList_List as $key => $data): ?>
             <tr>
                 <td class="al_c"><?php echo $data['blackListID'] ?></td>
-                <td class="al_c"><?php echo $this->db->getTable("SELECT * FROM employee WHERE employeeID = '{$data['employeeID']}'")[0]['employeeName']?></td>
-                <td class="al_c"><?php echo $this->db->getTable("SELECT * FROM company WHERE companyID = '{$data['companyID']}'")[0]['companyName']?></td>
-                <td class="al_c"><?php echo $data['ceoReg'] ?></td>
-                <td class="al_c"><?php echo $data['detail'] ?></td>
+                <td class="al_l"><?php echo $this->db->select('employee', "employeeID = $data[employeeID]",'employeeName')?></td>
+                <td class="al_l"><?php echo $this->db->select('company', "companyID = $data[companyID]",'companyName')?></td>
+                <td class="al_l"><?php if($data['ceoReg']==1) echo '안불러요'; else echo '안가요'?></td>
+                <td class="al_l"><?php echo $data['detail'] ?></td>
             </tr>
         <?php endforeach ?>
         </tbody>

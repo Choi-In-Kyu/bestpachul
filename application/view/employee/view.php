@@ -70,8 +70,8 @@
             </table>
         </div>
         <div class="btn_group">
-            <button type="button" class="btn btn-default" onclick="cancel_join_form()">취소
-                <button class="btn btn-submit" type="submit">가입 추가</button>
+            <button type="button" class="btn btn-default" onclick="cancel_join_form()">취소</button>
+            <button class="btn btn-submit" type="submit">가입 추가</button>
         </div>
     </form>
 </div>

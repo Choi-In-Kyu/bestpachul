@@ -27,7 +27,8 @@
     <div id="datepicker1" style="display: inline; position: fixed; top: auto;"></div>
     <table id="call_table" width="100%">
         <colgroup>
-            <col width="10%">
+            <col width="5%">
+            <col width="5%">
             <col width="10%">
             <col width="10%">
             <col width="10%">
@@ -41,10 +42,10 @@
         <thead>
         <tr>
             <th>#</th>
+            <th>구분</th>
             <th>근무날짜</th>
             <th>업체명</th>
-            <th>시작</th>
-            <th>끝</th>
+            <th>근무시간</th>
             <th>업종</th>
             <th>일당</th>
             <th>요청사항</th>
@@ -53,15 +54,15 @@
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($this->callList as $key => $data): ?>
+        <?php foreach ($this->call_List as $key => $data): ?>
             <tr style="background-color: <?php echo $data['color'] ?>">
                 <td class="al_c"><?php echo $data['callID'] ?></td>
+                <td class="al_c"><?php echo $this->callType($data) ?></td>
                 <td class="al_l"><?php echo $data['workDate'] ?></td>
-                <td class="al_l"><?php echo $data['companyID'] ?></td>
-                <td class="al_l"><?php echo $data['startTime'] ?></td>
-                <td class="al_l"><?php echo $data['endTime'] ?></td>
+                <td class="al_l"><?php echo $this->db->select('company',"companyID = $data[companyID]",'companyName')?></td>
+                <td class="al_l"><?php echo $this->timeType($data) ?></td>
                 <td class="al_l"><?php echo $data['workField'] ?></td>
-                <td class="al_l"><?php echo $data['workField'] ?></td>
+                <td class="al_l"><?php echo $data['salary'] ?></td>
                 <td class="al_l"><?php echo $data['detail'] ?></td>
                 <td class="al_l">(배정버튼)</td>
                 <td class="al_l">(취소버튼)</td>

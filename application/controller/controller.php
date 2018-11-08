@@ -7,24 +7,14 @@
     var $db;
     var $title;
     var $setAjax;
-    
     var $condition;
     var $keyword;
     var $order;
     var $orderBy;
     var $direction;
     var $join;
-    var $group;
-    var $today;
-    var $tomorrow;
-    var $afterTomorrow;
-    var $addressList;
-    var $workFieldList;
-    var $availableDateList;
-    var $employeeList;
-    var $blackList;//
-    var $callList;
     var $day;
+    var $tables;
     
     public $defaultCondition = array("filter" => " (deleted = 0) ");
     public $activatedCondition = array("filter" => " (activated = 1 AND deleted = 0) ");
@@ -37,6 +27,7 @@
     {
       header("Content-type:text/html;charset=utf8");
       $this->param = $param;
+      //Model 객체 생성
       $modelName = "Model_{$this->param->page_type}";
       $this->db = new $modelName($this->param);
       $this->setAjax = false;
@@ -48,14 +39,11 @@
 //모든 페이지에서 쓰이는 변수
     function getFunctions()
     {
-      $this->workFieldList = $this->db->getTable("SELECT * FROM `workField`");
-      $this->addressList = $this->db->getTable("SELECT * FROM `address`");
-      $this->availableDateList = $this->db->getTable("SELECT * FROM employee_available_date");
+      $this->tables =  array('company','ceo','employee','call','address','businessType','workField','call','employee_available_date', 'blackList');
+      foreach ($this->tables as $value){
+        $this->{$value.'_List'} = $this->db->select($value);
+      }
       $this->day = array('일', '월', '화', '수', '목', '금', '토');
-      $this->employeeList = $this->db->getTable("SELECT * FROM employee ORDER BY employeeName ASC");
-      $this->companyList = $this->db->getTable("SELECT * FROM company ORDER BY companyName ASC");
-      $this->blackList = $this->db->getTable("SELECT * FROM `blackList` ORDER BY createdTime DESC");
-      $this->callList = $this->db->getTable("SELECT * FROM `call` ORDER BY createdTime DESC");
     }
 
 //index
@@ -158,10 +146,8 @@
     
     function getBasicFunction($tableName)
     {
-      $this->join = $_POST['join'];
       $this->keyword = $_POST['keyword'];
       $this->order = $_POST['order'];
-      $this->group = $_POST['group'];
       $this->direction = $_POST['direction'];
       //condition - 필터링, 검색, 정렬 기능
       if (isset($_POST['filterCondition'])) {
@@ -180,7 +166,7 @@
           $this->orderBy = " {$_POST['order']} {$_POST['direction']}";
       }
       //get list
-      $this->list = $this->db->getList($this->condition, $this->orderBy, $this->join, $this->group);
+      $this->list = $this->db->getList($this->condition, $this->orderBy);
       $this->list = $this->initActCondition($this->list, $tableName);
       $this->list = $this->getActCondition($this->list, $tableName);
       

@@ -1,9 +1,11 @@
 <div class="mobile_view">
     <form action="" id="callForm" method="post">
-        <input type="hidden" name="action"
-               value="<?php if ($_POST['action'] == 'paidCall') echo 'paidCall'; else echo 'call' ?>">
-      
-      <?php if ($_POST['action'] != 'paidCall'): ?>
+        <input type="hidden" name="action" value="<?php if ($_POST['action'] == 'paidCall') echo 'paidCall'; else echo 'call' ?>">
+        <input type="hidden" name="startTime" id="startTime">
+        <input type="hidden" name="endTime" id="endTime">
+        <input type="number" name="salary" id="salary">
+
+        <?php if ($_POST['action'] != 'paidCall'): ?>
           <!--날짜-->
           <div class="container">
               <div class="tr tr-title">
@@ -11,7 +13,6 @@
               </div>
               <div class="tr tr-body">
                   <div class="td td-50">
-                    <?php $tomorrow = date("Y-m-d", strtotime('+1 day')) ?>
                       <input class="date" id="date" type="date" name="workDate" min="<?php echo $tomorrow ?>"
                              max="<?php echo $this->lastJoinDate()?>" required
                              value="<?php echo $tomorrow ?>">
@@ -34,7 +35,6 @@
               </div>
               <div class="tr tr-body">
                   <div class="td td-70" id="">
-                      <input type="hidden" name="startTime" id="startTime" value="">
                       <select class="time hour" id="startHour" form="callForm" required>
                           <option value="" selected disabled hidden>근무 시작 시간</option>
                         <?php for ($i = 1; $i < 25; $i++): ?>
@@ -47,7 +47,6 @@
                           <option value="00">00분</option>
                           <option value="30">30분</option>
                       </select>
-                      <input type="hidden" name="endTime" id="endTime" value="">
                       <select class="time hour" id="endHour" form="callForm" required>
                           <option value="" selected disabled hidden>근무 종료 시간</option>
                         <?php for ($i = 1; $i < 37; $i++): ?>
@@ -69,7 +68,7 @@
               </div>
               <div class="tr-title">
                   <div class="td">
-                      <h1 id="salary">근무시간을 선택해주세요</h1>
+                      <h1 id="salaryInfo">근무시간을 선택해주세요</h1>
                   </div>
               </div>
           </div>
@@ -84,7 +83,7 @@
                       <button type="button" id="kitchen">주방보조</button>
                       <button type="button" id="hall">홀서빙</button>
                       <select name="workField" id="workField" form="callForm" required>
-                        <?php foreach ($this->workFieldList as $key => $data): ?>
+                        <?php foreach ($this->workField_List as $key => $data): ?>
                             <option value="<?php echo $data['workField']; ?>">
                               <?php echo $data['workField'] ?>
                             </option>
@@ -111,6 +110,7 @@
           <input type="hidden" name="startTime" value="<?php echo $_POST['startTime']?>">
           <input type="hidden" name="endTime" value="<?php echo $_POST['endTime']?>">
           <input type="hidden" name="workField" value="<?php echo $_POST['workField']?>">
+          <input type="hidden" name="salary" value="<?php echo $_POST['salary']?>">
           <input type="hidden" name="detail" value="<?php echo $_POST['detail']?>">
         <div>
             <p>아래와 같이 유료콜을 보내시겠습니까?</p>
@@ -143,7 +143,7 @@
     let endHour = $('#endHour');
     let endMin = $('#endMin');
     let minute = $('.minute');
-    let salary = $('#salary');
+    let salary = $('#salaryInfo');
     let submit = $('#submitBtn');
     let date = $('#date');
     
@@ -227,6 +227,7 @@
             }
         }
         salary.html("근무시간: " + time + " 시간 / 일당: " + money + " 원");
+        $('#salary').val(money);
     }
 
     $(document).ready(function () {

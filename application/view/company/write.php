@@ -23,7 +23,7 @@
                             <input type="text" list="ceoList" name="ceo-ceoName" size="20" required
                                    value="<?php echo $this->ceoData['ceoName']; ?>">
                             <datalist id="ceoList" class="input-field">
-                              <?php foreach ($this->ceoList as $key => $data): ?>
+                              <?php foreach ($this->ceo_List as $key => $data): ?>
                                   <option value="<?php echo $data['ceoName'] ?>"></option>
                               <?php endforeach ?>
                             </datalist>
@@ -33,7 +33,7 @@
                             <input type="text" list="businessTypeList" name="company-businessType" size="20" required
                                    value="<?php echo $this->companyData['businessType']; ?>">
                             <datalist id="businessTypeList" class="input-field">
-                              <?php foreach ($this->businessTypeList as $key => $data): ?>
+                              <?php foreach ($this->businessType_List as $key => $data): ?>
                                   <option value="<?php echo $data['businessType'] ?>"></option>
                               <?php endforeach ?>
                             </datalist>
@@ -58,7 +58,7 @@
                             <input type="text" list="addressList" name="company-address"
                                    value="<?php echo $this->companyData['address']; ?>">
                             <datalist id="addressList">
-                              <?php foreach ($this->addressList as $key => $data): ?>
+                              <?php foreach ($this->address_List as $key => $data): ?>
                                   <option value="<?php echo $data['address'] ?>"></option>
                               <?php endforeach ?>
                             </datalist>

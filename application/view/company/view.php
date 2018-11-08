@@ -44,17 +44,18 @@
         <button type="button" class="btn btn-insert" onclick="show_join_form()" style="text-align: center">가입 추가
         </button>
     </div>
-    <div id="join_form_btn_group" style="display:none;">
-        <button type="button" id="btn_gujwa" onclick="type_toggle('gujwa')">구좌</button>
-        <button type="button" id="btn_deposit" onclick="type_toggle('deposit')">보증금</button>
-        <button type="button" id="btn_point" onclick="type_toggle('point')">포인트</button>
-    </div>
+    
     <form action="" id="new_join_form" style="display:none;" method="post" enctype=''>
+        <div id="join_form_btn_group" style="display:none;">
+            <button type="button" id="btn_gujwa" onclick="type_toggle('gujwa')">구좌</button>
+            <button type="button" id="btn_deposit" onclick="type_toggle('deposit')">보증금</button>
+            <button type="button" id="btn_point" onclick="type_toggle('point')">포인트</button>
+        </div>
         <input type="hidden" name="action" value="new_insert">
         <input type="hidden" name="join_company-companyID" value="<?php echo $this->companyData['companyID'] ?>">
         <div class="table" id="detail_table"></div>
         <div class="btn_group">
-            <a class="btn btn-default" href="<?php echo $this->param->get_page ?>">취소</a>
+            <button type="button" class="btn btn-default" onclick="cancel_join_form()">취소</button>
             <button class="btn btn-submit" type="submit">가입 추가</button>
         </div>
     </form>
@@ -108,6 +109,11 @@
         document.getElementById('join_button').style.display = 'none';
         document.getElementById('join_form_btn_group').style.display = 'block';
         document.getElementById('new_join_form').style.display = 'block';
+    }
+    function cancel_join_form() {
+        document.getElementById('join_button').style.display = 'block';
+        document.getElementById('join_form_btn_group').style.display = 'none';
+        document.getElementById('new_join_form').style.display = 'none';
     }
     $('.btnModal').click(function () {
         $('#myModal').show();

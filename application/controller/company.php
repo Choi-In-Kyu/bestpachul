@@ -7,8 +7,6 @@
     var $name;
     var $filterColor;
     var $filterBgColor;
-    var $ceoList;
-    var $businessTypeList;
     var $joinList;
     var $companyData;
     var $ceoData;
@@ -21,9 +19,6 @@
     {
       $this->initJoin('company');
       $this->getBasicFunction('company');
-      $this->ceoList = $this->db->getTable("SELECT * FROM `ceo`");
-      $this->businessTypeList = $this->db->getTable("SELECT * FROM `businessType`");
-      $this->addressList = $this->db->getTable("SELECT * FROM `address`");
     }
     
     //bestpachul.com/company/view
