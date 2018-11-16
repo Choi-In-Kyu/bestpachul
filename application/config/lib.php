@@ -17,4 +17,3 @@ function __autoload($className){
 }
 
 $today = date("Y-m-d");
-$tomorrow = date("Y-m-d", strtotime('+1 day'));

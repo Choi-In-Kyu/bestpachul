@@ -46,10 +46,10 @@
       
       switch ($_POST['action']) {
         case 'insert' :
-          $_POST['user-userName'] = $_POST['company-companyName'];
-          $_POST['user-userPW'] = $_POST['ceo-ceoPhoneNumber'];
           //업체명 중복 배제
           $_POST['company-companyName'] = $this->removeDuplicate($_POST,'company','companyName');
+          $_POST['user-userName'] = $_POST['company-companyName'];
+          $_POST['user-userPW'] = $_POST['ceo-ceoPhoneNumber'];
           //ceo 이름 처리
           $ceoName = $_POST['ceo-ceoName'];
           $ceoNameList = $this->getColumnList($this->getTable("SELECT * FROM ceo"), 'ceoName');

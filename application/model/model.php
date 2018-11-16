@@ -129,4 +129,14 @@
       if (isset($column)) return $this->getTable($sql)[0][$column];
       else return $this->getTable($sql);
     }
+  
+    function getAge($date)
+    {
+      $birthDate = new DateTime($date);
+      $now = new DateTime();
+      $difference = $now->diff($birthDate);
+      $age = $difference->y;
+      return $age;
+    }
+    
   }

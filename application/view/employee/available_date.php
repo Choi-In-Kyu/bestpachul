@@ -1,6 +1,6 @@
-<div class="board_view auto-center" style="margin: 0 200px;">
+<div class="board_list auto-center" style="margin: 0 200px; width: auto;">
     <h1>근무 가능일 / 근무 불가능일</h1>
-    <div class="form-style-2">
+    <div class="form-style-2    ">
         <form id="employee_form" action="" method="post">
             <fieldset>
                 <input type="hidden" name="action" value="insert_day">

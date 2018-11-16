@@ -21,7 +21,7 @@
                 <input type="hidden" name="filterCondition" value="<?php echo $this->deadlineCondition['filter'] ?>">
                 <input class="btn btn-default" type="submit"
                        style="background-color: <?php echo $this->filterBgColor['deadline']?>; color: <?php echo $this->filterColor['deadline']?>;"
-                       value="(만기임박 인력) : <?php echo $this->db->getListNum($this->deadlineCondition, $this->deadlineJoin, $this->deadlineGroup) ?>">
+                       value="(만기임박 인력) : <?php echo $this->db->getListNum($this->deadlineCondition) ?>">
             </form>
         </div>
         <div class="col">
@@ -77,7 +77,7 @@
                     <input type="hidden" name="order" value="employeeID">
                     <input type="hidden" name="direction" value=<?php echo $this->direction ?>>
                     <input type="hidden" name="keyword" value=<?php echo $this->keyword ?>>
-                    <input type="submit" value="#">
+                    <input class="btn" type="submit" value="#">
                 </th>
             </form>
             <form action="" method="post">
@@ -86,7 +86,7 @@
                     <input type="hidden" name="order" value="employeeName">
                     <input type="hidden" name="direction" value=<?php echo $this->direction ?>>
                     <input type="hidden" name="keyword" value=<?php echo $this->keyword ?>>
-                    <input type="submit" value="성명">
+                    <input class="btn" type="submit" value="성명">
                 </th>
             </form>
             <form action="" method="post">
@@ -95,7 +95,7 @@
                     <input type="hidden" name="order" value="birthDate">
                     <input type="hidden" name="direction" value="<?php echo $this->direction ?>">
                     <input type="hidden" name="keyword" value="<?php echo $this->keyword ?>">
-                    <input type="submit" value="연령">
+                    <input class="btn" type="submit" value="연령">
                 </th>
             </form>
             <form action="" method="post">
@@ -104,7 +104,7 @@
                     <input type="hidden" name="order" value="address">
                     <input type="hidden" name="direction" value="<?php echo $this->direction ?>">
                     <input type="hidden" name="keyword" value="<?php echo $this->keyword ?>">
-                    <input type="submit" value="간단주소">
+                    <input class="btn" type="submit" value="간단주소">
                 </th>
             </form>
             <form action="" method="post">
@@ -113,7 +113,7 @@
                     <input type="hidden" name="order" value="employeePhoneNumber">
                     <input type="hidden" name="direction" value="<?php echo $this->direction ?>">
                     <input type="hidden" name="keyword" value="<?php echo $this->keyword ?>">
-                    <input type="submit" value="전화번호">
+                    <input class="btn" type="submit" value="전화번호">
                 </th>
             </form>
             <form action="" method="post">
@@ -122,7 +122,7 @@
                     <input type="hidden" name="order" value="grade">
                     <input type="hidden" name="direction" value="<?php echo $this->direction ?>">
                     <input type="hidden" name="keyword" value="<?php echo $this->keyword ?>">
-                    <input type="submit" value="점수">
+                    <input class="btn" type="submit" value="점수">
                 </th>
             </form>
             <th>

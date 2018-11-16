@@ -24,6 +24,7 @@
       $this->companyData = $this->db->getTable("SELECT * from `company` WHERE companyID ='{$this->companyID}' LIMIT 1")[0];
       $this->joinData = $this->db->getTable("SELECT * FROM `join_company` WHERE companyID = '{$this->companyID}' AND activated = 1");
       $this->callList = $this->db->getTable("SELECT * FROM `call` WHERE companyID = '{$this->companyID}'");
+      $this->payList = $this->db->getTable("SELECT * FROM `call` WHERE companyID = '{$this->companyID}' AND `price` IS NOT NULL AND `cancelled`=0");
       $this->holidayList = $this->db->getColumnList($this->db->getTable("SELECT * FROM `holiday`"), 'holiday');
       $this->weekendCount = $this->db->getTable(
         "SELECT * FROM  `call` WHERE companyID ={$this->companyID} AND YEARWEEK( workDate, 1 ) = YEARWEEK( CURDATE( ) , 1 )

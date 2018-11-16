@@ -17,11 +17,12 @@
         <table id="callList">
             <thead>
             <tr>
-                <th onclick="sortTable(0)">근무일</th>
-                <th onclick="sortTable(1)">시작</th>
-                <th onclick="sortTable(2)">끝</th>
-                <th onclick="sortTable(3)">직종</th>
-                <th onclick="sortTable(4)">배정</th>
+                <th onclick="sortTable('callList',0)">근무일</th>
+                <th onclick="sortTable('callList',1)">시작</th>
+                <th onclick="sortTable('callList',2)">끝</th>
+                <th onclick="sortTable('callList',3)">직종</th>
+                <th onclick="sortTable('callList',4)">콜비</th>
+                <th onclick="sortTable('callList',5)">배정</th>
             </tr>
             </thead>
             <tbody>
@@ -31,6 +32,7 @@
                     <td><?php echo $value['startTime'] ?></td>
                     <td><?php echo $value['endTime'] ?></td>
                     <td><?php echo $value['workField'] ?></td>
+                    <td><?php if(isset($value['price'])) echo $value['price']; else echo '없음';?></td>
                     <td>
                       <?php if (isset($value['employeeID'])): ?>
                         <?php echo $this->employeeName($value['employeeID']);?>
@@ -41,7 +43,7 @@
                               <form action="" method="post">
                                   <input type="hidden" name="action" value="cancel">
                                   <input type="hidden" name="callID" value="<?php echo $value['callID'] ?>">
-                                  <input class="btn" type="submit" value="취소">
+                                  <input id="cancelBtn" class="btn" type="submit" value="취소">
                               </form>
                         <?php endif; ?>
                       <?php endif; ?>
@@ -67,10 +69,12 @@
         change();
     });
     $('.callList').click(function () {
-
         let callList = JSON.parse('<?php echo json_encode($this->callList)?>');
         let index = $(this).index();
         alert('요청사항 : '+callList[index]['detail']);
+    });
+    $('#cancelBtn').on('click',function () {
+        event.stopPropagation();
     });
     
     function change() {
@@ -98,5 +102,4 @@
             }
         });
     }
-
 </script>

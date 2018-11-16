@@ -26,15 +26,6 @@
       return $this->fetch();
     }
     
-    function getAge($date)
-    {
-      $birthDate = new DateTime($date);
-      $now = new DateTime();
-      $difference = $now->diff($birthDate);
-      $age = $difference->y;
-      return $age;
-    }
-    
     function employeeDelete($post)
     {
       $deletedDate = date("Ymd");

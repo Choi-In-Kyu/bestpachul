@@ -190,7 +190,8 @@
           $this->filterColor['expired'] = "black";
           break;
         case $this->deletedCondition['filter']:
-          $this->filterBgColor['deleted'] = "gray";
+          $this->filterBgColor['deleted'] = "darkslategray";
+          $this->filterColor['expired'] = "white";
           break;
       }
     }
@@ -332,5 +333,33 @@ HTML;
         && strtotime($today) < strtotime($data['endDate']))
         echo "orange";
       else echo "white";
+    }
+    
+    function companyName($id){
+      return $this->db->select('company',"`companyID`={$id}",'companyName');
+    }
+    
+    function callType($data)
+    {
+      if (isset($data['point'])) return '포인트';
+      if (isset($data['price'])) return '유료';
+      else return '일반';
+    }
+    
+    function assignType($data)
+    {
+      if (isset($data['point'])) return '(P)';
+      if (isset($data['price'])) return '(유)';
+    }
+    function timeType($data)
+    {
+      $start = $data['startTime'];
+      $end = $data['endTime'];
+      $workTime = $end - $start;
+      if ($workTime >= 10) $result = '종일';
+      else {
+        if ($start < 12) $result = '오전'; else $result = '오후';
+      }
+      return $result . ' (' . date('H:i', strtotime($data['startTime'])) . "~" . date('H:i', strtotime($data['endTime'])) . ')';
     }
   }

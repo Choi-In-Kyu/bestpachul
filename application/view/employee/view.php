@@ -40,8 +40,7 @@
     <br/>
     <!--가입 추가-->
     <div class="btn_group" id="join_button">
-        <button type="button" class="btn btn-insert" onclick="show_join_form()">가입 추가
-        </button>
+        <button type="button" class="btn btn-insert" style="margin-right: 15px;" onclick="show_join_form()">가입 추가</button>
     </div>
     <form action="" id="new_join_form" style="display:none;" method="post" enctype=''>
         <input type="hidden" name="action" value="new_insert">
@@ -75,6 +74,8 @@
         </div>
     </form>
 </div>
+
+<?php require_once(_VIEW . "call/call.php");?>
 
 <!-- Update Join Modal -->
 <div id="joinModal" class="modal">

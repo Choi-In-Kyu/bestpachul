@@ -1,4 +1,4 @@
-<div class="board_view auto-center" style="margin: 0 200px;">
+<div class="board_list auto-center" style="margin: 0 200px; width: auto;">
     <h1>블랙리스트 관리</h1>
     <div class="form-style-2">
         <form id="company_form" action="" method="post" enctype=''>
@@ -8,10 +8,10 @@
                     <div class="tr">
                         <div class="td-label">인력명</div>
                         <div class="td">
-                            <input id="companyName" type="text" list="companyList" name="companyName">
-                            <datalist id="companyList" class="input-field">
-                              <?php foreach ($this->company_List as $key => $data): ?>
-                                  <option value="<?php echo $data['companyName'] ?>"></option>
+                            <input id="employeeName" type="text" list="employeeList" name="employeeName">
+                            <datalist id="employeeList" class="input-field">
+                              <?php foreach ($this->employee_List as $key => $data): ?>
+                                  <option value="<?php echo $data['employeeName'] ?>"></option>
                               <?php endforeach ?>
                             </datalist>
                         </div>
@@ -38,7 +38,6 @@
                 </div>
             </fieldset>
             <div class="btn_group">
-                <a class="btn btn-default" href="<?php echo $this->param->get_page ?>">취소</a>
                 <button class="btn btn-submit" type="submit">추가</button>
             </div>
         </form>

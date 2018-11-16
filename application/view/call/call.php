@@ -1,77 +1,27 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css"/>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-    <script>
-        $.datepicker.setDefaults({
-            dateFormat: 'yy-mm-dd',
-            prevText: '이전 달',
-            nextText: '다음 달',
-            monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-            monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-            dayNames: ['일', '월', '화', '수', '목', '금', '토'],
-            dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
-            dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-            showMonthAfterYear: true,
-            yearSuffix: '년'
-        });
-        $(function () {
-            $("#datepicker1").datepicker();
-        });
-    </script>
-</head>
-<body>
-<div class="board_list right auto-center">
-    <div id="datepicker1" style="display: inline; position: fixed; top: auto;"></div>
-    <table id="call_table" width="100%">
-        <colgroup>
-            <col width="5%">
-            <col width="5%">
-            <col width="10%">
-            <col width="10%">
-            <col width="10%">
-            <col width="10%">
-            <col width="10%">
-            <col width="10%">
-            <col width="10%">
-            <col width="10%">
-            <col width="10%">
-        </colgroup>
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>구분</th>
-            <th>근무날짜</th>
-            <th>업체명</th>
-            <th>근무시간</th>
-            <th>업종</th>
-            <th>일당</th>
-            <th>요청사항</th>
-            <th>배정</th>
-            <th>배정취소</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php foreach ($this->call_List as $key => $data): ?>
-            <tr style="background-color: <?php echo $data['color'] ?>">
-                <td class="al_c"><?php echo $data['callID'] ?></td>
-                <td class="al_c"><?php echo $this->callType($data) ?></td>
-                <td class="al_l"><?php echo $data['workDate'] ?></td>
-                <td class="al_l"><?php echo $this->db->select('company',"companyID = $data[companyID]",'companyName')?></td>
-                <td class="al_l"><?php echo $this->timeType($data) ?></td>
-                <td class="al_l"><?php echo $data['workField'] ?></td>
-                <td class="al_l"><?php echo $data['salary'] ?></td>
-                <td class="al_l"><?php echo $data['detail'] ?></td>
-                <td class="al_l">(배정버튼)</td>
-                <td class="al_l">(취소버튼)</td>
-            </tr>
-        <?php endforeach ?>
-        </tbody>
-    </table>
+<div class="board_list scroll_list right auto-center" style="overflow: hidden">
+    <?php if(in_array($this->param->page_type,['company','employee']) ):?>
+        <h1>콜 내역</h1>
+    <?php endif;?>
+    <div class="inline" style="width: 15%; height: 100%;">
+        <div id="datepicker"></div>
+        <div>
+            <form id="day_form" action="" method="post"><input type="hidden" name="filter" value="day"><input id="date" type="hidden" name="date"></form>
+            <form action="" method="post"><input type="hidden" name="filter" value="week"><input class="full_width" type="submit" value="이번주"></form>
+            <form action="" method="post"><input type="hidden" name="filter" value="month"><input class="full_width" type="submit" value="이번달"></form>
+        </div>
+    </div>
+    <?php require_once 'callTable.php'?>
 </div>
 <script>
+    $('.btn-assign').on('click',function() {
+        window.location.href ='<?php echo $this->param->get_page ?>/assign/';
+    });
+    $('.selectable').on('click',function () {
+        $('.selectable').removeClass('selected');
+        $(this).addClass('selected');
+    });
+    $('.ui-datepicker-calendar').on('click',function () {
+        $(this).addClass('selected');
+        $(this).css('background','red');
+    });
 </script>
-</body>
-</html>

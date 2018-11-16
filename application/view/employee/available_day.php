@@ -5,7 +5,7 @@
       else echo "인력 정보";
     ?>
   </h1>
-  <div class="form-style-2">
+  <div class="form-default">
     <form id="employee_form" action="" method="post">
       <fieldset>
         <input type="hidden" name="action" value="<?php echo $this->action ?>">

@@ -3,7 +3,7 @@
         <input type="hidden" name="action" value="<?php if ($_POST['action'] == 'paidCall') echo 'paidCall'; else echo 'call' ?>">
         <input type="hidden" name="startTime" id="startTime">
         <input type="hidden" name="endTime" id="endTime">
-        <input type="number" name="salary" id="salary">
+        <input type="hidden" name="salary" id="salary">
 
         <?php if ($_POST['action'] != 'paidCall'): ?>
           <!--날짜-->
@@ -13,7 +13,7 @@
               </div>
               <div class="tr tr-body">
                   <div class="td td-50">
-                      <input class="date" id="date" type="date" name="workDate" min="<?php echo $tomorrow ?>"
+                      <input class="date" id="date" type="date" name="workDate" min="<?php echo date("Y-m-d", strtotime('+1 day'))?>"
                              max="<?php echo $this->lastJoinDate()?>" required
                              value="<?php echo $tomorrow ?>">
                   </div>
@@ -134,8 +134,6 @@
                 </div>
             </form>
       <?php endif;?>
-
-
 </div>
 
 <script>
@@ -231,6 +229,7 @@
     }
 
     $(document).ready(function () {
+        $('#workField').val('주방보조');
         startHour.val('10');
         endHour.val('15');
         calculate(endHour.val() - startHour.val());

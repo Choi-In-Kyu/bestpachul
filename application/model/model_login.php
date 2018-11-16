@@ -15,8 +15,7 @@
           if(isset($companyID)){$condition = "companyID = $companyID";}
           $activated = $this->select('company',$condition,'activated');
           if($activated==1){move("ceo");}
-          else {alert("로그인에 실패했습니다. 관리자에게 문의하세요.(만기1된 회원)");
-            alert(json_encode($activated));
+          else {alert("로그인에 실패했습니다. 관리자에게 문의하세요.(만기된 회원)");
           }
         }
       }

@@ -19,25 +19,19 @@
         <div class="col">
             <form class="form-default" action="" method="post">
                 <input type="hidden" name="filterCondition" value="<?php echo $this->deadlineCondition['filter'] ?>">
-                <input class="btn btn-default" type="submit"
-                       style="background-color: <?php echo $this->filterBgColor['deadline'] ?>; color: <?php echo $this->filterColor['deadline'] ?>;"
-                       value="(만기임박 업체) : <?php echo $this->db->getListNum($this->deadlineCondition, $this->deadlineJoin, $this->deadlineGroup) ?>">
+                <input class="btn btn-default" type="submit" style="background-color: <?php echo $this->filterBgColor['deadline'] ?>; color: <?php echo $this->filterColor['deadline'] ?>;" value="(만기임박 업체) : <?php echo $this->db->getListNum($this->deadlineCondition) ?>">
             </form>
         </div>
         <div class="col">
             <form class="form-default" action="" method="post">
                 <input type="hidden" name="filterCondition" value="<?php echo $this->expiredCondition['filter'] ?>">
-                <input class="btn btn-default" type="submit"
-                       style="background-color: <?php echo $this->filterBgColor['expired'] ?>; color: <?php echo $this->filterColor['expired'] ?>;"
-                       value="만기된 업체 : <?php echo $this->db->getListNum($this->expiredCondition) ?>">
+                <input class="btn btn-default" type="submit" style="background-color: <?php echo $this->filterBgColor['expired'] ?>; color: <?php echo $this->filterColor['expired'] ?>;" value="만기된 업체 : <?php echo $this->db->getListNum($this->expiredCondition) ?>">
             </form>
         </div>
         <div class="col">
             <form class="form-default" action="" method="post">
                 <input type="hidden" name="filterCondition" value="<?php echo $this->deletedCondition['filter'] ?>">
-                <input class="btn btn-default" type="submit"
-                       style="background-color: <?php echo $this->filterBgColor['deleted'] ?>"
-                       value="삭제된 업체 : <?php echo $this->db->getListNum($this->deletedCondition) ?>">
+                <input class="btn btn-default" type="submit" style="background-color: <?php echo $this->filterBgColor['deleted'] ?>" value="삭제된 업체 : <?php echo $this->db->getListNum($this->deletedCondition) ?>">
             </form>
         </div>
         <div class="col">
@@ -75,7 +69,7 @@
                     <input type="hidden" name="order" value="company.companyID">
                     <input type="hidden" name="direction" value=<?php echo $this->direction ?>>
                     <input type="hidden" name="keyword" value=<?php echo $this->keyword ?>>
-                    <input type="submit" value="#">
+                    <input class="btn" type="submit" value="#">
                 </th>
             </form>
             <form action="" method="post">
@@ -84,7 +78,7 @@
                     <input type="hidden" name="order" value="company.companyName">
                     <input type="hidden" name="direction" value=<?php echo $this->direction ?>>
                     <input type="hidden" name="keyword" value=<?php echo $this->keyword ?>>
-                    <input type="submit" value="상호명">
+                    <input class="btn" type="submit" value="상호명">
                 </th>
             </form>
             <form action="" method="post">
@@ -93,7 +87,7 @@
                     <input type="hidden" name="order" value="address">
                     <input type="hidden" name="direction" value=<?php echo $this->direction ?>>
                     <input type="hidden" name="keyword" value=<?php echo $this->keyword ?>>
-                    <input type="submit" value="간단주소">
+                    <input class="btn" type="submit" value="간단주소">
                 </th>
             </form>
             <form action="" method="post">
@@ -102,7 +96,7 @@
                     <input type="hidden" name="order" value="businessType">
                     <input type="hidden" name="direction" value=<?php echo $this->direction ?>>
                     <input type="hidden" name="keyword" value=<?php echo $this->keyword ?>>
-                    <input type="submit" value="업종">
+                    <input class="btn" type="submit" value="업종">
                 </th>
             </form>
             <form action="" method="post">
@@ -111,7 +105,7 @@
                     <input type="hidden" name="order" value="grade">
                     <input type="hidden" name="direction" value=<?php echo $this->direction ?>>
                     <input type="hidden" name="keyword" value=<?php echo $this->keyword ?>>
-                    <input type="submit" value="점수">
+                    <input class="btn" type="submit" value="점수">
                 </th>
             </form>
             <th>
