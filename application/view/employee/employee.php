@@ -67,7 +67,8 @@
             <col width="35%">
             <col width="25%">
             <col width="15%">
-            <col width="5%">
+            <col width="2%">
+            <col width="3%">
         </colgroup>
         <thead>
         <tr>
@@ -125,9 +126,8 @@
                     <input class="btn" type="submit" value="점수">
                 </th>
             </form>
-            <th>
-                삭제
-            </th>
+            <th>*</th>
+            <th>X</th>
         </tr>
         </thead>
 
@@ -145,12 +145,18 @@
                 <td class="al_l"><?php echo $data['address'] ?></td>
                 <td class="al_l"><?php echo $data['employeePhoneNumber'] ?></td>
                 <td class="al_l"><?php echo $data['grade'] ?></td>
+                <td><span class="fa fa-star <?php echo ($data['bookmark']==1) ? 'checked':'unchecked' ?>" id="<?php echo $data['employeeID']?>"></span></td>
                 <td class="al_c"><?php echo $this->get_DeleteBtn($data,'employee') ?></td>
             </tr>
         <?php endforeach ?>
         </tbody>
     </table>
 </div>
+
+<form id="bookmarkForm" action="" method="post">
+    <input type="hidden" name="action" value="bookmark">
+    <input type="hidden" name="employeeID" value="">
+</form>
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
@@ -160,16 +166,20 @@
             <input type="hidden" name="action" value="delete">
             <input id="modal-employeeID" type="hidden" name="employeeID">
             <textarea name="employee-deleteDetail" size="200">안해</textarea>
-            <input class="btn btn-danger" type="button" id="closeModal" value="닫기">
-            <input class="btn btn-insert" type="submit" value="삭제">
+            <input class="btn btn-insert" type="submit" value="삭제하기">
+            <input class="btn btn-danger" type="button" id="closeModal" value="취소">
         </form>
     </div>
 </div>
 
 <script>
-    $('.btnModal').click(function () {
+    $('.btnModal').on('click',function () {
         $('#myModal').show();
         $('#modal-employeeID').val(this.value);
-    })
+    });
+    $('.fa-star').on('click',function () {
+        $('#bookmarkForm input[name=employeeID]').val(this.id);
+        $('#bookmarkForm').submit();
+    });
 </script>
 <script src="/public/js/common.js"></script>

@@ -33,23 +33,18 @@
       $this->dayList = $this->db->getTable("SELECT * FROM employee_available_day WHERE employeeID = '{$this->employeeID}'");
       $this->joinList = $this->db->getTable("SELECT * FROM join_employee WHERE employeeID = '{$this->employeeID}' order by endDate DESC");
       $this->data = $this->db->getView();
+      $condition = "WHERE `employeeID` = '{$this->employeeID}'";
       switch ($_POST['filter']) {
-        case 'month':
-          $condition = "WHERE YEAR(workDate) = YEAR(CURRENT_DATE()) AND MONTH(workDate) = MONTH(CURRENT_DATE())";
-          break;
-        case 'week':
-          $condition = "WHERE  YEARWEEK(`workDate`, 1) = YEARWEEK(CURDATE(), 1)";
-          break;
-        case 'day':
-          $condition = "WHERE workDate = '{$_POST['date']}'";
-          break;
-        default :
-          $condition = "WHERE workDate = '".date('Y-m-d')."'";
-          break;
+        case 'all':   break;
+        case 'month': $condition .= "AND YEAR(workDate) = YEAR(CURRENT_DATE()) AND MONTH(workDate) = MONTH(CURRENT_DATE())";break;
+        case 'week':  $condition .= "AND  YEARWEEK(`workDate`, 1) = YEARWEEK(CURDATE(), 1)";break;
+        case 'day':   $condition .= "AND workDate = '{$_POST['date']}' AND";break;
+        default :     $condition .= "AND workDate = '".date('Y-m-d')."'";break;
       }
-//      $condition .= "AND `cancelled` = 0";
-      $condition .= "AND `employeeID` = '{$this->employeeID}'";
       $this->callList = $this->db->getTable("SELECT * FROM `call`" . $condition);
+      $this->punkList = $this->db->getTable(
+        "SELECT callID, punk.employeeID, companyID, workDate, startTime, endTime, workField, salary, call.detail as callDetail, punk.detail as punkDetail
+         FROM  `punk` LEFT JOIN `call` USING (callID) WHERE punk.employeeID = '{$this->employeeID}'");
       $this->employeeList = $this->db->getTable("SELECT * FROM `employee` WHERE activated = 1");
     }
 //bestpachul.com/employee/write

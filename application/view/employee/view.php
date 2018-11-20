@@ -29,8 +29,8 @@
                 <td class="al_c update join_id"><?php echo $data['join_employeeID'] ?></td>
                 <td class="al_l"><?php echo $data['startDate'] ?></td>
                 <td class="al_l"><?php echo $this->get_endDate($data,'employee') ?></td>
-                <td class="al_l update join_price"><?php echo $this->get_joinPrice($data); ?></td>
-                <td class="al_l update join_detail"><?php echo $this->get_joinDetail($data); ?></td>
+                <td class="al_l update link join_price"><?php echo $this->get_joinPrice($data); ?></td>
+                <td class="al_l update link join_detail"><?php echo $this->get_joinDetail($data); ?></td>
                 <td class="al_c"><?php echo $this->get_paidBtn($data); ?></td>
                 <td class="al_c"><?php echo $this->get_joinDeleteBtn($data,'employee'); ?></td>
             </tr>
@@ -76,18 +76,18 @@
 </div>
 
 <?php require_once(_VIEW . "call/call.php");?>
+<?php require_once(_VIEW . "call/punk.php");?>
 
 <!-- Update Join Modal -->
 <div id="joinModal" class="modal">
-    <!-- Modal content -->
     <div class="modal-content">
         <form action="" method="post">
             <input type="hidden" name="action" value="join_update">
             <input id="updateID" type="hidden" name="joinID">
             <input type="number" id="updatePrice" name="price">
             <textarea id="updateDetail" name="detail" size="200"></textarea>
-            <input class="btn btn-default" type="button" id="closeModal" value="취소">
             <input class="btn btn-insert" type="submit" value="수정">
+            <input class="btn btn-default" type="button" id="closeJoinModal" value="취소">
         </form>
     </div>
 </div>
@@ -112,8 +112,7 @@
         $('#myModal').show();
         $('#modal-joinID').val(this.value);
     });
-    $('#closeModal').click(function () {
-        console.log('close');
+    $('#closeJoinModal').on('click',function () {
         $('#joinModal').hide();
     });
     $('.update').click(function () {

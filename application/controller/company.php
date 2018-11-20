@@ -35,22 +35,14 @@
       $this->joinList = $this->db->getTable("SELECT * FROM join_company WHERE companyID = '{$this->companyID}' order by endDate DESC");
       $this->data = $this->db->getView();
       $this->callList = $this->db->getTable("SELECT * FROM `call` WHERE `companyID` = '{$this->companyID}'");
+      $condition = " WHERE `companyID` = '{$this->companyID}' ";
       switch ($_POST['filter']) {
-        case 'month':
-          $condition = "WHERE YEAR(workDate) = YEAR(CURRENT_DATE()) AND MONTH(workDate) = MONTH(CURRENT_DATE())";
-          break;
-        case 'week':
-          $condition = "WHERE  YEARWEEK(`workDate`, 1) = YEARWEEK(CURDATE(), 1)";
-          break;
-        case 'day':
-          $condition = "WHERE workDate = '{$_POST['date']}'";
-          break;
-        default :
-          $condition = "WHERE workDate = '".date('Y-m-d')."'";
-          break;
+        case 'all':   break;
+        case 'month': $condition .= "AND YEAR(workDate) = YEAR(CURRENT_DATE()) AND MONTH(workDate) = MONTH(CURRENT_DATE()) ";break;
+        case 'week':  $condition .= "AND YEARWEEK(`workDate`, 1) = YEARWEEK(CURDATE(), 1) ";break;
+        case 'day':   $condition .= "AND workDate = '{$_POST['date']}' ";break;
+        default :     $condition .= "AND workDate = '".date('Y-m-d')."' ";break;
       }
-//      $condition .= "AND `cancelled` = 0";
-      $condition .= "AND `companyID` = '{$this->companyID}'";
       $this->callList = $this->db->getTable("SELECT * FROM `call`" . $condition);
       $this->employeeList = $this->db->getTable("SELECT * FROM `employee` WHERE activated = 1");
     }

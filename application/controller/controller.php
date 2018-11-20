@@ -20,7 +20,7 @@
     public $activatedCondition = array("filter" => " (activated = 1 AND deleted = 0) ");
     public $expiredCondition = array("filter" => " (activated = 0 AND deleted = 0) ");
     public $deletedCondition = array("filter" => " (activated = 0 AND deleted = 1) ");
-    public $deadlineCondition = array("filter" => " (activated = 1 AND bookmark = 1) ");
+    public $deadlineCondition = array("filter" => " (activated = 1 AND (bookmark = 1 OR imminent = 1)) ");
 
 //생성자
     function __construct($param)
@@ -74,11 +74,11 @@
       $todayTime = strtotime(date("Y-m-d"));
       switch ($tableName) {
         case 'company':
-          $days = 15;
+          $days = 15;//만기임박 날짜 설정
           $joinList = $this->db->getTable("SELECT * FROM join_{$tableName} WHERE deleted = 0 AND point IS NULL AND deposit IS NULL");
           break;
         case 'employee':
-          $days = 5;
+          $days = 5;//만기임박 날짜 설정
           $joinList = $this->db->getTable("SELECT * FROM join_{$tableName} WHERE deleted = 0");
           break;
       }
@@ -88,7 +88,7 @@
         $targetTime = strtotime($value['endDate'] . " -{$days} days");
         //bookmark(만기임박)
         if (($targetTime < $todayTime && $todayTime < $endTime) || ($tableName == 'employee' && $value['paid'] == 0)) {
-          $this->db->executeSQL("UPDATE join_{$tableName} SET bookmark = 1 WHERE join_{$tableName}ID = {$joinID} LIMIT 1");
+          $this->db->executeSQL("UPDATE join_{$tableName} SET imminent = 1 WHERE join_{$tableName}ID = {$joinID} LIMIT 1");
         } //가입 자동 만기시킴
         else if ($todayTime >= $endTime) {
           $this->db->executeSQL("UPDATE join_{$tableName} SET activated = 0 WHERE join_{$tableName}ID = {$joinID} LIMIT 1");
@@ -104,13 +104,13 @@
         if (sizeof($joinList) > 0) {
           $this->db->executeSQL("UPDATE {$tableName} SET activated = 1 WHERE {$tableName}ID = {$tableID} LIMIT 1");
           foreach ($joinList as $key2 => $data) {
-            if ($data['bookmark'] == 1) {
-              $this->db->executeSQL("UPDATE {$tableName} SET activated = 1, bookmark = 1 WHERE {$tableName}ID = {$tableID} LIMIT 1");
+            if ($data['imminent'] == 1) {
+              $this->db->executeSQL("UPDATE {$tableName} SET activated = 1, imminent = 1 WHERE {$tableName}ID = {$tableID} LIMIT 1");
               break;
             }
           }
         } else {
-          $this->db->executeSQL("UPDATE {$tableName} SET activated = 0, bookmark = 0 WHERE {$tableName}ID = {$tableID} LIMIT 1");
+          $this->db->executeSQL("UPDATE {$tableName} SET activated = 0, imminent = 0 WHERE {$tableName}ID = {$tableID} LIMIT 1");
         }
       }
       return $list;

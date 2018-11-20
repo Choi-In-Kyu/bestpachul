@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!--css-->
     <title><?php echo $this->title ?></title>
     <link rel="stylesheet" href="<?php echo _CSS ?>default.css?<?php echo time(); ?>">
     <link rel="stylesheet" href="<?php echo _CSS ?>common.css?<?php echo time(); ?>">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css"/>
-    <!--  jquery-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css"/><!--date picker css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><!--bookmark button-->
+    <!--js-->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -35,6 +37,7 @@
                 <div class="dropdown-content">
                     <a class="link" href="<?php echo _URL ?>call/assign">배정관리</a>
                     <a class="link" href="<?php echo _URL ?>call/paid">유료콜관리</a>
+                    <a class="link" href="<?php echo _URL ?>call/punk">펑크관리</a>
                 </div>
             </div>
             <div class="dropdown col-md-2">

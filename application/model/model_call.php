@@ -9,8 +9,6 @@
     function action()
     {
       header("Content-type:text/html;charset=utf8");
-      $msg = "[SYSTEM] ";
-      $url = $this->param->get_page;
       switch ($_POST['action']) {
         case 'test':
       }
@@ -55,18 +53,15 @@
       $condition3 = "(`employeeID` not in (select `employeeID` from `blackList` WHERE `companyID` = '{$companyID}'))";
       $condition4 = "(`employeeID` not in (SELECT `employeeID` FROM `employee_available_date` WHERE (notavailableDate is not null AND notavailableDate != '{$workDate}')))";
       $condition5 = "(`workField1` = '{$workField}' OR `workField2` = '{$workField}' OR `workField3` = '{$workField}')";
+      if($workField == '설거지'){$condition5 .= "OR `workField1` = '주방보조' OR `workField2` = '주방보조' OR `workField3` = '주방보조' ";}
+      //오전/오후/종일 케이스 나누기
       $condition6 = "(`employeeID` in (SELECT `employeeID` FROM `employee_available_day` WHERE (`{$workDay}` = '종일' || `{$workDay}` = '오전')))";
       $condition7 = "(`employeeID` not in (SELECT `employeeID` FROM `call` WHERE (employeeID is not null) AND (workDate ='{$workDate}') AND ('{$startTime}' < `endTime` AND '{$endTime}'>`startTime`) ))";
+      
       switch ($number) {
-        case 1:
-          $sql = "SELECT * FROM `employee` WHERE " . implode(' AND ', [$condition1, $condition2, $condition3, $condition4, $condition5, $condition6, $condition7]);
-          break;
-        case 2:
-          $sql = "SELECT * FROM `employee` WHERE " . implode(' AND ', [$condition1, $condition2, $condition3, $condition4]);
-          break;
-        case 3:
-          $sql = "SELECT * FROM `employee` WHERE " . implode(' AND ', [$condition1, $condition2]);
-          break;
+        case 1:$sql = "SELECT * FROM `employee` WHERE " . implode(' AND ', [$condition1, $condition2, $condition3, $condition4, $condition5, $condition6, $condition7]);break;
+        case 2:$sql = "SELECT * FROM `employee` WHERE " . implode(' AND ', [$condition1, $condition2, $condition3, $condition4]);break;
+        case 3:$sql = "SELECT * FROM `employee` WHERE " . implode(' AND ', [$condition1, $condition2]);break;
       }
       return $this->getTable($sql);
     }

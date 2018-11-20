@@ -99,8 +99,15 @@
         case 'restore' :
           $this->executeSQL("UPDATE company SET activated = '1', deleted = '0', deleteDetail=null, deletedDate = null WHERE companyID = '{$_POST['companyID']}' LIMIT 1");
           $msg.="복구완료!";
+          break;
+        case 'bookmark':
+          $value = ($this->select('company',"companyID = '{$_POST['companyID']}'",'bookmark') == 1) ? 0 : 1 ;
+          $this->executeSQL("UPDATE company SET bookmark = {$value} WHERE companyID = '{$_POST['companyID']}' LIMIT 1");
+          $msg = null;
+          break;
       }
-      alert($msg);
+      unset($_POST);
+      if(isset($msg)) alert($msg);
       move($url);
     }
   }

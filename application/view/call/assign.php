@@ -22,6 +22,7 @@
             <textarea id="punkDetail" name="detail" size="200">펑크사유: 무단잠수</textarea>
             <input class="btn btn-insert" type="submit" value="펑크">
         </form>
+        <input id="closeModal" class="btn btn-danger" type="button" value="닫기">
     </div>
 </div>
 <script>
@@ -35,12 +36,6 @@
         else {$('.employeeRow').removeClass('selected');}
         $(this).addClass('selected');
     });
-    $('.employeeCancel').on('click',function () {
-        event.stopPropagation();
-        $('#assignCancelModal').show();
-        $('input[name=callID]').val(this.id);
-        $('input[name=employeeName]').val(this.innerText);
-    });
     $('.btn-submit').on('click',function () {
          let callID = $('.selected').attr('id');
          let employeeID = this.id;
@@ -49,5 +44,14 @@
     });
     $('.callRow').on('click',function () {
         $('#filterForm'+this.id).submit();
+    });
+    $('.employeeCancel').on('click',function () {
+        event.stopPropagation();
+        $('#assignCancelModal').show();
+        $('input[name=callID]').val(this.id);
+        $('input[name=employeeName]').val(this.innerText);
+    });
+    $('#closeModal').click(function () {
+        $('#assignCancelModal').hide();
     });
 </script>

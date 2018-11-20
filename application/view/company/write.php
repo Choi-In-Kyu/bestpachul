@@ -65,7 +65,7 @@
                         </div>
                         <div class="td-label">상세주소</div>
                         <div class="td">
-                            <input type="text" name="company-detailAddress" size="20"
+                            <input type="text" name="company-detailAddress" size="20" style="width: 660px;"
                                    value="<?php echo $this->companyData['detailAddress']; ?>">
                         </div>
                     </div>
@@ -96,14 +96,14 @@
                   <br/>
                   <h1 class="table_title">가입 정보</h1>
                   <div class="btn_group" style="margin: 0; display: inline-block;">
-                      <button type="button" id="btn_gujwa" onclick="type_toggle('gujwa')">구좌</button>
-                      <button type="button" id="btn_deposit" onclick="type_toggle('deposit')">보증금</button>
-                      <button type="button" id="btn_point" onclick="type_toggle('point')">포인트</button>
+                      <button type="button" id="btn_gujwa"      onclick="type_toggle('gujwa')">구좌</button>
+                      <button type="button" id="btn_deposit"    onclick="type_toggle('deposit')">보증금</button>
+                      <button type="button" id="btn_point"      onclick="type_toggle('point')">포인트</button>
                   </div>
                   <div class="table" id="detail_table"></div>
               <?php endif; ?>
-
-                <div class="btn_group">
+                
+                <div class="btn_group" style="margin-right: 15px;">
                     <a class="btn btn-default" href="<?php echo $this->param->get_page ?>">취소</a>
                     <button class="btn btn-submit" type="submit"><?php echo $submitButtonName ?></button>
                 </div>
@@ -116,7 +116,10 @@
 <?php include_once 'table_join.php'; ?>
 
 <script>
-    // type_toggle('gujwa');
+    $(document).ready(function () {
+        detail_table.innerHTML = document.getElementById('table_join_gujwa').innerHTML;
+    });
+
     function type_toggle(argument) {
         let detail_table = document.getElementById('detail_table');
         switch (argument) {

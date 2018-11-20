@@ -102,9 +102,14 @@
           $price = $_POST['price'];
           $this->executeSQL("UPDATE join_employee SET price= '{$price}', detail = '{$detail}' WHERE join_employeeID = '{$joinID}' LIMIT 1");
           break;
+        case 'bookmark':
+          $value = ($this->select('employee',"employeeID = '{$_POST['employeeID']}'",'bookmark') == 1) ? 0 : 1 ;
+          $this->executeSQL("UPDATE employee SET bookmark = {$value} WHERE employeeID = '{$_POST['employeeID']}' LIMIT 1");
+          $msg = null;
+          break;
       }
       unset($_POST);
-      alert($msg);
+      if(isset($msg)) alert($msg);
       move($url);
     }
   }
