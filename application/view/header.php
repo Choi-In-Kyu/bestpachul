@@ -36,8 +36,9 @@
                 <button class="link dropbtn" onClick='location.href="<?php echo _URL ?>call"'>콜관리</button>
                 <div class="dropdown-content">
                     <a class="link" href="<?php echo _URL ?>call/assign">배정관리</a>
-                    <a class="link" href="<?php echo _URL ?>call/paid">유료콜관리</a>
+<!--                    <a class="link" href="--><?php //echo _URL ?><!--call/paid">유료콜관리</a>-->
                     <a class="link" href="<?php echo _URL ?>call/punk">펑크관리</a>
+                    <a class="link" href="<?php echo _URL ?>call/fix">고정콜 / 월급제 관리</a>
                 </div>
             </div>
             <div class="dropdown col-md-2">

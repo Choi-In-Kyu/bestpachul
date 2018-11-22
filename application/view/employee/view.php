@@ -1,5 +1,5 @@
 <?php include_once 'write.php' ?>
-<div class="board_list auto-center">
+<div class="board_write auto-center">
     <!--가입 내역-->
     <h1>가입 내역</h1>
     <table width="100%">
@@ -40,7 +40,7 @@
     <br/>
     <!--가입 추가-->
     <div class="btn_group" id="join_button">
-        <button type="button" class="btn btn-insert" style="margin-right: 15px;" onclick="show_join_form()">가입 추가</button>
+        <button type="button" class="btn btn-insert" onclick="show_join_form()">가입 추가</button>
     </div>
     <form action="" id="new_join_form" style="display:none;" method="post" enctype=''>
         <input type="hidden" name="action" value="new_insert">
@@ -75,8 +75,8 @@
     </form>
 </div>
 
-<?php require_once(_VIEW . "call/call.php");?>
-<?php require_once(_VIEW . "call/punk.php");?>
+<?php $type='call'; require_once(_VIEW . "call/call.php");?>
+<?php $type='punk'; require_once(_VIEW . "call/punk.php");?>
 
 <!-- Update Join Modal -->
 <div id="joinModal" class="modal">

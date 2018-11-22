@@ -1,5 +1,5 @@
 <?php include_once 'write.php' ?>
-<div class="board_list auto-center">
+<div class="board_write auto-center">
     <h1>가입 내역</h1>
     <table width="100%">
         <colgroup>
@@ -40,7 +40,7 @@
     <!--가입 추가-->
   <?php include_once 'table_join.php'; ?>
     <div class="btn_group" id="join_button">
-        <button type="button" class="btn btn-insert" onclick="show_join_form()" style="margin-right: 15px;">가입 추가</button>
+        <button type="button" class="btn btn-insert" onclick="show_join_form()">가입 추가</button>
     </div>
     <form action="" id="new_join_form" style="display:none;" method="post" enctype=''>
         <div id="join_form_btn_group" style="display:none;">

@@ -362,4 +362,13 @@ HTML;
       }
       return $result . ' (' . date('H:i', strtotime($data['startTime'])) . "~" . date('H:i', strtotime($data['endTime'])) . ')';
     }
+    function getTime($i)
+    {
+      if ($i < 12) {$time = '오전 ' . $i . '시';}
+      elseif ($i == 12) {$time = '정오';}
+      elseif (12 < $i && $i < 24) {$time = $i - 12;$time = '오후 ' . $time . '시';}
+      elseif ($i == 24) {$time = '자정';}
+      elseif ($i > 24) {$time = $i - 24;$time = '익일오전 ' . $time . '시';}
+      return $time;
+    }
   }

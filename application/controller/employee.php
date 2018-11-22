@@ -43,7 +43,7 @@
       }
       $this->callList = $this->db->getTable("SELECT * FROM `call`" . $condition);
       $this->punkList = $this->db->getTable(
-        "SELECT callID, punk.employeeID, companyID, workDate, startTime, endTime, workField, salary, call.detail as callDetail, punk.detail as punkDetail
+        "SELECT callID, punk.employeeID, companyID, workDate, startTime, endTime, workField, salary, call.detail as detail, punk.detail as punkDetail
          FROM  `punk` LEFT JOIN `call` USING (callID) WHERE punk.employeeID = '{$this->employeeID}'");
       $this->employeeList = $this->db->getTable("SELECT * FROM `employee` WHERE activated = 1");
     }

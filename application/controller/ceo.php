@@ -57,23 +57,15 @@ AND NOT (DAYOFWEEK( workDate ) =7 OR DAYOFWEEK( workDate ) =1) AND price>0 AND c
       return $leftDays;
     }
     
-    function getTime($i)
-    {
-      if ($i < 12) {
-        $time = '오전 ' . $i . '시';
-      } elseif ($i == 12) {
-        $time = '정오';
-      } elseif (12 < $i && $i < 24) {
-        $time = $i - 12;
-        $time = '오후 ' . $time . '시';
-      } elseif ($i == 24) {
-        $time = '자정';
-      } elseif ($i > 24) {
-        $time = $i - 24;
-        $time = '익일오전 ' . $time . '시';
-      }
-      return $time;
-    }
+//    function getTime($i)
+//    {
+//      if ($i < 12) {$time = '오전 ' . $i . '시';}
+//      elseif ($i == 12) {$time = '정오';}
+//      elseif (12 < $i && $i < 24) {$time = $i - 12;$time = '오후 ' . $time . '시';}
+//      elseif ($i == 24) {$time = '자정';}
+//      elseif ($i > 24) {$time = $i - 24;$time = '익일오전 ' . $time . '시';}
+//      return $time;
+//    }
     
     function dateFormat($array)
     {

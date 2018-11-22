@@ -1,11 +1,11 @@
-<div class="board_view auto-center">
+<div class="board_write auto-center">
     <h1>
       <?php
         if (isset ($this->companyData)) echo "업체정보 - " . $this->companyData['companyName'] . "(" . $this->companyData['actCondition'] . ")";
         else echo "업체 정보";
       ?>
     </h1>
-    <div class="form-style-2">
+    <div class="form-style-1">
         <form id="company_form" action="" method="post" enctype=''>
             <fieldset>
                 <input type="hidden" name="action" value="<?php echo $this->action ?>">
@@ -103,7 +103,7 @@
                   <div class="table" id="detail_table"></div>
               <?php endif; ?>
                 
-                <div class="btn_group" style="margin-right: 15px;">
+                <div class="btn_group">
                     <a class="btn btn-default" href="<?php echo $this->param->get_page ?>">취소</a>
                     <button class="btn btn-submit" type="submit"><?php echo $submitButtonName ?></button>
                 </div>

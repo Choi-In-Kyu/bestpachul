@@ -1,11 +1,11 @@
-<div class="board_view auto-center">
+<div class="board_write auto-center">
     <h1>
       <?php
         if (isset ($this->employeeData)) echo "인력정보 - " . $this->employeeData['employeeName'] . "(" . $this->employeeData['actCondition'] . ")";
         else echo "인력 정보";
       ?>
     </h1>
-    <div class="form-style-2">
+    <div class="form-style-1">
         <form id="employee_form" action="" method="post" enctype=''>
             <fieldset>
                 <input type="hidden" name="action" value="<?php echo $this->action ?>">
@@ -128,9 +128,7 @@
                                       name="employee-deleteDetail"><?php echo $this->employeeData['deleteDetail']; ?></textarea>
                           </div>
                       <?php endif; ?>
-                    </div>
-                    <div class="tr">
-                        <table>
+                        <table style="width: 30%">
                             <tr>
                                 <th></th>
                                 <th>월</th>
@@ -172,14 +170,14 @@
                                 <td><input class="day ad sun" type="checkbox"<?php echo $this->getDay('sun', '종일') ?> ></td>
                             </tr>
                         </table>
+                        <input type="hidden" name="employee_available_day-mon" value="<?php echo $this->getDay('mon')?>">
+                        <input type="hidden" name="employee_available_day-tue" value="<?php echo $this->getDay('tue')?>">
+                        <input type="hidden" name="employee_available_day-wed" value="<?php echo $this->getDay('wed')?>">
+                        <input type="hidden" name="employee_available_day-thu" value="<?php echo $this->getDay('thu')?>">
+                        <input type="hidden" name="employee_available_day-fri" value="<?php echo $this->getDay('fri')?>">
+                        <input type="hidden" name="employee_available_day-sat" value="<?php echo $this->getDay('sat')?>">
+                        <input type="hidden" name="employee_available_day-sun" value="<?php echo $this->getDay('sun')?>">
                     </div>
-                    <input type="hidden" name="employee_available_day-mon" value="<?php echo $this->getDay('mon')?>">
-                    <input type="hidden" name="employee_available_day-tue" value="<?php echo $this->getDay('tue')?>">
-                    <input type="hidden" name="employee_available_day-wed" value="<?php echo $this->getDay('wed')?>">
-                    <input type="hidden" name="employee_available_day-thu" value="<?php echo $this->getDay('thu')?>">
-                    <input type="hidden" name="employee_available_day-fri" value="<?php echo $this->getDay('fri')?>">
-                    <input type="hidden" name="employee_available_day-sat" value="<?php echo $this->getDay('sat')?>">
-                    <input type="hidden" name="employee_available_day-sun" value="<?php echo $this->getDay('sun')?>">
                 </div>
               
               <?php if (!isset($this->param->idx)) : ?>

@@ -11,11 +11,19 @@ $.datepicker.setDefaults({
     yearSuffix: '년'
 });
 $(function () {
-    $("#datepicker").datepicker({
+    $(".datepicker").datepicker({
+        changeMonth:true,
+        changeYear:true,
         onSelect: function () {
             let date = $('#datepicker').datepicker({dateFormat: 'yy-mm-dd'}).val();
-            $('#date').val(date);
+            $('#filterDate').val(date);
             $('#day_form').submit();
+        },
+        onChangeMonthYear: function (year, month, inst) {
+            $('.filterYear').val(year);
+            $('.filterMonth').val(month);
+            $('#filterMonthBtn').val(month+'월 (모든콜)');
+            $('#filterMonthPaidBtn').val(month+'월 (유료콜)');
         }
     });
 });
