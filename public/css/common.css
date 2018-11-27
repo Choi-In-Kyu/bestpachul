@@ -18,7 +18,7 @@ h1{margin:20px;}
 .al_r { text-align: right; }
 
 /*bookmark star*/
-.fa-star {cursor: pointer;}
+.fa-star {cursor: pointer; color: black;}
 .fa-star.unchecked {color: gray;}
 .fa-star.checked {color: orangered;}
 
@@ -32,7 +32,7 @@ h1{margin:20px;}
 .board_list h3 { padding-bottom: 10px; font-size: 23px; }
 .board_list.scroll_list{height: 90%;}
 
-.board_write { padding: 0; margin: 0 5% 5%; }
+.board_write { padding: 0; margin: 0 5% 3%; }
 .board_write h3 { padding-bottom: 10px; font-size: 23px; }
 .board_write .td input[type=text], .board_write .td input[type=number]{width: 90%;}
 

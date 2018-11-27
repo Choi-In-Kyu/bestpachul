@@ -1,4 +1,4 @@
-<div class="table" id="table_join_gujwa" style="display: none;">
+<div class="table" id="companyAddJoinTable_gujwa" style="display: none;">
     <div class="tr">
         <div class="td-label">가입시작일</div>
         <div class="td"><input type="date" name="join_company-startDate" required></div>
@@ -10,8 +10,7 @@
         <div class="td"><textarea name="join_company-detail" required></textarea></div>
     </div>
 </div>
-
-<div class="table" id="table_join_deposit" style="display: none;">
+<div class="table" id="companyAddJoinTable_deposit" style="display: none;">
     <div class="tr">
         <div class="td-label">가입일</div>
         <div class="td"><input type="date" name="join_company-startDate" required></div>
@@ -23,8 +22,7 @@
         <div class="td"><textarea name="join_company-detail" required></textarea></div>
     </div>
 </div>
-
-<div class="table" id="table_join_point" style="display: none;">
+<div class="table" id="companyAddJoinTable_point" style="display: none;">
     <div class="tr">
         <div class="td-label">가입일</div>
         <div class="td"><input type="date" name="join_company-startDate" required></div>

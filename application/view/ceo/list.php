@@ -92,7 +92,7 @@
         let endTime = new Date(new Date(parseInt($('#year').val()) + "/" + parseInt($('#month').val()) + "/01").setMonth(new Date(parseInt($('#year').val()) + "/" + parseInt($('#month').val()) + "/01").getMonth() + 1));
         let rows = $('.workDate');
         let yearArray = JSON.parse('<?php echo json_encode($this->getDate($this->callList))?>');
-        console.log(typeof(yearArray));
+        // console.log(typeof(yearArray));
         for (let i = 0; i < $('.month').length; i++) {
             if (yearArray[$('#year').val()].map(Number).includes(i + 1)) {
                 $('.month').eq(i).css('display', 'block');

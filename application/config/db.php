@@ -8,4 +8,3 @@
   //MASTER USER
   define("M_USERNAME",  "admin");
   define("M_USERPW",    "bestgood123");
-  

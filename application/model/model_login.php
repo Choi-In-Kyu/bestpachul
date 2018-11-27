@@ -2,6 +2,11 @@
   
   class Model_login extends Model
   {
+    function __construct($param)
+    {
+      parent::__construct($param);
+    }
+    
     function action()
     {
       $userData = $this->getUser($_POST);
@@ -21,7 +26,7 @@
       }
       else {//로그인 실패
         alert("로그인에 실패했습니다. 관리자에게 문의하세요.(아이디/비밀번호 오류)");
-        move(_URL."login");
+//        move(_URL."login");
       }
     }
     

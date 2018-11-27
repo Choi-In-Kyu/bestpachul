@@ -67,7 +67,7 @@
                         </div>
                         <div class="td-label">임금</div>
                         <div class="td">
-                            <input type="number" required>
+                            <input type="number" >
                         </div>
                     </div>
 
@@ -75,7 +75,7 @@
                         <div class="td-label">근무시간</div>
                         <div class="td" style="width: auto;">
                             <input type="hidden" id="startTime" name="startTime">
-                            <select class="time hour" id="startHour" form="callForm" required>
+                            <select class="time hour" id="startHour" form="callForm" >
                                 <option value="" selected disabled hidden>근무 시작 시간</option>
                               <?php for ($i = 1; $i < 25; $i++): ?>
                                   <option class="startOption" value="<?php echo $i ?>">
@@ -83,14 +83,14 @@
                                   </option>
                               <?php endfor; ?>
                             </select>
-                            <select class="time minute" id="startMin" form="callForm" required>
+                            <select class="time minute" id="startMin" form="callForm" >
                                 <option value="00">00분</option>
                                 <option value="30">30분</option>
                             </select>
                             <strong style="font-size: 30px;">~</strong>
 
                             <input type="hidden" id="endTime" name="endTime">
-                            <select class="time hour" id="endHour" form="callForm" required>
+                            <select class="time hour" id="endHour" form="callForm" >
                                 <option value="" selected disabled hidden>근무 종료 시간</option>
                               <?php for ($i = 1; $i < 37; $i++): ?>
                                   <option class="endOption" value="<?php echo $i ?>">
@@ -98,7 +98,7 @@
                                   </option>
                               <?php endfor; ?>
                             </select>
-                            <select class="time minute" id="endMin" form="callForm" required>
+                            <select class="time minute" id="endMin" form="callForm" >
                                 <option value="00">00분</option>
                                 <option value="30">30분</option>
                             </select>

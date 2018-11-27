@@ -1,53 +1,20 @@
 <?php
-  //Model.php에서 ajax를 받고 싶으면 모든 alert, echo 빼라!
-  //(두 개 이상의 파라미터를 받고싶으면)
-  Class Model
+  require_once '../config/lib.php';
+  require_once '../config/db.php';
+  require_once '../model/model.php';
+  
+  Class C
   {
-    public $db;
     public $param;
+    public $db;
     public $sql;
     
     public function __construct($param)
     {
       $this->param = $param;
-      //올바른 로그인인지 체크
-      if(!isset ($_POST['ajax'])){$this->check_login();}
-      //데이터베이스 설정
       $this->db = new PDO("mysql:host=" . _SERVERNAME . ";dbname=" . _DBNAME . "", _DBUSER, _DBPW);
       $this->db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
       $this->db->exec("set names utf8");
-      if (isset($_POST['action'])) $this->action();//post 로 받은 action 값이 있으면 action() 함수 실행
-    }
-  
-    public function check_login(){
-      if (in_array($this->param->page_type, ['company', 'employee', 'call', 'manage'])) {
-        if (isset($_COOKIE['userID'])) {
-          if ($_COOKIE['userID'] == 1) {
-          } else {
-            alert('접근 권한이 없습니다.');
-            move(_URL . 'ceo');
-          }
-        } else {
-          alert('로그인이 필요한 서비스입니다.');
-          move(_URL . 'login');
-        }
-      }
-      elseif(in_array($this->param->page_type, ['ceo'])) {
-        if (isset($_COOKIE['userID'])) {
-          if ($_COOKIE['userID'] == 1) {
-//            alert('관리자페이지로 이동합니다.');
-//            move(_URL . 'company');
-          }
-        } else {
-          alert('로그인이 필요한 서비스입니다.');
-          move(_URL . 'login');
-        }
-      }
-      elseif ($this->param->page_type == 'login'){}
-      else{
-        alert("잘못된 페이지 접근입니다.");
-        move(_URL . 'login');
-      }
     }
   
     public function query($sql)
@@ -57,9 +24,9 @@
       if ($res->execute()) {
         return $res;
       } else {
-        echo "<pre>";
-        echo $this->sql;
-        echo "</pre>";
+//        echo "<pre>";
+//        echo $this->sql;
+//        echo "</pre>";
       }
     }
     public function fetch(){return $this->query($this->sql)->fetch();}
@@ -67,7 +34,7 @@
     public function fetchAll(){return $this->query($this->sql)->fetchAll();}
     public function getTable($sql){$this->sql = $sql;return $this->fetchAll();}
     public function count(){return $this->query($this->sql)->rowCount();}
-    
+  
     public function getList($conditionArray = null, $order = null)
     {
       $this->sql = "SELECT * FROM {$this->param->page_type}";
@@ -158,7 +125,6 @@
       //가입 삭제
       else $this->executeSQL("UPDATE join_{$table} SET deleted=1, activated=0, deletedDate= '{$d}', deleteDetail = '{$post['deleteDetail']}' WHERE join_{$table}ID = '{$post['joinID']}'");
     }
-  
     
     public function isHoliday($date)
     {
@@ -166,7 +132,7 @@
       elseif(sizeof($this->getTable("SELECT * FROM `holiday` where holiday = '{$date}'"))>0) {return true;}
       else {return false;}
     }
-    
+  
     public function joinType($companyID)
     {
       $gujwaTable   = $this->getTable("SELECT * FROM  `join_company` WHERE companyID = {$companyID} AND activated =1 AND price >0 AND  `point` IS NULL ");
@@ -177,64 +143,71 @@
       elseif (sizeof($depositTable) > 0) return 'deposit';
       else return 'deactivated';
     }
-   
-    public function insert($table, $post, $id=null)
-    {
-      if (isset($post['action'])) array_shift($post);
-      foreach ($post as $item){$column[] = "`".$item."`";}
-      foreach ($post as $value){$value[]= "'".$value."'";}
-      $columnString =  implode(',', $column);
-      $valueString = implode(',', $value);
-      $sql = "INSERT INTO `{$table}` ({$columnString}) VALUES ($valueString)";
-      alert($sql);
-      $this->executeSQL($sql);
-    }
-    
-    public function call($post){
-      alert(json_encode($post));
-    }
-    
-    public function call_gujwa($post)
-    {
-      if ($this->isHoliday($post['workDate'])) {$point = 10000;
-      } else {$point = 8000;}
-      $nowgujwa = $this->getTable("SELECT * FROM  `join_company` WHERE companyID = {$this->companyID} AND activated =1 AND price >0 AND  `point` IS NULL AND endDate > '{$post['workDate']}'");
-      if (sizeof($nowgujwa) > 0) {
-        if ($this->thisweekPoint($post['workDate']) + $point <= 26000 * sizeof($this->gujwaTable)) {
-          $this->call($post);
-        }
-        else {
-          alert("이번주 콜 수가 초과되었습니다.");
-          $_POST['action'] = 'paidCall';
-        }
-      }
-      else{
-        alert('가입만기일 이후의 콜입니다.');
-        unset($post);
-        move('ceo');
-      }
-    }
-    public function call_point($post)
-    {
-      if($this->isHoliday($post['workDate'])){$point = 8;}
-      else{$point = 6;}
-      $myPoint = $this->getTable("SELECT point FROM join_company WHERE companyID = '{$this->companyID}'")[0]['point'];
-      if($point>$myPoint){
-        alert(($point-$myPoint).' 포인트가 부족합니다.');
-        unset($post);
-        move('ceo');
-      }
-      else{
-        $post['point']=$point;
-        $this->executeSQL("UPDATE join_company SET point = point-'{$point}' WHERE companyID = '{$this->companyID}' LIMIT 1");
-        $this->call($post);
-      }
-    }
+  
+//    public function insert($table, $post, $id=null)
+//    {
+//      if (isset($post['action'])) array_shift($post);
+//      foreach ($post as $item){$column[] = "`".$item."`";}
+//      foreach ($post as $value){$value[]= "'".$value."'";}
+//      $columnString =  implode(',', $column);
+//      $valueString = implode(',', $value);
+//      $sql = "INSERT INTO `{$table}` ({$columnString}) VALUES ($valueString)";
+//      alert($sql);
+//      $this->executeSQL($sql);
+//    }
+  
+//    public function call($post){
+//      alert(json_encode($post));
+//    }
+  
+//    public function call_gujwa($post)
+//    {
+//      if ($this->isHoliday($post['workDate'])) {$point = 10000;
+//      } else {$point = 8000;}
+//      $nowgujwa = $this->getTable("SELECT * FROM  `join_company` WHERE companyID = {$this->companyID} AND activated =1 AND price >0 AND  `point` IS NULL AND endDate > '{$post['workDate']}'");
+//      if (sizeof($nowgujwa) > 0) {
+//        if ($this->thisweekPoint($post['workDate']) + $point <= 26000 * sizeof($this->gujwaTable)) {
+//          $this->call($post);
+//        }
+//        else {
+//          alert("이번주 콜 수가 초과되었습니다.");
+//          $_POST['action'] = 'paidCall';
+//        }
+//      }
+//      else{
+//        alert('가입만기일 이후의 콜입니다.');
+//        unset($post);
+//        move('ceo');
+//      }
+//    }
+//    public function call_point($post)
+//    {
+//      if($this->isHoliday($post['workDate'])){$point = 8;}
+//      else{$point = 6;}
+//      $myPoint = $this->getTable("SELECT point FROM join_company WHERE companyID = '{$this->companyID}'")[0]['point'];
+//      if($point>$myPoint){
+//        alert(($point-$myPoint).' 포인트가 부족합니다.');
+//        unset($post);
+//        move('ceo');
+//      }
+//      else{
+//        $post['point']=$point;
+//        $this->executeSQL("UPDATE join_company SET point = point-'{$point}' WHERE companyID = '{$this->companyID}' LIMIT 1");
+//        $this->call($post);
+//      }
+//    }
     public function call_deposit($post){
       if($this->isHoliday($post['workDate'])){$price = 8000;}
       else{$price = 6000;}
       $post['price'] = $price;
       $this->call($post);
     }
-
+    
+    public function b($i)
+    {
+      return $i . "bbbbbb";
+    }
+    
+    
+    
   }

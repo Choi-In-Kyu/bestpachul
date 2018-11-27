@@ -59,7 +59,7 @@
         <?php foreach ($this->employee_available_date_List as $key => $data): ?>
             <tr>
                 <td class="al_c"><?php echo $data['employeeID'] ?></td>
-                <?php $employeeName = $this->db->select('employee',"employeeID = $data[employeeID]",'employeeName');?>
+                <?php $employeeName = $this->model->select('employee',"employeeID = $data[employeeID]",'employeeName');?>
                 <td class="al_c"><?php echo $employeeName ?></td>
                 <td class="al_c"><?php echo $data['availableDate'] ?></td>
                 <td class="al_c"><?php echo $data['notAvailableDate'] ?></td>

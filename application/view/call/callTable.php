@@ -33,8 +33,8 @@
           <tbody>
           <?php foreach ($this->{$type.'List'} as $key => $data): ?>
             <?php
-            $employeeName = $this->db->select('employee', "employeeID = '{$data['employeeID']}'", 'employeeName');
-            $companyName = $this->db->select('company', "companyID = '{$data['companyID']}'", 'companyName');
+            $employeeName = $this->model->select('employee', "employeeID = '{$data['employeeID']}'", 'employeeName');
+            $companyName = $this->model->select('company', "companyID = '{$data['companyID']}'", 'companyName');
             ?>
               <tr class="selectable callRow <?php if ($data['cancelled'] == 1) echo 'cancelled' ?>" id="<?php echo $data['callID'] ?>">
                   <td class="al_c"><?php echo $data['callID'] . $this->assignType($data) ?></td>

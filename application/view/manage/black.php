@@ -1,7 +1,7 @@
 <div class="board_list auto-center" style="margin: 0 200px; width: auto;">
     <h1>블랙리스트 관리</h1>
     <div class="form-style-1">
-        <form id="company_form" action="" method="post" enctype=''>
+        <form id="company_form" action="" method="post">
             <fieldset>
                 <input type="hidden" name="action" value="black">
                 <div class="table">
@@ -64,8 +64,8 @@
         <?php foreach ($this->blackList_List as $key => $data): ?>
             <tr>
                 <td class="al_c"><?php echo $data['blackListID'] ?></td>
-                <td class="al_l"><?php echo $this->db->select('employee', "employeeID = $data[employeeID]",'employeeName')?></td>
-                <td class="al_l"><?php echo $this->db->select('company', "companyID = $data[companyID]",'companyName')?></td>
+                <td class="al_l"><?php echo $this->model->select('employee', "employeeID = $data[employeeID]",'employeeName')?></td>
+                <td class="al_l"><?php echo $this->model->select('company', "companyID = $data[companyID]",'companyName')?></td>
                 <td class="al_l"><?php if($data['ceoReg']==1) echo '안불러요'; else echo '안가요'?></td>
                 <td class="al_l"><?php echo $data['detail'] ?></td>
             </tr>

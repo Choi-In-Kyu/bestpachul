@@ -2,6 +2,11 @@
 
   class Model_manage extends Model
   {
+    function __construct($param)
+    {
+      parent::__construct($param);
+    }
+    
     function action(){
       if(isset($_POST)){
         $employeeName = $_POST['employeeName'];

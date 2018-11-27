@@ -1,4 +1,6 @@
+<?php //$_POST['companyID'] = $this->companyID?>
 <div class="mobile_view">
+    
     <form action="" id="callForm" method="post">
         <input type="hidden" name="action" value="<?php if ($_POST['action'] == 'paidCall') echo 'paidCall'; else echo 'call' ?>">
         <input type="hidden" name="startTime" id="startTime">
@@ -6,7 +8,7 @@
         <input type="hidden" name="salary" id="salary">
 
         <?php if ($_POST['action'] != 'paidCall'): ?>
-          <!--날짜-->
+            <!--날짜-->
           <div class="container">
               <div class="tr tr-title">
                   <div class="lbl">날짜</div>
@@ -15,20 +17,19 @@
                   <div class="td td-50">
                       <input class="date" id="date" type="date" name="workDate" min="<?php echo date("Y-m-d", strtotime('+1 day'))?>"
                              max="<?php echo $this->lastJoinDate()?>" required
-                             value="<?php echo $tomorrow ?>">
+                             value="<?php echo _TOMORROW ?>">
                   </div>
                   <div class="td td-50">
                       <button class="btn-day" type="button" id="1day">
-                          내일(<? echo $this->day[date("w", strtotime("+1 day"))] ?>)
+                          내일(<?php echo unserialize(DAYOFWEEK)[date('w',strtotime(_TOMORROW))]?>)
                       </button>
                       <button class="btn-day" type="button" id="2day">
-                          모레(<? echo $this->day[date("w", strtotime("+2 day"))] ?>)
+                          모레(<?php echo unserialize(DAYOFWEEK)[date('w',strtotime("+2 day"))]?>)
                       </button>
                   </div>
               </div>
           </div>
-
-          <!--시간-->
+            <!--시간-->
           <div class="container">
               <div class="tr tr-title">
                   <div class="lbl">시간</div>
@@ -72,7 +73,7 @@
                   </div>
               </div>
           </div>
-
+            <!--업종-->
           <div class="container">
               <div class="tr tr-title">
                   <div class="lbl">업종</div>
@@ -92,7 +93,7 @@
                   </div>
               </div>
           </div>
-
+            <!--기타-->
           <div class="container">
               <div class="tr tr-title">
                   <div class="lbl">기타요청사항</div>
@@ -150,82 +151,155 @@
         $('#endHour').val('15');
     });
 
-    function holiday(date) {
-        let array = [<?php echo $this->dateFormat($this->holidayList)?>];
-        let sat = (new Date(date)).getDay() === 0;
-        let sun = (new Date(date)).getDay() === 6;
-        let holiday = array.includes(date);
-        if ((sat || sun) || holiday) return true;
-        else return false;
-    }
-
     function calculate(time) {
         let money;
         let date = $('#date').val();
         let day = new Date($('#date').val()).getDay();
-        //주말
-        if (holiday(date)) {
-            $('#date').css('color', 'red');
-            $('#date').css('font-weight', 'bold');
-            if (parseInt(endHour.val()) * 100 + parseInt(endMin.val()) > 2400) {//야간
-                switch (time) {
-                    case 5:money = 57000;break;
-                    case 6:money = 64000;break;
-                    case 7:money = 71000;break;
-                    case 8:money = 78000;break;
-                    case 9:money = 85000;break;
-                    case 10:money = 92000;break;
-                    case 11:money = 96000;break;
-                    case 12:money = 100000;break;
-                    default:money = 0;break;
+        let holiday;
+        
+        $.ajax({
+            url:"http://bestpachul.com/application/ajax/test.php",
+            method:"POST",
+            data: {
+                param:<?php echo json_encode($this->param)?>,
+                action:'isHoliday',
+                date:date,
+            },
+            dataType:"text",
+            success:function(data)
+            {
+                console.log('success');
+                console.log(data);
+                holiday = data;
+                //주말
+                if (holiday === 'true') {
+                    $('#date').css({'color':'red','font-weight':'bold'});
+                    if (parseInt(endHour.val()) * 100 + parseInt(endMin.val()) > 2400) {//야간
+                        switch (time) {
+                            case 5:money = 57000;break;
+                            case 6:money = 64000;break;
+                            case 7:money = 71000;break;
+                            case 8:money = 78000;break;
+                            case 9:money = 85000;break;
+                            case 10:money = 92000;break;
+                            case 11:money = 96000;break;
+                            case 12:money = 100000;break;
+                            default:money = 0;break;
+                        }
+                    }
+                    else {
+                        switch (time) {
+                            case 5:money = 47000;break;
+                            case 6:money = 54000;break;
+                            case 7:money = 61000;break;
+                            case 8:money = 68000;break;
+                            case 9:money = 75000;break;
+                            case 10:money = 82000;break;
+                            case 11:money = 86000;break;
+                            case 12:money = 90000;break;
+                            default:money = 0;break;
+                        }
+                    }
                 }
-            }
-            else {
-                switch (time) {
-                    case 5:money = 47000;break;
-                    case 6:money = 54000;break;
-                    case 7:money = 61000;break;
-                    case 8:money = 68000;break;
-                    case 9:money = 75000;break;
-                    case 10:money = 82000;break;
-                    case 11:money = 86000;break;
-                    case 12:money = 90000;break;
-                    default:money = 0;break;
+                //평일
+                else {
+                    $('#date').css('color', 'black');
+                    if (parseInt(endHour.val()) * 100 + parseInt(endMin.val()) > 2400) {
+                        switch (time) {
+                            case 5:money = 52000;break;
+                            case 6:money = 59000;break;
+                            case 7:money = 66000;break;
+                            case 8:money = 73000;break;
+                            case 9:money = 80000;break;
+                            case 10:money = 87000;break;
+                            case 11:money = 91000;break;
+                            case 12:money = 95000;break;
+                            default:money = 0;break;
+                        }
+                    }
+                    else {
+                        switch (time) {
+                            case 5:money = 42000;break;
+                            case 6:money = 49000;break;
+                            case 7:money = 56000;break;
+                            case 8:money = 63000;break;
+                            case 9:money = 70000;break;
+                            case 10:money = 77000;break;
+                            case 11:money = 81000;break;
+                            case 12:money = 85000;break;
+                            default:money = 0;break;
+                        }
+                    }
                 }
+                salary.html("근무시간: " + time + " 시간 / 일당: " + money + " 원");
+                $('#salary').val(money);
             }
-        }
-        //평일
-        else {
-            $('#date').css('color', 'black');
-            if (parseInt(endHour.val()) * 100 + parseInt(endMin.val()) > 2400) {
-                switch (time) {
-                    case 5:money = 52000;break;
-                    case 6:money = 59000;break;
-                    case 7:money = 66000;break;
-                    case 8:money = 73000;break;
-                    case 9:money = 80000;break;
-                    case 10:money = 87000;break;
-                    case 11:money = 91000;break;
-                    case 12:money = 95000;break;
-                    default:money = 0;break;
-                }
-            }
-            else {
-                switch (time) {
-                    case 5:money = 42000;break;
-                    case 6:money = 49000;break;
-                    case 7:money = 56000;break;
-                    case 8:money = 63000;break;
-                    case 9:money = 70000;break;
-                    case 10:money = 77000;break;
-                    case 11:money = 81000;break;
-                    case 12:money = 85000;break;
-                    default:money = 0;break;
-                }
-            }
-        }
-        salary.html("근무시간: " + time + " 시간 / 일당: " + money + " 원");
-        $('#salary').val(money);
+        });
+        
+        // //기존 isHoliday
+        // if (holiday === 'true') {
+        //     console.log('성공');
+        //     $('#date').css('color', 'red');
+        //     $('#date').css('font-weight', 'bold');
+        //     if (parseInt(endHour.val()) * 100 + parseInt(endMin.val()) > 2400) {//야간
+        //         switch (time) {
+        //             case 5:money = 57000;break;
+        //             case 6:money = 64000;break;
+        //             case 7:money = 71000;break;
+        //             case 8:money = 78000;break;
+        //             case 9:money = 85000;break;
+        //             case 10:money = 92000;break;
+        //             case 11:money = 96000;break;
+        //             case 12:money = 100000;break;
+        //             default:money = 0;break;
+        //         }
+        //     }
+        //     else {
+        //         switch (time) {
+        //             case 5:money = 47000;break;
+        //             case 6:money = 54000;break;
+        //             case 7:money = 61000;break;
+        //             case 8:money = 68000;break;
+        //             case 9:money = 75000;break;
+        //             case 10:money = 82000;break;
+        //             case 11:money = 86000;break;
+        //             case 12:money = 90000;break;
+        //             default:money = 0;break;
+        //         }
+        //     }
+        // }
+        // //평일
+        // else {
+        //     $('#date').css('color', 'black');
+        //     if (parseInt(endHour.val()) * 100 + parseInt(endMin.val()) > 2400) {
+        //         switch (time) {
+        //             case 5:money = 52000;break;
+        //             case 6:money = 59000;break;
+        //             case 7:money = 66000;break;
+        //             case 8:money = 73000;break;
+        //             case 9:money = 80000;break;
+        //             case 10:money = 87000;break;
+        //             case 11:money = 91000;break;
+        //             case 12:money = 95000;break;
+        //             default:money = 0;break;
+        //         }
+        //     }
+        //     else {
+        //         switch (time) {
+        //             case 5:money = 42000;break;
+        //             case 6:money = 49000;break;
+        //             case 7:money = 56000;break;
+        //             case 8:money = 63000;break;
+        //             case 9:money = 70000;break;
+        //             case 10:money = 77000;break;
+        //             case 11:money = 81000;break;
+        //             case 12:money = 85000;break;
+        //             default:money = 0;break;
+        //         }
+        //     }
+        // }
+        // salary.html("근무시간: " + time + " 시간 / 일당: " + money + " 원");
+        // $('#salary').val(money);
     }
 
     $(document).ready(function () {

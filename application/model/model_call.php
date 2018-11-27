@@ -6,6 +6,11 @@
     var $group1_list;
     var $group2;
     var $group3;
+  
+    function __construct($param)
+    {
+      parent::__construct($param);
+    }
     
     function action()
     {
@@ -38,7 +43,6 @@
         }
       }
     }
-  
     function workTimeType($data)
     {
       $start = $data['startTime'];
@@ -48,7 +52,6 @@
       else {if ($start < 12) $result = '오전'; else $result = '오후';}
       return $result;
     }
-    
     function filter($callID, $number)
     {
       $callData = $this->getTable("SELECT * FROM `call` WHERE `callID` = {$callID}")[0];
@@ -96,8 +99,10 @@
       $columns = ['workDate','companyID', 'employeeID', 'startTime', 'endTime', 'workField', 'detail'];
       $values = [ null, $companyID, $employeeID, $post['startTime'], $post['endTime'], $post['workField'] , $post['detail'] ];
       foreach ($values as $value){$newValues[] = "'".$value."'";}
-      //모든 date 추출
-      for ($i=0; $i<sizeof($dow); $i++){
+  
+      $ceo = new Model_ceo($this->param);
+      
+      for ($i=0; $i<sizeof($dow); $i++){//모든 date 추출
         $start->modify($dow[$i]);
         $interval = new DateInterval("P1W");
         $period   = new DatePeriod($start, $interval, $end);
@@ -105,8 +110,7 @@
           $array[] = $date->format('Y-m-d');
         }
       }
-      //DB에 입력하는 쿼리
-      foreach ($array as $value){
+      foreach ($array as $value){//DB에 입력하는 쿼리
         $newValues[0]= "'".$value."'";
         $column_string = implode(',',$columns);
         $value_string = implode(',',$newValues);

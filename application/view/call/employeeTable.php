@@ -7,13 +7,13 @@
               <th>간단주소</th>
               <th>배정</th>
           </tr>
-        <?php foreach ($this->db->{'group' . $i} as $key => $data): ?>
-          <?php if ($i == 1 || ($i != 1 && !in_array($data['employeeID'], $this->db->group1_list))): ?>
+        <?php foreach ($this->model->{'group' . $i} as $key => $data): ?>
+          <?php if ($i == 1 || ($i != 1 && !in_array($data['employeeID'], $this->model->group1_list))): ?>
                   <tr class="employeeRow <?php echo 'group' . $i ?>">
                       <td class="al_c"><?php echo $data['employeeID'] ?></td>
                       <td class="al_l">
                           <a href="http://bestpachul.com/employee/view/<?php echo $data['employeeID'] ?>"
-                             class="link"><?php echo $data['employeeName'] . " (" . $this->db->getAge($data['birthDate']) . ")" ?></a>
+                             class="link"><?php echo $data['employeeName'] . " (" . getAge($data['birthDate']) . ")" ?></a>
                       </td>
                       <td class="al_l"><?php echo $data['address'] ?></td>
                       <td class="al_c">
