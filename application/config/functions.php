@@ -225,23 +225,25 @@ HTML;
       if (isset($data['price'])) return '유료';
       else return '일반';
     }
-    function joinType($list)
-    {
-      $result = array();
-      if (isset ($list[0])) {
-        foreach ($list as $key => $value) {
-          if (isset($value['point'])) {
-            if (!in_array('포인트', $result)) $result[] = '포인트';
-          } elseif (isset($value['deposit'])) {
-            if (!in_array('보증금', $result)) $result[] = '보증금';
-          } elseif (isset($value['price'])) {
-            if (!in_array('구좌', $result)) $result[] = '구좌';
-          }
-        }
-        return implode(',', $result);
-      }
-      else return null;
-    }
+    
+//    function joinType($list)
+//    {
+//      $result = array();
+//      if (isset ($list[0])) {
+//        foreach ($list as $key => $value) {
+//          if (isset($value['point'])) {
+//            if (!in_array('포인트', $result)) $result[] = '포인트';
+//          } elseif (isset($value['deposit'])) {
+//            if (!in_array('보증금', $result)) $result[] = '보증금';
+//          } elseif (isset($value['price'])) {
+//            if (!in_array('구좌', $result)) $result[] = '구좌';
+//          }
+//        }
+//        return implode(',', $result);
+//      }
+//      else return null;
+//    }
+    
     function assignType($data)
     {
       if (isset($data['point'])) return '(P)';

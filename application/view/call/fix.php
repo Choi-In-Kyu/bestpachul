@@ -177,5 +177,7 @@
     });
     endHour.on('change', function () {
         calculate(endHour.val() - startHour.val())
-    })
+    });
+    
+    <?php require_once 'ceo.js';?>
 </script>

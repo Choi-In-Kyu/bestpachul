@@ -61,49 +61,23 @@
 </div>
 
 <script>
-    $(document).ready(function () {
-        change();
-    });
-    $('#year').on('change', function () {
-        $('#year').val($(this).val());
-        change();
-    });
-    $('#month').on('change',function () {
-        $('#month').val($(this).val());
-        change();
-    });
-    $('.callList').click(function () {
-        let callList = JSON.parse('<?php echo json_encode($this->callList)?>');
-        let index = $(this).index();
-        alert('요청사항 : '+callList[index]['detail']);
-    });
-    $('#cancelBtn').on('click',function () {
-        event.stopPropagation();
-    });
-
-    function change() {
-        let day = new Date(parseInt($('#year').val()) + "/" + parseInt($('#month').val()) + "/01");
-        let startTime = day;
-        let endTime = new Date(new Date(parseInt($('#year').val()) + "/" + parseInt($('#month').val()) + "/01").setMonth(new Date(parseInt($('#year').val()) + "/" + parseInt($('#month').val()) + "/01").getMonth()+1));
-        let rows = $('.workDate');
-        let yearArray = JSON.parse('<?php echo json_encode($this->getDate($this->callList))?>');
-        console.log(typeof(yearArray));
-        for (let i = 0; i<$('.month').length; i++){
-            if(yearArray[$('#year').val()].map(Number).includes(i+1)){
-                $('.month').eq(i).css('display','block');
-            }
-            else{
-                $('.month').eq(i).css('display','none');
-            }
-        }
-        rows.each(function () {
-            let rowDate = new Date($(this).text()).getTime();
-            if (rowDate > startTime.getTime() && rowDate <= endTime.getTime()) {
-                $(this).parent().css('display', 'table-row');
-            }
-            else {
-                $(this).parent().css('display', 'none');
-            }
-        });
-    }
+    //$(document).ready(function () {
+    //    change();
+    //});
+    //$('#year').on('change', function () {
+    //    $('#year').val($(this).val());
+    //    change();
+    //});
+    //$('#month').on('change',function () {
+    //    $('#month').val($(this).val());
+    //    change();
+    //});
+    //$('.callList').click(function () {
+    //    let callList = JSON.parse('<?php //echo json_encode($this->callList)?>//');
+    //    let index = $(this).index();
+    //    alert('요청사항 : '+callList[index]['detail']);
+    //});
+    //$('#cancelBtn').on('click',function () {
+    //    event.stopPropagation();
+    //});
 </script>

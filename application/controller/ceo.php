@@ -6,12 +6,16 @@
     var $companyID;
     var $companyData;
     var $callList;
+    var $payList;
     var $joinData;
     var $leftDays;
     var $weekendCount;
     var $weekdayCount;
     var $callPriceList;
+    var $pointList;
     var $callPrice;
+    var $totalPoint;
+    var $lastJoinDate;
     
     function __construct($param)
     {
@@ -26,28 +30,35 @@
       $this->companyData = $this->model->getTable("SELECT * from `company` WHERE companyID ='{$this->companyID}' LIMIT 1")[0];
       $this->joinData = $this->model->getTable("SELECT * FROM `join_company` WHERE companyID = '{$this->companyID}' AND activated = 1");
       $this->callList = $this->model->getTable("SELECT * FROM `call` WHERE companyID = '{$this->companyID}'");
-      $this->payList = $this->model->getTable("SELECT * FROM `call` WHERE companyID = '{$this->companyID}' AND `price` IS NOT NULL AND `cancelled`=0");
-      $this->weekendCount = $this->model->getTable(
-        "SELECT * FROM  `call` WHERE companyID ={$this->companyID} AND YEARWEEK( workDate, 1 ) = YEARWEEK( CURDATE( ) , 1 )
-AND ( DAYOFWEEK( workDate ) =7 OR DAYOFWEEK( workDate ) =1) AND price IS NULL AND cancelled=0");
-      $this->weekdayCount = $this->model->getTable(
-        "SELECT * FROM  `call` WHERE companyID ={$this->companyID} AND YEARWEEK( workDate, 1 ) = YEARWEEK( CURDATE( ) , 1 )
-AND NOT (DAYOFWEEK( workDate ) =7 OR DAYOFWEEK( workDate ) =1) AND price IS NULL AND cancelled=0");
-      $this->weekendPaidCount = $this->model->getTable(
-        "SELECT * FROM  `call` WHERE companyID ={$this->companyID} AND YEARWEEK( workDate, 1 ) = YEARWEEK( CURDATE( ) , 1 )
-AND ( DAYOFWEEK( workDate ) =7 OR DAYOFWEEK( workDate ) =1) AND price>0 AND cancelled=0");
-      $this->weekdayPaidCount = $this->model->getTable(
-        "SELECT * FROM  `call` WHERE companyID ={$this->companyID} AND YEARWEEK( workDate, 1 ) = YEARWEEK( CURDATE( ) , 1 )
-AND NOT (DAYOFWEEK( workDate ) =7 OR DAYOFWEEK( workDate ) =1) AND price>0 AND cancelled=0");
+      $this->payList = $this->model->getTable("SELECT * FROM `call` WHERE companyID = '{$this->companyID}' AND `price` >0 AND `cancelled`=0");
+      
+      $this->joinType = $this->model->joinType($this->companyID);
+      
+      function condition($array){return implode(' AND ', $array);}
+      $basic    = "SELECT * FROM `call` LEFT JOIN `holiday` ON `call`.workDate = `holiday`.holiday WHERE ";
+      $company  = " companyID ={$this->companyID} ";
+      $thisweek = "YEARWEEK( workDate, 1 ) = YEARWEEK( CURDATE( ) , 1 )";
+      $weekday  = " (NOT (DAYOFWEEK( workDate ) =7 OR DAYOFWEEK( workDate ) =1) AND holiday IS NULL)";
+      $weekend  = " ((DAYOFWEEK( workDate ) =7 OR DAYOFWEEK( workDate ) =1) OR holiday IS NOT NULL)";
+      $charged  = " (price > 0) ";
+      $free     = " (price IS NULL OR price=0) ";
+      $active   = " (cancelled = 0)";
+      $this->weekdayCount     = $this->model->getTable($basic.condition([$company,$thisweek,$active,$weekday,$free]));
+      $this->weekendCount     = $this->model->getTable($basic.condition([$company,$thisweek,$active,$weekend,$free]));
+      $this->weekdayPaidCount = $this->model->getTable($basic.condition([$company,$thisweek,$active,$weekday,$charged]));
+      $this->weekendPaidCount = $this->model->getTable($basic.condition([$company,$thisweek,$active,$weekend,$charged]));
       $this->callPriceList = $this->model->getTable("SELECT * FROM `call`  WHERE companyID =  '{$this->companyID}' AND price >=0 AND cancelled=0");
-      $this->callPrice = $this->addAll($this->callPriceList);
+      $this->callPrice = $this->addAll($this->callPriceList,'price');
+      $this->pointList = $this->model->getTable("SELECT point FROM `join_company` WHERE companyID = '{$this->companyID}' AND startDate <= CURDATE() AND `activated` = 1 AND deleted = 0 AND point>0");
+      $this->totalPoint = $this->addAll($this->pointList,'point');
+      if ($this->model->joinType($this->companyID) == 'gujwa') {
+        $this->lastJoinDate = $this->model->getTable("SELECT * FROM join_company WHERE companyID = '{$this->companyID}' ORDER BY endDate DESC")[0]['endDate'];
+      } else $this->lastJoinDate = null;
     }
     
-    function lastJoinDate()
+    function lastJoinDate($id)
     {
-      if ($this->joinType($this->joinData) == '구좌') {
-        return $this->model->getTable("SELECT * FROM join_company WHERE companyID = '{$this->companyID}' ORDER BY endDate DESC")[0]['endDate'];
-      } else return null;
+    
     }
     
     function dateFormat($array)
@@ -59,10 +70,10 @@ AND NOT (DAYOFWEEK( workDate ) =7 OR DAYOFWEEK( workDate ) =1) AND price>0 AND c
       return $date;
     }
     
-    function addAll($array)
+    function addAll($array,$column)
     {
       $sum = 0;
-      foreach ($array as $value) $sum += $value['price'];
+      foreach ($array as $value) $sum += $value[$column];
       return $sum;
     }
     

@@ -53,7 +53,7 @@
         $this->condition['filter'] = $this->activatedCondition['filter'];
       }
       if (isset($_POST['keyword']) && $_POST['keyword'] != "") {
-        $this->condition['keyword'] = " (`{$tableName}Name` LIKE '%{$this->keyword}%' OR `address` LIKE '%{$this->keyword}%') ";
+        $this->condition['keyword'] = " (`{$tableName}Name` LIKE '%{$this->keyword}%' OR `address` LIKE '%{$this->keyword}%' OR `detail` LIKE '%{$this->keyword}%') ";
       }
       $this->list = $this->model->getList($this->condition);
       $this->list = $this->initActCondition($this->list, $tableName);
