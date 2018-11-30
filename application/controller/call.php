@@ -15,6 +15,8 @@
     
     function basic()
     {
+      $this->companyID = $this->model->select('user', "userID = $this->userID", 'companyID');
+  
       if(isset($_POST['year'])&&isset($_POST['month'])){
         $newDate = $_POST['year'];
         if($_POST['month']<10) $newDate.= '0';

@@ -111,92 +111,13 @@
     </form>
 </div>
 <script>
-    let startHour = $('#startHour');
-    let endHour = $('#endHour');
-    let endMin = $('#endMin');
-    let minute = $('.minute');
-    let salary = $('#salaryInfo');
-    let date = $('#date');
-    let time = endHour.val() - startHour.val();
-
     $(document).ready(function () {
+        $('#formAction').val('initiate');
         $('#workField').val('주방보조');
         startHour.val('10');
         endHour.val('15');
-        initiate(endHour.val()-startHour.val());
+        initiate(endHour.val() - startHour.val());
     });
-    
-    minute.on('change', function () {
-        minute.val($(this).val());
-    });
-    date.on('change', function () {
-        initiate(endHour.val()-startHour.val());
-    });
-    startHour.on('change', function () {
-        let starth = parseInt(startHour.val());
-        endHour.val(starth + 5);
-        for (let i = 0; i < 50; i++) {
-            if ((i < starth + 4) || (i > starth + 11)) {
-                $('.endOption').eq(i).css('display', 'none');
-            }
-            else {
-                $('.endOption').eq(i).css('display', 'block');
-            }
-        }
-        initiate(endHour.val()-startHour.val());
-    });
-    endHour.on('change', function () {
-        initiate(endHour.val()-startHour.val())
-    });
-    
-    $('#1day').click(function () {
-        date.val('<?php echo date("Y-m-d", strtotime("+1 day"))?>');
-        date.trigger('change');
-    });
-    $('#2day').click(function () {
-        date.val('<?php echo date("Y-m-d", strtotime("+2 day"))?>');
-        date.trigger('change');
-    });
-    $('#morningBtn').click(function () {
-        startHour.val('10');
-        endHour.val('15');
-        minute.val('00');
-        startHour.trigger('change');
-    });
-    $('#afternoonBtn').click(function () {
-        startHour.val('18');
-        endHour.val('23');
-        minute.val('00');
-        startHour.trigger('change');
-    });
-    $('#allDayBtn').click(function () {
-        startHour.val('10');
-        endHour.val('22');
-        minute.val('00');
-        let starth = parseInt(startHour.val());
-        for (let i = 0; i < 50; i++) {
-            if ((i < starth + 5) || (i > starth + 11)) {
-                $('.endOption').eq(i).css('display', 'none');
-            }
-            else {
-                $('.endOption').eq(i).css('display', 'block');
-            }
-        }
-        initiate(endHour.val()-startHour.val())
-    });
-    $('#dish').click(function () {
-        $('#workField').val('설거지');
-    });
-    $('#kitchen').click(function () {
-        $('#workField').val('주방보조');
-    });
-    $('#hall').click(function () {
-        $('#workField').val('홀서빙');
-    });
-    
-    $('#submitBtn').on('click',function () {
-        console.log('click');
-        call();
-    });
-    <?php require_once 'ceo.js'?>
 </script>
+<?php require_once _JS.'ceo_js.php'?>
+<?php require_once _JS.'ajax_js.php'?>

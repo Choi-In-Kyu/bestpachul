@@ -105,14 +105,17 @@
     $('#callCancelBtn').on('click', function () {
         cancel();
     });
+    
     function change() {
+        let month = $('.month');
         let day = new Date(parseInt($('#year').val()) + "/" + parseInt($('#month').val()) + "/01");
         let startTime = day;
         let endTime = new Date(new Date(parseInt($('#year').val()) + "/" + parseInt($('#month').val()) + "/01").setMonth(new Date(parseInt($('#year').val()) + "/" + parseInt($('#month').val()) + "/01").getMonth() + 1));
         let rows = $('.workDate');
         let yearArray = JSON.parse('<?php echo json_encode($this->getDate($this->callList))?>');
-        for (let i = 0; i < $('.month').length; i++) {
+        for (let i = 0; i < 12; i++) {
             if (yearArray[$('#year').val()].map(Number).includes(i + 1)) {
+                console.log(month.eq(i).val());
                 month.eq(i).css('background','blue');
             }
             else {

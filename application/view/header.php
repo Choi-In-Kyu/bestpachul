@@ -12,8 +12,10 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
     <script src="/public/js/datepicker.js"></script>
+    
 </head>
 <?php if (!in_array($this->param->page_type, ['login', 'ceo'])): ?>
     <body>
