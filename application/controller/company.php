@@ -29,5 +29,6 @@
       $this->joinList = $this->model->getTable("SELECT * FROM join_company WHERE companyID = '{$this->companyID}' order by endDate DESC");
       $this->employeeList = $this->model->getTable("SELECT * FROM `employee` WHERE activated = 1");
       $this->callList = $this->get_callList();
+      $this->blackList = $this->get_blackList();
     }
   }

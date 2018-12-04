@@ -32,8 +32,13 @@
   
   function leftDays($date)
   {
-    $today = strtotime(_TODAY);
-    $date = strtotime($date);
-    $leftDays = date('j', $today - $date);
-    return $leftDays-1;
+    $datetime1 = new DateTime(_TODAY);
+    $datetime2 = new DateTime($date);
+    $interval = $datetime2->diff($datetime1);
+    return $interval->format('%R%a');
+    
+//    $today = strtotime(_TODAY);
+//    $date = strtotime($date);
+//    $leftDays = date('j', $today - $date);
+//    return $leftDays-1;
   }

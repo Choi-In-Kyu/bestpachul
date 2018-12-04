@@ -14,11 +14,12 @@
     var $join;
     var $day;
     var $tables;
-    public $defaultCondition = array("filter" => " (deleted = 0) ");
-    public $activatedCondition = array("filter" => " (activated = 1 AND deleted = 0) ");
-    public $expiredCondition = array("filter" => " (activated = 0 AND deleted = 0) ");
-    public $deletedCondition = array("filter" => " (activated = 0 AND deleted = 1) ");
-    public $deadlineCondition = array("filter" => " (activated = 1 AND (bookmark = 1 OR imminent = 1)) ");
+    var $tableName;
+    public $defaultCondition    = array("filter" => " (deleted = 0) ");
+    public $activatedCondition  = array("filter" => " (activated = 1 AND deleted = 0) ");
+    public $expiredCondition    = array("filter" => " (activated = 0 AND deleted = 0) ");
+    public $deletedCondition    = array("filter" => " (activated = 0 AND deleted = 1) ");
+    public $deadlineCondition   = array("filter" => " (bookmark = 1 OR imminent = 1) ");
 
 //생성자
     function __construct($param)
@@ -31,7 +32,7 @@
       $this->getFunctions();
       $method = isset($this->param->action) ? $this->param->action : null;
       if (method_exists($this, $method)) $this->$method();
-      require_once(_VIEW . "header.php");
+      require_once(_VIEW . "common/header.php");
     }
     
     function getFunctions()
@@ -40,6 +41,7 @@
       foreach ($this->tables as $value) {
         $this->{$value . '_List'} = $this->model->select($value);
       }
+      $this->tableName = $this->param->page_type;
     }
     
     function getBasicFunction($tableName)
@@ -61,23 +63,28 @@
     }
     
     function get_callList(){
+      $condition = array();
       $table = $this->param->page_type;
-      if(in_array($table,['company','employee'])) $condition = " WHERE `{$table}ID` = '{$this->param->idx}' ";
-      else $condition = "";
+      if(in_array($table,['company','employee'])) $condition[] = " `{$table}ID` = '{$this->param->idx}' ";
       if(isset($_POST['year'])&&isset($_POST['month'])){
         $newDate = $_POST['year'];
         if($_POST['month']<10) $newDate.= '0';
         $newDate.= $_POST['month'].'01';
       }
-      
       switch ($_POST['filter']) {
-        case 'all'  :$condition = "";break;
-        case 'day'  :$condition = "WHERE workDate = '{$_POST['date']}'";break;
-        case 'week' :$condition = "WHERE  YEARWEEK(`workDate`, 1) = YEARWEEK(CURDATE(), 1)";break;
-        case 'month':$condition = "WHERE YEAR(workDate) = YEAR('{$newDate}') AND MONTH(workDate) = MONTH('{$newDate}')";break;
-        case 'paid' :$condition = "WHERE YEAR(workDate) = YEAR('{$newDate}') AND MONTH(workDate) = MONTH('{$newDate}') AND price IS NOT NULL AND point IS NULL";break;
-        default     :$condition = "WHERE workDate = '"._TODAY."'";break; //기본값은 오늘
+        case 'all'  :break;
+        case 'day'  :$condition[] = "( workDate = '{$_POST['date']}')";break;
+        case 'week' :$condition[] = "( YEARWEEK(`workDate`, 1) = YEARWEEK(CURDATE(), 1))";break;
+        case 'month':$condition[] = "( YEAR(workDate) = YEAR('{$newDate}') AND MONTH(workDate) = MONTH('{$newDate}'))";break;
+        case 'paid' :$condition[] = "( YEAR(workDate) = YEAR('{$newDate}') AND MONTH(workDate) = MONTH('{$newDate}') AND price > 0 AND point = 0)";break;
+        default     :$condition[] = "( workDate = '"._TODAY."')";break; //기본값은 오늘
       }
-      return $this->model->getTable("SELECT * FROM `call`" . $condition);
+      $where = (sizeof($condition)>0) ? "WHERE" : null;
+      return $this->model->getTable("SELECT * FROM `call` {$where} " . implode(' AND ', $condition));
+    }
+    
+    function get_blackList(){
+      $tbl = $this->tableName;
+      return $this->model->getTable("SELECT * FROM `blackList` WHERE `{$tbl}ID` = '{$this->param->idx}' ");
     }
   }

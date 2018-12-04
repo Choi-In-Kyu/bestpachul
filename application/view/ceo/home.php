@@ -58,9 +58,3 @@
       <?php endif; ?>
     </div>
 </div>
-
-<script>
-    $(document).ready(function () {
-    
-    });
-</script>

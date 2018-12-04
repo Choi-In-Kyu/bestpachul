@@ -10,6 +10,7 @@
     var $employeeID;
     var $callList;
     var $employeeList;
+    var $blackList;
     
     function __construct($param)
     {
@@ -31,6 +32,7 @@
         "SELECT callID, punk.employeeID, companyID, workDate, startTime, endTime, workField, salary, call.detail as detail, punk.detail as punkDetail
          FROM  `punk` LEFT JOIN `call` USING (callID) WHERE punk.employeeID = '{$this->employeeID}'");
       $this->employeeList = $this->model->getTable("SELECT * FROM `employee` WHERE activated = 1");
+      $this->blackList = $this->get_blackList();
     }
     
     function getDay($day, $type)

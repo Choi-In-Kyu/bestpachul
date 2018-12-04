@@ -29,6 +29,10 @@
         <li data-content="call"><?php require_once 'call.php' ?></li>
     </ul>
 </div>
+
+<?php require_once _VIEW . 'common/modal.php';?>
+
 <script src="/public/js/mobile.js"></script>
+<script src="/public/js/ajax.js"></script>
 </body>
 </html>

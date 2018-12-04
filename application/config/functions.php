@@ -6,6 +6,8 @@
       $dir = _VIEW . "{$this->param->page_type}/{$this->param->include_file}.php";
       if (file_exists($dir)) require_once($dir);
       echo "<script src='/public/js/common.js'></script>";
+      echo "<script src='/public/js/functions.js'></script>";
+      echo "<script src='/public/js/{$this->param->page_type}.js'></script>";
     }
     
     function initJoin($tableName)
@@ -29,9 +31,15 @@
         if (($targetTime < $todayTime && $todayTime < $endTime) || ($tableName == 'employee' && $value['paid'] == 0)) {
           $this->model->executeSQL("UPDATE join_{$tableName} SET imminent = 1 WHERE join_{$tableName}ID = {$joinID} LIMIT 1");
         } //가입 자동 만기시킴
-        else if ($todayTime >= $endTime) {
-          $this->model->executeSQL("UPDATE join_{$tableName} SET activated = 0 WHERE join_{$tableName}ID = {$joinID} LIMIT 1");
+        else{
+          if ($todayTime >= $endTime) {
+            $this->model->executeSQL("UPDATE join_{$tableName} SET activated = 0 WHERE join_{$tableName}ID = {$joinID} LIMIT 1");
+          }
+          else{
+            $this->model->executeSQL("UPDATE join_{$tableName} SET imminent = 0 WHERE join_{$tableName}ID = {$joinID} LIMIT 1");
+          }
         }
+        
       }
     }
     function initActCondition($list, $tableName)
@@ -44,6 +52,10 @@
           foreach ($joinList as $key2 => $data) {
             if ($data['imminent'] == 1) {
               $this->model->executeSQL("UPDATE {$tableName} SET activated = 1, imminent = 1 WHERE {$tableName}ID = {$tableID} LIMIT 1");
+              break;
+            }
+            else{
+              $this->model->executeSQL("UPDATE {$tableName} SET activated = 1, imminent = 0 WHERE {$tableName}ID = {$tableID} LIMIT 1");
               break;
             }
           }
@@ -62,12 +74,12 @@
       foreach ($list as $key => $value) {
         $tableID = $tableName . 'ID';
         $tableID = $list[$key][$tableID];
-        if (in_array($tableID, $deadlineArray)) {
+        if (in_array($tableID, $expiredArray)) {
+        $actCondition = "만기됨";
+        $color = "pink";}
+        elseif (in_array($tableID, $deadlineArray)) {
           $actCondition = "만기임박";
           $color = "yellow";
-        } elseif (in_array($tableID, $expiredArray)) {
-          $actCondition = "만기됨";
-          $color = "pink";
         } elseif (in_array($tableID, $deletedArray)) {
           $actCondition = "삭제됨";
           $color = "gray";
@@ -117,12 +129,12 @@
           $days = 5;
           break;
       }
-      $condition1 = strtotime($data['endDate'] . " -{$days} days") < strtotime(date('Y-m-d'));
-      $condition2 = strtotime(date('Y-m-d')) < strtotime($data['endDate']);
+      $condition1 = strtotime($data['endDate'] . " -{$days} days") <= strtotime(_TODAY);
+      $condition2 = strtotime(_TODAY) <= strtotime($data['endDate']);
       $string = $data['endDate'];
       $leftDays = leftDays($data['endDate']);
       if ($condition1 && $condition2) {
-        $string .= " (D-{$leftDays})";
+        $string .= " (D{$leftDays})";
       }
       return $string;
     }
@@ -154,20 +166,20 @@ HTML;
         return <<<HTML
         <form action="" method="post">
               <input type="hidden" name="action" value="restore">
-              <input type="hidden" name="{$tableID}" value="{$data[$tableID]}">
+              <input type="hidden" name="{$tableID}" value="">
               <input class="btn" type="submit" value="복구">
         </form>
 HTML;
       }
     }
-    function get_paidBtn($data)
+    function get_paidBtn($data,$table)
     {
-      if ($data['paid'] == 0) {
+      if (($data['price'] > 0) && ($data['paid'] == 0)) {
         return <<<HTML
           <form action= "" method="post">
               <input type="hidden" name="action" value="getMoney">
-              <input type="hidden" name="joinID" value="{$data['join_employeeID']}">
-              <input class="btn" type="submit" value="수금">
+              <input type="hidden" name="id" value="{$data[$table.'ID']}">
+              <input class="btn" type="submit" value="{$data['price']}">
           </form>
 HTML;
       } else return "수금완료";
@@ -184,7 +196,7 @@ HTML;
     function get_detail($data, $tableName)
     {
       $companyDetail = array('좌탁여부', '테이블수', '그릇종류', '식기세척기', '상주직원수', '주방환경', '교통환경', '주요업무', '가입경로', '기타사항');
-      $employeeDetail = array('경력', '특기', '체류비자', '월급제', '4대보험', '자차소유', '추천인', '외모', '이상여부', '지각', '빵꾸', '기타사항');
+      $employeeDetail = array('경력', '특기', '체류비자', '월급제', '4대보험', '자차소유', '추천인', '외모', '이상여부', '지각', '빵꾸', '기타사항', '상담자');
       if (isset($data['detail'])) {
         return $data['detail'];
       } else {
@@ -219,6 +231,10 @@ HTML;
     {
       return $this->model->select('company', "`companyID`={$id}", 'companyName');
     }
+    function employeeName($id)
+    {
+      return $this->model->select('employee', "`employeeID`={$id}", 'employeeName');
+    }
     function callType($data)
     {
       if (isset($data['point'])) return '포인트';
@@ -246,8 +262,8 @@ HTML;
     
     function assignType($data)
     {
-      if (isset($data['point'])) return '(P)';
-      if (isset($data['price'])) return '(유)';
+      if (isset($data['point'])&&$data['point']>0) return '(P)';
+      if (isset($data['price'])&&$data['price']>0) return '(유)';
     }
     function timeType($data)
     {

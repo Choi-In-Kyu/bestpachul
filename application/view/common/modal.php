@@ -1,4 +1,4 @@
-<!-- Cancel Modal -->
+<!-- Delete Modal -->
 <div id="deleteModal" class="modal">
     <div class="modal-content">
         <form action="" method="post">
@@ -7,6 +7,19 @@
             <textarea name="deleteDetail"></textarea>
             <input class="btn btn-insert" type="submit" value="삭제하기">
             <input class="btn btn-danger closeModal" type="button" value="취소">
+        </form>
+    </div>
+</div>
+
+<!--Call Cancel Modal-->
+<div id="callCancelModal" class="modal">
+    <div class="modal-content">
+        <form id="callCancelForm" action="" method="post">
+            <input name="action" type="hidden" value="cancel">
+            <input name="callID" type="hidden" id="callCancelID">
+            <textarea name="detail" id="detail" size="200">취소사유: </textarea>
+            <input id="callCancelBtn" class="btn btn-insert" type="submit" value="콜 취소">
+            <input id="closeCallCancelModal" class="btn btn-danger" type="button" value="닫기">
         </form>
     </div>
 </div>

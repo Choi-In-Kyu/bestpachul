@@ -7,4 +7,3 @@
   <?php $type = 'call'; require 'callTable.php' ?>
 </div>
 <?php require_once 'call_modal.php' ?>
-<?php require_once 'call_js.php' ?>

@@ -62,10 +62,19 @@
           $this->executeSQL("UPDATE company SET activated = '1', deleted = '0', deleteDetail=null, deletedDate = null WHERE companyID = '{$_POST['companyID']}' LIMIT 1");
           $msg="복구되었습니다";
           break;
+        case 'join_update':
+          $joinID = $_POST['joinID'];
+          $detail = $_POST['detail'];
+          $price = $_POST['price'];
+          $this->executeSQL("UPDATE join_company SET price= '{$price}', detail = '{$detail}' WHERE join_companyID = '{$joinID}' LIMIT 1");
+          break;
         case 'bookmark':
           $value = ($this->select('company',"companyID = {$_POST['ID']}",'bookmark') == 1) ? 0 : 1 ;
           $string = "UPDATE company SET bookmark = {$value} WHERE companyID = {$_POST['ID']} LIMIT 1";
           $this->executeSQL($string);
+          break;
+        case 'getMoney' :
+          $this->executeSQL("UPDATE `call` SET paid = '1' WHERE callID = {$_POST['id']} LIMIT 1");
           break;
       }
       unset($_POST);

@@ -119,5 +119,3 @@
         initiate(endHour.val() - startHour.val());
     });
 </script>
-<?php require_once _JS.'ceo_js.php'?>
-<?php require_once _JS.'ajax_js.php'?>

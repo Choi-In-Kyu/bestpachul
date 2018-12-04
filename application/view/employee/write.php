@@ -129,6 +129,18 @@
                       <?php endif; ?>
                         <?php require_once 'employeeAvailableDayTable.php'?>
                     </div>
+                  <?php if (($this->param->action == 'view') && (sizeof($this->blackList) > 0)): ?>
+                      <div class="tr">
+                          <div class="td-label">블랙</div>
+                          <div class="td-detail">
+                            <?php foreach ($this->blackList as $data){
+                              $type = ($data['ceoReg']==1) ? '안불러요' : '안가요';
+                              echo $this->companyName($data['companyID'])." ".$type." : ".$data['detail'].'<br>';
+                            }
+                            ?>
+                          </div>
+                      </div>
+                  <?php endif; ?>
                 </div>
               
               <?php if (!isset($this->param->idx)) : ?>

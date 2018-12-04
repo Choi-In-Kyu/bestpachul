@@ -25,6 +25,7 @@
             <th class="link" onclick="sortTable('<?php echo $type.'_table'?>',4)">업종</th>
             <th class="link" onclick="sortTable('<?php echo $type.'_table'?>',5)">일당</th>
             <th class="link" onclick="sortTable('<?php echo $type.'_table'?>',6)">요청사항</th>
+            <th>콜비</th>
             <th class="link" onclick="sortTable('<?php echo $type.'_table'?>',7)">인력</th>
             <th>취소</th>
         </tr>
@@ -52,6 +53,10 @@
                     <?php if ( ($data['cancelled'] == 1) && (isset($data['cancelDetail'])) )    echo "<br>({$data['cancelDetail']})"; ?>
                     <?php if ( ($type=='punk') && (isset($data['punkDetail'])) )                echo "<br>({$data['punkDetail']})"?>
                   </td>
+
+                  <td class="al_c"><?php echo $this->get_paidBtn($data, 'call'); ?></td>
+
+
                   <td class="al_c">
   
                     <?php switch ($type): case 'call': ?>
@@ -63,7 +68,7 @@
                             <button type="button" class="btn btn-small btn-submit moveAssignBtn" id="<?php echo $data['callID'] ?>">배정</button>
                       <?php endif; ?>
                       <?php break; ?>
-  
+                      
                     <?php case 'punk': ?>
                         <a href="http://bestpachul.com/employee/view/<?php echo $data['employeeID'] ?>" class="link">
                           <?php echo $employeeName ?>

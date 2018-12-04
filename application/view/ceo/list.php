@@ -57,19 +57,7 @@
     </div>
 </div>
 
-<!--Call Cancel Modal-->
-<div id="callCancelModal" class="modal">
-    <div class="modal-content">
-        <form id="callCancelForm" action="" method="post">
-            <input name="action" type="hidden" value="cancel">
-            <input name="companyID" type="hidden" value="<?php echo $this->companyID ?>">
-            <input name="callID" type="hidden" id="callCancelID">
-            <textarea name="detail" id="cancelDetail" size="200">취소사유: </textarea>
-            <input id="callCancelBtn" class="btn btn-insert" type="submit" value="콜 취소">
-            <input id="closeCallCancelModal" class="btn btn-danger" type="button" value="닫기">
-        </form>
-    </div>
-</div>
+
 
 <script>
 

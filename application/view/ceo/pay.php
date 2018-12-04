@@ -59,25 +59,3 @@
     </div>
 
 </div>
-
-<script>
-    //$(document).ready(function () {
-    //    change();
-    //});
-    //$('#year').on('change', function () {
-    //    $('#year').val($(this).val());
-    //    change();
-    //});
-    //$('#month').on('change',function () {
-    //    $('#month').val($(this).val());
-    //    change();
-    //});
-    //$('.callList').click(function () {
-    //    let callList = JSON.parse('<?php //echo json_encode($this->callList)?>//');
-    //    let index = $(this).index();
-    //    alert('요청사항 : '+callList[index]['detail']);
-    //});
-    //$('#cancelBtn').on('click',function () {
-    //    event.stopPropagation();
-    //});
-</script>

@@ -1,3 +1,4 @@
+//jQuery Datepicker
 $.datepicker.setDefaults({
     dateFormat: 'yy-mm-dd',
     prevText: '이전 달',

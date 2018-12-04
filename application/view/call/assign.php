@@ -4,4 +4,3 @@
   <?php require_once 'employeeTable.php' ?>
 </div>
 <?php require_once 'call_modal.php'?>
-<?php require_once 'call_js.php'?>

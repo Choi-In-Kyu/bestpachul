@@ -47,9 +47,10 @@
         <colgroup>
             <col width="5%">
             <col width="15%">
-            <col width="30%">
+            <col width="25%">
             <col width="5%">
             <col width="45%">
+            <col width="5%">
         </colgroup>
         <thead>
         <tr>
@@ -58,16 +59,22 @@
             <th>업체명</th>
             <th>구분</th>
             <th>비고</th>
+            <th>삭제</th>
         </tr>
         </thead>
         <tbody>
         <?php foreach ($this->blackList_List as $key => $data): ?>
             <tr>
                 <td class="al_c"><?php echo $data['blackListID'] ?></td>
-                <td class="al_l"><?php echo $this->model->select('employee', "employeeID = $data[employeeID]",'employeeName')?></td>
-                <td class="al_l"><?php echo $this->model->select('company', "companyID = $data[companyID]",'companyName')?></td>
+                <td class="al_l link" onClick='location.href="<?php echo _URL."employee/view/{$data['employeeID']}" ?>"'>
+                  <?php echo $this->model->select('employee', "employeeID = $data[employeeID]",'employeeName')?>
+                </td>
+                <td class="al_l link" onClick='location.href="<?php echo _URL."company/view/{$data['companyID']}" ?>"'>
+                  <?php echo $this->model->select('company', "companyID = $data[companyID]",'companyName')?>
+                </td>
                 <td class="al_l"><?php if($data['ceoReg']==1) echo '안불러요'; else echo '안가요'?></td>
                 <td class="al_l"><?php echo $data['detail'] ?></td>
+                <td class="al_c"><button type="button" class="btn btn-danger blackDelBtn" value="<?php echo $data['blackListID']?>">X</button></td>
             </tr>
         <?php endforeach ?>
         </tbody>

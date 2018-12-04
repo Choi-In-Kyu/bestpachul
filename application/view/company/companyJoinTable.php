@@ -24,12 +24,12 @@
         <tbody>
         <?php foreach ($this->joinList as $key => $data): ?>
             <tr style="background-color:<?php echo $this->joinColor($data, 'company'); ?>">
-                <td class="al_c update join_id"><?php echo $data['join_companyID'] ?></td>
+                <td class="al_c link update join_id"><?php echo $data['join_companyID'] ?></td>
                 <td class="al_l"><?php echo $this->get_joinType($data); ?></td>
-                <td class="al_l update join_price"><?php echo $this->get_joinPrice($data); ?></td>
+                <td class="al_l link update join_price"><?php echo $this->get_joinPrice($data); ?></td>
                 <td class="al_l"><?php echo $data['startDate'] ?></td>
                 <td class="al_l"><?php echo $this->get_endDate($data, 'company'); ?></td>
-                <td class="al_l update join_detail"><?php echo $this->get_joinDetail($data); ?></td>
+                <td class="al_l link update join_detail"><?php echo $this->get_joinDetail($data); ?></td>
                 <td class="al_c"><?php echo $this->get_joinDeleteBtn($data, 'company'); ?></td>
             </tr>
         <?php endforeach ?>

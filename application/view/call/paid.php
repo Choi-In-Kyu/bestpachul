@@ -6,4 +6,3 @@
 <!--  --><?php //$type = 'call'; require_once 'callTable.php' ?>
 <!--</div>-->
 <?php //require_once 'call_modal.php' ?>
-<?php //require_once 'call_js.php' ?>

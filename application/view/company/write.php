@@ -2,13 +2,15 @@
     <div class="board_write auto-center">
         <h1>
           <?php
-            echo "업체정보"; if (isset ($companyData)) echo " - " . $companyData['companyName'] . "(" . $companyData['actCondition'] . ")";
+            echo "업체정보";
+            if (isset ($companyData)) echo " - " . $companyData['companyName'] . "(" . $companyData['actCondition'] . ")";
           ?>
         </h1>
         <div class="form-style-1">
             <form id="company_form" action="" method="post">
                 <fieldset>
-                    <input type="hidden" name="action" value="<?php echo ($this->param->action=='write') ? 'insert':'update' ?>">
+                    <input type="hidden" name="action"
+                           value="<?php echo ($this->param->action == 'write') ? 'insert' : 'update' ?>">
                     <input type="hidden" name="company-companyID" value="<?php echo $companyData['companyID'] ?>">
                     <input type="hidden" name="ceo-ceoID" value="<?php echo $this->ceoData['ceoID'] ?>">
                     <div class="table">
@@ -90,6 +92,19 @@
                               </div>
                           <?php endif; ?>
                         </div>
+                      <?php if (($this->param->action == 'view') && (sizeof($this->blackList) > 0)): ?>
+                          <div class="tr">
+                              <div class="td-label">블랙</div>
+                              <div class="td-detail">
+                                  <?php foreach ($this->blackList as $data){
+                                      $type = ($data['ceoReg']==1) ? '안불러요' : '안가요';
+                                    echo $this->employeeName($data['employeeID'])." ".$type." : ".$data['detail'].'<br>';
+                                  }
+                                  ?>
+                              </div>
+                          </div>
+                      <?php endif; ?>
+
                     </div>
                   <?php if (!isset($this->param->idx)) : ?>
                       <br/>
@@ -103,7 +118,8 @@
                   <?php endif; ?>
                     <div class="btn_group">
                         <a class="btn btn-default" href="<?php echo $this->param->get_page ?>">취소</a>
-                        <button class="btn btn-submit" type="submit"><?php echo ($this->param->action=='write') ? '추가':'수정' ?></button>
+                        <button class="btn btn-submit"
+                                type="submit"><?php echo ($this->param->action == 'write') ? '추가' : '수정' ?></button>
                     </div>
                 </fieldset>
             </form>

@@ -43,7 +43,7 @@
           $msg = "삭제되었습니다";
           break;
         case 'getMoney' :
-          $this->executeSQL("UPDATE join_employee SET paid = '1' WHERE join_employeeID = {$_POST['joinID']} LIMIT 1");
+          $this->executeSQL("UPDATE `join_employee` SET paid = '1' WHERE join_employeeID = {$_POST['id']} LIMIT 1");
           $msg = "수금완료";
           break;
         case 'insert_day':
@@ -63,8 +63,9 @@
           $this->executeSQL("UPDATE join_employee SET price= '{$price}', detail = '{$detail}' WHERE join_employeeID = '{$joinID}' LIMIT 1");
           break;
         case 'bookmark':
-          $value = ($this->select('employee',"employeeID = '{$_POST['employeeID']}'",'bookmark') == 1) ? 0 : 1 ;
-          $this->executeSQL("UPDATE employee SET bookmark = {$value} WHERE employeeID = '{$_POST['ID']}' LIMIT 1");
+          $value = ($this->select('employee',"employeeID = {$_POST['ID']}",'bookmark') == 1) ? 0 : 1 ;
+          $string = "UPDATE employee SET bookmark = {$value} WHERE employeeID = {$_POST['ID']} LIMIT 1";
+          $this->executeSQL($string);
           break;
       }
       unset($_POST);

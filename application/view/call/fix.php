@@ -1,4 +1,10 @@
 <div class="board_write">
+    <div>
+        <button class="btn btn-default selectable selected" id="manualCallBtn">일반콜</button>
+        <button class="btn btn-default selectable" id="fixCallBtn">고정</button>
+        <button class="btn btn-default selectable" id="monthlyCallBtn">월급제</button>
+    </div>
+
     <form action="" id="callForm" method="post">
         <input type="hidden" name="action" id="formAction">
         <input type="hidden" name="companyID" id="companyID">
@@ -33,7 +39,7 @@
                 </div>
             </div>
             <!--근무요일-->
-            <div class="tr">
+            <div class="tr" id="workDay" style="display: none;">
                 <div class="td-label">근무요일</div>
                 <div class="td">
                     <table>
@@ -63,15 +69,15 @@
                 <div class="td-label">근무기간</div>
                 <div class="td" style="width: 90%;">
                     <input type="date" name="startDate">
-                    <strong style="font-size: 30px;">~</strong>
-                    <input type="date" name="endDate">
+                    <div class="endDate" style="display: none;">
+                        <strong style="font-size: 30px;">~</strong>
+                        <input type="date" name="endDate">
+                    </div>
                 </div>
             </div>
             <!--근무시간-->
             <div class="tr">
-                <div class="tr tr-title">
-                    <div class="lbl">시간</div>
-                </div>
+                <div class="td-label">시간</div>
                 <div class="tr tr-body">
                     <div class="td td-70" id="">
                         <select id="startHour" class="time hour" form="callForm" required>
@@ -113,29 +119,23 @@
             </div>
             <!--업종-->
             <div class="tr">
-                <div class="tr tr-title">
-                    <div class="lbl">업종</div>
-                </div>
-                <div class="tr">
-                    <div class="td">
-                        <button type="button" id="dish">설거지</button>
-                        <button type="button" id="kitchen">주방보조</button>
-                        <button type="button" id="hall">홀서빙</button>
-                        <select name="workField" id="workField" form="callForm" required>
-                          <?php foreach ($this->workField_List as $key => $data): ?>
-                              <option value="<?php echo $data['workField']; ?>">
-                                <?php echo $data['workField'] ?>
-                              </option>
-                          <?php endforeach ?>
-                        </select>
-                    </div>
+                <div class="td-label">업종</div>
+                <div class="td">
+                    <button type="button" id="dish">설거지</button>
+                    <button type="button" id="kitchen">주방보조</button>
+                    <button type="button" id="hall">홀서빙</button>
+                    <select name="workField" id="workField" form="callForm" required>
+                      <?php foreach ($this->workField_List as $key => $data): ?>
+                          <option value="<?php echo $data['workField']; ?>">
+                            <?php echo $data['workField'] ?>
+                          </option>
+                      <?php endforeach ?>
+                    </select>
                 </div>
             </div>
             <!--기타 요청 사항-->
             <div class="tr">
-                <div class="tr tr-title">
-                    <div class="lbl">기타요청사항</div>
-                </div>
+                <div class="td-label">기타요청사항</div>
                 <div class="tr tr-body">
                     <textarea name="detail" id="detail" cols="30" rows="10"></textarea>
                 </div>
@@ -143,45 +143,14 @@
             <!--콜 보내기 버튼-->
             <div class="tr al_r full_width">
                 <h1 class="callPrice"></h1>
-                <button id="fixBtn" class="btn btn-insert" type="button">콜 보내기</button>
+                <button id="callBtn" class="btn btn-insert" type="button">콜 보내기</button>
+<!--                <button id="fixBtn" class="btn btn-insert" type="button">콜 보내기</button>-->
             </div>
     </form>
 </div>
-<?php require_once _JS . 'ajax_js.php' ?>
-<?php require_once _JS . 'ceo_js.php' ?>
+<script src="/public/js/ajax.js"></script>
+<script src="<?php echo _JS.'ceo.js'?>"></script>
 <script>
-    $('#companyName').on('change',function () {
-        $('#formAction').val('getCompanyID');
-        console.log($('#formAction').val());
-        $.ajax({
-            type:"POST",
-            url:"http://bestpachul.com/application/ajax/ajax.php",
-            method:"POST",
-            data: $('#callForm').serialize(),
-            dataType:"text",
-            success:function(data)
-            {
-                $('#companyID').val(data);
-                initiate(time);
-            }
-        });
-    });
-    $('#employeeName').on('change',function () {
-        $('#formAction').val('getEmployeeID');
-        console.log($('#formAction').val());
-        $.ajax({
-            type:"POST",
-            url:"http://bestpachul.com/application/ajax/ajax.php",
-            method:"POST",
-            data: $('#callForm').serialize(),
-            dataType:"text",
-            success:function(data)
-            {
-                $('#employeeID').val(data);
-                initiate(time);
-            }
-        });
-    });
     $(document).ready(function () {
         // $('#formAction').val('initiate');
         $('#workField').val('주방보조');
@@ -189,5 +158,53 @@
         startHour.val('10');
         endHour.val('15');
         // initiate(endHour.val() - startHour.val());
+    });
+    $('#companyName').on('change', function () {
+        $('#formAction').val('getCompanyID');
+        console.log($('#formAction').val());
+        $.ajax({
+            type: "POST",
+            url: "http://bestpachul.com/application/ajax/ajax.php",
+            method: "POST",
+            data: $('#callForm').serialize(),
+            dataType: "text",
+            success: function (data) {
+                $('#companyID').val(data);
+                initiate(time);
+            }
+        });
+    });
+    $('#employeeName').on('change', function () {
+        $('#formAction').val('getEmployeeID');
+        console.log($('#formAction').val());
+        $.ajax({
+            type: "POST",
+            url: "http://bestpachul.com/application/ajax/ajax.php",
+            method: "POST",
+            data: $('#callForm').serialize(),
+            dataType: "text",
+            success: function (data) {
+                $('#employeeID').val(data);
+                initiate(time);
+            }
+        });
+    });
+    $('#manualCallBtn').on('click',function () {
+        $('#fixBtn').attr("id","callBtn");
+        $('input[name=startDate]').attr('name', 'workDate');
+        $('.endDate').hide();
+        $('#workDay').hide();
+    });
+    $('#fixCallBtn').on('click',function () {
+        $('#callBtn').attr("id","fixBtn");
+        $('input[name=workDate]').attr('name', 'startDate');
+        $('input[name=endDate]').show();
+        $('#workDay').css('display','block');
+    });
+    $('#monthlyCallBtn').on('click',function () {
+        $('#callBtn').attr("id","fixBtn");
+        $('input[name=workDate]').attr('name', 'startDate');
+        $('.endDate').css('display','inline');
+        $('#workDay').css('display','block');
     });
 </script>

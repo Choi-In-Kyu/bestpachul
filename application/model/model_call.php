@@ -37,8 +37,14 @@
           case 'assignCancel':
             $this->executeSQL("UPDATE `call` SET employeeID = NULL WHERE `callID` = {$_POST['callID']} LIMIT 1");
             break;
+          case 'call':
+            $this->call($_POST);
+            break;
           case 'fix':
             $this->fix($_POST);
+            break;
+          case 'getMoney' :
+            $this->executeSQL("UPDATE `call` SET paid = '1' WHERE callID = {$_POST['id']} LIMIT 1");
             break;
         }
       }
@@ -88,37 +94,4 @@
       if(in_array($number,[1,2,3])){return $this->getTable($sql);}
       else{foreach ($this->getTable($sql) as $value){$array[] = intval($value['employeeID']);}return $array;}
     }
-    
-//    function fix($post){
-//      $dow = $post['dow'];
-//      $dow_string = implode(',',$dow);
-//      $start = new DateTime($post['startDate']);
-//      $end = new DateTime($post['endDate']);
-//      $companyID = $this->select('company',"companyName = '{$post['companyName']}'",'companyID');
-//      $employeeID = $this->select('employee',"employeeName = '{$post['employeeName']}'",'employeeID');
-//      $columns = ['workDate','companyID', 'employeeID', 'startTime', 'endTime', 'workField', 'detail'];
-//      $values = [ null, $companyID, $employeeID, $post['startTime'], $post['endTime'], $post['workField'] , $post['detail'] ];
-//      foreach ($values as $value){$newValues[] = "'".$value."'";}
-//
-//      $ceo = new Model_ceo($this->param);
-//
-//      for ($i=0; $i<sizeof($dow); $i++){//모든 date 추출
-//        $start->modify($dow[$i]);
-//        $interval = new DateInterval("P1W");
-//        $period   = new DatePeriod($start, $interval, $end);
-//        foreach ($period as $date) {
-//          $array[] = $date->format('Y-m-d');
-//        }
-//      }
-//      foreach ($array as $value){//DB에 입력하는 쿼리
-//        $newValues[0]= "'".$value."'";
-//        $column_string = implode(',',$columns);
-//        $value_string = implode(',',$newValues);
-//        $this->executeSQL("INSERT INTO `call` ({$column_string}) VALUES ({$value_string})");
-//      }
-//      $this->executeSQL("
-//INSERT INTO `fix` (companyID, employeeID, dayofweek, detail, startTime, endTime, startDate, endDate, salary)
-//VALUES ('{$companyID}','{$employeeID}','{$dow_string}','{$post['detail']}','{$post['startTime']}','{$post['endTime']}','{$post['startDate']}','{$post['endDate']}'), '{$post['salary']}'");
-//    }
-    
   }

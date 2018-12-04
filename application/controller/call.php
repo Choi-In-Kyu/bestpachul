@@ -26,7 +26,7 @@
         case 'week':$condition = "WHERE  YEARWEEK(`workDate`, 1) = YEARWEEK(CURDATE(), 1)";break;
         case 'day':$condition = "WHERE workDate = '{$_POST['date']}'";break;
         case 'month':$condition = "WHERE YEAR(workDate) = YEAR('{$newDate}') AND MONTH(workDate) = MONTH('{$newDate}')";break;
-        case 'paid': $condition = "WHERE YEAR(workDate) = YEAR('{$newDate}') AND MONTH(workDate) = MONTH('{$newDate}') AND price IS NOT NULL AND point IS NULL";break;
+        case 'paid': $condition = "WHERE YEAR(workDate) = YEAR('{$newDate}') AND MONTH(workDate) = MONTH('{$newDate}') AND price > 0 AND point = 0";break;
         case 'all':$condition = "";break;
         default :$condition = "WHERE workDate = '".date('Y-m-d')."'";break;
       }
