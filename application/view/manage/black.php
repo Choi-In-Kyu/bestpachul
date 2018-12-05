@@ -43,7 +43,7 @@
         </form>
     </div>
 
-    <table width="100%">
+    <table id="blackListTable" width="100%">
         <colgroup>
             <col width="5%">
             <col width="15%">
@@ -54,11 +54,11 @@
         </colgroup>
         <thead>
         <tr>
-            <th>#</th>
-            <th>인력명</th>
-            <th>업체명</th>
-            <th>구분</th>
-            <th>비고</th>
+            <th class="link" onclick="sortTable('blackListTable', 0)">#</th>
+            <th class="link" onclick="sortTable('blackListTable', 1)">인력명</th>
+            <th class="link" onclick="sortTable('blackListTable', 2)">업체명</th>
+            <th class="link" onclick="sortTable('blackListTable', 3)">구분</th>
+            <th class="link" onclick="sortTable('blackListTable', 4)">비고</th>
             <th>삭제</th>
         </tr>
         </thead>

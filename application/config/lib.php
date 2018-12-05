@@ -6,7 +6,7 @@
 //Script Functions
   function alert($str){echo "<script>alert('{$str}');</script>";}
   function getLog($str){echo "<script>console.log('{$str}');</script>";}
-  function move($str = false){echo "<script>";echo $str ? "document.location.replace('{$str}');" : "history.back();";echo "</script>";exit;}
+  function  move($str = false){echo "<script>";echo $str ? "document.location.replace('{$str}');" : "history.back();";echo "</script>";exit;}
 
 //Class Auto Load
   function __autoload($className)

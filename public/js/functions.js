@@ -1,8 +1,10 @@
 //날짜 데이터 수정
 let now = new Date();
-if (now.getMonth() === 11) {nextmon = new Date(now.getFullYear() + 1, 0, 1);}
+
 let today = dateFormat(now);
-let nextMonth = dateFormat(new Date(now.getFullYear(), now.getMonth() + 1, 1));
+let nextMonth;
+if (now.getMonth() === 11) {nextMonth = new Date(now.getFullYear() + 1, 0, 1);}
+else{nextMonth = dateFormat(new Date(now.getFullYear(), now.getMonth() + 1, 1));}
 let tomorrow = dateFormat(new Date(now.getTime() + 24 * 60 * 60 * 1000));
 let dayaftertomorrow = dateFormat(new Date(now.getTime() + 2 * 24 * 60 * 60 * 1000));
 

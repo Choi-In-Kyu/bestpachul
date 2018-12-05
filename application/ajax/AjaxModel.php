@@ -130,8 +130,7 @@
     
     public function call($post)
     {
-      
-      foreach(['companyName','employeeName','dow','startDate','endDate'] as $value){
+      foreach(['companyName','employeeName','dow','startDate','endDate','monthlySalary'] as $value){
         unset($post[$value]);
       }
       $companyID = $post['companyID'];

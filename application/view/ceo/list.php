@@ -60,8 +60,6 @@
 
 
 <script>
-
-
     $(document).ready(function () {
         change();
     });

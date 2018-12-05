@@ -39,7 +39,7 @@
                 </div>
             </div>
             <!--근무요일-->
-            <div class="tr" id="workDay" style="display: none;">
+            <div class="tr fixedCall" id="workDay" style="display: none;">
                 <div class="td-label">근무요일</div>
                 <div class="td">
                     <table>
@@ -68,8 +68,8 @@
             <div class="tr">
                 <div class="td-label">근무기간</div>
                 <div class="td" style="width: 90%;">
-                    <input type="date" name="startDate">
-                    <div class="endDate" style="display: none;">
+                    <input type="date" name="workDate">
+                    <div class="endDate fixedCall" style="display: none;">
                         <strong style="font-size: 30px;">~</strong>
                         <input type="date" name="endDate">
                     </div>
@@ -133,6 +133,15 @@
                     </select>
                 </div>
             </div>
+            
+            <!--월급-->
+            <div class="tr monthlyCall" style="display: none;">
+                <div class="td-label">월급</div>
+                <div class="td">
+                    <input type="number" name="monthlySalary">
+                </div>
+            </div>
+            
             <!--기타 요청 사항-->
             <div class="tr">
                 <div class="td-label">기타요청사항</div>
@@ -143,68 +152,17 @@
             <!--콜 보내기 버튼-->
             <div class="tr al_r full_width">
                 <h1 class="callPrice"></h1>
-                <button id="callBtn" class="btn btn-insert" type="button">콜 보내기</button>
-<!--                <button id="fixBtn" class="btn btn-insert" type="button">콜 보내기</button>-->
+                <button id="submitBtn" class="btn btn-insert" type="button">콜 보내기</button>
             </div>
     </form>
 </div>
-<script src="/public/js/ajax.js"></script>
-<script src="<?php echo _JS.'ceo.js'?>"></script>
+<script src="/public/js/ceo.js"></script>
+<script src="/public/js/fix.js"></script>
 <script>
     $(document).ready(function () {
-        // $('#formAction').val('initiate');
         $('#workField').val('주방보조');
-        $('#companyID').val('');
         startHour.val('10');
         endHour.val('15');
-        // initiate(endHour.val() - startHour.val());
-    });
-    $('#companyName').on('change', function () {
-        $('#formAction').val('getCompanyID');
-        console.log($('#formAction').val());
-        $.ajax({
-            type: "POST",
-            url: "http://bestpachul.com/application/ajax/ajax.php",
-            method: "POST",
-            data: $('#callForm').serialize(),
-            dataType: "text",
-            success: function (data) {
-                $('#companyID').val(data);
-                initiate(time);
-            }
-        });
-    });
-    $('#employeeName').on('change', function () {
-        $('#formAction').val('getEmployeeID');
-        console.log($('#formAction').val());
-        $.ajax({
-            type: "POST",
-            url: "http://bestpachul.com/application/ajax/ajax.php",
-            method: "POST",
-            data: $('#callForm').serialize(),
-            dataType: "text",
-            success: function (data) {
-                $('#employeeID').val(data);
-                initiate(time);
-            }
-        });
-    });
-    $('#manualCallBtn').on('click',function () {
-        $('#fixBtn').attr("id","callBtn");
-        $('input[name=startDate]').attr('name', 'workDate');
-        $('.endDate').hide();
-        $('#workDay').hide();
-    });
-    $('#fixCallBtn').on('click',function () {
-        $('#callBtn').attr("id","fixBtn");
-        $('input[name=workDate]').attr('name', 'startDate');
-        $('input[name=endDate]').show();
-        $('#workDay').css('display','block');
-    });
-    $('#monthlyCallBtn').on('click',function () {
-        $('#callBtn').attr("id","fixBtn");
-        $('input[name=workDate]').attr('name', 'startDate');
-        $('.endDate').css('display','inline');
-        $('#workDay').css('display','block');
+        initiate(endHour.val() - startHour.val());
     });
 </script>

@@ -1,7 +1,29 @@
+let mainUrl = "http://bestpachul.com/";
+let pageType = window.location.href.replace(mainUrl,'').split('/')[0];
+
 //북마크 별표 클릭
 $('.fa-star.selectable').on('click', function () {
-    $('#bookmarkForm input[name=ID]').val(this.id);
-    $('#bookmarkForm').submit();
+    let btn = $(this);
+    $.ajax({
+        type: "POST",
+        method: "POST",
+        url: ajaxURL,
+        data: {action: 'bookmark', id: btn.attr('id'), tableName: pageType },
+        dataType: "text",
+        success: function (data) {
+            let type = parseInt(data);
+            if(type === 1){
+                btn.addClass('checked');
+                btn.removeClass('unchecked');
+                btn.closest('tr').css('background','yellow');
+            }
+            else{
+                btn.addClass('unchecked');
+                btn.removeClass('checked');
+                btn.closest('tr').css('background','none');
+            }
+        }
+    });
 });
 //삭제 모달 여는 버튼
 $('.deleteModalBtn').on('click', function () {
@@ -41,4 +63,28 @@ $('.selectable').on('click',function () {
     $('.selected').addClass('selectable');
     $(this).addClass('selected');
     $(this).removeClass('selectable');
+});
+//수금 버튼
+$('.getMoneyBtn').on('click',function () {
+    let btn = $(this);
+    $.ajax({
+        type: "POST",
+        method: "POST",
+        url: ajaxURL,
+        data: {action: 'getMoney', id: btn.attr('id'), tableName: pageType },
+        dataType: "text",
+        success: function (data) {
+            let type = parseInt(data);
+            if(type === 1){
+                btn.addClass('checked');
+                btn.removeClass('unchecked');
+                btn.closest('tr').css('background','yellow');
+            }
+            else{
+                btn.addClass('unchecked');
+                btn.removeClass('checked');
+                btn.closest('tr').css('background','none');
+            }
+        }
+    });
 });

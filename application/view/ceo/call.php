@@ -70,7 +70,7 @@
             </div>
             <div class="tr-title">
                 <div class="td">
-                    <h1 id="salaryInfo">근무시간을 선택해주세요</h1>
+                    <h1 id="salaryInfo">근무기간을 선택해주세요</h1>
                 </div>
             </div>
         </div>

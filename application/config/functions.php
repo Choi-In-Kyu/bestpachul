@@ -7,6 +7,8 @@
       if (file_exists($dir)) require_once($dir);
       echo "<script src='/public/js/common.js'></script>";
       echo "<script src='/public/js/functions.js'></script>";
+      echo "<script src='/public/js/ajax.js'></script>";
+//      echo "<script src='/public/js/datepicker.js'></script>";
       echo "<script src='/public/js/{$this->param->page_type}.js'></script>";
     }
     
@@ -28,7 +30,7 @@
         $endTime = strtotime($value['endDate']);
         $targetTime = strtotime($value['endDate'] . " -{$days} days");
         //imminent (만기임박)
-        if (($targetTime < $todayTime && $todayTime < $endTime) || ($tableName == 'employee' && $value['paid'] == 0)) {
+        if (($targetTime <= $todayTime && $todayTime < $endTime) || ($tableName == 'employee' && $value['paid'] == 0)) {
           $this->model->executeSQL("UPDATE join_{$tableName} SET imminent = 1 WHERE join_{$tableName}ID = {$joinID} LIMIT 1");
         } //가입 자동 만기시킴
         else{
@@ -175,13 +177,17 @@ HTML;
     function get_paidBtn($data,$table)
     {
       if (($data['price'] > 0) && ($data['paid'] == 0)) {
+//        return <<<HTML
+//          <form action= "" method="post">
+//              <input type="hidden" name="action" value="getMoney">
+//              <input type="hidden" name="id" value="{$data[$table.'ID']}">
+//              <input class="btn" type="submit" value="{$data['price']}">
+//          </form>
+//HTML;
         return <<<HTML
-          <form action= "" method="post">
-              <input type="hidden" name="action" value="getMoney">
-              <input type="hidden" name="id" value="{$data[$table.'ID']}">
-              <input class="btn" type="submit" value="{$data['price']}">
-          </form>
+<button type="button" class="btn btn-default getMoneyBtn" id="{$data[$table.'ID']}">{$data['price']}</button>
 HTML;
+
       } else return "수금완료";
     }
     function makeDetail($array)
@@ -222,7 +228,7 @@ HTML;
       }
       if ($data['activated'] == 0) echo "gray";
       elseif (
-        strtotime($data['endDate'] . " -{$deadline} days") < strtotime($today)
+        strtotime($data['endDate'] . " -{$deadline} days") <= strtotime($today)
         && strtotime($today) < strtotime($data['endDate']))
         echo "orange";
       else echo "white";
