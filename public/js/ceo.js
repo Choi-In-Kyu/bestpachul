@@ -77,6 +77,5 @@ $('.fixBtn').on('click',function () {
     console.log('fixbtn clicked');
     $('#startTime').val($('#startHour').val() + ":" + $('#startMin').val()); //HH:MM
     $('#endTime').val($('#endHour').val() + ":" + $('#endMin').val()); //HH:MM
-    $('#fixed').val(1);
     fix(endHour.val() - startHour.val());
 });

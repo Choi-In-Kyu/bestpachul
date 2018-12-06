@@ -6,13 +6,16 @@
     }
 ?>
 
-<form id="filterForm" method="post" style="display: none;">
-    <input type="hidden" name="action" value="filter">
-    <input type="hidden" name="callID" value="">
-  <?php foreach ($_POST as $key => $value): ?>
-      <input type="hidden" name="<?php echo $key?>" value="<?php echo $value?>">
-  <?php endforeach; ?>
-</form>
+<!--<form id="filterForm" method="post" style="display: none;">-->
+<!--    <input type="hidden" name="action" value="filter">-->
+<!--    <input type="hidden" name="callID" value="">-->
+<!--  --><?php //foreach ($_POST as $key => $value): ?>
+<!--      <input type="hidden" name="--><?php //echo $key?><!--" value="--><?php //echo $value?><!--">-->
+<!--  --><?php //endforeach; ?>
+<!--</form>-->
+
+
+<?php //echo json_encode($this->callList)?>
 
 <div class="inline scroll_tbody call" style="width: <?php echo $width ?>%;">
     <table id="<?php echo $type."_table"?>" width="100%" style="height: <?php echo (sizeof($this->{$type.'List'}) == 0) ? '50px;' : null ?>">

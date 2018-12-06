@@ -16,12 +16,17 @@
     <!--css-->
     <link rel="stylesheet" href="<?php echo _CSS ?>default.css?<?php echo time(); ?>">
     <link rel="stylesheet" href="<?php echo _CSS ?>common.css?<?php echo time(); ?>">
+    <link rel="stylesheet" href="<?php echo _CSS ?>toggle.css?<?php echo time(); ?>">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css"/><!--date picker css-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--js-->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
     <script src="/public/js/datepicker.js"></script>
+    
+    <!--toggle-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <?php if (!in_array($this->param->page_type, ['login', 'ceo'])): ?>
     <body>
@@ -46,6 +51,7 @@
                         <a class="link" href="<?php echo _URL ?>call/assign">배정관리</a>
                         <a class="link" href="<?php echo _URL ?>call/punk">펑크관리</a>
                         <a class="link" href="<?php echo _URL ?>call/fix">콜 만들기</a>
+                        <a class="link" href="<?php echo _URL ?>call/manage">고정콜/월급제 관리</a>
                     </div>
                 </div>
                 <div class="dropdown col-md-2">

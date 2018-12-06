@@ -21,7 +21,7 @@
         <input type="hidden" name="point" id="callPoint">
         <input type="hidden" name="workDate" id="workDate" class="workDate">
         <input type="hidden" name="endDate" id="endDate" class="endDate">
-        <input type="hidden" name="fixed" id="fixed">
+        <input type="hidden" name="fixID" id="fixID">
         <div class="table">
             <!--인력이름, 업체이름-->
             <div class="tr">

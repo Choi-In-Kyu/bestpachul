@@ -79,6 +79,9 @@
         $obj->getMoney($_POST);
         echo json_encode($_POST);
         break;
+      case 'toggleFilter':
+        echo $obj->toggleFilter($_POST);
+        break;
       default :
         $result['msg'] = 'no matching action name';
         echo json_encode($result);

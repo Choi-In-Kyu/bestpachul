@@ -63,24 +63,26 @@
     }
     
     function get_callList(){
-      $condition = array();
-      $table = $this->param->page_type;
-      if(in_array($table,['company','employee'])) $condition[] = " `{$table}ID` = '{$this->param->idx}' ";
-      if(isset($_POST['year'])&&isset($_POST['month'])){
-        $newDate = $_POST['year'];
-        if($_POST['month']<10) $newDate.= '0';
-        $newDate.= $_POST['month'].'01';
-      }
-      switch ($_POST['filter']) {
-        case 'all'  :break;
-        case 'day'  :$condition[] = "( workDate = '{$_POST['date']}')";break;
-        case 'week' :$condition[] = "( YEARWEEK(`workDate`, 1) = YEARWEEK(CURDATE(), 1))";break;
-        case 'month':$condition[] = "( YEAR(workDate) = YEAR('{$newDate}') AND MONTH(workDate) = MONTH('{$newDate}'))";break;
-        case 'paid' :$condition[] = "( YEAR(workDate) = YEAR('{$newDate}') AND MONTH(workDate) = MONTH('{$newDate}') AND price > 0 AND point = 0)";break;
-        default     :$condition[] = "( workDate = '"._TODAY."')";break; //기본값은 오늘
-      }
-      $where = (sizeof($condition)>0) ? "WHERE" : null;
-      return $this->model->getTable("SELECT * FROM `call` {$where} " . implode(' AND ', $condition));
+//      $condition = array();
+//      $table = $this->param->page_type;
+//      if(in_array($table,['company','employee'])) $condition[] = " `{$table}ID` = '{$this->param->idx}' ";
+//      if(isset($_POST['year'])&&isset($_POST['month'])){
+//        $newDate = $_POST['year'];
+//        if($_POST['month']<10) $newDate.= '0';
+//        $newDate.= $_POST['month'].'01';
+//      }
+//      switch ($_POST['filter']) {
+//        case 'all'  :break;
+//        case 'day'  :$condition[] = "( workDate = '{$_POST['date']}')";break;
+//        case 'week' :$condition[] = "( YEARWEEK(`workDate`, 1) = YEARWEEK(CURDATE(), 1))";break;
+//        case 'month':$condition[] = "( YEAR(workDate) = YEAR('{$newDate}') AND MONTH(workDate) = MONTH('{$newDate}'))";break;
+//        case 'paid' :$condition[] = "( YEAR(workDate) = YEAR('{$newDate}') AND MONTH(workDate) = MONTH('{$newDate}') AND price > 0 AND point = 0)";break;
+////        default     :$condition[] = "( workDate = '"._TODAY."')";break; //기본값은 오늘
+//        default     :$condition[] = "adfasffsaf";break; //기본값은 오늘
+//      }
+//      $where = (sizeof($condition)>0) ? "WHERE" : null;
+//      return $this->model->getTable("SELECT * FROM `call` {$where} " . implode(' AND ', $condition));
+        return $this->model->getTable("SELECT * FROM `call`");
     }
     
     function get_blackList(){

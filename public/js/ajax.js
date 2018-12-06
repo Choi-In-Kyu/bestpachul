@@ -23,7 +23,7 @@ function initiate(time, callFunction = false, date=null) {
 
         success: function (data) {
 
-            console.log("success initiate : "+$('#workDate').val());
+            console.log(data);
 
             let joinType    = JSON.parse(data).joinType;
             let callType    = JSON.parse(data).callType;
@@ -288,7 +288,6 @@ function cancel() {
 }
 //고정 콜 함수
 function fix(time) {
-    console.log('fix');
     $('#formAction').val('fix');
     $.ajax({
         type: "POST",
@@ -299,8 +298,12 @@ function fix(time) {
         async: false,
     }).success(function (data) {
         console.log(data);
-        let dateArray = JSON.parse(data);
-        console.log(dateArray);
+        let dateArray = JSON.parse(data).dateArray;
+        let fixID = parseInt(JSON.parse(data).fixID);
+
+        console.log(fixID);
+        $('#fixID').val(fixID);
+
         for (let date in dateArray) {
             myFix(dateArray[date]);
             // initiate(time,true,dateArray[date]);

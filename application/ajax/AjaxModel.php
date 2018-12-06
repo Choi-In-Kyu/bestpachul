@@ -140,9 +140,9 @@
     
     public function call($post)
     {
-      foreach(['companyName','employeeName','dow','startDate','endDate','monthlySalary'] as $value){
-        unset($post[$value]);
-      }
+//      foreach(['companyName','employeeName','dow','startDate','endDate','monthlySalary'] as $value){
+//        unset($post[$value]);
+//      }
       $companyID = $post['companyID'];
       $point = $post['point'];
       $this->insert('call', $post);
@@ -282,16 +282,49 @@
         $interval = new DateInterval("P1W");
         $period = new DatePeriod($start, $interval, $end);
         foreach ($period as $date) {
-          $array[] = $date->format('Y-m-d');
+          $dateArray[] = $date->format('Y-m-d');
         }
+        $result['dateArray'] = $dateArray;
       }
       $this->insert('fix',$post);
-      return json_encode($array);
+      $fixID = intval($this->getTable("SELECT * FROM `fix` ORDER BY `fixID` DESC LIMIT 1")[0]['fixID']);
+      if(isset($fixID)){
+        $result['fixID'] = $fixID;
+      }
+      else $result['fixID'] = 1;
+      
+      return json_encode($result);
     }
     
     function getMoney($post){
       $tbl = $post['tableName'];
       $id = $post['id'];
       $this->executeSQL("UPDATE `{$tbl}` SET `paid` = '1' WHERE `{$tbl}ID` = '{$id}'");
+    }
+    
+    function toggleFilter($post){
+  
+      $sql = "SELECT `callID` FROM `call`";
+      if(isset($post['duration'])){
+        $condition[]  = "(".implode(' OR ',$post['duration']).")";
+      }
+      if(isset($post['charged'])){
+        $condition[]  = "(".implode(' OR ',$post['charged']).")";
+      }
+      if(isset($post['fixed'])){
+        $condition[]  = "(".implode(' OR ',$post['fixed']).")";
+      }
+      if(isset($post['duration']) OR isset($post['charged']) OR isset($post['fixed'])){
+        $sql .= " WHERE ";
+      }
+      $sql .= implode(' AND ', $condition);
+//      return $sql;
+      foreach($this->getTable($sql) as $value){
+        foreach($value as $item){
+          $arr[] = intval($item);
+        }
+      }
+      $arr[] = $sql;
+      return json_encode($arr);
     }
   }
