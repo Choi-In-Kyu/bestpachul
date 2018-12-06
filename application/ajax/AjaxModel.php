@@ -93,7 +93,17 @@
     {
       $columns = array();
       $values = array();
-      if (isset($post['action'])) array_shift($post);
+      $columnTable =  $this->getTable("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'{$table}'");
+      foreach($columnTable as $value){
+        foreach ($value as $item){
+          $columnList[] = $item;
+        }
+      }
+      foreach ($post as $key=>$value){
+        if(!in_array($key,$columnList)){
+          unset($post[$key]);
+        }
+      }
       foreach (array_keys($post) as $item) {
         $columns[] = "`" . $item . "`";
       }
@@ -265,7 +275,7 @@
     function fix($post)
     {
       $dow = $post['dow'];
-      $start = new DateTime($post['startDate']);
+      $start = new DateTime($post['workDate']);
       $end = new DateTime($post['endDate']);
       for ($i = 0; $i < sizeof($dow); $i++) {//모든 date 추출
         $start->modify($dow[$i]);
@@ -275,6 +285,13 @@
           $array[] = $date->format('Y-m-d');
         }
       }
+      $this->insert('fix',$post);
       return json_encode($array);
+    }
+    
+    function getMoney($post){
+      $tbl = $post['tableName'];
+      $id = $post['id'];
+      $this->executeSQL("UPDATE `{$tbl}` SET `paid` = '1' WHERE `{$tbl}ID` = '{$id}'");
     }
   }

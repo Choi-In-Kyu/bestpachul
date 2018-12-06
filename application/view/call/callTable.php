@@ -55,12 +55,11 @@
                   </td>
 
                   <td class="al_c"><?php echo $this->get_paidBtn($data, 'call'); ?></td>
-
-
+                  
                   <td class="al_c">
   
                     <?php switch ($type): case 'call': ?>
-                      <?php if (isset ($data['employeeID'])): ?>
+                      <?php if ($data['employeeID'] > 0): ?>
                             <a class="assignCancelBtn link" id="<?php echo $data['callID'] ?>">
                               <?php echo $employeeName?>
                             </a>

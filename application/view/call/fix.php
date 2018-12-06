@@ -1,3 +1,8 @@
+<?php
+
+?>
+
+
 <div class="board_write">
     <div>
         <button class="btn btn-default selectable selected" id="manualCallBtn">일반콜</button>
@@ -14,7 +19,8 @@
         <input type="hidden" name="salary" id="salary">
         <input type="hidden" name="price" id="callPrice">
         <input type="hidden" name="point" id="callPoint">
-        <input type="hidden" name="workDate" id="workDate">
+        <input type="hidden" name="workDate" id="workDate" class="workDate">
+        <input type="hidden" name="endDate" id="endDate" class="endDate">
         <input type="hidden" name="fixed" id="fixed">
         <div class="table">
             <!--인력이름, 업체이름-->
@@ -39,7 +45,7 @@
                 </div>
             </div>
             <!--근무요일-->
-            <div class="tr fixedCall" id="workDay" style="display: none;">
+            <div class="tr fixable" id="workDay" style="display: none;">
                 <div class="td-label">근무요일</div>
                 <div class="td">
                     <table>
@@ -68,11 +74,12 @@
             <div class="tr">
                 <div class="td-label">근무기간</div>
                 <div class="td" style="width: 90%;">
-                    <input type="date" name="workDate">
-                    <div class="endDate fixedCall" style="display: none;">
+                    <input type="date" class="workDate">
+                    <div class="endDate fixable" style="display: none;">
                         <strong style="font-size: 30px;">~</strong>
-                        <input type="date" name="endDate">
+                        <input type="date" class="endDate">
                     </div>
+                    <button type="button" onclick="auto_insert_call_monthly()">이번달</button>
                 </div>
             </div>
             <!--근무시간-->
@@ -135,7 +142,7 @@
             </div>
             
             <!--월급-->
-            <div class="tr monthlyCall" style="display: none;">
+            <div class="tr monthly" style="display: none;">
                 <div class="td-label">월급</div>
                 <div class="td">
                     <input type="number" name="monthlySalary">
@@ -152,7 +159,9 @@
             <!--콜 보내기 버튼-->
             <div class="tr al_r full_width">
                 <h1 class="callPrice"></h1>
-                <button id="submitBtn" class="btn btn-insert" type="button">콜 보내기</button>
+                <button id="submitBtn" class="btn btn-insert callBtn" type="button">콜 보내기</button>
+                <button id="submitFixedCallBtn" class="btn btn-insert callBtn fixBtn" type="button">고정 콜 만들기</button>
+                <button id="submitMonthlyCallBtn" class="btn btn-insert callBtn fixBtn" type="button">월급제 만들기</button>
             </div>
     </form>
 </div>
@@ -164,5 +173,7 @@
         startHour.val('10');
         endHour.val('15');
         initiate(endHour.val() - startHour.val());
+        $('.callBtn').hide();
+        $('#submitBtn').show();
     });
 </script>

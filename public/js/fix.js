@@ -28,23 +28,27 @@ $('#employeeName').on('input', function () {
     });
 });
 $('#manualCallBtn').on('click',function () {
-    $('#fixBtn').attr("id","submitBtn");
-    $('input[name=startDate]').attr('name', 'workDate');
-    $('.fixedCall').slideUp();
+    $('.callBtn').hide();
+    $('#submitBtn').show();
+    // $('input[name=startDate]').prop('name', 'workDate');
+    $('.monthly').slideUp();
+    $('.fixable').slideUp();
 });
 $('#fixCallBtn').on('click',function () {
-    $('#submitBtn').attr("id","fixBtn");
-    $('input[name=workDate]').attr('name', 'startDate');
+    $('.callBtn').hide();
+    $('#submitFixedCallBtn').show();
+    // $('input[name=workDate]').prop('name', 'startDate');
     $('.endDate').css('display','inline');
-    $('.monthlyCall').slideUp();
-    $('.fixedCall').slideDown();
+    $('.monthly').slideUp();
+    $('.fixable').slideDown();
 });
 $('#monthlyCallBtn').on('click',function () {
-    $('#submitBtn').attr("id","fixBtn");
-    $('input[name=workDate]').attr('name', 'startDate');
+    $('.callBtn').hide();
+    $('#submitMonthlyCallBtn').show();
+    // $('input[name=workDate]').prop('name', 'startDate');
     $('.endDate').css('display','inline');
-    $('.fixedCall').slideDown();
-    $('.monthlyCall').slideDown();
+    $('.fixable').slideDown();
+    $('.monthly').slideDown();
 });
 
 $('#callForm input').on('input',function () {

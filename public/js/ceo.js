@@ -70,11 +70,13 @@ $('#hall').click(function () {
     $('#workField').val('홀서빙');
 });
 $('#submitBtn').on('click',function () {
+    console.log('submitBtn clicked');
     call(endHour.val() - startHour.val());
 });
-$('#fixBtn').on('click',function () {
+$('.fixBtn').on('click',function () {
+    console.log('fixbtn clicked');
     $('#startTime').val($('#startHour').val() + ":" + $('#startMin').val()); //HH:MM
     $('#endTime').val($('#endHour').val() + ":" + $('#endMin').val()); //HH:MM
     $('#fixed').val(1);
-    fix();
+    fix(endHour.val() - startHour.val());
 });

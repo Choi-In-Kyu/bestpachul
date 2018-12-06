@@ -52,7 +52,7 @@
           <td>가입만기일</td>
           <td><input type="date" id="endDate" name="join_employee-endDate" required></td>
           <td>
-            <button type="button" class="btn btn-insert" onclick="auto_insert()">자동 입력
+            <button type="button" class="btn btn-insert" onclick="auto_insert_employee_join()">자동 입력
           </td>
         </tr>
         <tr>

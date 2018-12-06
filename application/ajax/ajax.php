@@ -76,6 +76,7 @@
         echo $value;
         break;
       case 'getMoney':
+        $obj->getMoney($_POST);
         echo json_encode($_POST);
         break;
       default :

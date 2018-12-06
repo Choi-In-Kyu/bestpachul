@@ -1,12 +1,21 @@
 //날짜 데이터 수정
 let now = new Date();
+let y = now.getFullYear();
+let m = now.getMonth();
+let d = now.getDate();
 
 let today = dateFormat(now);
 let nextMonth;
-if (now.getMonth() === 11) {nextMonth = new Date(now.getFullYear() + 1, 0, 1);}
-else{nextMonth = dateFormat(new Date(now.getFullYear(), now.getMonth() + 1, 1));}
-let tomorrow = dateFormat(new Date(now.getTime() + 24 * 60 * 60 * 1000));
-let dayaftertomorrow = dateFormat(new Date(now.getTime() + 2 * 24 * 60 * 60 * 1000));
+if (now.getMonth() === 11) {
+    nextMon             = new Date(y+1, 0, d);}//내년 1월
+else{
+    nextMon             = new Date(y, m+1, d);}//올해 다음달
+nextMonth = dateFormat(nextMon);
+
+let tomorrow            = dateFormat(new Date(now.getTime() + 24 * 60 * 60 * 1000));
+let dayaftertomorrow    = dateFormat(new Date(now.getTime() + 2 * 24 * 60 * 60 * 1000));
+let thisMonFirstDay     = dateFormat(new Date(y, m, 1));
+let thisMonLastDay      = dateFormat(new Date(y, m+1, 0));
 
 //js 날짜 -> YYYY-mm-dd 수정 함수
 function dateFormat(date) {
@@ -19,11 +28,15 @@ function type_toggle(argument) {
     $('#detail_table').html($('#companyAddJoinTable_' + argument + '').html());
 }
 //인력 가입 자동입력 함수
-function auto_insert() {
+function auto_insert_employee_join() {
     $('#startDate').val(today);
     $('#endDate').val(nextMonth);
     $('#price').val(50000);
     document.getElementById('paid').checked = true;
+}
+function auto_insert_call_monthly(){
+    $('.workDate').val(thisMonFirstDay);
+    $('.endDate').val(thisMonLastDay);
 }
 //테이블 정렬 함수
 function sortTable(tableName, n) {

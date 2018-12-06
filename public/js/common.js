@@ -66,6 +66,8 @@ $('.selectable').on('click',function () {
 });
 //수금 버튼
 $('.getMoneyBtn').on('click',function () {
+    console.log('수금 버튼 클릭!');
+    event.stopPropagation();
     let btn = $(this);
     $.ajax({
         type: "POST",
@@ -74,17 +76,7 @@ $('.getMoneyBtn').on('click',function () {
         data: {action: 'getMoney', id: btn.attr('id'), tableName: pageType },
         dataType: "text",
         success: function (data) {
-            let type = parseInt(data);
-            if(type === 1){
-                btn.addClass('checked');
-                btn.removeClass('unchecked');
-                btn.closest('tr').css('background','yellow');
-            }
-            else{
-                btn.addClass('unchecked');
-                btn.removeClass('checked');
-                btn.closest('tr').css('background','none');
-            }
+            btn.closest('td').html('수금완료');
         }
     });
 });

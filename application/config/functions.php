@@ -176,7 +176,11 @@ HTML;
     }
     function get_paidBtn($data,$table)
     {
-      if (($data['price'] > 0) && ($data['paid'] == 0)) {
+      if($data['price']>0){
+        if($data['paid']==0){
+          return <<<HTML
+<button type="button" class="btn btn-default getMoneyBtn" id="{$data[$table.'ID']}">{$data['price']}</button>
+HTML;
 //        return <<<HTML
 //          <form action= "" method="post">
 //              <input type="hidden" name="action" value="getMoney">
@@ -184,11 +188,10 @@ HTML;
 //              <input class="btn" type="submit" value="{$data['price']}">
 //          </form>
 //HTML;
-        return <<<HTML
-<button type="button" class="btn btn-default getMoneyBtn" id="{$data[$table.'ID']}">{$data['price']}</button>
-HTML;
-
-      } else return "수금완료";
+        }
+        else return '수금완료';
+      }
+      else return '무료';
     }
     function makeDetail($array)
     {

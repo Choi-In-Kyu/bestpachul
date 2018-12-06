@@ -97,7 +97,7 @@
                               <div class="td-label">블랙</div>
                               <div class="td-detail">
                                   <?php foreach ($this->blackList as $data){
-                                      $type = ($data['ceoReg']==1) ? '안불러요' : '안가요';
+                                      $type = ($data['ceoReg']==1) ? '오지마세요' : '안가요';
                                     echo $this->employeeName($data['employeeID'])." ".$type." : ".$data['detail'].'<br>';
                                   }
                                   ?>

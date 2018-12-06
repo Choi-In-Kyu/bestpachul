@@ -27,7 +27,7 @@
                         <div class="td">
                             <select name="type">
                                 <option value="0">안가요</option>
-                                <option value="1">안불러요</option>
+                                <option value="1">오지마세요</option>
                             </select>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                 <td class="al_l link" onClick='location.href="<?php echo _URL."company/view/{$data['companyID']}" ?>"'>
                   <?php echo $this->model->select('company', "companyID = $data[companyID]",'companyName')?>
                 </td>
-                <td class="al_l"><?php if($data['ceoReg']==1) echo '안불러요'; else echo '안가요'?></td>
+                <td class="al_l"><?php if($data['ceoReg']==1) echo '오지마세요'; else echo '안가요'?></td>
                 <td class="al_l"><?php echo $data['detail'] ?></td>
                 <td class="al_c"><button type="button" class="btn btn-danger blackDelBtn" value="<?php echo $data['blackListID']?>">X</button></td>
             </tr>
