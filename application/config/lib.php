@@ -36,9 +36,4 @@
     $datetime2 = new DateTime($date);
     $interval = $datetime2->diff($datetime1);
     return $interval->format('%R%a');
-    
-//    $today = strtotime(_TODAY);
-//    $date = strtotime($date);
-//    $leftDays = date('j', $today - $date);
-//    return $leftDays-1;
   }

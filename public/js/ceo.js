@@ -53,7 +53,6 @@ $('#afternoonBtn').click(function () {
     limitTime(false);
 });
 $('#allDayBtn').click(function () {
-    console.log('allDay');
     startHour.val('10');
     endHour.val('22');
     minute.val('00');
@@ -70,11 +69,9 @@ $('#hall').click(function () {
     $('#workField').val('홀서빙');
 });
 $('#submitBtn').on('click',function () {
-    console.log('submitBtn clicked');
     call(endHour.val() - startHour.val());
 });
 $('.fixBtn').on('click',function () {
-    console.log('fixbtn clicked');
     $('#startTime').val($('#startHour').val() + ":" + $('#startMin').val()); //HH:MM
     $('#endTime').val($('#endHour').val() + ":" + $('#endMin').val()); //HH:MM
     fix(endHour.val() - startHour.val());

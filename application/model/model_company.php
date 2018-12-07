@@ -52,6 +52,7 @@
           break;
         case 'new_insert':
           $this->getQuery($_POST, 'join_company', 'company');
+          unset($_POST);
           $msg="추가되었습니다";
           break;
         case 'delete' :
@@ -68,13 +69,8 @@
           $price = $_POST['price'];
           $this->executeSQL("UPDATE join_company SET price= '{$price}', detail = '{$detail}' WHERE join_companyID = '{$joinID}' LIMIT 1");
           break;
-        case 'bookmark':
-          $value = ($this->select('company',"companyID = {$_POST['ID']}",'bookmark') == 1) ? 0 : 1 ;
-          $string = "UPDATE company SET bookmark = {$value} WHERE companyID = {$_POST['ID']} LIMIT 1";
-          $this->executeSQL($string);
-          break;
-        case 'getMoney' :
-          $this->executeSQL("UPDATE `call` SET paid = '1' WHERE callID = {$_POST['id']} LIMIT 1");
+        case 'callCancel':
+          $this->callCancel($_POST);
           break;
       }
       unset($_POST);

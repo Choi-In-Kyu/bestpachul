@@ -6,13 +6,11 @@ let count = 0;
 
 //근무시간, 임금 등 초기화
 function initiate(time, callFunction = false, date=null) {
-    console.log('initiate with time : '+time);
     $('#startTime').val(startHour.val() + ":" + $('#startMin').val()); //HH:MM
     $('#endTime').val(endHour.val() + ":" + $('#endMin').val()); //HH:MM
     $('#formAction').val('initiate');
     if(date!==null){
         $('#workDate').val(date);
-        console.log("in initiate : "+$('#workDate').val());
     }
     $.ajax({
         type: "POST",
@@ -22,9 +20,6 @@ function initiate(time, callFunction = false, date=null) {
         dataType: "text",
 
         success: function (data) {
-
-            console.log(data);
-
             let joinType    = JSON.parse(data).joinType;
             let callType    = JSON.parse(data).callType;
             let holiday     = JSON.parse(data).holiday;
@@ -218,7 +213,6 @@ function getSalary(time, holiday) {
 }
 //콜 생성 함수
 function call(time) {
-    console.log('call with time : '+time);
     initiate(time, true);
 }
 //유료콜 보내기
@@ -249,23 +243,17 @@ function chargedCall(data) {
 }
 //무료콜 보내기
 function freeCall(data) {
-
-    console.log("in free call : "+$('#workDate').val());
-
     $('#submitBtn').html("콜 보내기");
     $('#formAction').val('call');
     $('#callPrice').val(0);
     $.ajax({
         type: "POST",
         method: "POST",
-        url: "http://bestpachul.com/application/ajax/ajax.php",
+        url: ajaxURL,
         data: $('#callForm').serialize(),
         dataType: "text",
         async: false,
         success: function (data) {
-
-            console.log("success free call : "+$('#workDate').val());
-
             alert('무료 콜을 보냈습니다.');
             if(pageType !== 'call'){
                 window.location.reload();
@@ -275,14 +263,16 @@ function freeCall(data) {
 }
 //콜 취소 함수
 function cancel() {
+    event.stopPropagation();
     $.ajax({
         type: "POST",
-        url: "http://bestpachul.com/application/ajax/ajax.php",
         method: "POST",
+        url: ajaxURL,
         data: $('#callCancelForm').serialize(),
         dataType: "text",
         success: function (data) {
             window.location.reload();
+            $(this).closest('tr').css('background','red');
         }
     });
 }
@@ -297,11 +287,9 @@ function fix(time) {
         data: callForm.serialize(),
         async: false,
     }).success(function (data) {
-        console.log(data);
         let dateArray = JSON.parse(data).dateArray;
         let fixID = parseInt(JSON.parse(data).fixID);
 
-        console.log(fixID);
         $('#fixID').val(fixID);
 
         for (let date in dateArray) {
@@ -340,14 +328,13 @@ function myFix(date) {
 }
 //고정 콜 함수 내 반복 함수
 function recursive() {
-    console.log(count);
     if (count < i) {
         $('#startTime').val(startHour.val() + ":" + $('#startMin').val()); //HH:MM
         $('#endTime').val(endHour.val() + ":" + $('#endMin').val()); //HH:MM
         $('#formAction').val('initiate');
         $.ajax({
             type: "POST",
-            url: "http://bestpachul.com/application/ajax/ajax.php",
+            url: ajaxURL,
             method: "POST",
             data: $('#callForm').serialize(),
             dataType: "text",

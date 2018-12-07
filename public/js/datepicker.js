@@ -16,9 +16,33 @@ $(function () {
         changeMonth:true,
         changeYear:true,
         onSelect: function () {
+            $('#formAction').val('toggleFilter');
             let date = $('#datepicker').datepicker({dateFormat: 'yy-mm-dd'}).val();
-            $('#filterDate').val(date);
-            $('#day_form').submit();
+            $('#toggleDate').val(date);
+
+            $.ajax({
+                type: "POST",
+                method: "POST",
+                url: ajaxURL,
+                data: $('#toggleForm').serialize(),
+                dataType: "text",
+                success: function (data) {
+                    let array = JSON.parse(data);
+                    $('.callRow').each(function () {
+                        if (array !== null) {
+                            if (array.indexOf(parseInt(this.id)) > 0) {
+                                $(this).show();
+                            }
+                            else {
+                                $(this).hide();
+                            }
+                        }
+                    });
+                }
+            });
+
+
+
         },
         onChangeMonthYear: function (year, month, inst) {
             $('.filterYear').val(year);

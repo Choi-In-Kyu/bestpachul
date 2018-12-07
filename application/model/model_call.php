@@ -32,7 +32,7 @@
             $this->executeSQL("UPDATE `call` SET `employeeID` = NULL WHERE `callID` = '{$_POST['callID']}' LIMIT 1");
             break;
           case 'callCancel':
-            $this->executeSQL("UPDATE `call` SET employeeID = NULL, `cancelled`=1, `cancelDetail`='{$_POST['detail']}' WHERE `callID` = {$_POST['callID']} LIMIT 1");
+            $this->callCancel($_POST);
             break;
           case 'assignCancel':
             $this->executeSQL("UPDATE `call` SET employeeID = NULL WHERE `callID` = {$_POST['callID']} LIMIT 1");

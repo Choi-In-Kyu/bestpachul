@@ -15,13 +15,22 @@
     var $day;
     var $tables;
     var $tableName;
+    //필터 버튼 조건
     public $defaultCondition    = array("filter" => " (deleted = 0) ");
     public $activatedCondition  = array("filter" => " (activated = 1 AND deleted = 0) ");
     public $expiredCondition    = array("filter" => " (activated = 0 AND deleted = 0) ");
     public $deletedCondition    = array("filter" => " (activated = 0 AND deleted = 1) ");
     public $deadlineCondition   = array("filter" => " (bookmark = 1 OR imminent = 1) ");
-
-//생성자
+    //토글 버튼 조건
+    public $thisWeekCondition   = "(YEARWEEK( workDate, 1 ) = YEARWEEK( CURDATE( ) , 1 ))";
+    public $thisMonthCondition  = "(YEAR(workDate) = YEAR(CURDATE()) AND MONTH(workDate) = MONTH(CURDATE()))";
+    public $chargedCondition    = "(`price` > 0)";
+    public $freeCondition       = "(`price` = 0)";
+    public $pointCondition      = "(`point` > 0)";
+    public $unfixedCondition    = "(`fixID` = 0)";
+    public $fixedCondition      = "(`fixID` > 0)";
+    public $monthlyCondition    = "(`fixID` > 0 AND `salary` = 0)";
+    //생성자
     function __construct($param)
     {
       header("Content-type:text/html;charset=utf8");
@@ -34,7 +43,7 @@
       if (method_exists($this, $method)) $this->$method();
       require_once(_VIEW . "common/header.php");
     }
-    
+    //선택한 테이블들의 모든 데이터를 불러와서 table_List 배열 생성
     function getFunctions()
     {
       $this->tables = array('company', 'ceo', 'employee', 'call', 'address', 'businessType', 'workField', 'call', 'employee_available_date', 'blackList');
@@ -43,7 +52,6 @@
       }
       $this->tableName = $this->param->page_type;
     }
-    
     function getBasicFunction($tableName)
     {
       $this->keyword = $_POST['keyword'];
@@ -61,31 +69,15 @@
       $this->list = $this->initActCondition($this->list, $tableName);
       $this->list = $this->getActCondition($this->list, $tableName);
     }
-    
-    function get_callList(){
-//      $condition = array();
-//      $table = $this->param->page_type;
-//      if(in_array($table,['company','employee'])) $condition[] = " `{$table}ID` = '{$this->param->idx}' ";
-//      if(isset($_POST['year'])&&isset($_POST['month'])){
-//        $newDate = $_POST['year'];
-//        if($_POST['month']<10) $newDate.= '0';
-//        $newDate.= $_POST['month'].'01';
-//      }
-//      switch ($_POST['filter']) {
-//        case 'all'  :break;
-//        case 'day'  :$condition[] = "( workDate = '{$_POST['date']}')";break;
-//        case 'week' :$condition[] = "( YEARWEEK(`workDate`, 1) = YEARWEEK(CURDATE(), 1))";break;
-//        case 'month':$condition[] = "( YEAR(workDate) = YEAR('{$newDate}') AND MONTH(workDate) = MONTH('{$newDate}'))";break;
-//        case 'paid' :$condition[] = "( YEAR(workDate) = YEAR('{$newDate}') AND MONTH(workDate) = MONTH('{$newDate}') AND price > 0 AND point = 0)";break;
-////        default     :$condition[] = "( workDate = '"._TODAY."')";break; //기본값은 오늘
-//        default     :$condition[] = "adfasffsaf";break; //기본값은 오늘
-//      }
-//      $where = (sizeof($condition)>0) ? "WHERE" : null;
-//      return $this->model->getTable("SELECT * FROM `call` {$where} " . implode(' AND ', $condition));
-        return $this->model->getTable("SELECT * FROM `call`");
+    function get_callList()
+    {
+      $sql = "SELECT * FROM `call`";
+      $table = $this->param->page_type;
+      if(in_array($table,['company','employee'])) $sql .= " WHERE `{$table}ID` = '{$this->param->idx}' ";
+      return $this->model->getTable($sql);
     }
-    
-    function get_blackList(){
+    function get_blackList()
+    {
       $tbl = $this->tableName;
       return $this->model->getTable("SELECT * FROM `blackList` WHERE `{$tbl}ID` = '{$this->param->idx}' ");
     }

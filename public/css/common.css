@@ -25,6 +25,7 @@ h1{margin:20px;}
 /*jquery date picker*/
 .ui-datepicker-current-day .ui-state-active { background: red; }
 .ui-datepicker-calendar td.newClass a { background: yellow; }
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {background: darkseagreen !important;}
 
 
 /* board */
@@ -100,6 +101,7 @@ h1{margin:20px;}
 tr.selectable:hover, tr.selected{cursor: pointer; background-color: antiquewhite}
 tr.cancelled{background-color: gray;}
 tr.cancelled:hover, tr.cancelled.selected{background-color: lightgray;}
+tr.callRow{cursor: pointer;}
 
 /* default table */
 table { width: 100%; border-top: 2px solid #666; border-spacing: 0; border-collapse: collapse; text-align: center; }

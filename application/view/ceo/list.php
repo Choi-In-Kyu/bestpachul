@@ -85,7 +85,6 @@
         $('#callCancelModal').hide();
     });
     $('.callCancelModalBtn').on('click', function () {
-        console.log(this.id);
         $('#callCancelID').val(this.id);
     });
     $('#callCancelBtn').on('click', function () {
@@ -101,7 +100,6 @@
         let yearArray = JSON.parse('<?php echo json_encode($this->getDate($this->callList))?>');
         for (let i = 0; i < 12; i++) {
             if (yearArray[$('#year').val()].map(Number).includes(i + 1)) {
-                console.log(month.eq(i).val());
                 month.eq(i).css('background','blue');
             }
             else {

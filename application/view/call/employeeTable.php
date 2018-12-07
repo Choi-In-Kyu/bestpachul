@@ -17,14 +17,14 @@
                       </td>
                       <td class="al_l"><?php echo $data['address'] ?></td>
                       <td class="al_c">
-                          <form action="" method="post">
-                              <input type="hidden" name="filter" value="<?php echo $_POST['filter'] ?>">
-                              <input type="hidden" name="date" value="<?php echo $_POST['date'] ?>">
-                              <input type="hidden" name="action" value="assign">
-                              <input type="hidden" name="callID" id="callID" value="">
-                              <input type="hidden" name="employeeID" id="employeeID" value="">
-                              <input type="submit" class="btn btn-small btn-submit assignBtn" id="<?php echo $data['employeeID'] ?>" value="배정">
-                          </form>
+<!--                          <form action="" method="post">-->
+<!--                              <input type="hidden" name="filter" value="--><?php //echo $_POST['filter'] ?><!--">-->
+<!--                              <input type="hidden" name="date" value="--><?php //echo $_POST['date'] ?><!--">-->
+<!--                              <input type="hidden" name="action" value="assign">-->
+<!--                              <input type="hidden" name="callID" id="callID" value="">-->
+<!--                              <input type="hidden" name="employeeID" id="employeeID" value="">-->
+<!--                              <input type="submit" class="btn btn-small btn-submit assignBtn" id="--><?php //echo $data['employeeID'] ?><!--" value="배정">-->
+<!--                          </form>-->
                       </td>
                   </tr>
           <?php endif; ?>

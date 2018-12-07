@@ -61,7 +61,7 @@
           <td>가입비고</td>
           <td><textarea name="join_employee-detail"></textarea></td>
           <td>
-            <input type="checkbox" name="join_employee-paid" value="1">회비 수금 여부
+            <input type="checkbox" id="paid" name="join_employee-paid" value="1">회비 수금 여부
           </td>
         </tr>
       </table>

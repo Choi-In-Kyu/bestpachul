@@ -1,9 +1,8 @@
 $('#companyName').on('input', function () {
     $('#formAction').val('getCompanyID');
-    console.log($('#formAction').val());
     $.ajax({
         type: "POST",
-        url: "http://bestpachul.com/application/ajax/ajax.php",
+        url: ajaxURL,
         method: "POST",
         data: $('#callForm').serialize(),
         dataType: "text",
@@ -15,10 +14,9 @@ $('#companyName').on('input', function () {
 });
 $('#employeeName').on('input', function () {
     $('#formAction').val('getEmployeeID');
-    console.log($('#formAction').val());
     $.ajax({
         type: "POST",
-        url: "http://bestpachul.com/application/ajax/ajax.php",
+        url: ajaxURL,
         method: "POST",
         data: $('#callForm').serialize(),
         dataType: "text",
@@ -52,10 +50,8 @@ $('#monthlyCallBtn').on('click',function () {
 });
 
 $('#callForm input').on('input',function () {
-    console.log('changed');
    initiate(endHour.val()-startHour.val());
 });
 $('#callForm select').on('input',function () {
-    console.log('changed');
     initiate(endHour.val()-startHour.val());
 });

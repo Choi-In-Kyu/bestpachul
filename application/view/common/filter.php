@@ -10,7 +10,7 @@
       default: $selectArr[0] = 'selected';break;
     }
   } else {
-    $selectArr[0] = 'selected';
+    $selectArr[1] = 'selected';
   }
 ?>
 

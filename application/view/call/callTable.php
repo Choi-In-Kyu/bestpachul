@@ -6,16 +6,13 @@
     }
 ?>
 
-<!--<form id="filterForm" method="post" style="display: none;">-->
-<!--    <input type="hidden" name="action" value="filter">-->
-<!--    <input type="hidden" name="callID" value="">-->
-<!--  --><?php //foreach ($_POST as $key => $value): ?>
-<!--      <input type="hidden" name="--><?php //echo $key?><!--" value="--><?php //echo $value?><!--">-->
-<!--  --><?php //endforeach; ?>
-<!--</form>-->
-
-
-<?php //echo json_encode($this->callList)?>
+<form id="filterForm" method="post" style="display: none;">
+    <input type="hidden" name="action" value="filter">
+    <input type="hidden" name="callID" value="">
+  <?php foreach ($_POST as $key => $value): ?>
+      <input type="hidden" name="<?php echo $key?>" value="<?php echo $value?>">
+  <?php endforeach; ?>
+</form>
 
 <div class="inline scroll_tbody call" style="width: <?php echo $width ?>%;">
     <table id="<?php echo $type."_table"?>" width="100%" style="height: <?php echo (sizeof($this->{$type.'List'}) == 0) ? '50px;' : null ?>">
@@ -51,16 +48,9 @@
                   <td class="al_l"><?php echo $this->timeType($data) ?></td>
                   <td class="al_l"><?php echo $data['workField'] ?></td>
                   <td class="al_l"><?php echo $data['salary'] ?></td>
-                  <td class="al_l">
-                    <?php                                                                       echo $data['detail'] ?>
-                    <?php if ( ($data['cancelled'] == 1) && (isset($data['cancelDetail'])) )    echo "<br>({$data['cancelDetail']})"; ?>
-                    <?php if ( ($type=='punk') && (isset($data['punkDetail'])) )                echo "<br>({$data['punkDetail']})"?>
-                  </td>
-
+                  <td class="al_l"><?php $this->get_joinDetail($data)?></td>
                   <td class="al_c"><?php echo $this->get_paidBtn($data, 'call'); ?></td>
-                  
                   <td class="al_c">
-  
                     <?php switch ($type): case 'call': ?>
                       <?php if ($data['employeeID'] > 0): ?>
                             <a class="assignCancelBtn link" id="<?php echo $data['callID'] ?>">
@@ -92,6 +82,17 @@
       <?php endif; ?>
     </table>
   <?php if (sizeof($this->{$type.'List'}) == 0): ?>
-      <h1><?php echo ($type=='call') ? '콜':'펑크'; ?> 내역이 존재하지 않습니다.</h1>
+    <?php
+    if($type == 'call'){
+        if($this->param->page_type == 'company'){
+            $listName = '콜';
+        }
+        else $listName = '배정';
+    }
+    else{
+        $listName = '펑크';
+    }
+    ?>
+      <h1><?php echo $listName ?> 내역이 존재하지 않습니다.</h1>
   <?php endif; ?>
 </div>

@@ -10,7 +10,6 @@
         </form>
     </div>
 </div>
-
 <!--Call Cancel Modal-->
 <div id="callCancelModal" class="modal">
     <div class="modal-content">
@@ -23,7 +22,6 @@
         </form>
     </div>
 </div>
-
 <!-- Join Cancel Modal -->
 <div id="joinCancelModal" class="modal">
     <div class="modal-content">
@@ -36,7 +34,6 @@
         </form>
     </div>
 </div>
-
 <!-- Join Update Modal -->
 <div id="joinUpdateModal" class="modal">
     <div class="modal-content">

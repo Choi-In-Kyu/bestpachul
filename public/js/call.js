@@ -12,25 +12,13 @@ $('.moveAssignBtn').on('click', function () {
     $('input[name=callID]').val(this.id);
     $('#filterForm').submit();
 });
+$('.workDate').on('change',function () {
+    $('#callForm #workDate').val($(this).val());
+});
+$('.endDate').on('change',function () {
+    $('#callForm #endDate').val($(this).val());
+});
 
-// 모달 내에서 작동하는 함수
-$('.callCancelBtn').on('click', function () {
-    event.stopPropagation();
-    $('#callCancelModal').show();
-    $('input[name=callID]').val(this.id);
-});
-$('.assignCancelBtn').on('click', function () {
-    event.stopPropagation();
-    $('#assignCancelModal').show();
-    $('input[name=callID]').val(this.id);
-    $('input[name=employeeName]').val(this.innerText);
-});
-$('#closeAssignCancelModal').click(function () {
-    $('#assignCancelModal').hide();
-});
-$('#closeCallCancelModal').click(function () {
-    $('#callCancelModal').hide();
-});
 
 // 버튼, 행 클릭 함수
 $('.assignBtn').on('click', function () {
@@ -40,6 +28,18 @@ $('.assignBtn').on('click', function () {
     $('input[name=employeeID]').val(employeeID);
 });
 $('.callRow').on('click', function () {
-    $('input[name=callID]').val(this.id);
-    $('#filterForm').submit();
+    if(pageAction === 'assign'){
+        console.log('공사 시작');
+        let callID = $(this).attr('id');
+        $.ajax({
+            type: "POST",
+            method: "POST",
+            url: ajaxURL,
+            data: {action:'assignFilter', callID:callID},
+            dataType: "text",
+            success: function (data) {
+                console.log(data);
+            }
+        });
+    }
 });

@@ -82,10 +82,13 @@
       case 'toggleFilter':
         echo $obj->toggleFilter($_POST);
         break;
+      case 'assignFilter':
+        echo json_encode($obj->assignFilter($_POST,3));
+        break;
       default :
         $result['msg'] = 'no matching action name';
         echo json_encode($result);
         break;
-    }
+  }
   }
   else echo 'no action';

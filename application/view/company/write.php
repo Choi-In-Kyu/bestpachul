@@ -126,3 +126,5 @@
         </div>
     </div>
 <?php include_once 'companyAddJoinTable.php'; ?>
+
+<script src="/public/js/call.js"></script>

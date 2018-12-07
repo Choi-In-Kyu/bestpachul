@@ -140,12 +140,29 @@
       }
       return $string;
     }
+  
     function get_joinDetail($data)
     {
-      echo $data['detail'];
-      if ($data['deleted'] == 1) echo "<br/>(삭제사유: " . $data['deleteDetail'] . ")";
-      elseif ($data['deleted'] == 0 && $data['activated'] == 0) {
-        echo "<br/>(가입 만기됨)";
+      if(isset ($data['detail']) && $data['detail']!=""){
+        echo $data['detail'];
+        if($data['deleted'] == 1){
+          echo "<br/>(".$data['deleteDetail'].")";
+        }
+        elseif($data['deleted'] == 0 && $data['activated'] == 0) {
+          echo "<br/>(가입 만기됨)";
+        }
+        if(isset($data['cancelDetail']) && $data['cancelDetail']!=''){
+          echo "<br/>(".$data['cancelDetail'].")";
+        }
+      }
+      else{
+        if ($data['deleted'] == 1) echo "(삭제사유: " . $data['deleteDetail'] . ")";
+        elseif ($data['deleted'] == 0 && $data['activated'] == 0) {
+          echo "(가입 만기됨)";
+        }
+        if(isset($data['cancelDetail']) && $data['cancelDetail']!=''){
+          echo "<br/>(".$data['cancelDetail'].")";
+        }
       }
     }
     function get_joinDeleteBtn($data, $tableName)
@@ -179,15 +196,8 @@ HTML;
       if($data['price']>0){
         if($data['paid']==0){
           return <<<HTML
-<button type="button" class="btn btn-default getMoneyBtn" id="{$data[$table.'ID']}">{$data['price']}</button>
+<button type="button" class="btn btn-default getMoneyBtn_{$table}" id="{$data[$table.'ID']}">{$data['price']}</button>
 HTML;
-//        return <<<HTML
-//          <form action= "" method="post">
-//              <input type="hidden" name="action" value="getMoney">
-//              <input type="hidden" name="id" value="{$data[$table.'ID']}">
-//              <input class="btn" type="submit" value="{$data['price']}">
-//          </form>
-//HTML;
         }
         else return '수금완료';
       }

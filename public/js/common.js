@@ -1,5 +1,6 @@
 let mainUrl = "http://bestpachul.com/";
 let pageType = window.location.href.replace(mainUrl,'').split('/')[0];
+let pageAction = window.location.href.replace(mainUrl,'').split('/')[1]
 
 //북마크 별표 클릭
 $('.fa-star.selectable').on('click', function () {
@@ -65,20 +66,47 @@ $('.selectable').on('click',function () {
     $(this).removeClass('selectable');
 });
 //수금 버튼
-$('.getMoneyBtn').on('click',function () {
-    console.log('수금 버튼 클릭!');
+$('.getMoneyBtn_call').on('click',function () {
     event.stopPropagation();
-    let btn = $(this);
+    let thisBtn = $(this);
+    getMoney('call',thisBtn);
+});
+$('.getMoneyBtn_join_employee').on('click',function () {
+    event.stopPropagation();
+    let thisBtn = $(this);
+    getMoney('join_employee',thisBtn);
+});
+
+function getMoney(tableName, thisBtn) {
     $.ajax({
         type: "POST",
         method: "POST",
         url: ajaxURL,
-        data: {action: 'getMoney', id: btn.attr('id'), tableName: pageType },
+        data: {action: 'getMoney', id: thisBtn.attr('id'), tableName: tableName },
         dataType: "text",
         success: function (data) {
-            btn.closest('td').html('수금완료');
+            thisBtn.closest('td').html('수금완료');
         }
     });
+}
+
+// 모달 내에서 작동하는 함수
+$('.callCancelBtn').on('click', function () {
+    event.stopPropagation();
+    $('#callCancelModal').show();
+    $('input[name=callID]').val(this.id);
+});
+$('.assignCancelBtn').on('click', function () {
+    event.stopPropagation();
+    $('#assignCancelModal').show();
+    $('input[name=callID]').val(this.id);
+    $('input[name=employeeName]').val(this.innerText);
+});
+$('#closeAssignCancelModal').click(function () {
+    $('#assignCancelModal').hide();
+});
+$('#closeCallCancelModal').click(function () {
+    $('#callCancelModal').hide();
 });
 
 //iphone style toggle checkbox

@@ -6,7 +6,6 @@
     public $db;
     public $param;
     public $sql;
-    
     public function __construct($param)
     {
       $this->param = $param;
@@ -18,7 +17,6 @@
       $this->db->exec("set names utf8");
       if (isset($_POST['action'])) $this->action();//post 로 받은 action 값이 있으면 action() 함수 실행
     }
-  
     public function check_login(){
       if (in_array($this->param->page_type, ['company', 'employee', 'call', 'manage'])) {
         if (isset($_COOKIE['userID'])) {
@@ -49,7 +47,6 @@
         move(_URL . 'login');
       }
     }
-  
     public function query($sql)
     {
       $this->sql = $sql;
@@ -67,7 +64,6 @@
     public function fetchAll(){return $this->query($this->sql)->fetchAll();}
     public function getTable($sql){$this->sql = $sql;return $this->fetchAll();}
     public function count(){return $this->query($this->sql)->rowCount();}
-    
     public function getList($conditionArray = null, $order = null)
     {
       $this->sql = "SELECT * FROM {$this->param->page_type}";
@@ -158,15 +154,12 @@
       //가입 삭제
       else $this->executeSQL("UPDATE join_{$table} SET deleted=1, activated=0, deletedDate= '{$d}', deleteDetail = '{$post['deleteDetail']}' WHERE join_{$table}ID = '{$post['joinID']}'");
     }
-  
-    
     public function isHoliday($date)
     {
       if (in_array(date('w',strtotime($date)), [0,6])) {return true;}
       elseif(sizeof($this->getTable("SELECT * FROM `holiday` where holiday = '{$date}'"))>0) {return true;}
       else {return false;}
     }
-    
     public function joinType($companyID)
     {
       $gujwaTable   = $this->getTable("SELECT * FROM  `join_company` WHERE companyID = {$companyID} AND activated =1 AND price >0 AND  `point` IS NULL ");
@@ -177,7 +170,6 @@
       elseif (sizeof($depositTable) > 0) return 'deposit';
       else return 'deactivated';
     }
-   
     public function insert($table, $post, $id=null)
     {
       if (isset($post['action'])) array_shift($post);
@@ -189,11 +181,9 @@
       alert($sql);
       $this->executeSQL($sql);
     }
-    
     public function call($post){
       alert(json_encode($post));
     }
-    
     public function call_gujwa($post)
     {
       if ($this->isHoliday($post['workDate'])) {$point = 10000;
@@ -236,5 +226,7 @@
       $post['price'] = $price;
       $this->call($post);
     }
-
+    public function callCancel($post){
+      $this->executeSQL("UPDATE `call` SET employeeID = NULL, `cancelled`=1, `cancelDetail`='{$post['detail']}' WHERE `callID` = {$post['callID']} LIMIT 1");
+    }
   }
