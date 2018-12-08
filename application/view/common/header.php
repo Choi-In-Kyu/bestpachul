@@ -12,7 +12,13 @@
 <head>
     <meta charset="UTF-8">
     <title>으뜸 파출</title>
+    
     <!--css-->
+
+
+    <link rel="icon" type="image/png" href="<?php echo _IMG?>favicon.png" />
+
+    
     <link rel="stylesheet" href="<?php echo _CSS ?>default.css?<?php echo time(); ?>">
     <link rel="stylesheet" href="<?php echo _CSS ?>common.css?<?php echo time(); ?>">
     <link rel="stylesheet" href="<?php echo _CSS ?>toggle.css?<?php echo time(); ?>">
