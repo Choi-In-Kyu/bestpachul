@@ -221,8 +221,8 @@ function chargedCall(data) {
         $('#formAction').val('call');
         $.ajax({
             type: "POST",
-            url: ajaxURL,
             method: "POST",
+            url: ajaxURL,
             data: $('#callForm').serialize(),
             dataType: "text",
             async: false,
@@ -304,8 +304,8 @@ function myFix(date) {
     $('#formAction').val('initiate');
     $.ajax({
         type: "POST",
-        url: "http://bestpachul.com/application/ajax/ajax.php",
         method: "POST",
+        url: ajaxURL,
         data: $('#callForm').serialize(),
         dataType: "text",
         async: false,
@@ -334,8 +334,8 @@ function recursive() {
         $('#formAction').val('initiate');
         $.ajax({
             type: "POST",
-            url: ajaxURL,
             method: "POST",
+            url: ajaxURL,
             data: $('#callForm').serialize(),
             dataType: "text",
             success: function (data) {

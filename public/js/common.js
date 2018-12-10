@@ -1,6 +1,6 @@
 let mainUrl = "http://bestpachul.com/";
 let pageType = window.location.href.replace(mainUrl,'').split('/')[0];
-let pageAction = window.location.href.replace(mainUrl,'').split('/')[1]
+let pageAction = window.location.href.replace(mainUrl,'').split('/')[1];
 
 //북마크 별표 클릭
 $('.fa-star.selectable').on('click', function () {

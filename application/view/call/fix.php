@@ -22,6 +22,7 @@
         <input type="hidden" name="workDate" id="workDate" class="workDate">
         <input type="hidden" name="endDate" id="endDate" class="endDate">
         <input type="hidden" name="fixID" id="fixID">
+        <input type="hidden" name="commission">
         <div class="table">
             <!--인력이름, 업체이름-->
             <div class="tr">
@@ -140,15 +141,23 @@
                     </select>
                 </div>
             </div>
-            
+
             <!--월급-->
             <div class="tr monthly" style="display: none;">
                 <div class="td-label">월급</div>
                 <div class="td">
-                    <input type="number" name="monthlySalary">
+                    <input type="number" name="monthlySalary" id="monthlySalary">
+                </div>
+                <div class="td-label">수수료 비율</div>
+                <div class="td">
+                    <input type="number" name="percentage" id="percentage">
+                </div>
+                <div class="td-label">수수료</div>
+                <div class="td">
+                    <input type="number" name="commission" id="commission">
                 </div>
             </div>
-            
+
             <!--기타 요청 사항-->
             <div class="tr">
                 <div class="td-label">기타요청사항</div>
@@ -175,5 +184,13 @@
         initiate(endHour.val() - startHour.val());
         $('.callBtn').hide();
         $('#submitBtn').show();
+    });
+    $('#percentage').on('input', function () {
+        $('#commission').val($('#percentage').val() * 0.01 * $('#monthlySalary').val());
+        $('#callForm input[name=commission]').val($('#percentage').val() * 0.01 * $('#monthlySalary').val());
+    });
+    $('#monthlySalary').on('input', function () {
+        $('#commission').val($('#percentage').val() * 0.01 * $('#monthlySalary').val());
+        $('#callForm input[name=commission]').val($('#percentage').val() * 0.01 * $('#monthlySalary').val());
     });
 </script>

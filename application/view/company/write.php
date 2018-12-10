@@ -106,6 +106,7 @@
                       <?php endif; ?>
 
                     </div>
+                    </div>
                   <?php if (!isset($this->param->idx)) : ?>
                       <br/>
                       <h1 class="table_title">가입 정보</h1>

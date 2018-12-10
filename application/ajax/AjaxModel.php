@@ -9,6 +9,7 @@
     public $db;
     public $sql;
     public $companyID;
+    
     public function __construct($param)
     {
       $this->param = $param;
@@ -16,6 +17,7 @@
       $this->db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
       $this->db->exec("set names utf8");
     }
+    
     public function query($sql)
     {
       $this->sql = $sql;
@@ -26,28 +28,34 @@
         echo $this->sql;
       }
     }
+    
     public function fetch()
     {
       return $this->query($this->sql)->fetch();
     }
+    
     public function executeSQL($string)
     {
       $this->sql = $string;
       $this->fetch();
     }
+    
     public function fetchAll()
     {
       return $this->query($this->sql)->fetchAll();
     }
+    
     public function getTable($sql)
     {
       $this->sql = $sql;
       return $this->fetchAll();
     }
+    
     public function count()
     {
       return $this->query($this->sql)->rowCount();
     }
+    
     public function getList($conditionArray = null, $order = null)
     {
       $this->sql = "SELECT * FROM {$this->param->page_type}";
@@ -57,10 +65,12 @@
       if (isset($order) && $order != "") $this->sql .= " ORDER BY {$order}";
       return $this->fetchAll();
     }
+    
     public function getListNum($conditionArray = null)
     {
       return sizeof($this->getList($conditionArray));
     }
+    
     public function getColumnList($array, $column)
     {
       foreach ($array as $key => $value) {
@@ -69,6 +79,7 @@
       if (isset($result)) return $result;
       else return null;
     }
+    
     public function select($table, $condition = null, $column = null, $order = null)
     {
       $sql = "SELECT * FROM `{$table}` ";
@@ -77,18 +88,19 @@
       if (isset($column)) return $this->getTable($sql)[0][$column];
       else return $this->getTable($sql);
     }
+    
     public function insert($table, $post)
     {
       $columns = array();
       $values = array();
-      $columnTable =  $this->getTable("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'{$table}'");
-      foreach($columnTable as $value){
-        foreach ($value as $item){
+      $columnTable = $this->getTable("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'{$table}'");
+      foreach ($columnTable as $value) {
+        foreach ($value as $item) {
           $columnList[] = $item;
         }
       }
-      foreach ($post as $key=>$value){
-        if(!in_array($key,$columnList)){
+      foreach ($post as $key => $value) {
+        if (!in_array($key, $columnList)) {
           unset($post[$key]);
         }
       }
@@ -103,6 +115,7 @@
       $sql = "INSERT INTO `{$table}` ({$columnString}) VALUES ($valueString)";
       $this->executeSQL($sql);
     }
+    
     public function joinType($companyID)
     {
       $gujwaTable = $this->getTable("SELECT * FROM  `join_company` WHERE companyID = {$companyID} AND activated =1 AND price >0 AND  `point` IS NULL ");
@@ -113,6 +126,7 @@
       elseif (sizeof($depositTable) > 0) return 'deposit';
       else return 'deactivated';
     }
+    
     public function isHoliday($date)
     {
       if (in_array(date('w', strtotime($date)), [0, 6])) {
@@ -123,9 +137,10 @@
         return false;
       }
     }
+    
     public function call($post)
     {
-      if($post['monthlySalary']>0){
+      if ($post['monthlySalary'] > 0) {
         unset ($post['salary']);
       }
       $companyID = $post['companyID'];
@@ -136,6 +151,7 @@
         $this->executeSQL($sql);
       }
     }
+    
     public function cancel($post)
     {
       $callID = $post['callID'];
@@ -149,6 +165,7 @@
         $this->executeSQL("UPDATE `call` SET `cancelled` = 1 WHERE `callID` = '{$callID}' LIMIT 1");
       }
     }
+    
     public function reset($post)
     {
       $id = $post['companyID'];
@@ -169,6 +186,7 @@
         else $this->executeSQL("UPDATE `call` SET `price`=6000 WHERE `callID` = '{$all[$i]['callID']}' LIMIT 1");
       }
     }
+    
     public function getCallPrice($id, $date)
     {
       if ($this->checkCallType($id, $date) == 'free') {
@@ -185,6 +203,7 @@
         }
       }
     }
+    
     public function getWeekDates($date)
     {
       $i = date('w', strtotime($date));
@@ -200,6 +219,7 @@
       }
       return $arr;
     }
+    
     public function thisWeekScore($id, $date)
     {
       $sum = 0;
@@ -214,6 +234,7 @@
       }
       return $sum;
     }
+    
     public function checkCallType($id, $date)
     {
       $joinType = $this->joinType($id);
@@ -250,6 +271,7 @@
           break;
       }
     }
+    
     public function fix($post)
     {
       $dow = $post['dow'];
@@ -264,61 +286,81 @@
         }
         $result['dateArray'] = $dateArray;
       }
-      $this->insert('fix',$post);
+      $this->insert('fix', $post);
       $fixID = intval($this->getTable("SELECT * FROM `fix` ORDER BY `fixID` DESC LIMIT 1")[0]['fixID']);
-      if(isset($fixID)){
+      if (isset($fixID)) {
         $result['fixID'] = $fixID;
-      }
-      else $result['fixID'] = 1;
+      } else $result['fixID'] = 1;
       
       return json_encode($result);
     }
-    public function getMoney($post){
+    
+    public function getMoney($post)
+    {
       $tbl = $post['tableName'];
       $id = $post['id'];
       $sql = "UPDATE `{$tbl}` SET `paid` = '1' WHERE `{$tbl}ID` = '{$id}'";
       $this->executeSQL($sql);
     }
-    public function toggleFilter($post){
+    
+    public function toggleFilter($post)
+    {
       $sql = "SELECT `callID` FROM `call`";
-      if(isset($post['duration'])){
+      if (isset($post['duration'])) {
         $post['date'] = null;
-        $condition[]  = "(".implode(' OR ',$post['duration']).")";
+        $condition[] = "(" . implode(' OR ', $post['duration']) . ")";
       }
-      if(isset($post['date'])&&$post['date']!=''){
+      if (isset($post['date']) && $post['date'] != '') {
         $condition = null;
         $condition[] = " (`workDate` = '{$post['date']}') ";
       }
-      if(isset($post['charged'])){
-        $condition[]  = "(".implode(' OR ',$post['charged']).")";
+      if (isset($post['charged'])) {
+        $condition[] = "(" . implode(' OR ', $post['charged']) . ")";
       }
-      if(isset($post['fixed'])){
-        $condition[]  = "(".implode(' OR ',$post['fixed']).")";
+      if (isset($post['fixed'])) {
+        $condition[] = "(" . implode(' OR ', $post['fixed']) . ")";
       }
-      if(isset($condition)){
+      if (isset($condition)) {
         $sql .= " WHERE ";
       }
-
+      
       $sql .= implode(' AND ', $condition);
 
 //      return $sql;
-      foreach($this->getTable($sql) as $value){
-        foreach($value as $item){
+      foreach ($this->getTable($sql) as $value) {
+        foreach ($value as $item) {
           $arr[] = intval($item);
         }
       }
       $arr[] = $sql;
       return json_encode($arr);
     }
-  
-    function workTimeType($data)
+    
+    public function workTimeType($data)
     {
       $start = $data['startTime'];
       $end = $data['endTime'];
       $workTime = $end - $start;
       if ($workTime >= 10) $result = '종일';
-      else {if ($start < 12) $result = '오전'; else $result = '오후';}
+      else {
+        if ($start < 12) $result = '오전'; else $result = '오후';
+      }
       return $result;
+    }
+  
+    public function getIDTable($list, $int = false)
+    {
+      foreach ($list as $value) {
+        foreach ($value as $item) {
+          if ($int == true) {
+            $arr[] = intval($item);
+          }
+          else{
+            $arr[] = $item;
+          }
+        }
+      }
+      return $arr;
     }
     
     
@@ -333,44 +375,83 @@
       $workDay = $day[date('w', strtotime($workDate))];
       $startTime = $callData['startTime'];
       $endTime = $callData['endTime'];
-      $condition1 = "(`deleted` = 0)";
-      $condition2 = "(`activated` = 1)";
-      $condition3 = "(`employeeID` not in (select `employeeID` from `blackList` WHERE `companyID` = '{$companyID}'))";
-      $condition4 = "(`employeeID` not in (SELECT `employeeID` FROM `employee_available_date` WHERE (notavailableDate is not null AND notavailableDate != '{$workDate}')))";
-      $condition5 = "(`workField1` = '{$workField}' OR `workField2` = '{$workField}' OR `workField3` = '{$workField}')";
-      if ($workField == '설거지') {$condition5 .= "OR `workField1` = '주방보조' OR `workField2` = '주방보조' OR `workField3` = '주방보조' ";}
       
+      $condition['삭제'] = "(`deleted` = 0)";
+      $condition['만기'] = "(`activated` = 1)";
+      $condition['블랙'] = "(`employeeID` not in (select `employeeID` from `blackList` WHERE `companyID` = '{$companyID}'))";
+      $condition['근무불가능일'] = "(`employeeID` not in (SELECT `employeeID` FROM `employee_available_date` WHERE (notavailableDate is not null AND notavailableDate != '{$workDate}')))";
+      $condition['중복'] = "(`employeeID` not in (SELECT `employeeID` FROM `call` WHERE (employeeID is not null) AND (workDate ='{$workDate}') AND ('{$startTime}' < `endTime` AND '{$endTime}'>`startTime`) ))";
+      if ($workField == '설거지') {
+        $condition['업종']=
+        "(`workField1` = '{$workField}' OR `workField2` = '{$workField}' OR `workField3` = '{$workField}') OR `workField1` = '주방보조' OR `workField2` = '주방보조' OR `workField3` = '주방보조' ";
+      }
+      else{
+        $condition['업종']= "(`workField1` = '{$workField}' OR `workField2` = '{$workField}' OR `workField3` = '{$workField}')";
+      }
       $type = $this->workTimeType($callData);
       switch ($type) {
-        case '오전':
-          $condition6 = "(`employeeID` in (SELECT `employeeID` FROM `employee_available_day` WHERE (`{$workDay}` = '오전' || `{$workDay}` = '종일' || `{$workDay}` = '반반')))";
-          break;
-        case '오후':
-          $condition6 = "(`employeeID` in (SELECT `employeeID` FROM `employee_available_day` WHERE (`{$workDay}` = '오후' || `{$workDay}` = '종일' || `{$workDay}` = '반반')))";
-          break;
-        case '종일':
-          $condition6 = "(`employeeID` in (SELECT `employeeID` FROM `employee_available_day` WHERE (`{$workDay}` = '종일' )))";
-          break;
+        case '오전':$condition['요일'] = "(`employeeID` in (SELECT `employeeID` FROM `employee_available_day` WHERE (`{$workDay}` = '오전' || `{$workDay}` = '종일' || `{$workDay}` = '반반')))";break;
+        case '오후':$condition['요일'] = "(`employeeID` in (SELECT `employeeID` FROM `employee_available_day` WHERE (`{$workDay}` = '오후' || `{$workDay}` = '종일' || `{$workDay}` = '반반')))";break;
+        case '종일':$condition['요일'] = "(`employeeID` in (SELECT `employeeID` FROM `employee_available_day` WHERE (`{$workDay}` = '종일' )))";break;
       }
-      $condition7 = "(`employeeID` not in (SELECT `employeeID` FROM `call` WHERE (employeeID is not null) AND (workDate ='{$workDate}') AND ('{$startTime}' < `endTime` AND '{$endTime}'>`startTime`) ))";
-      $condition8 = "(`bookmark` = 1)";
       
+      foreach ($condition as $value){
+        $conditionArray[] = $this->getIDTable($this->getTable("SELECT `employeeID` FROM `employee` WHERE {$value}"));
+      }
+      $employeeList = $this->getIDTable($this->getTable("SELECT `employeeID` FROM `employee`"));
       
-      for($i=1; $i<=3; $i++) {
-        switch ($i) {
-          case 1:
-            $sql = "SELECT `employeeID` FROM `employee` WHERE " . implode(' AND ', [$condition1, $condition2, $condition3, $condition4, $condition5, $condition6, $condition7]);
-            $arr[] = $this->getTable($sql);
+      foreach ($employeeList as $key => $value){
+        for($i=0; $i<sizeof($conditionArray); $i++){
+          if(!in_array($value,$conditionArray[$i])){
+            $result[$key] = array_keys($condition)[$i];
             break;
-          case 2:
-            $sql = "SELECT * FROM `employee` WHERE " . implode(' AND ', [$condition1, $condition2, $condition3, $condition4]);
-            $arr[] = $this->getTable($sql);
-            break;
-          case 3:
-            $sql = "SELECT * FROM `employee` WHERE " . implode(' AND ', [$condition1, $condition2, $condition8]);
-            $arr[] = $this->getTable($sql);
-            break;
+          }
+          else{
+            $result[$key] = 'best';
+            continue;
+          }
         }
       }
-      return $arr[0] ;
+      
+      foreach ($result as $key => $value){
+        if($value=='best'){
+          $group1[$key] = $value;
+        }
+        if(in_array($value,['요일','업종','중복'])){
+          $group2[$key] = $value;
+        }
+        if($value == '만기'){
+          if(in_array($key, $this->getIDTable($this->getTable("SELECT `employeeID` FROM `employee` WHERE `bookmark`='1'"),true))){
+            $group3[$key] = $value;
+          }
+        }
+      }
+      
+      
+      $return ="";
+      for($i=1;$i<=3;$i++){
+        $return .= <<<HTML
+<tr>
+<th>{$i}군</th>
+<th>인력명</th>
+<th>간단주소</th>
+<th>배정</th>
+<th>부적합</th>
+</tr>
+HTML;
+        foreach (${'group'.$i} as $key => $value){
+          $employeeData = $this->getTable("SELECT * FROM `employee` WHERE `employeeID` = '{$key}'")[0];
+          $return.=<<<HTML
+<tr>
+<td class="al_l">{$key}</td>
+<td class="al_l">{$employeeData['employeeName']}</td>
+<td class="al_l">{$employeeData['address']}</td>
+<td class="al_l"><button type="button" class="btn btn-small btn-submit assignBtn" id="{$employeeData['employeeID']}">배정</button></td>
+<td class="al_l">{$value}</td>
+</tr>
+HTML;
+        }
+      }
+      return $return;
+    }
   }

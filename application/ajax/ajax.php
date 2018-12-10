@@ -83,7 +83,13 @@
         echo $obj->toggleFilter($_POST);
         break;
       case 'assignFilter':
-        echo json_encode($obj->assignFilter($_POST,3));
+        echo json_encode($obj->assignFilter($_POST));
+        break;
+      case 'getGroup1':
+        echo json_encode($obj->getGroup1($_POST['group1']));
+        break;
+      case 'getGroup2':
+        echo json_encode($obj->getGroup2($_POST['callID'],$_POST['employeeID']));
         break;
       default :
         $result['msg'] = 'no matching action name';

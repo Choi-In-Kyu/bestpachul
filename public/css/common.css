@@ -64,11 +64,11 @@ h1{margin:20px;}
 .scroll_tbody.call  th:nth-of-type(8),  .scroll_tbody.call  td:nth-of-type(8)   { width: 5%; }
 .scroll_tbody.call  th:nth-of-type(9),  .scroll_tbody.call  td:nth-of-type(9)   { width: 5%; }
 .scroll_tbody.call  th:last-child,      .scroll_tbody.call  td:last-child       { width: 5%; }
-.scroll_tbody  th:nth-of-type(1), .scroll_tbody  td:nth-of-type(1) { width: 20%; }
-.scroll_tbody  th:nth-of-type(2), .scroll_tbody  td:nth-of-type(2) { width: 30%; }
-.scroll_tbody  th:nth-of-type(3), .scroll_tbody  td:nth-of-type(3) { width: 35%; }
-.scroll_tbody  th:last-child { width: 100px; }
-.scroll_tbody  td:last-child { width: calc( 100px - 19px );  }
+.scroll_tbody  th:nth-of-type(1), .scroll_tbody  td:nth-of-type(1) { width: auto; }
+.scroll_tbody  th:nth-of-type(2), .scroll_tbody  td:nth-of-type(2) { width: auto; }
+.scroll_tbody  th:nth-of-type(3), .scroll_tbody  td:nth-of-type(3) { width: auto; }
+.scroll_tbody  th:nth-of-type(4), .scroll_tbody  td:nth-of-type(4) { width: auto; }
+.scroll_tbody  th:nth-of-type(5), .scroll_tbody  td:nth-of-type(5) { width: auto; }
 ::-webkit-scrollbar {width: 0px;background: transparent;}
 
 /* button */

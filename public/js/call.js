@@ -27,9 +27,8 @@ $('.assignBtn').on('click', function () {
     $('input[name=callID]').val(callID);
     $('input[name=employeeID]').val(employeeID);
 });
-$('.callRow').on('click', function () {
+$('.callRow').one('click', function () {
     if(pageAction === 'assign'){
-        console.log('공사 시작');
         let callID = $(this).attr('id');
         $.ajax({
             type: "POST",
@@ -38,8 +37,40 @@ $('.callRow').on('click', function () {
             data: {action:'assignFilter', callID:callID},
             dataType: "text",
             success: function (data) {
-                console.log(data);
+                console.log(JSON.parse(data));
+                $('#employeeTable').html(JSON.parse(data));
             }
         });
     }
 });
+
+function get_group1(data){
+    data = JSON.parse(data);
+    group1 = data['group1'];
+    $.ajax({
+        type: "POST",
+        method: "POST",
+        url: ajaxURL,
+        data: {action:'getGroup1', group1:group1},
+        dataType: "text",
+        success: function (data) {
+            $('#employeeTable').html(JSON.parse(data));
+        }
+    });
+}
+
+function get_group2(data,callID){
+    data = JSON.parse(data);
+    group2 = data['group2'];
+    console.log("group2:"+group2);
+    $.ajax({
+        type: "POST",
+        method: "POST",
+        url: ajaxURL,
+        data: {action:'getGroup2', group2:group2, callID: callID},
+        dataType: "text",
+        success: function (data) {
+            console.log("success: "+data);
+        }
+    });
+}

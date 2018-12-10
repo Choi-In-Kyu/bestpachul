@@ -39,7 +39,8 @@
             ?>
               <tr class="selectable callRow <?php if ($data['cancelled'] == 1) echo 'cancelled' ?>" id="<?php echo $data['callID'] ?>">
                   <td class="al_c"><?php echo $data['callID'] . $this->assignType($data) ?></td>
-                  <td class="al_l"><?php echo $data['workDate'] ?></td>
+                  <?php $dayofweek = ['일','월','화','수','목','금','토']?>
+                  <td class="al_l"><?php echo $data['workDate']."(".$dayofweek[date('w',strtotime($data['workDate']))] .")" ?></td>
                   <td class="al_l">
                       <a href="http://bestpachul.com/company/view/<?php echo $data['companyID'] ?>" class="link">
                         <?php echo $companyName?>
@@ -47,8 +48,8 @@
                   </td>
                   <td class="al_l"><?php echo $this->timeType($data) ?></td>
                   <td class="al_l"><?php echo $data['workField'] ?></td>
-                  <td class="al_l"><?php echo $data['salary'] ?></td>
-                  <td class="al_l"><?php $this->get_joinDetail($data)?></td>
+                  <td class="al_l"><?php echo number_format($data['salary'])?></td>
+                  <td class="al_l"><?php $this->get_callDetail($data)?></td>
                   <td class="al_c"><?php echo $this->get_paidBtn($data, 'call'); ?></td>
                   <td class="al_c">
                     <?php switch ($type): case 'call': ?>

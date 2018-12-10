@@ -165,6 +165,23 @@
         }
       }
     }
+    function get_callDetail($data){
+      if(isset($data['detail']) && $data['detail']!=''){
+        echo $data['detail'];
+        if($data['cancelled']==1){
+          if(isset($data['cancelDetail'])){
+            echo "<br/>".$data['cancelDetail'];
+          }
+        }
+      }
+      else{
+        if($data['cancelled']==1){
+          if(isset($data['cancelDetail'])){
+            echo $data['cancelDetail'];
+          }
+        }
+      }
+    }
     function get_joinDeleteBtn($data, $tableName)
     {
       if ($data['activated'] == 1) {

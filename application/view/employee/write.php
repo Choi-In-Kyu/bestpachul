@@ -30,7 +30,7 @@
                         </div>
                         <div class="td-label">생일</div>
                         <div class="td">
-                            <input type="date" name="employee-birthDate" size="20" required autofocus
+                            <input type="date" name="employee-birthDate" size="20" autofocus
                                    value="<?php echo $this->employeeData['birthDate']; ?>">
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                             <input type="text" list="workFieldList" name="employee-workField1" size="20"
                                    value="<?php echo $this->employeeData['workField1']; ?>">
                             <datalist id="workFieldList" class="input-field">
-                              <?php foreach ($this->workFieldList as $key => $data): ?>
+                              <?php foreach ($this->workField_List as $key => $data): ?>
                                   <option value="<?php echo $data['workField'] ?>"></option>
                               <?php endforeach ?>
                             </datalist>
@@ -49,7 +49,7 @@
                         <div class="td">
                             <input type="text" list="workFieldList" name="employee-workField2" size="20" value="<?php echo $this->employeeData['workField2']; ?>">
                             <datalist id="workFieldList" class="input-field">
-                              <?php foreach ($this->workFieldList as $key => $data): ?>
+                              <?php foreach ($this->workField_List as $key => $data): ?>
                                   <option value="<?php echo $data['workField'] ?>"></option>
                               <?php endforeach ?>
                             </datalist>
@@ -59,7 +59,7 @@
                             <input type="text" list="workFieldList" name="employee-workField3" size="20"
                                    value="<?php echo $this->employeeData['workField3']; ?>">
                             <datalist id="workFieldList" class="input-field">
-                              <?php foreach ($this->workFieldList as $key => $data): ?>
+                              <?php foreach ($this->workField_List as $key => $data): ?>
                                   <option value="<?php echo $data['workField'] ?>"></option>
                               <?php endforeach ?>
                             </datalist>
@@ -141,6 +141,23 @@
                           </div>
                       </div>
                   <?php endif; ?>
+                  <?php $availableDateArray = $this->model->getTable("SELECT * FROM `employee_available_date` WHERE `employeeID` = '{$this->employeeData['employeeID']}'");?>
+                  <?php if (($this->param->action == 'view') && (sizeof($availableDateArray) > 0)): ?>
+                    <div class="tr">
+                        <div class="td-label">되는날 / 안되는날</div>
+                        <div class="td-detail">
+                          <?php foreach ($availableDateArray as $value){
+                              if($value['availableDate']>0){
+                                  echo "{$value['availableDate']} 갈래요 ({$value['detail']}) <br/>";
+                              }
+                              else{
+                                  echo "{$value['notAvailableDate']} 못가요 ({$value['detail']}) <br/>";
+                              }
+                          }
+                          ?>
+                        </div>
+                    </div>
+                    <?php endif;?>
                 </div>
               
               <?php if (!isset($this->param->idx)) : ?>
