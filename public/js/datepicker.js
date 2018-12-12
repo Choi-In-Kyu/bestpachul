@@ -13,13 +13,12 @@ $.datepicker.setDefaults({
 });
 $(function () {
     $(".datepicker").datepicker({
-        changeMonth:true,
-        changeYear:true,
+        changeMonth: true,
+        changeYear: true,
         onSelect: function () {
             $('#formAction').val('toggleFilter');
             let date = $('#datepicker').datepicker({dateFormat: 'yy-mm-dd'}).val();
             $('#toggleDate').val(date);
-
             $.ajax({
                 type: "POST",
                 method: "POST",
@@ -40,15 +39,10 @@ $(function () {
                     });
                 }
             });
-
-
-
         },
         onChangeMonthYear: function (year, month, inst) {
-            $('.filterYear').val(year);
-            $('.filterMonth').val(month);
-            $('#filterMonthBtn').val(month+'월 (모든콜)');
-            $('#filterMonthPaidBtn').val(month+'월 (유료콜)');
+            $('.form-label.month').text(month + '월');
+            $('#form-input-month').val("( (YEAR(workDate) = '" + year + "') AND (MONTH(workDate) = '" + month + "') )");
         }
     });
 });

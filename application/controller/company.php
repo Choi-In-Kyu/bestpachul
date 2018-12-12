@@ -1,5 +1,5 @@
 <?php
-
+  
   Class Company extends Controller
   {
     var $list;
@@ -11,7 +11,7 @@
     var $companyID;
     var $callList;
     var $employeeList;
-
+    
     function __construct($param)
     {
       parent::__construct($param);

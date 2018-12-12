@@ -8,8 +8,7 @@
       echo "<script src='/public/js/common.js'></script>";
       echo "<script src='/public/js/functions.js'></script>";
       echo "<script src='/public/js/ajax.js'></script>";
-//      echo "<script src='/public/js/datepicker.js'></script>";
-      echo "<script src='/public/js/{$this->param->page_type}.js'></script>";
+      echo "<script src='/public/js/call.js'></script>";
     }
     
     function initJoin($tableName)
@@ -208,12 +207,12 @@ HTML;
 HTML;
       }
     }
-    function get_paidBtn($data,$table)
+    function get_paidBtn($data,$table,$column)
     {
-      if($data['price']>0){
+      if($data[$column]>0){
         if($data['paid']==0){
           return <<<HTML
-<button type="button" class="btn btn-default getMoneyBtn_{$table}" id="{$data[$table.'ID']}">{$data['price']}</button>
+<button type="button" class="btn btn-default getMoneyBtn_{$table}" id="{$data[$table.'ID']}">{$data[$column]}</button>
 HTML;
         }
         else return '수금완료';

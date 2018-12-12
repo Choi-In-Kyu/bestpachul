@@ -81,9 +81,9 @@
             </div>
             <div class="tr">
                 <div class="td">
-                    <button type="button" id="dish">설거지</button>
-                    <button type="button" id="kitchen">주방보조</button>
-                    <button type="button" id="hall">홀서빙</button>
+                    <button type="button" class="btn workFieldBtn">설거지</button>
+                    <button type="button" class="btn workFieldBtn">주방보조</button>
+                    <button type="button" class="btn workFieldBtn">홀서빙</button>
                     <select name="workField" id="workField" form="callForm" required>
                       <?php foreach ($this->workField_List as $key => $data): ?>
                           <option value="<?php echo $data['workField']; ?>">

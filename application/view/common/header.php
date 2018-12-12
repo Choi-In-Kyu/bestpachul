@@ -12,18 +12,13 @@
 <head>
     <meta charset="UTF-8">
     <title>으뜸 파출</title>
-    
     <!--css-->
-
-
-    <link rel="icon" type="image/png" href="<?php echo _IMG?>favicon.png" />
-
-    
-    <link rel="stylesheet" href="<?php echo _CSS ?>default.css?<?php echo time(); ?>">
-    <link rel="stylesheet" href="<?php echo _CSS ?>common.css?<?php echo time(); ?>">
-    <link rel="stylesheet" href="<?php echo _CSS ?>toggle.css?<?php echo time(); ?>">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css"/><!--date picker-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon"        href="<?php echo _IMG?>favicon.png" type="image/png">
+    <link rel="stylesheet"  href="<?php echo _CSS ?>default.css?<?php echo time(); ?>">
+    <link rel="stylesheet"  href="<?php echo _CSS ?>common.css?<?php echo time(); ?>">
+    <link rel="stylesheet"  href="<?php echo _CSS ?>toggle.css?<?php echo time(); ?>">
+    <link rel="stylesheet"  href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css"/><!--date picker-->
+    <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--js-->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
@@ -52,10 +47,9 @@
                 <div class="dropdown col-md-2">
                     <button class="link dropbtn <?php echo $selectArr[2]?>" onClick='location.href="<?php echo _URL ?>call"'>콜관리</button>
                     <div class="dropdown-content">
-                        <a class="link" href="<?php echo _URL ?>call/assign">배정관리</a>
+                        <a class="link" href="<?php echo _URL ?>call/write">콜 만들기</a>
+                        <a class="link" href="<?php echo _URL ?>call/fix">고정콜/월급제 관리</a>
                         <a class="link" href="<?php echo _URL ?>call/punk">펑크관리</a>
-                        <a class="link" href="<?php echo _URL ?>call/fix">콜 만들기</a>
-                        <a class="link" href="<?php echo _URL ?>call/manage">고정콜/월급제 관리</a>
                     </div>
                 </div>
                 <div class="dropdown col-md-2">

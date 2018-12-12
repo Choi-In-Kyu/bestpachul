@@ -37,7 +37,7 @@
       function condition($array){return implode(' AND ', $array);}
       $basic    = "SELECT * FROM `call` LEFT JOIN `holiday` ON `call`.workDate = `holiday`.holiday WHERE ";
       $company  = " companyID ={$this->companyID} ";
-      $thisweek = "YEARWEEK( workDate, 1 ) = YEARWEEK( CURDATE( ) , 1 )";
+      $thisweek = " YEARWEEK( workDate, 1 ) = YEARWEEK( CURDATE( ) , 1 )";
       $weekday  = " (NOT (DAYOFWEEK( workDate ) =7 OR DAYOFWEEK( workDate ) =1) AND holiday IS NULL)";
       $weekend  = " ((DAYOFWEEK( workDate ) =7 OR DAYOFWEEK( workDate ) =1) OR holiday IS NOT NULL)";
       $charged  = " (price > 0) ";

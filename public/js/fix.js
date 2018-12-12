@@ -8,7 +8,7 @@ $('#companyName').on('input', function () {
         dataType: "text",
         success: function (data) {
             $('#companyID').val(data);
-            initiate(endHour.val()-startHour.val());
+            initiate(endHour.val() - startHour.val());
         }
     });
 });
@@ -25,33 +25,30 @@ $('#employeeName').on('input', function () {
         }
     });
 });
-$('#manualCallBtn').on('click',function () {
+$('#manualCallBtn').on('click', function () {
     $('.callBtn').hide();
     $('#submitBtn').show();
-    // $('input[name=startDate]').prop('name', 'workDate');
     $('.monthly').slideUp();
     $('.fixable').slideUp();
 });
-$('#fixCallBtn').on('click',function () {
+$('#fixCallBtn').on('click', function () {
     $('.callBtn').hide();
     $('#submitFixedCallBtn').show();
-    // $('input[name=workDate]').prop('name', 'startDate');
-    $('.endDate').css('display','inline');
+    $('.endDate').css('display', 'inline');
     $('.monthly').slideUp();
     $('.fixable').slideDown();
 });
-$('#monthlyCallBtn').on('click',function () {
+$('#monthlyCallBtn').on('click', function () {
     $('.callBtn').hide();
     $('#submitMonthlyCallBtn').show();
-    // $('input[name=workDate]').prop('name', 'startDate');
-    $('.endDate').css('display','inline');
+    $('.endDate').css('display', 'inline');
+    $('.endDate').val()
     $('.fixable').slideDown();
     $('.monthly').slideDown();
 });
-
-$('#callForm input').on('input',function () {
-   initiate(endHour.val()-startHour.val());
+$('#callForm input').on('input', function () {
+    initiate(endHour.val() - startHour.val());
 });
-$('#callForm select').on('input',function () {
-    initiate(endHour.val()-startHour.val());
+$('#callForm select').on('input', function () {
+    initiate(endHour.val() - startHour.val());
 });

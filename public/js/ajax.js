@@ -5,11 +5,11 @@ let i = arr.length;
 let count = 0;
 
 //근무시간, 임금 등 초기화
-function initiate(time, callFunction = false, date=null) {
+function initiate(time, callFunction = false, date = null) {
     $('#startTime').val(startHour.val() + ":" + $('#startMin').val()); //HH:MM
     $('#endTime').val(endHour.val() + ":" + $('#endMin').val()); //HH:MM
     $('#formAction').val('initiate');
-    if(date!==null){
+    if (date !== null) {
         $('#workDate').val(date);
     }
     $.ajax({
@@ -20,10 +20,11 @@ function initiate(time, callFunction = false, date=null) {
         dataType: "text",
 
         success: function (data) {
-            let joinType    = JSON.parse(data).joinType;
-            let callType    = JSON.parse(data).callType;
-            let holiday     = JSON.parse(data).holiday;
-            let callPrice   = JSON.parse(data).callPrice;
+            console.log(data);
+            let joinType = JSON.parse(data).joinType;
+            let callType = JSON.parse(data).callType;
+            let holiday = JSON.parse(data).holiday;
+            let callPrice = JSON.parse(data).callPrice;
 
             getSalary(time, holiday);
 
@@ -75,6 +76,7 @@ function initiate(time, callFunction = false, date=null) {
         }
     });
 }
+
 //임금 계산 함수
 function getSalary(time, holiday) {
     let money;
@@ -211,10 +213,12 @@ function getSalary(time, holiday) {
     salary.html("근무시간: " + time + " 시간 / 일당: " + money + " 원");
     $('#salary').val(money);
 }
+
 //콜 생성 함수
 function call(time) {
     initiate(time, true);
 }
+
 //유료콜 보내기
 function chargedCall(data) {
     if (confirm("유료콜입니다. 콜을 요청하시겠습니까?")) {
@@ -228,7 +232,7 @@ function chargedCall(data) {
             async: false,
             success: function (data) {
                 alert('유료 콜을 보냈습니다.');
-                if(pageType !=='call'){
+                if (pageType !== 'call') {
                     window.location.reload();
                 }
             }
@@ -236,11 +240,12 @@ function chargedCall(data) {
     }
     else {
         alert("콜을 취소했습니다.");
-        if(pageType !=='call'){
+        if (pageType !== 'call') {
             window.location.reload();
         }
     }
 }
+
 //무료콜 보내기
 function freeCall(data) {
     $('#submitBtn').html("콜 보내기");
@@ -255,12 +260,13 @@ function freeCall(data) {
         async: false,
         success: function (data) {
             alert('무료 콜을 보냈습니다.');
-            if(pageType !== 'call'){
+            if (pageType !== 'call') {
                 window.location.reload();
             }
         }
     })
 }
+
 //콜 취소 함수
 function cancel() {
     event.stopPropagation();
@@ -272,10 +278,11 @@ function cancel() {
         dataType: "text",
         success: function (data) {
             window.location.reload();
-            $(this).closest('tr').css('background','red');
+            $(this).closest('tr').css('background', 'red');
         }
     });
 }
+
 //고정 콜 함수
 function fix(time) {
     $('#formAction').val('fix');
@@ -289,15 +296,14 @@ function fix(time) {
     }).success(function (data) {
         let dateArray = JSON.parse(data).dateArray;
         let fixID = parseInt(JSON.parse(data).fixID);
-
         $('#fixID').val(fixID);
-
         for (let date in dateArray) {
             myFix(dateArray[date]);
             // initiate(time,true,dateArray[date]);
         }
     });
 }
+
 //무료콜, 유료콜, 포인트 부족의 상태 확인
 function myFix(date) {
     $('#workDate').val(date);
@@ -326,6 +332,7 @@ function myFix(date) {
     });
     count++;
 }
+
 //고정 콜 함수 내 반복 함수
 function recursive() {
     if (count < i) {
@@ -355,4 +362,18 @@ function recursive() {
         });
         count++;
     }
+}
+
+//HTML 리턴에 따른 테이블 출력
+function getHTML(tableElement, action, id){
+    $.ajax({
+        type: "POST",
+        method: "POST",
+        url: ajaxURL,
+        data: {action: action, id: id},
+        dataType: "text",
+        success: function (data) {
+            tableElement.html(JSON.parse(data));
+        }
+    });
 }

@@ -1,3 +1,7 @@
+//Datepicker의 오늘 날짜를 클릭 -> 콜 테이블을 오늘 날짜 기준으로 불러옴
+$(document).ready(function () {
+    $('.ui-state-highlight').click();
+});
 // 기본 함수
 $('.selectable').on('click', function () {
     $('.selectable').removeClass('selected');
@@ -7,70 +11,29 @@ $('.ui-datepicker-calendar').on('click', function () {
     $(this).addClass('selected');
     $(this).css('background', 'red');
 });
-$('.moveAssignBtn').on('click', function () {
-    $('#filterForm').attr("action","http://bestpachul.com/call/assign");
-    $('input[name=callID]').val(this.id);
-    $('#filterForm').submit();
-});
-$('.workDate').on('change',function () {
+$('.workDate').on('change', function () {
     $('#callForm #workDate').val($(this).val());
 });
-$('.endDate').on('change',function () {
+$('.endDate').on('change', function () {
     $('#callForm #endDate').val($(this).val());
 });
-
-
-// 버튼, 행 클릭 함수
-$('.assignBtn').on('click', function () {
-    let callID = $('.selected').attr('id');
+$(document).on('click', '.assignBtn', function () {
+    let callID = $('.callRow.selected').attr('id');
     let employeeID = this.id;
-    $('input[name=callID]').val(callID);
-    $('input[name=employeeID]').val(employeeID);
-});
-$('.callRow').one('click', function () {
-    if(pageAction === 'assign'){
-        let callID = $(this).attr('id');
-        $.ajax({
-            type: "POST",
-            method: "POST",
-            url: ajaxURL,
-            data: {action:'assignFilter', callID:callID},
-            dataType: "text",
-            success: function (data) {
-                console.log(JSON.parse(data));
-                $('#employeeTable').html(JSON.parse(data));
-            }
-        });
-    }
-});
-
-function get_group1(data){
-    data = JSON.parse(data);
-    group1 = data['group1'];
     $.ajax({
         type: "POST",
         method: "POST",
         url: ajaxURL,
-        data: {action:'getGroup1', group1:group1},
+        data: {action: 'assign', callID: callID, employeeID: employeeID},
         dataType: "text",
         success: function (data) {
-            $('#employeeTable').html(JSON.parse(data));
+            $('.callRow.selected .assignedEmployee').html(JSON.parse(data));
         }
     });
-}
-
-function get_group2(data,callID){
-    data = JSON.parse(data);
-    group2 = data['group2'];
-    console.log("group2:"+group2);
-    $.ajax({
-        type: "POST",
-        method: "POST",
-        url: ajaxURL,
-        data: {action:'getGroup2', group2:group2, callID: callID},
-        dataType: "text",
-        success: function (data) {
-            console.log("success: "+data);
-        }
-    });
-}
+});
+$('.callRow').on('click', function () {
+    getHTML($('#employeeTable'), 'assignFilter', $(this).attr('id'));
+});
+$('.fixRow').on('click', function () {
+    getHTML($('#callTable_min'), 'callFilter', $(this).attr('id'));
+});

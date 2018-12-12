@@ -1,6 +1,4 @@
 <?php
-  //Model.php에서 ajax를 받고 싶으면 모든 alert, echo 빼라!
-  //(두 개 이상의 파라미터를 받고싶으면)
   Class Model
   {
     public $db;
@@ -227,6 +225,11 @@
       $this->call($post);
     }
     public function callCancel($post){
-      $this->executeSQL("UPDATE `call` SET employeeID = NULL, `cancelled`=1, `cancelDetail`='{$post['detail']}' WHERE `callID` = {$post['callID']} LIMIT 1");
+      $this->executeSQL("UPDATE `call` SET employeeID = 0, `cancelled`=1, `cancelDetail`='{$post['detail']}' WHERE `callID` = {$post['callID']} LIMIT 1");
+    }
+    public function fixCancel($post){
+      alert('test');
+      $this->executeSQL("UPDATE `fix` SET employeeID = '0', `cancelled`='1', `cancelDetail`='{$post['detail']}' WHERE `fixID` = '{$post['fixID']}' LIMIT 1");
+      $this->executeSQL("UPDATE `call` SET employeeID = '0', `cancelled`='1', `cancelDetail`='{$post['detail']}' WHERE `fixID`='{$post['fixID']}' AND `workDate` >= '{$post['date']}'");
     }
   }

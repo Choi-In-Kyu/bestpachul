@@ -29,7 +29,7 @@
         <td class="al_l"><?php echo $this->get_endDate($data,'employee') ?></td>
         <td class="al_l update link join_price"><?php echo $this->get_joinPrice($data); ?></td>
         <td class="al_l update link join_detail"><?php echo $this->get_joinDetail($data); ?></td>
-        <td class="al_c"><?php echo $this->get_paidBtn($data, 'join_employee'); ?></td>
+        <td class="al_c"><?php echo $this->get_paidBtn($data, 'join_employee','price'); ?></td>
         <td class="al_c"><?php echo $this->get_joinDeleteBtn($data,'employee'); ?></td>
       </tr>
     <?php endforeach ?>

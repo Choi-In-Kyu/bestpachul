@@ -7,7 +7,6 @@
     var $pointTable;
     var $depositTable;
     var $error;
-  
     function __construct($param)
     {
       parent::__construct($param);
@@ -30,7 +29,6 @@
         case 'reset':unset($_POST);move('ceo');break;
       }
     }
-  
     function cancel($post)
     {
       $callData = $this->select('call', "callID = $post[callID]")[0];
@@ -46,7 +44,6 @@
       alert('콜을 취소했습니다.');
       unset($post);
     }
-  
     function reset($post,$companyID)
     {
       $sql = "SELECT * FROM `call` WHERE `companyID`='{$companyID}' AND YEARWEEK( workDate, 1 ) = YEARWEEK( '{$post['workDate']}' , 1 ) AND `cancelled`=0 ORDER BY `workDate` ASC";

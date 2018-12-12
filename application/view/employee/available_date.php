@@ -38,34 +38,39 @@
         </form>
     </div>
 
-    <table width="100%">
-        <colgroup>
-            <col width="5%">
-            <col width="15%">
-            <col width="20%">
-            <col width="20%">
-            <col width="40%">
-        </colgroup>
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>인력명</th>
-            <th>근무가능일</th>
-            <th>근무불가능일</th>
-            <th>비고</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php foreach ($this->employee_available_date_List as $key => $data): ?>
-            <tr>
-                <td class="al_c"><?php echo $data['employeeID'] ?></td>
-                <?php $employeeName = $this->model->select('employee',"employeeID = $data[employeeID]",'employeeName');?>
-                <td class="al_c"><?php echo $employeeName ?></td>
-                <td class="al_c"><?php echo $data['availableDate'] ?></td>
-                <td class="al_c"><?php echo $data['notAvailableDate'] ?></td>
-                <td class="al_c"><?php echo $data['detail'] ?></td>
-            </tr>
-        <?php endforeach ?>
-        </tbody>
-    </table>
+    <div class="al_c">
+      <?php require_once _VIEW . '/common/datepicker.php' ?>
+        <div class="inline scroll_tbody call" style="width: 50%;">
+            <table style="width:84%; display: inline">
+                <colgroup>
+                    <col width="5%">
+                    <col width="15%">
+                    <col width="20%">
+                    <col width="20%">
+                    <col width="40%">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>인력명</th>
+                    <th>근무가능일</th>
+                    <th>근무불가능일</th>
+                    <th>비고</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($this->employee_available_date_List as $key => $data): ?>
+                    <tr>
+                        <td class="al_c"><?php echo $data['employeeID'] ?></td>
+                      <?php $employeeName = $this->model->select('employee', "employeeID = $data[employeeID]", 'employeeName'); ?>
+                        <td class="al_c"><?php echo $employeeName ?></td>
+                        <td class="al_c"><?php echo $data['availableDate'] ?></td>
+                        <td class="al_c"><?php echo $data['notAvailableDate'] ?></td>
+                        <td class="al_c"><?php echo $data['detail'] ?></td>
+                    </tr>
+                <?php endforeach ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

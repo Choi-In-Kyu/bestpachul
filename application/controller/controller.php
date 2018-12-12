@@ -46,7 +46,7 @@
     //선택한 테이블들의 모든 데이터를 불러와서 table_List 배열 생성
     function getFunctions()
     {
-      $this->tables = array('company', 'ceo', 'employee', 'call', 'address', 'businessType', 'workField', 'call', 'employee_available_date', 'blackList');
+      $this->tables = array('company', 'ceo', 'employee', 'call', 'address', 'businessType', 'workField', 'call', 'employee_available_date', 'blackList', 'fix');
       foreach ($this->tables as $value) {
         $this->{$value . '_List'} = $this->model->select($value);
       }
@@ -80,5 +80,15 @@
     {
       $tbl = $this->tableName;
       return $this->model->getTable("SELECT * FROM `blackList` WHERE `{$tbl}ID` = '{$this->param->idx}' ");
+    }
+    function get_fixType($data){
+      if($data['fixID']>0){
+        if($this->model->select('fix',"`fixID`='{$data['fixID']}'",'monthlySalary')>0){
+          return '(월급)';
+        }
+        else{
+          return '(고정)';
+        }
+      }
     }
   }

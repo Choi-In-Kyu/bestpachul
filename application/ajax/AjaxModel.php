@@ -275,6 +275,7 @@
     public function fix($post)
     {
       $dow = $post['dow'];
+      $post['dayofweek'] = implode(',', $post['dow']);
       $start = new DateTime($post['workDate']);
       $end = new DateTime($post['endDate']);
       for ($i = 0; $i < sizeof($dow); $i++) {//모든 date 추출
@@ -347,26 +348,36 @@
       }
       return $result;
     }
-  
+    
     public function getIDTable($list, $int = false)
     {
       foreach ($list as $value) {
         foreach ($value as $item) {
           if ($int == true) {
             $arr[] = intval($item);
-          }
-          else{
+          } else {
             $arr[] = $item;
           }
         }
       }
       return $arr;
     }
-    
+  
+    public function timeType($data)
+    {
+      $start = $data['startTime'];
+      $end = $data['endTime'];
+      $workTime = $end - $start;
+      if ($workTime >= 10) $result = '종일';
+      else {
+        if ($start < 12) $result = '오전'; else $result = '오후';
+      }
+      return $result . ' (' . date('H:i', strtotime($data['startTime'])) . "~" . date('H:i', strtotime($data['endTime'])) . ')';
+    }
     
     public function assignFilter($post)
     {
-      $callID = $post['callID'];
+      $callID = $post['id'];
       $callData = $this->getTable("SELECT * FROM `call` WHERE `callID` = {$callID}")[0];
       $companyID = $callData['companyID'];
       $workDate = $callData['workDate'];
@@ -376,60 +387,71 @@
       $startTime = $callData['startTime'];
       $endTime = $callData['endTime'];
       
-      $condition['삭제'] = "(`deleted` = 0)";
-      $condition['만기'] = "(`activated` = 1)";
+      $condition['만기'] = "(`activated` = '1')";
       $condition['블랙'] = "(`employeeID` not in (select `employeeID` from `blackList` WHERE `companyID` = '{$companyID}'))";
       $condition['근무불가능일'] = "(`employeeID` not in (SELECT `employeeID` FROM `employee_available_date` WHERE (notavailableDate is not null AND notavailableDate != '{$workDate}')))";
       $condition['중복'] = "(`employeeID` not in (SELECT `employeeID` FROM `call` WHERE (employeeID is not null) AND (workDate ='{$workDate}') AND ('{$startTime}' < `endTime` AND '{$endTime}'>`startTime`) ))";
       if ($workField == '설거지') {
-        $condition['업종']=
-        "(`workField1` = '{$workField}' OR `workField2` = '{$workField}' OR `workField3` = '{$workField}') OR `workField1` = '주방보조' OR `workField2` = '주방보조' OR `workField3` = '주방보조' ";
-      }
-      else{
-        $condition['업종']= "(`workField1` = '{$workField}' OR `workField2` = '{$workField}' OR `workField3` = '{$workField}')";
+        $condition['업종'] =
+          "(`workField1` = '{$workField}' OR `workField2` = '{$workField}' OR `workField3` = '{$workField}') OR `workField1` = '주방보조' OR `workField2` = '주방보조' OR `workField3` = '주방보조' ";
+      } else {
+        $condition['업종'] = "(`workField1` = '{$workField}' OR `workField2` = '{$workField}' OR `workField3` = '{$workField}')";
       }
       $type = $this->workTimeType($callData);
       switch ($type) {
-        case '오전':$condition['요일'] = "(`employeeID` in (SELECT `employeeID` FROM `employee_available_day` WHERE (`{$workDay}` = '오전' || `{$workDay}` = '종일' || `{$workDay}` = '반반')))";break;
-        case '오후':$condition['요일'] = "(`employeeID` in (SELECT `employeeID` FROM `employee_available_day` WHERE (`{$workDay}` = '오후' || `{$workDay}` = '종일' || `{$workDay}` = '반반')))";break;
-        case '종일':$condition['요일'] = "(`employeeID` in (SELECT `employeeID` FROM `employee_available_day` WHERE (`{$workDay}` = '종일' )))";break;
+        case '오전':
+          $condition['요일'] = "(`employeeID` in (SELECT `employeeID` FROM `employee_available_day` WHERE (`{$workDay}` = '오전' || `{$workDay}` = '종일' || `{$workDay}` = '반반')))";
+          break;
+        case '오후':
+          $condition['요일'] = "(`employeeID` in (SELECT `employeeID` FROM `employee_available_day` WHERE (`{$workDay}` = '오후' || `{$workDay}` = '종일' || `{$workDay}` = '반반')))";
+          break;
+        case '종일':
+          $condition['요일'] = "(`employeeID` in (SELECT `employeeID` FROM `employee_available_day` WHERE (`{$workDay}` = '종일' )))";
+          break;
       }
       
-      foreach ($condition as $value){
-        $conditionArray[] = $this->getIDTable($this->getTable("SELECT `employeeID` FROM `employee` WHERE {$value}"));
-      }
       $employeeList = $this->getIDTable($this->getTable("SELECT `employeeID` FROM `employee`"));
       
-      foreach ($employeeList as $key => $value){
-        for($i=0; $i<sizeof($conditionArray); $i++){
-          if(!in_array($value,$conditionArray[$i])){
-            $result[$key] = array_keys($condition)[$i];
-            break;
-          }
-          else{
-            $result[$key] = 'best';
+      foreach ($condition as $value) {
+        $conditionArray[] = $this->getIDTable($this->getTable("SELECT `employeeID` FROM `employee` WHERE `deleted`='0' AND {$value}"));
+      }
+      //employeeList의 value:employeeID, key:배열 인덱스
+      //일부 DB 삭제로 인해 employeeID와 인덱스 간 차이가 있음
+      foreach ($employeeList as $key => $value) {
+        for ($i = 0; $i < sizeof($conditionArray); $i++) {
+          if (!in_array($value, $conditionArray[$i])) {
+            $result[$value] = array_keys($condition)[$i];
+            break 1;
+          } else {
+            $result[$value] = 'best';
             continue;
           }
         }
       }
-      
-      foreach ($result as $key => $value){
-        if($value=='best'){
+      //result의 key: employeeID, value: 배정 불가 사유
+      foreach ($result as $key => $value) {
+        if ($value == 'best') {
           $group1[$key] = $value;
         }
-        if(in_array($value,['요일','업종','중복'])){
+        if (in_array($value, ['요일', '업종', '중복'])) {
           $group2[$key] = $value;
         }
-        if($value == '만기'){
-          if(in_array($key, $this->getIDTable($this->getTable("SELECT `employeeID` FROM `employee` WHERE `bookmark`='1'"),true))){
-            $group3[$key] = $value;
+        if ($value == '만기') {
+          $deactivated[] = $value;
+          $group3Array = $this->getIDTable($this->getTable("SELECT `employeeID` FROM `employee` WHERE `activated`='0' AND `bookmark`='1'"), true);
+          if (in_array($key, $group3Array)) {
+            $group3[$key] = sizeof($group3Array);
           }
         }
       }
-      
-      
-      $return ="";
-      for($i=1;$i<=3;$i++){
+      $return = "";
+      $status = "배정가능 인력 : 1군(".sizeof($group1).") 2군(".sizeof($group2).") 3군(".sizeof($group3).")";
+      $return .=<<<HTML
+<tr>
+<td>{$status}</td>
+</tr>
+HTML;
+      for ($i = 1; $i <= 3; $i++) {
         $return .= <<<HTML
 <tr>
 <th>{$i}군</th>
@@ -439,9 +461,9 @@
 <th>부적합</th>
 </tr>
 HTML;
-        foreach (${'group'.$i} as $key => $value){
+        foreach (${'group' . $i} as $key => $value) {
           $employeeData = $this->getTable("SELECT * FROM `employee` WHERE `employeeID` = '{$key}'")[0];
-          $return.=<<<HTML
+          $return .= <<<HTML
 <tr>
 <td class="al_l">{$key}</td>
 <td class="al_l">{$employeeData['employeeName']}</td>
@@ -453,5 +475,57 @@ HTML;
         }
       }
       return $return;
+    }
+    
+    public function assign($post)
+    {
+      $callID = $post['callID'];
+      $employeeID = $post['employeeID'];
+      $sql = "UPDATE `call` SET `employeeID` = '{$employeeID}' WHERE `callID` = '{$callID}' ";
+      $this->executeSQL($sql);
+      
+      return <<<HTML
+<a class="assignCancelBtn link" id="{$employeeID}">{$this->select('employee', "`employeeID` = '{$employeeID}'", 'employeeName')}</a>
+HTML;
+    
+    
+    }
+    
+    public function callFilter($post)
+    {
+      $result = "";
+      
+      foreach ($this->getTable("SELECT * FROM `call` WHERE `fixID` = '{$post['id']}'") as $key => $data) {
+        iF($data['cancelled']==0){
+          $cancelled = '삭제됨';
+        }
+        else{
+          $cancelled = '삭제';
+        }
+        $dayofweek = ['일', '월', '화', '수', '목', '금', '토'];
+        $employeeName = $this->select('employee', "employeeID = '{$data['employeeID']}'", 'employeeName');
+        
+        if(($data['cancelled'] == 0)){
+        $cancelled = <<<HTML
+<button type="button" class="callCancelBtn btn btn-small btn-danger" id="{$data['callID']}">취소</button>
+HTML;
+        }
+        else{
+          $cancelled = "(취소됨)";
+        }
+        $result .= <<<HTML
+<tr class="selectable callRow ">
+  <td class="al_c">{$data['callID']}</td>
+  <td class="al_l">{$data['workDate']}({$dayofweek[date('w',strtotime($data['workDate']))]})</td>
+  <td class="al_l">{$this->timeType($data)}</td>
+  <td class="al_c assignedEmployee"></td>
+  <td class="al_c assignedEmployee">
+    <a class="assignCancelBtn link" id = "{$data['callID']}">{$employeeName}</a>
+  </td>
+  <td class="al_c">{$cancelled}</td>
+</tr>
+HTML;
+      }
+      return $result;
     }
   }

@@ -10,16 +10,13 @@ minute.on('change', function () {
     minute.val($(this).val());
 });
 
-startHour.on('change',function () {
-   limitTime(false);
+startHour.on('change', function () {
+    limitTime(false);
 });
 
-function limitTime(allday){
+function limitTime(allday) {
     let starth = parseInt(startHour.val());
-    if(allday === true){
-
-    }
-    else{
+    if (allday !== true) {
         endHour.val(starth + 5);
     }
     for (let i = 0; i < 50; i++) {
@@ -32,6 +29,7 @@ function limitTime(allday){
     }
     initiate(endHour.val() - startHour.val());
 }
+
 $('#1day').click(function () {
     date.val(tomorrow);
     date.trigger('change');
@@ -59,20 +57,21 @@ $('#allDayBtn').click(function () {
     let starth = parseInt(startHour.val());
     limitTime(true);
 });
-$('#dish').click(function () {
-    $('#workField').val('설거지');
+
+$('.workFieldBtn').on('click',function () {
+    $('#workField').val($(this).text());
 });
-$('#kitchen').click(function () {
-    $('#workField').val('주방보조');
-});
-$('#hall').click(function () {
-    $('#workField').val('홀서빙');
-});
-$('#submitBtn').on('click',function () {
+
+
+$('#submitBtn').on('click', function () {
     call(endHour.val() - startHour.val());
 });
-$('.fixBtn').on('click',function () {
+$('.fixBtn').on('click', function () {
     $('#startTime').val($('#startHour').val() + ":" + $('#startMin').val()); //HH:MM
     $('#endTime').val($('#endHour').val() + ":" + $('#endMin').val()); //HH:MM
     fix(endHour.val() - startHour.val());
 });
+
+function map(element, value){
+    element.val(value);
+}

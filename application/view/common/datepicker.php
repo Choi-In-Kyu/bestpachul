@@ -12,8 +12,11 @@
                     </label>
                 </td>
                 <td>
-                    <label class="form-switch ">
-                        이번달<br><input type="checkbox" name="duration[]" value="<?php echo $this->thisMonthCondition ?>"><i></i>
+                    <label class="form-label month">
+                        이번달
+                    </label>
+                    <label class="form-switch month">
+                        <input id="form-input-month" type="checkbox" name="duration[]" value="<?php echo $this->thisMonthCondition ?>"><i></i>
                     </label>
                 </td>
                 <td>
@@ -68,6 +71,11 @@
                     </label>
                 </td>
             </tr>
+            <tr>
+               <td>
+                   <p class="callStatus"></p>
+               </td>
+            </tr>
         </table>
     </form>
 </div>
@@ -78,12 +86,11 @@
             $(this).closest('tr').removeClass('allCheckedTR');
         }
         else {
-            console.log('false');
             $(this).closest('tr').find('.form-switch input').prop('checked', true);
             $(this).closest('tr').addClass('allCheckedTR');
         }
     });
-    $(".form-switch input").change(function () {
+    $(".form-switch input").on('change', function () {
         $('#formAction').val('toggleFilter');
         $.ajax({
             type: "POST",
@@ -103,6 +110,16 @@
                         }
                     }
                 });
+                let getMoneyBtn = $('.callRow:visible .getMoneyBtn_call');
+                let totalPrice =0;
+                getMoneyBtn.each(function () {
+                    totalPrice += parseInt($(this).text());
+                });
+                let totalCallNum = $('.callRow:visible').length - $('.callRow:visible.cancelled').length;
+                let assignedNum = $('.callRow:visible .assignedEmployee a').length;
+                let notAssignedNum = totalCallNum-assignedNum;
+                
+                $('.callStatus').text("총 : "+totalCallNum+" / 배정 : "+assignedNum+" / 미배정 : "+notAssignedNum);
             }
         });
     });
