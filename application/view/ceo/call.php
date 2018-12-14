@@ -81,16 +81,16 @@
             </div>
             <div class="tr">
                 <div class="td">
-                    <button type="button" class="btn workFieldBtn">설거지</button>
-                    <button type="button" class="btn workFieldBtn">주방보조</button>
-                    <button type="button" class="btn workFieldBtn">홀서빙</button>
                     <select name="workField" id="workField" form="callForm" required>
-                      <?php foreach ($this->workField_List as $key => $data): ?>
-                          <option value="<?php echo $data['workField']; ?>">
-                            <?php echo $data['workField'] ?>
-                          </option>
-                      <?php endforeach ?>
+                        <?php foreach ($this->workField_List as $key => $data): ?>
+                            <option value="<?php echo $data['workField']; ?>">
+                                <?php echo $data['workField'] ?>
+                            </option>
+                        <?php endforeach ?>
                     </select>
+                    <button type="button" class="btn btn-work-field">설거지</button>
+                    <button type="button" class="btn btn-work-field">주방보조</button>
+                    <button type="button" class="btn btn-work-field">홀서빙</button>
                 </div>
             </div>
         </div>
@@ -100,7 +100,7 @@
                 <div class="lbl">기타요청사항</div>
             </div>
             <div class="tr tr-body">
-                <textarea name="detail" id="detail" cols="30" rows="10"></textarea>
+                <textarea name="detail" id="detail" cols="30" rows="5"></textarea>
             </div>
         </div>
         <!--버튼-->
