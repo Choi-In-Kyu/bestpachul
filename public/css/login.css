@@ -1,5 +1,18 @@
-.imgcontainer {
-    margin: 17vh auto 30px;
+.mobile-header {
+    border-bottom: 1px solid #ccc;
+    height: 64px;
+    padding: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.mobile-content{
+    background: #f9f9f9;
+}
+
+.mobile-footer{
+    color:#2b2c35;
+    font-size:15px;
 }
 
 .user-name {
@@ -11,21 +24,34 @@
 }
 
 .login-form {
-    width: 50%;
-    padding: 0;
+    width: 90%;
+    padding: 10px;
     border: 0;
     margin: 0 auto;
     font-family: inherit;
-    text-align: left
+    text-align: left;
+    font-size: 25px;
+}
+
+.login-form label{
+    font-size: 2.0rem;
+}
+
+.login-form input{
+    font-size: 1.3rem;
+    margin: 10px 0;
 }
 
 .login-button {
     border: solid 1px #2b193d;
-    background: #fff;
-    color: #2b193d;
     border-radius: 50px;
-    padding: 6px;
-    margin: 16px auto 10px;
     width: 100%;
-    font-size: 14px;
+    background-color: #2b2c35;
+    color: #ffffff !important;
+    font-size: 22px;
+    font-weight: bold;
+    height: 61px;
+    line-height: 61px;
+    text-align: center;
+    margin-top: 20px;
 }

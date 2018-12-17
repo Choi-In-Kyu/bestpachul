@@ -122,8 +122,8 @@
         $sql .= "{$table} SET ";
         $sql .= implode(",", $tbl[$table]);
         if ($post['action'] == 'update' or $post['action'] == 'delete') {
-          if (!isset($focus)) $sql .= " WHERE {$table}.{$table}ID = {$post[$table.'-'.$table.'ID']} LIMIT 1";
-          if (isset($focus)) $sql .= " WHERE {$table}.{$focus}ID = {$post[$focus.'-'.$focus.'ID']} LIMIT 1";
+          if (!isset($focus)) $sql .= " WHERE {$table}.{$table}ID = '{$post[$table.'-'.$table.'ID']}' LIMIT 1";
+          if (isset($focus)) $sql .= " WHERE {$table}.{$focus}ID = '{$post[$focus.'-'.$focus.'ID']}' LIMIT 1";
         }
         $this->sql = $sql;
         $this->fetch();
