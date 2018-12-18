@@ -9,6 +9,7 @@
       echo "<script src='/public/js/functions.js'></script>";
       echo "<script src='/public/js/ajax.js'></script>";
       echo "<script src='/public/js/call.js'></script>";
+      echo "<script src='/public/js/ceo.js'></script>";
     }
     
     function initJoin($tableName)
@@ -77,10 +78,10 @@
         $tableID = $list[$key][$tableID];
         if (in_array($tableID, $expiredArray)) {
         $actCondition = "만기됨";
-        $color = "pink";}
+        $color = "#FDEDEC";}
         elseif (in_array($tableID, $deadlineArray)) {
           $actCondition = "만기임박";
-          $color = "yellow";
+          $color = "#FEF5E7";
         } elseif (in_array($tableID, $deletedArray)) {
           $actCondition = "삭제됨";
           $color = "gray";

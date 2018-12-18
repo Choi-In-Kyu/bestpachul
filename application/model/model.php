@@ -18,7 +18,7 @@
     public function check_login(){
       if (in_array($this->param->page_type, ['company', 'employee', 'call', 'manage'])) {
         if (isset($_COOKIE['userID'])) {
-          if ($_COOKIE['userID'] == 1) {
+          if (in_array($_COOKIE['userID'],[1,62])) {
           } else {
             alert('접근 권한이 없습니다.');
             move(_URL . 'ceo');
@@ -158,15 +158,23 @@
       elseif(sizeof($this->getTable("SELECT * FROM `holiday` where holiday = '{$date}'"))>0) {return true;}
       else {return false;}
     }
-    public function joinType($companyID)
+    public function joinType($companyID, $lang = null)
     {
       $gujwaTable   = $this->getTable("SELECT * FROM  `join_company` WHERE companyID = {$companyID} AND activated =1 AND price >0 AND  `point` IS NULL ");
       $pointTable   = $this->getTable("SELECT * FROM  `join_company` WHERE companyID = {$companyID} AND activated =1 AND price >0 AND  `point` IS NOT NULL ");
       $depositTable = $this->getTable("SELECT * FROM  `join_company` WHERE companyID = {$companyID} AND activated =1 AND deposit >0");
-      if (sizeof($gujwaTable) > 0) return 'gujwa';
-      elseif (sizeof($pointTable) > 0) return 'point';
-      elseif (sizeof($depositTable) > 0) return 'deposit';
-      else return 'deactivated';
+      if($lang == 'kor'){
+        if (sizeof($gujwaTable) > 0) return '구좌';
+        elseif (sizeof($pointTable) > 0) return '포인트';
+        elseif (sizeof($depositTable) > 0) return '보증금+콜비';
+        else return '만기됨';
+      }
+      else{
+        if (sizeof($gujwaTable) > 0) return 'gujwa';
+        elseif (sizeof($pointTable) > 0) return 'point';
+        elseif (sizeof($depositTable) > 0) return 'deposit';
+        else return 'deactivated';
+      }
     }
     public function insert($table, $post, $id=null)
     {

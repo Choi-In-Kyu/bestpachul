@@ -40,7 +40,7 @@
 
     <div class="al_c">
       <?php require_once _VIEW . '/common/datepicker.php' ?>
-        <div class="inline scroll_tbody call" style="width: 50%;">
+        <div class="inline  call" style="width: 50%;">
             <table style="width:84%; display: inline">
                 <colgroup>
                     <col width="5%">

@@ -362,7 +362,7 @@
       }
       return $arr;
     }
-  
+    
     public function timeType($data)
     {
       $start = $data['startTime'];
@@ -445,8 +445,8 @@
         }
       }
       $return = "";
-      $status = "배정가능 인력 : 1군(".sizeof($group1).") 2군(".sizeof($group2).") 3군(".sizeof($group3).")";
-      $return .=<<<HTML
+      $status = "배정가능 인력 : 1군(" . sizeof($group1) . ") 2군(" . sizeof($group2) . ") 3군(" . sizeof($group3) . ")";
+      $return .= <<<HTML
 <tr>
 <td>{$status}</td>
 </tr>
@@ -496,27 +496,25 @@ HTML;
       $result = "";
       
       foreach ($this->getTable("SELECT * FROM `call` WHERE `fixID` = '{$post['id']}'") as $key => $data) {
-        iF($data['cancelled']==0){
+        iF ($data['cancelled'] == 0) {
           $cancelled = '삭제됨';
-        }
-        else{
+        } else {
           $cancelled = '삭제';
         }
         $dayofweek = ['일', '월', '화', '수', '목', '금', '토'];
         $employeeName = $this->select('employee', "employeeID = '{$data['employeeID']}'", 'employeeName');
         
-        if(($data['cancelled'] == 0)){
-        $cancelled = <<<HTML
+        if (($data['cancelled'] == 0)) {
+          $cancelled = <<<HTML
 <button type="button" class="callCancelBtn btn btn-small btn-danger" id="{$data['callID']}">취소</button>
 HTML;
-        }
-        else{
+        } else {
           $cancelled = "(취소됨)";
         }
         $result .= <<<HTML
 <tr class="selectable callRow ">
   <td class="al_c">{$data['callID']}</td>
-  <td class="al_l">{$data['workDate']}({$dayofweek[date('w',strtotime($data['workDate']))]})</td>
+  <td class="al_l">{$data['workDate']}({$dayofweek[date('w', strtotime($data['workDate']))]})</td>
   <td class="al_l">{$this->timeType($data)}</td>
   <td class="al_c assignedEmployee"></td>
   <td class="al_c assignedEmployee">
@@ -527,5 +525,50 @@ HTML;
 HTML;
       }
       return $result;
+    }
+    
+    public function getCallList($post)
+    {
+      $companyID = $post['companyID'];
+      $year = (isset($post['year'])) ? $post['year'] : date('Y');
+      $month = (isset ($post['month'])) ? $post['month'] : date('n');
+      $sql = "SELECT * FROM `call` WHERE `companyID` = {$companyID} AND YEAR(workDate) = {$year} AND MONTH(workDate) = {$month}";
+      if($post['type']=='paid'){
+        $sql .= " AND `price` > 0";
+      }
+      $sql.=" ORDER BY `workDate` ASC ";
+      $table = $this->getTable($sql);
+      $total = 0;
+      foreach ($table as $key => $value){
+        $total += $value['price'];
+      }
+      
+      $result = "";
+      foreach ($table as $key => $value) {
+        $dayofweek = ['일', '월', '화', '수', '목', '금', '토'];
+        $date = date('m/d', strtotime($value['workDate']))."(".$dayofweek[date('w',strtotime($value['workDate']))].")";
+        $employeeName = $this->select('employee',"`employeeID`='{$value['employeeID']}'",'employeeName');
+        
+        $start = date('H:i', strtotime($value['startTime']));
+        $end = date('H:i', strtotime($value['endTime']));
+        $cancel = ($value['cancelled'] == 1) ? '(취소됨)' : null;
+        $price = ($value['price']>0) ? number_format($value['price']) : '-';
+        $employee = ($value['employeeID'] > 0) ? $employeeName : null;
+        if ($value['cancelled'] == 0 && !isset($value['employeeID'])) {
+          $btn = "<button type=\"button\" id=\"{$value['callID']}\" class=\"btn callCancelModalBtn\">취소</button>";
+        } else {
+          $btn = null;
+        }
+        $result .= <<<HTML
+<tr class="callList" id="{$value['callID']}">
+                <td class="workDate">{$date} </td>
+                <td>{$start}~{$end}</td>
+                <td>{$value['workField']}</td>
+                <td class="price">{$price}</td>
+                <td class="al_c">{$cancel}{$employee}{$btn}</td>
+            </tr>
+HTML;
+      }
+     return [$result,$total];
     }
   }

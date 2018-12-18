@@ -16,6 +16,8 @@
     var $callPrice;
     var $totalPoint;
     var $lastJoinDate;
+    var $yearList;
+    var $monthList;
     
     function __construct($param)
     {
@@ -54,6 +56,21 @@
       if ($this->model->joinType($this->companyID) == 'gujwa') {
         $this->lastJoinDate = $this->model->getTable("SELECT * FROM join_company WHERE companyID = '{$this->companyID}' ORDER BY endDate DESC")[0]['endDate'];
       } else $this->lastJoinDate = null;
+      
+      $monthTable = $this->model->getTable("
+SELECT workDate
+FROM  `call`
+WHERE companyID ={$this->companyID}
+GROUP BY YEAR( workDate ) , MONTH( workDate ) ");
+      foreach ($monthTable as $key => $value){
+        $year = date('Y',strtotime($value['workDate']));
+        $month = date('n',strtotime($value['workDate']));
+        
+        $this->yearList[] = $year;
+        $this->monthList[] = $month;
+        $this->yearList = array_unique($this->yearList);
+        $this->monthList = array_unique($this->monthList);
+      }
     }
     
     function lastJoinDate($id)

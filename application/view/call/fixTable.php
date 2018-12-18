@@ -19,7 +19,7 @@
 
 ?>
 
-<div class="inline scroll_tbody" style="width: 64%;">
+<div class="inline" style="width: 64%;">
     <table id="fixTable" width="100%">
         <colgroup>
           <?php foreach (['구분', '근무시작일', '근무종료일', '요일', '업체', '인력', '업종', '시작시간', '끝시간', '비고', '월급', '수수료'] as $value): ?>

@@ -50,7 +50,7 @@ function initiate(time, callFunction = false, date = null) {
                     switch (callType) {
                         case 'free':
                             $('#callPrice').val(0);
-                            $('#submitBtn').html("콜 보내기");
+                            $('#submitBtn').html("콜 신청하기");
                             if (joinType === 'point') {
                                 if (holiday) {
                                     $('#callPoint').val(8000);
@@ -60,7 +60,7 @@ function initiate(time, callFunction = false, date = null) {
                             break;
                         case 'charged':
                             $('#callPrice').val(callPrice);
-                            $('#submitBtn').html("'유료' 콜 보내기 <br> 콜비 : " + callPrice + "원");
+                            $('#submitBtn').html("콜 신청하기 (콜비 : " + number_format(callPrice) + "원)");
                             break;
                         case 'pointExceed':
                             $('#submitBtn').html("포인트 부족");
@@ -221,7 +221,7 @@ function call(time) {
 
 //유료콜 보내기
 function chargedCall(data) {
-    if (confirm("유료콜입니다. 콜을 요청하시겠습니까?")) {
+    if (confirm("콜비가 포함됩니다. 콜을 신청하시겠습니까?")) {
         $('#formAction').val('call');
         $.ajax({
             type: "POST",
@@ -231,7 +231,7 @@ function chargedCall(data) {
             dataType: "text",
             async: false,
             success: function (data) {
-                alert('유료 콜을 보냈습니다.');
+                alert('콜을 보냈습니다.');
                 if (pageType !== 'call') {
                     window.location.reload();
                 }
@@ -248,7 +248,7 @@ function chargedCall(data) {
 
 //무료콜 보내기
 function freeCall(data) {
-    $('#submitBtn').html("콜 보내기");
+    $('#submitBtn').html("콜 신청하기");
     $('#formAction').val('call');
     $('#callPrice').val(0);
     $.ajax({
@@ -259,7 +259,7 @@ function freeCall(data) {
         dataType: "text",
         async: false,
         success: function (data) {
-            alert('무료 콜을 보냈습니다.');
+            alert('콜을 신청했습니다.');
             if (pageType !== 'call') {
                 window.location.reload();
             }

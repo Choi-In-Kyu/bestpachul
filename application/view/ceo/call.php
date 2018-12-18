@@ -8,8 +8,6 @@
         <input type="hidden" name="salary" id="salary">
         <input type="hidden" name="price" id="callPrice">
         <input type="hidden" name="point" id="callPoint">
-        <!--날짜-->
-
 
         <div class="box">
             <div class="title">근무 날짜</div>
@@ -29,7 +27,7 @@
 
         <div class="box">
             <div class="title">근무 시간</div>
-            <div class="content">
+            <div class="content content-time">
                 <div>
                     <select class="time hour" id="startHour" form="callForm" required>
                         <option value="" selected disabled hidden>시작 시간</option>
@@ -60,13 +58,12 @@
                     </select>
                     <div class="tag">까지</div>
                 </div>
-                <div class="al_c">
+                <div class="al_r">
                     <button type="button" class="btn btn-time" id="morningBtn">오전</button>
                     <button type="button" class="btn btn-time" id="afternoonBtn">오후</button>
                     <button type="button" class="btn btn-time" id="allDayBtn">종일</button>
                 </div>
             </div>
-           
         </div>
 
         <div class="box">
@@ -80,40 +77,17 @@
                   <?php endforeach ?>
                 </select>
                 <button type="button" class="btn btn-work-field">설거지</button>
-                <button type="button" class="btn btn-work-field">주방 보조</button>
+                <button type="button" class="btn btn-work-field">주방보조</button>
                 <button type="button" class="btn btn-work-field">홀서빙</button>
             </div>
         </div>
-
-
+        
         <div class="box">
             <div class="title">기타요청사항</div>
             <div class="content"><textarea name="detail" id="detail" cols="30" rows="5"></textarea></div>
         </div>
 
         <h1 class="callPrice"></h1>
-        <button id="submitBtn" class="btn btn-insert" type="button">콜 보내기</button>
+        <button id="submitBtn" class="btn btn-insert" type="button">콜 신청하기</button>
     </form>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-    $(document).ready(function () {
-        $('#formAction').val('initiate');
-        $('#workField').val('주방보조');
-        startHour.val('10');
-        endHour.val('15');
-        initiate(endHour.val() - startHour.val());
-    });
-</script>

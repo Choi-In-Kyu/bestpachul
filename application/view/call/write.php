@@ -123,10 +123,10 @@
             <div class="tr">
                 <div class="td-label">업종</div>
                 <div class="td">
-                    <button type="button" class="workFieldBtn">설거지</button>
-                    <button type="button" class="workFieldBtn">주방보조</button>
-                    <button type="button" class="workFieldBtn">홀서빙</button>
-                    <select name="workField" id="workField" form="callForm" required>
+                    <button type="button" class="btn-work-field">설거지</button>
+                    <button type="button" class="btn-work-field">주방보조</button>
+                    <button type="button" class="btn-work-field">홀서빙</button>
+                    <select name="workField" id="btn-work-field" form="callForm" required>
                       <?php foreach ($this->workField_List as $key => $data): ?>
                           <option value="<?php echo $data['workField']; ?>">
                             <?php echo $data['workField'] ?>
@@ -160,7 +160,7 @@
             <!--콜 보내기 버튼-->
             <div class="tr al_r full_width">
                 <h1 class="callPrice"></h1>
-                <button id="submitBtn" class="btn btn-insert callBtn" type="button">콜 보내기</button>
+                <button id="submitBtn" class="btn btn-insert callBtn" type="button">콜 신청하기</button>
                 <button id="submitFixedCallBtn" class="btn btn-insert callBtn fixBtn" type="button">고정 콜 만들기</button>
                 <button id="submitMonthlyCallBtn" class="btn btn-insert callBtn fixBtn" type="button">월급제 만들기</button>
             </div>

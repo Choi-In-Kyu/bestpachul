@@ -42,7 +42,7 @@ $('#monthlyCallBtn').on('click', function () {
     $('.callBtn').hide();
     $('#submitMonthlyCallBtn').show();
     $('.endDate').css('display', 'inline');
-    $('.endDate').val()
+    $('.endDate').val();
     $('.fixable').slideDown();
     $('.monthly').slideDown();
 });

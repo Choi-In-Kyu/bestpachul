@@ -1,4 +1,4 @@
-<div class="inline scroll_tbody employee">
+<div class="inline employee" style="width: 20%">
     <table id="employeeTable">
         <tr>
             <td>

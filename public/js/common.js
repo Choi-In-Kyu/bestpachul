@@ -16,7 +16,7 @@ $('.fa-star.selectable').on('click', function () {
             if (type === 1) {
                 btn.addClass('checked');
                 btn.removeClass('unchecked');
-                btn.closest('tr').css('background', 'yellow');
+                btn.closest('tr').css('background', '#FEF5E7');
             }
             else {
                 btn.addClass('unchecked');

@@ -28,20 +28,20 @@
             ?>
               <tr class="selectable callRow <?php if ($data['cancelled'] == 1) echo 'cancelled' ?>"
                   id="<?php echo $data['callID'] ?>">
-                  <td class="al_c"><?php echo $data['callID'].$this->assignType($data).$this->get_fixType($data)?></td>
+                  <td class="al_c" style="width: 10%"><?php echo $data['callID'].$this->assignType($data).$this->get_fixType($data)?></td>
                 <?php $dayofweek = ['일', '월', '화', '수', '목', '금', '토'] ?>
-                  <td class="al_l"><?php echo $data['workDate'] . "(" . $dayofweek[date('w', strtotime($data['workDate']))] . ")" ?></td>
-                  <td class="al_l">
+                  <td class="al_l" style="width: 5%"><?php echo $data['workDate'] . "(" . $dayofweek[date('w', strtotime($data['workDate']))] . ")" ?></td>
+                  <td class="al_l" style="width: 35%;">
                       <a href="http://bestpachul.com/company/view/<?php echo $data['companyID'] ?>" class="link">
                         <?php echo $companyName ?>
                       </a>
                   </td>
-                  <td class="al_l"><?php echo $this->timeType($data) ?></td>
-                  <td class="al_l"><?php echo $data['workField'] ?></td>
-                  <td class="al_l"><?php echo number_format($data['salary']) ?></td>
-                  <td class="al_l"><?php $this->get_callDetail($data) ?></td>
-                  <td class="al_c"><?php echo $this->get_paidBtn($data, 'call', 'price'); ?></td>
-                  <td class="al_c assignedEmployee">
+                  <td class="al_l" style="width: 10%"><?php echo $this->timeType($data) ?></td>
+                  <td class="al_l" style="width: 10%"> <?php echo $data['workField'] ?></td>
+                  <td class="al_l" style="width: 10%"><?php echo number_format($data['salary']) ?></td>
+                  <td class="al_l" style="width: 10%"><?php $this->get_callDetail($data) ?></td>
+                  <td class="al_c" style="width: 10%"><?php echo $this->get_paidBtn($data, 'call', 'price'); ?></td>
+                  <td class="al_c assignedEmployee" style="width: 10%">
                     <?php switch ($type): case 'call': ?>
                       <?php if ($data['employeeID'] > 0): ?>
                             <a class="assignCancelBtn link" id="<?php echo $data['callID'] ?>">
@@ -55,9 +55,8 @@
                         </a>
                       <?php break; ?>
                     <?php endswitch; ?>
-
                   </td>
-                  <td class="al_c hide">
+                  <td class="al_c hide" style="width: 10%">
                     <?php if ($data['cancelled'] == 0): ?>
                         <button type="button" class="callCancelBtn btn btn-small btn-danger"
                                 id="<?php echo $data['callID'] ?>">취소

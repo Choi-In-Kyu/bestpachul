@@ -1,36 +1,31 @@
 <div class="mobile_view">
 
-    <div class="user-profile">
+    <div class="user-profile" id="<?php echo $this->companyID ?>">
         <img src="/public/img/favicon.png" alt="Avatar" class="avatar">
         <h1><?php echo $this->companyData['companyName'] ?></h1>
     </div>
 
     <div class="box">
-        <div class="title">가입유형</div>
-        <div class="content"><?php echo $this->model->joinType($this->companyID) ?></div>
+        <div class="title" style="border-bottom: solid #80808078 2.5px;">가입유형 - <?php echo $this->model->joinType($this->companyID, 'kor') ?></div>
+        <div class="content">
+            <!--활성화된 가입 내역-->
+            <ul type="square">
+              <?php foreach ($this->joinData as $key => $value): ?>
+                  <li type="disc">
+                    <?php echo $value['startDate'] . " ~ " ?>
+                    <?php if (isset($value['endDate'])) : ?>
+                      <?php echo $value['endDate']."   (" . (strtotime($value['endDate']) - strtotime(date('Y-m-d'))) / 3600 / 24 . "일 남음)" ?>
+                    <?php endif; ?>
+                  </li>
+              <?php endforeach; ?>
+            </ul>
+        </div>
     </div>
-
-    <!--활성화된 가입 내역-->
-  <?php $i = 1; ?>
-  <?php foreach ($this->joinData as $key => $value): ?>
-      <div class="box">
-          <div class="title"><?php echo "가입{$i} ({$this->get_joinType($value)})  " ?></div>
-          <div class="content">
-            <?php echo $value['startDate'] . " ~ " ?>
-            <?php if (isset($value['endDate'])) : ?>
-              <?php echo $value['endDate'] ?>
-              <?php echo "(" . (strtotime($value['endDate']) - strtotime(date('Y-m-d'))) / 3600 / 24 . "일 남음)" ?>
-            <?php endif; ?>
-          </div>
-      </div>
-    <?php $i = $i + 1; ?>
-  <?php endforeach; ?>
-
 
     <!--부른 콜 / 남은 콜-->
   <?php if ($this->model->joinType($this->companyID) != 'deposit'): ?>
       <div class="box">
-          <div class="title">금주 부른 콜</div>
+          <div class="title">이번주 콜</div>
           <div class="content">평일 : <?php echo sizeof($this->weekdayCount) ?> 콜 / 주말
               : <?php echo sizeof($this->weekendCount) ?> 콜
           </div>
@@ -39,7 +34,7 @@
   
   <?php if ($this->model->joinType($this->companyID) != 'point'): ?>
       <div class="box">
-          <div class="title">금주 유료 콜</div>
+          <div class="title">이번주 콜 (콜비￦)</div>
           <div class="content">평일 : <?php echo sizeof($this->weekdayPaidCount) ?> 콜 / 주말
               : <?php echo sizeof($this->weekendPaidCount) ?> 콜
           </div>
@@ -48,8 +43,8 @@
   <?php if ($this->model->joinType($this->companyID) != 'point'): ?>
 
       <div class="box">
-          <div class="title">콜비 누적</div>
-          <div class="content"><?php echo $this->callPrice; ?></div>
+          <div class="title">콜비 총 합</div>
+          <div class="content"><?php echo number_format($this->callPrice); ?></div>
       </div>
   <?php else: ?>
       <div class="box">
