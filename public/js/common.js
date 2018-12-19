@@ -2,6 +2,30 @@ let mainUrl = "http://bestpachul.com/";
 let pageType = window.location.href.replace(mainUrl, '').split('/')[0];
 let pageAction = window.location.href.replace(mainUrl, '').split('/')[1];
 
+//메인 페이지 정렬, 필터링
+$('.filter').on('click',function () {
+    let filter = $(this).attr('id').replace('filter-','');
+    $('#formRefresh input[name=filter]').val(filter);
+    $('#formRefresh').submit();
+});
+$('.order').on('click',function () {
+    let order = $(this).attr('id').replace('refresh-','');
+    console.log(order);
+    $('#formRefresh input[name=order]').val(order);
+    if($('#formRefresh input[name=direction]').val() === 'ASC'){
+        $('#formRefresh input[name=direction]').val('DESC');
+    }
+    else{
+        $('#formRefresh input[name=direction]').val('ASC');
+    }
+    $('#formRefresh').submit();
+});
+$('#btnSearch').on('click',function () {
+    let keyword = $('#inputKeyword').val();
+    $('#formRefresh input[name=keyword]').val(keyword);
+    $('#formRefresh').submit();
+});
+
 //북마크 별표 클릭
 $('.fa-star.selectable').on('click', function () {
     let btn = $(this);

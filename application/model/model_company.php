@@ -6,7 +6,6 @@
     {
       parent::__construct($param);
     }
-    
     function action()
     {
       header("Content-type:text/html;charset=utf8");

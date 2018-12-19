@@ -9,18 +9,17 @@
     var $list;
     var $title;
     var $setAjax;
-    var $condition;
     var $keyword;
     var $join;
     var $day;
     var $tables;
     var $tableName;
     //필터 버튼 조건
-    public $defaultCondition    = array("filter" => " (deleted = 0) ");
-    public $activatedCondition  = array("filter" => " (activated = 1 AND deleted = 0) ");
-    public $expiredCondition    = array("filter" => " (activated = 0 AND deleted = 0) ");
-    public $deletedCondition    = array("filter" => " (activated = 0 AND deleted = 1) ");
-    public $deadlineCondition   = array("filter" => " (bookmark = 1 OR imminent = 1) ");
+    public $defaultCondition      = " (deleted = 0) ";
+    public $activatedCondition    = " (activated = 1 AND deleted = 0) ";
+    public $imminentCondition     = " (bookmark = 1 OR imminent = 1) ";
+    public $deactivatedCondition  = " (activated = 0 AND deleted = 0) ";
+    public $deletedCondition      = " (activated = 0 AND deleted = 1) ";
     //토글 버튼 조건
     public $thisWeekCondition   = "(YEARWEEK( workDate, 1 ) = YEARWEEK( CURDATE( ) , 1 ))";
     public $thisMonthCondition  = "(YEAR(workDate) = YEAR(CURDATE()) AND MONTH(workDate) = MONTH(CURDATE()))";
@@ -38,6 +37,7 @@
       if (isset($_COOKIE['userID'])) $this->userID = $_COOKIE['userID'];
       $modelName = "Model_{$this->param->page_type}";//Model 객체 생성
       $this->model = new $modelName($this->param);
+      
       $this->getFunctions();
       $method = isset($this->param->action) ? $this->param->action : null;
       if (method_exists($this, $method)) $this->$method();
@@ -58,17 +58,38 @@
       $this->order = $_POST['order'];
       $this->direction = $_POST['direction'];
       
-      if (isset($_POST['filterCondition'])) {
-        $this->condition['filter'] = $_POST['filterCondition'];
+      if (isset($_POST['filter'])) {
+        switch ($_POST['filter']){
+          case 'all':
+            $condition[] = $this->defaultCondition;
+            break;
+          case 'activated':
+            $condition[] = $this->activatedCondition;
+            break;
+          case 'imminent':
+            $condition[] = $this->imminentCondition;
+            break;
+          case 'deactivated':
+            $condition[] = $this->deactivatedCondition;
+            break;
+          case 'deleted':
+            $condition[] = $this->deletedCondition;
+            break;
+        }
       } else {
-        $this->condition['filter'] = $this->activatedCondition['filter'];
+        $condition[] = $this->activatedCondition;
       }
       if (isset($_POST['keyword']) && $_POST['keyword'] != "") {
-        $this->condition['keyword'] = " (`{$tableName}Name` LIKE '%{$this->keyword}%' OR `address` LIKE '%{$this->keyword}%' OR `detail` LIKE '%{$this->keyword}%') ";
+        $condition[] = " (`{$tableName}Name` LIKE '%{$this->keyword}%' OR `address` LIKE '%{$this->keyword}%' OR `detail` LIKE '%{$this->keyword}%') ";
       }
-      
-      
-      $this->list = $this->model->getList($this->condition);
+      if(isset($_POST['order'])){
+        $order = $_POST['order'];
+      }
+      else{
+        $order = $this->param->page_type."ID";
+      }
+      $direction = $_POST['direction'];
+      $this->list = $this->model->getList($condition,$order,$direction);
       $this->list = $this->initActCondition($this->list, $tableName);
       $this->list = $this->getActCondition($this->list, $tableName);
     }

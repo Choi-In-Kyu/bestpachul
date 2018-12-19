@@ -70,16 +70,16 @@
     function getActCondition($list, $tableName)
     {
       $tableID = $tableName . 'ID';
-      $deadlineArray = $this->model->getColumnList($this->model->getList($this->deadlineCondition), $tableID);
-      $expiredArray = $this->model->getColumnList($this->model->getList($this->expiredCondition), $tableID);
-      $deletedArray = $this->model->getColumnList($this->model->getList($this->deletedCondition), $tableID);
+      $imminentArray = $this->model->getColumnList($this->model->getList([$this->imminentCondition]), $tableID);
+      $deactivatedArray = $this->model->getColumnList($this->model->getList([$this->deactivatedCondition]), $tableID);
+      $deletedArray = $this->model->getColumnList($this->model->getList([$this->deletedCondition]), $tableID);
       foreach ($list as $key => $value) {
         $tableID = $tableName . 'ID';
         $tableID = $list[$key][$tableID];
-        if (in_array($tableID, $expiredArray)) {
+        if (in_array($tableID, $deactivatedArray)) {
         $actCondition = "만기됨";
         $class = "deactivated";
-        } elseif (in_array($tableID, $deadlineArray)) {
+        } elseif (in_array($tableID, $imminentArray)) {
           $actCondition = "만기임박";
           $class = "imminent";
         } elseif (in_array($tableID, $deletedArray)) {
@@ -250,15 +250,15 @@ HTML;
       $today = date('Y-m-d');
       switch ($tableName) {
         case 'company' :
-          $deadline = 15;
+          $imminent = 15;
           break;
         case 'employee':
-          $deadline = 5;
+          $imminent = 5;
           break;
       }
       if ($data['activated'] == 0) echo "gray";
       elseif (
-        strtotime($data['endDate'] . " -{$deadline} days") <= strtotime($today)
+        strtotime($data['endDate'] . " -{$imminent} days") <= strtotime($today)
         && strtotime($today) < strtotime($data['endDate']))
         echo "orange";
       else echo "white";

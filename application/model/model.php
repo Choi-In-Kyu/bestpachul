@@ -62,15 +62,20 @@
     public function fetchAll(){return $this->query($this->sql)->fetchAll();}
     public function getTable($sql){$this->sql = $sql;return $this->fetchAll();}
     public function count(){return $this->query($this->sql)->rowCount();}
-    public function getList($conditionArray = null, $order = null)
+    
+    public function getList($condition, $order, $direction)
     {
       $this->sql = "SELECT * FROM {$this->param->page_type}";
-      if (isset($conditionArray)) $getCondition = " WHERE " . implode(" AND ", $conditionArray);
+      if (sizeof($condition)>0){
+        $getCondition = " WHERE " . implode(" AND ", $condition);
+      }
       else $getCondition = " WHERE deleted = 0";
       $this->sql .= $getCondition;
-      if (isset($order) && $order != "") $this->sql .= " ORDER BY {$order}";
+      if(!isset($direction)){$direction = 'DESC';}
+      if (isset($order) && $order != "") $this->sql .= " ORDER BY {$order} {$direction}";
       return $this->fetchAll();
     }
+    
     public function getListNum($conditionArray = null){return sizeof($this->getList($conditionArray));}
     public function getColumnList($array, $column)
     {

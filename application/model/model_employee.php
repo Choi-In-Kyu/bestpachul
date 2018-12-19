@@ -2,13 +2,10 @@
   
   Class Model_employee extends Model
   {
-    function __construct($param)
+    public function __construct($param)
     {
       parent::__construct($param);
     }
-    
-    var $tableName = "employee";
-    
     function action()
     {
       header("Content-type:text/html;charset=utf8");
@@ -63,7 +60,7 @@
           $this->executeSQL("UPDATE join_employee SET price= '{$price}', detail = '{$detail}' WHERE join_employeeID = '{$joinID}' LIMIT 1");
           break;
       }
+//      unset($_POST);
       if(isset($msg)) alert($msg);
-      unset($_POST);
     }
   }

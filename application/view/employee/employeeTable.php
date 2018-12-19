@@ -12,20 +12,20 @@
     </colgroup>
     <thead>
     <tr>
-        <th class="link" onclick="sortTable('employee_table', 0)">#</th>
-        <th class="link" onclick="sortTable('employee_table', 1)">성명</th>
-        <th class="link" onclick="sortTable('employee_table', 2)">연령</th>
-        <th class="link" onclick="sortTable('employee_table', 3)">간단주소</th>
-        <th class="link" onclick="sortTable('employee_table', 4)">전화번호</th>
-        <th class="link" onclick="sortTable('employee_table', 5)">비고</th>
-        <th class="link" onclick="sortTable('employee_table', 5)">점수</th>
-        <th onclick="sortTable('employee_table', 6)"><span class="link fa fa-star"></span></th>
-        <th class="link" onclick="sortTable('employee_table', 7)">X</th>
+        <th class="order link" id="refresh-employeeID"> #</th>
+        <th class="order link" id="refresh-employeeName"> 성명</th>
+        <th class="order link" id="refresh-birthDate"> 연령</th>
+        <th class="order link" id="refresh-address"> 간단주소</th>
+        <th class="order link" id="refresh-phoneNumber"> 전화번호</th>
+        <th class="order link" id="refresh-etc"> 비고</th>
+        <th class="order link" id="refresh-grade"> 점수</th>
+        <th class="order" id="refresh-bookmark"><span class="link fa fa-star"></span></th>
+        <th class="order" id="refresh-deleted"> X</th>
     </tr>
     </thead>
     <tbody>
     <?php foreach ($this->list as $key => $data): ?>
-        <tr class="<?php echo $data['class']?>">
+        <tr class="<?php echo $data['class'] ?>">
             <td class="al_c"><?php echo $data['employeeID'] ?><a href="<?php echo "{$this->param->get_page}/view/{$data['idx']}" ?>"></td>
             <td class="al_c link" onClick='location.href="<?php echo "{$this->param->get_page}/view/{$data['employeeID']}" ?>"'><?php echo $data['employeeName'] ?></td>
             <td class="al_c"><?php echo getAge($data['birthDate']) ?></td>

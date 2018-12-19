@@ -1,12 +1,3 @@
-<form id="formRefresh" action="" method="post">
-    <input type="hidden" name="action"  value="refresh">
-    <input type="hidden" name="filter"  value="<?php echo $_POST['filter']?>">
-    <input type="hidden" name="keyword" value="<?php echo $_POST['keyword']?>">
-    <input type="hidden" name="order"   value="<?php echo $_POST['order']?>">
-</form>
-
-<?php echo json_encode($_POST)?>
-
 <table id="company_table" width="100%">
     <colgroup>
         <col width="7%">
@@ -44,14 +35,5 @@
 </table>
 
 <script>
-    $('.order').on('click',function () {
-       let order = $(this).attr('id').replace('refresh-','');
-        console.log(order);
-        $('#formRefresh input[name=order]').val(order);
-        $('#formRefresh').submit();
-    });
-    $('#btnSearch').on('click',function () {
-        let keyword = $('#inputKeyword').val();
-        $('#formRefresh input[name=keyword]').val(keyword);
-    });
+
 </script>
