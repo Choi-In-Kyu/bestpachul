@@ -27,13 +27,13 @@ $('.fa-star.selectable').on('click', function () {
     });
 });
 //삭제 모달 여는 버튼
-$('.deleteModalBtn').on('click', function () {
-    $('#deleteModal').show();
+$('.delete-modal-btn').on('click', function () {
+    $('#modalDelete').show();
     $('#modal-deleteID').val($(this).val());
 });
 //가입취소 모달 여는 버튼
-$('.joinCancelModalBtn').click(function () {
-    $('#joinCancelModal').show();
+$('.join-cancel-modalBtn').click(function () {
+    $('#modalJoinCancel').show();
     $('#modal-joinID').val(this.value);
 });
 //가입추가 버튼
@@ -53,7 +53,7 @@ $('.update').click(function () {
     let id = $(this).parent().children('.join_id').html();
     let price = $(this).parent().children('.join_price').html();
     let detail = $(this).parent().children('.join_detail').html();
-    $('#joinUpdateModal').show();
+    $('#modalJoinUpdate').show();
     $('#updateID').val(id);
     $('#updatePrice').val(parseInt(price.replace(',', '')));
     $('#updateDetail').text(detail.replace('<br>', '\n'));
@@ -96,26 +96,46 @@ function getMoney(tableName, thisBtn) {
 }
 
 // 모달 내에서 작동하는 함수
-$(document).on('click', '.callCancelBtn', function () {
+$(document).on('click', '.btn-call-cancel-modal', function () {
     event.stopPropagation();
-    $('#callCancelModal').show();
+    $('#modalCallCancel').show();
     $('input[name=callID]').val(this.id);
 });
+
+$('#btnCallCancel').on('click',function () {
+    $.ajax({
+        type: "POST",
+        method: "POST",
+        url: ajaxURL,
+        data: $('#formCallCancel').serialize(),
+        dataType: "text",
+        success: function (data) {
+            let id = $('#callCancelID').val();
+            let tr = $('.tr-call[id='+id+']');
+            let btn = $('.btn-call-cancel-modal[id='+id+']');
+            $('#modalCallCancel').hide();
+            btn.hide();
+            tr.closest('td').html('취소됨');
+            tr.closest('tr').addClass('cancelled');
+        }
+    });
+});
+
 $('.fixCancelBtn').on('click', function () {
-    $('#fixCancelModal').show();
+    $('#modalFixCancel').show();
     $('input[name=fixID]').val(this.id);
 });
 $(document).on('click', '.assignCancelBtn', function () {
     event.stopPropagation();
-    $('#assignCancelModal').show();
+    $('#modalAssignCancel').show();
     $('input[name=callID]').val(this.id);
     $('input[name=employeeName]').val(this.innerText);
 });
 $('#closeAssignCancelModal').click(function () {
-    $('#assignCancelModal').hide();
+    $('#modalAssignCancel').hide();
 });
 $('#closeCallCancelModal').click(function () {
-    $('#callCancelModal').hide();
+    $('#modalCallCancel').hide();
 });
 
 //Iphone Style Toggle Checkbox

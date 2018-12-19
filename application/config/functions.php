@@ -186,7 +186,7 @@
     {
       if ($data['activated'] == 1) {
         $id = "join_" . $tableName . "ID";
-        return "<button class = \"joinCancelModalBtn\" value = \"{$data[$id]}\" > X</button>";
+        return "<button class = \"join-cancel-modal-btn\" value = \"{$data[$id]}\" > X</button>";
       } else {
         return $data['deletedDate'];
       }
@@ -196,7 +196,7 @@
       $tableID = $tableName . "ID";
       if ($data['deleted'] == 0) {
         return <<<HTML
-          <button class="deleteModalBtn" value="{$data[$tableID]}">X</button>
+          <button class="delete-modal-btn" value="{$data[$tableID]}">X</button>
 HTML;
       } else {
         return <<<HTML

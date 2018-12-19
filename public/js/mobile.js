@@ -11,7 +11,7 @@
     };
 
     TabbedNavigation.prototype.init = function () {
-        var self = this;
+        let self = this;
         //listen for the click on the tabs navigation
         this.navigation.addEventListener("click", function (event) {
             event.preventDefault();
@@ -29,7 +29,7 @@
     };
 
     TabbedNavigation.prototype.updateContent = function () {
-        var actualHeight = this.content.offsetHeight;
+        let actualHeight = this.content.offsetHeight;
         //update navigation classes
         removeClass(this.navigation.querySelectorAll("a.cd-selected")[0], "cd-selected");
         addClass(this.activeTab, "cd-selected");
@@ -45,18 +45,18 @@
     TabbedNavigation.prototype.toggleNavShadow = function () {
         //show/hide tabs navigation gradient layer
         this.content.removeAttribute("style");
-        var navigationWidth = Math.floor(this.navigationElements.getBoundingClientRect().width),
+        let navigationWidth = Math.floor(this.navigationElements.getBoundingClientRect().width),
             navigationViewport = Math.ceil(this.navigation.getBoundingClientRect().width);
         (this.navigation.scrollLeft >= navigationWidth - navigationViewport)
             ? addClass(this.element, "cd-tabs--scroll-ended")
             : removeClass(this.element, "cd-tabs--scroll-ended");
     };
 
-    var tabs = document.getElementsByClassName("js-cd-tabs"),
+    let tabs = document.getElementsByClassName("js-cd-tabs"),
         tabsArray = [],
         resizing = false;
     if (tabs.length > 0) {
-        for (var i = 0; i < tabs.length; i++) {
+        for (let i = 0; i < tabs.length; i++) {
             (function (i) {
                 tabsArray.push(new TabbedNavigation(tabs[i]));
             })(i);
@@ -78,13 +78,13 @@
     };
 
     function setHeight(start, to, element, duration) {
-        var change = to - start,
+        let change = to - start,
             currentTime = null;
 
-        var animateHeight = function (timestamp) {
+        let animateHeight = function (timestamp) {
             if (!currentTime) currentTime = timestamp;
-            var progress = timestamp - currentTime;
-            var val = Math.easeInOutQuad(progress, start, change, duration);
+            let progress = timestamp - currentTime;
+            let val = Math.easeInOutQuad(progress, start, change, duration);
             element.setAttribute("style", "height:" + val + "px;");
             if (progress < duration) {
                 window.requestAnimationFrame(animateHeight);
@@ -108,58 +108,19 @@
     }
 
     function addClass(el, className) {
-        var classList = className.split(' ');
+        let classList = className.split(' ');
         if (el.classList) el.classList.add(classList[0]);
         else if (!hasClass(el, classList[0])) el.className += " " + classList[0];
         if (classList.length > 1) addClass(el, classList.slice(1).join(' '));
     }
 
     function removeClass(el, className) {
-        var classList = className.split(' ');
+        let classList = className.split(' ');
         if (el.classList) el.classList.remove(classList[0]);
         else if (hasClass(el, classList[0])) {
-            var reg = new RegExp('(\\s|^)' + classList[0] + '(\\s|$)');
+            let reg = new RegExp('(\\s|^)' + classList[0] + '(\\s|$)');
             el.className = el.className.replace(reg, ' ');
         }
         if (classList.length > 1) removeClass(el, classList.slice(1).join(' '));
     }
 })();
-
-function sortTable(tableName, n) {
-    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-    table = document.getElementById(tableName);
-    switching = true;
-    dir = "asc";
-    while (switching) {
-        switching = false;
-        rows = table.rows;
-        for (i = 1; i < (rows.length - 1); i++) {
-            shouldSwitch = false;
-            x = rows[i].getElementsByTagName("TD")[n];
-            y = rows[i + 1].getElementsByTagName("TD")[n];
-            if (dir == "asc") {
-                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                    //if so, mark as a switch and break the loop:
-                    shouldSwitch = true;
-                    break;
-                }
-            } else if (dir == "desc") {
-                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                    //if so, mark as a switch and break the loop:
-                    shouldSwitch = true;
-                    break;
-                }
-            }
-        }
-        if (shouldSwitch) {
-            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-            switching = true;
-            switchcount++;
-        } else {
-            if (switchcount == 0 && dir == "asc") {
-                dir = "desc";
-                switching = true;
-            }
-        }
-    }
-}

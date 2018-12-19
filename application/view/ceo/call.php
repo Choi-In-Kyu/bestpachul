@@ -88,6 +88,6 @@
         </div>
 
         <h1 class="callPrice"></h1>
-        <button id="submitBtn" class="btn btn-insert" type="button">콜 신청하기</button>
+        <button id="btnSendCall" class="btn btn-insert" type="button">콜 신청하기</button>
     </form>
 </div>

@@ -160,7 +160,7 @@
             <!--콜 보내기 버튼-->
             <div class="tr al_r full_width">
                 <h1 class="callPrice"></h1>
-                <button id="submitBtn" class="btn btn-insert callBtn" type="button">콜 신청하기</button>
+                <button id="btnSendCall" class="btn btn-insert callBtn" type="button">콜 신청하기</button>
                 <button id="submitFixedCallBtn" class="btn btn-insert callBtn fixBtn" type="button">고정 콜 만들기</button>
                 <button id="submitMonthlyCallBtn" class="btn btn-insert callBtn fixBtn" type="button">월급제 만들기</button>
             </div>
@@ -175,7 +175,7 @@
         endHour.val('15');
         initiate(endHour.val() - startHour.val());
         $('.callBtn').hide();
-        $('#submitBtn').show();
+        $('#btnSendCall').show();
     });
     $('#percentage').on('input', function () {
         $('#commission').val($('#percentage').val() * 0.01 * $('#monthlySalary').val());

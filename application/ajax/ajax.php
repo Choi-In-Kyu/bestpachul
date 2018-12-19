@@ -22,7 +22,9 @@
     switch ($_POST['action']) {
       case 'initiate':
         if (isset($_POST['companyID']) && ($_POST['companyID'] != '')) {
-          $obj->reset($_POST);
+          if($obj->joinType($id)=='gujwa'){
+            $obj->reset($_POST);
+          }
           $result['joinType'] = $obj->joinType($id);
           $result['callType'] = $obj->checkCallType($id, $date)[0];
           $result['total'] = $obj->checkCallType($id, $date)[1];
@@ -45,15 +47,17 @@
       case 'call' :
         $obj->call($_POST);
         if ($obj->joinType($id) == 'gujwa') {
-          $result = $obj->reset($_POST);
-          echo $result;
+//          $result = $obj->reset($_POST);
+//          echo $result;
+          $obj->reset($_POST);
         }
         break;
       case 'cancel':
         $obj->cancel($_POST);
         if ($obj->joinType($id) == 'gujwa') {
-          $result = $obj->reset($_POST);
-          echo $result;
+//          $result = $obj->reset($_POST);
+//          echo $result;
+          $obj->reset($_POST);
         }
         break;
       case 'fix':
@@ -101,6 +105,12 @@
         $result['body'] = $obj->getCallList($_POST)[0];
         $result['total'] = $obj->getCallList($_POST)[1];
         echo json_encode($result);
+        break;
+      case 'alertDetail':
+        echo $obj->select('call',"`callID` = '{$_POST['id']}'",'detail');
+        break;
+      case 'callCancel':
+        echo json_encode($obj->callCancel($_POST));
         break;
       default :
         $result['msg'] = 'no matching action name';

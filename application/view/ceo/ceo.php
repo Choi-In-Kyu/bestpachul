@@ -1,3 +1,7 @@
+<?php
+  header('Access-Control-Allow-Origin: *');
+  header("Content-type:text/html;charset=utf8");
+?>
 <!doctype html>
 <html lang="en" class="no-js">
 <head>
@@ -44,6 +48,5 @@
     });
 </script>
 <script src="/public/js/mobile.js"></script>
-<script src="/public/js/ajax.js"></script>
 </body>
 </html>

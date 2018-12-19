@@ -44,7 +44,7 @@
 
       <div class="box">
           <div class="title">콜비 총 합</div>
-          <div class="content"><?php echo number_format($this->callPrice); ?></div>
+          <div class="content"><?php echo number_format($this->callPrice)." 원"; ?></div>
       </div>
   <?php else: ?>
       <div class="box">

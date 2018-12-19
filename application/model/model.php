@@ -232,9 +232,20 @@
       $post['price'] = $price;
       $this->call($post);
     }
-    public function callCancel($post){
-      $this->executeSQL("UPDATE `call` SET employeeID = 0, `cancelled`=1, `cancelDetail`='{$post['detail']}' WHERE `callID` = {$post['callID']} LIMIT 1");
-    }
+//    public function callCancel($post){
+//      $callData = $this->select('call', "callID = $post[callID]")[0];
+//      $point = $callData['point'];
+//      $companyID = $callData['companyID'];
+//      if (isset($point)) {
+//        $this->executeSQL("UPDATE join_company SET point = point+'{$point}' WHERE companyID = '{$companyID}' LIMIT 1");
+//        $this->executeSQL("UPDATE `call` SET `employeeID` = 0, `cancelled` = 1, `cancelDetail` = '{$post['detail']}' WHERE `callID` = '{$post['callID']}' LIMIT 1");
+//      } else {
+//        $this->executeSQL("UPDATE `call` SET `employeeID` = 0, `cancelled` = 1, `cancelDetail` = '{$post['detail']}' WHERE `callID` = '{$post['callID']}' LIMIT 1");
+//        $this->reset($callData,$companyID);
+//      }
+//      unset($post);
+//      alert('콜을 취소했습니다.');
+//    }
     public function fixCancel($post){
       alert('test');
       $this->executeSQL("UPDATE `fix` SET employeeID = '0', `cancelled`='1', `cancelDetail`='{$post['detail']}' WHERE `fixID` = '{$post['fixID']}' LIMIT 1");

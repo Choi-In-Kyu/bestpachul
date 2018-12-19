@@ -27,7 +27,7 @@ $('#employeeName').on('input', function () {
 });
 $('#manualCallBtn').on('click', function () {
     $('.callBtn').hide();
-    $('#submitBtn').show();
+    $('#btnSendCall').show();
     $('.monthly').slideUp();
     $('.fixable').slideUp();
 });

@@ -50,7 +50,7 @@ function initiate(time, callFunction = false, date = null) {
                     switch (callType) {
                         case 'free':
                             $('#callPrice').val(0);
-                            $('#submitBtn').html("콜 신청하기");
+                            $('#btnSendCall').html("콜 신청하기");
                             if (joinType === 'point') {
                                 if (holiday) {
                                     $('#callPoint').val(8000);
@@ -60,10 +60,10 @@ function initiate(time, callFunction = false, date = null) {
                             break;
                         case 'charged':
                             $('#callPrice').val(callPrice);
-                            $('#submitBtn').html("콜 신청하기 (콜비 : " + number_format(callPrice) + "원)");
+                            $('#btnSendCall').html("콜 신청하기 (콜비 : " + number_format(callPrice) + "원)");
                             break;
                         case 'pointExceed':
-                            $('#submitBtn').html("포인트 부족");
+                            $('#btnSendCall').html("포인트 부족");
                             break;
                     }
                 }
@@ -248,7 +248,7 @@ function chargedCall(data) {
 
 //무료콜 보내기
 function freeCall(data) {
-    $('#submitBtn').html("콜 신청하기");
+    $('#btnSendCall').html("콜 신청하기");
     $('#formAction').val('call');
     $('#callPrice').val(0);
     $.ajax({
@@ -274,7 +274,7 @@ function cancel() {
         type: "POST",
         method: "POST",
         url: ajaxURL,
-        data: $('#callCancelForm').serialize(),
+        data: $('#formCallCancel').serialize(),
         dataType: "text",
         success: function (data) {
             window.location.reload();

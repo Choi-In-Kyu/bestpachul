@@ -58,7 +58,7 @@
                   </td>
                   <td class="al_c hide" style="width: 10%">
                     <?php if ($data['cancelled'] == 0): ?>
-                        <button type="button" class="callCancelBtn btn btn-small btn-danger"
+                        <button type="button" class="btn-call-cancel-modal btn btn-small btn-danger"
                                 id="<?php echo $data['callID'] ?>">취소
                         </button>
                     <?php else: ?>

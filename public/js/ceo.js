@@ -51,10 +51,20 @@ $('.all-filter').on('change', function () {
 $('.paid-filter').on('change', function () {
     change('paid');
 });
-$('.callList').click(function () {
-    let callList = JSON.parse('<?php echo json_encode($this->callList)?>');
-    let index = $(this).index();
-    alert('요청사항 : ' + callList[index]['detail']);
+$(document).on('click','.tr-call',function () {
+    let id = $(this).attr('id');
+    $.ajax({
+        type: "POST",
+        method: "POST",
+        url: ajaxURL,
+        data: {action:'alertDetail', id:id},
+        dataType: "text",
+        success: function (data) {
+            if(data !==null && data !==''){
+                alert('요청사항 : ' + data);
+            }
+        }
+    });
 });
 $('#submitBtn').on('click', function () {
     call(endHour.val() - startHour.val());
@@ -64,20 +74,17 @@ $('.fixBtn').on('click', function () {
     $('#endTime').val($('#endHour').val() + ":" + $('#endMin').val()); //HH:MM
     fix(endHour.val() - startHour.val());
 });
-$(document).on('click', '.callCancelModalBtn', function () {
-    event.stopPropagation();
+$('body').on('click', '.btn-call-cancel-modal', function (e) {
     $('#callCancelID').val(this.id);
-    $('#callCancelModal').show();
-    $('#callCancelModal input[name=callID]').val(this.id);
+    $('#modalCallCancel').show();
+    $('#modalCallCancel input[name=callID]').val(this.id);
+    event.stopPropagation(e);
 });
 $('#closeCallCancelModal').on('click', function () {
-    $('#callCancelModal').hide();
-});
-$('#callCancelBtn').on('click', function () {
-    cancel();
+    $('#modalCallCancel').hide();
 });
 $('.total-price').on('click',function () {
-    $('#payChargedCallModal').show();
+    $('#modalPayChargedCall').show();
 });
 $('#copyBtn').on('click',function () {
    copy();
@@ -109,7 +116,7 @@ function change(type) {
             $('#'+type+'-call-list-body').html(body);
             if(type === 'paid'){
                 $('.total-price').html('콜비 총 합: '+number_format(total)+'원');
-                $('#pay-info').val($('#pay-info').val()+" "+total+'원');
+                $('#pay-info').val($('#pay-info').val()+" "+number_format(total)+'원');
             }
         }
     });

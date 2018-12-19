@@ -16,33 +16,18 @@
     function action()
     {
       switch ($_POST['action']) {
-        case 'call':
-          switch ($this->joinType()) {
-            case 'gujwa':$this->call_gujwa($_POST);break;
-            case 'point':$this->call_point($_POST);break;
-            case 'deposit':$this->call_deposit($_POST);break;
-            case 'deactivated':alert("만기됨");unset($_POST);move('ceo');break;
-          }
-          break;
-        case 'cancel':$this->cancel($_POST);break;
+//        case 'call':
+//          switch ($this->joinType()) {
+//            case 'gujwa':$this->call_gujwa($_POST);break;
+//            case 'point':$this->call_point($_POST);break;
+//            case 'deposit':$this->call_deposit($_POST);break;
+//            case 'deactivated':alert("만기됨");unset($_POST);move('ceo');break;
+//          }
+//          break;
+//        case 'callCancel':$this->callCancel($_POST);break;
         case 'paidCall': $this->call($_POST);break;
         case 'reset':unset($_POST);move('ceo');break;
       }
-    }
-    function cancel($post)
-    {
-      $callData = $this->select('call', "callID = $post[callID]")[0];
-      $point = $callData['point'];
-      $companyID = $callData['companyID'];
-      if (isset($point)) {
-        $this->executeSQL("UPDATE join_company SET point = point+'{$point}' WHERE companyID = '{$companyID}' LIMIT 1");
-        $this->executeSQL("UPDATE `call` SET `cancelled` = 1, `cancelDetail` = '{$post['detail']}' WHERE `callID` = '{$post['callID']}' LIMIT 1");
-      } else {
-        $this->executeSQL("UPDATE `call` SET `cancelled` = 1, `cancelDetail` = '{$post['detail']}' WHERE `callID` = '{$post['callID']}' LIMIT 1");
-        $this->reset($callData,$companyID);
-      }
-      alert('콜을 취소했습니다.');
-      unset($post);
     }
     function reset($post,$companyID)
     {

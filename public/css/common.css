@@ -111,7 +111,7 @@ h1{margin:20px;}
 .table > .tr > .td > .lbl{width: 30%;}
 .td-detail > .textarea-detail{width: 99%;height: 240px; resize: none;}
 tr.selectable:hover, tr.selected{cursor: pointer; background-color: antiquewhite}
-tr.cancelled{background-color: gray;}
+tr.cancelled{background-color: #80808054;}
 tr.cancelled:hover, tr.cancelled.selected{background-color: lightgray;}
 tr.callRow{cursor: pointer;}
 tr.fixRow{cursor: pointer;}

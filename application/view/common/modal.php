@@ -1,5 +1,5 @@
 <!-- Delete Modal -->
-<div id="deleteModal" class="modal">
+<div id="modalDelete" class="modal">
     <div class="modal-content">
         <form action="" method="post">
             <input type="hidden" name="action" value="delete">
@@ -11,20 +11,20 @@
     </div>
 </div>
 <!-- Call Cancel Modal -->
-<div id="callCancelModal" class="modal">
+<div id="modalCallCancel" class="modal">
     <div class="modal-content">
         <h1 class="detail">취소사유</h1>
-        <form id="callCancelForm" action="" method="post">
+        <form id="formCallCancel" action="" method="post">
             <input name="action" type="hidden" value="callCancel">
             <input name="callID" type="hidden" id="callCancelID">
             <textarea name="detail" id="detail" size="200"></textarea>
-            <input id="callCancelBtn" class="btn btn-insert" type="submit" value="콜 취소">
+            <button id="btnCallCancel" type="button" class="btn btn-insert">콜 취소</button>
             <input id="closeCallCancelModal" class="btn btn-danger closeModal" type="button" value="닫기">
         </form>
     </div>
 </div>
 <!-- Assign Cancel Modal -->
-<div id="assignCancelModal" class="modal">
+<div id="modalAssignCancel" class="modal">
     <div class="modal-content">
         <form action="" method="post">
             <input type="hidden" name="action" value="assignCancel">
@@ -43,7 +43,7 @@
     </div>
 </div>
 <!-- Fix Cancel Modal -->
-<div id="fixCancelModal" class="modal">
+<div id="modalFixCancel" class="modal">
     <div class="modal-content">
         <h1 class="detail">취소사유</h1>
         <form id="fixCancelForm" action="" method="post">
@@ -57,7 +57,7 @@
     </div>
 </div>
 <!-- Join Cancel Modal -->
-<div id="joinCancelModal" class="modal">
+<div id="modalJoinCancel" class="modal">
     <div class="modal-content">
         <form action="" method="post">
             <input type="hidden" name="action" value="delete">
@@ -69,7 +69,7 @@
     </div>
 </div>
 <!-- Join Update Modal -->
-<div id="joinUpdateModal" class="modal">
+<div id="modalJoinUpdate" class="modal">
     <div class="modal-content">
         <form action="" method="post">
             <input type="hidden" name="action" value="join_update">
@@ -82,15 +82,12 @@
     </div>
 </div>
 <!-- Pay Charged Call Modal -->
-<div id="payChargedCallModal" class="modal">
+<div id="modalPayChargedCall" class="modal">
     <div class="modal-content">
-        <h1 class="detail">
-        
-        </h1>
         <form>
             <input id="pay-info" type="text" value="국민은행 477002-04-040107" disabled="disabled">
             <input id="copyBtn" class="btn btn-insert" type="submit" value="복사하기">
-            <input id="closeCallCancelModal" class="btn btn-danger closeModal" type="button" value="닫기">
+            <input class="btn btn-danger closeModal" type="button" value="닫기">
         </form>
     </div>
 </div>
