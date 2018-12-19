@@ -57,6 +57,7 @@
       $this->keyword = $_POST['keyword'];
       $this->order = $_POST['order'];
       $this->direction = $_POST['direction'];
+      
       if (isset($_POST['filterCondition'])) {
         $this->condition['filter'] = $_POST['filterCondition'];
       } else {
@@ -65,6 +66,8 @@
       if (isset($_POST['keyword']) && $_POST['keyword'] != "") {
         $this->condition['keyword'] = " (`{$tableName}Name` LIKE '%{$this->keyword}%' OR `address` LIKE '%{$this->keyword}%' OR `detail` LIKE '%{$this->keyword}%') ";
       }
+      
+      
       $this->list = $this->model->getList($this->condition);
       $this->list = $this->initActCondition($this->list, $tableName);
       $this->list = $this->getActCondition($this->list, $tableName);

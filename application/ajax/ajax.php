@@ -76,10 +76,13 @@
       case 'bookmark':
         $table = $_POST['tableName'];
         $id = $_POST['id'];
-        $value = ($obj->select($table, "{$table}ID = {$id}", 'bookmark') == 1) ? 0 : 1;
-        $string = "UPDATE `{$table}` SET `bookmark` = {$value} WHERE `{$table}ID` = '{$id}' LIMIT 1";
+        $bookmark = ($obj->select($table, "{$table}ID = {$id}", 'bookmark') == 1) ? 0 : 1;
+        $string = "UPDATE `{$table}` SET `bookmark` = {$bookmark} WHERE `{$table}ID` = '{$id}' LIMIT 1";
         $obj->executeSQL($string);
-        echo $value;
+        $imminent = $obj->select($table, "{$table}ID = {$id}", 'imminent');
+        $result['bookmark'] = $bookmark;
+        $result['imminent'] = $imminent;
+        echo json_encode($result);
         break;
       case 'getMoney':
         $obj->getMoney($_POST);

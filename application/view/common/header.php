@@ -38,39 +38,42 @@
 <?php if (!in_array($this->param->page_type, ['login', 'ceo'])): ?>
     <body>
     <div id="header">
-        <div class="dropdown col-md-2">
-            <button class="link dropbtn" onClick='location.href="<?php echo _URL ?>company"'>홈</button>
-        </div>
-        <div class="dropdown col-md-2">
-            <button class="link dropbtn <?php echo $selectArr[0] ?>"
-                    onClick='location.href="<?php echo _URL ?>company"'>업체관리
-            </button>
-        </div>
-        <div class="dropdown col-md-2">
-            <button class="link dropbtn <?php echo $selectArr[1] ?>"
-                    onClick='location.href="<?php echo _URL ?>employee"'>인력관리
-            </button>
-            <div class="dropdown-content">
-                <a class="link" href="<?php echo _URL ?>employee/available_date">근무 가능일/불가능일</a>
+        <div class="header" id="headerMain">
+            <div class="dropdown">
+                <button class="link dropbtn" onClick='location.href="<?php echo _URL ?>company"'>홈</button>
+            </div>
+            <div class="dropdown ">
+                <button class="link dropbtn <?php echo $selectArr[0] ?>"
+                        onClick='location.href="<?php echo _URL ?>company"'>업체관리
+                </button>
+            </div>
+            <div class="dropdown ">
+                <button class="link dropbtn <?php echo $selectArr[1] ?>"
+                        onClick='location.href="<?php echo _URL ?>employee"'>인력관리
+                </button>
+                <div class="dropdown-content">
+                    <a class="link" href="<?php echo _URL ?>employee/available_date">근무 가능일/불가능일</a>
+                </div>
+            </div>
+            <div class="dropdown ">
+                <button class="link dropbtn <?php echo $selectArr[2] ?>"
+                        onClick='location.href="<?php echo _URL ?>call"'>콜관리
+                </button>
+                <div class="dropdown-content">
+                    <a class="link" href="<?php echo _URL ?>call/write">콜 만들기</a>
+                    <a class="link" href="<?php echo _URL ?>call/fix">고정콜/월급제 관리</a>
+                    <a class="link" href="<?php echo _URL ?>call/punk">펑크관리</a>
+                </div>
+            </div>
+            <div class="dropdown ">
+                <button class="link dropbtn <?php echo $selectArr[3] ?>">기타
+                </button>
+                <div class="dropdown-content">
+                    <a class="link" href="<?php echo _URL ?>manage/black">블랙리스트 관리</a>
+                </div>
             </div>
         </div>
-        <div class="dropdown col-md-2">
-            <button class="link dropbtn <?php echo $selectArr[2] ?>"
-                    onClick='location.href="<?php echo _URL ?>call"'>콜관리
-            </button>
-            <div class="dropdown-content">
-                <a class="link" href="<?php echo _URL ?>call/write">콜 만들기</a>
-                <a class="link" href="<?php echo _URL ?>call/fix">고정콜/월급제 관리</a>
-                <a class="link" href="<?php echo _URL ?>call/punk">펑크관리</a>
-            </div>
-        </div>
-        <div class="dropdown col-md-2">
-            <button class="link dropbtn <?php echo $selectArr[3] ?>">기타
-            </button>
-            <div class="dropdown-content">
-                <a class="link" href="<?php echo _URL ?>manage/black">블랙리스트 관리</a>
-            </div>
-        </div>
+      <?php if (in_array($this->param->page_type, ['company', 'employee'])) require_once 'filter.php' ?>
     </div>
     </body>
 <?php endif; ?>

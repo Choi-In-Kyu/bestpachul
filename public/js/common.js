@@ -12,16 +12,20 @@ $('.fa-star.selectable').on('click', function () {
         data: {action: 'bookmark', id: btn.attr('id'), tableName: pageType},
         dataType: "text",
         success: function (data) {
-            let type = parseInt(data);
-            if (type === 1) {
+            let bookmark = parseInt(JSON.parse(data).bookmark);
+            let imminent = parseInt(JSON.parse(data).imminent);
+            console.log(imminent);
+            if (bookmark === 1) {
                 btn.addClass('checked');
                 btn.removeClass('unchecked');
-                btn.closest('tr').css('background', '#FEF5E7');
+                btn.closest('tr').addClass('imminent');
             }
             else {
                 btn.addClass('unchecked');
                 btn.removeClass('checked');
-                btn.closest('tr').css('background', 'none');
+                if(imminent === 0){
+                    btn.closest('tr').removeClass('imminent');
+                }
             }
         }
     });

@@ -78,19 +78,19 @@
         $tableID = $list[$key][$tableID];
         if (in_array($tableID, $expiredArray)) {
         $actCondition = "만기됨";
-        $color = "#FDEDEC";}
-        elseif (in_array($tableID, $deadlineArray)) {
+        $class = "deactivated";
+        } elseif (in_array($tableID, $deadlineArray)) {
           $actCondition = "만기임박";
-          $color = "#FEF5E7";
+          $class = "imminent";
         } elseif (in_array($tableID, $deletedArray)) {
           $actCondition = "삭제됨";
-          $color = "gray";
+          $class = "deleted";
         } else {
           $actCondition = "가입중";
-          $color = null;
+          $class = 'activated';
         }
         $list[$key]['actCondition'] = $actCondition;
-        $list[$key]['color'] = $color;
+        $list[$key]['class'] = $class;
       }
       return $list;
     }

@@ -73,7 +73,7 @@
           $this->callCancel($_POST);
           break;
       }
-      unset($_POST);
+//      unset($_POST);
       if(isset($msg)) alert($msg);
     }
   }
