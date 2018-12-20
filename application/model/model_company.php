@@ -54,10 +54,6 @@
           unset($_POST);
           $msg="추가되었습니다";
           break;
-//        case 'delete' :
-//          $this->delete($_POST,'company');
-//          $msg="삭제되었습니다";
-//          break;
         case 'join_update':
           $joinID = $_POST['joinID'];
           $detail = $_POST['detail'];

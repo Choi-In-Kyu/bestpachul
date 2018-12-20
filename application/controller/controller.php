@@ -46,11 +46,18 @@
     //선택한 테이블들의 모든 데이터를 불러와서 table_List 배열 생성
     function getFunctions()
     {
-      $this->tables = array('company', 'ceo', 'employee', 'call', 'address', 'businessType', 'workField', 'call', 'employee_available_date', 'blackList', 'fix');
+      $this->tables = array('company', 'ceo', 'employee', 'call', 'address', 'businessType', 'workField', 'call', 'employee_available_date', 'fix');
       foreach ($this->tables as $value) {
         $this->{$value . '_List'} = $this->model->select($value);
       }
       $this->tableName = $this->param->page_type;
+      $blackListSql = "
+SELECT `blackListID`,`employee`.`employeeID`,`company`.`companyID`,`employeeName`,`companyName`,`blackList`.`detail`
+FROM `blackList`
+LEFT JOIN `employee` on blackList.employeeID = employee.employeeID
+LEFT JOIN `company` on blackList.companyID = company.companyID
+";
+      $this->blackList_List = $this->model->getTable($blackListSql);
     }
     function getBasicFunction($tableName)
     {
@@ -115,4 +122,5 @@
         }
       }
     }
+
   }

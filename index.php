@@ -13,10 +13,6 @@ define('_URL',str_replace("index.php","","http://{$_SERVER['HTTP_HOST']}{$_SERVE
 define('_IMG',_URL.'public/img/');
 define('_CSS',_URL.'public/css/');
 
-define('BOOKMARK','orangered');
-define('WARNING','red');
-define('DEACTIVATED','gray');
-
 require_once(_CONFIG."lib.php");
 require_once(_CONFIG."db.php");
 

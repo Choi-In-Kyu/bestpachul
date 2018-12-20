@@ -116,21 +116,25 @@
         echo json_encode($obj->callCancel($_POST));
         break;
       case 'delete':
-        
-//        echo json_encode($_POST);
-        
         $table = $_POST['table'];
         $detail = $_POST['deleteDetail'];
         $id = $_POST['id'];
-        
-        $sql = "UPDATE `{$table}` SET `deleted` = 1, `activated` = 0, `imminent` = 0, `deleteDetail` = '{$detail}' WHERE `{$table}ID` = {$id} LIMIT 1";
-        $sql2 = "UPDATE `join_{$table}` SET `deleted` = 1, `activated` = 0, `imminent` = 0 WHERE `{$table}ID` = {$id} LIMIT 1";
-        echo $sql2;
-        $obj->executeSQL($sql);
+        $today = date('Y-m-d');
+        $sql = "UPDATE `{$table}` SET `deleted` = 1, `activated` = 0, `imminent` = 0, `deleteDetail` = '{$detail}', `deletedDate` = '{$today}' WHERE `{$table}ID` = {$id} LIMIT 1";
+        $sql2 = "UPDATE `join_{$table}` SET `deleted` = 1, `activated` = 0, `imminent` = 0 WHERE `{$table}ID` = {$id}";
         $obj->executeSQL($sql2);
+        $obj->executeSQL($sql);
+        break;
+      case 'joinDelete':
+        $table = $_POST['table'];
+        $detail = $_POST['detail'];
+        $id = $_POST['id'];
+        $today = date('Y-m-d');
+        $sql = "UPDATE `join_{$table}` SET `deleted` = 1, `activated` = 0, `imminent` = 0, `deleteDetail` = '{$detail}', `deletedDate` = '{$today}' WHERE `join_{$table}ID` = {$id} LIMIT 1";
+        $obj->executeSQL($sql);
         break;
       case 'restore':
-        $sql = "UPDATE `{$_POST['table']}` SET `deleted` = 0 WHERE `{$_POST['table']}ID` = {$_POST['id']} LIMIT 1";
+        $sql = "UPDATE `{$_POST['table']}` SET `deleted` = 0, `deleteDetail`= NULL, `deletedDate` = NULL WHERE `{$_POST['table']}ID` = {$_POST['id']} LIMIT 1";
         $obj->executeSQL($sql);
         echo $sql;
         break;

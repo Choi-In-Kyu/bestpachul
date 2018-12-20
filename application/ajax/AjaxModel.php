@@ -589,5 +589,4 @@ HTML;
       }
       unset($post);
     }
-    
   }

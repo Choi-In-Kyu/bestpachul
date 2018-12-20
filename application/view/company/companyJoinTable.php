@@ -12,32 +12,32 @@
         </colgroup>
         <thead>
         <tr>
-            <th class="link" onclick="sortTable('companyJoinTable', 0)">#</th>
-            <th class="link" onclick="sortTable('companyJoinTable', 1)">가입구분</th>
-            <th class="link" onclick="sortTable('companyJoinTable', 2)">가입금액</th>
-            <th class="link" onclick="sortTable('companyJoinTable', 3)">가입 시작일</th>
-            <th class="link" onclick="sortTable('companyJoinTable', 4)">가입 만기일</th>
-            <th class="link" onclick="sortTable('companyJoinTable', 5)">비고</th>
-            <th class="link" onclick="sortTable('companyJoinTable', 6)">삭제</th>
+            <th class="link">#</th>
+            <th class="link">가입구분</th>
+            <th class="link">가입금액</th>
+            <th class="link">가입 시작일</th>
+            <th class="link">가입 만기일</th>
+            <th class="link">비고</th>
+            <th class="link">삭제</th>
         </tr>
         </thead>
         <tbody>
         <?php foreach ($this->joinList as $key => $data): ?>
-            <tr style="background-color:<?php echo $this->joinColor($data, 'company'); ?>">
+            <tr class="tr-company <?php echo $this->joinColor($data, 'company'); ?>" id="<?php echo $data['join_companyID']?>">
                 <td class="al_c link update join_id"><?php echo $data['join_companyID'] ?></td>
                 <td class="al_l"><?php echo $this->get_joinType($data); ?></td>
                 <td class="al_l link update join_price"><?php echo $this->get_joinPrice($data); ?></td>
                 <td class="al_l"><?php echo $data['startDate'] ?></td>
                 <td class="al_l"><?php echo $this->get_endDate($data, 'company'); ?></td>
                 <td class="al_l link update join_detail"><?php echo $this->get_joinDetail($data); ?></td>
-                <td class="al_c"><?php echo $this->get_joinDeleteBtn($data, 'company'); ?></td>
+                <td class="al_c"><?php echo $this->get_join_delete_btn($data, 'company'); ?></td>
             </tr>
         <?php endforeach ?>
         </tbody>
     </table>
     <br/>
     <div class="btn_group" id="join_button">
-        <button id="addJoinBtn" type="button" class="btn btn-insert" onclick="">가입 추가</button>
+        <button id="btnAddJoin" type="button" class="btn btn-insert" onclick="">가입 추가</button>
     </div>
     <form action="" id="addJoinForm" style="display:none;" method="post">
         <div id="join_form_btn_group">

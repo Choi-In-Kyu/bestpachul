@@ -58,16 +58,17 @@ $('.fa-star.selectable').on('click', function () {
 $('.btn-delete-modal').on('click', function () {
     console.log($(this).val());
     $('#modalDelete').show();
-    $('#deleteID').val($(this).val().split('-')[1]);
     $('#deleteTable').val($(this).val().split('-')[0]);
+    $('#deleteID').val($(this).val().split('-')[1]);
 });
 //가입취소 모달 여는 버튼
-$('.join-cancel-modalBtn').click(function () {
+$('.btn-join-cancel-modal').on('click',function () {
     $('#modalJoinCancel').show();
-    $('#modal-joinID').val(this.value);
+    $('#joinDeleteTable').val($(this).val().split('-')[0]);
+    $('#joinDeleteID').val($(this).val().split('-')[1]);
 });
 //가입추가 버튼
-$('#addJoinBtn').on('click', function () {
+$('#btnAddJoin').on('click', function () {
     let btn = $(this);
     $('#addJoinForm').slideToggle('fast', function () {
         if ($(this).is(':visible')) btn.text('취소');
@@ -131,7 +132,6 @@ $(document).on('click', '.btn-call-cancel-modal', function () {
     $('#modalCallCancel').show();
     $('input[name=callID]').val(this.id);
 });
-
 $('#btnCallCancel').on('click', function () {
     $.ajax({
         type: "POST",
@@ -151,10 +151,8 @@ $('#btnCallCancel').on('click', function () {
     });
 });
 $('#btnDelete').on('click', function () {
-
     let table = $('#deleteTable').val();
     let id = $('#deleteID').val();
-
     $.ajax({
         type: "POST",
         method: "POST",
@@ -167,19 +165,40 @@ $('#btnDelete').on('click', function () {
 
             let tr = $('.tr-'+table+'[id=' + id + ']');
             let btn = $('.btn-delete-modal[id=' + id + ']');
-            $('#modalDelete').hide();
+            $('.modal').hide();
             btn.hide();
             btn.closest('td').html('삭제됨');
             tr.closest('tr').addClass('deleted');
         }
     });
 });
+$('#btnJoinCancel').on('click', function () {
+    let table = $('#joinDeleteTable').val();
+    let id = $('#joinDeleteID').val();
+    $.ajax({
+        type: "POST",
+        method: "POST",
+        url: ajaxURL,
+        data: $('#formJoinCancel').serialize(),
+        dataType: "text",
+        success: function (data) {
+            console.log(data);
 
+            console.log(table);
+
+            let tr = $('.tr-'+table+'[id=' + id + ']');
+            let btn = $('.btn-join-cancel-modal[id=' + id + ']');
+            $('.modal').hide();
+            btn.hide();
+            btn.closest('td').html('삭제됨');
+            tr.closest('tr').addClass('deleted');
+        }
+    });
+});
 $('.fixCancelBtn').on('click', function () {
     $('#modalFixCancel').show();
     $('input[name=fixID]').val(this.id);
 });
-
 $('.btn-restore').on('click', function () {
     let btn = $(this);
     let table = $(this).val().split('-')[0];
@@ -191,23 +210,17 @@ $('.btn-restore').on('click', function () {
         data: {action: 'restore', table: table, id: id},
         dataType: "text",
         success: function (data) {
-            btn.closest('tr').slideUp();
+            console.log(data);
+            btn.html('복구됨');
         }
     });
 });
-
 $(document).on('click', '.assignCancelBtn', function () {
     event.stopPropagation();
     $('#modalAssignCancel').show();
     $('input[name=callID]').val(this.id);
     $('input[name=employeeName]').val(this.innerText);
 });
-// $('#closeAssignCancelModal').click(function () {
-//     $('#modalAssignCancel').hide();
-// });
-// $('#closeCallCancelModal').click(function () {
-//     $('#modalCallCancel').hide();
-// });
 
 //Iphone Style Toggle Checkbox
 (function (i, s, o, g, r, a, m) {

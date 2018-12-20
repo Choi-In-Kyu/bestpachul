@@ -108,6 +108,9 @@
     }
     public function getQuery($post, $table, $focus = null)
     {
+      
+      alert(json_encode($_POST));
+      
       $tbl = $this->extractPost($post, $table);
       if (isset($table)) {
         switch ($post['action']) {

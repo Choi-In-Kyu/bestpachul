@@ -1,7 +1,7 @@
 <!-- Delete Modal -->
 <div id="modalDelete" class="modal">
     <div class="modal-content">
-        <form id="formDelete" action="" method="post">
+        <form action="" method="post" id="formDelete">
             <input type="hidden" name="action" value="delete">
             <input type="hidden" name="table" id="deleteTable">
             <input type="hidden" name="id" id="deleteID">
@@ -11,6 +11,21 @@
         </form>
     </div>
 </div>
+
+<!-- Join Cancel Modal -->
+<div id="modalJoinCancel" class="modal">
+    <div class="modal-content">
+        <form action="" method="post" id="formJoinCancel">
+            <input type="hidden" name="action" value="joinDelete">
+            <input type="hidden" name="table" id="joinDeleteTable">
+            <input type="hidden" name="id" id="joinDeleteID">
+            <textarea name="detail"></textarea>
+            <button type="button" class="btn btn-default" id="btnJoinCancel" >취소</button>
+            <button type="button" class="btn btn-danger btn-close-modal">닫기</button>
+        </form>
+    </div>
+</div>
+
 <!-- Call Cancel Modal -->
 <div id="modalCallCancel" class="modal">
     <div class="modal-content">
@@ -54,18 +69,6 @@
             <textarea name="detail" id="detail" size="200"></textarea>
             <input id="fixCancelBtn" class="btn btn-insert" type="submit" value="콜 취소">
             <input id="closeFixCancelModal" class="btn btn-danger btn-close-modal" type="button" value="닫기">
-        </form>
-    </div>
-</div>
-<!-- Join Cancel Modal -->
-<div id="modalJoinCancel" class="modal">
-    <div class="modal-content">
-        <form action="" method="post">
-            <input type="hidden" name="action" value="delete">
-            <input id="modal-joinID" type="hidden" name="joinID">
-            <textarea name="deleteDetail"></textarea>
-            <input class="btn btn-default btn-close-modal" type="button" value="취소">
-            <input class="btn btn-danger" type="submit" value="삭제">
         </form>
     </div>
 </div>

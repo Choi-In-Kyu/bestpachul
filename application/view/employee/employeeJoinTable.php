@@ -3,11 +3,11 @@
   <table width="100%">
     <colgroup>
       <col width="5%">
-      <col width="20%">
-      <col width="20%">
-      <col width="20%">
-      <col width="20%">
-      <col width="5%">
+      <col width="15%">
+      <col width="15%">
+      <col width="15%">
+      <col width="auto">
+      <col width="10%">
       <col width="10%">
     </colgroup>
     <thead>
@@ -23,14 +23,14 @@
     </thead>
     <tbody>
     <?php foreach ($this->joinList as $key => $data): ?>
-      <tr style="background-color:<?php echo $this->joinColor($data, 'employee');?>">
+      <tr class="tr-employee <?php echo $this->joinColor($data, 'employee');?>">
         <td class="al_c update join_id"><?php echo $data['join_employeeID'] ?></td>
-        <td class="al_l"><?php echo $data['startDate'] ?></td>
-        <td class="al_l"><?php echo $this->get_endDate($data,'employee') ?></td>
-        <td class="al_l update link join_price"><?php echo $this->get_joinPrice($data); ?></td>
+        <td class="al_c"><?php echo $data['startDate'] ?></td>
+        <td class="al_c"><?php echo $this->get_endDate($data,'employee') ?></td>
+        <td class="al_c update link join_price"><?php echo $this->get_joinPrice($data); ?></td>
         <td class="al_l update link join_detail"><?php echo $this->get_joinDetail($data); ?></td>
-        <td class="al_c"><?php echo $this->get_paidBtn($data, 'join_employee','price'); ?></td>
-        <td class="al_c"><?php echo $this->get_joinDeleteBtn($data,'employee'); ?></td>
+        <td class="al_c td-money"><?php echo $this->get_paidBtn($data, 'join_employee','price'); ?></td>
+        <td class="al_c"><?php echo $this->get_join_delete_btn($data,'employee'); ?></td>
       </tr>
     <?php endforeach ?>
     </tbody>
@@ -38,7 +38,7 @@
   <br/>
   <!--가입 추가-->
   <div class="btn_group" id="join_button">
-    <button id="addJoinBtn" type="button" class="btn btn-insert">가입 추가</button>
+    <button id="btnAddJoin" type="button" class="btn btn-insert">가입 추가</button>
   </div>
   <form action="" id="addJoinForm" style="display:none;" method="post">
     <input type="hidden" name="action" value="new_insert">

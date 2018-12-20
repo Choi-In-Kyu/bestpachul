@@ -33,7 +33,8 @@
                     </div>
                     <div class="tr">
                         <div class="td-label">비고</div>
-                        <textarea name="detail" cols="30" rows="10"></textarea>
+                        <textarea name="detail" cols="30" rows="10" style="width: 100%; height: 40px; resize: none;">
+                        </textarea>
                     </div>
                 </div>
             </fieldset>
@@ -46,19 +47,19 @@
     <table id="blackListTable" width="100%">
         <colgroup>
             <col width="5%">
-            <col width="15%">
-            <col width="25%">
-            <col width="5%">
-            <col width="45%">
+            <col width="10%">
+            <col width="20%">
+            <col width="10%">
+            <col width="auto">
             <col width="5%">
         </colgroup>
         <thead>
         <tr>
-            <th class="link" onclick="sortTable('blackListTable', 0)">#</th>
-            <th class="link" onclick="sortTable('blackListTable', 1)">인력명</th>
-            <th class="link" onclick="sortTable('blackListTable', 2)">업체명</th>
-            <th class="link" onclick="sortTable('blackListTable', 3)">구분</th>
-            <th class="link" onclick="sortTable('blackListTable', 4)">비고</th>
+            <th class="order link" id="refresh-blackListID">#</th>
+            <th class="order link" id="refresh-employeeName">인력명</th>
+            <th class="order link" id="refresh-companyName">업체명</th>
+            <th class="order link" id="refresh-ceoReg">구분</th>
+            <th class="order link" id="refresh-detail">비고</th>
             <th>삭제</th>
         </tr>
         </thead>
@@ -66,15 +67,19 @@
         <?php foreach ($this->blackList_List as $key => $data): ?>
             <tr>
                 <td class="al_c"><?php echo $data['blackListID'] ?></td>
-                <td class="al_l link" onClick='location.href="<?php echo _URL."employee/view/{$data['employeeID']}" ?>"'>
-                  <?php echo $this->model->select('employee', "employeeID = $data[employeeID]",'employeeName')?>
+                <td class="al_c link" onClick='location.href="<?php echo _URL . "employee/view/{$data['employeeID']}" ?>"'>
+                    <?php echo $data['employeeName']?>
                 </td>
-                <td class="al_l link" onClick='location.href="<?php echo _URL."company/view/{$data['companyID']}" ?>"'>
-                  <?php echo $this->model->select('company', "companyID = $data[companyID]",'companyName')?>
+                <td class="al_l link" onClick='location.href="<?php echo _URL . "company/view/{$data['companyID']}" ?>"'>
+                  <?php echo $data['companyName']?>
                 </td>
-                <td class="al_l"><?php if($data['ceoReg']==1) echo '오지마세요'; else echo '안가요'?></td>
+                <td class="al_c"><?php if ($data['ceoReg'] == 1) echo '오지마세요'; else echo '안가요' ?></td>
                 <td class="al_l"><?php echo $data['detail'] ?></td>
-                <td class="al_c"><button type="button" class="btn btn-danger blackDelBtn" value="<?php echo $data['blackListID']?>">X</button></td>
+                <td class="al_c">
+                    <button type="button" class="btn btn-danger blackDelBtn" value="<?php echo $data['blackListID'] ?>">
+                        X
+                    </button>
+                </td>
             </tr>
         <?php endforeach ?>
         </tbody>

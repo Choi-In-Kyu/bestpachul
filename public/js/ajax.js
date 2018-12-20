@@ -215,9 +215,7 @@ function getSalary(time, holiday) {
 }
 
 //콜 생성 함수
-function call(time) {
-    initiate(time, true);
-}
+function call(time) {initiate(time, true);}
 
 //유료콜 보내기
 function chargedCall(data) {

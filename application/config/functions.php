@@ -18,11 +18,11 @@
       switch ($tableName) {
         case 'company':
           $days = 15;//만기임박 날짜 설정
-          $joinList = $this->model->getTable("SELECT * FROM join_{$tableName} WHERE deleted = 0 AND point IS NULL AND deposit IS NULL");
+          $joinList = $this->model->getTable("SELECT * FROM join_{$tableName} WHERE `deleted` = 0 AND point IS NULL AND deposit IS NULL");
           break;
         case 'employee':
           $days = 5;//만기임박 날짜 설정
-          $joinList = $this->model->getTable("SELECT * FROM join_{$tableName} WHERE deleted = 0");
+          $joinList = $this->model->getTable("SELECT * FROM join_{$tableName} WHERE `deleted` = 0");
           break;
       }
       foreach ($joinList as $key => $value) {
@@ -52,7 +52,7 @@
         if (sizeof($joinList) > 0) {
           $this->model->executeSQL("UPDATE {$tableName} SET activated = 1 WHERE {$tableName}ID = {$tableID} LIMIT 1");
           foreach ($joinList as $key2 => $data) {
-            if ($data['imminent'] == 1) {
+            if (($data['imminent'] == 1) && ($data['activated'] == 1) && ($data['deleted']==0)) {
               $this->model->executeSQL("UPDATE {$tableName} SET activated = 1, imminent = 1 WHERE {$tableName}ID = {$tableID} LIMIT 1");
               break;
             }
@@ -121,6 +121,62 @@
           break;
       }
     }
+  
+    function imminent_check($table, $data){
+      
+      $tableID = $table."ID";
+      $id = $data[$tableID];
+
+      if($data['imminent']==1){
+        
+        
+        
+        if($table == 'employee'){
+          $sql ="SELECT *FROM  `join_{$table}`WHERE `activated` = 1 AND `paid` = 1 AND `{$table}ID` = {$id} ORDER BY `endDate` ASC LIMIT 1";
+          $date = $this->model->getTable($sql)[0]['endDate'];
+  
+          $paidSql ="SELECT * FROM  `join_{$table}` WHERE `paid` = 0 AND `{$table}ID` = {$id}";
+          $paid = sizeof($this->model->getTable($paidSql));
+          if($paid > 0){
+            return "수금 미완료 ({$paid} 건)";
+          }
+          else{
+            return "만기임박 (D".leftDays($date).")";
+          }
+        }
+        else{
+          $sql ="SELECT * FROM  `join_{$table}` WHERE `activated` = 1 AND `{$table}ID` = {$id} ORDER BY `endDate` ASC LIMIT 1";
+          $date = $this->model->getTable($sql)[0]['endDate'];
+          return "만기임박 (D".leftDays($date).")";
+        }
+      }
+      elseif($data['activated']==0){
+        if($data['deleted']==1){
+          if(isset($data['deletedDate'])){
+            return "삭제일(".$data['deletedDate'].")";
+          }
+          else{
+            return "-";
+          }
+        }
+        else{
+          $sql = "SELECT * FROM `{$table}` LEFT JOIN `join_{$table}` on `{$table}`.`{$table}ID` = `join_{$table}`.{$table}ID WHERE `{$table}`.`{$table}ID` = {$id} ORDER BY `endDate` DESC LIMIT 1";
+          $date = $this->model->getTable($sql)[0]['endDate'];
+          if(isset($date)){
+            return "만기일(".$date.")";
+          }
+          else{
+            return "-";
+          }
+        }
+      }
+      else{
+        return "-";
+      }
+    }
+    
+    
+    
     function get_endDate($data, $tableName)
     {
       switch ($tableName) {
@@ -182,11 +238,13 @@
         }
       }
     }
-    function get_joinDeleteBtn($data, $tableName)
+    function get_join_delete_btn($data, $tableName)
     {
       if ($data['activated'] == 1) {
-        $id = "join_" . $tableName . "ID";
-        return "<button class = \"join-cancel-modal-btn\" value = \"{$data[$id]}\" > X</button>";
+        $tableID = "join_" . $tableName . "ID";
+        return <<<HTML
+<button class = "btn btn-danger btn-join-cancel-modal" value = "{$tableName}-{$data[$tableID]}" id="{$data[$tableID]}" >X</button>
+HTML;
       } else {
         return $data['deletedDate'];
       }
@@ -209,7 +267,7 @@ HTML;
       if($data[$column]>0){
         if($data['paid']==0){
           return <<<HTML
-<button type="button" class="btn btn-default getMoneyBtn_{$table}" id="{$data[$table.'ID']}">{$data[$column]}</button>
+<button type="button" class="btn btn-default btn-money getMoneyBtn_{$table}" id="{$data[$table.'ID']}">{$data[$column]}</button>
 HTML;
         }
         else return '수금완료';
@@ -252,12 +310,12 @@ HTML;
           $imminent = 5;
           break;
       }
-      if ($data['activated'] == 0) echo "gray";
+      if ($data['activated'] == 0) echo "deactivated";
       elseif (
         strtotime($data['endDate'] . " -{$imminent} days") <= strtotime($today)
         && strtotime($today) < strtotime($data['endDate']))
-        echo "orange";
-      else echo "white";
+        echo "imminent";
+      else echo "activated";
     }
     function companyName($id)
     {
