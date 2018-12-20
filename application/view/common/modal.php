@@ -1,12 +1,13 @@
 <!-- Delete Modal -->
 <div id="modalDelete" class="modal">
     <div class="modal-content">
-        <form action="" method="post">
+        <form id="formDelete" action="" method="post">
             <input type="hidden" name="action" value="delete">
-            <input id="modal-deleteID" type="hidden" name="deleteID">
+            <input type="hidden" name="table" id="deleteTable">
+            <input type="hidden" name="id" id="deleteID">
             <textarea name="deleteDetail"></textarea>
-            <input class="btn btn-insert" type="submit" value="삭제하기">
-            <input class="btn btn-danger closeModal" type="button" value="취소">
+            <button type="button" class="btn btn-insert" id="btnDelete">삭제하기</button>
+            <button type="button" class="btn btn-danger btn-close-modal">닫기</button>
         </form>
     </div>
 </div>
@@ -15,11 +16,11 @@
     <div class="modal-content">
         <h1 class="detail">취소사유</h1>
         <form id="formCallCancel" action="" method="post">
-            <input name="action" type="hidden" value="callCancel">
-            <input name="callID" type="hidden" id="callCancelID">
+            <input type="hidden" name="action" value="callCancel">
+            <input type="hidden" name="callID" id="callCancelID">
             <textarea name="detail" id="detail" size="200"></textarea>
             <button id="btnCallCancel" type="button" class="btn btn-insert">콜 취소</button>
-            <input id="closeCallCancelModal" class="btn btn-danger closeModal" type="button" value="닫기">
+            <button class="btn btn-danger btn-close-modal" type="button">닫기</button>
         </form>
     </div>
 </div>
@@ -39,7 +40,7 @@
             <textarea id="punkDetail" name="detail" size="200">무단잠수</textarea>
             <input class="btn btn-insert" type="submit" value="펑크">
         </form>
-        <input id="closeAssignCancelModal" class="btn btn-danger closeModal" type="button" value="닫기">
+        <input id="closeAssignCancelModal" class="btn btn-danger btn-close-modal" type="button" value="닫기">
     </div>
 </div>
 <!-- Fix Cancel Modal -->
@@ -52,7 +53,7 @@
             <input type="date" name="date">
             <textarea name="detail" id="detail" size="200"></textarea>
             <input id="fixCancelBtn" class="btn btn-insert" type="submit" value="콜 취소">
-            <input id="closeFixCancelModal" class="btn btn-danger closeModal" type="button" value="닫기">
+            <input id="closeFixCancelModal" class="btn btn-danger btn-close-modal" type="button" value="닫기">
         </form>
     </div>
 </div>
@@ -63,7 +64,7 @@
             <input type="hidden" name="action" value="delete">
             <input id="modal-joinID" type="hidden" name="joinID">
             <textarea name="deleteDetail"></textarea>
-            <input class="btn btn-default closeModal" type="button" value="취소">
+            <input class="btn btn-default btn-close-modal" type="button" value="취소">
             <input class="btn btn-danger" type="submit" value="삭제">
         </form>
     </div>
@@ -76,7 +77,7 @@
             <input id="updateID" type="hidden" name="joinID">
             <input type="number" id="updatePrice" name="price">
             <textarea id="updateDetail" name="detail"></textarea>
-            <input class="btn btn-default closeModal" type="button" value="취소">
+            <input class="btn btn-default btn-close-modal" type="button" value="취소">
             <input class="btn btn-insert" type="submit" value="수정">
         </form>
     </div>
@@ -87,7 +88,7 @@
         <form>
             <input id="pay-info" type="text" value="국민은행 477002-04-040107" disabled="disabled">
             <input id="copyBtn" class="btn btn-insert" type="submit" value="복사하기">
-            <input class="btn btn-danger closeModal" type="button" value="닫기">
+            <input class="btn btn-danger btn-close-modal" type="button" value="닫기">
         </form>
     </div>
 </div>

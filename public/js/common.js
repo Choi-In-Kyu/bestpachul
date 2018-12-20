@@ -3,24 +3,24 @@ let pageType = window.location.href.replace(mainUrl, '').split('/')[0];
 let pageAction = window.location.href.replace(mainUrl, '').split('/')[1];
 
 //메인 페이지 정렬, 필터링
-$('.filter').on('click',function () {
-    let filter = $(this).attr('id').replace('filter-','');
+$('.filter').on('click', function () {
+    let filter = $(this).attr('id').replace('filter-', '');
     $('#formRefresh input[name=filter]').val(filter);
     $('#formRefresh').submit();
 });
-$('.order').on('click',function () {
-    let order = $(this).attr('id').replace('refresh-','');
+$('.order').on('click', function () {
+    let order = $(this).attr('id').replace('refresh-', '');
     console.log(order);
     $('#formRefresh input[name=order]').val(order);
-    if($('#formRefresh input[name=direction]').val() === 'ASC'){
+    if ($('#formRefresh input[name=direction]').val() === 'ASC') {
         $('#formRefresh input[name=direction]').val('DESC');
     }
-    else{
+    else {
         $('#formRefresh input[name=direction]').val('ASC');
     }
     $('#formRefresh').submit();
 });
-$('#btnSearch').on('click',function () {
+$('#btnSearch').on('click', function () {
     let keyword = $('#inputKeyword').val();
     $('#formRefresh input[name=keyword]').val(keyword);
     $('#formRefresh').submit();
@@ -47,7 +47,7 @@ $('.fa-star.selectable').on('click', function () {
             else {
                 btn.addClass('unchecked');
                 btn.removeClass('checked');
-                if(imminent === 0){
+                if (imminent === 0) {
                     btn.closest('tr').removeClass('imminent');
                 }
             }
@@ -55,9 +55,11 @@ $('.fa-star.selectable').on('click', function () {
     });
 });
 //삭제 모달 여는 버튼
-$('.delete-modal-btn').on('click', function () {
+$('.btn-delete-modal').on('click', function () {
+    console.log($(this).val());
     $('#modalDelete').show();
-    $('#modal-deleteID').val($(this).val());
+    $('#deleteID').val($(this).val().split('-')[1]);
+    $('#deleteTable').val($(this).val().split('-')[0]);
 });
 //가입취소 모달 여는 버튼
 $('.join-cancel-modalBtn').click(function () {
@@ -73,7 +75,7 @@ $('#addJoinBtn').on('click', function () {
     });
 });
 //모달 닫기 버튼
-$('.closeModal').on('click', function () {
+$('.btn-close-modal').on('click', function () {
     $('.modal').hide();
 });
 //가입내역 수정 버튼
@@ -130,7 +132,7 @@ $(document).on('click', '.btn-call-cancel-modal', function () {
     $('input[name=callID]').val(this.id);
 });
 
-$('#btnCallCancel').on('click',function () {
+$('#btnCallCancel').on('click', function () {
     $.ajax({
         type: "POST",
         method: "POST",
@@ -139,12 +141,36 @@ $('#btnCallCancel').on('click',function () {
         dataType: "text",
         success: function (data) {
             let id = $('#callCancelID').val();
-            let tr = $('.tr-call[id='+id+']');
-            let btn = $('.btn-call-cancel-modal[id='+id+']');
+            let tr = $('.tr-call[id=' + id + ']');
+            let btn = $('.btn-call-cancel-modal[id=' + id + ']');
             $('#modalCallCancel').hide();
             btn.hide();
             tr.closest('td').html('취소됨');
             tr.closest('tr').addClass('cancelled');
+        }
+    });
+});
+$('#btnDelete').on('click', function () {
+
+    let table = $('#deleteTable').val();
+    let id = $('#deleteID').val();
+
+    $.ajax({
+        type: "POST",
+        method: "POST",
+        url: ajaxURL,
+        data: $('#formDelete').serialize(),
+        dataType: "text",
+        success: function (data) {
+
+            console.log(data);
+
+            let tr = $('.tr-'+table+'[id=' + id + ']');
+            let btn = $('.btn-delete-modal[id=' + id + ']');
+            $('#modalDelete').hide();
+            btn.hide();
+            btn.closest('td').html('삭제됨');
+            tr.closest('tr').addClass('deleted');
         }
     });
 });
@@ -153,18 +179,35 @@ $('.fixCancelBtn').on('click', function () {
     $('#modalFixCancel').show();
     $('input[name=fixID]').val(this.id);
 });
+
+$('.btn-restore').on('click', function () {
+    let btn = $(this);
+    let table = $(this).val().split('-')[0];
+    let id = $(this).val().split('-')[1];
+    $.ajax({
+        type: "POST",
+        method: "POST",
+        url: ajaxURL,
+        data: {action: 'restore', table: table, id: id},
+        dataType: "text",
+        success: function (data) {
+            btn.closest('tr').slideUp();
+        }
+    });
+});
+
 $(document).on('click', '.assignCancelBtn', function () {
     event.stopPropagation();
     $('#modalAssignCancel').show();
     $('input[name=callID]').val(this.id);
     $('input[name=employeeName]').val(this.innerText);
 });
-$('#closeAssignCancelModal').click(function () {
-    $('#modalAssignCancel').hide();
-});
-$('#closeCallCancelModal').click(function () {
-    $('#modalCallCancel').hide();
-});
+// $('#closeAssignCancelModal').click(function () {
+//     $('#modalAssignCancel').hide();
+// });
+// $('#closeCallCancelModal').click(function () {
+//     $('#modalCallCancel').hide();
+// });
 
 //Iphone Style Toggle Checkbox
 (function (i, s, o, g, r, a, m) {

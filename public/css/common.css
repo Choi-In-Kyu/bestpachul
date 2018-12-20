@@ -109,7 +109,7 @@ h1{margin:20px;}
 .btn-insert {background: darkseagreen;}             .btn-insert:hover{background: green;}
 .btn-submit {background: skyblue; }                 .btn-submit:hover{background: deepskyblue;}
 
-/* div with class table */
+ /*div with class table*/
 .table { border-top: 2px solid #666; table-layout: fixed; word-break: break-all;}
 .table > .tr { padding:10px; border-bottom: 1px solid #ddd; line-height: 30px; z-index: 1;}
 .table > .tr:after { content: ""; display: block; clear: both; }
@@ -123,26 +123,17 @@ h1{margin:20px;}
 .table > .tr > .td-detail{width: 35%; height:auto; padding-bottom:20px;}
 .table > .tr > .td > .lbl{width: 30%;}
 .td-detail > .textarea-detail{width: 99%;height: 240px; resize: none;}
+
+
 tr.selectable:hover, tr.selected{cursor: pointer; background-color: antiquewhite}
 tr.cancelled{background-color: #80808054;}
 tr.cancelled:hover, tr.cancelled.selected{background-color: lightgray;}
 tr.callRow{cursor: pointer;}
 tr.fixRow{cursor: pointer;}
 
-tr.deactivated{
-    background-color: #bd9d9b;
-    color: #483f3fa8;
-}
-tr.imminent{
-    background-color: #f5635770;
-    color: #310101;
-    border: solid 3px;
-    border-color: #310101ad;
-}
-tr.deleted{
-    color: #868686;
-    text-decoration: line-through;
-}
+tr.deactivated{background-color: #bd9d9b;color: #483f3fa8;}
+tr.imminent{background-color: #f5635770;color: #310101;border: solid 3px;border-color: #310101ad;}
+tr.deleted{background: white;color: #868686;text-decoration: line-through;}
 
 
 /* default table */

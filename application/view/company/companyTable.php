@@ -21,7 +21,7 @@
     </thead>
     <tbody>
     <?php foreach ($this->list as $key => $data): ?>
-        <tr class="<?php echo $data['class']?>">
+        <tr class="<?php echo $data['class']?> tr-company" id="<?php echo $data['companyID']?>">
             <td class="al_c"><?php echo $data['companyID'] ?><a href="<?php echo "{$this->param->get_page}/view/{$data['idx']}" ?>"></td>
             <td class="al_l link" onClick='location.href="<?php echo "{$this->param->get_page}/view/{$data['companyID']}" ?>"'><?php echo $data['companyName'] ?></td>
             <td class="al_c"><?php echo $data['address'] ?></td>

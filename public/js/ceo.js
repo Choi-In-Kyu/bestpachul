@@ -66,7 +66,7 @@ $(document).on('click','.tr-call',function () {
         }
     });
 });
-$('#submitBtn').on('click', function () {
+$('#btnSendCall').on('click', function () {
     call(endHour.val() - startHour.val());
 });
 $('.fixBtn').on('click', function () {
@@ -80,9 +80,9 @@ $('body').on('click', '.btn-call-cancel-modal', function (e) {
     $('#modalCallCancel input[name=callID]').val(this.id);
     event.stopPropagation(e);
 });
-$('#closeCallCancelModal').on('click', function () {
-    $('#modalCallCancel').hide();
-});
+// $('#closeCallCancelModal').on('click', function () {
+//     $('#modalCallCancel').hide();
+// });
 $('.total-price').on('click',function () {
     $('#modalPayChargedCall').show();
 });

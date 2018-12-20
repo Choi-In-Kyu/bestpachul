@@ -35,10 +35,10 @@
           $post['employee_available_date-employeeID'] = $this->getTable("SELECT employeeID from employee WHERE employeeName = '{$_POST['employee_available_date-employeeID']}'")[0]['employeeID'];
           $this->getQuery($post, 'employee_available_date');
           break;
-        case 'delete' :
-          $this->delete($_POST,'employee');
-          $msg = "삭제되었습니다";
-          break;
+//        case 'delete' :
+//          $this->delete($_POST,'employee');
+//          $msg = "삭제되었습니다";
+//          break;
         case 'getMoney' :
           $this->executeSQL("UPDATE `join_employee` SET paid = '1' WHERE join_employeeID = {$_POST['id']} LIMIT 1");
           $msg = "수금완료";
@@ -48,10 +48,6 @@
           $string ="INSERT INTO employee_available_date (employeeID,availableDate,notAvailableDate,detail)
                     VALUES ('{$employeeID}','{$_POST['availableDate']}','{$_POST['notAvailableDate']}','{$_POST['detail']}') ";
           $this->executeSQL($string);
-          break;
-        case 'restore' :
-          $this->executeSQL("UPDATE employee SET activated = '1', deleted = '0', deleteDetail=null, deletedDate = null WHERE employeeID = '{$_POST['employeeID']}' LIMIT 1");
-          $msg = "복구되었습니다.";
           break;
         case 'join_update':
           $joinID = $_POST['joinID'];

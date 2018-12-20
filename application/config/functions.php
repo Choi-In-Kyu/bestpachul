@@ -196,15 +196,11 @@
       $tableID = $tableName . "ID";
       if ($data['deleted'] == 0) {
         return <<<HTML
-          <button class="delete-modal-btn" value="{$data[$tableID]}">X</button>
+          <button class="btn btn-danger btn-delete-modal" value="{$tableName}-{$data[$tableID]}" id="{$data[$tableID]}">X</button>
 HTML;
       } else {
         return <<<HTML
-        <form action="" method="post">
-              <input type="hidden" name="action" value="restore">
-              <input type="hidden" name="{$tableID}" value="">
-              <input class="btn" type="submit" value="복구">
-        </form>
+        <button type="button" class="btn btn-insert btn-restore" value="{$tableName}-{$data[$tableID]}">복구</button>
 HTML;
       }
     }

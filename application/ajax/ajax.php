@@ -115,6 +115,25 @@
       case 'callCancel':
         echo json_encode($obj->callCancel($_POST));
         break;
+      case 'delete':
+        
+//        echo json_encode($_POST);
+        
+        $table = $_POST['table'];
+        $detail = $_POST['deleteDetail'];
+        $id = $_POST['id'];
+        
+        $sql = "UPDATE `{$table}` SET `deleted` = 1, `activated` = 0, `imminent` = 0, `deleteDetail` = '{$detail}' WHERE `{$table}ID` = {$id} LIMIT 1";
+        $sql2 = "UPDATE `join_{$table}` SET `deleted` = 1, `activated` = 0, `imminent` = 0 WHERE `{$table}ID` = {$id} LIMIT 1";
+        echo $sql2;
+        $obj->executeSQL($sql);
+        $obj->executeSQL($sql2);
+        break;
+      case 'restore':
+        $sql = "UPDATE `{$_POST['table']}` SET `deleted` = 0 WHERE `{$_POST['table']}ID` = {$_POST['id']} LIMIT 1";
+        $obj->executeSQL($sql);
+        echo $sql;
+        break;
       default :
         $result['msg'] = 'no matching action name';
         echo json_encode($result);
