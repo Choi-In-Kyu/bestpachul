@@ -52,7 +52,7 @@
       }
       $this->tableName = $this->param->page_type;
       $blackListSql = "
-SELECT `blackListID`,`employee`.`employeeID`,`company`.`companyID`,`employeeName`,`companyName`,`blackList`.`detail`
+SELECT `blackListID`,`employee`.`employeeID`,`company`.`companyID`,`employeeName`,`companyName`,`blackList`.`detail`, `blackList`.`ceoReg`
 FROM `blackList`
 LEFT JOIN `employee` on blackList.employeeID = employee.employeeID
 LEFT JOIN `company` on blackList.companyID = company.companyID

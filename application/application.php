@@ -10,8 +10,11 @@
     {
       //URL을 나눠서 param 변수에 저장 후 application 객체에 저장
       $this->getParam();
-      //company, ceo 등등의 객체 생성
-      new $this->param->page_type($this->param);//ex) new Company
+      
+      if($this->param->page_type != 'dbadmin'){
+        //company, ceo 등등의 객체 생성
+        new $this->param->page_type($this->param);//ex) new Company
+      }
     }
 
 //URL로 받은 주소를 '/' 단위로 나눠서 parameter 배열 내 변수로 저장

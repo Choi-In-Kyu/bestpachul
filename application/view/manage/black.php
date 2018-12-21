@@ -73,7 +73,7 @@
                 <td class="al_l link" onClick='location.href="<?php echo _URL . "company/view/{$data['companyID']}" ?>"'>
                   <?php echo $data['companyName']?>
                 </td>
-                <td class="al_c"><?php if ($data['ceoReg'] == 1) echo '오지마세요'; else echo '안가요' ?></td>
+                <td class="al_c"><?php echo ($data['ceoReg'] == 1) ?'오지마세요' : '안가요' ?></td>
                 <td class="al_l"><?php echo $data['detail'] ?></td>
                 <td class="al_c">
                     <button type="button" class="btn btn-danger blackDelBtn" value="<?php echo $data['blackListID'] ?>">
