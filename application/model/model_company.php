@@ -11,13 +11,16 @@
       header("Content-type:text/html;charset=utf8");
       switch ($_POST['action']) {
         case 'insert' :
-          alert("POST : <br>".json_encode($_POST));
+          alert("POST : ".json_encode($_POST));
           $_POST['userName'] = $_POST['companyName'];
           $_POST['userPW'] = $_POST['ceoPhoneNumber'];
-          if(!isset($_POST['ceoID'])){//새로운 사장 입력 시
+          if(!$_POST['ceoID']){//새로운 사장 입력 시
             $this->insert('insert','ceo',$_POST);
             $_POST['ceoID'] = $this->getLastID('ceo');
-            alert('new ceoID : '.$_POST['ceoID']);
+            alert('new ceoID : '.json_encode($_POST['ceoID']));
+          }
+          else{
+            alert(json_encode($_POST['ceoID']));
           }
           $this->insert('insert','company', $_POST);
           $_POST['companyID'] = $this->getLastID('company');
@@ -30,6 +33,14 @@
           }
           if(!in_array($_POST['address'],$addressTable)){//새로운 간단주소 입력
             $this->insert('insert','address',$_POST);
+          }
+          foreach ($this->select('businessType') as $value){//존재하는 간단주소의 목록
+            foreach ($value as $item){
+              $businessTypeTable[] = $item;
+            }
+          }
+          if(!in_array($_POST['businessType'],$businessTypeTable)){//새로운 간단주소 입력
+            $this->insert('insert','businessType',$_POST);
           }
           $msg = "insert!";
 //          unset($_POST);

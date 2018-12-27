@@ -208,8 +208,8 @@
     
     public function get_joinDetail($data)
     {
-      if (isset ($data['detail']) && $data['detail'] != "") {
-        echo $data['detail'];
+      if ($data['joinDetail']) {
+        echo $data['joinDetail'];
         if ($data['deleted'] == 1) {
           echo "<br/>(" . $data['deleteDetail'] . ")";
         } elseif ($data['deleted'] == 0 && $data['activated'] == 0) {

@@ -213,7 +213,7 @@
             </div>
             <div class="td">
                 <label for="company-joinDetail">가입비고</label>
-                <textarea name="detail" id="company-joinDetail"></textarea>
+                <textarea name="joinDetail" id="company-joinDetail"></textarea>
             </div>
         </div>
     </div>
@@ -235,7 +235,7 @@ HTML;
     <div class="tr">
         <div class="td">
             <label for="company-joinDetail">가입비고</label>
-            <textarea name="detail" id="company-joinDetail"></textarea>
+            <textarea name="joinDetail" id="company-joinDetail"></textarea>
         </div>
     </div>
 </div>
@@ -261,7 +261,7 @@ HTML;
     <div class="tr">
         <div class="td">
             <label for="company-joinDetail">가입비고</label>
-            <textarea name="detail" id="company-joinDetail"></textarea>
+            <textarea name="joinDetail" id="company-joinDetail"></textarea>
         </div>
     </div>
 </div>
