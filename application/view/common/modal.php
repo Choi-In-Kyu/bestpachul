@@ -35,7 +35,7 @@
             <input type="hidden" name="callID" id="callCancelID">
             <textarea name="detail" id="detail" size="200"></textarea>
             <button id="btnCallCancel" type="button" class="btn btn-insert">콜 취소</button>
-            <button class="btn btn-danger btn-close-modal" type="button">닫기</button>
+            <button type="button" class="btn btn-danger btn-close-modal">닫기</button>
         </form>
     </div>
 </div>
@@ -55,9 +55,25 @@
             <textarea id="punkDetail" name="detail" size="200">무단잠수</textarea>
             <input class="btn btn-insert" type="submit" value="펑크">
         </form>
-        <input id="closeAssignCancelModal" class="btn btn-danger btn-close-modal" type="button" value="닫기">
+        <button type="button" class="btn btn-danger btn-close-modal">닫기</button>
     </div>
 </div>
+
+<!-- Join Cancel Modal -->
+<div id="modalGetMoney" class="modal">
+    <div class="modal-content">
+        <form action="" method="post" id="formGetMoney">
+            <input type="hidden" name="table"   id="inputGetMoneyTable">
+            <input type="hidden" name="value"   id="inputGetMoneyValue">
+            <input type="hidden" name="id"      id="inputGetMoneyID">
+            <label for="inputGetMoneyReceiver">수금자</label>
+            <textarea name="receiver" id="inputGetMoneyReceiver"></textarea>
+            <button type="button" class="btn btn-default" id="btnGetMoney" >수금</button>
+            <button type="button" class="btn btn-danger btn-close-modal">닫기</button>
+        </form>
+    </div>
+</div>
+
 <!-- Fix Cancel Modal -->
 <div id="modalFixCancel" class="modal">
     <div class="modal-content">
@@ -68,7 +84,7 @@
             <input type="date" name="date">
             <textarea name="detail" id="detail" size="200"></textarea>
             <input id="fixCancelBtn" class="btn btn-insert" type="submit" value="콜 취소">
-            <input id="closeFixCancelModal" class="btn btn-danger btn-close-modal" type="button" value="닫기">
+            <button type="button" class="btn btn-danger btn-close-modal">닫기</button>
         </form>
     </div>
 </div>
@@ -80,7 +96,7 @@
             <input id="updateID" type="hidden" name="joinID">
             <input type="number" id="updatePrice" name="price">
             <textarea id="updateDetail" name="detail"></textarea>
-            <input class="btn btn-default btn-close-modal" type="button" value="취소">
+            <button type="button" class="btn btn-danger btn-close-modal">취소</button>
             <input class="btn btn-insert" type="submit" value="수정">
         </form>
     </div>
@@ -91,7 +107,7 @@
         <form>
             <input id="pay-info" type="text" value="국민은행 477002-04-040107" disabled="disabled">
             <input id="copyBtn" class="btn btn-insert" type="submit" value="복사하기">
-            <input class="btn btn-danger btn-close-modal" type="button" value="닫기">
+            <button type="button" class="btn btn-danger btn-close-modal">닫기</button>
         </form>
     </div>
 </div>

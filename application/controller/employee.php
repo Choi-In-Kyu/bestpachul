@@ -27,12 +27,12 @@
       $this->employeeData = $this->getActCondition($this->employeeData, 'employee')[0];
       $this->dayList = $this->model->getTable("SELECT * FROM employee_available_day WHERE employeeID = '{$this->employeeID}'");
       $this->joinList = $this->model->getTable("SELECT * FROM join_employee WHERE employeeID = '{$this->employeeID}' order by endDate DESC");
-      $this->callList = $this->get_callList();
+      $this->callList = $this->getCallTable();
       $this->punkList = $this->model->getTable(
         "SELECT callID, punk.employeeID, companyID, workDate, startTime, endTime, workField, salary, call.detail as detail, punk.detail as punkDetail
          FROM  `punk` LEFT JOIN `call` USING (callID) WHERE punk.employeeID = '{$this->employeeID}'");
       $this->employeeList = $this->model->getTable("SELECT * FROM `employee` WHERE activated = 1");
-      $this->blackList = $this->get_blackList();
+      $this->blackList = $this->getBlackList();
     }
     
     function getDay($day, $type)

@@ -11,48 +11,40 @@
       header("Content-type:text/html;charset=utf8");
       switch ($_POST['action']) {
         case 'insert' :
-          //업체명 중복 배제
-          $_POST['company-companyName'] = $this->removeDuplicate($_POST,'company','companyName');
-          $_POST['user-userName'] = $_POST['company-companyName'];
-          $_POST['user-userPW'] = $_POST['ceo-ceoPhoneNumber'];
-          //ceo 이름 처리
-          $ceoName = $_POST['ceo-ceoName'];
-          $ceoNameList = $this->getColumnList($this->getTable("SELECT * FROM ceo"), 'ceoName');
-          //기존 ceo 이름 입력 시
-          if (in_array($ceoName, $ceoNameList)) {
-            $_POST['company-ceoID'] = $this->getTable("SELECT `ceoID` FROM ceo WHERE `ceoName`= '{$ceoName}' LIMIT 1")[0]['ceoID'];
-            $_POST['ceo-ceoName'] = null;
-            $_POST['ceo-ceoPhoneNumber'] = null;
-            //ceo 입력
-            $this->getQuery($_POST, 'ceo');
-            $this->getQuery($_POST, 'company');
+          alert("POST : <br>".json_encode($_POST));
+          $_POST['userName'] = $_POST['companyName'];
+          $_POST['userPW'] = $_POST['ceoPhoneNumber'];
+          if(!isset($_POST['ceoID'])){//새로운 사장 입력 시
+            $this->insert('insert','ceo',$_POST);
+            $_POST['ceoID'] = $this->getLastID('ceo');
+            alert('new ceoID : '.$_POST['ceoID']);
           }
-          //새로운 ceo 이름 입력 시
-          else{
-            //ceo 입력
-            $this->getQuery($_POST, 'ceo');
-            //company 입력
-            $_POST['company-ceoID'] = $this->db->lastInsertId();
-            $this->getQuery($_POST, 'company');
+          $this->insert('insert','company', $_POST);
+          $_POST['companyID'] = $this->getLastID('company');
+          $this->insert('insert','join_company',$_POST);
+          $this->insert('insert','user',$_POST);
+          foreach ($this->select('address') as $value){//존재하는 간단주소의 목록
+            foreach ($value as $item){
+              $addressTable[] = $item;
+            }
           }
-          //join_company, user 입력
-          $_POST['join_company-companyID'] = $this->db->lastInsertId();
-          $_POST['user-companyID'] = $this->db->lastInsertId();
-          $this->getQuery($_POST, 'join_company');
-          $this->getQuery($_POST, 'user');
-          $msg="입력되었습니다";
+          if(!in_array($_POST['address'],$addressTable)){//새로운 간단주소 입력
+            $this->insert('insert','address',$_POST);
+          }
+          $msg = "insert!";
+//          unset($_POST);
           break;
         case 'update' :
-          if($_POST['company-companyID'] != $this->getTable("SELECT companyID from company WHERE companyName = '{$_POST['company-companyName']}' LIMIT 1")[0]['companyID']){
-            $_POST['company-companyName'] = $this->removeDuplicate($_POST,'company','companyName');
-          }
-          $this->getQuery($_POST, 'ceo');
-          $this->getQuery($_POST, 'company');
+          alert("POST : <br>".json_encode($_POST));
+          $this->insert('update', 'company', $_POST);
+          $this->insert('update', 'ceo', $_POST);
+          unset($_POST);
           break;
         case 'new_insert':
-          $this->getQuery($_POST, 'join_company', 'company');
+          $_POST['companyID'] = $this->param->idx;
+          $this->insert('addJoin', 'join_company', $_POST);
           unset($_POST);
-          $msg="추가되었습니다";
+          $msg = "추가되었습니다";
           break;
         case 'join_update':
           $joinID = $_POST['joinID'];

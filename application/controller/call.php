@@ -16,7 +16,7 @@
     function basic()
     {
       $this->companyID = $this->model->select('user', "userID = $this->userID", 'companyID');
-      $this->callList = $this->get_callList();
+      $this->callList = $this->getCallTable();
       $this->fixList = $this->model->getTable("SELECT * FROM `fix`");
       $this->employeeList = $this->model->getTable("SELECT * FROM `employee` WHERE activated = 1");
     }

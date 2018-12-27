@@ -15,6 +15,9 @@ minute.on('change', function () {
 startHour.on('change', function () {
     limitTime(false);
 });
+endHour.on('change',function () {
+    initiate(endHour.val() - startHour.val());
+});
 $('#1day').click(function () {
     date.val(tomorrow);
     date.trigger('change');
@@ -107,7 +110,7 @@ function change(type) {
         type: "POST",
         method: "POST",
         url: ajaxURL,
-        data: {action: 'getCallList', companyID: companyID, year: year, month: month, type: type},
+        data: {action: 'fetchCallTable', companyID: companyID, year: year, month: month, type: type},
         dataType: "text",
         success: function (data) {
             let body = JSON.parse(data).body;

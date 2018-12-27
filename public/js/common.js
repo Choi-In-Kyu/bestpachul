@@ -1,6 +1,7 @@
-let mainUrl = "http://bestpachul.com/";
-let pageType = window.location.href.replace(mainUrl, '').split('/')[0];
-let pageAction = window.location.href.replace(mainUrl, '').split('/')[1];
+let mainUrl     = "http://bestpachul.com/";
+let pageType    = window.location.href.replace(mainUrl, '').split('/')[0];
+let pageAction  = window.location.href.replace(mainUrl, '').split('/')[1];
+let pageID      = window.location.href.replace(mainUrl, '').split('/')[2];
 
 //메인 페이지 정렬, 필터링
 $('.filter').on('click', function () {
@@ -96,38 +97,37 @@ $('.selectable').on('click', function () {
     $(this).addClass('selected');
     $(this).removeClass('selectable');
 });
-//수금 버튼
-$('.getMoneyBtn_call').on('click', function () {
-    event.stopPropagation();
-    let thisBtn = $(this);
-    getMoney('call', thisBtn);
+$(document).on('click','.btn-money',function () {
+    let table = $(this).val().split('-')[0];
+    let price = $(this).val().split('-')[1];
+    let id = $(this).attr('id');
+    $('#modalGetMoney').show();
+    $('#inputGetMoneyTable').val(table);
+    $('#inputGetMoneyValue').val(price);
+    $('#inputGetMoneyID').val(id);
 });
-$('.getMoneyBtn_join_employee').on('click', function () {
-    event.stopPropagation();
-    let thisBtn = $(this);
-    getMoney('join_employee', thisBtn);
-});
-$('.getMoneyBtn_fix').on('click', function () {
-    event.stopPropagation();
-    let thisBtn = $(this);
-    getMoney('fix', thisBtn);
-});
-
-function getMoney(tableName, thisBtn) {
+$('#btnGetMoney').on('click',function () {
+    let table       = $('#inputGetMoneyTable').val();
+    let value       = $('#inputGetMoneyValue').val();
+    let id          = $('#inputGetMoneyID').val();
+    let receiver    = $('textarea#inputGetMoneyReceiver').val();
+    let btn         = $(document).find('.btn-money#'+id+'');
+    let td          = $('.btn-money#'+id).closest('td');
     $.ajax({
         type: "POST",
         method: "POST",
         url: ajaxURL,
-        data: {action: 'getMoney', id: thisBtn.attr('id'), tableName: tableName},
+        data: {action: 'getMoney',table:table, id: id, value:value, receiver:receiver},
         dataType: "text",
         success: function (data) {
-            thisBtn.closest('td').html('수금완료');
+            btn.hide();
+            td.html('수금완료('+receiver+')');
+            $('.modal').hide();
         }
     });
-}
-
+});
 // 모달 내에서 작동하는 함수
-$(document).on('click', '.btn-call-cancel-modal', function () {
+$(document).on('click','.btn-call-cancel-modal', function () {
     event.stopPropagation();
     $('#modalCallCancel').show();
     $('input[name=callID]').val(this.id);
@@ -214,6 +214,17 @@ $('.btn-restore').on('click', function () {
             btn.html('복구됨');
         }
     });
+});
+$('#btnGetMoney').on('click',function () {
+   console.log('test');
+});
+$(document).on('click','.btn-money',function () {
+    event.stopPropagation();
+    let table = $(this).val().split('-')[0];
+    let value = $(this).val().split('-')[1];
+    $('#modalGetMoney').show();
+    $('#inputGetMoneyTable').val(table);
+    $('#inputGetMoneyValue').val(value);
 });
 $(document).on('click', '.assignCancelBtn', function () {
     event.stopPropagation();

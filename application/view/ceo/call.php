@@ -65,6 +65,10 @@
                 </div>
             </div>
         </div>
+        
+        <div class="box">
+            <div class="title" id="salaryInfo"></div>
+        </div>
 
         <div class="box">
             <div class="title">업종</div>

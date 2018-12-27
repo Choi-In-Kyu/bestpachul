@@ -210,7 +210,7 @@ function getSalary(time, holiday) {
             }
         }
     }
-    salary.html("근무시간: " + time + " 시간 / 일당: " + money + " 원");
+    salary.html("근무시간: " + time + " 시간 / 일당: " + number_format(parseInt(money)) + " 원");
     $('#salary').val(money);
 }
 

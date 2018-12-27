@@ -1,6 +1,6 @@
 <div class="board_write auto-center">
     <h1>근무 가능일 / 근무 불가능일</h1>
-    <div class="form-style-1">
+    <div class="form-default">
         <form id="employee_form" action="" method="post">
             <fieldset>
                 <input type="hidden" name="action" value="insert_day">
@@ -39,6 +39,7 @@
     </div>
 
     <div class="al_c">
+      <?php $table = 'employee_available_date' ?>
       <?php require_once _VIEW . '/common/datepicker.php' ?>
         <div class="inline  call" style="width: 50%;">
             <table style="width:84%; display: inline">
@@ -53,15 +54,15 @@
                 <tr>
                     <th>#</th>
                     <th>인력명</th>
-                    <th>근무가능일</th>
+                    <th>근무가능일1111111</th>
                     <th>근무불가능일</th>
                     <th>비고</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php foreach ($this->employee_available_date_List as $key => $data): ?>
-                    <tr>
-                        <td class="al_c"><?php echo $data['employeeID'] ?></td>
+                    <tr class="availableRow" id="<?php echo $data['availableDateID'] ?>">
+                        <td class="al_c"><?php echo $data['availableDateID'] ?></td>
                       <?php $employeeName = $this->model->select('employee', "employeeID = $data[employeeID]", 'employeeName'); ?>
                         <td class="al_c"><?php echo $employeeName ?></td>
                         <td class="al_c"><?php echo $data['availableDate'] ?></td>

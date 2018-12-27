@@ -36,7 +36,6 @@
             <?php
             $employeeName = $this->model->select('employee', "employeeID = '{$data['employeeID']}'", 'employeeName');
             $companyName = $this->model->select('company', "companyID = '{$data['companyID']}'", 'companyName');
-            
             ?>
               <tr class="selectable callRow <?php if ($data['cancelled'] == 1) echo 'cancelled' ?>"
                   id="<?php echo $data['callID'] ?>">
@@ -54,7 +53,7 @@
                   <td class="al_c"> <?php echo $data['workField'] ?></td>
                   <td class="al_c"> <?php echo number_format($data['salary']) ?></td>
                   <td class="al_c"><?php $this->get_callDetail($data) ?></td>
-                  <td class="al_c" style="padding:0"><?php echo $this->get_paidBtn($data, 'call', 'price'); ?></td>
+                  <td class="al_c" style="padding:0"><?php echo $this->getPayBtn($data, 'call', 'price'); ?></td>
                   <td class="al_c assignedEmployee">
                     <?php switch ($type): case 'call': ?>
                       <?php if ($data['employeeID'] > 0): ?>

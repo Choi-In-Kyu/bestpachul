@@ -35,6 +35,7 @@
 
 .login-form label{
     font-size: 2.0rem;
+    display: block;
 }
 
 .login-form input{

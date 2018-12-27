@@ -1,14 +1,15 @@
 <div class="board_write auto-center">
     <h1>
       <?php
-        if (isset ($this->employeeData)) echo "인력정보 - " . $this->employeeData['employeeName'] . "(" . $this->employeeData['actCondition'] . ")";
-        else echo "인력 정보";
+        echo "인력 정보";
+        if (isset ($this->employeeData)) echo " - " . $this->employeeData['employeeName'] . "(" . $this->employeeData['actCondition'] . ")";
       ?>
     </h1>
-    <div class="form-style-1">
-        <form id="employee_form" action="" method="post">
+    <div class="form-default">
+        <form id="formInsertEmployee" action="" method="post">
             <fieldset>
-                <input type="hidden" name="action" value="<?php echo ($this->param->action=='write') ? 'insert':'update' ?>">
+                <input type="hidden" name="action"
+                       value="<?php echo ($this->param->action == 'write') ? 'insert' : 'update' ?>">
                 <input type="hidden" name="employee-employeeID" value="<?php echo $this->employeeData['employeeID'] ?>">
                 <div class="table">
                     <div class="tr">
@@ -34,6 +35,7 @@
                                    value="<?php echo $this->employeeData['birthDate']; ?>">
                         </div>
                     </div>
+                    <div class="duplicate" id="employeeNameDuplicate">이름을 입력 해 주세요</div>
                     <div class="tr">
                         <div class="td-label">업종1</div>
                         <div class="td">
@@ -47,7 +49,8 @@
                         </div>
                         <div class="td-label">업종2</div>
                         <div class="td">
-                            <input type="text" list="workFieldList" name="employee-workField2" size="20" value="<?php echo $this->employeeData['workField2']; ?>">
+                            <input type="text" list="workFieldList" name="employee-workField2" size="20"
+                                   value="<?php echo $this->employeeData['workField2']; ?>">
                             <datalist id="workFieldList" class="input-field">
                               <?php foreach ($this->workField_List as $key => $data): ?>
                                   <option value="<?php echo $data['workField'] ?>"></option>
@@ -127,37 +130,36 @@
                                       name="employee-deleteDetail"><?php echo $this->employeeData['deleteDetail']; ?></textarea>
                           </div>
                       <?php endif; ?>
-                        <?php require_once 'employeeAvailableDayTable.php'?>
+                      <?php require_once 'employeeAvailableDayTable.php' ?>
                     </div>
                   <?php if (($this->param->action == 'view') && (sizeof($this->blackList) > 0)): ?>
                       <div class="tr">
                           <div class="td-label">블랙</div>
                           <div class="td-detail">
-                            <?php foreach ($this->blackList as $data){
-                              $type = ($data['ceoReg']==1) ? '오지마세요' : '안가요';
-                              echo $this->companyName($data['companyID'])." ".$type." : ".$data['detail'].'<br>';
+                            <?php foreach ($this->blackList as $data) {
+                              $type = ($data['ceoReg'] == 1) ? '오지마세요' : '안가요';
+                              echo $this->companyName($data['companyID']) . " " . $type . " : " . $data['detail'] . '<br>';
                             }
                             ?>
                           </div>
                       </div>
                   <?php endif; ?>
-                  <?php $availableDateArray = $this->model->getTable("SELECT * FROM `employee_available_date` WHERE `employeeID` = '{$this->employeeData['employeeID']}'");?>
+                  <?php $availableDateArray = $this->model->getTable("SELECT * FROM `employee_available_date` WHERE `employeeID` = '{$this->employeeData['employeeID']}'"); ?>
                   <?php if (($this->param->action == 'view') && (sizeof($availableDateArray) > 0)): ?>
-                    <div class="tr">
-                        <div class="td-label">되는날 / 안되는날</div>
-                        <div class="td-detail">
-                          <?php foreach ($availableDateArray as $value){
-                              if($value['availableDate']>0){
-                                  echo "{$value['availableDate']} 갈래요 ({$value['detail']}) <br/>";
+                      <div class="tr">
+                          <div class="td-label">되는날 / 안되는날</div>
+                          <div class="td-detail">
+                            <?php foreach ($availableDateArray as $value) {
+                              if ($value['availableDate'] > 0) {
+                                echo "{$value['availableDate']} 갈래요 ({$value['detail']}) <br/>";
+                              } else {
+                                echo "{$value['notAvailableDate']} 못가요 ({$value['detail']}) <br/>";
                               }
-                              else{
-                                  echo "{$value['notAvailableDate']} 못가요 ({$value['detail']}) <br/>";
-                              }
-                          }
-                          ?>
-                        </div>
-                    </div>
-                    <?php endif;?>
+                            }
+                            ?>
+                          </div>
+                      </div>
+                  <?php endif; ?>
                 </div>
               
               <?php if (!isset($this->param->idx)) : ?>
@@ -170,7 +172,9 @@
                           <td>가입만기일</td>
                           <td><input type="date" id="endDate" name="join_employee-endDate" required></td>
                           <td>
-                              <button type="button" class="btn btn-insert" onclick="auto_insert_employee_join()">자동 입력
+                              <button type="button" class="btn btn-insert" onclick="auto_insert_employee_join('today')">
+                                  오늘부터
+                              </button>
                           </td>
                       </tr>
                       <tr>
@@ -186,28 +190,64 @@
               <?php endif; ?>
                 <div class="btn_group">
                     <a class="btn btn-default" href="<?php echo $this->param->get_page ?>">취소</a>
-                    <button class="btn btn-submit" type="submit"><?php echo ($this->param->action=='write') ? '추가':'수정' ?></button>
+                    <button class="btn btn-submit"
+                            type="submit"><?php echo ($this->param->action == 'write') ? '추가' : '수정' ?></button>
                 </div>
             </fieldset>
         </form>
     </div>
 </div>
 <script>
+    check_duplicate_employee();
+
+    function check_duplicate_employee() {
+        let form = $('#formInsertEmployee input[name=employee-employeeName]');
+        if (form.val() === null) {
+            $('#employeeNameDuplicate').html('이름을 입력 해 주세요');
+        }
+        else {
+            form.on('input', function () {
+                let employeeName = $(this).val();
+                $.ajax({
+                    type: "POST",
+                    method: "POST",
+                    url: ajaxURL,
+                    data: {action: 'checkDuplicate', table: 'employee', name: employeeName},
+                    dataType: "text",
+                    success: function (data) {
+                        let list = JSON.parse(data);
+                        $('#employeeNameDuplicate').html(list);
+                        console.log(data);
+                        console.log(list);
+                    }
+                });
+            });
+        }
+    }
+    
     $('.day').on('change', function () {
         let day = $(this).attr('class').split(' ')[2];
         let ab = $(this).attr('class').split(' ')[1];
         if (this.checked) {
             if (ab === 'bn') {
                 $('.ad' + '.' + day).prop('checked', false);
-                if ($('.an' + '.' + day).is(":checked")) {$("input[name=employee_available_day-" + day + "]").val("반반");}
-                else {$("input[name=employee_available_day-" + day + "]").val("오전");}
+                if ($('.an' + '.' + day).is(":checked")) {
+                    $("input[name=employee_available_day-" + day + "]").val("반반");
+                }
+                else {
+                    $("input[name=employee_available_day-" + day + "]").val("오전");
+                }
             }
             if (ab === 'an') {
                 $('.ad' + '.' + day).prop('checked', false);
-                if ($('.bn' + '.' + day).is(":checked")) {$("input[name=employee_available_day-" + day + "]").val("반반");}
-                else {$("input[name=employee_available_day-" + day + "]").val("오후");}
+                if ($('.bn' + '.' + day).is(":checked")) {
+                    $("input[name=employee_available_day-" + day + "]").val("반반");
+                }
+                else {
+                    $("input[name=employee_available_day-" + day + "]").val("오후");
+                }
             }
-            if(ab === 'ad'){
+            if (ab === 'ad') {
                 $('.' + day).prop('checked', false);
                 $(this).prop('checked', true);
                 $("input[name=employee_available_day-" + day + "]").val("종일");
@@ -215,14 +255,22 @@
         }
         else {
             if (ab === 'bn') {
-                if ($('.an' + '.' + day).is(":checked")) {$("input[name=employee_available_day-" + day + "]").val("오후");}
-                else {$("input[name=employee_available_day-" + day + "]").val('null');}
+                if ($('.an' + '.' + day).is(":checked")) {
+                    $("input[name=employee_available_day-" + day + "]").val("오후");
+                }
+                else {
+                    $("input[name=employee_available_day-" + day + "]").val('null');
+                }
             }
             if (ab === 'an') {
-                if ($('.bn' + '.' + day).is(":checked")) {$("input[name=employee_available_day-" + day + "]").val("오전");}
-                else {$("input[name=employee_available_day-" + day + "]").val('null');}
+                if ($('.bn' + '.' + day).is(":checked")) {
+                    $("input[name=employee_available_day-" + day + "]").val("오전");
+                }
+                else {
+                    $("input[name=employee_available_day-" + day + "]").val('null');
+                }
             }
-            if(ab === 'ad'){
+            if (ab === 'ad') {
                 $(this).prop('checked', false);
                 $("input[name=employee_available_day-" + day + "]").val("null");
             }

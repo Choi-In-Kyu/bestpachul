@@ -73,7 +73,7 @@
                 </div>
             </div>
         </div>
-      <?php if (in_array($this->param->page_type, ['company', 'employee'])) require_once 'filter.php' ?>
+      <?php if (in_array($this->param->page_type, ['company', 'employee']) && !isset($this->param->action)) require_once 'filter.php' ?>
     </div>
     </body>
 <?php endif; ?>

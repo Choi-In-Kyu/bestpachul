@@ -16,19 +16,18 @@
     }
     return $str;
   }
-
 ?>
 
 <div class="inline" style="width: 64%;">
     <table id="fixTable" width="100%">
         <colgroup>
-          <?php foreach (['구분', '근무시작일', '근무종료일', '요일', '업체', '인력', '업종', '시작시간', '끝시간', '비고', '월급', '수수료'] as $value): ?>
+          <?php foreach (['구분', '근무시작일', '근무종료일', '요일', '업체', '인력', '업종', '시작시간', '끝시간', '비고', '월급', '수수료', '취소'] as $value): ?>
               <col width="auto">
           <?php endforeach; ?>
         </colgroup>
         <thead>
         <tr>
-          <?php foreach (['구분', '근무시작일', '근무종료일', '요일', '업체', '인력', '업종', '시작시간', '끝시간', '비고', '월급', '수수료'] as $value): ?>
+          <?php foreach (['구분', '근무시작일', '근무종료일', '요일', '업체', '인력', '업종', '시작시간', '끝시간', '비고', '월급', '수수료', '취소'] as $value): ?>
               <th class="link"><?php echo $value ?></th>
           <?php endforeach; ?>
         </tr>
@@ -60,7 +59,7 @@
                 <td class="al_l"><?php echo $data['endTime'] ?></td>
                 <td class="al_l"><?php echo $data['detail'] ?></td>
                 <td class="al_l"><?php echo number_format($data['monthlySalary']) ?></td>
-                <td class="al_c"><?php echo $this->get_paidBtn($data, 'fix', 'commission'); ?></td>
+                <td class="al_c"><?php echo $this->getPayBtn($data, 'fix', 'commission'); ?></td>
                 <td class="al_c">
                   <?php if ($data['cancelled'] == 0): ?>
                       <button type="button" class="fixCancelBtn btn btn-small btn-danger"

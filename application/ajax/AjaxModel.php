@@ -89,16 +89,21 @@
       else return $this->getTable($sql);
     }
     
-    public function insert($table, $post)
-    {
-      $columns = array();
-      $values = array();
-      $columnTable = $this->getTable("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'{$table}'");
+    public function getAllColumns($tableName){
+      $columnTable = $this->getTable("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'{$tableName}'");
       foreach ($columnTable as $value) {
         foreach ($value as $item) {
           $columnList[] = $item;
         }
       }
+      return $columnList;
+    }
+    
+    public function insert($table, $post)
+    {
+      $columns = array();
+      $values = array();
+      $columnList = $this->getAllColumns($table);
       foreach ($post as $key => $value) {
         if (!in_array($key, $columnList)) {
           unset($post[$key]);
@@ -298,9 +303,10 @@
     
     public function getMoney($post)
     {
-      $tbl = $post['tableName'];
+      $table = $post['table'];
       $id = $post['id'];
-      $sql = "UPDATE `{$tbl}` SET `paid` = '1' WHERE `{$tbl}ID` = '{$id}'";
+      $receiver = $post['receiver'];
+      $sql = "UPDATE `{$table}` SET `paid` = '1', `receiver` = '{$receiver}' WHERE `{$table}ID` = '{$id}'";
       $this->executeSQL($sql);
     }
     
@@ -324,10 +330,36 @@
       if (isset($condition)) {
         $sql .= " WHERE ";
       }
-      
       $sql .= implode(' AND ', $condition);
-
-//      return $sql;
+      foreach ($this->getTable($sql) as $value) {
+        foreach ($value as $item) {
+          $arr[] = intval($item);
+        }
+      }
+      $arr[] = $sql;
+      return json_encode($arr);
+    }
+    
+    public function availableFilter($post)
+    {
+      $sql = "SELECT `availableDateID` FROM `employee_available_date`";
+      if (isset($post['duration'])) {
+        $post['date'] = null;
+        $condition[] = "(" . implode(' OR ', $post['duration']) . ")";
+      }
+      if (isset($post['date']) && $post['date'] != '') {
+        $condition = null;
+        $condition[] = " (`availableDate` = '{$post['date']}') OR (`notAvailableDate` = '{$post['date']}')";
+      }
+      if (isset($condition)) {
+        $sql .= " WHERE ";
+      }
+      $sql .= implode(' AND ', $condition);
+      foreach ($this->getTable($sql) as $value) {
+        foreach ($value as $item) {
+          $arr[] = intval($item);
+        }
+      }
       foreach ($this->getTable($sql) as $value) {
         foreach ($value as $item) {
           $arr[] = intval($item);
@@ -463,8 +495,9 @@ HTML;
 HTML;
         foreach (${'group' . $i} as $key => $value) {
           $employeeData = $this->getTable("SELECT * FROM `employee` WHERE `employeeID` = '{$key}'")[0];
+          $class = $this->getClass($employeeData);
           $return .= <<<HTML
-<tr>
+<tr class="{$class}">
 <td class="al_l">{$key}</td>
 <td class="al_l">{$employeeData['employeeName']}</td>
 <td class="al_l">{$employeeData['address']}</td>
@@ -475,6 +508,25 @@ HTML;
         }
       }
       return $return;
+    }
+    
+    public function getClass($data)
+    {
+      if ($data['deleted'] == 0) {
+        if ($data['activated'] == 1) {
+          if ($data['imminent'] == 1 OR $data['bookmark'] == 1) {
+            return 'imminent';
+          } else {
+            return null;
+          }
+        } else {
+          if ($data['bookmark'] == 1) {
+            return 'imminent';
+          } else {
+            return 'deactivated';
+          }
+        }
+      } else return 'deleted';
     }
     
     public function assign($post)
@@ -527,41 +579,38 @@ HTML;
       return $result;
     }
     
-    public function getCallList($post)
+    public function fetchCallTable($post)
     {
       $companyID = $post['companyID'];
-      $year = (isset($post['year']) && $post['year']!='') ? $post['year'] : date('Y');
-      $month = (isset ($post['month']) && $post['month']!='') ? $post['month'] : date('n');
+      $year = (isset($post['year']) && $post['year'] != '') ? $post['year'] : date('Y');
+      $month = (isset ($post['month']) && $post['month'] != '') ? $post['month'] : date('n');
       $sql = "SELECT * FROM `call` WHERE `companyID` = {$companyID} AND YEAR(workDate) = {$year} AND MONTH(workDate) = {$month}";
-      
-      if($post['type']=='paid'){
+      if ($post['type'] == 'paid') {
         $sql .= " AND `price` > 0";
       }
-  
-      $priceTable = $this->getTable($sql." AND `cancelled` = 0");
+      $priceTable = $this->getTable($sql . " AND `cancelled` = 0");
       $total = 0;
-      foreach ($priceTable as $key => $value){
+      foreach ($priceTable as $key => $value) {
         $total += $value['price'];
       }
-      
-      $sql.=" ORDER BY `workDate` ASC ";
+      $sql .= " ORDER BY `workDate` ASC ";
       $table = $this->getTable($sql);
-      
-      
-      
       $result = "";
       foreach ($table as $key => $value) {
         $dayofweek = ['일', '월', '화', '수', '목', '금', '토'];
-        $date = date('m/d', strtotime($value['workDate']))."(".$dayofweek[date('w',strtotime($value['workDate']))].")";
-        $employeeName = $this->select('employee',"`employeeID`='{$value['employeeID']}'",'employeeName');
+        $date = date('m/d', strtotime($value['workDate'])) . "(" . $dayofweek[date('w', strtotime($value['workDate']))] . ")";
+        $employeeName = $this->select('employee', "`employeeID`='{$value['employeeID']}'", 'employeeName');
         $start = date('H:i', strtotime($value['startTime']));
         $end = date('H:i', strtotime($value['endTime']));
         $cancel = ($value['cancelled'] == 1) ? '(취소됨)' : null;
-        $class =($value['cancelled'] == 1) ? 'cancelled' : null;
-        $price = ($value['price']>0) ? number_format($value['price']) : '-';
+        $class = ($value['cancelled'] == 1) ? 'cancelled' : null;
+        $price = ($value['price'] > 0) ? number_format($value['price']) : '-';
         $employee = ($value['employeeID'] > 0) ? $employeeName : null;
-        if ($value['cancelled'] == 1 || ($value['employeeID']>0)) {$btn = null;}
-        else{$btn = "<button type=\"button\" id=\"{$value['callID']}\" class=\"btn btn-call-cancel-modal\">취소</button>";}
+        if ($value['cancelled'] == 1 || ($value['employeeID'] > 0)) {
+          $btn = null;
+        } else {
+          $btn = "<button type=\"button\" id=\"{$value['callID']}\" class=\"btn btn-call-cancel-modal\">취소</button>";
+        }
         $result .= <<<HTML
 <tr class="tr-call {$class}" id="{$value['callID']}">
                 <td class="workDate">{$date} </td>
@@ -572,10 +621,11 @@ HTML;
             </tr>
 HTML;
       }
-     return [$result,$total];
+      return [$result, $total];
     }
     
-    public function callCancel($post){
+    public function callCancel($post)
+    {
       $callData = $this->select('call', "callID = $post[callID]")[0];
       $point = $callData['point'];
       $companyID = $callData['companyID'];
@@ -583,7 +633,7 @@ HTML;
         $this->executeSQL("UPDATE join_company SET point = point+'{$point}' WHERE companyID = '{$companyID}' LIMIT 1");
         $this->executeSQL("UPDATE `call` SET `employeeID` = 0, `cancelled` = 1, `cancelDetail` = '{$post['detail']}' WHERE `callID` = '{$post['callID']}' LIMIT 1");
       } else {
-        $sql ="UPDATE `call` SET `employeeID` = 0, `cancelled` = 1, `cancelDetail` = '{$post['detail']}' WHERE `callID` = '{$post['callID']}' LIMIT 1";
+        $sql = "UPDATE `call` SET `employeeID` = 0, `cancelled` = 1, `cancelDetail` = '{$post['detail']}' WHERE `callID` = '{$post['callID']}' LIMIT 1";
         $this->executeSQL($sql);
         $this->reset($post);
       }

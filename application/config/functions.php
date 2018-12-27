@@ -1,7 +1,8 @@
 <?php
   
-  Class Functions {
-    function content()
+  Class Functions
+  {
+    public function content()
     {
       $dir = _VIEW . "{$this->param->page_type}/{$this->param->include_file}.php";
       if (file_exists($dir)) require_once($dir);
@@ -12,8 +13,9 @@
       echo "<script src='/public/js/ceo.js'></script>";
     }
     
-    function initJoin($tableName)
+    public function initJoin($tableName)
     {
+      //초기화 테스트
       $todayTime = strtotime(date("Y-m-d"));
       switch ($tableName) {
         case 'company':
@@ -31,43 +33,63 @@
         $targetTime = strtotime($value['endDate'] . " -{$days} days");
         //imminent (만기임박)
         if (($targetTime <= $todayTime && $todayTime < $endTime) || ($tableName == 'employee' && $value['paid'] == 0)) {
-          $this->model->executeSQL("UPDATE join_{$tableName} SET imminent = 1 WHERE join_{$tableName}ID = {$joinID} LIMIT 1");
+          $this->model->executeSQL("UPDATE join_{$tableName} SET `imminent` = '1' WHERE join_{$tableName}ID = {$joinID} LIMIT 1");
         } //가입 자동 만기시킴
-        else{
+        else {
           if ($todayTime >= $endTime) {
-            $this->model->executeSQL("UPDATE join_{$tableName} SET activated = 0 WHERE join_{$tableName}ID = {$joinID} LIMIT 1");
-          }
-          else{
-            $this->model->executeSQL("UPDATE join_{$tableName} SET imminent = 0 WHERE join_{$tableName}ID = {$joinID} LIMIT 1");
+            $this->model->executeSQL("UPDATE join_{$tableName} SET `activated` = '0', `imminent` = '0' WHERE join_{$tableName}ID = {$joinID} LIMIT 1");
+          } else {
+            $this->model->executeSQL("UPDATE join_{$tableName} SET `imminent` = '0' WHERE join_{$tableName}ID = {$joinID} LIMIT 1");
           }
         }
         
       }
     }
-    function initActCondition($list, $tableName)
+    
+    //초기화 테스트
+    public function initActCondition($list, $tableName)
     {
       foreach ($list as $key => $value) {
+        $deactivated = 0;
+        $activated = 0;
+        $imminent = 0;
         $tableID = $value[$tableName . "ID"];
         $joinList = $this->model->getTable("SELECT * FROM `join_{$tableName}` WHERE {$tableName}ID = {$tableID} AND activated = 1");
         if (sizeof($joinList) > 0) {
           $this->model->executeSQL("UPDATE {$tableName} SET activated = 1 WHERE {$tableName}ID = {$tableID} LIMIT 1");
           foreach ($joinList as $key2 => $data) {
-            if (($data['imminent'] == 1) && ($data['activated'] == 1) && ($data['deleted']==0)) {
-              $this->model->executeSQL("UPDATE {$tableName} SET activated = 1, imminent = 1 WHERE {$tableName}ID = {$tableID} LIMIT 1");
+            if ($data['imminent'] == 1) {//만기임박
+              $imminent += 1;
               break;
-            }
-            else{
-              $this->model->executeSQL("UPDATE {$tableName} SET activated = 1, imminent = 0 WHERE {$tableName}ID = {$tableID} LIMIT 1");
-              break;
+            } else {
+              if ($data['activated'] == 1) {//activated
+                $activated +=1;
+              }
+              else{//deactivated
+                $deactivated +=1;
+              }
             }
           }
-        } else {
-          $this->model->executeSQL("UPDATE {$tableName} SET activated = 0, imminent = 0 WHERE {$tableName}ID = {$tableID} LIMIT 1");
+        }
+        if($imminent > 0){
+          $this->model->executeSQL("UPDATE {$tableName} SET imminent = 1 WHERE {$tableName}ID = {$tableID} LIMIT 1");
+        }
+        else{
+          if($activated > 0){//활성화
+            $this->model->executeSQL("UPDATE {$tableName} SET activated = 1, imminent = 0 WHERE {$tableName}ID = {$tableID} LIMIT 1");
+          }
+          elseif($deactivated == sizeof($joinList)){//만기됨
+            $this->model->executeSQL("UPDATE {$tableName} SET activated = 0, imminent = 0 WHERE {$tableName}ID = {$tableID} LIMIT 1");
+          }
         }
       }
+  
+     
+      
       return $list;
     }
-    function getActCondition($list, $tableName)
+    
+    public function getActCondition($list, $tableName)
     {
       $tableID = $tableName . 'ID';
       $imminentArray = $this->model->getColumnList($this->model->getList([$this->imminentCondition]), $tableID);
@@ -77,8 +99,8 @@
         $tableID = $tableName . 'ID';
         $tableID = $list[$key][$tableID];
         if (in_array($tableID, $deactivatedArray)) {
-        $actCondition = "만기됨";
-        $class = "deactivated";
+          $actCondition = "만기됨";
+          $class = "deactivated";
         } elseif (in_array($tableID, $imminentArray)) {
           $actCondition = "만기임박";
           $class = "imminent";
@@ -95,7 +117,7 @@
       return $list;
     }
     
-    function get_joinType($data)
+    public function get_joinType($data)
     {
       if (isset($data['deposit'])) {
         return "보증금+콜비";
@@ -107,7 +129,8 @@
         return "만기됨";
       }
     }
-    function get_joinPrice($data)
+    
+    public function get_joinPrice($data)
     {
       switch ($this->get_joinType($data)) {
         case '구좌':
@@ -121,63 +144,49 @@
           break;
       }
     }
-  
-    function imminent_check($table, $data){
-      
-      $tableID = $table."ID";
+    
+    public function imminent_check($table, $data)
+    {
+      $tableID = $table . "ID";
       $id = $data[$tableID];
-
-      if($data['imminent']==1){
-        
-        
-        
-        if($table == 'employee'){
-          $sql ="SELECT *FROM  `join_{$table}`WHERE `activated` = 1 AND `paid` = 1 AND `{$table}ID` = {$id} ORDER BY `endDate` ASC LIMIT 1";
+      if ($data['imminent'] == 1) {
+        if ($table == 'employee') {
+          $sql = "SELECT *FROM  `join_{$table}`WHERE `activated` = 1 AND `paid` = 1 AND `{$table}ID` = {$id} ORDER BY `endDate` ASC LIMIT 1";
           $date = $this->model->getTable($sql)[0]['endDate'];
-  
-          $paidSql ="SELECT * FROM  `join_{$table}` WHERE `paid` = 0 AND `{$table}ID` = {$id}";
+          $paidSql = "SELECT * FROM  `join_{$table}` WHERE `paid` = 0 AND `{$table}ID` = {$id}";
           $paid = sizeof($this->model->getTable($paidSql));
-          if($paid > 0){
+          if ($paid > 0) {
             return "수금 미완료 ({$paid} 건)";
+          } else {
+            return "만기임박 (D" . leftDays($date) . ")";
           }
-          else{
-            return "만기임박 (D".leftDays($date).")";
-          }
-        }
-        else{
-          $sql ="SELECT * FROM  `join_{$table}` WHERE `activated` = 1 AND `{$table}ID` = {$id} ORDER BY `endDate` ASC LIMIT 1";
+        } else {
+          $sql = "SELECT * FROM  `join_{$table}` WHERE `activated` = 1 AND `{$table}ID` = {$id} ORDER BY `endDate` ASC LIMIT 1";
           $date = $this->model->getTable($sql)[0]['endDate'];
-          return "만기임박 (D".leftDays($date).")";
+          return "만기임박 (D" . leftDays($date) . ")";
         }
-      }
-      elseif($data['activated']==0){
-        if($data['deleted']==1){
-          if(isset($data['deletedDate'])){
-            return "삭제일(".$data['deletedDate'].")";
-          }
-          else{
+      } elseif ($data['activated'] == 0) {
+        if ($data['deleted'] == 1) {
+          if (isset($data['deletedDate'])) {
+            return "삭제일(" . $data['deletedDate'] . ")";
+          } else {
             return "-";
           }
-        }
-        else{
+        } else {
           $sql = "SELECT * FROM `{$table}` LEFT JOIN `join_{$table}` on `{$table}`.`{$table}ID` = `join_{$table}`.{$table}ID WHERE `{$table}`.`{$table}ID` = {$id} ORDER BY `endDate` DESC LIMIT 1";
           $date = $this->model->getTable($sql)[0]['endDate'];
-          if(isset($date)){
-            return "만기일(".$date.")";
-          }
-          else{
+          if (isset($date)) {
+            return "만기일(" . $date . ")";
+          } else {
             return "-";
           }
         }
-      }
-      else{
+      } else {
         return "-";
       }
     }
     
-    
-    
-    function get_endDate($data, $tableName)
+    public function get_endDate($data, $tableName)
     {
       switch ($tableName) {
         case 'company':
@@ -196,49 +205,49 @@
       }
       return $string;
     }
-  
-    function get_joinDetail($data)
+    
+    public function get_joinDetail($data)
     {
-      if(isset ($data['detail']) && $data['detail']!=""){
+      if (isset ($data['detail']) && $data['detail'] != "") {
         echo $data['detail'];
-        if($data['deleted'] == 1){
-          echo "<br/>(".$data['deleteDetail'].")";
-        }
-        elseif($data['deleted'] == 0 && $data['activated'] == 0) {
+        if ($data['deleted'] == 1) {
+          echo "<br/>(" . $data['deleteDetail'] . ")";
+        } elseif ($data['deleted'] == 0 && $data['activated'] == 0) {
           echo "<br/>(가입 만기됨)";
         }
-        if(isset($data['cancelDetail']) && $data['cancelDetail']!=''){
-          echo "<br/>(".$data['cancelDetail'].")";
+        if (isset($data['cancelDetail']) && $data['cancelDetail'] != '') {
+          echo "<br/>(" . $data['cancelDetail'] . ")";
         }
-      }
-      else{
+      } else {
         if ($data['deleted'] == 1) echo "(삭제사유: " . $data['deleteDetail'] . ")";
         elseif ($data['deleted'] == 0 && $data['activated'] == 0) {
           echo "(가입 만기됨)";
         }
-        if(isset($data['cancelDetail']) && $data['cancelDetail']!=''){
-          echo "<br/>(".$data['cancelDetail'].")";
+        if (isset($data['cancelDetail']) && $data['cancelDetail'] != '') {
+          echo "<br/>(" . $data['cancelDetail'] . ")";
         }
       }
     }
-    function get_callDetail($data){
-      if(isset($data['detail']) && $data['detail']!=''){
+    
+    public function get_callDetail($data)
+    {
+      if (isset($data['detail']) && $data['detail'] != '') {
         echo $data['detail'];
-        if($data['cancelled']==1){
-          if(isset($data['cancelDetail'])){
-            echo "<br/>".$data['cancelDetail'];
+        if ($data['cancelled'] == 1) {
+          if (isset($data['cancelDetail'])) {
+            echo "<br/>" . $data['cancelDetail'];
           }
         }
-      }
-      else{
-        if($data['cancelled']==1){
-          if(isset($data['cancelDetail'])){
+      } else {
+        if ($data['cancelled'] == 1) {
+          if (isset($data['cancelDetail'])) {
             echo $data['cancelDetail'];
           }
         }
       }
     }
-    function get_join_delete_btn($data, $tableName)
+    
+    public function get_join_delete_btn($data, $tableName)
     {
       if ($data['activated'] == 1) {
         $tableID = "join_" . $tableName . "ID";
@@ -249,7 +258,8 @@ HTML;
         return $data['deletedDate'];
       }
     }
-    function get_deleteBtn($data, $tableName)
+    
+    public function get_deleteBtn($data, $tableName)
     {
       $tableID = $tableName . "ID";
       if ($data['deleted'] == 0) {
@@ -262,19 +272,19 @@ HTML;
 HTML;
       }
     }
-    function get_paidBtn($data,$table,$column)
+    
+    public function getPayBtn($data, $table, $column)
     {
-      if($data[$column]>0){
-        if($data['paid']==0){
+      if ($data[$column] > 0) {
+        if ($data['paid'] == 0) {
           return <<<HTML
-<button type="button" class="btn btn-default btn-money getMoneyBtn_{$table}" id="{$data[$table.'ID']}">{$data[$column]}</button>
+<button type="button" class="btn btn-default btn-money getMoneyBtn_{$table}" id="{$data[$table . 'ID']}" value="{$table}-{$data[$column]}">{$data[$column]}</button>
 HTML;
-        }
-        else return '수금완료';
-      }
-      else return '무료';
+        } else return '수금완료(' . $data['receiver'] . ")";
+      } else return '무료';
     }
-    function makeDetail($array)
+    
+    public function makeDetail($array)
     {
       foreach ($array as $key => $value) {
         $value .= " : ";
@@ -283,7 +293,8 @@ HTML;
       $string = implode("\n", $newArray);
       return $string;
     }
-    function get_detail($data, $tableName)
+    
+    public function get_detail($data, $tableName)
     {
       $companyDetail = array('좌탁여부', '테이블수', '그릇종류', '식기세척기', '상주직원수', '주방환경', '교통환경', '주요업무', '가입경로', '기타사항');
       $employeeDetail = array('경력', '특기', '체류비자', '월급제', '4대보험', '자차소유', '추천인', '외모', '이상여부', '지각', '빵꾸', '기타사항', '상담자');
@@ -299,7 +310,7 @@ HTML;
       }
     }
     
-    function joinColor($data, $tableName)
+    public function joinColor($data, $tableName)
     {
       $today = date('Y-m-d');
       switch ($tableName) {
@@ -317,22 +328,25 @@ HTML;
         echo "imminent";
       else echo "activated";
     }
-    function companyName($id)
+    
+    public function companyName($id)
     {
       return $this->model->select('company', "`companyID`={$id}", 'companyName');
     }
-    function employeeName($id)
+    
+    public function employeeName($id)
     {
       return $this->model->select('employee', "`employeeID`={$id}", 'employeeName');
     }
-    function callType($data)
+    
+    public function callType($data)
     {
       if (isset($data['point'])) return '포인트';
       if (isset($data['price'])) return '유료';
       else return '일반';
     }
-    
-//    function joinType($list)
+
+//    public function joinType($list)
 //    {
 //      $result = array();
 //      if (isset ($list[0])) {
@@ -350,12 +364,13 @@ HTML;
 //      else return null;
 //    }
     
-    function assignType($data)
+    public function assignType($data)
     {
-      if (isset($data['point'])&&$data['point']>0) return '(P)';
-      if (isset($data['price'])&&$data['price']>0) return '(유)';
+      if (isset($data['point']) && $data['point'] > 0) return '(P)';
+      if (isset($data['price']) && $data['price'] > 0) return '(유)';
     }
-    function timeType($data)
+    
+    public function timeType($data)
     {
       $start = $data['startTime'];
       $end = $data['endTime'];
@@ -364,9 +379,10 @@ HTML;
       else {
         if ($start < 12) $result = '오전'; else $result = '오후';
       }
-      return $result ."<br>".date('H:i', strtotime($data['startTime'])) . "~" . date('H:i', strtotime($data['endTime']));
+      return $result . "<br>" . date('H:i', strtotime($data['startTime'])) . "~" . date('H:i', strtotime($data['endTime']));
     }
-    function getTime($i)
+    
+    public function getTime($i)
     {
       if ($i < 12) {
         $time = '오전 ' . $i . '시';

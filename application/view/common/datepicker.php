@@ -3,6 +3,10 @@
     <form action="" id="toggleForm" method="post">
         <input type="hidden" name="action" id="formAction">
         <input type="hidden" name="date" id="toggleDate">
+      <?php if ($this->param->action == 'available_date'): ?>
+          <input type="hidden" name="table" id="" value="employee_available_date">
+      <?php endif; ?>
+
         <table>
             <!--기간에 따른 필터링-->
             <tr>
@@ -16,66 +20,76 @@
                         이번달
                     </label>
                     <label class="form-switch month">
-                        <input id="form-input-month" type="checkbox" name="duration[]" value="<?php echo $this->thisMonthCondition ?>"><i></i>
+                        <input id="form-input-month" type="checkbox" name="duration[]"
+                               value="<?php echo $this->thisMonthCondition ?>"><i></i>
                     </label>
                 </td>
                 <td>
                     <label class="form-switch ">
-                        이번주<br><input type="checkbox" name="duration[]" value="<?php echo $this->thisWeekCondition ?>"><i></i>
+                        이번주<br><input type="checkbox" name="duration[]"
+                                      value="<?php echo $this->thisWeekCondition ?>"><i></i>
                     </label>
                 </td>
             </tr>
-            <!--콜 유형에 따른 필터링-->
-            <tr>
-                <td>
-                    <label class="form-switch all">
-                        전체<br><input type="checkbox"><i></i>
-                    </label>
-                </td>
-                <td>
-                    <label class="form-switch">
-                        유료<br><input type="checkbox" name="charged[]" value="<?php echo $this->chargedCondition ?>"><i></i>
-                    </label>
-                </td>
-                <td>
-                    <label class="form-switch">
-                        무료<br><input type="checkbox" name="charged[]" value="<?php echo $this->freeCondition ?>"><i></i>
-                    </label>
-                </td>
-                <td>
-                    <label class="form-switch">
-                        포인트<br><input type="checkbox" name="charged[]" value="<?php echo $this->pointCondition ?>"><i></i>
-                    </label>
-                </td>
-            </tr>
-            <!--고정 유무에 따른 필터링-->
-            <tr>
-                <td>
-                    <label class="form-switch all">
-                        전체<br><input type="checkbox"><i></i>
-                    </label>
-                </td>
-                <td>
-                    <label class="form-switch">
-                        일반<br><input type="checkbox" name="fixed[]" value="<?php echo $this->unfixedCondition ?>"><i></i>
-                    </label>
-                </td>
-                <td>
-                    <label class="form-switch">
-                        고정<br><input type="checkbox" name="fixed[]" value="<?php echo $this->fixedCondition ?>"><i></i>
-                    </label>
-                </td>
-                <td>
-                    <label class="form-switch">
-                        월급<br><input type="checkbox" name="fixed[]" value="<?php echo $this->monthlyCondition ?>"><i></i>
-                    </label>
-                </td>
-            </tr>
-            <tr>
-               <td>
-                   <p class="callStatus"></p>
-               </td>
-            </tr>
+          <?php if ($this->param->action != 'available_date'): ?>
+              <!--콜 유형에 따른 필터링-->
+              <tr>
+                  <td>
+                      <label class="form-switch all">
+                          전체<br><input type="checkbox"><i></i>
+                      </label>
+                  </td>
+                  <td>
+                      <label class="form-switch">
+                          유료<br><input type="checkbox" name="charged[]"
+                                       value="<?php echo $this->chargedCondition ?>"><i></i>
+                      </label>
+                  </td>
+                  <td>
+                      <label class="form-switch">
+                          무료<br><input type="checkbox" name="charged[]"
+                                       value="<?php echo $this->freeCondition ?>"><i></i>
+                      </label>
+                  </td>
+                  <td>
+                      <label class="form-switch">
+                          포인트<br><input type="checkbox" name="charged[]"
+                                        value="<?php echo $this->pointCondition ?>"><i></i>
+                      </label>
+                  </td>
+              </tr>
+              <!--고정 유무에 따른 필터링-->
+              <tr>
+                  <td>
+                      <label class="form-switch all">
+                          전체<br><input type="checkbox"><i></i>
+                      </label>
+                  </td>
+                  <td>
+                      <label class="form-switch">
+                          일반<br><input type="checkbox" name="fixed[]"
+                                       value="<?php echo $this->unfixedCondition ?>"><i></i>
+                      </label>
+                  </td>
+                  <td>
+                      <label class="form-switch">
+                          고정<br><input type="checkbox" name="fixed[]"
+                                       value="<?php echo $this->fixedCondition ?>"><i></i>
+                      </label>
+                  </td>
+                  <td>
+                      <label class="form-switch">
+                          월급<br><input type="checkbox" name="fixed[]"
+                                       value="<?php echo $this->monthlyCondition ?>"><i></i>
+                      </label>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <p class="callStatus"></p>
+                  </td>
+              </tr>
+          <?php endif; ?>
         </table>
     </form>
 </div>
@@ -91,36 +105,65 @@
         }
     });
     $(".form-switch input").on('change', function () {
-        $('#formAction').val('toggleFilter');
-        $.ajax({
-            type: "POST",
-            method: "POST",
-            url: ajaxURL,
-            data: $('#toggleForm').serialize(),
-            dataType: "text",
-            success: function (data) {
-                let array = JSON.parse(data);
-                $('.callRow').each(function () {
-                    if (array !== null) {
-                        if (array.indexOf(parseInt(this.id)) > 0) {
-                            $(this).show();
+        if(pageAction === 'available_date'){
+            console.log('available!');
+            $('#formAction').val('availableFilter');
+            $.ajax({
+                type: "POST",
+                method: "POST",
+                url: ajaxURL,
+                data: $('#toggleForm').serialize(),
+                dataType: "text",
+                success: function (data) {
+                    console.log('success!');
+                    let array = JSON.parse(data);
+                    console.log(array);
+                    let rows = $('.availableRow');
+                    rows.each(function () {
+                        if (array !== null) {
+                            if (array.indexOf(parseInt(this.id)) > 0) {
+                                $(this).show();
+                            }
+                            else {
+                                $(this).hide();
+                            }
                         }
-                        else {
-                            $(this).hide();
+                    });
+                }
+            });
+        }
+        else{
+            $('#formAction').val('toggleFilter');
+            $.ajax({
+                type: "POST",
+                method: "POST",
+                url: ajaxURL,
+                data: $('#toggleForm').serialize(),
+                dataType: "text",
+                success: function (data) {
+                    let array = JSON.parse(data);
+                    let rows = $('.callRow');
+                    rows.each(function () {
+                        if (array !== null) {
+                            if (array.indexOf(parseInt(this.id)) > 0) {
+                                $(this).show();
+                            }
+                            else {
+                                $(this).hide();
+                            }
                         }
-                    }
-                });
-                let getMoneyBtn = $('.callRow:visible .getMoneyBtn_call');
-                let totalPrice =0;
-                getMoneyBtn.each(function () {
-                    totalPrice += parseInt($(this).text());
-                });
-                let totalCallNum = $('.callRow:visible').length - $('.callRow:visible.cancelled').length;
-                let assignedNum = $('.callRow:visible .assignedEmployee a').length;
-                let notAssignedNum = totalCallNum-assignedNum;
-                
-                $('.callStatus').text("총 : "+totalCallNum+" / 배정 : "+assignedNum+" / 미배정 : "+notAssignedNum);
-            }
-        });
+                    });
+                    let getMoneyBtn = $('.callRow:visible .btn-money');
+                    let totalPrice = 0;
+                    getMoneyBtn.each(function () {
+                        totalPrice += parseInt($(this).text());
+                    });
+                    let totalCallNum = $('.callRow:visible').length - $('.callRow:visible.cancelled').length;
+                    let assignedNum = $('.callRow:visible .assignedEmployee a').length;
+                    let notAssignedNum = totalCallNum - assignedNum;
+                    $('.callStatus').text("총 : " + totalCallNum + " / 배정 : " + assignedNum + " / 미배정 : " + notAssignedNum);
+                }
+            });
+        }
     });
 </script>

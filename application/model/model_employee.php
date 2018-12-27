@@ -35,10 +35,6 @@
           $post['employee_available_date-employeeID'] = $this->getTable("SELECT employeeID from employee WHERE employeeName = '{$_POST['employee_available_date-employeeID']}'")[0]['employeeID'];
           $this->getQuery($post, 'employee_available_date');
           break;
-        case 'getMoney' :
-          $this->executeSQL("UPDATE `join_employee` SET paid = '1' WHERE join_employeeID = {$_POST['id']} LIMIT 1");
-          $msg = "수금완료";
-          break;
         case 'insert_day':
           $employeeID = $this->getTable("SELECT employeeID from employee WHERE employeeName = '{$_POST['employeeName']}' ")[0]['employeeID'];
           $string ="INSERT INTO employee_available_date (employeeID,availableDate,notAvailableDate,detail)

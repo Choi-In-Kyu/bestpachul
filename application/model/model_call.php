@@ -6,11 +6,12 @@
     var $group1_list;
     var $group2;
     var $group3;
-  
+    
     function __construct($param)
     {
       parent::__construct($param);
     }
+    
     function action()
     {
       header("Content-type:text/html;charset=utf8");
@@ -36,14 +37,16 @@
         }
       }
     }
+    
     function workTimeType($data)
     {
       $start = $data['startTime'];
       $end = $data['endTime'];
       $workTime = $end - $start;
       if ($workTime >= 10) $result = '종일';
-      else {if ($start < 12) $result = '오전'; else $result = '오후';}
+      else {
+        if ($start < 12) $result = '오전'; else $result = '오후';
+      }
       return $result;
     }
-    
   }

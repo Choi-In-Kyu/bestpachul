@@ -1,6 +1,6 @@
 <div class="board_list auto-center" style="margin: 0 200px; width: auto;">
     <h1>블랙리스트 관리</h1>
-    <div class="form-style-1">
+    <div class="form-default">
         <form id="company_form" action="" method="post">
             <fieldset>
                 <input type="hidden" name="action" value="black">
