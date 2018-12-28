@@ -31,8 +31,8 @@
                     </div>
                 </div>
             </fieldset>
-            <div class="btn_group">
-                <a class="btn btn-default" href="<?php echo $this->param->get_page ?>">취소</a>
+            <div class="btn-group">
+                <button class="btn btn-default" onclick="location.href = '<?php echo $this->param->get_page ?>'">취소</button>
                 <button class="btn btn-submit" type="submit">추가</button>
             </div>
         </form>

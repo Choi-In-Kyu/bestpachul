@@ -1,4 +1,4 @@
-<table style="width: 30%">
+<table>
   <tr>
     <th></th>
     <th>월</th>

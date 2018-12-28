@@ -123,7 +123,7 @@
         $id = $_POST['id'];
         $today = date('Y-m-d');
         $sql = "UPDATE `{$table}` SET `deleted` = 1, `activated` = 0, `imminent` = 0, `deleteDetail` = '{$detail}', `deletedDate` = '{$today}' WHERE `{$table}ID` = {$id} LIMIT 1";
-        $sql2 = "UPDATE `join_{$table}` SET `deleted` = 1, `activated` = 0, `imminent` = 0 WHERE `{$table}ID` = {$id}";
+        $sql2 = "UPDATE `join_{$table}` SET `deleted` = 1, `activated` = 0, `imminent` = 0, `deleteDetail` = '{$detail}' WHERE `{$table}ID` = {$id}";
         $obj->executeSQL($sql2);
         $obj->executeSQL($sql);
         break;
@@ -138,7 +138,7 @@
       case 'restore':
         $sql = "UPDATE `{$_POST['table']}` SET `deleted` = 0, `deleteDetail`= NULL, `deletedDate` = NULL WHERE `{$_POST['table']}ID` = {$_POST['id']} LIMIT 1";
         $obj->executeSQL($sql);
-        echo $sql;
+//        echo $sql;
         break;
       case 'checkDuplicate':
         $table = $_POST['table'];

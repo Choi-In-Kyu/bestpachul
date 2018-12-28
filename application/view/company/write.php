@@ -45,7 +45,7 @@
                         </div>
                     </div>
                     <div class="tr">
-                        <div id="companyNameDuplicate"></div>
+                        <div id="companyNameDuplicate">이름을 입력 해 주세</div>
                     </div>
                     <div class="tr">
                         <div class="td">
@@ -70,9 +70,9 @@
                               <?php endforeach ?>
                             </datalist>
                         </div>
-                        <div class="td">
-                            <label for="">상세주소</label>
-                            <input type="text" name="detailAddress" size="20" style="width: 660px;"
+                        <div class="td" style="width: 60%;">
+                            <label for="" style="width: 10%;">상세주소</label>
+                            <input type="text" name="detailAddress" size="20" style="width: 85%;"
                                    value="<?php echo $companyData['detailAddress']; ?>">
                         </div>
                     </div>
@@ -84,15 +84,15 @@
                         </div>
                     </div>
                     <div class="tr">
-                        <div class="td-detail">
+                        <div class="td td-detail">
                             <label for="">비고</label>
-                            <textarea class="textarea-detail" style="height: 200px;"
+                            <textarea class="textarea-detail-company" style="height: 260px; width: 70%;"
                                       name="detail"><?php echo $this->get_detail($companyData, 'company'); ?></textarea>
                         </div>
                       <?php if ($companyData['deleted'] == 1) : ?>
                           <div class="td-detail">
                               <label for="">삭제비고</label>
-                              <textarea class="textarea-detail" style="height: 200px;"
+                              <textarea class="textarea-detail-company" style="height: 200px;"
                                         name="deleteDetail"><?php echo $companyData['deleteDetail']; ?></textarea>
                           </div>
                       <?php endif; ?>
@@ -114,10 +114,9 @@
                 <?php require_once 'companyJoinForm.php' ?>
               <?php endif; ?>
             </fieldset>
-            <div class="btn_group">
+            <div class="btn-group al_r">
                 <a class="btn btn-default" href="<?php echo $this->param->get_page ?>">취소</a>
-                <button class="btn btn-submit"
-                        type="submit"><?php echo ($this->param->action == 'write') ? '추가' : '수정' ?></button>
+                <button class="btn btn-submit" type="submit"><?php echo ($this->param->action == 'write') ? '추가' : '수정' ?></button>
             </div>
         </form>
     </div>

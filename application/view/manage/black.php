@@ -38,7 +38,7 @@
                     </div>
                 </div>
             </fieldset>
-            <div class="btn_group">
+            <div class="btn-group">
                 <button class="btn btn-submit" type="submit">추가</button>
             </div>
         </form>

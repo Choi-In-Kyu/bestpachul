@@ -45,7 +45,7 @@
           $joinID = $_POST['joinID'];
           $detail = $_POST['detail'];
           $price = $_POST['price'];
-          $this->executeSQL("UPDATE join_employee SET price= '{$price}', detail = '{$detail}' WHERE join_employeeID = '{$joinID}' LIMIT 1");
+          $this->executeSQL("UPDATE join_employee SET `price` = '{$price}', `joinDetail` = '{$detail}' WHERE join_employeeID = '{$joinID}' LIMIT 1");
           break;
       }
 //      unset($_POST);

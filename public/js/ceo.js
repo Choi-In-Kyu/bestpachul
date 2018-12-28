@@ -115,7 +115,6 @@ function change(type) {
         success: function (data) {
             let body = JSON.parse(data).body;
             let total = JSON.parse(data).total;
-            console.log(total);
             $('#'+type+'-call-list-body').html(body);
             if(type === 'paid'){
                 $('.total-price').html('콜비 총 합: '+number_format(total)+'원');

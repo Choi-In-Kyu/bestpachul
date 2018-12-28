@@ -85,10 +85,11 @@ $('.update').click(function () {
     let id = $(this).parent().children('.join_id').html();
     let price = $(this).parent().children('.join_price').html();
     let detail = $(this).parent().children('.join_detail').html();
+    let joinDetail = detail.split('<br>')[0];
     $('#modalJoinUpdate').show();
     $('#updateID').val(id);
     $('#updatePrice').val(parseInt(price.replace(',', '')));
-    $('#updateDetail').text(detail.replace('<br>', '\n'));
+    $('#updateDetail').text(joinDetail);
 });
 //버튼 클릭 이벤트
 $('.selectable').on('click', function () {
@@ -160,9 +161,6 @@ $('#btnDelete').on('click', function () {
         data: $('#formDelete').serialize(),
         dataType: "text",
         success: function (data) {
-
-            console.log(data);
-
             let tr = $('.tr-'+table+'[id=' + id + ']');
             let btn = $('.btn-delete-modal[id=' + id + ']');
             $('.modal').hide();
@@ -211,7 +209,9 @@ $('.btn-restore').on('click', function () {
         dataType: "text",
         success: function (data) {
             console.log(data);
-            btn.html('복구됨');
+            btn.hide();
+            btn.closest('td').html('복구');
+            tr.closest('tr').removeClass('deleted');
         }
     });
 });

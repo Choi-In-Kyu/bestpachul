@@ -14,8 +14,6 @@ else {
             success: function (data) {
                 let list = JSON.parse(data);
                 $('#employeeNameDuplicate').html(list);
-                console.log(data);
-                console.log(list);
             }
         });
     });

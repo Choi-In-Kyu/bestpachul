@@ -9,18 +9,15 @@
     function action()
     {
       header("Content-type:text/html;charset=utf8");
+      
+      
       switch ($_POST['action']) {
         case 'insert' :
-          alert("POST : ".json_encode($_POST));
           $_POST['userName'] = $_POST['companyName'];
           $_POST['userPW'] = $_POST['ceoPhoneNumber'];
           if(!$_POST['ceoID']){//새로운 사장 입력 시
             $this->insert('insert','ceo',$_POST);
             $_POST['ceoID'] = $this->getLastID('ceo');
-            alert('new ceoID : '.json_encode($_POST['ceoID']));
-          }
-          else{
-            alert(json_encode($_POST['ceoID']));
           }
           $this->insert('insert','company', $_POST);
           $_POST['companyID'] = $this->getLastID('company');
@@ -43,10 +40,8 @@
             $this->insert('insert','businessType',$_POST);
           }
           $msg = "insert!";
-//          unset($_POST);
           break;
         case 'update' :
-          alert("POST : <br>".json_encode($_POST));
           $this->insert('update', 'company', $_POST);
           $this->insert('update', 'ceo', $_POST);
           unset($_POST);
@@ -55,19 +50,20 @@
           $_POST['companyID'] = $this->param->idx;
           $this->insert('addJoin', 'join_company', $_POST);
           unset($_POST);
-          $msg = "추가되었습니다";
+          $_POST = array();
+          $msg = "추가되었습니다!";
           break;
         case 'join_update':
           $joinID = $_POST['joinID'];
           $detail = $_POST['detail'];
           $price = $_POST['price'];
-          $this->executeSQL("UPDATE join_company SET price= '{$price}', detail = '{$detail}' WHERE join_companyID = '{$joinID}' LIMIT 1");
+          $this->executeSQL("UPDATE join_company SET `price`= '{$price}', `joinDetail` = '{$detail}' WHERE join_companyID = '{$joinID}' LIMIT 1");
           break;
         case 'callCancel':
           $this->callCancel($_POST);
           break;
       }
 //      unset($_POST);
-      if(isset($msg)) alert($msg);
+//      if(isset($msg)) alert($msg);
     }
   }

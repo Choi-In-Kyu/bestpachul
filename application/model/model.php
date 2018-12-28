@@ -141,34 +141,34 @@
       return $tblArray;
     }
     
-//    public function getQuery($post, $table, $focus = null)
-//    {
-//      $tbl = $this->extractPost($post, $table);
-//      if (isset($table)) {
-//        switch ($post['action']) {
-//          case 'insert':
-//            $sql = "INSERT INTO ";
-//            break;
-//          case 'update':
-//            $sql = "UPDATE ";
-//            break;
-//          case 'new_insert':
-//            $sql = "INSERT INTO ";
-//            break;
-//          default :
-//            $sql = "INSERT INTO ";
-//            break;
-//        }
-//        $sql .= "{$table} SET ";
-//        $sql .= implode(",", $tbl[$table]);
-//        if ($post['action'] == 'update' or $post['action'] == 'delete') {
-//          if (!isset($focus)) $sql .= " WHERE {$table}.{$table}ID = '{$post[$table.'-'.$table.'ID']}' LIMIT 1";
-//          if (isset($focus)) $sql .= " WHERE {$table}.{$focus}ID = '{$post[$focus.'-'.$focus.'ID']}' LIMIT 1";
-//        }
-//        $this->sql = $sql;
-//        $this->fetch();
-//      }
-//    }
+    public function getQuery($post, $table, $focus = null)
+    {
+      $tbl = $this->extractPost($post, $table);
+      if (isset($table)) {
+        switch ($post['action']) {
+          case 'insert':
+            $sql = "INSERT INTO ";
+            break;
+          case 'update':
+            $sql = "UPDATE ";
+            break;
+          case 'new_insert':
+            $sql = "INSERT INTO ";
+            break;
+          default :
+            $sql = "INSERT INTO ";
+            break;
+        }
+        $sql .= "{$table} SET ";
+        $sql .= implode(",", $tbl[$table]);
+        if ($post['action'] == 'update' or $post['action'] == 'delete') {
+          if (!isset($focus)) $sql .= " WHERE {$table}.{$table}ID = '{$post[$table.'-'.$table.'ID']}' LIMIT 1";
+          if (isset($focus)) $sql .= " WHERE {$table}.{$focus}ID = '{$post[$focus.'-'.$focus.'ID']}' LIMIT 1";
+        }
+        $this->sql = $sql;
+        $this->fetch();
+      }
+    }
     
     public function select($table, $condition = null, $column = null, $order = null)
     {

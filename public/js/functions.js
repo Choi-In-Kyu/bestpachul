@@ -42,14 +42,8 @@ function auto_insert_employee_join(type) {
                 data: {action: 'getLastJoinDate', id: pageID},
                 dataType: "text",
                 success: function (data) {
-                    console.log(data);
-
                     let startDate = JSON.parse(data).startDate;
                     let endDate = JSON.parse(data).endDate;
-
-                    console.log(startDate);
-                    console.log(endDate);
-
                     $('#startDate').val(startDate);
                     $('#endDate').val(endDate);
                 }

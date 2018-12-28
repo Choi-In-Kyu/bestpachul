@@ -1,24 +1,44 @@
+
 <div class="title-table">
     <h1 class="table_title"><?php echo ($this->param->action == 'write') ? '가입 정보' : '가입 추가'; ?></h1>
-    <div class="btn_group">
+    <div class="btn-group">
         <button type="button" class="btn-select-join-type" value="gujwa" id="btnGujwa">구좌</button>
         <button type="button" class="btn-select-join-type" value="deposit">보증금</button>
         <button type="button" class="btn-select-join-type" value="point">포인트</button>
     </div>
 </div>
-<fieldList id="companyAddJoin">
 
-</fieldList>
+
+<?php if ($this->param->action == 'view'): ?>
+<div class="form-style-1">
+    <form action="" method="post" id="formInsertCompanyJoin">
+        <input type="hidden" name="action" value="new_insert">
+      <?php endif; ?>
+        <fieldList id="companyAddJoin">
+
+        </fieldList>
+      <?php if ($this->param->action == 'view'): ?>
+        <div class="btn-group al_r">
+            <button type="button" class="btn btn-submit" id="btnAddCompanyJoin">가입 추가</button>
+        </div>
+    </form>
+</div>
+<?php endif; ?>
+
+
 <script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
     $(document).ready(function () {
         check_duplicate_company();
         check_ceo_name();
         type_toggle();
         $('#btnGujwa').click();
+        unset_post();
     });
 
     function check_duplicate_company() {
-        console.log('duplicate');
         let nameInput = $('#formInsertCompany input[name=companyName]');
         if (nameInput.val() === null) {
             $('#companyNameDuplicate').html('업체명을 입력 해 주세요');
@@ -43,7 +63,7 @@
                         if (list) {
                             show.html("유사 : " + list);
                             if (match) {
-                                show.append("<br>" + "일치 : " + match);
+                                show.html("일치 : " + match);
                                 allInput.prop('disabled', true);
                                 companyName.prop('disabled', false);
                             }
@@ -67,7 +87,6 @@
         let ceoPhoneNumber = $('#formInsertCompany input[name=ceoPhoneNumber]');
         let ceoID = $('#formInsertCompany input[name=ceoID]');
         form.on('input', function () {
-            console.log('사장 입력');
             let ceoName = $(this).val();
             $.ajax({
                 type: "POST",
@@ -77,7 +96,6 @@
                 dataType: "text",
                 async: true,
                 success: function (data) {
-                    console.log(data);
                     if (data) {
                         let number = JSON.parse(data).ceoPhoneNumber;
                         let id = JSON.parse(data).ceoID;
@@ -116,9 +134,7 @@
     }
 
     function auto_insert() {
-        console.log('auto insert');
         let start = $('.table-add-join input[name=startDate]');
-        console.log(start);
         let endDate = $('.table-add-join input[name=endDate]');
         let price = $('#companyAddJoinTable_gujwa input[name=price]');
         start.on('change', function () {
@@ -128,7 +144,6 @@
             price.val('150000');
         });
         $('#btn6Month').on('click', function () {
-            console.log('6months');
             let date;
             if (start.val()) {
                 date = new Date(start.val());
@@ -141,7 +156,6 @@
             price.val('150000');
         });
         $('#btn1Year').on('click', function () {
-            console.log('1year');
             let date;
             if (start.val()) {
                 date = new Date(start.val());
@@ -153,5 +167,12 @@
             endDate.val(get_next_month(date, 12));
             price.val('250000');
         });
+    }
+    
+    function unset_post(){
+       $('#btnAddCompanyJoin').on('click',function () {
+           $('#formInsertCompanyJoin').submit();
+           // document.location.replace(pageID);//같은 페이지로 redirection....
+       });
     }
 </script>

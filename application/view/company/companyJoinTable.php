@@ -1,5 +1,7 @@
 <div class="board_write auto-center">
-  <h1>가입 내역</h1>
+  <div class="title-table">
+      <h1>가입 내역</h1>
+  </div>
   <table id="companyJoinTable" width="100%">
     <colgroup>
       <col width="5%">

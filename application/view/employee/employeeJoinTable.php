@@ -1,5 +1,7 @@
 <div class="board_write auto-center">
-    <h1>가입 내역</h1>
+    <div class="title-table">
+        <h1>가입 내역</h1>
+    </div>
     <table width="100%">
         <colgroup>
             <col width="5%">
@@ -35,16 +37,17 @@
         <?php endforeach ?>
         </tbody>
     </table>
-    <br/>
     <!--가입 추가-->
-    <div class="btn_group" id="join_button">
+    <div class="btn-group al_r" id="join_button">
         <button id="btnAddJoin" type="button" class="btn btn-insert">가입 추가</button>
     </div>
     <form action="" id="addJoinForm" style="display:none;" method="post">
         <input type="hidden" name="action" value="new_insert">
         <input type="hidden" name="join_employee-employeeID" value="<?php echo $this->employeeData['employeeID'] ?>">
         <div id="new_join_table">
-            <h1>가입 정보</h1>
+            <div class="title-table">
+                <h1>가입 정보</h1>
+            </div>
             <table>
                 <tr>
                     <td>가입시작일</td>
@@ -67,7 +70,7 @@
                 </tr>
             </table>
         </div>
-        <div class="btn_group">
+        <div class="btn-group al_r">
             <button class="btn btn-submit" type="submit">가입 추가</button>
         </div>
     </form>

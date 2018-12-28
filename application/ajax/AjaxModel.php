@@ -477,11 +477,9 @@
         }
       }
       $return = "";
-      $status = "배정가능 인력 : 1군(" . sizeof($group1) . ") 2군(" . sizeof($group2) . ") 3군(" . sizeof($group3) . ")";
+      $status = "배정가능 인력 : 1군(" . sizeof($group1) . "명) 2군(" . sizeof($group2) . "명) 3군(" . sizeof($group3) . ")";
       $return .= <<<HTML
-<tr>
-<td>{$status}</td>
-</tr>
+<div>{$status}</div>
 HTML;
       for ($i = 1; $i <= 3; $i++) {
         $return .= <<<HTML

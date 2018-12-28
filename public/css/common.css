@@ -26,7 +26,12 @@ span.divider{display: inline-block;
 .full_width{width:100%;}
 .link{text-decoration: underline; font-weight: bolder; z-index: 5; cursor: pointer;}
 .link:hover{color:green;}
-.btn_group .btn{}
+.btn-group .btn {
+    width: 150px;
+    height: 50px;
+    margin: 10px 0;
+    font-size: 20px;
+}
 .filterBtn {height: 45px;}
 .workTime select{width: 150px;font-size: 20px;padding-bottom: 5px;}
 .duplicate{min-height: 50px;vertical-align: middle;padding: 1%;}
@@ -82,7 +87,8 @@ span.divider{display: inline-block;
 .table > .tr > .desc { width: 30%; }
 .table > .tr > .desc.content { min-height: 300px; }
 .table > .tr > .td{width: 30%;}
-.table > .tr > .td >label {display: inline-block;width: 20%;}
+.table > .tr > .td.td-detail{width: 40%;}
+.table > .tr > .td >label {display: inline-block;width: 60px; text-align: center;}
 .table > .tr > .td >input, textarea{
     width: 70%;
     height: 1rem;
@@ -94,14 +100,20 @@ span.divider{display: inline-block;
     font-family: inherit;
     display: inline-block;
 }
-.td-detail > .textarea-detail{width: 99%;height: 240px; resize: none;}
+
+.table > .tr > .td.td-3{width: 25%;}
+.table > .tr > .td.td-3 >label {display: inline-block;width: 60px; text-align: center;}
+
+.td-detail > .textarea-detail-company{width: 70%;height: 240px; resize: none;}
+.td-detail > .textarea-detail-employee{width: 70%;height: 330px; resize: none;}
 .title-table{
+    display: table;
     height: 50px;
     width: 100%;
     padding: 0;
     margin: 10px;
 }
-.title-table *{display: inline-block;height: 100%;vertical-align: middle;}
+.title-table *{display: table-cell;height: 100%;vertical-align: middle;}
 
 
 /* default table */
