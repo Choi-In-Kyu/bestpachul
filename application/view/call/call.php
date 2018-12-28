@@ -1,4 +1,4 @@
-<div class="board_list scroll_list right auto-center">
+<div class="board-list scroll_list right auto-center">
   <?php if (in_array($this->param->page_type, ['company', 'employee'])): ?>
     <div class="title-table">
         <h1><?php echo ($this->param->page_type == 'company')? '콜':'배정' ?> 내역</h1>

@@ -5,7 +5,7 @@
     <input type="hidden" name="order"       value="<?php echo $_POST['order']?>">
     <input type="hidden" name="direction"   value="<?php echo $_POST['direction']?>">
 </form>
-<div class="board_list auto-center">
+<div class="board-list auto-center">
   <?php require_once(_VIEW.'employee/employeeTable.php'); ?>
 </div>
 <?php require_once(_VIEW . 'common/modal.php'); ?>

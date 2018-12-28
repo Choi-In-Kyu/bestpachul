@@ -17,7 +17,7 @@
         </form>
     </div>
     <div class="mobile-footer" style="text-align: center">
-        <small class="text-muted">서비스 담당자: 변보선 (010-9141-7220)</small>
+        <small class="text-muted">서비스 담당자: 변보선 (O1O-9l4l-722O)</small>
     </div>
 </div>
 </body>

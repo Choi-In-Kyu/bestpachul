@@ -253,7 +253,12 @@
         $sql.=" WHERE `{$tbl2}ID` = '{$tbl2ID}' ";
       }
       if($type =='update'){
-        $sql .= " WHERE {$table}ID = '{$_POST[$table.'ID']}' LIMIT 1";
+        if($tbl2 && $tbl2ID){
+          $sql .= " WHERE {$tbl2}ID = '{$tbl2ID}' LIMIT 1";
+        }
+        else{
+          $sql .= " WHERE {$table}ID = '{$_POST[$table.'ID']}' LIMIT 1";
+        }
       }
       $this->executeSQL($sql);
     }

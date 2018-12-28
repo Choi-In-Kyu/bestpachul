@@ -51,13 +51,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="5467" />
+          <entry key="css" value="6198" />
           <entry key="dummy" value="35" />
           <entry key="employeeTable_history" value="12" />
           <entry key="htaccess" value="2" />
           <entry key="html" value="229" />
-          <entry key="js" value="15535" />
-          <entry key="php" value="178986" />
+          <entry key="js" value="15576" />
+          <entry key="php" value="180627" />
           <entry key="svg" value="35" />
           <entry key="test" value="14" />
           <entry key="txt" value="45" />
@@ -65,10 +65,10 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="5475" />
+          <entry key="CSS" value="6206" />
           <entry key="HTML" value="383" />
-          <entry key="JavaScript" value="15534" />
-          <entry key="PHP" value="178732" />
+          <entry key="JavaScript" value="15575" />
+          <entry key="PHP" value="180373" />
           <entry key="PLAIN_TEXT" value="103" />
           <entry key="SQL" value="96" />
           <entry key="SVG" value="35" />
@@ -85,12 +85,12 @@
       <usages-collector id="statistics.php.composer.command.options" />
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="203" />
+          <entry key="CSS" value="206" />
           <entry key="HTML" value="16" />
           <entry key="Image" value="6" />
-          <entry key="JavaScript" value="345" />
+          <entry key="JavaScript" value="349" />
           <entry key="Markdown" value="1" />
-          <entry key="PHP" value="3402" />
+          <entry key="PHP" value="3431" />
           <entry key="PLAIN_TEXT" value="4" />
           <entry key="SVG" value="9" />
           <entry key="htaccess" value="3" />
@@ -101,14 +101,14 @@
       <usages-collector id="statistics.php.rename.constructor" />
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="203" />
+          <entry key="css" value="206" />
           <entry key="employeeTable_history" value="2" />
           <entry key="gitattributes" value="3" />
           <entry key="htaccess" value="3" />
           <entry key="html" value="16" />
-          <entry key="js" value="345" />
+          <entry key="js" value="349" />
           <entry key="md" value="1" />
-          <entry key="php" value="3400" />
+          <entry key="php" value="3429" />
           <entry key="png" value="6" />
           <entry key="svg" value="9" />
           <entry key="test" value="1" />
@@ -119,10 +119,24 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/view/employee/employeeJoinTable.php">
+        <entry file="file://$PROJECT_DIR$/application/view/employee/write.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="58" column="103" selection-start-line="58" selection-start-column="78" selection-end-line="58" selection-end-column="103" />
+            <state relative-caret-position="684">
+              <caret line="211" column="24" lean-forward="true" selection-start-line="177" selection-start-column="18" selection-end-line="211" selection-end-column="24" />
+              <folding>
+                <element signature="n#style#0;n#button#0;n#div#2;n#div#0;n#div#2;n#fieldset#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#1;n#div#2;n#div#0;n#div#2;n#fieldset#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#2;n#div#1;n#div#2;n#fieldset#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/view/employee/employeeTable.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="30" column="69" selection-start-line="30" selection-start-column="69" selection-end-line="30" selection-end-column="69" />
             </state>
           </provider>
         </entry>
@@ -131,37 +145,38 @@
         <entry file="file://$PROJECT_DIR$/application/ajax/ajax.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="351">
-              <caret line="125" column="120" selection-start-line="125" selection-start-column="120" selection-end-line="125" selection-end-column="120" />
+              <caret line="193" selection-start-line="193" selection-end-line="218" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/model/model_company.php">
+        <entry file="file://$PROJECT_DIR$/public/css/common.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="571">
-              <caret line="42" selection-start-line="42" selection-end-line="42" />
+            <state relative-caret-position="369">
+              <caret line="92" column="15" lean-forward="true" selection-start-line="92" selection-start-column="15" selection-end-line="92" selection-end-column="15" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/view/employee/employeeAvailableDayTable.php">
+        <entry file="file://$PROJECT_DIR$/application/view/company/write.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="6" selection-start-column="6" selection-end-column="6" />
+            <state relative-caret-position="493">
+              <caret line="107" column="30" lean-forward="true" selection-start-line="107" selection-start-column="30" selection-end-line="107" selection-end-column="30" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/view/employee/write.php">
+        <entry file="file://$PROJECT_DIR$/application/view/employee/employeeJoinTable.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="731">
-              <caret line="308" column="5" selection-start-line="308" selection-start-column="5" selection-end-line="308" selection-end-column="5" />
+            <state relative-caret-position="331">
+              <caret line="80" column="36" lean-forward="true" selection-start-line="80" selection-start-column="36" selection-end-line="80" selection-end-column="36" />
               <folding>
-                <element signature="e#12029#13888#0#HTML" />
-                <element signature="e#14098#16117#0#HTML" />
+                <element signature="n#style#0;n#button#0;n#div#2;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#1;n#div#2;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#2;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -170,17 +185,16 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/view/common/modal.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="3" column="42" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/js/functions.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="514">
-              <caret line="47" column="47" lean-forward="true" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
+            <state relative-caret-position="414">
+              <caret line="65" column="38" lean-forward="true" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
+              <folding>
+                <element signature="n#div#1;n#!!top" />
+                <element signature="n#div#2;n#!!top" />
+                <element signature="n#div#3;n#!!top" />
+                <element signature="n#div#5;n#!!top" />
+                <element signature="n#div#6;n#!!top" />
+                <element signature="n#div#7;n#!!top" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -188,8 +202,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/view/company/companyJoinForm.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1116">
-              <caret line="158" selection-start-line="158" selection-end-line="158" />
+            <state relative-caret-position="233">
+              <caret line="15" column="39" lean-forward="true" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/view/employee/view.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="18">
+              <caret line="1" column="53" selection-start-line="1" selection-start-column="53" selection-end-line="1" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -206,46 +229,38 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>console</find>
-      <find>msg</find>
-      <find>function move</find>
-      <find>14%</find>
+      <find>formInsertCompany</find>
+      <find>btn-submit</find>
+      <find>btn-default</find>
+      <find>btn-</find>
+      <find>box-shadow</find>
+      <find>btnAddCompanyJoin</find>
+      <find>formInsertCompanyJoin</find>
+      <find>닫기</find>
+      <find>btn-select</find>
+      <find>shadow</find>
+      <find>btn-close</find>
+      <find>btn-danger btn-close-modal</find>
+      <find>하기</find>
+      <find>border</find>
+      <find>X</find>
+      <find>modal-hea</find>
+      <find>modal-conten</find>
+      <find>title</find>
+      <find>bold</find>
       <find>textarea-detail</find>
-      <find>label</find>
-      <find>td-3</find>
-      <find>title-table</find>
-      <find>br</find>
-      <find>.btn_group</find>
-      <find>btn_group</find>
-      <find>가입 정보</find>
-      <find>취소</find>
-      <find>가입추가</find>
-      <find>배정가능</find>
-      <find>employeeNameDuplicate</find>
-      <find>check_du</find>
-      <find>btn-group</find>
+      <find>employeeJoinTa</find>
+      <find>employeeAddJoin</find>
+      <find>companyAddJoinTable</find>
       <find>company</find>
-      <find>duplicate</find>
-      <find>companyNameDuplicate</find>
-      <find>연장</find>
-      <find>auto_insert_employee_join</find>
-      <find>console.log</find>
-      <find>window.</find>
-      <find>btnDelete</find>
-      <find>formDelete</find>
-      <find>restore</find>
-      <find>UPDATE join_</find>
-      <find>delete</find>
+      <find>company-</find>
+      <find>가입연장</find>
+      <find>'추가' : '수정'</find>
+      <find>filterMain</find>
+      <find>getMoneyBtn</find>
+      <find>btn-money</find>
     </findStrings>
     <replaceStrings>
-      <replace>dow</replace>
-      <replace>table</replace>
-      <replace>td</replace>
-      <replace>tr</replace>
-      <replace>title</replace>
-      <replace>content</replace>
-      <replace>paid</replace>
-      <replace>let</replace>
       <replace>btn-call-cancel-modal</replace>
       <replace>modalDelete</replace>
       <replace>modalCallCancel</replace>
@@ -260,7 +275,6 @@
       <replace>imminent</replace>
       <replace>deactivated</replace>
       <replace>employee</replace>
-      <replace>btn-close-modal</replace>
       <replace>btn-delete-modal</replace>
       <replace>btnAddJoin</replace>
       <replace>ta</replace>
@@ -268,6 +282,15 @@
       <replace>joinDelete</replace>
       <replace>&lt;label&gt;</replace>
       <replace>btn-group</replace>
+      <replace>td td-3</replace>
+      <replace>td-4</replace>
+      <replace>class=&quot;td-3&quot;</replace>
+      <replace>board-write</replace>
+      <replace>board-list</replace>
+      <replace />
+      <replace>X</replace>
+      <replace>btn-close-modal</replace>
+      <replace>class=&quot;td td-3&quot;</replace>
     </replaceStrings>
     <dirStrings>
       <dir>C:\Bitnami\wampstack-7.1.21-0\apache2\htdocs\bestpachul\application\view\board</dir>
@@ -299,9 +322,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application/view/login/login.php" />
         <option value="$PROJECT_DIR$/public/css/login.css" />
-        <option value="$PROJECT_DIR$/public/css/default.css" />
         <option value="$PROJECT_DIR$/application/view/call/fix.php" />
         <option value="$PROJECT_DIR$/application/view/call/employeeTable.php" />
         <option value="$PROJECT_DIR$/application/view/call/call.php" />
@@ -324,12 +345,9 @@
         <option value="$PROJECT_DIR$/public/js/ceo.js" />
         <option value="$PROJECT_DIR$/application/ajax/AjaxModel.php" />
         <option value="$PROJECT_DIR$/public/js/ajax.js" />
-        <option value="$PROJECT_DIR$/application/view/common/modal.php" />
         <option value="$PROJECT_DIR$/application/controller/controller.php" />
         <option value="$PROJECT_DIR$/application/view/company/companyTable.php" />
-        <option value="$PROJECT_DIR$/application/model/model_employee.php" />
         <option value="$PROJECT_DIR$/application/view/employee/employeeTable.php" />
-        <option value="$PROJECT_DIR$/public/js/common.js" />
         <option value="$PROJECT_DIR$/application/model/model_ceo.php" />
         <option value="$PROJECT_DIR$/application/view/company/company.php" />
         <option value="$PROJECT_DIR$/application/application.php" />
@@ -339,17 +357,22 @@
         <option value="$PROJECT_DIR$/application/view/company/companyAddJoin.php" />
         <option value="$PROJECT_DIR$/application/config/functions.php" />
         <option value="$PROJECT_DIR$/application/view/company/view.php" />
-        <option value="$PROJECT_DIR$/application/model/model.php" />
         <option value="$PROJECT_DIR$/application/view/company/companyJoinTable.php" />
-        <option value="$PROJECT_DIR$/application/view/company/write.php" />
-        <option value="$PROJECT_DIR$/application/view/employee/employeeAvailableDayTable.php" />
-        <option value="$PROJECT_DIR$/application/view/employee/employeeJoinTable.php" />
-        <option value="$PROJECT_DIR$/public/css/common.css" />
         <option value="$PROJECT_DIR$/public/js/functions.js" />
-        <option value="$PROJECT_DIR$/application/view/company/companyJoinForm.php" />
-        <option value="$PROJECT_DIR$/application/view/employee/write.php" />
         <option value="$PROJECT_DIR$/application/ajax/ajax.php" />
+        <option value="$PROJECT_DIR$/public/js/common.js" />
+        <option value="$PROJECT_DIR$/application/view/employee/available_date.php" />
+        <option value="$PROJECT_DIR$/application/view/employee/employeeAvailableDayTable.php" />
+        <option value="$PROJECT_DIR$/application/model/model.php" />
         <option value="$PROJECT_DIR$/application/model/model_company.php" />
+        <option value="$PROJECT_DIR$/application/model/model_employee.php" />
+        <option value="$PROJECT_DIR$/application/view/company/companyJoinForm.php" />
+        <option value="$PROJECT_DIR$/public/css/default.css" />
+        <option value="$PROJECT_DIR$/application/view/employee/write.php" />
+        <option value="$PROJECT_DIR$/application/view/company/write.php" />
+        <option value="$PROJECT_DIR$/application/view/employee/employeeJoinTable.php" />
+        <option value="$PROJECT_DIR$/application/view/common/modal.php" />
+        <option value="$PROJECT_DIR$/public/css/common.css" />
       </list>
     </option>
   </component>
@@ -619,7 +642,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1572110000" />
+    <option name="totallyTimeSpent" value="1594110000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
@@ -684,11 +707,6 @@
           <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/application/model/model.php</url>
-          <line>92</line>
-          <option name="timeStamp" value="62" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/application/ajax/AjaxModel.php</url>
           <line>410</line>
           <option name="timeStamp" value="64" />
@@ -697,12 +715,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/model/model_manage.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/view/call/write.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/controller/call.php">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -777,13 +789,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/ceo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/view/call/fix.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -791,27 +796,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/common.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="212" column="30" selection-start-line="212" selection-start-column="30" selection-end-line="212" selection-end-column="30" />
-          <folding>
-            <element signature="n#!!block;n#getMoney#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/model/model_call.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="229">
           <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/model/model_ceo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -915,50 +903,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/default.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" column="78" lean-forward="true" selection-start-line="22" selection-start-column="78" selection-end-line="22" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/view/call/callTable_min.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="8" column="6" lean-forward="true" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/model/model_employee.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="36" column="16" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
-          <folding>
-            <element signature="e#260#770#0#PHP" />
-            <element signature="e#779#1232#0#PHP" />
-            <element signature="e#1241#1368#0#PHP" />
-            <element signature="e#1377#1669#0#PHP" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/model/model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="155" column="26" selection-start-line="155" selection-start-column="26" selection-end-line="155" selection-end-column="26" />
-          <folding>
-            <element signature="n#check_login#0;n#Model#0;n#!!top" />
-            <element signature="n#query#0;n#Model#0;n#!!top" />
-            <element signature="n#getColumnList#0;n#Model#0;n#!!top" />
-            <element signature="n#removeDuplicate#0;n#Model#0;n#!!top" />
-            <element signature="n#extractPost#0;n#Model#0;n#!!top" />
-            <element signature="n#select#0;n#Model#0;n#!!top" />
-            <element signature="n#delete#0;n#Model#0;n#!!top" />
-            <element signature="n#isHoliday#0;n#Model#0;n#!!top" />
-            <element signature="n#joinType#0;n#Model#0;n#!!top" />
-            <element signature="n#insert#0;n#Model#0;n#!!top" />
-            <element signature="n#fixCancel#0;n#Model#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -997,10 +945,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/view/company/write.php">
+    <entry file="file://$PROJECT_DIR$/application/view/company/companyTable.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="87" column="40" selection-start-line="87" selection-start-column="40" selection-end-line="87" selection-end-column="40" />
+        <state relative-caret-position="576">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="514">
+          <caret line="47" column="47" lean-forward="true" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/view/employee/employeeAvailableDayTable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1011,20 +973,143 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/view/employee/available_date.php">
+    <entry file="file://$PROJECT_DIR$/application/model/model_manage.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/view/company/companyTable.php">
+    <entry file="file://$PROJECT_DIR$/application/model/model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        <state relative-caret-position="511">
+          <caret line="236" column="20" selection-start-line="236" selection-start-column="20" selection-end-line="236" selection-end-column="20" />
+          <folding>
+            <element signature="n#__construct#0;n#Model#0;n#!!top" />
+            <element signature="n#check_login#0;n#Model#0;n#!!top" />
+            <element signature="n#query#0;n#Model#0;n#!!top" />
+            <element signature="n#fetch#0;n#Model#0;n#!!top" />
+            <element signature="n#executeSQL#0;n#Model#0;n#!!top" />
+            <element signature="n#fetchAll#0;n#Model#0;n#!!top" />
+            <element signature="n#getTable#0;n#Model#0;n#!!top" />
+            <element signature="n#count#0;n#Model#0;n#!!top" />
+            <element signature="n#getList#0;n#Model#0;n#!!top" />
+            <element signature="n#getListNum#0;n#Model#0;n#!!top" />
+            <element signature="n#getColumnList#0;n#Model#0;n#!!top" />
+            <element signature="n#removeDuplicate#0;n#Model#0;n#!!top" />
+            <element signature="n#extractPost#0;n#Model#0;n#!!top" />
+            <element signature="n#getQuery#0;n#Model#0;n#!!top" />
+            <element signature="n#select#0;n#Model#0;n#!!top" />
+            <element signature="n#delete#0;n#Model#0;n#!!top" />
+            <element signature="n#isHoliday#0;n#Model#0;n#!!top" />
+            <element signature="n#joinType#0;n#Model#0;n#!!top" />
+            <element signature="n#getAllColumns#0;n#Model#0;n#!!top" />
+            <element signature="n#getLastID#0;n#Model#0;n#!!top" />
+            <element signature="n#fixCancel#0;n#Model#0;n#!!top" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/common.css">
+    <entry file="file://$PROJECT_DIR$/application/model/model_ceo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+          <folding>
+            <element signature="n#__construct#0;n#Model_ceo#0;n#!!top" />
+            <element signature="n#reset#0;n#Model_ceo#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/model/model_company.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="51" column="33" selection-start-line="51" selection-start-column="33" selection-end-line="51" selection-end-column="33" />
+          <folding>
+            <element signature="e#273#1473#0#PHP" />
+            <element signature="e#1482#1643#0#PHP" />
+            <element signature="e#2193#2265#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/view/employee/available_date.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="20" column="55" lean-forward="true" selection-start-line="20" selection-start-column="55" selection-end-line="20" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/datepicker.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/ceo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/model/model_employee.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="69" column="120" selection-start-line="69" selection-start-column="120" selection-end-line="69" selection-end-column="120" />
+          <folding>
+            <element signature="e#278#1925#0#PHP" />
+            <element signature="e#2000#2426#0#PHP" />
+            <element signature="e#2398#2558#0#PHP" />
+            <element signature="e#3315#3613#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="164" column="30" selection-start-line="164" selection-start-column="26" selection-end-line="164" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/default.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/ajax/ajax.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="351">
-          <caret line="32" column="20" lean-forward="true" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
+          <caret line="193" selection-start-line="193" selection-end-line="218" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/view/company/write.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="107" column="30" lean-forward="true" selection-start-line="107" selection-start-column="30" selection-end-line="107" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/view/company/companyJoinForm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="15" column="39" lean-forward="true" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/view/employee/view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="53" selection-start-line="1" selection-start-column="53" selection-end-line="1" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/view/employee/write.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="211" column="24" lean-forward="true" selection-start-line="177" selection-start-column="18" selection-end-line="211" selection-end-column="24" />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#div#2;n#div#0;n#div#2;n#fieldset#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#1;n#div#2;n#div#0;n#div#2;n#fieldset#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#2;n#div#1;n#div#2;n#fieldset#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1035,66 +1120,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/view/employee/view.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="514">
-          <caret line="47" column="47" lean-forward="true" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/view/company/companyJoinForm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1116">
-          <caret line="158" selection-start-line="158" selection-end-line="158" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/view/employee/employeeJoinTable.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="58" column="103" selection-start-line="58" selection-start-column="78" selection-end-line="58" selection-end-column="103" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/view/employee/employeeAvailableDayTable.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="6" selection-start-column="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/view/employee/write.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="308" column="5" selection-start-line="308" selection-start-column="5" selection-end-line="308" selection-end-column="5" />
+        <state relative-caret-position="331">
+          <caret line="80" column="36" lean-forward="true" selection-start-line="80" selection-start-column="36" selection-end-line="80" selection-end-column="36" />
           <folding>
-            <element signature="e#12029#13888#0#HTML" />
-            <element signature="e#14098#16117#0#HTML" />
+            <element signature="n#style#0;n#button#0;n#div#2;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#1;n#div#2;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#2;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/view/common/modal.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="42" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
+        <state relative-caret-position="414">
+          <caret line="65" column="38" lean-forward="true" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="38" />
+          <folding>
+            <element signature="n#div#1;n#!!top" />
+            <element signature="n#div#2;n#!!top" />
+            <element signature="n#div#3;n#!!top" />
+            <element signature="n#div#5;n#!!top" />
+            <element signature="n#div#6;n#!!top" />
+            <element signature="n#div#7;n#!!top" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/ajax/ajax.php">
+    <entry file="file://$PROJECT_DIR$/public/css/common.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="125" column="120" selection-start-line="125" selection-start-column="120" selection-end-line="125" selection-end-column="120" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/model/model_company.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="571">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        <state relative-caret-position="369">
+          <caret line="92" column="15" lean-forward="true" selection-start-line="92" selection-start-column="15" selection-end-line="92" selection-end-column="15" />
         </state>
       </provider>
     </entry>

@@ -1,10 +1,9 @@
-
 <div class="title-table">
-    <h1 class="table_title"><?php echo ($this->param->action == 'write') ? '가입 정보' : '가입 추가'; ?></h1>
+    <h1 class="table_title" style="width: 140px;"><?php echo ($this->param->action == 'write') ? '가입 정보' : '가입 추가'; ?></h1>
     <div class="btn-group">
-        <button type="button" class="btn-select-join-type" value="gujwa" id="btnGujwa">구좌</button>
-        <button type="button" class="btn-select-join-type" value="deposit">보증금</button>
-        <button type="button" class="btn-select-join-type" value="point">포인트</button>
+        <button type="button" class="btn btn-option btn-select-join-type" value="gujwa" id="btnGujwa">구좌</button>
+        <button type="button" class="btn btn-option btn-select-join-type" value="deposit">보증금</button>
+        <button type="button" class="btn btn-option btn-select-join-type" value="point">포인트</button>
     </div>
 </div>
 
@@ -19,7 +18,7 @@
         </fieldList>
       <?php if ($this->param->action == 'view'): ?>
         <div class="btn-group al_r">
-            <button type="button" class="btn btn-submit" id="btnAddCompanyJoin">가입 추가</button>
+            <button type="submit" class="btn btn-submit" id="btnAddCompanyJoin">가입 추가</button>
         </div>
     </form>
 </div>
@@ -27,8 +26,8 @@
 
 
 <script>
-    if ( window.history.replaceState ) {
-        window.history.replaceState( null, null, window.location.href );
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
     }
     $(document).ready(function () {
         check_duplicate_company();
@@ -168,11 +167,11 @@
             price.val('250000');
         });
     }
-    
-    function unset_post(){
-       $('#btnAddCompanyJoin').on('click',function () {
-           $('#formInsertCompanyJoin').submit();
-           // document.location.replace(pageID);//같은 페이지로 redirection....
-       });
+
+    function unset_post() {
+        // $('#btnAddCompanyJoin').on('click', function () {
+        //     $('#formInsertCompanyJoin').submit();
+        //     // document.location.replace(pageID);//같은 페이지로 redirection....
+        // });
     }
 </script>

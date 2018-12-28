@@ -195,21 +195,21 @@
         <div class="tr">
             <div class="td">
                 <label for="company-startDate">가입시작일</label>
-                <input type="date" name="startDate" id="company-startDate">
+                <input type="date" name="startDate" id="company-startDate" required>
             </div>
             <div class="td">
                 <label for="company-endDate">가입만기일</label>
-                <input type="date" name="endDate" id="company-endDate">
+                <input type="date" name="endDate" id="company-endDate" required>
             </div>
             <div class="td">
-                <button type="button" class="btn btn-insert" id="btn6Month">6개월</button>
-                <button type="button" class="btn btn-insert" id="btn1Year">1년</button>
+                <button type="button" class="btn btn-option" id="btn6Month">6개월</button>
+                <button type="button" class="btn btn-option" id="btn1Year">1년</button>
             </div>
         </div>
         <div class="tr">
             <div class="td">
                 <label for="company-price">가입금액</label>
-                <input type="number" name="price" id="company-price">
+                <input type="number" name="price" id="company-price" required>
             </div>
             <div class="td">
                 <label for="company-joinDetail">가입비고</label>
@@ -225,11 +225,11 @@ HTML;
     <div class="tr">
         <div class="td">
             <label for="company-startDate">가입시작일</label>
-            <input type="date" name="startDate" id="company-startDate">
+            <input type="date" name="startDate" id="company-startDate" required>
         </div>
         <div class="td">
             <label for="company-deposit">보증금</label>
-            <input type="number" name="deposit" id="company-deposit">
+            <input type="number" name="deposit" id="company-deposit" required>
         </div>
     </div>
     <div class="tr">
@@ -247,15 +247,15 @@ HTML;
     <div class="tr">
         <div class="td">
             <label for="company-startDate">가입일</label>
-            <input type="date" name="startDate" id="company-startDate">
+            <input type="date" name="startDate" id="company-startDate" required>
         </div>
         <div class="td">
             <label for="company-price">가입금액</label>
-            <input type="number" name="price" id="company-price">
+            <input type="number" name="price" id="company-price" required>
         </div>
         <div class="td">
             <label for="company-point">포인트</label>
-            <input type="number" name="point" id="company-point">
+            <input type="number" name="point" id="company-point" required>
         </div>
     </div>
     <div class="tr">

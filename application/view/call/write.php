@@ -1,4 +1,4 @@
-<div class="board_write">
+<div class="board-write">
     <div>
         <button class="btn btn-default selectable selected" id="manualCallBtn">일반콜</button>
         <button class="btn btn-default selectable" id="fixCallBtn">고정</button>

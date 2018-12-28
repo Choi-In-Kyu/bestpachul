@@ -1,7 +1,7 @@
 <?php $companyData = $this->companyData ?>
-<div class="board_write auto-center">
+<div class="board-write auto-center">
     <div class="title-table">
-        <h1>
+        <h1 class="title-main">
           <?php
             echo "업체정보";
             if (isset ($companyData)) echo " - " . $companyData['companyName'] . "(" . $companyData['actCondition'] . ")";
@@ -17,12 +17,12 @@
                 <input type="hidden" name="ceoID" value="<?php echo $this->ceoData['ceoID'] ?>">
                 <div class="table">
                     <div class="tr">
-                        <div class="td">
+                        <div class="td td-3">
                             <label for="">업체명</label>
                             <input type="text" name="companyName" size="20" required autofocus
                                    value="<?php echo $companyData['companyName']; ?>">
                         </div>
-                        <div class="td">
+                        <div class="td td-3">
                             <label for="">대표자명</label>
                             <input type="text" list="ceoList" name="ceoName" size="20" required
                                    value="<?php echo $this->ceoData['ceoName']; ?>">
@@ -33,7 +33,7 @@
                             </datalist>
                         </div>
 
-                        <div class="td">
+                        <div class="td td-3">
                             <label for="">업종</label>
                             <input type="text" list="businessTypeList" name="businessType" size="20"
                                    required value="<?php echo $companyData['businessType']; ?>">
@@ -45,22 +45,22 @@
                         </div>
                     </div>
                     <div class="tr">
-                        <div id="companyNameDuplicate">이름을 입력 해 주세</div>
+                        <div id="companyNameDuplicate">이름을 입력 해 주세요</div>
                     </div>
                     <div class="tr">
-                        <div class="td">
+                        <div class="td td-3">
                             <label for="">업체전화</label>
                             <input type="text" name="companyPhoneNumber" size="20" required
                                    value="<?php echo $companyData['companyPhoneNumber']; ?>">
                         </div>
-                        <div class="td">
+                        <div class="td td-3">
                             <label for="">사장전화</label>
                             <input type="text" name="ceoPhoneNumber" size="20" required
                                    value="<?php echo $this->ceoData['ceoPhoneNumber']; ?>">
                         </div>
                     </div>
                     <div class="tr">
-                        <div class="td">
+                        <div class="td td-3">
                             <label for="">간단주소</label>
                             <input type="text" list="addressList" name="address"
                                    value="<?php echo $companyData['address']; ?>">
@@ -70,36 +70,36 @@
                               <?php endforeach ?>
                             </datalist>
                         </div>
-                        <div class="td" style="width: 60%;">
-                            <label for="" style="width: 10%;">상세주소</label>
-                            <input type="text" name="detailAddress" size="20" style="width: 85%;"
+                        <div class="td td-9">
+                            <label for="">상세주소</label>
+                            <input type="text" name="detailAddress" size="20"
                                    value="<?php echo $companyData['detailAddress']; ?>">
                         </div>
                     </div>
                     <div class="tr">
-                        <div class="td">
+                        <div class="td td-3">
                             <label for="">점수</label>
                             <input type="number" name="grade" min="0" max="100" required
                                    value="<?php echo $companyData['grade']; ?>">
                         </div>
                     </div>
                     <div class="tr">
-                        <div class="td td-detail">
+                        <div class="td td-4">
                             <label for="">비고</label>
-                            <textarea class="textarea-detail-company" style="height: 260px; width: 70%;"
+                            <textarea class="textarea-detail"
                                       name="detail"><?php echo $this->get_detail($companyData, 'company'); ?></textarea>
                         </div>
                       <?php if ($companyData['deleted'] == 1) : ?>
-                          <div class="td-detail">
+                          <div class="td td-4">
                               <label for="">삭제비고</label>
-                              <textarea class="textarea-detail-company" style="height: 200px;"
+                              <textarea class="textarea-detail"
                                         name="deleteDetail"><?php echo $companyData['deleteDetail']; ?></textarea>
                           </div>
                       <?php endif; ?>
                     </div>
                   <?php if (($this->param->action == 'view') && (sizeof($this->blackList) > 0)): ?>
                       <div class="tr">
-                          <div class="td-detail">
+                          <div class="td td-4">
                               <label for="">블랙</label>
                             <?php foreach ($this->blackList as $data) {
                               $type = ($data['ceoReg'] == 1) ? '오지마세요' : '안가요';
@@ -115,8 +115,9 @@
               <?php endif; ?>
             </fieldset>
             <div class="btn-group al_r">
-                <a class="btn btn-default" href="<?php echo $this->param->get_page ?>">취소</a>
-                <button class="btn btn-submit" type="submit"><?php echo ($this->param->action == 'write') ? '추가' : '수정' ?></button>
+                <a class="btn btn-default" href="<?php echo $this->param->get_page ?>">뒤로 가기</a>
+                <button class="btn btn-<?php echo ($this->param->action == 'write') ? 'insert' : 'submit' ?>"
+                        type="submit"><?php echo ($this->param->action == 'write') ? '추가' : '수정' ?></button>
             </div>
         </form>
     </div>

@@ -1,4 +1,4 @@
-<div class="board_list auto-center" style="margin: 0 200px; width: auto;">
+<div class="board-list auto-center" style="margin: 0 200px; width: auto;">
     <h1>블랙리스트 관리</h1>
     <div class="form-default">
         <form id="company_form" action="" method="post">
@@ -77,7 +77,7 @@
                 <td class="al_l"><?php echo $data['detail'] ?></td>
                 <td class="al_c">
                     <button type="button" class="btn btn-danger blackDelBtn" value="<?php echo $data['blackListID'] ?>">
-                        X
+                        삭제
                     </button>
                 </td>
             </tr>

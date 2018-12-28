@@ -1,4 +1,4 @@
-let form = $('#formInsertEmployee input[name=employee-employeeName]');
+let form = $('#formInsertEmployee input[name=employeeName]');
 if (form.val() === null) {
     $('#employeeNameDuplicate').html('이름을 입력 해 주세요');
 }

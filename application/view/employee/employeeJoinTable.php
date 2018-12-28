@@ -1,4 +1,4 @@
-<div class="board_write auto-center">
+<div class="board-write auto-center">
     <div class="title-table">
         <h1>가입 내역</h1>
     </div>
@@ -43,32 +43,70 @@
     </div>
     <form action="" id="addJoinForm" style="display:none;" method="post">
         <input type="hidden" name="action" value="new_insert">
-        <input type="hidden" name="join_employee-employeeID" value="<?php echo $this->employeeData['employeeID'] ?>">
+        <input type="hidden" name="employeeID" value="<?php echo $this->employeeData['employeeID'] ?>">
         <div id="new_join_table">
             <div class="title-table">
                 <h1>가입 정보</h1>
             </div>
-            <table>
-                <tr>
-                    <td>가입시작일</td>
-                    <td><input type="date" id="startDate" name="join_employee-startDate" required></td>
-                    <td>가입만기일</td>
-                    <td><input type="date" id="endDate" name="join_employee-endDate" required></td>
-                    <td>
-                        <button type="button" class="btn btn-insert" onclick="auto_insert_employee_join('today')">오늘부터</button>
-                        <button type="button" class="btn btn-insert" onclick="auto_insert_employee_join('extend')">연장하기</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>가입금액</td>
-                    <td><input type="number" id="price" name="join_employee-price" value="50000" required></td>
-                    <td>가입비고</td>
-                    <td><textarea name="join_employee-detail"></textarea></td>
-                    <td>
-                        <input type="checkbox" id="paid" name="join_employee-paid" value="1">회비 수금 여부
-                    </td>
-                </tr>
-            </table>
+<!--            <table>-->
+<!--                <tr>-->
+<!--                    <td>가입시작일</td>-->
+<!--                    <td><input type="date" id="startDate" name="startDate" required></td>-->
+<!--                    <td>가입만기일</td>-->
+<!--                    <td><input type="date" id="endDate" name="endDate" required></td>-->
+<!--                    <td>-->
+<!--                        <button type="button" class="btn btn-insert" onclick="auto_insert_employee_join('today')">오늘부터</button>-->
+<!--                        <button type="button" class="btn btn-insert" onclick="auto_insert_employee_join('extend')">가입연장</button>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>가입금액</td>-->
+<!--                    <td><input type="number" id="price" name="price" value="50000" min="0" required></td>-->
+<!--                    <td>가입비고</td>-->
+<!--                    <td><textarea name="joinDetail"></textarea></td>-->
+<!--                    <td>-->
+<!--                        <label for="">수금</label>-->
+<!--                        <input type="checkbox" id="paid" name="paid" value="1">-->
+<!--                        <label for="">수금자</label>-->
+<!--                        <input type="text" id="paid" name="receiver" value="지명희">-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--            </table>-->
+            <div class="table table-add-join" id="employeeAddJoinTable">
+                <div class="tr">
+                    <div class="td">
+                        <label for="startDate">가입시작일</label>
+                        <input type="date" id="startDate" name="startDate" required>
+                    </div>
+                    <div class="td">
+                        <label for="endDate">가입만기일</label>
+                        <input type="date" id="endDate" name="endDate" required>
+                    </div>
+                    <div class="td">
+                        <button type="button" class="btn btn-option" onclick="auto_insert_employee_join('today')"
+                                style="width: 100px;">오늘부터
+                        </button>
+                        <button type="button" class="btn btn-option" onclick="auto_insert_employee_join('extend')"
+                                style="width: 100px;">가입연장
+                        </button>
+                    </div>
+                </div>
+                <div class="tr">
+                    <div class="td">
+                        <label for="price">가입금액</label>
+                        <input type="number" id="price" name="price" required>
+                    </div>
+                    <div class="td">
+                        <label for="joinDetail">가입비고</label>
+                        <textarea name="joinDetail"></textarea>
+                    </div>
+                    <div class="td">
+                        <label for="">수금</label>
+                        <input type="checkbox" id="paid" name="paid" value="1" style="width: 30px; height: 30px;">
+                        <input type="text" id="paid" name="receiver" value="지명희" required>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="btn-group al_r">
             <button class="btn btn-submit" type="submit">가입 추가</button>

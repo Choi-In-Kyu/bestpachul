@@ -40,10 +40,10 @@
     <td><input class="day ad sun" type="checkbox"<?php echo $this->getDay('sun', '종일') ?> ></td>
   </tr>
 </table>
-<input type="hidden" name="employee_available_day-mon" value="<?php echo $this->getDay('mon')?>">
-<input type="hidden" name="employee_available_day-tue" value="<?php echo $this->getDay('tue')?>">
-<input type="hidden" name="employee_available_day-wed" value="<?php echo $this->getDay('wed')?>">
-<input type="hidden" name="employee_available_day-thu" value="<?php echo $this->getDay('thu')?>">
-<input type="hidden" name="employee_available_day-fri" value="<?php echo $this->getDay('fri')?>">
-<input type="hidden" name="employee_available_day-sat" value="<?php echo $this->getDay('sat')?>">
-<input type="hidden" name="employee_available_day-sun" value="<?php echo $this->getDay('sun')?>">
+<input type="hidden" name="mon" value="<?php echo $this->getDay('mon')?>">
+<input type="hidden" name="tue" value="<?php echo $this->getDay('tue')?>">
+<input type="hidden" name="wed" value="<?php echo $this->getDay('wed')?>">
+<input type="hidden" name="thu" value="<?php echo $this->getDay('thu')?>">
+<input type="hidden" name="fri" value="<?php echo $this->getDay('fri')?>">
+<input type="hidden" name="sat" value="<?php echo $this->getDay('sat')?>">
+<input type="hidden" name="sun" value="<?php echo $this->getDay('sun')?>">

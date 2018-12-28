@@ -8,21 +8,19 @@
     }
     function action()
     {
-      header("Content-type:text/html;charset=utf8");
-      
-      
+//      header("Content-type:text/html;charset=utf8");
       switch ($_POST['action']) {
         case 'insert' :
           $_POST['userName'] = $_POST['companyName'];
           $_POST['userPW'] = $_POST['ceoPhoneNumber'];
           if(!$_POST['ceoID']){//새로운 사장 입력 시
-            $this->insert('insert','ceo',$_POST);
+            $this->insert('insert','ceo',$_POST);//사장 테이블에 입력
             $_POST['ceoID'] = $this->getLastID('ceo');
           }
-          $this->insert('insert','company', $_POST);
+          $this->insert('insert','company', $_POST);//업체 테이블에 입력
           $_POST['companyID'] = $this->getLastID('company');
-          $this->insert('insert','join_company',$_POST);
-          $this->insert('insert','user',$_POST);
+          $this->insert('insert','join_company',$_POST);//가입 테이블에 입력
+          $this->insert('insert','user',$_POST);//유저 테이블에 입력
           foreach ($this->select('address') as $value){//존재하는 간단주소의 목록
             foreach ($value as $item){
               $addressTable[] = $item;
@@ -44,18 +42,14 @@
         case 'update' :
           $this->insert('update', 'company', $_POST);
           $this->insert('update', 'ceo', $_POST);
-          unset($_POST);
           break;
         case 'new_insert':
           $_POST['companyID'] = $this->param->idx;
           $this->insert('addJoin', 'join_company', $_POST);
-          unset($_POST);
-          $_POST = array();
-          $msg = "추가되었습니다!";
           break;
         case 'join_update':
           $joinID = $_POST['joinID'];
-          $detail = $_POST['detail'];
+          $detail = $_POST['joinDetail'];
           $price = $_POST['price'];
           $this->executeSQL("UPDATE join_company SET `price`= '{$price}', `joinDetail` = '{$detail}' WHERE join_companyID = '{$joinID}' LIMIT 1");
           break;
@@ -63,7 +57,5 @@
           $this->callCancel($_POST);
           break;
       }
-//      unset($_POST);
-//      if(isset($msg)) alert($msg);
     }
   }

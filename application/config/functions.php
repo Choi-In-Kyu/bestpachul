@@ -252,7 +252,7 @@
       if ($data['activated'] == 1) {
         $tableID = "join_" . $tableName . "ID";
         return <<<HTML
-<button class = "btn btn-danger btn-join-cancel-modal" value = "{$tableName}-{$data[$tableID]}" id="{$data[$tableID]}" >X</button>
+<button class = "btn btn-danger btn-join-cancel-modal" value = "{$tableName}-{$data[$tableID]}" id="{$data[$tableID]}" >삭제</button>
 HTML;
       } else {
         return $data['deletedDate'];
@@ -264,7 +264,7 @@ HTML;
       $tableID = $tableName . "ID";
       if ($data['deleted'] == 0) {
         return <<<HTML
-          <button class="btn btn-danger btn-delete-modal" value="{$tableName}-{$data[$tableID]}" id="{$data[$tableID]}">X</button>
+          <button class="btn btn-danger btn-delete-modal" value="{$tableName}-{$data[$tableID]}" id="{$data[$tableID]}">삭제</button>
 HTML;
       } else {
         return <<<HTML
@@ -278,7 +278,7 @@ HTML;
       if ($data[$column] > 0) {
         if ($data['paid'] == 0) {
           return <<<HTML
-<button type="button" class="btn btn-default btn-money getMoneyBtn_{$table}" id="{$data[$table . 'ID']}" value="{$table}-{$data[$column]}">{$data[$column]}</button>
+<button type="button" class="btn btn-money getMoneyBtn_{$table}" id="{$data[$table . 'ID']}" value="{$table}-{$data[$column]}">{$data[$column]}원</button>
 HTML;
         } else return '수금완료(' . $data['receiver'] . ")";
       } else return '무료';

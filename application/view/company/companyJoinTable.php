@@ -1,4 +1,4 @@
-<div class="board_write auto-center">
+<div class="board-write auto-center">
   <div class="title-table">
       <h1>가입 내역</h1>
   </div>

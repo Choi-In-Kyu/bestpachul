@@ -1,10 +1,10 @@
-<div class="board_write auto-center">
+<div class="board-write auto-center">
     <h1>근무 가능일 / 근무 불가능일</h1>
     <div class="form-default">
         <form id="employee_form" action="" method="post">
             <fieldset>
                 <input type="hidden" name="action" value="insert_day">
-                <input type="hidden" name="employee-employeeID" value="<?php echo $this->employeeData['employeeID'] ?>">
+                <input type="hidden" name="employeeID" value="<?php echo $this->employeeData['employeeID'] ?>">
                 <div class="table">
                     <div class="tr">
                         <div class="td-label">인력명</div>
@@ -54,7 +54,7 @@
                 <tr>
                     <th>#</th>
                     <th>인력명</th>
-                    <th>근무가능일1111111</th>
+                    <th>근무가능일</th>
                     <th>근무불가능일</th>
                     <th>비고</th>
                 </tr>
