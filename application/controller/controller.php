@@ -21,14 +21,8 @@
     public $deactivatedCondition = " (activated = 0 AND deleted = 0) ";
     public $deletedCondition = " (activated = 0 AND deleted = 1) ";
     //토글 버튼 조건
-    public $thisWeekCondition = "(YEARWEEK( workDate, 1 ) = YEARWEEK( CURDATE( ) , 1 ))";
-    public $thisMonthCondition = "(YEAR(workDate) = YEAR(CURDATE()) AND MONTH(workDate) = MONTH(CURDATE()))";
-    public $chargedCondition = "(`price` > 0)";
-    public $freeCondition = "(`price` = 0)";
-    public $pointCondition = "(`point` > 0)";
-    public $unfixedCondition = "(`fixID` = 0)";
-    public $fixedCondition = "(`fixID` > 0)";
-    public $monthlyCondition = "(`fixID` > 0 AND `salary` = 0)";
+    
+
     
     //생성자
     function __construct($param)
@@ -53,14 +47,6 @@
         $this->{$value . '_List'} = $this->model->select($value);
       }
       $this->tableName = $this->param->page_type;
-      $blackListSql = "
-SELECT `blackListID`,`employee`.`employeeID`,`company`.`companyID`,`employeeName`,`companyName`,`blackList`.`detail`, `blackList`.`ceoReg`
-FROM `blackList`
-LEFT JOIN `employee` on blackList.employeeID = employee.employeeID
-LEFT JOIN `company` on blackList.companyID = company.companyID
-";
-      $this->blackList_List = $this->model->getTable($blackListSql);
-      
       if ($this->param->action == 'available_date') {
         $this->thisWeekCondition = "(YEARWEEK( availableDate, 1 ) = YEARWEEK( CURDATE( ) , 1 )) OR (YEARWEEK( notAvailableDate, 1 ) = YEARWEEK( CURDATE( ) , 1 ))";
         $this->thisMonthCondition = "(YEAR(availableDate) = YEAR(CURDATE()) AND MONTH(availableDate) = MONTH(CURDATE())) OR (YEAR(notAvailableDate) = YEAR(CURDATE()) AND MONTH(notAvailableDate) = MONTH(CURDATE()))";

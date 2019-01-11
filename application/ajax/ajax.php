@@ -30,6 +30,7 @@
           $result['holiday'] = $obj->isHoliday($date);
           $result['callPrice'] = $obj->getCallPrice($id, $date);
           $result['companyID'] = $_POST['companyID'];
+//          $result['bookmark'] = $obj->select('company',"`companyID` = '{$_POST['companyID']}'",'bookmark');
           echo json_encode($result);
         } else {
           $result['joinType'] = null;
@@ -39,7 +40,7 @@
           $result['callPrice'] = null;
           $result['salary'] = $_POST['salary'];
           $result['companyID'] = $_POST['companyID'];
-          
+//          $result['bookmark'] = $obj->select('company',"`companyID` = '{$_POST['companyID']}'",'bookmark');
           echo json_encode($result);
         }
         break;
@@ -87,10 +88,14 @@
         $obj->getMoney($_POST);
         break;
       case 'toggleFilter':
+//        echo json_encode($_POST);
         echo $obj->toggleFilter($_POST);
         break;
       case 'availableFilter':
-        echo $obj->availableFilter($_POST);
+        $result['list'] = $obj->availableFilter($_POST)['arr'];
+        $result['sql'] = $obj->availableFilter($_POST)['sql'];
+        $result['post'] = $obj->availableFilter($_POST)['post'];
+        echo json_encode($result);
         break;
       case 'assignFilter':
         echo json_encode($obj->assignFilter($_POST));
@@ -149,7 +154,7 @@
           $sql = "SELECT `{$tableName}` FROM `{$table}` WHERE `{$tableName}` LIKE '%{$name}%' ";
           $duplicateTable = $obj->getTAble($sql);
           
-          $match = $obj->select($table,"`{$tableName}` = '{$name}'", $tableName);
+          $match = $obj->select($table, "`{$tableName}` = '{$name}'", $tableName);
           
           
           foreach ($duplicateTable as $value) {
@@ -163,8 +168,7 @@
           } else {
             $return['msg'] = "새로 추가 가능한 이름입니다";
           }
-        }
-        else {
+        } else {
           $return['msg'] = '이름을 입력 해 주세요';
         }
         echo json_encode($return);
@@ -174,17 +178,17 @@
         if ($ceoName) {
           $result['ceoPhoneNumber'] = $obj->select('ceo', " `ceoName` = '$ceoName' ", 'ceoPhoneNumber');
           $result['ceoID'] = $obj->select('ceo', " `ceoName` = '$ceoName' ", 'ceoID');
-          if($result['ceoID'] && $result['ceoPhoneNumber']){
+          if ($result['ceoID'] && $result['ceoPhoneNumber']) {
             echo json_encode($result);
           }
         }
         break;
       case 'getLastJoinDate':
-        $sql = "SELECT `endDate` FROM `join_employee` WHERE `employeeID`='{$_POST['id']}}' AND `deleted` = 0 AND `activated` = 1 ORDER BY `endDate` DESC LIMIT 1";
-        $startDate = date('Y-m-d', strtotime($obj->getTable($sql)[0]['endDate']));
-        $endDate = date("Y-m-d", strtotime("+1 month", strtotime($startDate)));
-        $result['startDate'] = $startDate;
-        $result['endDate'] = $endDate;
+        $sql = "SELECT `endDate` FROM `join_employee` WHERE `employeeID`='{$_POST['id']}}' AND `deleted` = 0 ORDER BY `endDate` DESC LIMIT 1";
+          $startDate = date('Y-m-d', strtotime($obj->getTable($sql)[0]['endDate']));
+          $endDate = date("Y-m-d", strtotime("+1 month", strtotime($startDate)));
+          $result['startDate'] = $startDate;
+          $result['endDate'] = $endDate;
         echo json_encode($result);
         break;
       case 'getCompanyJoinForm':

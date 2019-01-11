@@ -40,12 +40,13 @@ $('#afternoonBtn').click(function () {
 });
 $('#allDayBtn').click(function () {
     startHour.val('10');
-    endHour.val('22');
+    endHour.val('21');
     minute.val('00');
     let starth = parseInt(startHour.val());
     limitTime(true);
 });
 $('.btn-work-field').on('click', function () {
+    console.log($(this).text());
     $('#workField').val($(this).text());
 });
 $('.all-filter').on('change', function () {
@@ -124,6 +125,7 @@ function change(type) {
     });
 }
 function limitTime(allday) {
+    console.log('limitTime');
     let starth = parseInt(startHour.val());
     if (allday !== true) {
         endHour.val(starth + 5);

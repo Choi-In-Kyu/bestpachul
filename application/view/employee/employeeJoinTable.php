@@ -109,7 +109,7 @@
             </div>
         </div>
         <div class="btn-group al_r">
-            <button class="btn btn-submit" type="submit">가입 추가</button>
+            <button class="btn btn-insert" type="submit">가입 추가</button>
         </div>
     </form>
 </div>

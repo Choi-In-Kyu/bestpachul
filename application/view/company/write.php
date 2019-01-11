@@ -72,7 +72,7 @@
                         </div>
                         <div class="td td-9">
                             <label for="">상세주소</label>
-                            <input type="text" name="detailAddress" size="20"
+                            <input type="text" name="detailAddress" size="50" style="width: 680px;"
                                    value="<?php echo $companyData['detailAddress']; ?>">
                         </div>
                     </div>

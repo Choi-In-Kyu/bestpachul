@@ -25,6 +25,7 @@ function initiate(time, callFunction = false, date = null) {
             let callType = JSON.parse(data).callType;
             let holiday = JSON.parse(data).holiday;
             let callPrice = JSON.parse(data).callPrice;
+            let bookmark = JSON.parse(data).bookmark;
 
             getSalary(time, holiday);
 
@@ -69,8 +70,21 @@ function initiate(time, callFunction = false, date = null) {
                 }
             }
             else {
-                alert('만기된 회원입니다');
-                window.location.reload();
+                // if(bookmark){
+                //     let confirmDeactivated = localStorage.getItem('confirmDeactivated');
+                //     if(confirmDeactivated !== 'yes'){
+                //         if(confirm("만기된 회원입니다 배정 하시겠습니까?")){
+                //             localStorage.setItem('confirmDeactivated','yes');
+                //         }
+                //         else{
+                //             window.location.reload();
+                //         }
+                //     }
+                // }
+                // else{
+                    alert('만기된 회원입니다');
+                    window.location.reload();
+                // }
             }
             return data;
         }
@@ -80,33 +94,33 @@ function initiate(time, callFunction = false, date = null) {
 //임금 계산 함수
 function getSalary(time, holiday) {
     let money;
-    if (holiday === true) {
+    if (holiday === true) {//주말 공휴일
         $('#date').css({'color': 'red', 'font-weight': 'bold'});
         if (parseInt(endHour.val()) * 100 + parseInt(endMin.val()) > 2400) {//야간
             switch (time) {
                 case 5:
-                    money = 57000;
+                    money = 58000;
                     break;
                 case 6:
-                    money = 64000;
+                    money = 65000;
                     break;
                 case 7:
-                    money = 71000;
+                    money = 72000;
                     break;
                 case 8:
-                    money = 78000;
+                    money = 79000;
                     break;
                 case 9:
-                    money = 85000;
+                    money = 86000;
                     break;
                 case 10:
-                    money = 92000;
+                    money = 93000;
                     break;
                 case 11:
-                    money = 96000;
+                    money = 100000;
                     break;
                 case 12:
-                    money = 100000;
+                    money = 108500;
                     break;
                 default:
                     money = 0;
@@ -116,28 +130,28 @@ function getSalary(time, holiday) {
         else {
             switch (time) {
                 case 5:
-                    money = 47000;
+                    money = 48000;
                     break;
                 case 6:
-                    money = 54000;
+                    money = 55000;
                     break;
                 case 7:
-                    money = 61000;
+                    money = 62000;
                     break;
                 case 8:
-                    money = 68000;
+                    money = 69000;
                     break;
                 case 9:
-                    money = 75000;
+                    money = 76000;
                     break;
                 case 10:
-                    money = 82000;
+                    money = 83000;
                     break;
                 case 11:
-                    money = 86000;
+                    money = 90000;
                     break;
                 case 12:
-                    money = 90000;
+                    money = 98500;
                     break;
                 default:
                     money = 0;
@@ -150,28 +164,28 @@ function getSalary(time, holiday) {
         if (parseInt(endHour.val()) * 100 + parseInt(endMin.val()) > 2400) {
             switch (time) {
                 case 5:
-                    money = 52000;
+                    money = 53000;
                     break;
                 case 6:
-                    money = 59000;
+                    money = 60000;
                     break;
                 case 7:
-                    money = 66000;
+                    money = 67000;
                     break;
                 case 8:
-                    money = 73000;
+                    money = 74000;
                     break;
                 case 9:
-                    money = 80000;
+                    money = 81000;
                     break;
                 case 10:
-                    money = 87000;
+                    money = 88000;
                     break;
                 case 11:
-                    money = 91000;
+                    money = 95000;
                     break;
                 case 12:
-                    money = 95000;
+                    money = 103500;
                     break;
                 default:
                     money = 0;
@@ -181,28 +195,28 @@ function getSalary(time, holiday) {
         else {
             switch (time) {
                 case 5:
-                    money = 42000;
+                    money = 43000;
                     break;
                 case 6:
-                    money = 49000;
+                    money = 50000;
                     break;
                 case 7:
-                    money = 56000;
+                    money = 57000;
                     break;
                 case 8:
-                    money = 63000;
+                    money = 64000;
                     break;
                 case 9:
-                    money = 70000;
+                    money = 71000;
                     break;
                 case 10:
-                    money = 77000;
+                    money = 78000;
                     break;
                 case 11:
-                    money = 81000;
+                    money = 85000;
                     break;
                 case 12:
-                    money = 85000;
+                    money = 93500;
                     break;
                 default:
                     money = 0;

@@ -33,13 +33,19 @@
 <!-- Call Cancel Modal -->
 <div id="modalCallCancel" class="modal">
     <div class="modal-content">
-        <h1 class="detail">취소사유</h1>
+        <div class="modal-box al_r">
+            <button type="button" class="btn btn-close-modal">X</button>
+        </div>
+        <div class="modal-box al_l">
+            <h1 class="detail">취소사유를 입력해 주세요</h1>
+        </div>
         <form id="formCallCancel" action="" method="post">
             <input type="hidden" name="action" value="callCancel">
             <input type="hidden" name="callID" id="callCancelID">
             <textarea name="detail" id="detail" size="200"></textarea>
-            <button id="btnCallCancel" type="button" class="btn btn-insert">콜 취소</button>
-            <button type="button" class="btn btn-close-modal">X</button>
+            <div class="al_r">
+                <button id="btnCallCancel" type="button" class="btn btn-mobile btn-insert">취소할래요</button>
+            </div>
         </form>
     </div>
 </div>
@@ -126,9 +132,9 @@
 <div id="modalPayChargedCall" class="modal">
     <div class="modal-content">
         <form>
-            <input id="pay-info" type="text" value="국민은행 477002-04-040107" disabled="disabled">
-            <input id="copyBtn" class="btn btn-insert" type="submit" value="복사하기">
-            <button type="button" class="btn btn-close-modal">X</button>
+            <input style="height: 50px;" id="pay-info" type="text" value="국민은행 477002-04-040107 48,000원" disabled="">
+            <input id="copyBtn" class="btn btn-insert" type="submit" value="계좌번호 복사하기">
+<!--            <button type="button" class="btn btn-close-modal">X</button>-->
         </form>
     </div>
 </div>

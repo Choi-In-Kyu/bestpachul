@@ -242,9 +242,7 @@
           unset($post[$key]);
         }
         else{
-          if($value){
-            $arr[] = " `{$key}` = '{$value}' ";
-          }
+          $arr[] = " `{$key}` = '{$value}' ";
         }
       }
       $str = implode(',',$arr);

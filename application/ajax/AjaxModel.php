@@ -89,7 +89,8 @@
       else return $this->getTable($sql);
     }
     
-    public function getAllColumns($tableName){
+    public function getAllColumns($tableName)
+    {
       $columnTable = $this->getTable("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'{$tableName}'");
       foreach ($columnTable as $value) {
         foreach ($value as $item) {
@@ -243,7 +244,6 @@
     public function checkCallType($id, $date)
     {
       $joinType = $this->joinType($id);
-      
       switch ($joinType) {
         case 'gujwa':
           $sql = "SELECT * FROM `join_company` WHERE companyID = '{$id}' AND startDate <= '{$date}' AND endDate >= '{$date}' AND `activated` = 1 AND deleted = 0";
@@ -257,7 +257,6 @@
           if ($total <= 26000 * sizeof($gujwaList)) return ['free', $total];
           else return ['charged', $total];
           break;
-        
         case 'point':
           if ($this->isHoliday($date)) $point = 8000;
           else $point = 6000;
@@ -315,8 +314,10 @@
       $sql = "SELECT `callID` FROM `call`";
       if (isset($post['duration'])) {
         $post['date'] = null;
-        $condition[] = "(" . implode(' OR ', $post['duration']) . ")";
+//        $condition[] = "(" . implode(' OR ', $post['duration']) . ")";
+        $condition[] = $post['duration'];
       }
+      
       if (isset($post['date']) && $post['date'] != '') {
         $condition = null;
         $condition[] = " (`workDate` = '{$post['date']}') ";
@@ -331,42 +332,50 @@
         $sql .= " WHERE ";
       }
       $sql .= implode(' AND ', $condition);
+  
+      $result['sql'] = $sql;
+      return json_encode($result);
+      
       foreach ($this->getTable($sql) as $value) {
         foreach ($value as $item) {
-          $arr[] = intval($item);
+          $result['arr'] = intval($item);
         }
       }
-      $arr[] = $sql;
-      return json_encode($arr);
+      $result['sql'] = $sql;
+      return json_encode($result);
     }
     
     public function availableFilter($post)
     {
+      $result['post'] = $post;
       $sql = "SELECT `availableDateID` FROM `employee_available_date`";
-      if (isset($post['duration'])) {
-        $post['date'] = null;
-        $condition[] = "(" . implode(' OR ', $post['duration']) . ")";
+      
+      if ($post['duration']) {
+        if (in_array('all', $post['duration'])) {
+          $condition['date'] = null;
+        } else {
+          $post['date'] = null;
+          $condition['date'] = "(" . implode(' OR ', $post['duration']) . ")";
+        }
+      } else {
+        $condition['date'] = " `availableDate` = '" . _TODAY . "' OR `notAvailableDate` = '" . _TODAY . "' ";
       }
-      if (isset($post['date']) && $post['date'] != '') {
-        $condition = null;
-        $condition[] = " (`availableDate` = '{$post['date']}') OR (`notAvailableDate` = '{$post['date']}')";
+      
+      if ($post['date']) {
+        $condition['date'] = " (`availableDate` = '{$post['date']}') OR (`notAvailableDate` = '{$post['date']}')";
       }
-      if (isset($condition)) {
+      
+      if ($condition) {
         $sql .= " WHERE ";
+        $sql .= implode(' AND ', $condition);
       }
-      $sql .= implode(' AND ', $condition);
+      $result['sql'] = $sql;
       foreach ($this->getTable($sql) as $value) {
         foreach ($value as $item) {
-          $arr[] = intval($item);
+          $result['arr'][] = intval($item);
         }
       }
-      foreach ($this->getTable($sql) as $value) {
-        foreach ($value as $item) {
-          $arr[] = intval($item);
-        }
-      }
-      $arr[] = $sql;
-      return json_encode($arr);
+      return $result;
     }
     
     public function workTimeType($data)
@@ -477,9 +486,9 @@
         }
       }
       $return = "";
-      $status = "배정가능 인력 : 1군(" . sizeof($group1) . "명) 2군(" . sizeof($group2) . "명) 3군(" . sizeof($group3) . ")";
+      $status = "배정가능 인력<br/> 1군(" . sizeof($group1) . "명) 2군(" . sizeof($group2) . "명) 3군(" . sizeof($group3) . ")";
       $return .= <<<HTML
-<div>{$status}</div>
+<tr><td colspan="5"><strong>{$status}</strong></td></tr>
 HTML;
       for ($i = 1; $i <= 3; $i++) {
         $return .= <<<HTML
@@ -496,11 +505,11 @@ HTML;
           $class = $this->getClass($employeeData);
           $return .= <<<HTML
 <tr class="{$class}">
-<td class="al_l">{$key}</td>
-<td class="al_l">{$employeeData['employeeName']}</td>
+<td class="al_c">{$key}</td>
+<td class="al_l ellipsis">{$employeeData['employeeName']}</td>
 <td class="al_l">{$employeeData['address']}</td>
-<td class="al_l"><button type="button" class="btn btn-small btn-submit assignBtn" id="{$employeeData['employeeID']}">배정</button></td>
-<td class="al_l">{$value}</td>
+<td class="al_c"><button type="button" class="btn btn-small btn-submit assignBtn" id="{$employeeData['employeeID']}">배정</button></td>
+<td class="al_c">{$value}</td>
 </tr>
 HTML;
         }

@@ -12,11 +12,7 @@
 #filterSub #btnAddCompany{float:right;}
 #filterMain .btn{color: gray;font-size: 0.7rem;display: block;float: left;background: whitesmoke;box-shadow: none;width: 8%;padding: 0;border: none;}
 #filterMain .btn.selected{color:green; border-bottom:solid 4px;}
-span.divider{display: inline-block;
-    width: 0;
-    height: 0.5em;
-    border-left: 1px solid #ccc;
-    border-right: 1px solid #ccc;}
+span.divider{display: inline-block;width: 0;height: 0.5em;border-left: 1px solid #ccc;border-right: 1px solid #ccc;}
 
 /*custom classes*/
 .hidden {display: none !important;}
@@ -26,12 +22,7 @@ span.divider{display: inline-block;
 .full_width{width:100%;}
 .link{text-decoration: underline; font-weight: bolder; z-index: 5; cursor: pointer;}
 .link:hover{color:green;}
-.btn-group .btn {
-    width: 150px;
-    height: 50px;
-    margin: 10px 0;
-    font-size: 20px;
-}
+.btn-group .btn {width: 160px;height: 50px;margin: 10px 0;font-size: 18px;}
 .filterBtn {height: 45px;}
 .workTime select{width: 150px;font-size: 20px;padding-bottom: 5px;}
 .duplicate{min-height: 50px;vertical-align: middle;padding: 1%;}
@@ -49,6 +40,7 @@ span.divider{display: inline-block;
 /*jquery date picker*/
 .ui-datepicker-current-day .ui-state-active { background: red; }
 .ui-datepicker-calendar td.newClass a { background: #FEF5E7; }
+.ui-datepicker-inline{width: 100%;}
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {background: darkseagreen !important;}
 
 /* board */
@@ -66,19 +58,17 @@ span.divider{display: inline-block;
 {width: 40%; box-sizing: border-box;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;border: 1px solid #C2C2C2;box-shadow: 1px 1px 4px #EBEBEB;-moz-box-shadow: 1px 1px 4px #EBEBEB;-webkit-box-shadow: 1px 1px 4px #EBEBEB;border-radius: 3px;-webkit-border-radius: 3px;-moz-border-radius: 3px;padding: 7px;outline: none;}
 .form-default .textarea-field{height:100px;width:55%;}
 
-
-
-
 /* button */
-.btn { display: inline-block; padding: 0 20px; background: #09f; font-size: 13px; color: #fff; font-weight: bold; border: none; vertical-align: middle;
+.btn { display: inline-block; padding: 0 12px; background: #09f; font-size: 13px; color: #fff; font-weight: bold; border: none; vertical-align: middle;
     height: 30px; line-height: 30px; box-sizing: border-box; text-decoration: none; cursor: pointer;}
 .btn-small{padding: 0 5px;}
 .btn-default        {background: white;color: black;border: solid 2px black;}
-.btn-default:hover  {background: #0000009e; color:whitesmoke; border: solid 2px #0000009e;}
+.btn-default:hover  {background: #0000009e; color:whitesmoke; border: 0;}
 .btn-danger     {background: indianred;}                .btn-danger:hover{background: red;}
 .btn-insert     {background: darkseagreen;}             .btn-insert:hover{background: green;}
 .btn-submit     {background: skyblue; }                 .btn-submit:hover{background: deepskyblue;}
 .btn-option     {background: #777584de}                 .btn-option:hover{background: #777584;}
+.btn-option.selected {background: red;}
 .btn-close-modal{background: none;color: black; font-weight: bold}
 .btn-money      {
     width: 75%;
@@ -96,7 +86,6 @@ span.divider{display: inline-block;
     color: #3a2b02;
     border: none;}
 
-
 a.btn{padding:10px;}
 
 /*div with class table*/
@@ -104,19 +93,22 @@ a.btn{padding:10px;}
 .table > .tr {background: whitesmoke; padding:10px; border-bottom: 1px solid #ddd; line-height: 30px; z-index: 1;}
 .table > .tr:after { content: ""; display: block; clear: both; }
 .table > .tr > div { float: left; padding: 0; }
-.table > .tr > .lbl { width: 50%; padding: 0 0 10px; font-weight: bold; display: inline-block; }
-.table > .tr > .lbl label { display: block; vertical-align: middle; cursor: pointer; }
 .table > .tr > .desc { width: 30%; }
 .table > .tr > .desc.content { min-height: 300px; }
 
-.table > .tr > .td{width: 30%;display: table;}
-.table > .tr > .td.td-3{width: 25%;}
-.table > .tr > .td.td-9{width: 75%;}
+.table > .tr > .td{width: auto;display: table;}
+.table > .tr > .td.td-3{width: 25%; display: table;}
 .table > .tr > .td.td-4{width: 33%;}
-.table > .tr > .td >label {display: inline-block;width: 60px; text-align: center;}
-.table > .tr > .td >input, .table > .tr > .td >textarea{
+.table > .tr > .td.td-6{width: 50%;}
+.table > .tr > .td.td-9{width: 75%;}
+
+.table > .tr > .td >label {display: inline-block;width: 100px;text-align: center;font-weight: bold;font-size: 16px;word-break: keep-all;}
+.table > .tr > .td input,
+.table > .tr > .td select,
+.table > .tr > .td textarea
+{
     width: 260px;
-    height: 15px;
+    height: 100%;
     line-height: 1.3;
     padding: 10px;
     border: solid 1px #e4e4e4;
@@ -124,13 +116,12 @@ a.btn{padding:10px;}
     display: table-cell;
     vertical-align: middle;
 }
-.table > .tr > .td >label {
-    width: 100px;
-    text-align: center;
-    font-weight: bold;
-    font-size: 16px;
-}
-.table .btn{width: 75px;height: 37px; margin:0 2px;}
+.table .tr .td input[type="checkbox"]{width: 30px;height: 30px;cursor: pointer;}
+.table .tr .td .time{width: 120px;}
+
+
+
+/*.table .btn{width: 75px;height: 37px; margin:0 2px;}*/
 
 .table > .tr > .td > .textarea-detail{
     height: 200px;
@@ -138,6 +129,10 @@ a.btn{padding:10px;}
     margin: 0;
     resize: none;
 }
+.table table{
+    display: inline-table;
+}
+
 .title-table{
     display: table;
     height: 50px;
@@ -184,6 +179,7 @@ td.td-money{padding:0}
 .modal-content *{height: 50px; vertical-align: top; font-size: 16px;}
 .modal-content textarea{width: 80%; padding: 0; resize: none;}
 .modal-content button{width: 18%;}
+.modal-content button.btn-mobile{width: 45%; margin-top: 10px}
 /*.modal-content input[type="number"]{width: 200px; height: 50px; font-size: 40px;}*/
 .modal-content .detail{vertical-align: middle;text-align: left;font-weight: bold;height: auto;margin-bottom: 10px;}
 .modal-content .btn-close-modal{padding:0; text-align: right; height: auto;}
@@ -202,3 +198,4 @@ td.td-money{padding:0}
 
 input[type="checkbox"]{width: 30px;height: 30px;cursor: pointer;}
 input[type="date"]{font-size: 20px;}
+.ellipsis{overflow: hidden; text-overflow: ellipsis;}

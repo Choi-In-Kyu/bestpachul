@@ -44,7 +44,7 @@
                 <?php $dayofweek = ['일', '월', '화', '수', '목', '금', '토'] ?>
                   <td class="al_c"
                   ><?php echo date('m/d', strtotime($data['workDate'])) . "(" . $dayofweek[date('w', strtotime($data['workDate']))] . ")" ?></td>
-                  <td class="al_l">
+                  <td class="al_l ellipsis">
                       <a href="http://bestpachul.com/company/view/<?php echo $data['companyID'] ?>" class="link">
                         <?php echo $companyName ?>
                       </a>
@@ -52,7 +52,7 @@
                   <td class="al_c" style="padding: 0;"><?php echo $this->timeType($data) ?></td>
                   <td class="al_c"> <?php echo $data['workField'] ?></td>
                   <td class="al_c"> <?php echo number_format($data['salary']) ?></td>
-                  <td class="al_c"><?php $this->get_callDetail($data) ?></td>
+                  <td class="al_c ellipsis"><?php $this->get_callDetail($data) ?></td>
                   <td class="al_c" style="padding:0"><?php echo $this->getPayBtn($data, 'call', 'price'); ?></td>
                   <td class="al_c assignedEmployee">
                     <?php switch ($type): case 'call': ?>

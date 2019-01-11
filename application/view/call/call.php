@@ -5,6 +5,9 @@
     </div>
   <?php endif; ?>
   <?php require_once _VIEW.'/common/datepicker.php' ?>
+    
+    <?php echo json_encode($_POST)?>
+    
   <?php $type = 'call'; require 'callTable.php' ?>
   <?php require_once 'employeeTable.php' ?>
 </div>

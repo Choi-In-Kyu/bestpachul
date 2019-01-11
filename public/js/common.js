@@ -93,10 +93,10 @@ $('.update').click(function () {
 });
 //버튼 클릭 이벤트
 $('.selectable').on('click', function () {
-    $('.selected').removeClass('selected');
-    $('.selected').addClass('selectable');
-    $(this).addClass('selected');
-    $(this).removeClass('selectable');
+    // $('.selected').removeClass('selected');
+    // $('.selected').addClass('selectable');
+    // $(this).addClass('selected');
+    // $(this).removeClass('selectable');
 });
 $(document).on('click','.btn-money',function () {
     let table = $(this).val().split('-')[0];

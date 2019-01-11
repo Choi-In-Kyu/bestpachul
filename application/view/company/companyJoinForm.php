@@ -18,7 +18,7 @@
         </fieldList>
       <?php if ($this->param->action == 'view'): ?>
         <div class="btn-group al_r">
-            <button type="submit" class="btn btn-submit" id="btnAddCompanyJoin">가입 추가</button>
+            <button type="submit" class="btn btn-insert" id="btnAddCompanyJoin">가입 추가</button>
         </div>
     </form>
 </div>
@@ -62,7 +62,7 @@
                         if (list) {
                             show.html("유사 : " + list);
                             if (match) {
-                                show.html("일치 : " + match);
+                                show.html("일치 : " + match + " - 다른 이름을 입력 해 주세요");
                                 allInput.prop('disabled', true);
                                 companyName.prop('disabled', false);
                             }
