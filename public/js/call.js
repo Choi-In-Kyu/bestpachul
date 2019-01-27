@@ -2,11 +2,6 @@
 $(document).ready(function () {
     $('.ui-state-highlight').click();
 });
-// 기본 함수
-$('.selectable').on('click', function () {
-    $('.selectable').removeClass('selected');
-    $(this).addClass('selected');
-});
 $('.ui-datepicker-calendar').on('click', function () {
     $(this).addClass('selected');
     $(this).css('background', 'red');
@@ -33,7 +28,4 @@ $(document).on('click', '.assignBtn', function () {
 });
 $('.callRow').on('click', function () {
     getHTML($('#employeeTable'), 'assignFilter', $(this).attr('id'));
-});
-$('.fixRow').on('click', function () {
-    getHTML($('#callTable_min'), 'callFilter', $(this).attr('id'));
 });

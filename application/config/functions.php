@@ -277,8 +277,9 @@ HTML;
     {
       if ($data[$column] > 0) {
         if ($data['paid'] == 0) {
+          $val = number_format($data[$column])."원";
           return <<<HTML
-<button type="button" class="btn btn-money getMoneyBtn_{$table}" id="{$data[$table . 'ID']}" value="{$table}-{$data[$column]}">{$data[$column]}원</button>
+<button type="button" class="btn btn-money getMoneyBtn_{$table}" id="{$data[$table . 'ID']}" value="{$table}-{$data[$column]}">$val</button>
 HTML;
         } else return '수금완료(' . $data['receiver'] . ")";
       } else return '무료';

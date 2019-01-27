@@ -6,8 +6,7 @@ let count = 0;
 
 //근무시간, 임금 등 초기화
 function initiate(time, callFunction = false, date = null) {
-    $('#startTime').val(startHour.val() + ":" + $('#startMin').val()); //HH:MM
-    $('#endTime').val(endHour.val() + ":" + $('#endMin').val()); //HH:MM
+    limitTime(false);
     $('#formAction').val('initiate');
     if (date !== null) {
         $('#workDate').val(date);
@@ -20,14 +19,13 @@ function initiate(time, callFunction = false, date = null) {
         dataType: "text",
 
         success: function (data) {
-            console.log(data);
             let joinType = JSON.parse(data).joinType;
             let callType = JSON.parse(data).callType;
             let holiday = JSON.parse(data).holiday;
             let callPrice = JSON.parse(data).callPrice;
             let bookmark = JSON.parse(data).bookmark;
 
-            getSalary(time, holiday);
+            getSalary(match_time(), holiday);
 
             if (joinType !== 'deactivated') {
                 if (callFunction === true) {
@@ -90,7 +88,11 @@ function initiate(time, callFunction = false, date = null) {
         }
     });
 }
-
+function match_time() {
+    let start   = $('#startHour').val();
+    let end     = $('#endHour').val();
+    return parseInt(end)-parseInt(start);
+}
 //임금 계산 함수
 function getSalary(time, holiday) {
     let money;

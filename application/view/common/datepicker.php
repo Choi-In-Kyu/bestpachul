@@ -1,10 +1,10 @@
 <?php
-  $thisYearCondition = "(YEAR(workDate) = YEAR(CURDATE()))";
-  $thisMonthCondition = "(YEAR(workDate) = YEAR(CURDATE()) AND MONTH(workDate) = MONTH(CURDATE()))";
-  $thisWeekCondition = "(YEARWEEK( workDate, 1 ) = YEARWEEK( CURDATE( ) , 1 ))";
+  $thisYearCondition    = "(YEAR(workDate) = YEAR(CURDATE()))";
+  $thisMonthCondition   = "(YEAR(workDate) = YEAR(CURDATE()) AND MONTH(workDate) = MONTH(CURDATE()))";
+  $thisWeekCondition    = "(YEARWEEK( workDate, 1 ) = YEARWEEK( CURDATE( ) , 1 ))";
   
-  $chargedCondition = "(`price` > 0)";
-  $freeCondition = "(`price` = 0)";
+  $chargedCondition     = "(`price` > 0)";
+  $freeCondition        = "(`price` = 0)";
   $pointCondition = "(`point` > 0)";
   $unfixedCondition = "(`fixID` = 0)";
   $fixedCondition = "(`fixID` > 0)";;
@@ -21,10 +21,9 @@
         <table>
             <!--기간에 따른 필터링-->
             <tr>
-                <td><label class="form-switch p-1">올해<br><input type="checkbox" name="duration[]" value="<?php echo $thisYearCondition ?>"><i></i></label></td>
-<!--                <td><label class="form-label month">올해</label><label class="form-switch month"><input id="form-input-month" type="checkbox" name="duration[]" value="--><?php //echo $thisYearCondition ?><!--"><i></i></label></td>-->
-                <td><label class="form-label month">이번달</label><label class="form-switch month"><input id="form-input-month" type="checkbox" name="duration[]" value="<?php echo $thisMonthCondition ?>"><i></i></label></td>
-                <td><label class="form-switch ">이번주<br><input type="checkbox" name="duration[]" value="<?php echo $thisWeekCondition ?>"><i></i></label></td>
+                <td><label class="form-switch duration">올해<br><input type="radio" name="duration[]" value="<?php echo $thisYearCondition ?>" id="form-input-year"><i class="isolated"></i></label></td>
+                <td><label class="form-switch duration">이번달<br><input type="radio" name="duration[]" value="<?php echo $thisMonthCondition ?>" id="form-input-month"><i class="isolated"></i></label></td>
+                <td><label class="form-switch duration">이번주<br><input type="radio" name="duration[]" value="<?php echo $thisWeekCondition ?>"><i class="isolated"></i></label></td>
             </tr>
           <?php if ($this->param->action == 'available_date'): ?>
               <!--유형에 따른 필터링-->
@@ -56,46 +55,34 @@
     if (window.history.replaceState) {
         window.history.replaceState(null, null, window.location.href);
     }
-    $('.form-switch').on('click', function () {
-        console.log('click');
-        let activeDate = $(document).find('.ui-state-active');
-        activeDate.removeClass('ui-state-active');
-        $('#toggleDate').val(null);
-        // if ($(this).hasClass('all')) {
-        //     if ($('input', this).is(':checked')) {
-        //         $(this).closest('tr').find('.form-switch input').prop('checked', false);
-        //     }
-        //     else {
-        //         $(this).closest('tr').find('.form-switch input').prop('checked', true);
-        //     }
-        // }
-        // else {
-            let all = $(this).closest('tr').find('.all input');
-            if (all.is(':checked')) all.prop('checked', false);
-            if ($(this).hasClass('month')) {
-                $(this).closest('tr').find('.form-switch.week').click();
-            }
-        // }
-        toggle_filter();
+    $('.form-switch i').on('mouseup', function () {
+        
+        if($(this).closest('td').find('label').hasClass('duration')){
+            $('.ui-state-default.ui-state-active').removeClass('ui-state-active');
+            $('#datepicker').datepicker({dateFormat: 'yy-mm-dd'}).val(null);
+        }
+        setTimeout(toggle_filter,100);
     });
+    
     $(".datepicker").datepicker({
         changeMonth: true,
         changeYear: true,
         onSelect: function () {
-            toggle_filter();
+            let date = dateFormat($(this).datepicker('getDate'));
+            toggle_filter(date);
+            $('#toggleForm input').prop('checked',false);
         },
         onChangeMonthYear: function (year, month, inst) {
             $('.form-label.month').text(month + '월');
             $('#form-input-month').val("( (YEAR(workDate) = '" + year + "') AND (MONTH(workDate) = '" + month + "') )");
             toggle_filter();
+            $('#toggleForm input').prop('checked',false);
         }
     });
     function toggle_filter() {
-        console.log('toggle');
+        let date = $('#datepicker').datepicker({dateFormat: 'yy-mm-dd'}).val();
         if (pageAction === 'available_date') {
             $('#formAction').val('availableFilter');
-            let date = $('#datepicker').datepicker({dateFormat: 'yy-mm-dd'}).val();
-            $('#toggleDate').val(date);
             $.ajax({
                 type: "POST",
                 method: "POST",
@@ -104,8 +91,6 @@
                 dataType: "text",
                 success: function (data) {
                     let array = JSON.parse(data).list;
-                    let sql = JSON.parse(data).sql;
-
                     let rows = $('.availableRow');
                     rows.each(function () {
                         if (array !== null) {
@@ -124,7 +109,14 @@
             });
         }
         else {
+            if(date){
+                $('#toggleDate').val(date);
+            }
+            else{
+                $('#toggleDate').val(null);
+            }
             $('#formAction').val('toggleFilter');
+            $('#toggleDate').val(date);
             $.ajax({
                 type: "POST",
                 method: "POST",
@@ -132,32 +124,30 @@
                 data: $('#toggleForm').serialize(),
                 dataType: "text",
                 success: function (data) {
-                    console.log('success');
                     let sql = JSON.parse(data).sql;
+                    let post = JSON.parse(data).post;
                     let array = JSON.parse(data).arr;
-                    console.log(sql);
-                    // console.log(array);
-                    
-                    //let rows = $('.callRow');
-                    // rows.each(function () {
-                    //     if (array !== null) {
-                    //         if (array.indexOf(parseInt(this.id)) > 0) {
-                    //             $(this).show();
-                    //         }
-                    //         else {
-                    //             $(this).hide();
-                    //         }
-                    //     }
-                    // });
-                    // let getMoneyBtn = $('.callRow:visible .btn-money');
-                    // let totalPrice = 0;
-                    // getMoneyBtn.each(function () {
-                    //     totalPrice += parseInt($(this).text());
-                    // });
-                    // let totalCallNum = $('.callRow:visible').length - $('.callRow:visible.cancelled').length;
-                    // let assignedNum = $('.callRow:visible .assignedEmployee a').length;
-                    // let notAssignedNum = totalCallNum - assignedNum;
-                    // $('.callStatus').text("총 : " + totalCallNum + " / 배정 : " + assignedNum + " / 미배정 : " + notAssignedNum);
+                    let test = JSON.parse(data).test;
+                    let rows = $('.callRow');
+                    rows.each(function () {
+                        if (array !== null) {
+                            if (array.indexOf(parseInt(this.id)) >= 0) {
+                                $(this).show();
+                            }
+                            else {
+                                $(this).hide();
+                            }
+                        }
+                    });
+                    let getMoneyBtn = $('.callRow:visible .btn-money');
+                    let totalPrice = 0;
+                    getMoneyBtn.each(function () {
+                        totalPrice += parseInt($(this).text());
+                    });
+                    let totalCallNum = $('.callRow:visible').length - $('.callRow:visible.cancelled').length;
+                    let assignedNum = $('.callRow:visible .assignedEmployee a').length;
+                    let notAssignedNum = totalCallNum - assignedNum;
+                    $('.callStatus').text("총 " + totalCallNum + " (배정 " + assignedNum + " / 미배정 " + notAssignedNum+")");
                 }
             });
         }

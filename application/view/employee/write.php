@@ -189,9 +189,12 @@
                               <button type="button" class="btn btn-option" onclick="auto_insert_employee_join('today')"
                                       style="width: 100px;">오늘부터
                               </button>
-                              <button type="button" class="btn btn-option" onclick="auto_insert_employee_join('extend')"
-                                      style="width: 100px;">가입연장
-                              </button>
+                            <?php if ($this->param->action != 'write'): ?>
+                                <button type="button" class="btn btn-option"
+                                        onclick="auto_insert_employee_join('extend')"
+                                        style="width: 100px;">가입연장
+                                </button>
+                            <?php endif; ?>
                           </div>
                       </div>
                       <div class="tr">
@@ -226,7 +229,6 @@
     }
     check_duplicate_employee();
     check_day_box();
-
     function check_duplicate_employee() {
         let nameInput = $('#formInsertEmployee input[name=employeeName]');
         if (nameInput.val() === null) {
@@ -269,7 +271,6 @@
             });
         }
     }
-
     function check_day_box() {
         $('.day').on('change', function () {
             let day = $(this).attr('class').split(' ')[2];
@@ -323,4 +324,12 @@
             }
         });
     }
+    $('.btn-insert').on('click',function () {
+        if($('.day:checked').length === 0){
+            $('.day').prop('required',true);
+        }
+        else{
+            $('.day').prop('required',false);
+        }
+    });
 </script>

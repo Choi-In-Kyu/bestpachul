@@ -122,15 +122,22 @@
       $this->executeSQL($sql);
     }
     
-    public function joinType($companyID)
+    public function joinType($companyID,$lang)
     {
       $gujwaTable = $this->getTable("SELECT * FROM  `join_company` WHERE companyID = {$companyID} AND activated =1 AND price >0 AND  `point` IS NULL ");
       $pointTable = $this->getTable("SELECT * FROM  `join_company` WHERE companyID = {$companyID} AND activated =1 AND price >0 AND  `point` IS NOT NULL ");
       $depositTable = $this->getTable("SELECT * FROM  `join_company` WHERE companyID = {$companyID} AND activated =1 AND deposit >0");
-      if (sizeof($gujwaTable) > 0) return 'gujwa';
-      elseif (sizeof($pointTable) > 0) return 'point';
-      elseif (sizeof($depositTable) > 0) return 'deposit';
-      else return 'deactivated';
+      if ($lang == 'kor') {
+        if (sizeof($gujwaTable) > 0) return sizeof($gujwaTable).'구좌';
+        elseif (sizeof($pointTable) > 0) return '포인트';
+        elseif (sizeof($depositTable) > 0) return '보증금+콜비';
+        else return '만기됨';
+      } else {
+        if (sizeof($gujwaTable) > 0) return 'gujwa';
+        elseif (sizeof($pointTable) > 0) return 'point';
+        elseif (sizeof($depositTable) > 0) return 'deposit';
+        else return 'deactivated';
+      }
     }
     
     public function isHoliday($date)
@@ -311,13 +318,14 @@
     
     public function toggleFilter($post)
     {
+      $result['post'] = $post;
+      
+      $result['test'] = json_encode($post['duration']);
+      
       $sql = "SELECT `callID` FROM `call`";
       if (isset($post['duration'])) {
-        $post['date'] = null;
-//        $condition[] = "(" . implode(' OR ', $post['duration']) . ")";
-        $condition[] = $post['duration'];
+        $condition[] = "(" . implode(' OR ', $post['duration']) . ")";
       }
-      
       if (isset($post['date']) && $post['date'] != '') {
         $condition = null;
         $condition[] = " (`workDate` = '{$post['date']}') ";
@@ -333,15 +341,16 @@
       }
       $sql .= implode(' AND ', $condition);
   
-      $result['sql'] = $sql;
-      return json_encode($result);
+      $result['sql'] = (string) $sql;
       
-      foreach ($this->getTable($sql) as $value) {
-        foreach ($value as $item) {
-          $result['arr'] = intval($item);
+      $result['arr'] = [];
+      if($this->getTable($sql)){
+        foreach ($this->getTable($sql) as $value) {
+          foreach ($value as $item) {
+            $result['arr'][] = intval($item);
+          }
         }
       }
-      $result['sql'] = $sql;
       return json_encode($result);
     }
     
@@ -430,7 +439,7 @@
       
       $condition['만기'] = "(`activated` = '1')";
       $condition['블랙'] = "(`employeeID` not in (select `employeeID` from `blackList` WHERE `companyID` = '{$companyID}'))";
-      $condition['근무불가능일'] = "(`employeeID` not in (SELECT `employeeID` FROM `employee_available_date` WHERE (notavailableDate is not null AND notavailableDate != '{$workDate}')))";
+      $condition['근무불가능일'] = "(`employeeID` not in (SELECT `employeeID` FROM `employee_available_date` WHERE (notavailableDate = '{$workDate}')))";
       $condition['중복'] = "(`employeeID` not in (SELECT `employeeID` FROM `call` WHERE (employeeID is not null) AND (workDate ='{$workDate}') AND ('{$startTime}' < `endTime` AND '{$endTime}'>`startTime`) ))";
       if ($workField == '설거지') {
         $condition['업종'] =
@@ -553,7 +562,6 @@ HTML;
     public function callFilter($post)
     {
       $result = "";
-      
       foreach ($this->getTable("SELECT * FROM `call` WHERE `fixID` = '{$post['id']}'") as $key => $data) {
         iF ($data['cancelled'] == 0) {
           $cancelled = '삭제됨';

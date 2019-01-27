@@ -47,11 +47,8 @@ span.divider{display: inline-block;width: 0;height: 0.5em;border-left: 1px solid
 .board-list { padding: 0; margin: 0; width: 100%; height: auto;}
 .board-list h3 { padding-bottom: 10px; font-size: 23px; }
 .board-list.scroll_list{height: 90%;}
-
 .board-write {padding: 0;margin: 0 100px 30px;}
 .board-write h3 { padding-bottom: 10px; font-size: 23px; }
-
-.board-narrow {}
 
 /*form*/
 .form-default input.input-field, .form-default .select-field
@@ -70,22 +67,8 @@ span.divider{display: inline-block;width: 0;height: 0.5em;border-left: 1px solid
 .btn-option     {background: #777584de}                 .btn-option:hover{background: #777584;}
 .btn-option.selected {background: red;}
 .btn-close-modal{background: none;color: black; font-weight: bold}
-.btn-money      {
-    width: 75%;
-    padding: 0;
-    border-radius: 8px;
-    background: rgba(189, 151, 59, 0.71);
-    color: rgba(58, 43, 2, 0.93);
-    border: none;
-}
-.btn-money:hover{
-    width: 75%;
-    padding: 0;
-    border-radius: 8px;
-    background: #bd973b;
-    color: #3a2b02;
-    border: none;}
-
+.btn-money      {width: 75%;padding: 0;border-radius: 8px;background: rgba(189, 151, 59, 0.71);color: rgba(58, 43, 2, 0.93);border: none;}
+.btn-money:hover{width: 75%;padding: 0;border-radius: 8px;background: #bd973b;color: #3a2b02;border: none;}
 a.btn{padding:10px;}
 
 /*div with class table*/
@@ -105,40 +88,13 @@ a.btn{padding:10px;}
 .table > .tr > .td >label {display: inline-block;width: 100px;text-align: center;font-weight: bold;font-size: 16px;word-break: keep-all;}
 .table > .tr > .td input,
 .table > .tr > .td select,
-.table > .tr > .td textarea
-{
-    width: 260px;
-    height: 100%;
-    line-height: 1.3;
-    padding: 10px;
-    border: solid 1px #e4e4e4;
-    font-family: inherit;
-    display: table-cell;
-    vertical-align: middle;
-}
+.table > .tr > .td textarea {width: 260px;height: 100%;line-height: 1.3;padding: 10px;border: solid 1px #e4e4e4;font-family: inherit;display: table-cell;vertical-align: middle;}
 .table .tr .td input[type="checkbox"]{width: 30px;height: 30px;cursor: pointer;}
 .table .tr .td .time{width: 120px;}
-
-
-
 /*.table .btn{width: 75px;height: 37px; margin:0 2px;}*/
-
-.table > .tr > .td > .textarea-detail{
-    height: 200px;
-    width: 400px;
-    margin: 0;
-    resize: none;
-}
-.table table{
-    display: inline-table;
-}
-
-.title-table{
-    display: table;
-    height: 50px;
-    padding: 0;
-    margin: 10px;
-}
+.table > .tr > .td > .textarea-detail{height: 200px;width: 400px;margin: 0;resize: none;}
+.table table{display: inline-table;}
+.title-table{display: table;height: 50px;padding: 0;margin: 10px;}
 .title-table .title-main{font-size: 50px;}
 .title-table *{display: table-cell;height: 100%;vertical-align: middle;}
 .title-table .btn-group{margin-left: 40px;}
@@ -185,17 +141,12 @@ td.td-money{padding:0}
 .modal-content .btn-close-modal{padding:0; text-align: right; height: auto;}
 .modal-content .modal-box{width: 100%; height: auto; margin-bottom: 10px;}
 .modal-content table{margin-bottom: 10px;}
-.modal-content table input, .modal-content table textarea{
-    width: 90% !important;
-    height: 100% !important;
-    border: none !important;
-}
-.modal-content .td-title{
-    display: table-cell;
-    vertical-align: middle;
-    font-weight: bold;
-}
+.modal-content table input, .modal-content table textarea{width: 90% !important;height: 100% !important;border: none !important;}
+.modal-content .td-title{display: table-cell;vertical-align: middle;font-weight: bold;}
 
 input[type="checkbox"]{width: 30px;height: 30px;cursor: pointer;}
 input[type="date"]{font-size: 20px;}
 .ellipsis{overflow: hidden; text-overflow: ellipsis;}
+
+#toggleForm tr td{width: 33%;}
+#toggleForm tr td.td-6{width: 50%;}

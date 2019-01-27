@@ -137,7 +137,6 @@
         let endDate = $('.table-add-join input[name=endDate]');
         let price = $('#companyAddJoinTable_gujwa input[name=price]');
         start.on('change', function () {
-            console.log('change');
             let date = new Date(start.val());
             endDate.val(get_next_month(date, 6));
             price.val('150000');

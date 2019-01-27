@@ -74,3 +74,20 @@
         </tbody>
     </table>
 </div>
+
+<script>
+    $('.fixRow').on('click', function () {
+        console.log('clicked');
+        $.ajax({
+            type: "POST",
+            method: "POST",
+            url: ajaxURL,
+            data: {action: 'callFilter', id: $(this).attr('id')},
+            dataType: "text",
+            success: function (data){
+                console.log(data);
+                $('#callTable_min').html(JSON.parse(data));
+            }
+        });
+    });
+</script>

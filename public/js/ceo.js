@@ -124,25 +124,11 @@ function change(type) {
         }
     });
 }
-function limitTime(allday) {
-    console.log('limitTime');
-    let starth = parseInt(startHour.val());
-    if (allday !== true) {
-        endHour.val(starth + 5);
-    }
-    for (let i = 0; i < 50; i++) {
-        if ((i < starth + 4) || (i > starth + 11)) {
-            $('.endOption').eq(i).css('display', 'none');
-        }
-        else {
-            $('.endOption').eq(i).css('display', 'block');
-        }
-    }
-    initiate(endHour.val() - startHour.val());
-}
+``
 
 function copy() {
-    let copyText = document.getElementById("pay-info");
+    var copyText = document.getElementById("pay-info");
     copyText.select();
-    document.execCommand('copy');
+    document.execCommand("copy");
+    alert("복사되었습니다 : " + copyText.value);
 }

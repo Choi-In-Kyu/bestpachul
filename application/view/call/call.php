@@ -5,10 +5,15 @@
     </div>
   <?php endif; ?>
   <?php require_once _VIEW.'/common/datepicker.php' ?>
-    
-    <?php echo json_encode($_POST)?>
-    
   <?php $type = 'call'; require 'callTable.php' ?>
   <?php require_once 'employeeTable.php' ?>
 </div>
 <?php require_once _VIEW.'common/modal.php' ?>
+
+<script>
+    $('.callRow').on('click',function () {
+       console.log('click');
+       $(this).closest('table').find('.callRow').removeClass('selected');
+       $(this).addClass('selected');
+    });
+</script>

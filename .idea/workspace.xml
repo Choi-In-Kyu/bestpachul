@@ -2,7 +2,7 @@
 <project version="4">
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/application/ajax/AjaxModel.php" />
-    <bookmark url="file://$PROJECT_DIR$/application/view/common/datepicker.php" line="125" />
+    <bookmark url="file://$PROJECT_DIR$/application/view/common/datepicker.php" line="110" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="efc5267d-1d74-4176-b63a-b747eff352b0" name="Default" comment="" />
@@ -30,36 +30,36 @@
     <session id="1131409305">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="24" />
+          <entry key="project.closed" value="29" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="3" />
-          <entry key="project.open.time.11" value="3" />
+          <entry key="project.open.time.11" value="4" />
           <entry key="project.open.time.12" value="9" />
           <entry key="project.open.time.13" value="3" />
           <entry key="project.open.time.14" value="3" />
-          <entry key="project.open.time.15" value="4" />
-          <entry key="project.open.time.16" value="2" />
+          <entry key="project.open.time.15" value="5" />
+          <entry key="project.open.time.16" value="3" />
           <entry key="project.open.time.17" value="5" />
           <entry key="project.open.time.18" value="1" />
-          <entry key="project.open.time.19" value="1" />
+          <entry key="project.open.time.19" value="2" />
           <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.22" value="2" />
           <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="42" />
+          <entry key="project.opened" value="46" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="6532" />
+          <entry key="css" value="6580" />
           <entry key="dummy" value="35" />
           <entry key="employeeTable_history" value="12" />
           <entry key="htaccess" value="2" />
           <entry key="html" value="229" />
-          <entry key="js" value="16045" />
-          <entry key="php" value="188818" />
+          <entry key="js" value="16620" />
+          <entry key="php" value="195431" />
           <entry key="svg" value="35" />
           <entry key="test" value="14" />
           <entry key="txt" value="45" />
@@ -67,10 +67,10 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="6540" />
+          <entry key="CSS" value="6588" />
           <entry key="HTML" value="384" />
-          <entry key="JavaScript" value="16044" />
-          <entry key="PHP" value="188555" />
+          <entry key="JavaScript" value="16619" />
+          <entry key="PHP" value="195168" />
           <entry key="PLAIN_TEXT" value="103" />
           <entry key="SQL" value="104" />
           <entry key="SVG" value="35" />
@@ -87,12 +87,12 @@
       <usages-collector id="statistics.php.composer.command.options" />
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="216" />
+          <entry key="CSS" value="219" />
           <entry key="HTML" value="16" />
           <entry key="Image" value="6" />
-          <entry key="JavaScript" value="359" />
+          <entry key="JavaScript" value="370" />
           <entry key="Markdown" value="1" />
-          <entry key="PHP" value="3483" />
+          <entry key="PHP" value="3528" />
           <entry key="PLAIN_TEXT" value="4" />
           <entry key="SVG" value="9" />
           <entry key="htaccess" value="3" />
@@ -103,14 +103,14 @@
       <usages-collector id="statistics.php.rename.constructor" />
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="216" />
+          <entry key="css" value="219" />
           <entry key="employeeTable_history" value="2" />
           <entry key="gitattributes" value="3" />
           <entry key="htaccess" value="3" />
           <entry key="html" value="16" />
-          <entry key="js" value="359" />
+          <entry key="js" value="370" />
           <entry key="md" value="1" />
-          <entry key="php" value="3481" />
+          <entry key="php" value="3526" />
           <entry key="png" value="6" />
           <entry key="svg" value="9" />
           <entry key="test" value="1" />
@@ -120,15 +120,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/view/common/datepicker.php">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/ajax/ajax.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="446">
-              <caret line="71" column="17" lean-forward="true" selection-start-line="71" selection-start-column="17" selection-end-line="71" selection-end-column="17" />
+            <state relative-caret-position="696">
+              <caret line="297" column="34" lean-forward="true" selection-start-line="297" selection-start-column="34" selection-end-line="297" selection-end-column="34" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="e#4920#4998#0#HTML" />
-                <element signature="e#6539#7743#0#HTML" />
+                <element signature="e#1597#1809#0#PHP" />
+                <element signature="e#1816#2031#0#PHP" />
+                <element signature="e#2038#2096#0#PHP" />
+                <element signature="e#2103#2232#0#PHP" />
+                <element signature="e#7134#7595#0#PHP" />
+                <element signature="e#7602#10522#0#PHP" />
+                <element signature="e#9615#10497#0#PHP" />
               </folding>
             </state>
           </provider>
@@ -137,8 +141,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/ajax/AjaxModel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="567">
-              <caret line="336" column="32" selection-start-line="336" selection-start-column="32" selection-end-line="336" selection-end-column="32" />
+            <state relative-caret-position="308">
+              <caret line="124" column="46" selection-start-line="124" selection-start-column="46" selection-end-line="124" selection-end-column="46" />
               <folding>
                 <element signature="n#__construct#0;n#AjaxModel#0;n#!!top" />
                 <element signature="n#query#0;n#AjaxModel#0;n#!!top" />
@@ -150,18 +154,53 @@
                 <element signature="n#getList#0;n#AjaxModel#0;n#!!top" />
                 <element signature="n#getListNum#0;n#AjaxModel#0;n#!!top" />
                 <element signature="n#getColumnList#0;n#AjaxModel#0;n#!!top" />
-                <element signature="n#select#0;n#AjaxModel#0;n#!!top" />
+                <element signature="n#getAllColumns#0;n#AjaxModel#0;n#!!top" />
+                <element signature="n#insert#0;n#AjaxModel#0;n#!!top" />
+                <element signature="n#isHoliday#0;n#AjaxModel#0;n#!!top" />
+                <element signature="n#call#0;n#AjaxModel#0;n#!!top" />
+                <element signature="n#cancel#0;n#AjaxModel#0;n#!!top" />
+                <element signature="n#reset#0;n#AjaxModel#0;n#!!top" />
+                <element signature="n#getCallPrice#0;n#AjaxModel#0;n#!!top" />
+                <element signature="n#getWeekDates#0;n#AjaxModel#0;n#!!top" />
+                <element signature="n#thisWeekScore#0;n#AjaxModel#0;n#!!top" />
+                <element signature="n#checkCallType#0;n#AjaxModel#0;n#!!top" />
+                <element signature="n#fix#0;n#AjaxModel#0;n#!!top" />
+                <element signature="n#getMoney#0;n#AjaxModel#0;n#!!top" />
+                <element signature="n#toggleFilter#0;n#AjaxModel#0;n#!!top" />
+                <element signature="n#availableFilter#0;n#AjaxModel#0;n#!!top" />
+                <element signature="n#workTimeType#0;n#AjaxModel#0;n#!!top" />
+                <element signature="n#getIDTable#0;n#AjaxModel#0;n#!!top" />
+                <element signature="n#timeType#0;n#AjaxModel#0;n#!!top" />
+                <element signature="n#assignFilter#0;n#AjaxModel#0;n#!!top" />
+                <element signature="n#getClass#0;n#AjaxModel#0;n#!!top" />
+                <element signature="n#assign#0;n#AjaxModel#0;n#!!top" />
+                <element signature="n#callFilter#0;n#AjaxModel#0;n#!!top" />
+                <element signature="n#fetchCallTable#0;n#AjaxModel#0;n#!!top" />
                 <element signature="n#callCancel#0;n#AjaxModel#0;n#!!top" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/ajax/ajax.php">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/view/call/write.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="90" column="35" lean-forward="true" selection-start-line="90" selection-start-column="35" selection-end-line="90" selection-end-column="35" />
+            <state relative-caret-position="297">
+              <caret line="210" column="37" lean-forward="true" selection-start-line="210" selection-start-column="37" selection-end-line="210" selection-end-column="37" />
+              <folding>
+                <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="e#10579#12085#0#HTML" />
+                <element signature="e#12435#13964#0#HTML" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/js/functions.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="18" column="20" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -178,36 +217,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>90%</find>
-      <find>배정가능</find>
-      <find>callStat</find>
-      <find>callStatus</find>
-      <find>업종</find>
-      <find>td</find>
-      <find>#startHour</find>
-      <find>ceo.js</find>
-      <find>limit</find>
-      <find>function initiate</find>
-      <find>인력명</find>
-      <find>confirm</find>
-      <find>function reset</find>
-      <find>이번달</find>
-      <find>thisMonthCondition</find>
-      <find>thisWeekCondition</find>
-      <find>chargedCondition</find>
-      <find>this</find>
-      <find>initiate</find>
-      <find>ajax</find>
-      <find>test</find>
-      <find>console.log</find>
-      <find>startHour</find>
+      <find>time</find>
+      <find>callTable_min</find>
+      <find>array</find>
+      <find>JSON.parse</find>
+      <find>lim</find>
+      <find>initi</find>
+      <find>btn</find>
+      <find>btn-money</find>
+      <find>가입 삭제 사</find>
+      <find>getSalary</find>
+      <find>parse</find>
+      <find>disabled</find>
+      <find>function joinType</find>
+      <find>joinType</find>
+      <find>no action</find>
+      <find>값을</find>
+      <find>배정할</find>
+      <find>생략</find>
       <find>console</find>
-      <find>toggleForm</find>
-      <find>toggleFilter</find>
-      <find>샣힏</find>
-      <find>toggle_filter</find>
-      <find>toggle</find>
-      <find>form-switch</find>
+      <find>function ho</find>
+      <find>holiday</find>
+      <find>holiday`</find>
+      <find>dayafter</find>
+      <find>startHour</find>
+      <find>function initiate</find>
+      <find>match_time</find>
+      <find>limitTime</find>
+      <find>`</find>
+      <find>initiate</find>
+      <find>callBtn</find>
     </findStrings>
     <replaceStrings>
       <replace>modalAssignCancel</replace>
@@ -271,8 +310,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/public/js/fix.js" />
-        <option value="$PROJECT_DIR$/application/controller/ceo.php" />
         <option value="$PROJECT_DIR$/application/view/ceo/call.php" />
         <option value="$PROJECT_DIR$/application/model/model_login.php" />
         <option value="$PROJECT_DIR$/application/view/ceo/pay.php" />
@@ -289,12 +326,10 @@
         <option value="$PROJECT_DIR$/application/view/company/companyTable.php" />
         <option value="$PROJECT_DIR$/application/view/employee/employeeTable.php" />
         <option value="$PROJECT_DIR$/application/model/model_ceo.php" />
-        <option value="$PROJECT_DIR$/application/view/company/company.php" />
         <option value="$PROJECT_DIR$/application/application.php" />
         <option value="$PROJECT_DIR$/application/view/company/companyAddJoinTable.php" />
         <option value="$PROJECT_DIR$/application/view/company/companyForm.php" />
         <option value="$PROJECT_DIR$/application/view/company/companyAddJoin.php" />
-        <option value="$PROJECT_DIR$/application/config/functions.php" />
         <option value="$PROJECT_DIR$/application/view/company/view.php" />
         <option value="$PROJECT_DIR$/application/view/company/companyJoinTable.php" />
         <option value="$PROJECT_DIR$/public/js/functions.js" />
@@ -304,7 +339,6 @@
         <option value="$PROJECT_DIR$/application/model/model_employee.php" />
         <option value="$PROJECT_DIR$/application/view/company/companyJoinForm.php" />
         <option value="$PROJECT_DIR$/public/css/default.css" />
-        <option value="$PROJECT_DIR$/application/view/employee/write.php" />
         <option value="$PROJECT_DIR$/application/view/employee/employeeJoinTable.php" />
         <option value="$PROJECT_DIR$/application/view/company/write.php" />
         <option value="$PROJECT_DIR$/application/model/model.php" />
@@ -312,16 +346,21 @@
         <option value="$PROJECT_DIR$/application/controller/controller.php" />
         <option value="$PROJECT_DIR$/public/js/datepicker.js" />
         <option value="$PROJECT_DIR$/application/view/manage/black.php" />
-        <option value="$PROJECT_DIR$/application/view/common/modal.php" />
-        <option value="$PROJECT_DIR$/public/js/ceo.js" />
-        <option value="$PROJECT_DIR$/public/js/ajax.js" />
         <option value="$PROJECT_DIR$/application/view/call/callTable.php" />
+        <option value="$PROJECT_DIR$/public/js/call.js" />
+        <option value="$PROJECT_DIR$/application/view/company/company.php" />
+        <option value="$PROJECT_DIR$/application/view/common/modal.php" />
+        <option value="$PROJECT_DIR$/application/view/employee/write.php" />
         <option value="$PROJECT_DIR$/public/css/common.css" />
-        <option value="$PROJECT_DIR$/application/view/call/write.php" />
         <option value="$PROJECT_DIR$/application/view/call/call.php" />
-        <option value="$PROJECT_DIR$/application/ajax/ajax.php" />
-        <option value="$PROJECT_DIR$/application/ajax/AjaxModel.php" />
+        <option value="$PROJECT_DIR$/application/view/call/fixTable.php" />
+        <option value="$PROJECT_DIR$/public/js/ceo.js" />
+        <option value="$PROJECT_DIR$/application/config/functions.php" />
         <option value="$PROJECT_DIR$/application/view/common/datepicker.php" />
+        <option value="$PROJECT_DIR$/public/js/ajax.js" />
+        <option value="$PROJECT_DIR$/application/ajax/AjaxModel.php" />
+        <option value="$PROJECT_DIR$/application/ajax/ajax.php" />
+        <option value="$PROJECT_DIR$/application/view/call/write.php" />
       </list>
     </option>
   </component>
@@ -335,10 +374,10 @@
     <servers />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1064" />
-    <option name="y" value="4" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="157" />
+    <option name="y" value="67" />
+    <option name="width" value="1022" />
+    <option name="height" value="778" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -394,13 +433,6 @@
               <item name="application" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
               <item name="call" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bestpachul" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bestpachul" type="462c0819:PsiDirectoryNode" />
-              <item name="application" type="462c0819:PsiDirectoryNode" />
-              <item name="view" type="462c0819:PsiDirectoryNode" />
-              <item name="ceo" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="bestpachul" type="b2602c69:ProjectViewProjectNode" />
@@ -474,19 +506,19 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\choi\Documents\GitHub\bestpachul\application\view\common" />
-      <recent name="C:\Users\choi\Documents\GitHub\bestpachul\public\js" />
-      <recent name="C:\Users\choi\Documents\GitHub\bestpachul\application\config" />
-      <recent name="C:\Users\choi\Documents\GitHub\bestpachul\application\model" />
-      <recent name="C:\Users\choi\Documents\GitHub\bestpachul\application\controller" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\choi\Documents\GitHub\bestpachul\application\view\call" />
       <recent name="C:\Users\choi\Documents\GitHub\bestpachul\public\img" />
       <recent name="C:\Users\choi\Documents\GitHub\bestpachul\public\js" />
       <recent name="C:\Users\choi\Documents\GitHub\bestpachul\application\ajax" />
       <recent name="C:\Users\choi\Documents\GitHub\bestpachul\application\model" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\choi\Documents\GitHub\bestpachul\application\view\common" />
+      <recent name="C:\Users\choi\Documents\GitHub\bestpachul\public\js" />
+      <recent name="C:\Users\choi\Documents\GitHub\bestpachul\application\config" />
+      <recent name="C:\Users\choi\Documents\GitHub\bestpachul\application\model" />
+      <recent name="C:\Users\choi\Documents\GitHub\bestpachul\application\controller" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -596,30 +628,33 @@
       <workItem from="1546088027242" duration="2333000" />
       <workItem from="1546849780905" duration="47215000" />
       <workItem from="1547107223223" duration="4477000" />
-      <workItem from="1547177491789" duration="18085000" />
+      <workItem from="1547177491789" duration="23248000" />
+      <workItem from="1548036264014" duration="6780000" />
+      <workItem from="1548121605260" duration="21916000" />
+      <workItem from="1548214077182" duration="721000" />
+      <workItem from="1548219982557" duration="20282000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1667505000" />
+    <option name="totallyTimeSpent" value="1722367000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25799572" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18496802" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.33333334" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32947975" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3995657" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32899022" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.19761129" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Command Line Tools Console" order="12" weight="0.32899022" />
@@ -643,55 +678,13 @@
           <line>74</line>
           <option name="timeStamp" value="33" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/application/ajax/AjaxModel.php</url>
-          <line>419</line>
-          <option name="timeStamp" value="64" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/model/model_call.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="36" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/application.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dbadmin/index.php" />
-    <entry file="file://$PROJECT_DIR$/application/view/company/companyInsertForm.php" />
     <entry file="file://$PROJECT_DIR$/application/view/company/companyAddJoinTable.php" />
     <entry file="file://$PROJECT_DIR$/application/view/company/companyForm.php" />
     <entry file="file://$PROJECT_DIR$/application/view/company/companyAddJoin.php" />
-    <entry file="file://$PROJECT_DIR$/application/view/call/callTable_min.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="6" lean-forward="true" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/view/company/company.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="50" lean-forward="true" selection-start-line="10" selection-start-column="50" selection-end-line="10" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/view/company/view.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
@@ -710,13 +703,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="576">
           <caret line="32" selection-start-line="32" selection-end-line="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="514">
-          <caret line="47" column="47" lean-forward="true" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -758,13 +744,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/view/employee/write.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="211" column="24" lean-forward="true" selection-start-line="177" selection-start-column="18" selection-end-line="211" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/view/employee/employeeTable.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
@@ -781,13 +760,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/write.php" />
     <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-2/write.php" />
-    <entry file="file://$PROJECT_DIR$/public/css/default.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/model/model.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -837,13 +809,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/view/employee/employeeAvailableDayTable.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="517">
-          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/login.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -868,13 +833,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/view/employee/available_date.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1080">
-          <caret line="60" column="30" selection-start-line="60" selection-start-column="30" selection-end-line="60" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/view/manage/black.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1602">
@@ -889,20 +847,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/view/common/modal.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="68" column="10" selection-start-line="68" selection-start-column="10" selection-end-line="68" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/view/call/fix.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/model/model_login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
@@ -910,40 +854,111 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/ajax.js">
+    <entry file="file://$PROJECT_DIR$/application/view/company/company.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="67" column="34" lean-forward="true" selection-start-line="67" selection-start-column="34" selection-end-line="67" selection-end-column="34" />
-          <folding>
-            <element signature="n#!!block;n#chargedCall#0" />
-            <element signature="n#!!block;n#freeCall#0" />
-            <element signature="n#!!block;n#cancel#0" />
-            <element signature="n#!!block;n#fix#0" />
-            <element signature="n#!!block;n#myFix#0" />
-            <element signature="n#!!block;n#recursive#0" />
-            <element signature="n#!!block;n#getHTML#0" />
-          </folding>
+        <state relative-caret-position="180">
+          <caret line="10" column="50" selection-start-line="10" selection-start-column="50" selection-end-line="10" selection-end-column="50" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/common.css">
+    <entry file="file://$PROJECT_DIR$/application/view/common/modal.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1148">
-          <caret line="172" lean-forward="true" selection-start-line="172" selection-end-line="172" />
+        <state relative-caret-position="2646">
+          <caret line="147" column="14" selection-start-line="147" selection-start-column="14" selection-end-line="147" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/view/employee/employeeAvailableDayTable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/view/employee/available_date.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1080">
+          <caret line="60" column="30" selection-start-line="60" selection-start-column="30" selection-end-line="60" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/view/common/header.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/view/employee/write.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2261">
+          <caret line="328" column="44" lean-forward="true" selection-start-line="328" selection-start-column="44" selection-end-line="328" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/default.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/view/call/fixTable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="88" column="33" selection-start-line="88" selection-start-column="20" selection-end-line="88" selection-end-column="33" />
+          <caret line="74" column="12" lean-forward="true" selection-start-line="74" selection-start-column="12" selection-end-line="74" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/view/call/punk.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/view/call/fix.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="38" selection-start-line="2" selection-start-column="38" selection-end-line="2" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/call.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/view/call/employeeTable.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/ceo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="512">
+          <caret line="144" lean-forward="true" selection-start-line="144" selection-end-line="144" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/view/call/callTable_min.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="6" lean-forward="true" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/view/call/callTable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-263">
+          <caret line="31" column="16" lean-forward="true" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/view/call/call.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="36" lean-forward="true" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
+        <state relative-caret-position="324">
+          <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/config/functions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
+        <state relative-caret-position="342">
+          <caret line="236" column="45" lean-forward="true" selection-start-line="236" selection-start-column="45" selection-end-line="236" selection-end-column="45" />
           <folding>
             <element signature="n#get_joinType#0;n#Functions#0;n#!!top" />
             <element signature="n#get_joinPrice#0;n#Functions#0;n#!!top" />
@@ -954,38 +969,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/ceo.js">
+    <entry file="file://$PROJECT_DIR$/public/css/common.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="126" column="23" selection-start-line="126" selection-start-column="23" selection-end-line="126" selection-end-column="23" />
+        <state relative-caret-position="180">
+          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/view/call/write.php">
+    <entry file="file://$PROJECT_DIR$/public/js/ajax.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="200" column="13" selection-start-line="200" selection-start-column="13" selection-end-line="200" selection-end-column="13" />
+        <state relative-caret-position="720">
+          <caret line="40" column="53" lean-forward="true" selection-start-line="40" selection-start-column="53" selection-end-line="40" selection-end-column="53" />
+          <folding>
+            <element signature="n#!!block;n#match_time#0" />
+            <element signature="n#!!block;n#getSalary#0" />
+            <element signature="n#!!block;n#chargedCall#0" />
+            <element signature="n#!!block;n#freeCall#0" />
+            <element signature="n#!!block;n#cancel#0" />
+            <element signature="n#!!block;n#fix#0" />
+            <element signature="n#!!block;n#myFix#0" />
+            <element signature="n#!!block;n#recursive#0" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/view/call/callTable.php">
+    <entry file="file://$PROJECT_DIR$/application/view/common/datepicker.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="54" column="42" selection-start-line="54" selection-start-column="42" selection-end-line="54" selection-end-column="42" />
+        <state relative-caret-position="-9">
+          <caret line="102" column="25" lean-forward="true" selection-start-line="102" selection-start-column="25" selection-end-line="102" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/ajax/ajax.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="90" column="35" lean-forward="true" selection-start-line="90" selection-start-column="35" selection-end-line="90" selection-end-column="35" />
+        <state relative-caret-position="696">
+          <caret line="297" column="34" lean-forward="true" selection-start-line="297" selection-start-column="34" selection-end-line="297" selection-end-column="34" />
+          <folding>
+            <element signature="e#1597#1809#0#PHP" />
+            <element signature="e#1816#2031#0#PHP" />
+            <element signature="e#2038#2096#0#PHP" />
+            <element signature="e#2103#2232#0#PHP" />
+            <element signature="e#7134#7595#0#PHP" />
+            <element signature="e#7602#10522#0#PHP" />
+            <element signature="e#9615#10497#0#PHP" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/ajax/AjaxModel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="336" column="32" selection-start-line="336" selection-start-column="32" selection-end-line="336" selection-end-column="32" />
+        <state relative-caret-position="308">
+          <caret line="124" column="46" selection-start-line="124" selection-start-column="46" selection-end-line="124" selection-end-column="46" />
           <folding>
             <element signature="n#__construct#0;n#AjaxModel#0;n#!!top" />
             <element signature="n#query#0;n#AjaxModel#0;n#!!top" />
@@ -997,20 +1031,48 @@
             <element signature="n#getList#0;n#AjaxModel#0;n#!!top" />
             <element signature="n#getListNum#0;n#AjaxModel#0;n#!!top" />
             <element signature="n#getColumnList#0;n#AjaxModel#0;n#!!top" />
-            <element signature="n#select#0;n#AjaxModel#0;n#!!top" />
+            <element signature="n#getAllColumns#0;n#AjaxModel#0;n#!!top" />
+            <element signature="n#insert#0;n#AjaxModel#0;n#!!top" />
+            <element signature="n#isHoliday#0;n#AjaxModel#0;n#!!top" />
+            <element signature="n#call#0;n#AjaxModel#0;n#!!top" />
+            <element signature="n#cancel#0;n#AjaxModel#0;n#!!top" />
+            <element signature="n#reset#0;n#AjaxModel#0;n#!!top" />
+            <element signature="n#getCallPrice#0;n#AjaxModel#0;n#!!top" />
+            <element signature="n#getWeekDates#0;n#AjaxModel#0;n#!!top" />
+            <element signature="n#thisWeekScore#0;n#AjaxModel#0;n#!!top" />
+            <element signature="n#checkCallType#0;n#AjaxModel#0;n#!!top" />
+            <element signature="n#fix#0;n#AjaxModel#0;n#!!top" />
+            <element signature="n#getMoney#0;n#AjaxModel#0;n#!!top" />
+            <element signature="n#toggleFilter#0;n#AjaxModel#0;n#!!top" />
+            <element signature="n#availableFilter#0;n#AjaxModel#0;n#!!top" />
+            <element signature="n#workTimeType#0;n#AjaxModel#0;n#!!top" />
+            <element signature="n#getIDTable#0;n#AjaxModel#0;n#!!top" />
+            <element signature="n#timeType#0;n#AjaxModel#0;n#!!top" />
+            <element signature="n#assignFilter#0;n#AjaxModel#0;n#!!top" />
+            <element signature="n#getClass#0;n#AjaxModel#0;n#!!top" />
+            <element signature="n#assign#0;n#AjaxModel#0;n#!!top" />
+            <element signature="n#callFilter#0;n#AjaxModel#0;n#!!top" />
+            <element signature="n#fetchCallTable#0;n#AjaxModel#0;n#!!top" />
             <element signature="n#callCancel#0;n#AjaxModel#0;n#!!top" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/view/common/datepicker.php">
+    <entry file="file://$PROJECT_DIR$/public/js/functions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="71" column="17" lean-forward="true" selection-start-line="71" selection-start-column="17" selection-end-line="71" selection-end-column="17" />
+        <state relative-caret-position="324">
+          <caret line="18" column="20" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/view/call/write.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="210" column="37" lean-forward="true" selection-start-line="210" selection-start-column="37" selection-end-line="210" selection-end-column="37" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#4920#4998#0#HTML" />
-            <element signature="e#6539#7743#0#HTML" />
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#10579#12085#0#HTML" />
+            <element signature="e#12435#13964#0#HTML" />
           </folding>
         </state>
       </provider>

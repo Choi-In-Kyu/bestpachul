@@ -91,13 +91,6 @@ $('.update').click(function () {
     $('#updatePrice').val(parseInt(price.replace(',', '')));
     $('#updateDetail').text(joinDetail);
 });
-//버튼 클릭 이벤트
-$('.selectable').on('click', function () {
-    // $('.selected').removeClass('selected');
-    // $('.selected').addClass('selectable');
-    // $(this).addClass('selected');
-    // $(this).removeClass('selectable');
-});
 $(document).on('click','.btn-money',function () {
     let table = $(this).val().split('-')[0];
     let price = $(this).val().split('-')[1];

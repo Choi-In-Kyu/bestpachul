@@ -30,7 +30,6 @@
           $result['holiday'] = $obj->isHoliday($date);
           $result['callPrice'] = $obj->getCallPrice($id, $date);
           $result['companyID'] = $_POST['companyID'];
-//          $result['bookmark'] = $obj->select('company',"`companyID` = '{$_POST['companyID']}'",'bookmark');
           echo json_encode($result);
         } else {
           $result['joinType'] = null;
@@ -40,9 +39,25 @@
           $result['callPrice'] = null;
           $result['salary'] = $_POST['salary'];
           $result['companyID'] = $_POST['companyID'];
-//          $result['bookmark'] = $obj->select('company',"`companyID` = '{$_POST['companyID']}'",'bookmark');
           echo json_encode($result);
         }
+        break;
+      case 'getInfo' :
+        if (($_POST['id'] || $_POST['name']) && $_POST['table']) {
+          $result = $obj->select($_POST['table'], " `{$_POST['table']}Name` = '{$_POST['name']}'")[0];
+          if (sizeof($result) > 0) {
+            $result['joinType'] = $obj->joinType($result['companyID'], 'kor');
+            if ($result['activated'] == 1) {
+            } else {
+              $result['msg'] = '만기된 회원입니다.';
+            }
+          } else {
+            $result['msg'] = '존재하지 않는 회원입니다.';
+          }
+        } else {
+          $result['msg'] = '업체명을 입력해주세요';
+        }
+        echo json_encode($result);
         break;
       case 'call' :
         $obj->call($_POST);
@@ -101,7 +116,7 @@
         echo json_encode($obj->assignFilter($_POST));
         break;
       case 'callFilter':
-        echo json_encode($obj->callFiter($_POST));
+        echo json_encode($obj->callFilter($_POST));
         break;
       case 'assign':
         echo json_encode($obj->assign($_POST));
@@ -185,10 +200,10 @@
         break;
       case 'getLastJoinDate':
         $sql = "SELECT `endDate` FROM `join_employee` WHERE `employeeID`='{$_POST['id']}}' AND `deleted` = 0 ORDER BY `endDate` DESC LIMIT 1";
-          $startDate = date('Y-m-d', strtotime($obj->getTable($sql)[0]['endDate']));
-          $endDate = date("Y-m-d", strtotime("+1 month", strtotime($startDate)));
-          $result['startDate'] = $startDate;
-          $result['endDate'] = $endDate;
+        $startDate = date('Y-m-d', strtotime($obj->getTable($sql)[0]['endDate']));
+        $endDate = date("Y-m-d", strtotime("+1 month", strtotime($startDate)));
+        $result['startDate'] = $startDate;
+        $result['endDate'] = $endDate;
         echo json_encode($result);
         break;
       case 'getCompanyJoinForm':
@@ -273,9 +288,22 @@ HTML;
             break;
         }
         break;
+      case 'check_holiday':
+        if($_POST['date']){
+          $result['holiday'] = $obj->isHoliday($_POST['date']);
+        }
+        else{
+          $result['msg'] = "no date";
+        }
+        echo json_encode($result);
+        break;
       default :
         $result['msg'] = 'no matching action name';
         echo json_encode($result);
         break;
     }
-  } else echo 'no action';
+  }
+  else{
+    $result['msg'] = 'no action';
+    echo json_encode($result);
+  }

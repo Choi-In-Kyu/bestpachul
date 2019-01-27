@@ -211,7 +211,7 @@
       $pointTable = $this->getTable("SELECT * FROM  `join_company` WHERE companyID = {$companyID} AND activated =1 AND price >0 AND  `point` IS NOT NULL ");
       $depositTable = $this->getTable("SELECT * FROM  `join_company` WHERE companyID = {$companyID} AND activated =1 AND deposit >0");
       if ($lang == 'kor') {
-        if (sizeof($gujwaTable) > 0) return '구좌';
+        if (sizeof($gujwaTable) > 0) return sizeof($gujwaTable).'구좌';
         elseif (sizeof($pointTable) > 0) return '포인트';
         elseif (sizeof($depositTable) > 0) return '보증금+콜비';
         else return '만기됨';
