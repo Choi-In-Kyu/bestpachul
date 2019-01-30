@@ -168,10 +168,7 @@
           $name = $_POST['name'];
           $sql = "SELECT `{$tableName}` FROM `{$table}` WHERE `{$tableName}` LIKE '%{$name}%' ";
           $duplicateTable = $obj->getTAble($sql);
-          
           $match = $obj->select($table, "`{$tableName}` = '{$name}'", $tableName);
-          
-          
           foreach ($duplicateTable as $value) {
             foreach ($value as $item) {
               $arr[] = $item;

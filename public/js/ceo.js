@@ -12,12 +12,6 @@ date.on('change', function () {
 minute.on('change', function () {
     minute.val($(this).val());
 });
-startHour.on('change', function () {
-    limitTime(false);
-});
-endHour.on('change',function () {
-    initiate(endHour.val() - startHour.val());
-});
 $('#1day').click(function () {
     date.val(tomorrow);
     date.trigger('change');
@@ -30,20 +24,17 @@ $('#morningBtn').click(function () {
     startHour.val('10');
     endHour.val('15');
     minute.val('00');
-    limitTime(false);
 });
 $('#afternoonBtn').click(function () {
     startHour.val('18');
     endHour.val('23');
     minute.val('00');
-    limitTime(false);
 });
 $('#allDayBtn').click(function () {
     startHour.val('10');
     endHour.val('21');
     minute.val('00');
     let starth = parseInt(startHour.val());
-    limitTime(true);
 });
 $('.btn-work-field').on('click', function () {
     console.log($(this).text());
@@ -124,8 +115,6 @@ function change(type) {
         }
     });
 }
-``
-
 function copy() {
     var copyText = document.getElementById("pay-info");
     copyText.select();

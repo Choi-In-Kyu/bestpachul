@@ -192,32 +192,29 @@
             </div>
     </form>
 </div>
+
 <script>
-    ready();
-    input_company();
-    input_work_date();
-    input_work_time();
+
+    $(document).ready(function () {//다른 js 파일 모두 불러온 뒤 함수 내용이 실행됨
+        ready();
+        input_company();
+        input_work_date();
+        input_work_time();
+        input_work_field();
+        input_employee();
+    });
 
     function ready() {
-        let startHour = $('#startHour');
-        let endHour = $('#endHour');
-        $(document).ready(function () {
-            $('#workField').val('주방보조');
-            startHour.val('10');
-            endHour.val('15');
-            // initiate(endHour.val() - startHour.val());
-            // $('#startHour').trigger('input');
-            $('.callBtn').hide();
-            $('#btnSendCall').show();
-            limitTime(false);
-            $('#callForm input, #callForm select, #callForm textarea').prop('disabled', true);
-            $('#callForm input[name=companyName]').prop('disabled', false);
-        });
+        $('#startHour').val(10);
+        $('#endHour').val(15);
+        $('#workField').val('주방보조');
+        $('.callBtn:not(#btnSendCall)').hide();
+        $('#callForm input:not(.input-companyName), #callForm select, #callForm textarea, #callForm button').prop('disabled', true);
+        getSalary(10,15,tomorrow);
     }
 
     function input_company() {
         $('#companyName').on('input', function () {
-            let input = $(this);
             let id = $('#companyID').val();
             let name = $(this).val();
             $('#formAction').val('getInfo');
@@ -229,34 +226,20 @@
                 dataType: "text",
                 success: function (data) {
                     let msg = JSON.parse(data).msg;
-                    if (msg) {
-                        $('#callForm input:not(.input-companyName), #callForm select, #callForm textarea').prop('disabled', true);
+                    if (msg) {//존재하지 않거나 만기된 업체
+                        $('#callForm input:not(.input-companyName), #callForm select, #callForm textarea, #callForm button').prop('disabled', true);
                         $('#errorMsg h2').html(msg);
                         $('#errorMsg').show();
                     }
-                    else {//존재하지 않거나 만기된 업체
+                    else {
                         let joinType = JSON.parse(data).joinType;
-                        $('#callForm input:not(.input-companyName), #callForm select, #callForm textarea').prop('disabled', false);
+                        $('#callForm input:not(.input-companyName), #callForm select, #callForm textarea, #callForm button').prop('disabled', false);
                         $('#errorMsg h2').html(joinType);
                         $('#errorMsg').show();
                     }
                 }
             });
         });
-        // $('#companyName').on('input', function () {
-        //     $('#formAction').val('getCompanyID');
-        //     $.ajax({
-        //         type: "POST",
-        //         url: ajaxURL,
-        //         method: "POST",
-        //         data: $('#callForm').serialize(),
-        //         dataType: "text",
-        //         success: function (data) {
-        //             $('#companyID').val(data);
-        //             initiate(endHour.val() - startHour.val());
-        //         }
-        //     });
-        // });
     }
 
     function input_work_date() {
@@ -264,24 +247,7 @@
         let btn1 = $('#tomorrow');
         let btn2 = $('#dayAfterTomorrow');
         workDate.on('input', function () {
-            let date = workDate.val();
-            $.ajax({
-                type: "POST",
-                method: "POST",
-                url: ajaxURL,
-                data: {action: 'check_holiday', date: date},
-                dataType: "text",
-                success: function (data) {
-                    console.log(data);
-                    let holiday = JSON.parse(data).holiday;
-                    if (holiday) {
-                        workDate.css('color', 'red');
-                    }
-                    else {
-                        workDate.css('color', 'black');
-                    }
-                }
-            });
+            let date = $(this).val();
             if (date === tomorrow) {//내일 날짜 선택 시
                 btn1.addClass('selected');
                 btn2.removeClass('selected');
@@ -294,6 +260,7 @@
                 btn1.removeClass('selected');
                 btn2.removeClass('selected');
             }
+            getSalary(startHour.val(), endHour.val(), $(this).val());
         });
         btn1.on('click', function () {
             workDate.val(tomorrow);
@@ -304,46 +271,108 @@
             workDate.trigger('input');
         });
     }
-    
-    function input_work_time(){
+
+    function limit_end_time(starth, endOption) {
+        for (let i = 0; i < 50; i++) {
+            if ((i < starth + 4) || (i > starth + 11)) {
+                endOption.eq(i).css('display', 'none');
+            }
+            else {
+                console.log(i);
+                endOption.eq(i).css('display', 'block');
+            }
+        }
+    }
+
+    function map_time_to_btn(starth, endh) {
+        if (endh - starth >= 10) {//종일
+            $('#allDayBtn').addClass('selected');
+            $('#allDayBtn').closest('div').find('.btn-option:not(#allDayBtn)').removeClass('selected');
+        }
+        else {
+            if (starth < 12) {//오전
+                $('#morningBtn').addClass('selected');
+                $('#morningBtn').closest('div').find('.btn-option:not(#morningBtn)').removeClass('selected');
+            }
+            else {//종일
+                $('#afternoonBtn').addClass('selected');
+                $('#afternoonBtn').closest('div').find('.btn-option:not(#afternoonBtn)').removeClass('selected');
+            }
+        }
+    }
+
+    function input_work_time() {
         console.log('input_work_time');
-        // let time = $('.time.hour');
         let start = $('#startHour');
         let end = $('#endHour');
+        let workDate = $('.workDate');
         let endOption = $('.endOption');
-        start.on('input',function () {
+        start.on('input', function () {
+            let starth = parseInt($(this).val());
+            let endh = starth + 5;
+            end.val(endh);
+            limit_end_time(starth, endOption);
+            map_time_to_btn(starth, endh);
+            getSalary(start.val(), end.val(), workDate.val());
+        });
+        end.on('input', function () {
             let starth = start.val();
-            end.val(starth + 5);
-            for (let i = 0; i < 50; i++) {
-                if ((i < starth + 4) || (i > starth + 11)) {
-                    endOption.eq(i).css('display', 'none');
-                }
-                else {
-                    endOption.eq(i).css('display', 'block');
-                }
+            let endh = parseInt($(this).val());
+            map_time_to_btn(starth, endh);
+            getSalary(start.val(), end.val(), workDate.val());
+        });
+    }
+
+    function input_work_field() {
+        $('#workField').on('input', function () {
+            let value = $(this).val();
+            if (value === '설거지') {
+                let btn = $('.btn-option.wash');
+                btn.closest('div').find('.btn-option').removeClass('selected');
+                btn.addClass('selected');
+            }
+            else if (value === '주방보조') {
+                let btn = $('.btn-option.kitchen');
+                btn.closest('div').find('.btn-option').removeClass('selected');
+                btn.addClass('selected');
+            }
+            else if (value === '홀서빙') {
+                let btn = $('.btn-option.hall');
+                btn.closest('div').find('.btn-option').removeClass('selected');
+                btn.addClass('selected');
+            }
+            else {
+                console.log('nothing');
+                let btn = $('.btn-option.wash');
+                btn.closest('div').find('.btn-option').removeClass('selected');
             }
         });
     }
-    $('#percentage').on('input', function () {
+
+    function input_employee() {
+        $('#employeeName').on('input', function () {
+            $('#formAction').val('getEmployeeID');
+            $.ajax({
+                type: "POST",
+                url: ajaxURL,
+                method: "POST",
+                data: $('#callForm').serialize(),
+                dataType: "text",
+                success: function (data) {
+                    $('#employeeID').val(data);
+                }
+            });
+            set_validity($(this), 'employee');
+        });
+    }
+
+    $('#percentag+e').on('input', function () {
         $('#commission').val($('#percentage').val() * 0.01 * $('#monthlySalary').val());
         $('#callForm input[name=commission]').val($('#percentage').val() * 0.01 * $('#monthlySalary').val());
     });
     $('#monthlySalary').on('input', function () {
         $('#commission').val($('#percentage').val() * 0.01 * $('#monthlySalary').val());
         $('#callForm input[name=commission]').val($('#percentage').val() * 0.01 * $('#monthlySalary').val());
-    });
-    $('#employeeName').on('input', function () {
-        $('#formAction').val('getEmployeeID');
-        $.ajax({
-            type: "POST",
-            url: ajaxURL,
-            method: "POST",
-            data: $('#callForm').serialize(),
-            dataType: "text",
-            success: function (data) {
-                $('#employeeID').val(data);
-            }
-        });
     });
     $('#manualCallBtn').on('click', function () {
         $('.callBtn').hide();
@@ -369,38 +398,10 @@
         $('.fixable').slideDown();
         $('.monthly').slideDown();
     });
-    // $('#callForm input').on('input', function () {
-    //     initiate(endHour.val() - startHour.val());
-    // });
-    // $('#callForm select').on('input', function () {
-    //     initiate(match_time());
-    // });
-    $('.btn-option').click(function () {
+    $('.btn-option').on('click', function () {
         $(this).closest('div').find('.btn-option').removeClass("selected");
         $(this).addClass('selected');
     });
-    $('#workField').on('input', function () {
-        let value = $(this).val();
-        if (value === '설거지') {
-            let btn = $('.btn-option.wash');
-            btn.closest('div').find('.btn-option').removeClass('selected');
-            btn.addClass('selected');
-        }
-        else if (value === '주방보조') {
-            let btn = $('.btn-option.kitchen');
-            btn.closest('div').find('.btn-option').removeClass('selected');
-            btn.addClass('selected');
-        }
-        else if (value === '홀서빙') {
-            let btn = $('.btn-option.hall');
-            btn.closest('div').find('.btn-option').removeClass('selected');
-            btn.addClass('selected');
-        }
-        else {
-            console.log('nothing');
-            let btn = $('.btn-option.wash');
-            btn.closest('div').find('.btn-option').removeClass('selected');
-        }
-    });
+
 
 </script>

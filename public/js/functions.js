@@ -64,3 +64,28 @@ function auto_insert_call_monthly() {
 function number_format(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
+
+function set_validity(input_element, table){
+    console.log(table);
+    let name = input_element.val();
+    let input = input_element;
+    let type = (table ==='employee') ? '인력' : '업체';
+    $.ajax({
+            type: "POST",
+            method: "POST",
+            url: ajaxURL,
+            data: {action: 'checkDuplicate', table: table, name: name},
+            dataType: "text",
+            async: true,
+            success: function (data) {
+                let match = JSON.parse(data).match;
+                if (!match) {
+                    input.get(0).setCustomValidity('존재하지 않는 '+type+'입니다.');
+                }
+                else{
+                    input.get(0).setCustomValidity('');
+                }
+            }
+        }
+    );
+}

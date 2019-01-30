@@ -1,10 +1,8 @@
 <?php
+    $companyList = $this->model->getTable("SELECT * FROM `company` WHERE `deleted` = 0 ORDER BY `companyName` ASC");
+    
+  $page = (isset($_POST['page'])) ? $_POST['page'] : 1;
   $record_per_page = 30;
-  if (isset($_POST['page'])) {
-    $page = $_POST['page'];
-  } else {
-    $page = 1;
-  }
   $start_from = ($page - 1) * $record_per_page;
   $query = "
 SELECT `blackListID`,`employee`.`employeeID`,`company`.`companyID`,`employeeName`,`companyName`,`blackList`.`detail`, `blackList`.`ceoReg`
@@ -12,48 +10,39 @@ FROM `blackList`
 LEFT JOIN `employee` on blackList.employeeID = employee.employeeID
 LEFT JOIN `company` on blackList.companyID = company.companyID
 ";
-  
-  if ($_POST['ceoReg'] == '1' OR $_POST['ceoReg'] == '0') {
-    $query .= "WHERE `ceoReg` = '{$_POST['ceoReg']}'";
-    if ($_POST['search']) {
-      $query .= "
-  AND
-  (`employeeName` LIKE '%{$_POST['search']}%') OR
-  (`companyName` LIKE '%{$_POST['search']}%') OR
-  (`blackList`.`detail` LIKE '%{$_POST['search']}%')
-  ";
-    }
-  } else {
-    if ($_POST['search']) {
-      $query .= "
-  WHERE
-  (`employeeName` LIKE '%{$_POST['search']}%') OR
-  (`companyName` LIKE '%{$_POST['search']}%') OR
-  (`blackList`.`detail` LIKE '%{$_POST['search']}%')
-  ";
-    }
+  if ($_POST['ceoReg'] != null) {
+      if($_POST['ceoReg'] == 'all'){
+       $selected_option[2] = 'selected';
+      }
+      else{
+        $condition[] = " `ceoReg` = '{$_POST['ceoReg']}' ";
+        $selected_option[$_POST['ceoReg']] = 'selected';
+      }
   }
-  
+  else{
+    $selected_option[2] = 'selected';
+  }
+  if ($_POST['search']) {
+    $condition[] = "
+  (`employeeName` LIKE '%{$_POST['search']}%') OR
+  (`companyName` LIKE '%{$_POST['search']}%') OR
+  (`blackList`.`detail` LIKE '%{$_POST['search']}%')
+  ";
+  }
+  if ($condition) {
+    $query .= " WHERE ";
+    $query .= implode(' AND ', $condition);
+  }
   $page_result = $this->model->getTable($query);
   $total_records = sizeof($page_result);
-  
-  echo json_encode($total_records);
-  
   $total_pages = ceil($total_records / $record_per_page);
-  $start_loop = $page;
+  $start_loop = max(1, $page - 2);
+  $end_loop = min($total_pages, $page + 2);
   $difference = $total_pages - $page;
-  
-  if ($total_pages >= 5) {
-    if ($difference <= 5) $start_loop = $total_pages - 5;
-    $end_loop = $start_loop + 4;
-  } else {
-    $start_loop = 1;
-    $end_loop = 1;
-  }
-  $query .= " ORDER BY `blackListID` DESC LIMIT {$start_from}, {$record_per_page} ";
+  $end_to = $start_from + $record_per_page;
+  $query .= " ORDER BY `blackListID` DESC LIMIT {$start_from}, {$end_to} ";
   $black = $this->model->getTable($query);
-  
-  echo $query;
+  $selected_page[$page] = "selected";
 ?>
 
 <style>
@@ -105,30 +94,20 @@ LEFT JOIN `company` on blackList.companyID = company.companyID
     }
 </style>
 
-
-<!--<div class="wrap">-->
-<!--    <div class="search">-->
-<!--        <input type="text" class="searchTerm" placeholder="What are you looking for?">-->
-<!--        <button type="submit" class="searchButton">-->
-<!--            <i class="fa fa-search"></i>-->
-<!--        </button>-->
-<!--    </div>-->
-<!--</div>-->
-
 <div class="board-write auto-center">
     <div class="title-table">
-        <h1 class="title-main">블랙리스트 관리</h1>
+        <h1 class="title-main">블랙리스트 관리 - 총 <?php echo $total_records ?> 건</h1>
     </div>
     <!--블랙리스트 추가 폼-->
     <div class="form-default">
-        <form id="company_form" action="" method="post">
+        <form id="formBlack" action="" method="post">
             <fieldset>
                 <input type="hidden" name="action" value="black">
                 <div class="table">
                     <div class="tr">
                         <div class="td td-3">
                             <label for="">인력명</label>
-                            <input id="employeeName" type="text" list="employeeList" name="employeeName">
+                            <input id="employeeName" type="text" list="employeeList" name="employeeName" required>
                             <datalist id="employeeList" class="input-field">
                               <?php foreach ($this->employee_List as $key => $data): ?>
                                   <option value="<?php echo $data['employeeName'] ?>"></option>
@@ -137,9 +116,9 @@ LEFT JOIN `company` on blackList.companyID = company.companyID
                         </div>
                         <div class="td td-3">
                             <label for="">업체명</label>
-                            <input type="text" list="companyList" name="companyName">
+                            <input type="text" list="companyList" name="companyName" required>
                             <datalist id="companyList" class="input-field">
-                              <?php foreach ($this->company_List as $key => $data): ?>
+                              <?php foreach ($companyList as $key => $data): ?>
                                   <option value="<?php echo $data['companyName'] ?>"></option>
                               <?php endforeach ?>
                             </datalist>
@@ -148,7 +127,7 @@ LEFT JOIN `company` on blackList.companyID = company.companyID
                     <div class="tr">
                         <div class="td td-3">
                             <label for="">유형</label>
-                            <select name="type" style="height: 39px; width: 282px;">
+                            <select name="type" style="height: 39px; width: 282px;" required>
                                 <option value="0">안가요</option>
                                 <option value="1">오지마세요</option>
                             </select>
@@ -176,12 +155,19 @@ LEFT JOIN `company` on blackList.companyID = company.companyID
     <!--블랙리스트 필터 폼-->
     <div class="btn-group" style="display: inline;height: 150px;">
         <form action="" method="post" style="height: 100%;">
+            <input type="hidden" name="ceoReg" value="all">
+            <input type="submit" class="btn btn-option <?php echo $selected_option[2] ?>" value="전체"
+                   style="height: 100%;">
+        </form>
+        <form action="" method="post" style="height: 100%;">
             <input type="hidden" name="ceoReg" value="1">
-            <input type="submit" class="btn btn-insert" value="오지마세요" style="height: 100%;">
+            <input type="submit" class="btn btn-option <?php echo $selected_option[1] ?>" value="오지마세요"
+                   style="height: 100%;">
         </form>
         <form action="" method="post" style="height: 100%;">
             <input type="hidden" name="ceoReg" value="0">
-            <input type="submit" class="btn btn-insert" value="안가요" style="height: 100%;">
+            <input type="submit" class="btn btn-option <?php echo $selected_option[0] ?>" value="안가요"
+                   style="height: 100%;">
         </form>
     </div>
     <!--블랙리스트 테이블-->
@@ -217,7 +203,7 @@ LEFT JOIN `company` on blackList.companyID = company.companyID
                   <?php echo $data['companyName'] ?>
                 </td>
                 <td class="al_c"><?php echo ($data['ceoReg'] == 1) ? '오지마세요' : '안가요' ?></td>
-                <td class="al_l"><?php echo $data['detail'] ?></td>
+                <td class="al_l"><?php echo ($data['detail']) ? $data['detail'] : '-' ?></td>
                 <td class="al_c">
                     <button type="button" class="btn btn-danger blackDelBtn" value="<?php echo $data['blackListID'] ?>">
                         삭제
@@ -232,10 +218,12 @@ LEFT JOIN `company` on blackList.companyID = company.companyID
       <?php if ($page > 1) : ?>
           <form action="" method="post">
               <input type="hidden" name="page" value=1>
+              <input type="hidden" name="ceoReg" value="<?php echo $_POST['ceoReg'] ?>">
               <input class="btn btn-option" type="submit" value="처음으로">
           </form>
           <form action="" method="post">
               <input type="hidden" name="page" value=<?php echo $page - 1 ?>>
+              <input type="hidden" name="ceoReg" value="<?php echo $_POST['ceoReg'] ?>">
               <input class="btn btn-option" type="submit" value="<">
           </form>
       <?php endif; ?>
@@ -243,17 +231,20 @@ LEFT JOIN `company` on blackList.companyID = company.companyID
       <?php for ($i = $start_loop; $i <= $end_loop; $i++): ?>
           <form action="" method="post">
               <input type="hidden" name="page" value="<?php echo $i ?>">
-              <input class="btn btn-option" type="submit" value="<?php echo $i ?>">
+              <input type="hidden" name="ceoReg" value="<?php echo $_POST['ceoReg'] ?>">
+              <input class="btn btn-option <?php echo $selected_page[$i] ?>" type="submit" value="<?php echo $i ?>">
           </form>
       <?php endfor; ?>
       
-      <?php if (($page < $end_loop)): ?>
+      <?php if (($page < $total_pages)): ?>
           <form action="" method="post">
               <input type="hidden" name="page" value="<?php echo $page + 1 ?>">
+              <input type="hidden" name="ceoReg" value="<?php echo $_POST['ceoReg'] ?>">
               <input class="btn btn-option" type="submit" value=">">
           </form>
           <form action="" method="post">
               <input type="hidden" name="page" value="<?php echo $total_pages ?>">
+              <input type="hidden" name="ceoReg" value="<?php echo $_POST['ceoReg'] ?>">
               <input class="btn btn-option" type="submit" value="마지막으로">
           </form>
       <?php endif; ?>
@@ -265,16 +256,50 @@ LEFT JOIN `company` on blackList.companyID = company.companyID
     }
     $('.blackDelBtn').on('click', function () {
         let btn = $(this);
-        $.ajax({
-            type: "POST",
-            method: "POST",
-            url: ajaxURL,
-            data: {action: 'deleteBlack', blackID: btn.val()},
-            dataType: "text",
-            success: function (data) {
-                alert(data);
-                btn.closest('tr').slideUp();
-            }
-        });
+        if (confirm('정말 삭제하시겠습니까?')) {
+            $.ajax({
+                type: "POST",
+                method: "POST",
+                url: ajaxURL,
+                data: {action: 'deleteBlack', blackID: btn.val()},
+                dataType: "text",
+                success: function (data) {
+                    alert(data);
+                    btn.closest('tr').slideUp();
+                }
+            });
+        }
     });
+    
+    $('input[name=employeeName]').on('input',function () {
+       set_validity($(this),'employee');
+    });
+    $('input[name=companyName]').on('input',function () {
+        set_validity($(this),'company');
+    });
+    
+    // function set_validity(input_element, table){
+    //     console.log(table);
+    //     let name = input_element.val();
+    //     let input = input_element;
+    //     let type = (table ==='employee') ? '인력' : '업체';
+    //     $.ajax({
+    //             type: "POST",
+    //             method: "POST",
+    //             url: ajaxURL,
+    //             data: {action: 'checkDuplicate', table: table, name: name},
+    //             dataType: "text",
+    //             async: true,
+    //             success: function (data) {
+    //                 let match = JSON.parse(data).match;
+    //                 if (!match) {
+    //                     input.get(0).setCustomValidity('존재하지 않는 '+type+'입니다.');
+    //                 }
+    //                 else{
+    //                     input.get(0).setCustomValidity('');
+    //                 }
+    //             }
+    //         }
+    //     );
+    // }
 </script>

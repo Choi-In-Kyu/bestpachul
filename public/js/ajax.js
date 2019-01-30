@@ -4,234 +4,163 @@ let arr = [];
 let i = arr.length;
 let count = 0;
 
-//근무시간, 임금 등 초기화
-function initiate(time, callFunction = false, date = null) {
-    limitTime(false);
-    $('#formAction').val('initiate');
-    if (date !== null) {
-        $('#workDate').val(date);
-    }
+// function initiate(time, callFunction = false, date = null) {
+//     $('#formAction').val('initiate');
+//     if (date !== null) {
+//         $('#workDate').val(date);
+//     }
+//     $.ajax({
+//         type: "POST",
+//         method: "POST",
+//         url: ajaxURL,
+//         data: callForm.serialize(),
+//         dataType: "text",
+//
+//         success: function (data) {
+//             let joinType = JSON.parse(data).joinType;
+//             let callType = JSON.parse(data).callType;
+//             let holiday = JSON.parse(data).holiday;
+//             let callPrice = JSON.parse(data).callPrice;
+//             let bookmark = JSON.parse(data).bookmark;
+//
+//             getSalary(match_time(), holiday);
+//
+//             if (joinType !== 'deactivated') {
+//                 if (callFunction === true) {
+//                     switch (callType) {
+//                         case 'free':
+//                             freeCall(data);
+//                             break;
+//                         case 'charged' :
+//                             chargedCall(data);
+//                             break;
+//                         case 'pointExceed':
+//                             alert('포인트가 부족합니다. 충전해주세요');
+//                             window.location.reload();
+//                             break;
+//                         default:
+//                             alert('Error 123');
+//                             break;
+//                     }
+//                 }
+//                 else {
+//                     switch (callType) {
+//                         case 'free':
+//                             $('#callPrice').val(0);
+//                             $('#btnSendCall').html("콜 신청하기");
+//                             if (joinType === 'point') {
+//                                 if (holiday) {
+//                                     $('#callPoint').val(8000);
+//                                 }
+//                                 else $('#callPoint').val(6000);
+//                             }
+//                             break;
+//                         case 'charged':
+//                             $('#callPrice').val(callPrice);
+//                             $('#btnSendCall').html("콜 신청하기 (콜비 : " + number_format(callPrice) + "원)");
+//                             break;
+//                         case 'pointExceed':
+//                             $('#btnSendCall').html("포인트 부족");
+//                             break;
+//                     }
+//                 }
+//             }
+//             else {
+//                 alert('만기된 회원입니다');
+//                 window.location.reload();
+//             }
+//             return data;
+//         }
+//     });
+// }
+
+//임금 계산 함수
+function getSalary(start_time, end_time, date) {
+    console.log('date : '+date);
+    let salary = $('#salaryInfo');
+    let price_table = {
+        'holiday': {
+            'night': {//주말야간
+                5: 58000,
+                6: 65000,
+                7: 72000,
+                8: 79000,
+                9: 86000,
+                10: 93000,
+                11: 10000,
+                12: 108500
+            },
+            'day': {//주말주간
+                5: 48000,
+                6: 55000,
+                7: 62000,
+                8: 69000,
+                9: 76000,
+                10: 83000,
+                11: 90000,
+                12: 98500
+            }
+        },
+        'weekday': {
+            'night': {//평일야간
+                5: 53000,
+                6: 60000,
+                7: 67000,
+                8: 74000,
+                9: 81000,
+                10: 88000,
+                11: 95000,
+                12: 103500
+            },
+            'day': {//평일주간
+                5: 43000,
+                6: 50000,
+                7: 57000,
+                8: 64000,
+                9: 71000,
+                10: 78000,
+                11: 85000,
+                12: 93500
+            }
+        }
+    };
+
+    let time = end_time - start_time;
+
     $.ajax({
         type: "POST",
         method: "POST",
         url: ajaxURL,
-        data: callForm.serialize(),
+        data: {action:'check_holiday',date:date},
         dataType: "text",
-
+        async: false,
         success: function (data) {
-            let joinType = JSON.parse(data).joinType;
-            let callType = JSON.parse(data).callType;
+            console.log("success - time : "+time);
             let holiday = JSON.parse(data).holiday;
-            let callPrice = JSON.parse(data).callPrice;
-            let bookmark = JSON.parse(data).bookmark;
-
-            getSalary(match_time(), holiday);
-
-            if (joinType !== 'deactivated') {
-                if (callFunction === true) {
-                    switch (callType) {
-                        case 'free':
-                            freeCall(data);
-                            break;
-                        case 'charged' :
-                            chargedCall(data);
-                            break;
-                        case 'pointExceed':
-                            alert('포인트가 부족합니다. 충전해주세요');
-                            window.location.reload();
-                            break;
-                        default:
-                            alert('Error 123');
-                            break;
-                    }
-                }
-                else {
-                    switch (callType) {
-                        case 'free':
-                            $('#callPrice').val(0);
-                            $('#btnSendCall').html("콜 신청하기");
-                            if (joinType === 'point') {
-                                if (holiday) {
-                                    $('#callPoint').val(8000);
-                                }
-                                else $('#callPoint').val(6000);
-                            }
-                            break;
-                        case 'charged':
-                            $('#callPrice').val(callPrice);
-                            $('#btnSendCall').html("콜 신청하기 (콜비 : " + number_format(callPrice) + "원)");
-                            break;
-                        case 'pointExceed':
-                            $('#btnSendCall').html("포인트 부족");
-                            break;
-                    }
-                }
+            console.log(price_table.holiday.night[5]);
+            let money = 0;
+            console.log('holiday : '+holiday);
+            if(holiday){
+                if(end_time>=24){money = price_table.holiday.night[time];}//주말야간
+                else{money = price_table.holiday.day[time];}//주말주간
+                $('input.workDate').css('color','red');
             }
-            else {
-                // if(bookmark){
-                //     let confirmDeactivated = localStorage.getItem('confirmDeactivated');
-                //     if(confirmDeactivated !== 'yes'){
-                //         if(confirm("만기된 회원입니다 배정 하시겠습니까?")){
-                //             localStorage.setItem('confirmDeactivated','yes');
-                //         }
-                //         else{
-                //             window.location.reload();
-                //         }
-                //     }
-                // }
-                // else{
-                    alert('만기된 회원입니다');
-                    window.location.reload();
-                // }
+            else{
+                if(end_time >=24){money  = price_table.weekday.night[time];}
+                else{money  = price_table.weekday.night[time];}
+                $('input.workDate').css('color','black');
             }
-            return data;
+            console.log("money : "+money);
+            salary.html("근무시간: " + time + " 시간 / 일당: " + number_format(parseInt(money)) + " 원");
+            $('#salary').val(money);
         }
     });
 }
-function match_time() {
-    let start   = $('#startHour').val();
-    let end     = $('#endHour').val();
-    return parseInt(end)-parseInt(start);
-}
-//임금 계산 함수
-function getSalary(time, holiday) {
-    let money;
-    if (holiday === true) {//주말 공휴일
-        $('#date').css({'color': 'red', 'font-weight': 'bold'});
-        if (parseInt(endHour.val()) * 100 + parseInt(endMin.val()) > 2400) {//야간
-            switch (time) {
-                case 5:
-                    money = 58000;
-                    break;
-                case 6:
-                    money = 65000;
-                    break;
-                case 7:
-                    money = 72000;
-                    break;
-                case 8:
-                    money = 79000;
-                    break;
-                case 9:
-                    money = 86000;
-                    break;
-                case 10:
-                    money = 93000;
-                    break;
-                case 11:
-                    money = 100000;
-                    break;
-                case 12:
-                    money = 108500;
-                    break;
-                default:
-                    money = 0;
-                    break;
-            }
-        }
-        else {
-            switch (time) {
-                case 5:
-                    money = 48000;
-                    break;
-                case 6:
-                    money = 55000;
-                    break;
-                case 7:
-                    money = 62000;
-                    break;
-                case 8:
-                    money = 69000;
-                    break;
-                case 9:
-                    money = 76000;
-                    break;
-                case 10:
-                    money = 83000;
-                    break;
-                case 11:
-                    money = 90000;
-                    break;
-                case 12:
-                    money = 98500;
-                    break;
-                default:
-                    money = 0;
-                    break;
-            }
-        }
-    }
-    else {
-        $('#date').css('color', 'black');
-        if (parseInt(endHour.val()) * 100 + parseInt(endMin.val()) > 2400) {
-            switch (time) {
-                case 5:
-                    money = 53000;
-                    break;
-                case 6:
-                    money = 60000;
-                    break;
-                case 7:
-                    money = 67000;
-                    break;
-                case 8:
-                    money = 74000;
-                    break;
-                case 9:
-                    money = 81000;
-                    break;
-                case 10:
-                    money = 88000;
-                    break;
-                case 11:
-                    money = 95000;
-                    break;
-                case 12:
-                    money = 103500;
-                    break;
-                default:
-                    money = 0;
-                    break;
-            }
-        }
-        else {
-            switch (time) {
-                case 5:
-                    money = 43000;
-                    break;
-                case 6:
-                    money = 50000;
-                    break;
-                case 7:
-                    money = 57000;
-                    break;
-                case 8:
-                    money = 64000;
-                    break;
-                case 9:
-                    money = 71000;
-                    break;
-                case 10:
-                    money = 78000;
-                    break;
-                case 11:
-                    money = 85000;
-                    break;
-                case 12:
-                    money = 93500;
-                    break;
-                default:
-                    money = 0;
-                    break;
-            }
-        }
-    }
-    salary.html("근무시간: " + time + " 시간 / 일당: " + number_format(parseInt(money)) + " 원");
-    $('#salary').val(money);
-}
 
 //콜 생성 함수
-function call(time) {initiate(time, true);}
+function call(time) {
+    initiate(time, true);
+}
 
 //유료콜 보내기
 function chargedCall(data) {
@@ -379,7 +308,7 @@ function recursive() {
 }
 
 //HTML 리턴에 따른 테이블 출력
-function getHTML(tableElement, action, id){
+function getHTML(tableElement, action, id) {
     $.ajax({
         type: "POST",
         method: "POST",
