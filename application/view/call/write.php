@@ -195,6 +195,13 @@
 
 <script>
 
+    let start_hour = $('#startHour');
+    let end_hour = $('#endHour');
+    let first_start_hour = 10;//근무 시작 시간 기본값
+    let first_end_hour = 15;//근무 종료 시간 기본값
+    let work_field = $('#workField');
+    let work_date = $('#workDate');
+
     $(document).ready(function () {//다른 js 파일 모두 불러온 뒤 함수 내용이 실행됨
         ready();
         input_company();
@@ -205,45 +212,73 @@
     });
 
     function ready() {
-        $('#startHour').val(10);
-        $('#endHour').val(15);
-        $('#workField').val('주방보조');
+        start_hour.val(first_start_hour);
+        end_hour.val(first_end_hour);
+        work_field.val('주방보조');
         $('.callBtn:not(#btnSendCall)').hide();
         $('#callForm input:not(.input-companyName), #callForm select, #callForm textarea, #callForm button').prop('disabled', true);
-        getSalary(10,15,tomorrow);
+        $('input.workDate').prop('min',today);
+        getSalary(first_start_hour, first_end_hour, tomorrow);
     }
 
     function input_company() {
         $('#companyName').on('input', function () {
-            let id = $('#companyID').val();
-            let name = $(this).val();
-            $('#formAction').val('getInfo');
-            $.ajax({
-                type: "POST",
-                method: "POST",
-                url: ajaxURL,
-                data: {action: 'getInfo', id: id, name: name, table: 'company'},
-                dataType: "text",
-                success: function (data) {
-                    let msg = JSON.parse(data).msg;
-                    if (msg) {//존재하지 않거나 만기된 업체
-                        $('#callForm input:not(.input-companyName), #callForm select, #callForm textarea, #callForm button').prop('disabled', true);
-                        $('#errorMsg h2').html(msg);
-                        $('#errorMsg').show();
-                    }
-                    else {
-                        let joinType = JSON.parse(data).joinType;
-                        $('#callForm input:not(.input-companyName), #callForm select, #callForm textarea, #callForm button').prop('disabled', false);
-                        $('#errorMsg h2').html(joinType);
-                        $('#errorMsg').show();
-                    }
+            let id_element = $('#companyID');
+            let name_element = $(this);
+            match_company_id(id_element, name_element);
+            get_join_type(id_element.val(), work_date.val());//match 된 companyID 사용
+        });
+    }
+
+    function match_company_id(id_element, name_element) {
+        let company_name = name_element.val();
+        $.ajax({
+            type: "POST",
+            method: "POST",
+            url: ajaxURL,
+            data: {action: 'get_company_id', name: company_name},
+            dataType: "text",
+            async: false,
+            success: function (data) {
+                if (data) {
+                    id_element.val(data);
                 }
-            });
+                else {
+                    $('#callForm input:not(.input-companyName), #callForm select, #callForm textarea, #callForm button').prop('disabled', true);
+                    $('#errorMsg h2').html('올바른 업체를 입력하세요');
+                    $('#errorMsg').show();
+                }
+            },
+        });
+    }
+
+    function get_join_type(id_value, date) {
+        $.ajax({
+            type: "POST",
+            method: "POST",
+            url: ajaxURL,
+            data: {action: 'get_join_type', id: id_value, date:date},
+            dataType: "text",
+            success: function (data) {
+                //check join type
+                let join_type = JSON.parse(data).joinType;
+                let size = JSON.parse(data).size;
+                let end_date = JSON.parse(data).endDate;
+                console.log(end_date);
+                $('#callForm input:not(.input-companyName), #callForm select, #callForm textarea, #callForm button').prop('disabled', false);
+                $('#errorMsg h2').html(join_type+" ("+size+"개 가입)");
+                $('#errorMsg').show();
+                if(join_type ==='구좌'){
+                    $('input.workDate').prop('max',end_date);
+                }
+                //check call type
+            }
         });
     }
 
     function input_work_date() {
         let workDate = $('.workDate');
+        let id_element = $('#companyID');
         let btn1 = $('#tomorrow');
         let btn2 = $('#dayAfterTomorrow');
         workDate.on('input', function () {
@@ -260,7 +295,8 @@
                 btn1.removeClass('selected');
                 btn2.removeClass('selected');
             }
-            getSalary(startHour.val(), endHour.val(), $(this).val());
+            getSalary(start_hour.val(), end_hour.val(), $(this).val());
+            get_join_type(id_element.val(), $(this).val());//match 된 companyID 사용
         });
         btn1.on('click', function () {
             workDate.val(tomorrow);
@@ -278,7 +314,6 @@
                 endOption.eq(i).css('display', 'none');
             }
             else {
-                console.log(i);
                 endOption.eq(i).css('display', 'block');
             }
         }
@@ -302,9 +337,9 @@
     }
 
     function input_work_time() {
-        console.log('input_work_time');
         let start = $('#startHour');
         let end = $('#endHour');
+        let minute = $('.minute');
         let workDate = $('.workDate');
         let endOption = $('.endOption');
         start.on('input', function () {
@@ -318,13 +353,33 @@
         end.on('input', function () {
             let starth = start.val();
             let endh = parseInt($(this).val());
+            limit_end_time(starth, endOption);
             map_time_to_btn(starth, endh);
             getSalary(start.val(), end.val(), workDate.val());
+        });
+
+        $('#morningBtn').on('click', function () {
+            start_hour.val('10');
+            end_hour.val('15');
+            minute.val('00');
+            start.trigger('input');
+        });
+        $('#afternoonBtn').on('click', function () {
+            start_hour.val('18');
+            end_hour.val('23');
+            minute.val('00');
+            start.trigger('input');
+        });
+        $('#allDayBtn').on('click', function () {
+            start_hour.val('10');
+            end_hour.val('21');
+            minute.val('00');
+            end.trigger('input');
         });
     }
 
     function input_work_field() {
-        $('#workField').on('input', function () {
+        work_field.on('input', function () {
             let value = $(this).val();
             if (value === '설거지') {
                 let btn = $('.btn-option.wash');
@@ -342,10 +397,12 @@
                 btn.addClass('selected');
             }
             else {
-                console.log('nothing');
                 let btn = $('.btn-option.wash');
                 btn.closest('div').find('.btn-option').removeClass('selected');
             }
+        });
+        $('.btn-work-field').on('click', function () {
+            work_field.val($(this).text());
         });
     }
 
@@ -366,7 +423,7 @@
         });
     }
 
-    $('#percentag+e').on('input', function () {
+    $('#percentage').on('input', function () {
         $('#commission').val($('#percentage').val() * 0.01 * $('#monthlySalary').val());
         $('#callForm input[name=commission]').val($('#percentage').val() * 0.01 * $('#monthlySalary').val());
     });

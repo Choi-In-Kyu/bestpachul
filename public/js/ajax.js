@@ -21,7 +21,6 @@ let count = 0;
 //             let callType = JSON.parse(data).callType;
 //             let holiday = JSON.parse(data).holiday;
 //             let callPrice = JSON.parse(data).callPrice;
-//             let bookmark = JSON.parse(data).bookmark;
 //
 //             getSalary(match_time(), holiday);
 //
@@ -76,7 +75,6 @@ let count = 0;
 
 //임금 계산 함수
 function getSalary(start_time, end_time, date) {
-    console.log('date : '+date);
     let salary = $('#salaryInfo');
     let price_table = {
         'holiday': {
@@ -135,11 +133,8 @@ function getSalary(start_time, end_time, date) {
         dataType: "text",
         async: false,
         success: function (data) {
-            console.log("success - time : "+time);
             let holiday = JSON.parse(data).holiday;
-            console.log(price_table.holiday.night[5]);
             let money = 0;
-            console.log('holiday : '+holiday);
             if(holiday){
                 if(end_time>=24){money = price_table.holiday.night[time];}//주말야간
                 else{money = price_table.holiday.day[time];}//주말주간
@@ -150,7 +145,6 @@ function getSalary(start_time, end_time, date) {
                 else{money  = price_table.weekday.night[time];}
                 $('input.workDate').css('color','black');
             }
-            console.log("money : "+money);
             salary.html("근무시간: " + time + " 시간 / 일당: " + number_format(parseInt(money)) + " 원");
             $('#salary').val(money);
         }

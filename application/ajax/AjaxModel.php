@@ -122,22 +122,48 @@
       $this->executeSQL($sql);
     }
     
-    public function joinType($companyID,$lang)
+    public function joinType($companyID,$lang = null,$date=null)
     {
-      $gujwaTable = $this->getTable("SELECT * FROM  `join_company` WHERE companyID = {$companyID} AND activated =1 AND price >0 AND  `point` IS NULL ");
-      $pointTable = $this->getTable("SELECT * FROM  `join_company` WHERE companyID = {$companyID} AND activated =1 AND price >0 AND  `point` IS NOT NULL ");
-      $depositTable = $this->getTable("SELECT * FROM  `join_company` WHERE companyID = {$companyID} AND activated =1 AND deposit >0");
-      if ($lang == 'kor') {
-        if (sizeof($gujwaTable) > 0) return sizeof($gujwaTable).'구좌';
-        elseif (sizeof($pointTable) > 0) return '포인트';
-        elseif (sizeof($depositTable) > 0) return '보증금+콜비';
-        else return '만기됨';
-      } else {
-        if (sizeof($gujwaTable) > 0) return 'gujwa';
-        elseif (sizeof($pointTable) > 0) return 'point';
-        elseif (sizeof($depositTable) > 0) return 'deposit';
-        else return 'deactivated';
+      $condition['id']      = " companyID = {$companyID} ";
+      $condition['gujwa']   = " activated =1 AND price >0 AND  `point` IS NULL ";
+      $condition['point']   = " activated =1 AND price >0 AND  `point` IS NOT NULL ";
+      $condition['deposit'] = " activated =1 AND deposit >0 ";
+      $kor_value = [ "gujwa" => "구좌", "point" => "포인트", "deposit" => "보증금+콜비"];
+      $result = array();
+      foreach (['gujwa','point','deposit'] as $value){
+        if($date){
+          $condition['date'] = ($value == 'gujwa') ? " `startDate`<= '{$date}' AND `endDate` >= '{$date}'" : " `startDate`<= '{$date}'";
+        }
+        $sql = "SELECT * FROM  `join_company` WHERE ".implode(' AND ',[$condition['id'], $condition[$value], $condition['date']])." ORDER BY `endDate` DESC ";
+        ${$value.'Table'} = $this->getTable($sql);
+        if(sizeof(${$value.'Table'}) > 0){
+          $result['joinType'] = ($lang == 'kor') ? $kor_value[$value] : $value;
+          $result['endDate'] = ($value == 'gujwa') ? ${$value.'Table'}[0]['endDate'] : null;
+          $result['size']= sizeof(${$value.'Table'});
+          $result['callType'] = null;
+          break;
+        }
       }
+      if($result['joinType']==null){
+        $result['joinType'] = '가입 내역이 없습니다.';
+        $result['size'] = 0;
+      }
+      return $result;
+      
+//      $gujwaTable = $this->getTable("SELECT * FROM  `join_company` WHERE companyID = {$companyID} AND activated =1 AND price >0 AND  `point` IS NULL ");
+//      $pointTable = $this->getTable("SELECT * FROM  `join_company` WHERE companyID = {$companyID} AND activated =1 AND price >0 AND  `point` IS NOT NULL ");
+//      $depositTable = $this->getTable("SELECT * FROM  `join_company` WHERE companyID = {$companyID} AND activated =1 AND deposit >0");
+//      if ($lang == 'kor') {
+//        if (sizeof($gujwaTable) > 0) return sizeof($gujwaTable).'구좌';
+//        elseif (sizeof($pointTable) > 0) return '포인트';
+//        elseif (sizeof($depositTable) > 0) return '보증금+콜비';
+//        else return '만기됨';
+//      } else {
+//        if (sizeof($gujwaTable) > 0) return 'gujwa';
+//        elseif (sizeof($pointTable) > 0) return 'point';
+//        elseif (sizeof($depositTable) > 0) return 'deposit';
+//        else return 'deactivated';
+//      }
     }
     
     public function isHoliday($date)
@@ -250,7 +276,7 @@
     
     public function checkCallType($id, $date)
     {
-      $joinType = $this->joinType($id);
+      $joinType = $this->joinType($id,$date);
       switch ($joinType) {
         case 'gujwa':
           $sql = "SELECT * FROM `join_company` WHERE companyID = '{$id}' AND startDate <= '{$date}' AND endDate >= '{$date}' AND `activated` = 1 AND deleted = 0";

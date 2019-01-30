@@ -19,46 +19,39 @@
   $id = $_POST['companyID'];
   if (isset($_POST['action'])) {
     switch ($_POST['action']) {
-      case 'initiate':
-        if (isset($_POST['companyID']) && ($_POST['companyID'] != '')) {
-          if ($obj->joinType($id) == 'gujwa') {
-            $obj->reset($_POST);
-          }
-          $result['joinType'] = $obj->joinType($id);
-          $result['callType'] = $obj->checkCallType($id, $date)[0];
-          $result['total'] = $obj->checkCallType($id, $date)[1];
-          $result['holiday'] = $obj->isHoliday($date);
-          $result['callPrice'] = $obj->getCallPrice($id, $date);
-          $result['companyID'] = $_POST['companyID'];
-          echo json_encode($result);
-        } else {
-          $result['joinType'] = null;
-          $result['callType'] = null;
-          $result['total'] = null;
-          $result['holiday'] = null;
-          $result['callPrice'] = null;
-          $result['salary'] = $_POST['salary'];
-          $result['companyID'] = $_POST['companyID'];
-          echo json_encode($result);
-        }
+      
+      case 'get_company_id':
+        echo $obj->getTable("SELECT `companyID` FROM `company` WHERE `companyName` = '{$_POST['name']}'")[0]['companyID'];
         break;
-      case 'getInfo' :
-        if (($_POST['id'] || $_POST['name']) && $_POST['table']) {
-          $result = $obj->select($_POST['table'], " `{$_POST['table']}Name` = '{$_POST['name']}'")[0];
-          if (sizeof($result) > 0) {
-            $result['joinType'] = $obj->joinType($result['companyID'], 'kor');
-            if ($result['activated'] == 1) {
-            } else {
-              $result['msg'] = '만기된 회원입니다.';
-            }
-          } else {
-            $result['msg'] = '존재하지 않는 회원입니다.';
-          }
-        } else {
-          $result['msg'] = '업체명을 입력해주세요';
-        }
-        echo json_encode($result);
+
+//      case 'initiate':
+//        if (isset($_POST['companyID']) && ($_POST['companyID'] != '')) {
+//          if ($obj->joinType($id) == 'gujwa') {
+//            $obj->reset($_POST);
+//          }
+//          $result['joinType']   = $obj->joinType($id);
+//          $result['callType']   = $obj->checkCallType($id, $date)[0];
+//          $result['total']      = $obj->checkCallType($id, $date)[1];
+//          $result['callPrice']  = $obj->getCallPrice($id, $date);
+//          $result['companyID']  = $_POST['companyID'];
+//          echo json_encode($result);
+//        } else {
+//          $result['joinType'] = null;
+//          $result['callType'] = null;
+//          $result['total'] = null;
+//          $result['callPrice'] = null;
+//          $result['salary'] = $_POST['salary'];
+//          $result['companyID'] = $_POST['companyID'];
+//          echo json_encode($result);
+//        }
+//        break;
+      
+      
+      case 'get_join_type' :
+        echo json_encode($obj->joinType($_POST['id'], 'kor',$_POST['date']));
         break;
+      
+      
       case 'call' :
         $obj->call($_POST);
         if ($obj->joinType($id) == 'gujwa') {
@@ -286,10 +279,9 @@ HTML;
         }
         break;
       case 'check_holiday':
-        if($_POST['date']){
+        if ($_POST['date']) {
           $result['holiday'] = $obj->isHoliday($_POST['date']);
-        }
-        else{
+        } else {
           $result['msg'] = "no date";
         }
         echo json_encode($result);
@@ -299,8 +291,7 @@ HTML;
         echo json_encode($result);
         break;
     }
-  }
-  else{
+  } else {
     $result['msg'] = 'no action';
     echo json_encode($result);
   }
