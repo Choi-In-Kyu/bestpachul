@@ -4,75 +4,6 @@ let arr = [];
 let i = arr.length;
 let count = 0;
 
-// function initiate(time, callFunction = false, date = null) {
-//     $('#formAction').val('initiate');
-//     if (date !== null) {
-//         $('#workDate').val(date);
-//     }
-//     $.ajax({
-//         type: "POST",
-//         method: "POST",
-//         url: ajaxURL,
-//         data: callForm.serialize(),
-//         dataType: "text",
-//
-//         success: function (data) {
-//             let joinType = JSON.parse(data).joinType;
-//             let callType = JSON.parse(data).callType;
-//             let holiday = JSON.parse(data).holiday;
-//             let callPrice = JSON.parse(data).callPrice;
-//
-//             getSalary(match_time(), holiday);
-//
-//             if (joinType !== 'deactivated') {
-//                 if (callFunction === true) {
-//                     switch (callType) {
-//                         case 'free':
-//                             freeCall(data);
-//                             break;
-//                         case 'charged' :
-//                             chargedCall(data);
-//                             break;
-//                         case 'pointExceed':
-//                             alert('포인트가 부족합니다. 충전해주세요');
-//                             window.location.reload();
-//                             break;
-//                         default:
-//                             alert('Error 123');
-//                             break;
-//                     }
-//                 }
-//                 else {
-//                     switch (callType) {
-//                         case 'free':
-//                             $('#callPrice').val(0);
-//                             $('#btnSendCall').html("콜 신청하기");
-//                             if (joinType === 'point') {
-//                                 if (holiday) {
-//                                     $('#callPoint').val(8000);
-//                                 }
-//                                 else $('#callPoint').val(6000);
-//                             }
-//                             break;
-//                         case 'charged':
-//                             $('#callPrice').val(callPrice);
-//                             $('#btnSendCall').html("콜 신청하기 (콜비 : " + number_format(callPrice) + "원)");
-//                             break;
-//                         case 'pointExceed':
-//                             $('#btnSendCall').html("포인트 부족");
-//                             break;
-//                     }
-//                 }
-//             }
-//             else {
-//                 alert('만기된 회원입니다');
-//                 window.location.reload();
-//             }
-//             return data;
-//         }
-//     });
-// }
-
 //임금 계산 함수
 function getSalary(start_time, end_time, date) {
     let salary = $('#salaryInfo');
@@ -122,9 +53,7 @@ function getSalary(start_time, end_time, date) {
             }
         }
     };
-
     let time = end_time - start_time;
-
     $.ajax({
         type: "POST",
         method: "POST",
@@ -141,68 +70,16 @@ function getSalary(start_time, end_time, date) {
                 $('input.workDate').css('color','red');
             }
             else{
-                if(end_time >=24){money  = price_table.weekday.night[time];}
-                else{money  = price_table.weekday.night[time];}
+                if(end_time >=24){money  = price_table.weekday.night[time];}//평일야간
+                else{money  = price_table.weekday.day[time];}//평일주간
                 $('input.workDate').css('color','black');
             }
             salary.html("근무시간: " + time + " 시간 / 일당: " + number_format(parseInt(money)) + " 원");
+            console.log('money : '+money);
             $('#salary').val(money);
         }
     });
 }
-
-//콜 생성 함수
-// function call(time) {
-//     initiate(time, true);
-// }
-
-//유료콜 보내기
-// function chargedCall(data) {
-//     if (confirm("콜비가 포함됩니다. 콜을 신청하시겠습니까?")) {
-//         $('#formAction').val('call');
-//         $.ajax({
-//             type: "POST",
-//             method: "POST",
-//             url: ajaxURL,
-//             data: $('#callForm').serialize(),
-//             dataType: "text",
-//             async: false,
-//             success: function (data) {
-//                 alert('콜을 보냈습니다.');
-//                 if (pageType !== 'call') {
-//                     window.location.reload();
-//                 }
-//             }
-//         })
-//     }
-//     else {
-//         alert("콜을 취소했습니다.");
-//         if (pageType !== 'call') {
-//             window.location.reload();
-//         }
-//     }
-// }
-//
-// //무료콜 보내기
-// function freeCall(data) {
-//     $('#btnSendCall').html("콜 신청하기");
-//     $('#formAction').val('call');
-//     $('#callPrice').val(0);
-//     $.ajax({
-//         type: "POST",
-//         method: "POST",
-//         url: ajaxURL,
-//         data: $('#callForm').serialize(),
-//         dataType: "text",
-//         async: false,
-//         success: function (data) {
-//             alert('콜을 신청했습니다.');
-//             if (pageType !== 'call') {
-//                 window.location.reload();
-//             }
-//         }
-//     })
-// }
 
 //콜 취소 함수
 function cancel() {

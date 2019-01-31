@@ -1,5 +1,4 @@
 <div class="mobile_view">
-
     <div class="user-profile" id="<?php echo $this->companyID ?>">
         <img src="/public/img/favicon.png" alt="Avatar" class="avatar">
         <h1><?php echo $this->companyData['companyName'] ?></h1>

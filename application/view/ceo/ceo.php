@@ -35,18 +35,18 @@
 </div>
 
 <?php require_once _VIEW . 'common/modal.php'; ?>
-
-<script>
-    $(document).ready(function () {
-        change('all');
-        change('paid');
-        $('#formAction').val('initiate');
-        $('#workField').val('주방보조');
-        startHour.val('10');
-        endHour.val('15');
-        initiate(endHour.val() - startHour.val());
-    });
-</script>
+<script src="/public/js/ceo.js"></script>
+<!--<script>-->
+<!--    $(document).ready(function () {-->
+<!--        change('all');-->
+<!--        change('paid');-->
+<!--        $('#formAction').val('initiate');-->
+<!--        $('#workField').val('주방보조');-->
+<!--        startHour.val('10');-->
+<!--        endHour.val('15');-->
+<!--        initiate(endHour.val() - startHour.val());-->
+<!--    });-->
+<!--</script>-->
 <script src="/public/js/mobile.js"></script>
 </body>
 </html>
