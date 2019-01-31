@@ -30,14 +30,14 @@
     <session id="1131409305">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="31" />
+          <entry key="project.closed" value="33" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="3" />
           <entry key="project.open.time.11" value="4" />
-          <entry key="project.open.time.12" value="10" />
+          <entry key="project.open.time.12" value="11" />
           <entry key="project.open.time.13" value="3" />
-          <entry key="project.open.time.14" value="3" />
+          <entry key="project.open.time.14" value="4" />
           <entry key="project.open.time.15" value="5" />
           <entry key="project.open.time.16" value="4" />
           <entry key="project.open.time.17" value="5" />
@@ -48,7 +48,7 @@
           <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="48" />
+          <entry key="project.opened" value="50" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -58,8 +58,8 @@
           <entry key="employeeTable_history" value="12" />
           <entry key="htaccess" value="2" />
           <entry key="html" value="229" />
-          <entry key="js" value="17805" />
-          <entry key="php" value="204071" />
+          <entry key="js" value="17828" />
+          <entry key="php" value="207128" />
           <entry key="svg" value="35" />
           <entry key="test" value="14" />
           <entry key="txt" value="45" />
@@ -69,8 +69,8 @@
         <counts>
           <entry key="CSS" value="6589" />
           <entry key="HTML" value="384" />
-          <entry key="JavaScript" value="17804" />
-          <entry key="PHP" value="203807" />
+          <entry key="JavaScript" value="17827" />
+          <entry key="PHP" value="206864" />
           <entry key="PLAIN_TEXT" value="103" />
           <entry key="SQL" value="104" />
           <entry key="SVG" value="35" />
@@ -90,9 +90,9 @@
           <entry key="CSS" value="219" />
           <entry key="HTML" value="16" />
           <entry key="Image" value="6" />
-          <entry key="JavaScript" value="379" />
+          <entry key="JavaScript" value="382" />
           <entry key="Markdown" value="1" />
-          <entry key="PHP" value="3544" />
+          <entry key="PHP" value="3545" />
           <entry key="PLAIN_TEXT" value="4" />
           <entry key="SVG" value="9" />
           <entry key="htaccess" value="3" />
@@ -108,9 +108,9 @@
           <entry key="gitattributes" value="3" />
           <entry key="htaccess" value="3" />
           <entry key="html" value="16" />
-          <entry key="js" value="379" />
+          <entry key="js" value="382" />
           <entry key="md" value="1" />
-          <entry key="php" value="3542" />
+          <entry key="php" value="3543" />
           <entry key="png" value="6" />
           <entry key="svg" value="9" />
           <entry key="test" value="1" />
@@ -123,8 +123,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/ajax/ajax.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="27" column="15" selection-start-line="27" selection-start-column="15" selection-end-line="27" selection-end-column="15" />
+            <state relative-caret-position="180">
+              <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -132,8 +132,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/ajax/AjaxModel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="524">
-              <caret line="142" column="31" lean-forward="true" selection-start-line="142" selection-end-line="143" />
+            <state relative-caret-position="150">
+              <caret line="146" column="40" lean-forward="true" selection-start-line="146" selection-start-column="40" selection-end-line="146" selection-end-column="40" />
               <folding>
                 <element signature="n#__construct#0;n#AjaxModel#0;n#!!top" />
                 <element signature="n#query#0;n#AjaxModel#0;n#!!top" />
@@ -146,13 +146,8 @@
                 <element signature="n#getListNum#0;n#AjaxModel#0;n#!!top" />
                 <element signature="n#getColumnList#0;n#AjaxModel#0;n#!!top" />
                 <element signature="n#getAllColumns#0;n#AjaxModel#0;n#!!top" />
-                <element signature="n#insert#0;n#AjaxModel#0;n#!!top" />
-                <element signature="n#isHoliday#0;n#AjaxModel#0;n#!!top" />
-                <element signature="n#call#0;n#AjaxModel#0;n#!!top" />
                 <element signature="n#cancel#0;n#AjaxModel#0;n#!!top" />
-                <element signature="n#reset#0;n#AjaxModel#0;n#!!top" />
                 <element signature="n#getWeekDates#0;n#AjaxModel#0;n#!!top" />
-                <element signature="n#thisWeekScore#0;n#AjaxModel#0;n#!!top" />
                 <element signature="n#fix#0;n#AjaxModel#0;n#!!top" />
                 <element signature="n#getMoney#0;n#AjaxModel#0;n#!!top" />
                 <element signature="n#toggleFilter#0;n#AjaxModel#0;n#!!top" />
@@ -174,11 +169,26 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/view/call/write.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="263" column="33" selection-start-line="263" selection-start-column="33" selection-end-line="263" selection-end-column="33" />
-              <folding>
-                <element signature="e#11266#11983#0#HTML" />
-              </folding>
+            <state relative-caret-position="252">
+              <caret line="14" column="48" lean-forward="true" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/js/common.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="7">
+              <caret line="101" column="3" lean-forward="true" selection-start-line="101" selection-start-column="3" selection-end-line="101" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/js/ceo.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1188">
+              <caret line="66" column="41" selection-start-line="66" selection-start-column="41" selection-end-line="66" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -195,27 +205,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>maxDate</find>
-      <find>getInfo</find>
-      <find>time</find>
-      <find>limit</find>
-      <find>endOption</find>
-      <find>chargedCall</find>
-      <find>getSalary</find>
-      <find>console.</find>
-      <find>initiate</find>
-      <find>name.val</find>
-      <find>async</find>
-      <find>total</find>
-      <find>validity</find>
-      <find>startHour</find>
-      <find>click</find>
-      <find>minute</find>
-      <find>trigger</find>
-      <find>afternoon</find>
-      <find>starth</find>
-      <find>kitchen</find>
-      <find>btn-work-field</find>
       <find>work_field</find>
       <find>workField</find>
       <find>get_company</find>
@@ -225,6 +214,27 @@
       <find>console</find>
       <find>size</find>
       <find>work_date</find>
+      <find>getCallPrice</find>
+      <find>checkCallType</find>
+      <find>free</find>
+      <find>gujwa_free</find>
+      <find>function</find>
+      <find>function call</find>
+      <find>btn</find>
+      <find>reset</find>
+      <find>call</find>
+      <find>function companyID</find>
+      <find>name_element</find>
+      <find>가입 내역이 없습니다</find>
+      <find>msg</find>
+      <find>there is no</find>
+      <find>올바른 업</find>
+      <find>올바른</find>
+      <find>존재하지 않는</find>
+      <find>10000</find>
+      <find>errorMsg</find>
+      <find>DAYOFWEEK</find>
+      <find>내일</find>
     </findStrings>
     <replaceStrings>
       <replace>modalFixCancel</replace>
@@ -336,8 +346,8 @@
         <option value="$PROJECT_DIR$/public/js/functions.js" />
         <option value="$PROJECT_DIR$/public/js/ceo.js" />
         <option value="$PROJECT_DIR$/public/js/ajax.js" />
-        <option value="$PROJECT_DIR$/application/ajax/ajax.php" />
         <option value="$PROJECT_DIR$/application/ajax/AjaxModel.php" />
+        <option value="$PROJECT_DIR$/application/ajax/ajax.php" />
         <option value="$PROJECT_DIR$/application/view/call/write.php" />
       </list>
     </option>
@@ -613,18 +623,20 @@
       <workItem from="1548214077182" duration="721000" />
       <workItem from="1548219982557" duration="20282000" />
       <workItem from="1548734561232" duration="17227000" />
-      <workItem from="1548816402458" duration="21627000" />
+      <workItem from="1548816402458" duration="28412000" />
+      <workItem from="1548852496644" duration="601000" />
+      <workItem from="1548920209506" duration="6093000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1779618000" />
+    <option name="totallyTimeSpent" value="1793097000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19349681" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1977612" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -662,13 +674,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/application/ajax/AjaxModel.php</url>
-          <line>142</line>
-          <option name="timeStamp" value="37" />
+          <line>137</line>
+          <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/public/js/ajax.js</url>
           <line>154</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="34" />
         </line-breakpoint>
       </breakpoints>
@@ -756,42 +767,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="237" column="5" selection-start-line="237" selection-start-column="5" selection-end-line="237" selection-end-column="5" />
-          <folding>
-            <element signature="n#__construct#0;n#Model#0;n#!!top" />
-            <element signature="n#check_login#0;n#Model#0;n#!!top" />
-            <element signature="n#query#0;n#Model#0;n#!!top" />
-            <element signature="n#fetch#0;n#Model#0;n#!!top" />
-            <element signature="n#executeSQL#0;n#Model#0;n#!!top" />
-            <element signature="n#fetchAll#0;n#Model#0;n#!!top" />
-            <element signature="n#getTable#0;n#Model#0;n#!!top" />
-            <element signature="n#count#0;n#Model#0;n#!!top" />
-            <element signature="n#getList#0;n#Model#0;n#!!top" />
-            <element signature="n#getListNum#0;n#Model#0;n#!!top" />
-            <element signature="n#getColumnList#0;n#Model#0;n#!!top" />
-            <element signature="n#removeDuplicate#0;n#Model#0;n#!!top" />
-            <element signature="n#extractPost#0;n#Model#0;n#!!top" />
-            <element signature="n#getQuery#0;n#Model#0;n#!!top" />
-            <element signature="n#select#0;n#Model#0;n#!!top" />
-            <element signature="n#delete#0;n#Model#0;n#!!top" />
-            <element signature="n#isHoliday#0;n#Model#0;n#!!top" />
-            <element signature="n#joinType#0;n#Model#0;n#!!top" />
-            <element signature="n#getAllColumns#0;n#Model#0;n#!!top" />
-            <element signature="n#getLastID#0;n#Model#0;n#!!top" />
-            <element signature="n#fixCancel#0;n#Model#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/css/mobile.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-763" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/common.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="147" column="23" lean-forward="true" selection-start-line="147" selection-start-column="23" selection-end-line="147" selection-end-column="23" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/css/login.css">
@@ -940,13 +921,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/ceo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-810">
-          <caret line="36" column="17" selection-start-line="36" selection-start-column="11" selection-end-line="36" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/call.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="522">
@@ -975,34 +949,34 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="8" column="45" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
-          <folding>
-            <element signature="n#get_joinType#0;n#Functions#0;n#!!top" />
-            <element signature="n#get_joinPrice#0;n#Functions#0;n#!!top" />
-            <element signature="n#joinColor#0;n#Functions#0;n#!!top" />
-            <element signature="n#companyName#0;n#Functions#0;n#!!top" />
-            <element signature="n#getTime#0;n#Functions#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/ajax.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="145" column="30" lean-forward="true" selection-start-line="145" selection-start-column="30" selection-end-line="145" selection-end-column="30" />
+        <state relative-caret-position="270">
+          <caret line="159" column="31" selection-start-line="159" selection-start-column="31" selection-end-line="159" selection-end-column="31" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/ajax/ajax.php">
+    <entry file="file://$PROJECT_DIR$/public/js/ceo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="27" column="15" selection-start-line="27" selection-start-column="15" selection-end-line="27" selection-end-column="15" />
+        <state relative-caret-position="1188">
+          <caret line="66" column="41" selection-start-line="66" selection-start-column="41" selection-end-line="66" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7">
+          <caret line="101" column="3" lean-forward="true" selection-start-line="101" selection-start-column="3" selection-end-line="101" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/ajax/AjaxModel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="142" column="31" lean-forward="true" selection-start-line="142" selection-end-line="143" />
+        <state relative-caret-position="150">
+          <caret line="146" column="40" lean-forward="true" selection-start-line="146" selection-start-column="40" selection-end-line="146" selection-end-column="40" />
           <folding>
             <element signature="n#__construct#0;n#AjaxModel#0;n#!!top" />
             <element signature="n#query#0;n#AjaxModel#0;n#!!top" />
@@ -1015,13 +989,8 @@
             <element signature="n#getListNum#0;n#AjaxModel#0;n#!!top" />
             <element signature="n#getColumnList#0;n#AjaxModel#0;n#!!top" />
             <element signature="n#getAllColumns#0;n#AjaxModel#0;n#!!top" />
-            <element signature="n#insert#0;n#AjaxModel#0;n#!!top" />
-            <element signature="n#isHoliday#0;n#AjaxModel#0;n#!!top" />
-            <element signature="n#call#0;n#AjaxModel#0;n#!!top" />
             <element signature="n#cancel#0;n#AjaxModel#0;n#!!top" />
-            <element signature="n#reset#0;n#AjaxModel#0;n#!!top" />
             <element signature="n#getWeekDates#0;n#AjaxModel#0;n#!!top" />
-            <element signature="n#thisWeekScore#0;n#AjaxModel#0;n#!!top" />
             <element signature="n#fix#0;n#AjaxModel#0;n#!!top" />
             <element signature="n#getMoney#0;n#AjaxModel#0;n#!!top" />
             <element signature="n#toggleFilter#0;n#AjaxModel#0;n#!!top" />
@@ -1039,13 +1008,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/application/ajax/ajax.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/view/call/write.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="263" column="33" selection-start-line="263" selection-start-column="33" selection-end-line="263" selection-end-column="33" />
-          <folding>
-            <element signature="e#11266#11983#0#HTML" />
-          </folding>
+        <state relative-caret-position="252">
+          <caret line="14" column="48" lean-forward="true" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
         </state>
       </provider>
     </entry>

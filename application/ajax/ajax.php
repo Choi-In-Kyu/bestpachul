@@ -21,7 +21,14 @@
     switch ($_POST['action']) {
       
       case 'get_company_id':
-        echo $obj->getTable("SELECT `companyID` FROM `company` WHERE `companyName` = '{$_POST['name']}'")[0]['companyID'];
+        $result = $obj->getTable("SELECT `companyID` FROM `company` WHERE `companyName` = '{$_POST['name']}'")[0]['companyID'];
+        if($result){
+          echo $result;
+        }
+        else{
+          $result['error'] = "올바른 업체를 입력하세요";
+          echo json_encode($result);
+        }
         break;
 
 //      case 'initiate':
@@ -46,17 +53,21 @@
 //        }
 //        break;
       
-      
       case 'get_join_type' :
-        echo json_encode($obj->joinType($_POST['id'], 'kor',$_POST['date']));
+        $id =$obj->select('company', "companyName = '{$_POST['name']}'", 'companyID');
+        if($id){
+          echo json_encode($obj->joinType($id, 'kor',$_POST['date']));
+        }
+        else{
+          $result['error'] = "올바른 업체를 입력하세요";
+          echo json_encode($result);
+        }
+        
         break;
-      
-      
+        
       case 'call' :
         $obj->call($_POST);
-        if ($obj->joinType($id) == 'gujwa') {
-//          $result = $obj->reset($_POST);
-//          echo $result;
+        if($obj->joinType($_POST['companyID'],'kor',$_POST['workDate'])['joinType'] == 'gujwa') {
           $obj->reset($_POST);
         }
         break;

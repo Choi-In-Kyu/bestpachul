@@ -85,7 +85,7 @@ function getSalary(start_time, end_time, date) {
                 8: 79000,
                 9: 86000,
                 10: 93000,
-                11: 10000,
+                11: 100000,
                 12: 108500
             },
             'day': {//주말주간
@@ -152,57 +152,57 @@ function getSalary(start_time, end_time, date) {
 }
 
 //콜 생성 함수
-function call(time) {
-    initiate(time, true);
-}
+// function call(time) {
+//     initiate(time, true);
+// }
 
 //유료콜 보내기
-function chargedCall(data) {
-    if (confirm("콜비가 포함됩니다. 콜을 신청하시겠습니까?")) {
-        $('#formAction').val('call');
-        $.ajax({
-            type: "POST",
-            method: "POST",
-            url: ajaxURL,
-            data: $('#callForm').serialize(),
-            dataType: "text",
-            async: false,
-            success: function (data) {
-                alert('콜을 보냈습니다.');
-                if (pageType !== 'call') {
-                    window.location.reload();
-                }
-            }
-        })
-    }
-    else {
-        alert("콜을 취소했습니다.");
-        if (pageType !== 'call') {
-            window.location.reload();
-        }
-    }
-}
-
-//무료콜 보내기
-function freeCall(data) {
-    $('#btnSendCall').html("콜 신청하기");
-    $('#formAction').val('call');
-    $('#callPrice').val(0);
-    $.ajax({
-        type: "POST",
-        method: "POST",
-        url: ajaxURL,
-        data: $('#callForm').serialize(),
-        dataType: "text",
-        async: false,
-        success: function (data) {
-            alert('콜을 신청했습니다.');
-            if (pageType !== 'call') {
-                window.location.reload();
-            }
-        }
-    })
-}
+// function chargedCall(data) {
+//     if (confirm("콜비가 포함됩니다. 콜을 신청하시겠습니까?")) {
+//         $('#formAction').val('call');
+//         $.ajax({
+//             type: "POST",
+//             method: "POST",
+//             url: ajaxURL,
+//             data: $('#callForm').serialize(),
+//             dataType: "text",
+//             async: false,
+//             success: function (data) {
+//                 alert('콜을 보냈습니다.');
+//                 if (pageType !== 'call') {
+//                     window.location.reload();
+//                 }
+//             }
+//         })
+//     }
+//     else {
+//         alert("콜을 취소했습니다.");
+//         if (pageType !== 'call') {
+//             window.location.reload();
+//         }
+//     }
+// }
+//
+// //무료콜 보내기
+// function freeCall(data) {
+//     $('#btnSendCall').html("콜 신청하기");
+//     $('#formAction').val('call');
+//     $('#callPrice').val(0);
+//     $.ajax({
+//         type: "POST",
+//         method: "POST",
+//         url: ajaxURL,
+//         data: $('#callForm').serialize(),
+//         dataType: "text",
+//         async: false,
+//         success: function (data) {
+//             alert('콜을 신청했습니다.');
+//             if (pageType !== 'call') {
+//                 window.location.reload();
+//             }
+//         }
+//     })
+// }
 
 //콜 취소 함수
 function cancel() {

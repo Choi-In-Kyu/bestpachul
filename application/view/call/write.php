@@ -98,8 +98,8 @@
                     </button>
                 </div>
                 <div class="td td-3">
-                    <button class="basic btn btn-option selected" type="button" id="tomorrow">내일</button>
-                    <button class="basic btn btn-option" type="button" id="dayAfterTomorrow">모레</button>
+                    <button class="basic btn btn-option selected" type="button" id="tomorrow">내일(<?php echo unserialize(DAYOFWEEK)[date('w', strtotime(_TOMORROW))] ?>)</button>
+                    <button class="basic btn btn-option" type="button" id="dayAfterTomorrow">모레(<?php echo unserialize(DAYOFWEEK)[date('w', strtotime("+2 day"))] ?>)</button>
                 </div>
             </div>
             <!--근무시간-->
@@ -209,6 +209,8 @@
         input_work_time();
         input_work_field();
         input_employee();
+        
+        send_call();
     });
 
     function ready() {
@@ -225,9 +227,11 @@
         $('#companyName').on('input', function () {
             let id_element = $('#companyID');
             let name_element = $(this);
+            $('.workDate').val(tomorrow);
+            $('.workDate').trigger('input');
             match_company_id(id_element, name_element);
-            get_join_type(id_element.val(), work_date.val());//match 된 companyID 사용
-        });
+            get_join_type(name_element, work_date.val());
+    });
     }
 
     function match_company_id(id_element, name_element) {
@@ -238,50 +242,68 @@
             url: ajaxURL,
             data: {action: 'get_company_id', name: company_name},
             dataType: "text",
-            async: false,
+            async: true,
             success: function (data) {
-                if (data) {
-                    id_element.val(data);
-                }
-                else {
+                let error = JSON.parse(data).error;
+                if(error){
+                    console.log(error);
                     $('#callForm input:not(.input-companyName), #callForm select, #callForm textarea, #callForm button').prop('disabled', true);
-                    $('#errorMsg h2').html('올바른 업체를 입력하세요');
+                    $('#errorMsg h2').html(error);
                     $('#errorMsg').show();
+                    id_element.val(null);
+                }
+                else{
+                    $('#callForm input:not(.input-companyName), #callForm select, #callForm textarea, #callForm button').prop('disabled', false);
+                    id_element.val(data);
                 }
             },
         });
     }
 
-    function get_join_type(id_value, date) {
+    function get_join_type(name_element, date) {
         $.ajax({
             type: "POST",
             method: "POST",
             url: ajaxURL,
-            data: {action: 'get_join_type', id: id_value, date:date},
+            data: {action: 'get_join_type', name: name_element.val(), date:date},
             dataType: "text",
+            async: true,
             success: function (data) {
-                //check join type
                 let join_type = JSON.parse(data).joinType;
                 let size = JSON.parse(data).size;
                 let end_date = JSON.parse(data).endDate;
-                console.log(end_date);
-                $('#callForm input:not(.input-companyName), #callForm select, #callForm textarea, #callForm button').prop('disabled', false);
-                $('#errorMsg h2').html(join_type+" ("+size+"개 가입)");
-                $('#errorMsg').show();
-                if(join_type ==='구좌'){
-                    $('input.workDate').prop('max',end_date);
+                let call_type = JSON.parse(data).callType;
+                let call_price = JSON.parse(data).callPrice;
+                let error = JSON.parse(data).error;
+                if(error){
+                    console.log(error);
+                    $('#callForm input:not(.input-companyName), #callForm select, #callForm textarea, #callForm button').prop('disabled', true);
+                    $('#errorMsg h2').html(error);
+                    $('#errorMsg').show();
                 }
-                //check call type
+                else{
+                    $('#callForm input:not(.input-companyName), #callForm select, #callForm textarea, #callForm button').prop('disabled', false);
+                    $('#errorMsg h2').html(join_type+" ("+size+"개 가입)");
+                    $('#errorMsg').show();
+                    if(join_type ==='구좌'){
+                        $('input.workDate').prop('max',end_date);
+                    }
+                    if(call_price){
+                        $('#btnSendCall').html("콜 신청하기 <br>"+"콜비 : "+call_price+"원");
+                        $('#callPrice').val(call_price);
+                    }
+                    else{$('#btnSendCall').html("콜 신청하기");}
+                }
             }
         });
     }
 
     function input_work_date() {
         let workDate = $('.workDate');
-        let id_element = $('#companyID');
         let btn1 = $('#tomorrow');
         let btn2 = $('#dayAfterTomorrow');
         workDate.on('input', function () {
+            let name_element = $('#companyName');
             let date = $(this).val();
             if (date === tomorrow) {//내일 날짜 선택 시
                 btn1.addClass('selected');
@@ -296,7 +318,7 @@
                 btn2.removeClass('selected');
             }
             getSalary(start_hour.val(), end_hour.val(), $(this).val());
-            get_join_type(id_element.val(), $(this).val());//match 된 companyID 사용
+            get_join_type(name_element, $(this).val());//match 된 companyID 사용
         });
         btn1.on('click', function () {
             workDate.val(tomorrow);
@@ -309,6 +331,7 @@
     }
 
     function limit_end_time(starth, endOption) {
+        console.log(starth);
         for (let i = 0; i < 50; i++) {
             if ((i < starth + 4) || (i > starth + 11)) {
                 endOption.eq(i).css('display', 'none');
@@ -337,25 +360,40 @@
     }
 
     function input_work_time() {
+        //front input values
         let start = $('#startHour');
         let end = $('#endHour');
         let minute = $('.minute');
         let workDate = $('.workDate');
         let endOption = $('.endOption');
+        
+        //real input values
+        let start_time = $('#startTime');
+        let end_time = $('#endTime');
+        
         start.on('input', function () {
             let starth = parseInt($(this).val());
             let endh = starth + 5;
             end.val(endh);
+            start_time.val(starth+':'+$('#startMin').val());
+            end_time.val(endh+':'+$('#startMin').val());
             limit_end_time(starth, endOption);
             map_time_to_btn(starth, endh);
             getSalary(start.val(), end.val(), workDate.val());
         });
         end.on('input', function () {
-            let starth = start.val();
+            let starth = parseInt(start.val());
             let endh = parseInt($(this).val());
+            start_time.val(starth+':'+$('#endMin').val());
+            end_time.val(endh+':'+$('#endMin').val());
             limit_end_time(starth, endOption);
             map_time_to_btn(starth, endh);
             getSalary(start.val(), end.val(), workDate.val());
+        });
+        minute.on('input',function () {
+            minute.val($(this).val());
+            start_time.val(start.val()+':'+minute.val());
+            end_time.val(end.val()+':'+minute.val());
         });
 
         $('#morningBtn').on('click', function () {
@@ -363,18 +401,21 @@
             end_hour.val('15');
             minute.val('00');
             start.trigger('input');
+            minute.trigger('input');
         });
         $('#afternoonBtn').on('click', function () {
             start_hour.val('18');
             end_hour.val('23');
             minute.val('00');
             start.trigger('input');
+            minute.trigger('input');
         });
         $('#allDayBtn').on('click', function () {
             start_hour.val('10');
             end_hour.val('21');
             minute.val('00');
             end.trigger('input');
+            minute.trigger('input');
         });
     }
 
@@ -420,6 +461,35 @@
                 }
             });
             set_validity($(this), 'employee');
+        });
+    }
+    
+    function send_call(){
+        $('#btnSendCall').on('click',function () {
+            if (confirm("콜을 신청하시겠습니까?")) {
+                $('#formAction').val('call');
+                $.ajax({
+                    type: "POST",
+                    method: "POST",
+                    url: ajaxURL,
+                    data: $('#callForm').serialize(),
+                    dataType: "text",
+                    async: false,
+                    success: function (data) {
+                        console.log(data);
+                        alert('콜을 보냈습니다!');
+                        if (pageType !== 'call') {
+                            window.location.reload();
+                        }
+                    }
+                })
+            }
+            else {
+                alert("콜을 취소했습니다.");
+                if (pageType !== 'call') {
+                    window.location.reload();
+                }
+            }
         });
     }
 
