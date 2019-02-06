@@ -88,7 +88,7 @@
 
     <div class="al_c">
       <?php $table = 'employee_available_date' ?>
-        <div class="inline" style="width: 15%; height: 100%; min-width: 255px">
+        <div class="inline" style="height: 100%; min-width: 255px">
             <div class="datepicker" id="datepicker"></div>
             <form action="" id="toggleForm" method="post">
                 <input type="hidden" name="action" id="formAction">
@@ -112,7 +112,7 @@
                 </table>
             </form>
         </div>
-        <div class="inline  call" style="width: calc(100%-255px);">
+        <div class="inline  call" style="width: calc(100%-260px);">
             <table style="width:100%;">
                 <colgroup>
                     <col width="5%">
