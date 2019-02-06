@@ -104,23 +104,23 @@
                               <table>
                                   <thead>
                                   <tr>
-                                      <th>업체명</th>
-                                      <th>종류</th>
+                                      <th width="150">업체명</th>
+                                      <th width="150">종류</th>
                                       <th>사유</th>
                                   </tr>
                                   </thead>
                                   <tbody>
                                   <?php foreach ($this->blackList as $data) {?>
                                       <tr>
-                                          <th>
+                                          <td>
                                               <?php echo $this->employeeName($data['employeeID']) ?>
-                                          </th>
-                                          <th>
+                                          </td>
+                                          <td>
                                               <?php echo ($data['ceoReg'] == 1) ? '오지마세요' : '안가요'; ?>
-                                          </th>
-                                          <th>
+                                          </td>
+                                          <td>
                                               <?php echo $data['detail']; ?>
-                                          </th>
+                                          </td>
                                       </tr>
                                   <?php } ?>
                                   <tr>

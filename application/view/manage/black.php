@@ -146,10 +146,10 @@ LEFT JOIN `company` on blackList.companyID = company.companyID
         </form>
     </div>
     <!--블랙리스트 검색 폼-->
-    <div class="btn-group" style="display: inline;height: 150px;">
-        <form action="" method="post" style="height: 100%;">
-            <input type="text" name="search" style="width: 60px;height: 100%; border: 1px solid black;">
-            <input type="submit" class="btn btn-insert" value="검색" style="height: 100%;">
+    <div class="btn-group" style="display: inline-block; width: 500pxpx;">
+        <form action="" method="post" style="width: 100%;">
+            <input type="text" name="search" style="width: 280px;height: 100%; border: 1px solid #dbdbdb; vertical-align: middle;">
+            <input type="submit" class="btn btn-submit" value="검색" style="height: 100%;">
         </form>
     </div>
     <!--블랙리스트 필터 폼-->

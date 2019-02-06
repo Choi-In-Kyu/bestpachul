@@ -1,5 +1,5 @@
 <?php
-  
+
   Class Functions
   {
     public function content()
@@ -12,7 +12,7 @@
       echo "<script src='/public/js/call.js'></script>";
       echo "<script src='/public/js/ceo.js'></script>";
     }
-    
+
     public function initJoin($tableName)
     {
       //초기화 테스트
@@ -42,10 +42,10 @@
             $this->model->executeSQL("UPDATE join_{$tableName} SET `imminent` = '0' WHERE join_{$tableName}ID = {$joinID} LIMIT 1");
           }
         }
-        
+
       }
     }
-    
+
     //초기화 테스트
     public function initActCondition($list, $tableName)
     {
@@ -80,11 +80,11 @@
           }
         }
       }
-      
-      
+
+
       return $list;
     }
-    
+
     public function getActCondition($list, $tableName)
     {
       $tableID = $tableName . 'ID';
@@ -112,7 +112,7 @@
       }
       return $list;
     }
-    
+
     public function get_joinType($data)
     {
       if (isset($data['deposit'])) {
@@ -125,7 +125,7 @@
         return "만기됨";
       }
     }
-    
+
     public function get_joinPrice($data)
     {
       switch ($this->get_joinType($data)) {
@@ -140,7 +140,7 @@
           break;
       }
     }
-    
+
     public function imminent_check($table, $data)
     {
       $tableID = $table . "ID";
@@ -181,7 +181,7 @@
         return "-";
       }
     }
-    
+
     public function get_endDate($data, $tableName)
     {
       switch ($tableName) {
@@ -201,7 +201,7 @@
       }
       return $string;
     }
-    
+
     public function get_joinDetail($data)
     {
       if ($data['joinDetail']) {
@@ -224,7 +224,7 @@
         }
       }
     }
-    
+
     public function get_callDetail($data)
     {
       if ($data['detail']) {
@@ -241,7 +241,7 @@
       }
       echo $string;
     }
-    
+
     public function get_join_delete_btn($data, $tableName)
     {
       if ($data['activated'] == 1) {
@@ -253,7 +253,7 @@ HTML;
         return $data['deletedDate'];
       }
     }
-    
+
     public function get_deleteBtn($data, $tableName)
     {
       $tableID = $tableName . "ID";
@@ -267,19 +267,21 @@ HTML;
 HTML;
       }
     }
-    
+
     public function getPayBtn($data, $table, $column)
     {
       if ($data[$column] > 0) {
         if ($data['paid'] == 0) {
-          $val = number_format($data[$column]) . "원";
+          $val = number_format($data[$column]);
           return <<<HTML
-<button type="button" class="btn btn-money getMoneyBtn_{$table}" id="{$data[$table . 'ID']}" value="{$table}-{$data[$column]}">$val</button>
+<button type="button" class="btn btn-money getMoneyBtn_{$table}" id="{$data[$table . 'ID']}" value="{$table}-{$data[$column]}">
+<i class="fa fa-won"></i>$val
+</button>
 HTML;
         } else return '수금완료(' . $data['receiver'] . ")";
       } else return '무료';
     }
-    
+
     public function makeDetail($array)
     {
       foreach ($array as $key => $value) {
@@ -289,7 +291,7 @@ HTML;
       $string = implode("\n", $newArray);
       return $string;
     }
-    
+
     public function get_detail($data, $tableName)
     {
       $companyDetail = array('좌탁여부', '테이블수', '그릇종류', '식기세척기', '상주직원수', '주방환경', '교통환경', '주요업무', '가입경로', '기타사항');
@@ -305,10 +307,10 @@ HTML;
         }
       }
     }
-    
+
     public function joinColor($data, $tableName)
     {
-      
+
       if ($data['deleted'] == 1) {
         return "deleted";
       } else {
@@ -320,17 +322,17 @@ HTML;
         else echo "activated";
       }
     }
-    
+
     public function companyName($id)
     {
       return $this->model->select('company', "`companyID`={$id}", 'companyName');
     }
-    
+
     public function employeeName($id)
     {
       return $this->model->select('employee', "`employeeID`={$id}", 'employeeName');
     }
-    
+
     public function callType($data)
     {
       if (isset($data['point'])) return '포인트';
@@ -355,13 +357,13 @@ HTML;
 //      }
 //      else return null;
 //    }
-    
+
     public function assignType($data)
     {
       if (isset($data['point']) && $data['point'] > 0) return '(P)';
       if (isset($data['price']) && $data['price'] > 0) return '(유)';
     }
-    
+
     public function timeType($data)
     {
       $start = $data['startTime'];
@@ -373,7 +375,7 @@ HTML;
       }
       return $result . "<br>" . date('H:i', strtotime($data['startTime'])) . "~" . date('H:i', strtotime($data['endTime']));
     }
-    
+
     public function getTime($i)
     {
       if ($i < 12) {

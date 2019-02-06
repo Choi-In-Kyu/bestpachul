@@ -24,8 +24,8 @@
         삭제 : <?php echo $this->model->getListNum([$this->deletedCondition]) ?>
     </button>
 </div>
-<div class="header" id="filterSub">
+<form class="header" id="filterSub">
     <input type="text" id="inputKeyword" name="keyword" placeholder="검색할 내용을 입력하세요" value="<?php echo $_POST['keyword']?>">
-    <button class="btn btn-submit" type="button" id="btnSearch">검색</button>
+    <button class="btn btn-submit" type="submit" id="btnSearch">검색</button>
     <button type="button" id="btnAddCompany" class="btn btn-insert" onclick="window.location.href='<?php echo $this->param->get_page ?>/write'">신규 추가</button>
-</div>
+</form>

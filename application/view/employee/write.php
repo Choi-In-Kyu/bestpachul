@@ -33,7 +33,7 @@
                         </div>
                         <div class="td td-3">
                             <label for="">생일</label>
-                            <input type="date" name="birthDate" size="20" required autofocus
+                            <input type="date" name="birthDate" size="20" required autofocus style="font-size: 15px; line-height: 0.8; padding: 5px 10px;"
                                    value="<?php echo $this->employeeData['birthDate']; ?>">
                         </div>
                     </div>
@@ -125,7 +125,7 @@
                             <textarea class="textarea-detail" name="detail"
                                       required><?php echo $this->get_detail($this->employeeData, 'employee'); ?></textarea>
                         </div>
-                        <div class="td td-4">
+                        <div class="td td-4" style="margin-left: 16px;">
                           <?php require_once 'employeeAvailableDayTable.php' ?>
                         </div>
                     </div>
@@ -142,28 +142,28 @@
                   
                   <?php if (($this->param->action == 'view') && (sizeof($this->blackList) > 0)): ?>
                       <div class="tr">
-                          <div class="td td-4">
+                          <div class="td td-9">
                               <label for="">블랙</label>
                               <table>
                                   <thead>
                                   <tr>
-                                      <th>업체명</th>
-                                      <th>종류</th>
+                                      <th width="150">업체명</th>
+                                      <th width="150">종류</th>
                                       <th>사유</th>
                                   </tr>
                                   </thead>
                                   <tbody>
                                   <?php foreach ($this->blackList as $data) {?>
                                       <tr>
-                                          <th>
+                                          <td>
                                               <?php echo $this->employeeName($data['employeeID']) ?>
-                                          </th>
-                                          <th>
+                                          </td>
+                                          <td>
                                               <?php echo ($data['ceoReg'] == 1) ? '오지마세요' : '안가요'; ?>
-                                          </th>
-                                          <th>
+                                          </td>
+                                          <td>
                                               <?php echo $data['detail']; ?>
-                                          </th>
+                                          </td>
                                       </tr>
                                   <?php } ?>
                                   <tr>
@@ -177,28 +177,28 @@
                   <?php $availableDateArray = $this->model->getTable("SELECT * FROM `employee_available_date` WHERE `employeeID` = '{$this->employeeData['employeeID']}'"); ?>
                   <?php if (($this->param->action == 'view') && (sizeof($availableDateArray) > 0)): ?>
                       <div class="tr">
-                          <div class="td td-4">
+                          <div class="td td-9">
                               <label for="">근무가능일 / 불가능일</label>
                               <table>
                                   <thead>
                                   <tr>
-                                      <th>날</th>
-                                      <th>종류</th>
-                                      <th>사유</th>
+                                      <th width="150">날</th>
+                                      <th width="150">종류</th>
+                                      <th width="150">사유</th>
                                   </tr>
                                   </thead>
                                   <tbody>
                                   <?php foreach ($availableDateArray as $value) {?>
                                       <tr>
-                                          <th>
+                                          <td>
                                               <?php echo $value['availableDate']  > 0 ? $value['availableDate'] : $value['notAvailableDate']?>
-                                          </th>
-                                          <th>
+                                          </td>
+                                          <td>
                                               <?php echo $value['availableDate']  > 0 ? "갈래요" : "못가요"; ?>
-                                          </th>
-                                          <th>
+                                          </td>
+                                          <td>
                                               <?php echo $value['detail'] ?>
-                                          </th>
+                                          </td>
                                       </tr>
                                   <?php } ?>
                                   <tr>

@@ -44,8 +44,7 @@ $('.fa-star.selectable').on('click', function () {
                 btn.addClass('checked');
                 btn.removeClass('unchecked');
                 btn.closest('tr').addClass('imminent');
-            }
-            else {
+            } else {
                 btn.addClass('unchecked');
                 btn.removeClass('checked');
                 if (imminent === 0) {

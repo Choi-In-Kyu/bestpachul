@@ -116,7 +116,7 @@
 <div id="modalGetMoney" class="modal">
     <div class="modal-content">
         <div class="modal-box al_r">
-            <button type="button" class="btn btn-close-modal">X</button>            vp[;
+            <button type="button" class="btn btn-close-modal">X</button>
         </div>
         <div class="modal-box al_l">수금자 이름을 입력하세요</div>
         <form action="" method="post" id="formGetMoney">
