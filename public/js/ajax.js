@@ -75,7 +75,6 @@ function getSalary(start_time, end_time, date) {
                 $('input.workDate').css('color','black');
             }
             salary.html("근무시간: " + time + " 시간 / 일당: " + number_format(parseInt(money)) + " 원");
-            console.log('money : '+money);
             $('#salary').val(money);
         }
     });

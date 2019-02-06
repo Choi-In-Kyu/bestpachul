@@ -9,7 +9,7 @@
     <div class="mobile-content">
         <form action="" method="post" class="login-form">
             <input type="hidden" name="action" value="login">
-            <label class="login-label" for="user-name"><b>업체명</b></label>
+            <label class="login-label" for="user-name"><b>상호명</b></label>
             <input type="text" placeholder="가게 이름을 입력하세요" name="userName" required>
             <label class="login-label" for="userPW"><b>비밀번호</b></label>
             <input type="password" placeholder="사장님 전화번호를 입력하세요" name="userPW" required>

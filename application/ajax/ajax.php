@@ -26,7 +26,7 @@
           echo $result;
         }
         else{
-          $result['error'] = "올바른 업체를 입력하세요";
+          $result['error'] = "올바른 상호명을 입력하세요";
           echo json_encode($result);
         }
         break;
@@ -59,7 +59,7 @@
           echo json_encode($obj->joinType($id, 'kor',$_POST['date']));
         }
         else{
-          $result['error'] = "올바른 업체를 입력하세요";
+          $result['error'] = "올바른 상호명를 입력하세요";
           echo json_encode($result);
         }
         
@@ -67,7 +67,7 @@
         
       case 'call' :
         $obj->call($_POST);
-        if($obj->joinType($_POST['companyID'],'kor',$_POST['workDate'])['joinType'] == 'gujwa') {
+        if($obj->joinType($_POST['companyID'],null,$_POST['workDate'])['joinType'] == 'gujwa') {
           $obj->reset($_POST);
         }
         break;
@@ -107,11 +107,10 @@
         $obj->getMoney($_POST);
         break;
       case 'toggleFilter':
-//        echo json_encode($_POST);
         echo $obj->toggleFilter($_POST);
         break;
       case 'availableFilter':
-        $result['list'] = $obj->availableFilter($_POST)['arr'];
+        $result['arr'] = $obj->availableFilter($_POST)['arr'];
         $result['sql'] = $obj->availableFilter($_POST)['sql'];
         $result['post'] = $obj->availableFilter($_POST)['post'];
         echo json_encode($result);

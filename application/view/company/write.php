@@ -18,7 +18,7 @@
                 <div class="table">
                     <div class="tr">
                         <div class="td td-3">
-                            <label for="">업체명</label>
+                            <label for="">상호명</label>
                             <input type="text" name="companyName" size="20" required autofocus
                                    value="<?php echo $companyData['companyName']; ?>">
                         </div>

@@ -1,9 +1,9 @@
 <form action="" id="callForm" method="post">
     <input type="hidden" name="action" id="formAction">
     <input type="hidden" name="companyID" id="companyID" value="<?php if(isset($this->companyID)) echo $this->companyID?>">
-    <input type="hidden" name="employeeID" id="employeeID">
-    <input type="hidden" name="startTime" id="startTime">
-    <input type="hidden" name="endTime" id="endTime">
+    <input type="hidden" name="employeeID" class="employee" id="employeeID">
+    <input type="hidden" name="startTime" class="startTime" id="startTime">
+    <input type="hidden" name="endTime" class="endTime" id="endTime">
     <input type="hidden" name="salary" id="salary">
     <input type="hidden" name="price" id="callPrice">
     <input type="hidden" name="point" id="callPoint">
@@ -15,12 +15,12 @@
       
       
       <?php if ($this->param->page_type != 'ceo'): ?>
-          <!--인력이름, 업체이름-->
+          <!--인력이름, 상호명-->
           <div class="tr">
               <div class="td td-3">
-                  <label for="">업체명</label>
+                  <label for="">상호명</label>
                   <input type="text" class="input-companyName" list="companyList" name="companyName" id="companyName"
-                         placeholder="배정 요청한 업체를 입력하세요">
+                         placeholder="배정 요청한 거래처를 입력하세요">
                   <datalist id="companyList" class="input-field">
                     <?php foreach ($companyList as $key => $data): ?>
                         <option value="<?php echo $data['companyName'] ?>">
@@ -31,7 +31,7 @@
               </div>
               <div class="td td-3">
                   <label for="">인력명</label>
-                  <input type="text" list="employeeList" name="employeeName" id="employeeName"
+                  <input type="text" list="employeeList" name="employeeName" class="employee" id="employeeName"
                          placeholder="배정할 인력을 입력하세요 (생략가능)">
                   <datalist id="employeeList" class="input-field">
                     <?php foreach ($employeeList as $key => $data): ?>
@@ -75,12 +75,12 @@
         </div>
         <!--근무기간-->
         <div class="tr">
+            <label for="" style="font-weight: bold; font-size: 16px; display: block">근무기간</label>
             <div class="td td-3">
-                <label for="">근무기간</label>
                 <input type="date" class="workDate" value="<?php echo _TOMORROW ?>">
             </div>
-            <div class="endDate fixable td td-3" style="display: none;">
-                <strong style="font-size: 30px;">~</strong>
+            <div class="endDate fixable td td-4" style="display: none;">
+                <strong style="font-size: 30px; margin-right: 16px">~</strong>
                 <input type="date" class="endDate">
             </div>
             <div class="td td-3">

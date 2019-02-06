@@ -188,7 +188,7 @@
         $string = "UPDATE {$table} SET deleted=1, activated=0, deletedDate= '{$d}', deleteDetail = '{$post['deleteDetail']}' WHERE {$table}ID = '{$post['deleteID']}'";
         $this->executeSQL($string);
         //join table delete
-        $string2 = "UPDATE join_{$table} SET deleted=1, activated=0, deletedDate= '{$d}', deleteDetail = '업체삭제({$d})' WHERE {$table}ID = '{$post['deleteID']}' AND activated=1";
+        $string2 = "UPDATE join_{$table} SET deleted=1, activated=0, deletedDate= '{$d}', deleteDetail = '거래처삭제({$d})' WHERE {$table}ID = '{$post['deleteID']}' AND activated=1";
         $this->executeSQL($string2);
       } //가입 삭제
       else $this->executeSQL("UPDATE join_{$table} SET deleted=1, activated=0, deletedDate= '{$d}', deleteDetail = '{$post['deleteDetail']}' WHERE join_{$table}ID = '{$post['joinID']}'");

@@ -21,11 +21,13 @@
         </colgroup>
         <thead>
         <tr>
-            <th class="al_c link" onclick="sortTable('callList',0)">근무일</th>
-            <th class="al_c link" onclick="sortTable('callList',1)">근무시간</th>
-            <th class="al_c link" onclick="sortTable('callList',2)">직종</th>
-            <th class="al_c link" onclick="sortTable('callList',3)">콜비</th>
-            <th class="al_c link" onclick="sortTable('callList',4)">배정</th>
+            <th class="order link"  id="refresh-employeeID"> #</th>
+
+            <th class="al_c order link" ">근무일</th>
+            <th class="al_c order link" ">근무시간</th>
+            <th class="al_c order link" >직종</th>
+            <th class="al_c order link" ">콜비</th>
+            <th class="al_c order link" ">배정</th>
         </tr>
         </thead>
         <tbody id="all-call-list-body"></tbody>

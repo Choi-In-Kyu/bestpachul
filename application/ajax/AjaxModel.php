@@ -154,11 +154,12 @@
           case '구좌':
             $score = ($this->isHoliday($date)) ? 10000 : 8000;
             $total = $score + $this->thisWeekScore($companyID, $date);
+            $result['total'] = $total;
             if ($total <= 26000 * $result['size']) {
               $result['callType'] = 'gujwa_free';
               break;
             } else {
-              $result['callType'] = 'charged';
+              $result['callType'] = 'gujwa_charged';
               $result['callPrice'] = 6000;
               break;
             }
@@ -229,39 +230,33 @@
     {
       $id = $post['companyID'];
       $date = $post['workDate'];
-      $sql = "SELECT * FROM `call` WHERE `companyID`='{$id}' AND YEARWEEK( workDate, 1 ) = YEARWEEK( '{$date}' , 1 ) AND `cancelled`=0 ORDER BY `workDate` ASC";
-      $all = $this->getTable($sql);
-      
-      $sql = "SELECT * FROM `join_company` WHERE companyID = '{$id}' AND startDate <= '{$date}' AND endDate >= '{$date}' AND `activated` = 1 AND deleted = 0";
-      $gujwaList = $this->getTable($sql);
-      
+      $all_call = $this->getTable("SELECT * FROM `call` WHERE `companyID`='{$id}' AND YEARWEEK( workDate, 1 ) = YEARWEEK( '{$date}' , 1 ) AND `cancelled`=0");
+      $gujwaList = $this->getTable("SELECT * FROM `join_company` WHERE companyID = '{$id}' AND startDate <= '{$date}' AND endDate >= '{$date}' AND `activated` = 1 AND deleted = 0");
       $max = 26000 * sizeof($gujwaList);
       $sum = 0;
+      #모든 콜을 무료 콜로 초기화
       $this->executeSQL("UPDATE `call` SET `price`=NULL WHERE `companyID` = '{$this->companyID}'  AND YEARWEEK( workDate, 1 ) = YEARWEEK( '{$post['workDate']}' , 1 ) AND `cancelled`=0");
-      for ($i = 0; $i < sizeof($all); $i++) {
-        if ($this->isHoliday($all[$i]['workDate'])) $sum += 10000;
-        else $sum += 8000;
-        if ($sum <= $max) $this->executeSQL("UPDATE `call` SET `price`=0 WHERE `callID` = '{$all[$i]['callID']}' LIMIT 1");
-        else $this->executeSQL("UPDATE `call` SET `price`=6000 WHERE `callID` = '{$all[$i]['callID']}' LIMIT 1");
+      //모든 콜에 대해 평일/주말로 나눔
+      foreach ($all_call as $value) {
+        if ($this->isHoliday($value['workDate'])) {
+          $holiday_call[] = $value['callID'];
+        } else {
+          $weekday_call[] = $value['callID'];
+        }
+      }
+      //평일 콜 먼저 무료-유료 순으로 채우기
+      foreach ($weekday_call as $value) {
+        $sum += 8000;
+        if ($sum <= $max) $this->executeSQL("UPDATE `call` SET `price`=0 WHERE `callID` = '{$value}' LIMIT 1");
+        else $this->executeSQL("UPDATE `call` SET `price`= '6000' WHERE `callID` = '{$value}' LIMIT 1");
+      }
+      //주말 콜 무료-유료 순으로 채우기
+      foreach ($holiday_call as $value) {
+        $sum += 10000;
+        if ($sum <= $max) $this->executeSQL("UPDATE `call` SET `price`=0 WHERE `callID` = '{$value}' LIMIT 1");
+        else $this->executeSQL("UPDATE `call` SET `price`= '6000' WHERE `callID` = '{$value}' LIMIT 1");
       }
     }
-
-//    public function getCallPrice($id, $date)
-//    {
-//      if ($this->checkCallType($id, $date) == 'free') {
-//        return null;
-//      } else {
-//        switch ($this->joinType($id)['joinType']) {
-//          case 'gujwa':
-//            return 6000;
-//            break;
-//          case 'deposit' :
-//            if ($this->isHoliday($date)) return 10000;
-//            else return 8000;
-//            break;
-//        }
-//      }
-//    }
     
     public function getWeekDates($date)
     {
@@ -282,7 +277,7 @@
     public function thisWeekScore($id, $date)
     {
       $sum = 0;
-      $sql = "SELECT `workDate` FROM  `call` WHERE companyID ={$id} AND YEARWEEK( workDate, 1 ) = YEARWEEK( '{$date}' , 1 ) AND `cancelled`=0 AND (price IS NULL OR price = 0)";
+      $sql = "SELECT `workDate` FROM  `call` WHERE `companyID` ='{$id}' AND YEARWEEK( workDate, 1 ) = YEARWEEK( '{$date}' , 1 ) AND `cancelled`=0 AND (price IS NULL OR price = 0)";
       $list = $this->getTable($sql);
       foreach ($list as $key => $value) {
         if ($this->isHoliday($value['workDate'])) {
@@ -402,28 +397,31 @@
     
     public function availableFilter($post)
     {
+      $year_condition = " YEAR(`availableDate`) = YEAR(CURDATE()) OR YEAR(`notAvailableDate`) = YEAR(CURDATE())";
+      $month_condition = " (YEAR(`availableDate`) = YEAR(CURDATE()) AND (MONTH(`availableDate`) = MONTH(CURDATE()))) OR (YEAR(`notAvailableDate`) = YEAR(CURDATE()) AND (MONTH(`notAvailableDate`) = MONTH(CURDATE())))";
+      $week_condition = " YEARWEEK(`availableDate`) = YEARWEEK(CURDATE(),1) OR YEARWEEK(`notAvailableDate`) = YEARWEEK(CURDATE(),1)";
       $result['post'] = $post;
       $sql = "SELECT `availableDateID` FROM `employee_available_date`";
-      
       if ($post['duration']) {
-        if (in_array('all', $post['duration'])) {
-          $condition['date'] = null;
-        } else {
-          $post['date'] = null;
-          $condition['date'] = "(" . implode(' OR ', $post['duration']) . ")";
+        $post['date'] = null;
+        switch ($post['duration']) {
+          case 'year':
+            $condition = $year_condition;
+            break;
+          case 'month':
+            $condition = $month_condition;
+            break;
+          case 'week':
+            $condition = $week_condition;
+            break;
         }
       } else {
-        $condition['date'] = " `availableDate` = '" . _TODAY . "' OR `notAvailableDate` = '" . _TODAY . "' ";
+        $condition = " `availableDate` = '" . _TODAY . "' OR `notAvailableDate` = '" . _TODAY . "' ";
       }
-      
       if ($post['date']) {
-        $condition['date'] = " (`availableDate` = '{$post['date']}') OR (`notAvailableDate` = '{$post['date']}')";
+        $condition = " (`availableDate` = '{$post['date']}') OR (`notAvailableDate` = '{$post['date']}')";
       }
-      
-      if ($condition) {
-        $sql .= " WHERE ";
-        $sql .= implode(' AND ', $condition);
-      }
+      $sql .= " WHERE " . $condition;
       $result['sql'] = $sql;
       foreach ($this->getTable($sql) as $value) {
         foreach ($value as $item) {
@@ -432,6 +430,7 @@
       }
       return $result;
     }
+    
     
     public function workTimeType($data)
     {
@@ -485,7 +484,7 @@
       
       $condition['만기'] = "(`activated` = '1')";
       $condition['블랙'] = "(`employeeID` not in (select `employeeID` from `blackList` WHERE `companyID` = '{$companyID}'))";
-      $condition['근무불가능일'] = "(`employeeID` not in (SELECT `employeeID` FROM `employee_available_date` WHERE (notavailableDate = '{$workDate}')))";
+      $condition['근무불가능일'] = "(`employeeID` not in (SELECT `employeeID` FROM `employee_available_date` WHERE (notAvailableDate = '{$workDate}')))";
       $condition['중복'] = "(`employeeID` not in (SELECT `employeeID` FROM `call` WHERE (employeeID is not null) AND (workDate ='{$workDate}') AND ('{$startTime}' < `endTime` AND '{$endTime}'>`startTime`) ))";
       if ($workField == '설거지') {
         $condition['업종'] =
@@ -505,6 +504,7 @@
           $condition['요일'] = "(`employeeID` in (SELECT `employeeID` FROM `employee_available_day` WHERE (`{$workDay}` = '종일' )))";
           break;
       }
+      $condition['최적'] = "(`employeeID` not in (SELECT `employeeID` FROM `employee_available_date` WHERE (availableDate = '{$workDate}')))";
       
       $employeeList = $this->getIDTable($this->getTable("SELECT `employeeID` FROM `employee`"));
       
@@ -513,20 +513,23 @@
       }
       //employeeList의 value:employeeID, key:배열 인덱스
       //일부 DB 삭제로 인해 employeeID와 인덱스 간 차이가 있음
-      foreach ($employeeList as $key => $value) {
+      foreach ($employeeList as $value) {
         for ($i = 0; $i < sizeof($conditionArray); $i++) {
           if (!in_array($value, $conditionArray[$i])) {
             $result[$value] = array_keys($condition)[$i];
             break 1;
           } else {
-            $result[$value] = 'best';
+            $result[$value] = '적합';
             continue;
           }
         }
       }
       //result의 key: employeeID, value: 배정 불가 사유
       foreach ($result as $key => $value) {
-        if ($value == 'best') {
+        if ($value == '최적') {
+          $group0[$key] = $value;
+        }
+        if ($value == '적합') {
           $group1[$key] = $value;
         }
         if (in_array($value, ['요일', '업종', '중복'])) {
@@ -541,32 +544,38 @@
         }
       }
       $return = "";
-      $status = "배정가능 인력<br/> 1군(" . sizeof($group1) . "명) 2군(" . sizeof($group2) . "명) 3군(" . sizeof($group3) . ")";
+      $status = "배정가능 인력<br/> 1군(" . (sizeof($group1) + sizeof($group0)) . "명) 2군(" . sizeof($group2) . "명) 3군(" . sizeof($group3) . "명)";
       $return .= <<<HTML
-<tr><td colspan="5"><strong>{$status}</strong></td></tr>
+<tr><td colspan="6"><strong>{$status}</strong></td></tr>
 HTML;
-      for ($i = 1; $i <= 3; $i++) {
-        $return .= <<<HTML
-<tr>
-<th>{$i}군</th>
+      for ($i = 0; $i <= 3; $i++) {
+        if (${'group' . $i}) {
+          $group_name = ($i == 0) ? '추천' : ($i . '군');
+          $recommend = ($i == 0) ? 'recommend' : null;
+          $return .= <<<HTML
+<tr class="assign-employee {$recommend}">
+<th>{$group_name}</th>
 <th>인력명</th>
 <th>간단주소</th>
 <th>배정</th>
-<th>부적합</th>
+<th>비고</th>
+<th>주간배정</th>
 </tr>
 HTML;
-        foreach (${'group' . $i} as $key => $value) {
-          $employeeData = $this->getTable("SELECT * FROM `employee` WHERE `employeeID` = '{$key}'")[0];
-          $class = $this->getClass($employeeData);
-          $return .= <<<HTML
-<tr class="{$class}">
+          foreach (${'group' . $i} as $key => $value) {
+            $employeeData = $this->getTable("SELECT * FROM `employee` WHERE `employeeID` = '{$key}'")[0];
+            $week_assign_count = sizeof($this->getTable("SELECT * FROM `call` WHERE `employeeID` = '{$key}' AND  YEARWEEK( workDate, 1 ) = YEARWEEK( '{$workDate}',1) "));
+            $return .= <<<HTML
+<tr class="assign-employee {$recommend}">
 <td class="al_c">{$key}</td>
-<td class="al_l ellipsis">{$employeeData['employeeName']}</td>
+<td class="al_l ellipsis" title="{$employeeData['employeeName']}">{$employeeData['employeeName']}</td>
 <td class="al_l">{$employeeData['address']}</td>
 <td class="al_c"><button type="button" class="btn btn-small btn-submit assignBtn" id="{$employeeData['employeeID']}">배정</button></td>
 <td class="al_c">{$value}</td>
+<td class="al_c">{$week_assign_count}회</td>
 </tr>
 HTML;
+          }
         }
       }
       return $return;
@@ -687,14 +696,13 @@ HTML;
     
     public function callCancel($post)
     {
-      $callData = $this->select('call', "callID = $post[callID]")[0];
-      $point = $callData['point'];
+      $callData = $this->select('call', "callID = '{$post['callID']}'")[0];
       $companyID = $callData['companyID'];
-      if (isset($point)) {
-        $this->executeSQL("UPDATE join_company SET point = point+'{$point}' WHERE companyID = '{$companyID}' LIMIT 1");
-        $this->executeSQL("UPDATE `call` SET `employeeID` = 0, `cancelled` = 1, `cancelDetail` = '{$post['detail']}' WHERE `callID` = '{$post['callID']}' LIMIT 1");
+      if ($callData['point'] > 0) {
+        $this->executeSQL("UPDATE join_company SET point = point+'{$callData['point']}' WHERE companyID = '{$companyID}' LIMIT 1");
+        $this->executeSQL("UPDATE `call` SET `employeeID` = NULL, `cancelled` = 1, `cancelDetail` = '{$post['detail']}' WHERE `callID` = '{$post['callID']}' LIMIT 1");
       } else {
-        $sql = "UPDATE `call` SET `employeeID` = 0, `cancelled` = 1, `cancelDetail` = '{$post['detail']}' WHERE `callID` = '{$post['callID']}' LIMIT 1";
+        $sql = "UPDATE `call` SET `employeeID` = NULL, `cancelled` = 1, `cancelDetail` = '{$post['detail']}', `price` = 0, `salary` = 0 WHERE `callID` = '{$post['callID']}' LIMIT 1";
         $this->executeSQL($sql);
         $this->reset($post);
       }

@@ -40,7 +40,7 @@
     function check_duplicate_company() {
         let nameInput = $('#formInsertCompany input[name=companyName]');
         if (nameInput.val() === null) {
-            $('#companyNameDuplicate').html('업체명을 입력 해 주세요');
+            $('#companyNameDuplicate').html('상호명을 입력 해 주세요');
         }
         else {
             nameInput.on('input', function () {

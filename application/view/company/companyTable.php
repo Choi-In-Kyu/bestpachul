@@ -28,13 +28,8 @@
             <td class="al_l link" onClick='location.href="<?php echo "{$this->param->get_page}/view/{$data['companyID']}" ?>"'><?php echo $data['companyName'] ?></td>
             <td class="al_c"><?php echo $data['address'] ?></td>
             <td class="al_c"><?php echo $data['businessType'] ?></td>
-
-            <td class="al_c">
-
-                <?php echo $this->imminent_check('company',$data)?>
-            </td>
-            
-            <td class="al_c"><?php echo $data['grade'] ?></td>
+            <td class="al_c"><?php echo $this->imminent_check('company',$data)?></td>
+            <td class="al_c"><?php echo $data['grade'] ?>점</td>
             <td class="al_c"><span class="fa fa-star selectable <?php echo ($data['bookmark'] == 1) ? 'checked' : 'unchecked' ?>" id="<?php echo $data['companyID'] ?>"></span></td>
             <td class="al_c"><?php echo $this->get_DeleteBtn($data, 'company') ?></td>
         </tr>

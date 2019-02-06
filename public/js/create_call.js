@@ -1,12 +1,15 @@
 let start_hour = $('#startHour');
 let end_hour = $('#endHour');
+
+let start_time = $('#startTime');
+let end_time = $('#endTime');
 let first_start_hour = 10;//근무 시작 시간 기본값
 let first_end_hour = 15;//근무 종료 시간 기본값
 let work_field = $('#workField');
 let work_date = $('#workDate');
 
 $(document).ready(function () {//다른 js 파일 모두 불러온 뒤 함수 내용이 실행됨
-    ready();
+    reset_call_form();
     if(pageType !== 'ceo'){
         input_company();
         input_employee();
@@ -17,28 +20,29 @@ $(document).ready(function () {//다른 js 파일 모두 불러온 뒤 함수 �
     send_call();
 });
 
-function ready() {
+function reset_call_form() {
+    start_time.val(first_start_hour+":00");
+    end_time.val(first_end_hour+":00");
     start_hour.val(first_start_hour);
     end_hour.val(first_end_hour);
     work_field.val('주방보조');
+    $('input.workDate').prop('min', today);
+    $('#detail').val(null);
+    $('.workDate').val(tomorrow);
+    $('.employee').val(null);
+    map_time_to_btn(first_start_hour,first_end_hour);
+    getSalary(first_start_hour, first_end_hour, tomorrow);
     if(pageType !== 'ceo'){
         $('.callBtn:not(#btnSendCall)').hide();
         $('#callForm input:not(.input-companyName), #callForm select, #callForm textarea, #callForm button').prop('disabled', true);
     }
-    $('input.workDate').prop('min', today);
-    getSalary(first_start_hour, first_end_hour, tomorrow);
 }
 
 function input_company() {
     $('#companyName').on('input', function () {
-        console.log('on input company name');
         let id_element = $('#companyID');
         let name_element = $(this);
-        console.log(name_element);
-        $('.workDate').val(tomorrow);
-        $('.workDate').trigger('input');
         match_company_id(id_element, name_element);
-        get_join_type(name_element, work_date.val());
     });
 }
 
@@ -63,6 +67,8 @@ function match_company_id(id_element, name_element) {
             else {
                 $('#callForm input:not(.input-companyName), #callForm select, #callForm textarea, #callForm button').prop('disabled', false);
                 id_element.val(data);
+                reset_call_form();
+                get_join_type(name_element, work_date.val());
             }
         },
     });
@@ -83,6 +89,14 @@ function get_join_type(name_element, date) {
             let call_type = JSON.parse(data).callType;
             let call_price = JSON.parse(data).callPrice;
             let error = JSON.parse(data).error;
+
+            let total = JSON.parse(data).total;
+
+            console.log(total);
+            console.log(call_price);
+            console.log(join_type);
+            console.log(call_type);
+
             if (error) {
                 console.log(error);
                 $('#callForm input:not(.input-companyName), #callForm select, #callForm textarea, #callForm button').prop('disabled', true);
@@ -102,6 +116,7 @@ function get_join_type(name_element, date) {
                 }
                 else {
                     $('#btnSendCall').html("콜 신청하기");
+                    $('#callPrice').val(null);
                 }
             }
         }
@@ -143,7 +158,6 @@ function input_work_date() {
 }
 
 function limit_end_time(starth, endOption) {
-    console.log(starth);
     for (let i = 0; i < 50; i++) {
         if ((i < starth + 4) || (i > starth + 11)) {
             endOption.eq(i).css('display', 'none');

@@ -98,6 +98,7 @@
       $sql = "SELECT * FROM `call`";
       $table = $this->param->page_type;
       if (in_array($table, ['company', 'employee'])) $sql .= " WHERE `{$table}ID` = '{$this->param->idx}' ";
+      $sql.= " ORDER BY `workDate` ASC";
       return $this->model->getTable($sql);
     }
     

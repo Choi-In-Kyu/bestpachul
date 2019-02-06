@@ -1,3 +1,39 @@
+<style>
+    #modalAssignCancel .btn{width: 200px;}
+    form.search-form{    margin-top: 20px;
+        display: block;}
+
+
+    .wrap .search {
+        position: relative
+    }
+    .wrap .search .searchTerm {
+        display: inline;
+        float: left;
+        width: 400px;
+        height: 44px;
+        padding: 0;
+        border: 3px solid #00B4CC;
+        border-right: none;
+    }
+    .wrap .search .searchTerm:focus{
+        color: #00B4CC;
+    }
+    .wrap .search .searchButton {
+        display: inline;
+        float: left;
+        width: 70px;
+        height: 50px;
+        padding: 0;
+        border: 1px solid #00B4CC;
+        background: #00B4CC;
+        color: #fff;
+        cursor: pointer;
+        text-align: center;
+        font-size: 20px;
+    }
+</style>
+
 <!-- Delete Modal -->
 <div id="modalDelete" class="modal">
     <div class="modal-content">
@@ -36,16 +72,12 @@
         <div class="modal-box al_r">
             <button type="button" class="btn btn-close-modal">X</button>
         </div>
-        <div class="modal-box al_l">
-            <h1 class="detail">취소사유를 입력해 주세요</h1>
-        </div>
+        <div class="modal-box al_l">취소 사유를 입력하세요</div>
         <form id="formCallCancel" action="" method="post">
             <input type="hidden" name="action" value="callCancel">
             <input type="hidden" name="callID" id="callCancelID">
-            <textarea name="detail" id="detail" size="200"></textarea>
-            <div class="al_r">
-                <button id="btnCallCancel" type="button" class="btn btn-mobile btn-insert">취소할래요</button>
-            </div>
+            <textarea name="detail" id="detail" <?php if($this->param->page_type == 'ceo') echo "size='200'"?>></textarea>
+            <button id="btnCallCancel" type="button" class="btn <?php if($this->param->page_type == 'ceo') echo "btn-mobile"?> btn-insert">취소</button>
         </form>
     </div>
 </div>
@@ -56,19 +88,27 @@
             <button type="button" class="btn btn-close-modal">X</button>
         </div>
         <div class="modal-box al_l">
+            
+            
+            
             <form action="" method="post">
                 <input type="hidden" name="action" value="assignCancel">
                 <input type="hidden" name="callID">
                 <input class="btn btn-insert" type="submit" value="배정취소">
             </form>
-            <h1 class="detail">펑크사유</h1>
-            <form action="" method="post">
+            
+            <input class="btn btn-insert" type="button" value="펑크">
+            <form class="search-form" action="" method="post">
                 <input type="hidden" name="action" value="punk">
                 <input type="hidden" name="callID">
-                <input type="hidden" name="employeeName">
-                <textarea id="punkDetail" name="detail" size="200">무단잠수</textarea>
-                <input class="btn btn-insert" type="submit" value="펑크">
+                <div class="wrap">
+                    <div class="search">
+                        <input type="text" class="searchTerm" name="detail" placeholder="펑크 사유를 입력하세요">
+                        <button type="submit" class="searchButton">입력</button>
+                    </div>
+                </div>
             </form>
+            
         </div>
     </div>
 </div>
@@ -76,7 +116,7 @@
 <div id="modalGetMoney" class="modal">
     <div class="modal-content">
         <div class="modal-box al_r">
-            <button type="button" class="btn btn-close-modal">X</button>
+            <button type="button" class="btn btn-close-modal">X</button>            vp[;
         </div>
         <div class="modal-box al_l">수금자 이름을 입력하세요</div>
         <form action="" method="post" id="formGetMoney">

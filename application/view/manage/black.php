@@ -40,58 +40,58 @@ LEFT JOIN `company` on blackList.companyID = company.companyID
   $end_loop = min($total_pages, $page + 2);
   $difference = $total_pages - $page;
   $end_to = $start_from + $record_per_page;
-  $query .= " ORDER BY `blackListID` DESC LIMIT {$start_from}, {$end_to} ";
+  $query .= " ORDER BY `blackListID` DESC LIMIT {$start_from}, {$record_per_page} ";
   $black = $this->model->getTable($query);
   $selected_page[$page] = "selected";
-?>
+  ?>
 
 <style>
     form {
         display: inline;
     }
-
-    .search {
-        width: 100%;
-        position: relative
-    }
-
-    .searchTerm {
-        float: left;
-        width: 100%;
-        border: 3px solid #00B4CC;
-        padding: 5px;
-        height: 20px;
-        border-radius: 5px;
-        outline: none;
-        color: #9DBFAF;
-    }
-
-    .searchTerm:focus {
-        color: #00B4CC;
-    }
-
-    .searchButton {
-        position: absolute;
-        right: -50px;
-        width: 40px;
-        height: 36px;
-        border: 1px solid #00B4CC;
-        background: #00B4CC;
-        text-align: center;
-        color: #fff;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 20px;
-    }
-
-    /*Resize the wrap to see the search bar change!*/
-    .wrap {
-        width: 30%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
+    
+    /*.search {*/
+        /*width: 100%;*/
+        /*position: relative*/
+    /*}*/
+    
+    /*.searchTerm {*/
+        /*float: left;*/
+        /*width: 100%;*/
+        /*border: 3px solid #00B4CC;*/
+        /*padding: 5px;*/
+        /*height: 20px;*/
+        /*border-radius: 5px;*/
+        /*outline: none;*/
+        /*color: #9DBFAF;*/
+    /*}*/
+    
+    /*.searchTerm:focus {*/
+        /*color: #00B4CC;*/
+    /*}*/
+    
+    /*.searchButton {*/
+        /*position: absolute;*/
+        /*right: -50px;*/
+        /*width: 40px;*/
+        /*height: 36px;*/
+        /*border: 1px solid #00B4CC;*/
+        /*background: #00B4CC;*/
+        /*text-align: center;*/
+        /*color: #fff;*/
+        /*border-radius: 5px;*/
+        /*cursor: pointer;*/
+        /*font-size: 20px;*/
+    /*}*/
+    
+    /*!*Resize the wrap to see the search bar change!*!*/
+    /*.wrap {*/
+        /*width: 30%;*/
+        /*position: absolute;*/
+        /*top: 50%;*/
+        /*left: 50%;*/
+        /*transform: translate(-50%, -50%);*/
+    /*}*/
 </style>
 
 <div class="board-write auto-center">
@@ -115,7 +115,7 @@ LEFT JOIN `company` on blackList.companyID = company.companyID
                             </datalist>
                         </div>
                         <div class="td td-3">
-                            <label for="">업체명</label>
+                            <label for="">상호명</label>
                             <input type="text" list="companyList" name="companyName" required>
                             <datalist id="companyList" class="input-field">
                               <?php foreach ($companyList as $key => $data): ?>
@@ -184,7 +184,7 @@ LEFT JOIN `company` on blackList.companyID = company.companyID
         <tr>
             <th class="order link" id="refresh-blackListID">#</th>
             <th class="order link" id="refresh-employeeName">인력명</th>
-            <th class="order link" id="refresh-companyName">업체명</th>
+            <th class="order link" id="refresh-companyName">상호명</th>
             <th class="order link" id="refresh-ceoReg">구분</th>
             <th class="order link" id="refresh-detail">비고</th>
             <th>삭제</th>

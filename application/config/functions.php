@@ -63,28 +63,24 @@
               break;
             } else {
               if ($data['activated'] == 1) {//activated
-                $activated +=1;
-              }
-              else{//deactivated
-                $deactivated +=1;
+                $activated += 1;
+              } else {//deactivated
+                $deactivated += 1;
               }
             }
           }
         }
-        if($imminent > 0){
+        if ($imminent > 0) {
           $this->model->executeSQL("UPDATE {$tableName} SET imminent = 1 WHERE {$tableName}ID = {$tableID} LIMIT 1");
-        }
-        else{
-          if($activated > 0){//활성화
+        } else {
+          if ($activated > 0) {//활성화
             $this->model->executeSQL("UPDATE {$tableName} SET activated = 1, imminent = 0 WHERE {$tableName}ID = {$tableID} LIMIT 1");
-          }
-          elseif($deactivated == sizeof($joinList)){//만기됨
+          } elseif ($deactivated == sizeof($joinList)) {//만기됨
             $this->model->executeSQL("UPDATE {$tableName} SET activated = 0, imminent = 0 WHERE {$tableName}ID = {$tableID} LIMIT 1");
           }
         }
       }
-  
-     
+      
       
       return $list;
     }
@@ -231,20 +227,19 @@
     
     public function get_callDetail($data)
     {
-      if (isset($data['detail']) && $data['detail'] != '') {
-        echo $data['detail'];
-        if ($data['cancelled'] == 1) {
-          if (isset($data['cancelDetail'])) {
-            echo "<br/>" . $data['cancelDetail'];
-          }
+      if ($data['detail']) {
+        $string = $data['detail'];
+        if ($data['cancelDetail']) {
+          $string .= "<br/>" . "(취소사유: " . $data['cancelDetail'].")";
         }
       } else {
-        if ($data['cancelled'] == 1) {
-          if (isset($data['cancelDetail'])) {
-            echo $data['cancelDetail'];
-          }
+        if ($data['cancelDetail']) {
+          $string = "(취소사유: " . $data['cancelDetail'].")";
+        } else {
+          $string = "-";
         }
       }
+      echo $string;
     }
     
     public function get_join_delete_btn($data, $tableName)
@@ -277,7 +272,7 @@ HTML;
     {
       if ($data[$column] > 0) {
         if ($data['paid'] == 0) {
-          $val = number_format($data[$column])."원";
+          $val = number_format($data[$column]) . "원";
           return <<<HTML
 <button type="button" class="btn btn-money getMoneyBtn_{$table}" id="{$data[$table . 'ID']}" value="{$table}-{$data[$column]}">$val</button>
 HTML;
@@ -313,21 +308,17 @@ HTML;
     
     public function joinColor($data, $tableName)
     {
-      $today = date('Y-m-d');
-      switch ($tableName) {
-        case 'company' :
-          $imminent = 15;
-          break;
-        case 'employee':
-          $imminent = 5;
-          break;
+      
+      if ($data['deleted'] == 1) {
+        return "deleted";
+      } else {
+        $today = date('Y-m-d');
+        $imminent = ($tableName == 'company') ? 15 : 5;
+        if ($data['activated'] == 0) return "deactivated";
+        elseif (strtotime($data['endDate'] . " -{$imminent} days") <= strtotime($today) && strtotime($today) < strtotime($data['endDate']))
+          return "imminent";
+        else echo "activated";
       }
-      if ($data['activated'] == 0) echo "deactivated";
-      elseif (
-        strtotime($data['endDate'] . " -{$imminent} days") <= strtotime($today)
-        && strtotime($today) < strtotime($data['endDate']))
-        echo "imminent";
-      else echo "activated";
     }
     
     public function companyName($id)

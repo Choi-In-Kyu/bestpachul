@@ -1,7 +1,15 @@
+:root {
+    --main-color: #27ae60;/*로고 색상과 동일*/
+    --main-color-transparent: #e9efec;
+    --main-color-dark:#506358;
+
+    --hover-color:#f9f9f9;
+}
+
 /*main filter*/
 .header button{height: 100% !important;vertical-align: top;}
 #header{position: sticky;top: 0px; display: block; width:100%; height: auto;background: whitesmoke; border-bottom: solid gray 3px;}
-#header .dropdown{width: 20%;}
+#header .dropdown{width: 20%; height: 100%}
 #header #headerMain{height: 55px;}
 #header #filterMain{height: 60px;}
 #header #filterMain button{height: 100%;}
@@ -11,7 +19,7 @@
 #filterSub #btnSearch{width: 10%;padding: 0;float: left;}
 #filterSub #btnAddCompany{float:right;}
 #filterMain .btn{color: gray;font-size: 0.7rem;display: block;float: left;background: whitesmoke;box-shadow: none;width: 8%;padding: 0;border: none;}
-#filterMain .btn.selected{color:green; border-bottom:solid 4px;}
+#filterMain .btn.selected{color:var(--main-color); border-bottom:solid 4px;}
 span.divider{display: inline-block;width: 0;height: 0.5em;border-left: 1px solid #ccc;border-right: 1px solid #ccc;}
 
 /*custom classes*/
@@ -21,7 +29,7 @@ span.divider{display: inline-block;width: 0;height: 0.5em;border-left: 1px solid
 .board-list .ui-widget.ui-widget-content{width: 97% !important;}
 .full_width{width:100%;}
 .link{text-decoration: underline; font-weight: bolder; z-index: 5; cursor: pointer;}
-.link:hover{color:green;}
+.link:hover{color:var(--main-color);}
 .btn-group .btn {width: 160px;height: 50px;margin: 10px 0;font-size: 18px;}
 .filterBtn {height: 45px;}
 .workTime select{width: 150px;font-size: 20px;padding-bottom: 5px;}
@@ -41,7 +49,7 @@ span.divider{display: inline-block;width: 0;height: 0.5em;border-left: 1px solid
 .ui-datepicker-current-day .ui-state-active { background: red; }
 .ui-datepicker-calendar td.newClass a { background: #FEF5E7; }
 .ui-datepicker-inline{width: 100%;}
-.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {background: darkseagreen !important;}
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {background: var(--hover-color) !important;}
 
 /* board */
 .board-list { padding: 0; margin: 0; width: 100%; height: auto;}
@@ -62,7 +70,7 @@ span.divider{display: inline-block;width: 0;height: 0.5em;border-left: 1px solid
 .btn-default        {background: white;color: black;border: solid 2px black;}
 .btn-default:hover  {background: #0000009e; color:whitesmoke; border: 0;}
 .btn-danger     {background: indianred;}                .btn-danger:hover{background: red;}
-.btn-insert     {background: darkseagreen;}             .btn-insert:hover{background: green;}
+.btn-insert     {background: var(--main-color);}             .btn-insert:hover{background: var(--main-color);}
 .btn-submit     {background: skyblue; }                 .btn-submit:hover{background: deepskyblue;}
 .btn-option     {background: #777584de}                 .btn-option:hover{background: #777584;}
 .btn-option.selected {background: red;}
@@ -103,35 +111,48 @@ a.btn{padding:10px;}
 
 /* default table */
 table {table-layout: fixed; width: 100%; border-top: 2px solid #666; border-spacing: 0; border-collapse: collapse; text-align: center; }
-tr.selectable:hover, tr.selected{cursor: pointer; background-color: antiquewhite}
-tr.cancelled{background-color: #80808054;}
-tr.cancelled:hover, tr.cancelled.selected{background-color: lightgray;}
-tr.callRow{cursor: pointer;}
+tr.selectable:hover, tr.selected{cursor: pointer; background-color: var(--hover-color);}
+tr.selected{border:solid 2px var(--main-color-dark)}
+
+/*tr.cancelled{background-color: #80808054;}*/
+/*tr.cancelled:hover, tr.cancelled.selected{background-color: lightgray;}*/
+tr.cancelled, tr.deleted{background: white;color: #868686;text-decoration: line-through;}
+
+
+tr.callRow{cursor: pointer; padding:1px;}
 tr.fixRow{cursor: pointer;}
 tr.deactivated{background-color: #bd9d9b;color: #483f3fa8;}
 tr.imminent{background-color: #f5635770;color: #310101;border: solid 3px;border-color: #310101ad;}
-tr.deleted{background: white;color: #868686;text-decoration: line-through;}
 th, td {line-height: 1.9;padding: 2px 1%;word-break: keep-all;border: solid #8080803d 1px;border-bottom: 1px solid #ddd;}
 th { background: #f5f5f5; }
 td.td-money{padding:0}
+
+/*콜 관리 - 인력 테이블*/
+tr.assign-employee {border-left:3px solid var(--main-color-dark); border-right: 3px solid var(--main-color-dark);}
+tr.assign-employee th{background:var(--main-color-dark); color:white;}
+
+tr.assign-employee.recommend {border-left:3px solid var(--main-color); border-right: 3px solid var(--main-color);}
+tr.assign-employee.recommend:last-child {border-bottom:3px solid var(--main-color); color: red}
+tr.assign-employee.recommend th{background: var(--main-color); color: white;}
+
 
 /*dropdown, navigation*/
 .navbar {width:100%;}
 .navbar a {float: left;font-size: 16px;color: white;text-align: center;padding: 14px 16px;text-decoration: none;}
 .dropdown {float: left;overflow: auto;}
 .dropdown .dropbtn {width: 100%;font-size: 0.9rem;border: none;outline: none;padding: 10px 10px;height:auto;margin: 0; background-color: whitesmoke; color: gray; cursor: pointer;}
-.dropdown .dropbtn:hover {color:green; font-weight: bolder;}
-.dropdown .dropbtn.selected {color:green; font-weight: bolder;}
+.dropdown .dropbtn:hover {color:var(--main-color); font-weight: bolder;}
+.dropdown .dropbtn.selected {color:var(--main-color); font-weight: bolder;}
 .dropdown-content {display: none;position: absolute;background-color: whitesmoke;width: 25%; min-width: 160px;box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);z-index: 1;}
 .dropdown-content a {float: none;padding: 12px 16px;text-decoration: none;display: block;text-align: left;}
-.dropdown-content a:hover{color:darkgreen; font-weight: bolder; text-decoration:underline;}
+.dropdown-content a:hover{color:var(--main-color); font-weight: bolder; text-decoration:underline;}
 .dropdown:hover .dropdown-content {display: block;}
 
 /* The Modal */
 .modal {display: none;position: fixed;z-index: 1;padding-top: 100px;left: 0;top: 0;width: 100%;height: 100%;overflow: auto;background-color: rgb(0,0,0); background-color: rgba(0,0,0,0.4);}
 .modal-header{height:30px; text-align: right;}
 .modal-content {background-color: #fefefe;margin: auto;padding: 5px 20px 20px 20px;border: 1px solid #888;width: 40%; text-align: center;}
-.modal-content form{display: inline;}
+.modal-content form{display: inline-block;}
 .modal-content *{height: 50px; vertical-align: top; font-size: 16px;}
 .modal-content textarea{width: 80%; padding: 0; resize: none;}
 .modal-content button{width: 18%;}

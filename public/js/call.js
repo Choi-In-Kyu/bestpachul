@@ -27,5 +27,11 @@ $(document).on('click', '.assignBtn', function () {
     });
 });
 $('.callRow').on('click', function () {
-    getHTML($('#employeeTable'), 'assignFilter', $(this).attr('id'));
+    if(!$(this).hasClass('cancelled')){
+        getHTML($('#employeeTable'), 'assignFilter', $(this).attr('id'));
+    }
+    else{
+        alert('취소된 콜입니다');
+    }
+
 });

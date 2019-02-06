@@ -40,7 +40,7 @@
     <div id="header">
         <div class="header" id="headerMain">
             <div class="dropdown">
-                <button class="dropbtn" onClick='location.href="<?php echo _URL ?>company"'>홈</button>
+                <button class="dropbtn" onClick='location.href="<?php echo _URL ?>company"'><img class="btn-img" src="/public/img/logo.png"></button>
             </div>
             <div class="dropdown ">
                 <button class="dropbtn <?php echo $selectArr[0] ?>"
