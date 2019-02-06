@@ -17,7 +17,7 @@
       <?php if ($this->param->page_type != 'ceo'): ?>
           <!--인력이름, 상호명-->
           <div class="tr">
-              <div class="td td-3">
+              <div class="td td-4">
                   <label for="">상호명</label>
                   <input type="text" class="input-companyName" list="companyList" name="companyName" id="companyName"
                          placeholder="배정 요청한 거래처를 입력하세요">
@@ -29,7 +29,7 @@
                     <?php endforeach ?>
                   </datalist>
               </div>
-              <div class="td td-3">
+              <div class="td td-4">
                   <label for="">인력명</label>
                   <input type="text" list="employeeList" name="employeeName" class="employee" id="employeeName"
                          placeholder="배정할 인력을 입력하세요 (생략가능)">
@@ -41,8 +41,8 @@
                     <?php endforeach ?>
                   </datalist>
               </div>
-              <div class="td td-3" id="errorMsg" style="display: none">
-                  <h2></h2>
+              <div class="td td-3" id="errorMsg" style="display: none;">
+                  <h2 style="margin: 0 10px;"></h2>
               </div>
           </div>
       <?php endif; ?>
@@ -74,13 +74,13 @@
             </div>
         </div>
         <!--근무기간-->
-        <div class="tr">
-            <label for="" style="font-weight: bold; font-size: 16px; display: block">근무기간</label>
-            <div class="td td-3">
+        <div class="tr">>
+            <div class="td td-4">
+                <label for="" style="font-weight: bold; font-size: 16px; display: block">근무기간</label
                 <input type="date" class="workDate" value="<?php echo _TOMORROW ?>">
             </div>
-            <div class="endDate fixable td td-4" style="display: none;">
-                <strong style="font-size: 30px; margin-right: 16px">~</strong>
+            <div class="endDate fixable td td-3" style="display: none;">
+                <strong style="font-size: 30px; display: inline-block; margin-right: 28px; vertical-align: middle;">~</strong>
                 <input type="date" class="endDate">
             </div>
             <div class="td td-3">
@@ -140,9 +140,9 @@
         </div>
         <!--업종-->
         <div class="tr">
-            <div class="td td-3">
+            <div class="td td-4">
                 <label for="">업종</label>
-                <select name="workField" id="workField" form="callForm" required>
+                <select name="workField" style="width: 240px; background: #fff; height: 40px; margin-right: 10px; font-size: 16px;" id="workField" form="callForm" required>
                   <?php foreach ($this->workField_List as $key => $data): ?>
                       <option value="<?php echo $data['workField']; ?>">
                         <?php echo $data['workField'] ?>
@@ -158,15 +158,15 @@
         </div>
         <!--월급-->
         <div class="tr monthly" style="display: none;">
-            <div class="td td-3">
+            <div class="td td-4">
                 <label for="">월급</label>
                 <input type="number" name="monthlySalary" id="monthlySalary">
             </div>
-            <div class="td td-3">
+            <div class="td td-4">
                 <label for="">수수료 비율</label>
                 <input type="number" name="percentage" id="percentage">
             </div>
-            <div class="td td-3">
+            <div class="td td-4">
                 <label for="">수수료</label>
                 <input type="number" name="commission" id="commission">
             </div>

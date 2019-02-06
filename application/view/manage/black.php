@@ -103,9 +103,9 @@ LEFT JOIN `company` on blackList.companyID = company.companyID
         <form id="formBlack" action="" method="post">
             <fieldset>
                 <input type="hidden" name="action" value="black">
-                <div class="table">
+                <div class="table" style="width: 100%">
                     <div class="tr">
-                        <div class="td td-3">
+                        <div class="td td-4">
                             <label for="">인력명</label>
                             <input id="employeeName" type="text" list="employeeList" name="employeeName" required>
                             <datalist id="employeeList" class="input-field">
@@ -114,7 +114,7 @@ LEFT JOIN `company` on blackList.companyID = company.companyID
                               <?php endforeach ?>
                             </datalist>
                         </div>
-                        <div class="td td-3">
+                        <div class="td td-4">
                             <label for="">상호명</label>
                             <input type="text" list="companyList" name="companyName" required>
                             <datalist id="companyList" class="input-field">
@@ -127,7 +127,7 @@ LEFT JOIN `company` on blackList.companyID = company.companyID
                     <div class="tr">
                         <div class="td td-3">
                             <label for="">유형</label>
-                            <select name="type" style="height: 39px; width: 282px;" required>
+                            <select name="type" style="height: 39px; width: 130px;" required>
                                 <option value="0">안가요</option>
                                 <option value="1">오지마세요</option>
                             </select>
@@ -146,7 +146,7 @@ LEFT JOIN `company` on blackList.companyID = company.companyID
         </form>
     </div>
     <!--블랙리스트 검색 폼-->
-    <div class="btn-group" style="display: inline-block; width: 500pxpx;">
+    <div class="btn-group" style="display: inline-block; width: 500px;">
         <form action="" method="post" style="width: 100%;">
             <input type="text" name="search" style="width: 280px;height: 100%; border: 1px solid #dbdbdb; vertical-align: middle;">
             <input type="submit" class="btn btn-submit" value="검색" style="height: 100%;">
