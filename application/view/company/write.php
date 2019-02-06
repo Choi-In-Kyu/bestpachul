@@ -101,11 +101,34 @@
                       <div class="tr">
                           <div class="td td-4">
                               <label for="">블랙</label>
-                            <?php foreach ($this->blackList as $data) {
-                              $type = ($data['ceoReg'] == 1) ? '오지마세요' : '안가요';
-                              echo $this->employeeName($data['employeeID']) . " " . $type . " : " . $data['detail'] . '<br>';
-                            }
-                            ?>
+                              <table>
+                                  <thead>
+                                  <tr>
+                                      <th>업체명</th>
+                                      <th>종류</th>
+                                      <th>사유</th>
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+                                  <?php foreach ($this->blackList as $data) {?>
+                                      <tr>
+                                          <th>
+                                              <?php echo $this->employeeName($data['employeeID']) ?>
+                                          </th>
+                                          <th>
+                                              <?php echo ($data['ceoReg'] == 1) ? '오지마세요' : '안가요'; ?>
+                                          </th>
+                                          <th>
+                                              <?php echo $data['detail']; ?>
+                                          </th>
+                                      </tr>
+                                  <?php } ?>
+                                  <tr>
+
+                                  </tr>
+                                  </tbody>
+                              </table>
+
                           </div>
                       </div>
                   <?php endif; ?>

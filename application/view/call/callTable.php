@@ -97,6 +97,6 @@
       <?php endif; ?>
     </table>
   <?php if (sizeof($this->{$type . 'List'}) == 0): ?>
-      <h1>내역이 존재하지 않습니다.</h1>
+      <h1 style="text-align: center;">내역이 존재하지 않습니다.</h1>
   <?php endif; ?>
 </div>

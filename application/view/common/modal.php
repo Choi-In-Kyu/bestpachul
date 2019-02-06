@@ -150,7 +150,7 @@
         <div class="modal-box al_r">
             <button type="button" class="btn btn-close-modal">X</button>
         </div>
-        <div class="modal-box al_l">수정할 내용을 입력하세요</div>
+        <div class="modal-box al_l">가입 내역 수정</div>
         <form action="" method="post">
             <input type="hidden" name="action" value="join_update">
             <input id="updateID" type="hidden" name="joinID">

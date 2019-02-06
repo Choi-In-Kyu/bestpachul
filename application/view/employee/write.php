@@ -144,11 +144,33 @@
                       <div class="tr">
                           <div class="td td-4">
                               <label for="">블랙</label>
-                            <?php foreach ($this->blackList as $data) {
-                              $type = ($data['ceoReg'] == 1) ? '오지마세요' : '안가요';
-                              echo $this->companyName($data['companyID']) . " " . $type . " : " . $data['detail'] . '<br>';
-                            }
-                            ?>
+                              <table>
+                                  <thead>
+                                  <tr>
+                                      <th>업체명</th>
+                                      <th>종류</th>
+                                      <th>사유</th>
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+                                  <?php foreach ($this->blackList as $data) {?>
+                                      <tr>
+                                          <th>
+                                              <?php echo $this->employeeName($data['employeeID']) ?>
+                                          </th>
+                                          <th>
+                                              <?php echo ($data['ceoReg'] == 1) ? '오지마세요' : '안가요'; ?>
+                                          </th>
+                                          <th>
+                                              <?php echo $data['detail']; ?>
+                                          </th>
+                                      </tr>
+                                  <?php } ?>
+                                  <tr>
+
+                                  </tr>
+                                  </tbody>
+                              </table>
                           </div>
                       </div>
                   <?php endif; ?>
@@ -157,14 +179,33 @@
                       <div class="tr">
                           <div class="td td-4">
                               <label for="">근무가능일 / 불가능일</label>
-                            <?php foreach ($availableDateArray as $value) {
-                              if ($value['availableDate'] > 0) {
-                                echo "{$value['availableDate']} 갈래요 ({$value['detail']}) <br/>";
-                              } else {
-                                echo "{$value['notAvailableDate']} 못가요 ({$value['detail']}) <br/>";
-                              }
-                            }
-                            ?>
+                              <table>
+                                  <thead>
+                                  <tr>
+                                      <th>날</th>
+                                      <th>종류</th>
+                                      <th>사유</th>
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+                                  <?php foreach ($availableDateArray as $value) {?>
+                                      <tr>
+                                          <th>
+                                              <?php echo $value['availableDate']  > 0 ? $value['availableDate'] : $value['notAvailableDate']?>
+                                          </th>
+                                          <th>
+                                              <?php echo $value['availableDate']  > 0 ? "갈래요" : "못가요"; ?>
+                                          </th>
+                                          <th>
+                                              <?php echo $value['detail'] ?>
+                                          </th>
+                                      </tr>
+                                  <?php } ?>
+                                  <tr>
+
+                                  </tr>
+                                  </tbody>
+                              </table>
                           </div>
                       </div>
                   <?php endif; ?>
@@ -253,7 +294,7 @@
                         if (list) {
                             show.html("유사 : " + list);
                             if (match) {
-                                show.html("일치 : " + match + " - 다른 이름을 입력 해 주세요");
+                                show.html("중복: " + match + " - 다른 이름을 입력 해 주세요");
                                 allInput.prop('disabled', true);
                                 employeeName.prop('disabled', false);
                             }

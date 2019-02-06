@@ -62,7 +62,7 @@
                         if (list) {
                             show.html("유사 : " + list);
                             if (match) {
-                                show.html("일치 : " + match + " - 다른 이름을 입력 해 주세요");
+                                show.html("중복 : " + match + " - 다른 이름을 입력 해 주세요");
                                 allInput.prop('disabled', true);
                                 companyName.prop('disabled', false);
                             }
