@@ -47,7 +47,7 @@ LEFT JOIN `company` on blackList.companyID = company.companyID
 
 <style>
     form {
-        display: inline;
+        display: inline-block;
     }
     
     /*.search {*/

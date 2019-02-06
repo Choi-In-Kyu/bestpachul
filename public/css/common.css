@@ -2,7 +2,7 @@
     --main-color: #27ae60;/*로고 색상과 동일*/
     --main-color-transparent: #e9efec;
     --main-color-dark:#506358;
-
+    --cancel-gray: #777;
     --hover-color:#f9f9f9;
 }
 
@@ -49,12 +49,13 @@ span.divider{display: inline-block;width: 0;height: 0.5em;border-left: 1px solid
 .ui-datepicker-current-day .ui-state-active { background: red; }
 .ui-datepicker-calendar td.newClass a { background: #FEF5E7; }
 .ui-datepicker-inline{width: 100%;}
+.ui-state-default {background: #fff; border: solid 0; text-align: center }
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {background: var(--hover-color) !important;}
 
 /* board */
 .board-list { padding: 0; margin: 0; width: 100%; height: auto;}
 .board-list h3 { padding-bottom: 10px; font-size: 23px; }
-.board-list.scroll_list{height: 90%;}
+.board-list.scroll_list{height: 90%; padding: 16px 0}
 .board-write {padding: 0;margin: 0 100px 30px;}
 .board-write h3 { padding-bottom: 10px; font-size: 23px; }
 
@@ -64,14 +65,14 @@ span.divider{display: inline-block;width: 0;height: 0.5em;border-left: 1px solid
 .form-default .textarea-field{height:100px;width:55%;}
 
 /* button */
-.btn { display: inline-block; padding: 0 12px; background: #09f; font-size: 13px; color: #fff; font-weight: bold; border: none; vertical-align: middle;
-    height: 30px; line-height: 30px; box-sizing: border-box; text-decoration: none; cursor: pointer;}
+.btn { display: inline-block; padding: 0 12px; font-size: 13px; color: #fff; border: none; vertical-align: middle;
+    height: 30px; box-sizing: border-box; text-decoration: none; cursor: pointer;}
 .btn-small{padding: 0 5px;}
-.btn-default        {background: white;color: black;border: solid 2px black;}
-.btn-default:hover  {background: #0000009e; color:whitesmoke; border: 0;}
+.btn-default        {background: white;color: var(--cancel-gray);border: solid 1px var(--cancel-gray);}
+.btn-default:hover  {background: var(--cancel-gray); color:#FFF; border: 0;}
 .btn-danger     {background: indianred;}                .btn-danger:hover{background: red;}
 .btn-insert     {background: var(--main-color);}             .btn-insert:hover{background: var(--main-color);}
-.btn-submit     {background: skyblue; }                 .btn-submit:hover{background: deepskyblue;}
+.btn-submit     { border: solid 1px #ccc; color: var(--main-color-dark) }                 .btn-submit:hover{background: var(--main-color-dark); color: #fff}
 .btn-option     {background: #777584de}                 .btn-option:hover{background: #777584;}
 .btn-option.selected {background: red;}
 .btn-close-modal{background: none;color: black; font-weight: bold}
@@ -102,15 +103,15 @@ a.btn{padding:10px;}
 /*.table .btn{width: 75px;height: 37px; margin:0 2px;}*/
 .table > .tr > .td > .textarea-detail{height: 200px;width: 400px;margin: 0;resize: none;}
 .table table{display: inline-table;}
-.title-table{display: table;height: 35px;padding: 10px 5px;margin: 10px 0 5px;}
-.title-table .title-main{font-size: 50px;}
+.title-table{display: table;padding: 10px 5px;margin: 10px 0 5px;}
+.title-table .title-main{font-size: 35px;}
 .title-table *{display: table-cell;height: 100%;vertical-align: middle;}
 .title-table .btn-group{margin-left: 40px;}
 .title-table .btn-select-join-type{width: 70px; height:37px; margin: 0 2px;padding: 0;font-size: 15px;}
 
 
 /* default table */
-table {table-layout: fixed; width: 100%; border-top: 2px solid #666; border-spacing: 0; border-collapse: collapse; text-align: center; }
+table {table-layout: fixed; width: 100%; border-top: 2px solid #666; margin-top: 10px; border-spacing: 0; border-collapse: collapse; text-align: center; }
 tr.selectable:hover, tr.selected{cursor: pointer; background-color: var(--hover-color);}
 tr.selected{border:solid 2px var(--main-color-dark)}
 

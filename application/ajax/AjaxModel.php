@@ -557,9 +557,9 @@ HTML;
 <th>{$group_name}</th>
 <th>인력명</th>
 <th>간단주소</th>
-<th>배정</th>
 <th>비고</th>
 <th>주간배정</th>
+<th>배정</th>
 </tr>
 HTML;
           foreach (${'group' . $i} as $key => $value) {
@@ -570,9 +570,9 @@ HTML;
 <td class="al_c">{$key}</td>
 <td class="al_l ellipsis" title="{$employeeData['employeeName']}">{$employeeData['employeeName']}</td>
 <td class="al_l">{$employeeData['address']}</td>
-<td class="al_c"><button type="button" class="btn btn-small btn-submit assignBtn" id="{$employeeData['employeeID']}">배정</button></td>
 <td class="al_c">{$value}</td>
 <td class="al_c">{$week_assign_count}회</td>
+<td class="al_c"><button type="button" class="btn btn-small btn-submit assignBtn" id="{$employeeData['employeeID']}">배정</button></td>
 </tr>
 HTML;
           }
