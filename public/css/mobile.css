@@ -6,14 +6,13 @@ img, embed, object, video, svg {max-width: 100%;}
 input, select, textarea {width:100%; font-family: inherit;font-size: 1.6rem; background: white;}
 header {position: relative;height: 160px;line-height: 180px;text-align: center;}
 
-.table { border-top: solid 0; }
-.table .tr { background: #fff }
-.btn-option { background: #f3f3f3; padding: 8px 10px; margin: 0 10px 10px; color: var(--cancel-gray); }
-.btn-option:last-child {margin-bottom: 0;}
-.selected {color:#fff;background: var(--main-color-dark)}
-.td-6 { width: 75% }
-.container-jobs { width: 58%; margin-top: 16px }
-.selector-work-field { width: 140px; }
+
+
+
+
+
+
+
 
 .mobile_view {height:100%; background: #f9f9f9; font-size: 1.5rem;}
 .mobile_view table { padding:10px; border-bottom: 2px solid #ddd; border-top: 0;}
@@ -24,7 +23,15 @@ header {position: relative;height: 160px;line-height: 180px;text-align: center;}
 .mobile_view input[type=date]{width: 50%; height:100%;font-size: 1.6rem;}
 .mobile_view input[name='workField']{width: 50px;margin-right: 5px;}
 .mobile_view select{vertical-align: middle;}
+.mobile_view .table { border-top: solid 0; }
+.mobile_view .table .tr { background: #fff }
+.mobile_view .td-6 { width: 75% }
+.mobile_view .selected {color:#fff;background: var(--main-color-dark)}
+.mobile_view .container-jobs { width: 58%; margin-top: 16px }
+.mobile_view .table > .tr > .td > .selector-work-field { width: 140px; }
 .mobile_view .btn {background: #ececec8c; color: #302f3a; font-weight: normal; font-size: 1.4rem; padding: 0; border-radius: 6px;}
+.mobile_view .btn-option { background: #f3f3f3; padding: 8px 10px; margin: 0 10px 10px; color: var(--cancel-gray); }
+.mobile_view .btn-option:last-child {margin-bottom: 0;}
 .mobile_view .btn-day{width: 20%;}
 .mobile_view .btn-work-field{word-break: keep-all;line-height: 1.3; margin: 0 10px 0 0;}
 .mobile_view :last-child {margin-right: 0;}
