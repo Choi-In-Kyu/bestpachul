@@ -128,8 +128,8 @@ tr.callRow{cursor: pointer; padding:1px;}
 tr.fixRow{cursor: pointer;}
 tr.activated-header { border-left: solid 2px #666; border-right: solid 2px #666; }
 tr.activated {border-left: solid 2px #666; border-right: solid 2px #666; }
-tr.activated:last-child {border-bottom: solid 2px #666; }
-tr.deactivated{background-color: #bd9d9b;color: #483f3fa8;}
+tr.activated.last-child {border-bottom: solid 2px #666; }
+tr.deactivated{color: #aaa;}
 tr.imminent{background-color: #efefef; color: #777; border: solid 1px; border-color: #310101ad}
 tr.unpaid{background-color: #f5635770;color: #480405;border: solid 1px;border-color: #310101ad}
 th, td {line-height: 1.9;padding: 2px 1%;word-break: keep-all;border: solid 0px;border-bottom: 1px solid #ddd;}
