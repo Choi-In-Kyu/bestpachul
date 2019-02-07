@@ -78,13 +78,12 @@ $('.paid-filter').on('change', function () {
 // // $('#closeCallCancelModal').on('click', function () {
 // //     $('#modalCallCancel').hide();
 // // });
-// $('.total-price').on('click',function () {
-//     $('#modalPayChargedCall').show();
-// });
-// $('#copyBtn').on('click',function () {
-//    copy();
-// });
-//
+$('.total-price').on('click',function () {
+    $('#modalPayChargedCall').show();
+});
+$('#copyBtn').on('click',function () {
+   copy();
+});
 
 function fetch_call_table(company_id, year, month, type){
     $.ajax({

@@ -103,7 +103,7 @@ a.btn{padding:10px;}
 .table > .tr > .td select,
 .table > .tr > .td textarea { width: 260px; height: 100%;line-height: 1.3;padding: 10px;border: solid 1px #e4e4e4;font-family: inherit;display: inline-block;vertical-align: middle;}
 .table .tr .td input[type="checkbox"]{width: 30px;height: 30px;cursor: pointer;}
-.table .tr .td .time{width: 120px; background: #fff;height: 40px;margin-right: 10px;font-size: 16px;}
+.table .tr .td .time{width: 120px;background: #fff;height: 40px;margin-right: 10px;font-size: 16px;padding: 5px 10px;}
 /*.table .btn{width: 75px;height: 37px; margin:0 2px;}*/
 .table > .tr > .td > .textarea-detail{height: 200px;width: 375px;margin: 0;resize: none;}
 .table table{display: inline-table;}

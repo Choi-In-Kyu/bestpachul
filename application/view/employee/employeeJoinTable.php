@@ -113,3 +113,9 @@
         </div>
     </form>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('tr.tr-employee.activated').last().addClass('last-child');
+    });
+</script>
