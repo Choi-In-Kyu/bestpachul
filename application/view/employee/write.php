@@ -125,7 +125,7 @@
                             <textarea class="textarea-detail" name="detail"
                                       required><?php echo $this->get_detail($this->employeeData, 'employee'); ?></textarea>
                         </div>
-                        <div class="td td-4" style="margin-left: 16px;">
+                        <div class="td td-4" style="margin-top: 30px;">
                           <?php require_once 'employeeAvailableDayTable.php' ?>
                         </div>
                     </div>
@@ -218,17 +218,17 @@
 
                   <div class="table table-add-join" id="employeeAddJoinTable">
                       <div class="tr">
-                          <div class="td">
+                          <div class="td td-3">
                               <label for="startDate">가입시작일</label>
                               <input type="date" id="startDate" name="startDate" required>
                           </div>
-                          <div class="td">
+                          <div class="td td-3">
                               <label for="endDate">가입만기일</label>
                               <input type="date" id="endDate" name="endDate" required>
                           </div>
-                          <div class="td">
+                          <div class="td td-3">
                               <button type="button" class="btn btn-option" onclick="auto_insert_employee_join('today')"
-                                      style="width: 100px;">오늘부터
+                                      style="width: 100px; margin: 23px 0;">오늘부터
                               </button>
                             <?php if ($this->param->action != 'write'): ?>
                                 <button type="button" class="btn btn-option"
@@ -239,17 +239,18 @@
                           </div>
                       </div>
                       <div class="tr">
-                          <div class="td">
+                          <div class="td td-3">
                               <label for="price">가입금액</label>
                               <input type="number" id="price" name="price" required>
                           </div>
-                          <div class="td">
+                          <div class="td td-3">
                               <label for="joinDetail">가입비고</label>
                               <textarea name="joinDetail"></textarea>
                           </div>
-                          <div class="td">
-                              <label for="">수금</label>
-                              <input type="checkbox" id="paid" name="paid" value="1" style="width: 30px; height: 30px;">
+                          <div class="td td-3">
+                              <label for="">수금
+                                  <input type="checkbox" id="paid" name="paid" value="1" style="margin-left: 16px;">
+                              </label>
                               <input type="text" id="paid" name="receiver" value="지명희" required>
                           </div>
                       </div>
