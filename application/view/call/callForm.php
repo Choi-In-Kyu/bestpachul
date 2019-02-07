@@ -179,7 +179,7 @@
             </div>
         </div>
         <!--콜 보내기 버튼-->
-        <div class="btn-group al_r">
+        <div class="btn-group al_r" style="position: fixed; bottom: 0; left: 0; right: 0; ">
             <h1 class="callPrice"></h1>
             <button id="btnSendCall" class="btn btn-insert callBtn" type="button">콜 신청하기</button>
           <?php if ($this->param->page_type != 'ceo'): ?>
