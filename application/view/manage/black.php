@@ -148,7 +148,8 @@ LEFT JOIN `company` on blackList.companyID = company.companyID
     <!--블랙리스트 검색 폼-->
     <div class="btn-group" style="display: inline-block; width: 500px;">
         <form action="" method="post" style="width: 100%;">
-            <input type="text" name="search" style="width: 280px;height: 100%; border: 1px solid #dbdbdb; vertical-align: middle;">
+            <input type="text" name="search" style="width: 280px;height: 100%; border: 1px solid #dbdbdb; vertical-align: middle;"
+            placeholder="검색어를 입력하세요">
             <input type="submit" class="btn btn-submit" value="검색" style="height: 100%;">
         </form>
     </div>
