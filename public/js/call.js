@@ -31,6 +31,7 @@ $('.callRow').on('click', function () {
         getHTML($('#employeeTable'), 'assignFilter', $(this).attr('id'));
     }
     else{
+        event.stopPropagation();
         alert('취소된 콜입니다');
     }
 

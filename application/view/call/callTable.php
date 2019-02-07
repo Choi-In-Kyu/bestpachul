@@ -41,18 +41,20 @@
             $employeeName = $this->model->select('employee', "employeeID = '{$data['employeeID']}'", 'employeeName');
             $companyName = $this->model->select('company', "companyID = '{$data['companyID']}'", 'companyName');
             ?>
-              <tr class="selectable callRow <?php if ($data['cancelled'] == 1) echo 'cancelled' ?>" id="<?php echo $data['callID'] ?>">
+              <tr class="selectable callRow <?php if ($data['cancelled'] == 1) echo 'cancelled' ?>"
+                  id="<?php echo $data['callID'] ?>">
                   <!--구분-->
                   <td class="al_c">
-                    <?php echo $data['callID'] ."<br>". $this->assignType($data) . $this->get_fixType($data) ?>
+                    <?php echo $data['callID'] . "<br>" . $this->assignType($data) . $this->get_fixType($data) ?>
                   </td>
                   <!--근무날짜-->
                   <td class="al_c">
-                    <?php echo date('m/d', strtotime($data['workDate'])) ."<br>". "(" . $dayofweek[date('w', strtotime($data['workDate']))] . ")" ?>
+                    <?php echo date('m/d', strtotime($data['workDate'])) . "<br>" . "(" . $dayofweek[date('w', strtotime($data['workDate']))] . ")" ?>
                   </td>
                   <!--상호명-->
                   <td class="al_l ellipsis">
-                      <a href="http://bestpachul.com/company/view/<?php echo $data['companyID'] ?>" class="link" title="<?php echo $companyName?>">
+                      <a href="http://bestpachul.com/company/view/<?php echo $data['companyID'] ?>" class="link"
+                         title="<?php echo $companyName ?>">
                         <?php echo $companyName ?>
                       </a>
                   </td>
@@ -69,9 +71,12 @@
                   <!--인력-->
                   <td class="al_c assignedEmployee ellipsis">
                     <?php switch ($type): case 'call': ?>
-                      <?php if ($data['employeeID'] > 0): ?>
-                            <a class="assignCancelBtn link" id="<?php echo $data['callID'] ?>" title="<?php echo $employeeName?>">
-                              <?php echo $employeeName ?>
+                      <?php if ($data['cancelled']): ?>
+                            취소됨
+                      <?php elseif($data['employeeID']): ?>
+                            <a class="assignCancelBtn link" id="<?php echo $data['callID'] ?>"
+                               title="<?php echo $employeeName ?>">
+                              <?php echo $employeeName; ?>
                             </a>
                       <?php endif; ?>
                       <?php break; ?>

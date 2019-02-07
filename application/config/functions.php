@@ -366,14 +366,29 @@ HTML;
 
     public function timeType($data)
     {
-      $start = $data['startTime'];
-      $end = $data['endTime'];
-      $workTime = $end - $start;
+      $start = explode(':',$data['startTime']);
+      $end = explode(':',$data['endTime']);
+      
+      $start_hour = $start[0];
+      $start_minute = ($start[1] == '30') ? ':'.$start[1] : '시';
+      $start_time =$start_hour.$start_minute;
+      
+  
+      $end_hour = ($end[0] < 25) ? $end[0] : '(익)'.(intval($end[0]) - 24);
+      $end_minute = ($end[1] == '30') ? ':'.$end[1] :'시';
+      $end_time = $end_hour.$end_minute;
+      
+      $workTime = $end[0] - $start[0];
       if ($workTime >= 10) $result = '종일';
       else {
         if ($start < 12) $result = '오전'; else $result = '오후';
       }
-      return $result . "<br>" . date('H:i', strtotime($data['startTime'])) . "~" . date('H:i', strtotime($data['endTime']));
+//      return $result . "<br>" . date('H:i', strtotime($data['startTime'])) . "~" . date('H:i', strtotime($data['endTime']));
+      $result .= "<br>";
+      $result .= $start_time;
+      $result.="~";
+      $result.= $end_time;
+      return $result;
     }
 
     public function getTime($i)

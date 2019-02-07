@@ -76,7 +76,7 @@
         <!--근무기간-->
         <div class="tr">>
             <div class="td td-4">
-                <label for="" style="font-weight: bold; font-size: 16px; display: block">근무기간</label
+                <label for="" style="font-weight: bold; font-size: 16px; display: block">근무기간</label>
                 <input type="date" class="workDate" value="<?php echo _TOMORROW ?>">
             </div>
             <div class="endDate fixable td td-3" style="display: none;">

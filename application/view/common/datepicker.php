@@ -7,8 +7,9 @@
   $freeCondition = "(`price` = 0)";
   $pointCondition = "(`point` > 0)";
   $unfixedCondition = "(`fixID` = 0)";
-  $fixedCondition = "(`fixID` > 0)";;
-  $monthlyCondition = "(`fixID` > 0 AND `salary` = 0)"
+  $fixedCondition = "(`fixID` > 0)";
+  $monthlyCondition = "(`fixID` > 0 AND `salary` = 0)";
+
 ?>
 <div class="inline" style="width: 15%; height: 100%;">
     <div class="datepicker" id="datepicker"></div>
@@ -63,7 +64,10 @@
                   </td>
               </tr>
               <tr>
-                  <td colspan="4"><strong class="callStatus"></strong></td>
+                  <td colspan="4">
+                      <strong class="assign-percentage"></strong><br>
+                      <strong class="callStatus"></strong>
+                  </td>
               </tr>
           <?php endif; ?>
         </table>
@@ -138,6 +142,8 @@
                 let totalCallNum = $('.callRow:visible').length - $('.callRow:visible.cancelled').length;
                 let assignedNum = $('.callRow:visible .assignedEmployee a').length;
                 let notAssignedNum = totalCallNum - assignedNum;
+                let percentage = (assignedNum / totalCallNum * 100).toFixed(0);
+                $('.assign-percentage').text("배정률 : " + percentage + "%");
                 $('.callStatus').text("총 " + totalCallNum + " (배정 " + assignedNum + " / 미배정 " + notAssignedNum + ")");
             }
         });

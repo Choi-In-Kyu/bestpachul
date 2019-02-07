@@ -1,16 +1,28 @@
+
+
 .mobile-header {
     border-bottom: 1px solid #ccc;
-    height: 64px;
-    padding: 5px;
+    height: 100px;
+    padding: 27px;
     width: 100%;
     box-sizing: border-box;
 }
 
+.mobile-header.mobile-icon{
+    width: 50px;
+}
+
 .mobile-content{
+    display: table;
+    width: 100%;
+    height: calc(100vh - 200px);
     background: #f9f9f9;
 }
 
 .mobile-footer{
+    display: table;
+    width: 100%;
+    height: 100px;
     color:#2b2c35;
     font-size:15px;
 }
@@ -24,9 +36,12 @@
 }
 
 .login-form {
+    display: table-cell;
+    vertical-align: middle;
+    width: 30%;
+    min-width: 333px;
     max-width: 500px;
-    width: 90%;
-    padding: 60px 10px;
+    padding: 30px 10px;
     border: 0;
     margin: 0 auto;
     font-family: inherit;
@@ -34,20 +49,39 @@
     font-size: 25px;
 }
 
-.login-form label{
-    font-size: 1.5rem;
-    display: block;
+.login-padding{
+    display: table-cell;
+    width: 30%;
 }
 
-.login-form input [type="text"], .login-form input[type="password"]{
+.login-service-info{
+    display:table-cell;
+    vertical-align: middle;
+}
+
+.login-form label{
+    font-size: 1.4rem;
+    display: block;
+}
+.login-form label.save-pw{
+    font-size: 1.1rem;
+    display: inline-block;
+}
+
+.login-form input[type="text"], .login-form input[type="password"]{
     font-size: 1.3rem;
     margin: 10px 0 30px;
     padding: 3% 2%;
 }
 
+.login-form input[type="checkbox"]{
+    width: 23px;
+    vertical-align: middle;
+}
+
 .login-button {
-    border: solid 1px #2b193d;
-    border-radius: 50px;
+    border: solid 1px #2b2c35;
+    border-radius: 20px;
     width: 100%;
     background-color: #2b2c35;
     color: #ffffff !important;

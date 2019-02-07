@@ -24,7 +24,7 @@
     {
       if (in_array($this->param->page_type, ['company', 'employee', 'call', 'manage'])) {
         if (isset($_COOKIE['userID'])) {
-          if (in_array($_COOKIE['userID'], [1, 62])) {
+          if ($_COOKIE['userID']) {
           } else {
             alert('접근 권한이 없습니다.');
             move(_URL . 'ceo');

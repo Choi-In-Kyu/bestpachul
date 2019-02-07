@@ -13,8 +13,8 @@
       $companyID = $userData['companyID'];
       if (isset($userData)) {//로그인 성공
         setcookie('userID',$userData['userID'],time()+(3600*24*365),'/');
-        if (in_array($userData['userID'],[1,62])) {//관리자 로그인
-          move(_URL."company");
+        if ($userData['companyID']==null) {//관리자 로그인
+          move(_URL."call");
         }
         else {//사장님 로그인
           if(isset($companyID)){$condition = "companyID = $companyID";}

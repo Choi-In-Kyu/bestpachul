@@ -467,7 +467,8 @@
       else {
         if ($start < 12) $result = '오전'; else $result = '오후';
       }
-      return $result . ' (' . date('H:i', strtotime($data['startTime'])) . "~" . date('H:i', strtotime($data['endTime'])) . ')';
+//      return $result . ' (' . date('H:i', strtotime($data['startTime'])) . "~" . date('H:i', strtotime($data['endTime'])) . ')';
+      return $result;
     }
     
     public function assignFilter($post)
