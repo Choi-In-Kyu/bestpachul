@@ -100,7 +100,7 @@ LEFT JOIN `company` on blackList.companyID = company.companyID
     </div>
     <!--블랙리스트 추가 폼-->
     <div class="form-default">
-        <form id="formBlack" action="" method="post">
+        <form id="formBlack" action="" method="post" style="width: 70%">
             <fieldset>
                 <input type="hidden" name="action" value="black">
                 <div class="table" style="width: 100%">
@@ -125,16 +125,16 @@ LEFT JOIN `company` on blackList.companyID = company.companyID
                         </div>
                     </div>
                     <div class="tr">
-                        <div class="td td-3">
+                        <div class="td td-4">
                             <label for="">유형</label>
-                            <select name="type" style="height: 39px; width: 130px;" required>
+                            <select name="type" style="height: 39px; background: #fff;" required>
                                 <option value="0">안가요</option>
                                 <option value="1">오지마세요</option>
                             </select>
                         </div>
-                        <div class="td td-9">
+                        <div class="td td-6">
                             <label for="">비고</label>
-                            <input type="text" name="detail" style="width: 700px;">
+                            <input type="text" name="detail" style="width: 500px;">
                             </textarea>
                         </div>
                     </div>
