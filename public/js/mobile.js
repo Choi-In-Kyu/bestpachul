@@ -37,9 +37,9 @@
         removeClass(this.content.querySelectorAll("li.cd-selected")[0], "cd-selected");
         addClass(this.activeContent, "cd-selected");
         //set new height for the content wrapper
-        (!window.requestAnimationFrame)
-            ? this.content.setAttribute("style", "height:" + this.activeContent.offsetHeight + "px;")
-            : setHeight(actualHeight, this.activeContent.offsetHeight, this.content, 200);
+        // (!window.requestAnimationFrame)
+        //     ? this.content.setAttribute("style", "height:" + this.activeContent.offsetHeight + "px;")
+        //     : setHeight(actualHeight, this.activeContent.offsetHeight, this.content, 200);
     };
 
     TabbedNavigation.prototype.toggleNavShadow = function () {
