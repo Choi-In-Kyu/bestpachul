@@ -40,12 +40,12 @@
 //     console.log($(this).text());
 //     $('#workField').val($(this).text());
 // });
-// $('.all-filter').on('change', function () {
-//     change('all');
-// });
-// $('.paid-filter').on('change', function () {
-//     change('paid');
-// });
+$('.all-filter').on('change', function () {
+    change('all');
+});
+$('.paid-filter').on('change', function () {
+    change('paid');
+});
 // $(document).on('click','.tr-call',function () {
 //     let id = $(this).attr('id');
 //     $.ajax({
@@ -85,6 +85,27 @@
 //    copy();
 // });
 //
+
+function fetch_call_table(company_id, year, month, type){
+    $.ajax({
+        type: "POST",
+        method: "POST",
+        url: ajaxURL,
+        data: {action: 'fetchCallTable', companyID: company_id, year: year, month: month, type: type},
+        dataType: "text",
+        success: function (data) {
+            let body = JSON.parse(data).body;
+            console.log(body);
+            let total = JSON.parse(data).total;
+            $('#'+type+'-call-list-body').html(body);
+            if(type === 'paid'){
+                $('.total-price').html('콜비 총 합: '+number_format(total)+'원');
+                $('#pay-info').val($('#pay-info').val()+" "+number_format(total)+'원');
+            }
+        }
+    });
+}
+
 // function change(type) {
 //     let companyID = $('.user-profile').attr('id');
 //     let year;
@@ -106,6 +127,7 @@
 //         dataType: "text",
 //         success: function (data) {
 //             let body = JSON.parse(data).body;
+//             console.log(body);
 //             let total = JSON.parse(data).total;
 //             $('#'+type+'-call-list-body').html(body);
 //             if(type === 'paid'){

@@ -33,7 +33,8 @@
                         </div>
                         <div class="td td-3">
                             <label for="">생일</label>
-                            <input type="date" name="birthDate" size="20" required autofocus style="font-size: 15px; line-height: 0.8; padding: 5px 10px;"
+                            <input type="date" name="birthDate" size="20" required autofocus
+                                   style="font-size: 15px; line-height: 0.8; padding: 5px 10px;"
                                    value="<?php echo $this->employeeData['birthDate']; ?>">
                         </div>
                     </div>
@@ -122,8 +123,9 @@
                     <div class="tr">
                         <div class="td td-4">
                             <label for="">비고</label>
-                            <textarea class="textarea-detail" name="detail"
-                                      required><?php echo $this->get_detail($this->employeeData, 'employee'); ?></textarea>
+                            <textarea class="textarea-detail" name="detail" required>
+
+                            </textarea>
                         </div>
                         <div class="td td-4" style="margin-top: 30px;">
                           <?php require_once 'employeeAvailableDayTable.php' ?>
@@ -153,16 +155,16 @@
                                   </tr>
                                   </thead>
                                   <tbody>
-                                  <?php foreach ($this->blackList as $data) {?>
+                                  <?php foreach ($this->blackList as $data) { ?>
                                       <tr>
                                           <td>
-                                              <?php echo $this->employeeName($data['employeeID']) ?>
+                                            <?php echo $this->companyName($data['companyID']) ?>
                                           </td>
                                           <td>
-                                              <?php echo ($data['ceoReg'] == 1) ? '오지마세요' : '안가요'; ?>
+                                            <?php echo ($data['ceoReg'] == 1) ? '오지마세요' : '안가요'; ?>
                                           </td>
-                                          <td>
-                                              <?php echo $data['detail']; ?>
+                                          <td class="<?php echo $data['detail'] ? 'al_l' : 'al_c'?>">
+                                            <?php echo $data['detail'] ? $data['detail'] : '-'; ?>
                                           </td>
                                       </tr>
                                   <?php } ?>
@@ -178,26 +180,26 @@
                   <?php if (($this->param->action == 'view') && (sizeof($availableDateArray) > 0)): ?>
                       <div class="tr">
                           <div class="td td-9">
-                              <label for="">근무가능일 / 불가능일</label>
+                              <label for="" style="max-width: 200px;">근무가능일 / 불가능일</label>
                               <table>
                                   <thead>
                                   <tr>
-                                      <th width="150">날</th>
+                                      <th width="150">날짜</th>
                                       <th width="150">종류</th>
                                       <th width="150">사유</th>
                                   </tr>
                                   </thead>
                                   <tbody>
-                                  <?php foreach ($availableDateArray as $value) {?>
+                                  <?php foreach ($availableDateArray as $value) { ?>
                                       <tr>
                                           <td>
-                                              <?php echo $value['availableDate']  > 0 ? $value['availableDate'] : $value['notAvailableDate']?>
+                                            <?php echo $value['availableDate'] > 0 ? $value['availableDate'] : $value['notAvailableDate'] ?>
                                           </td>
                                           <td>
-                                              <?php echo $value['availableDate']  > 0 ? "갈래요" : "못가요"; ?>
+                                            <?php echo $value['availableDate'] > 0 ? "일 주세요" : "못가요"; ?>
                                           </td>
-                                          <td>
-                                              <?php echo $value['detail'] ?>
+                                          <td class="<?php echo $value['detail'] ? 'al_l' : 'al_c'?>">
+                                            <?php echo $value['detail'] ? $value['detail'] : '-'; ?>
                                           </td>
                                       </tr>
                                   <?php } ?>
@@ -271,6 +273,7 @@
     }
     check_duplicate_employee();
     check_day_box();
+
     function check_duplicate_employee() {
         let nameInput = $('#formInsertEmployee input[name=employeeName]');
         if (nameInput.val() === null) {
@@ -313,6 +316,7 @@
             });
         }
     }
+
     function check_day_box() {
         $('.day').on('change', function () {
             let day = $(this).attr('class').split(' ')[2];
@@ -366,12 +370,13 @@
             }
         });
     }
-    $('.btn-insert').on('click',function () {
-        if($('.day:checked').length === 0){
-            $('.day').prop('required',true);
+
+    $('.btn-insert').on('click', function () {
+        if ($('.day:checked').length === 0) {
+            $('.day').prop('required', true);
         }
-        else{
-            $('.day').prop('required',false);
+        else {
+            $('.day').prop('required', false);
         }
     });
 </script>

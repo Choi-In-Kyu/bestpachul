@@ -21,6 +21,7 @@
         </colgroup>
         <thead>
         <tr>
+            <th class="order link"  id="refresh-employeeID"> #</th>
             <th class="al_c order link" ">근무일</th>
             <th class="al_c order link" ">근무시간</th>
             <th class="al_c order link" >직종</th>
@@ -31,3 +32,13 @@
         <tbody id="all-call-list-body"></tbody>
     </table>
 </div>
+
+<script>
+    $(document).ready(function () {
+        let company_id = $('.user-profile').attr('id');
+        let year = $('#all-year').val();
+        let month = $('#all-month').val();
+        let type = 'all';
+        fetch_call_table(company_id, year, month, type);
+    });
+</script>

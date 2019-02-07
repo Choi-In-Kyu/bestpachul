@@ -104,7 +104,7 @@
                               <table>
                                   <thead>
                                   <tr>
-                                      <th width="150">업체명</th>
+                                      <th width="150">인력명</th>
                                       <th width="150">종류</th>
                                       <th>사유</th>
                                   </tr>
@@ -118,8 +118,8 @@
                                           <td>
                                               <?php echo ($data['ceoReg'] == 1) ? '오지마세요' : '안가요'; ?>
                                           </td>
-                                          <td>
-                                              <?php echo $data['detail']; ?>
+                                          <td class="<?php echo $data['detail'] ? 'al_l' : 'al_c'?>">
+                                              <?php echo $data['detail'] ? $data['detail'] : '-'; ?>
                                           </td>
                                       </tr>
                                   <?php } ?>

@@ -105,7 +105,7 @@
     function getBlackList()
     {
       $tbl = $this->tableName;
-      return $this->model->getTable("SELECT * FROM `blackList` WHERE `{$tbl}ID` = '{$this->param->idx}' ");
+      return $this->model->getTable("SELECT * FROM `blackList` WHERE `{$tbl}ID` = '{$this->param->idx}' ORDER BY `ceoReg` DESC");
     }
     
     function get_fixType($data)

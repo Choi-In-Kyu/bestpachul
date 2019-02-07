@@ -32,3 +32,13 @@
         <tbody id="paid-call-list-body"></tbody>
     </table>
 </div>
+
+<script>
+    $(document).ready(function () {
+        let company_id = $('.user-profile').attr('id');
+        let year = $('#paid-year').val();
+        let month = $('#paid-month').val();
+        let type = 'paid';
+        fetch_call_table(company_id, year, month, type);
+    });
+</script>
