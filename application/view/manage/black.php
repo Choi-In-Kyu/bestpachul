@@ -127,7 +127,7 @@ LEFT JOIN `company` on blackList.companyID = company.companyID
                     <div class="tr">
                         <div class="td td-4">
                             <label for="">유형</label>
-                            <select name="type" style="height: 39px; background: #fff;" required>
+                            <select name="type" style="width: 283px; height: 39px; background: #fff;" required>
                                 <option value="0">안가요</option>
                                 <option value="1">오지마세요</option>
                             </select>

@@ -74,7 +74,7 @@
             </div>
         </div>
         <!--근무기간-->
-        <div class="tr">>
+        <div class="tr">
             <div class="td td-4">
                 <label for="" style="font-weight: bold; font-size: 16px; display: block">근무기간</label>
                 <input type="date" class="workDate" value="<?php echo _TOMORROW ?>">
@@ -135,14 +135,14 @@
         <div class="tr">
             <div class="td td-9">
                 <label for="">임금</label>
-                <p id="salaryInfo" style="display:inline-table; width: 50%;">근무시간을 선택해주세요</p>
+                <p id="salaryInfo" style="display:inline-table;    width: 100%; padding: 0 10px; margin: 0;">근무시간을 선택해주세요</p>
             </div>
         </div>
         <!--업종-->
         <div class="tr">
             <div class="td td-4">
                 <label for="">업종</label>
-                <select name="workField" style="width: 240px; background: #fff; height: 40px; margin-right: 10px; font-size: 16px;" id="workField" form="callForm" required>
+                <select class="selector-work-field" name="workField" style="width: 240px; background: #fff; height: 40px; margin-right: 10px; font-size: 16px;" id="workField" form="callForm" required>
                   <?php foreach ($this->workField_List as $key => $data): ?>
                       <option value="<?php echo $data['workField']; ?>">
                         <?php echo $data['workField'] ?>
@@ -174,7 +174,7 @@
         <!--기타 요청 사항-->
         <div class="tr">
             <div class="td td-9">
-                <label for="">기타 요청 사항</label>
+                <label for="" style="min-width: 200px;">기타 요청 사항</label>
                 <textarea name="detail" id="detail" cols="30" rows="10"></textarea>
             </div>
         </div>

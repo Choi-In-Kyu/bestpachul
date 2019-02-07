@@ -212,11 +212,11 @@
             echo <<<HTML
 <div class="table table-add-join" id="companyAddJoinTable_gujwa">
         <div class="tr">
-            <div class="td">
+            <div class="td td-3">
                 <label for="company-startDate">가입시작일</label>
                 <input type="date" name="startDate" id="company-startDate" required>
             </div>
-            <div class="td">
+            <div class="td td-3">
                 <label for="company-endDate">가입만기일</label>
                 <input type="date" name="endDate" id="company-endDate" required>
             </div>
@@ -226,11 +226,11 @@
             </div>
         </div>
         <div class="tr">
-            <div class="td">
+            <div class="td td-3">
                 <label for="company-price">가입금액</label>
                 <input type="number" name="price" id="company-price" required>
             </div>
-            <div class="td">
+            <div class="td td-3">
                 <label for="company-joinDetail">가입비고</label>
                 <textarea name="joinDetail" id="company-joinDetail"></textarea>
             </div>
