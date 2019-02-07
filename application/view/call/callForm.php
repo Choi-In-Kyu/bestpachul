@@ -142,7 +142,7 @@
         <div class="tr">
             <div class="td td-4">
                 <label for="">업종</label>
-                <select class="selector-work-field" name="workField" style="width: 240px; background: #fff; height: 40px; margin-right: 10px; font-size: 16px;" id="workField" form="callForm" required>
+                <select class="selector-work-field" name="workField" style="background: #fff; height: 40px; margin-right: 10px; font-size: 16px;" id="workField" form="callForm" required>
                   <?php foreach ($this->workField_List as $key => $data): ?>
                       <option value="<?php echo $data['workField']; ?>">
                         <?php echo $data['workField'] ?>
@@ -150,7 +150,7 @@
                   <?php endforeach ?>
                 </select>
             </div>
-            <div class="td td-3">
+            <div class="td td-3 container-jobs">
                 <button type="button" class="btn btn-option btn-work-field wash">설거지</button>
                 <button type="button" class="btn btn-option btn-work-field kitchen selected ">주방보조</button>
                 <button type="button" class="btn btn-option btn-work-field hall">홀서빙</button>
