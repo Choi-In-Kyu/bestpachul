@@ -175,7 +175,7 @@
         <div class="tr">
             <div class="td td-9">
                 <label for="" style="min-width: 200px;">기타 요청 사항</label>
-                <textarea name="detail" id="detail" cols="30" rows="10"></textarea>
+                <textarea name="detail" id="detail" cols="30" rows="6"></textarea>
             </div>
         </div>
         <!--콜 보내기 버튼-->
