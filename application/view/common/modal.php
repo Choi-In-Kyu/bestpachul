@@ -38,7 +38,7 @@
 <div id="modalDelete" class="modal">
     <div class="modal-content">
         <div class="modal-box al_r">
-            <button type="button" class="btn btn-close-modal">X</button>
+            <button type="button" class="btn btn-close-modal"><i class="fa fa-times"></i> </button>
         </div>
         <div class="modal-box al_l">삭제 사유를 입력하세요</div>
         <form action="" method="post" id="formDelete">
@@ -54,7 +54,7 @@
 <div id="modalJoinCancel" class="modal">
     <div class="modal-content">
         <div class="modal-box al_r">
-            <button type="button" class="btn btn-close-modal">X</button>
+            <button type="button" class="btn btn-close-modal"><i class="fa fa-times"></i></button>
         </div>
         <div class="modal-box al_l">가입 삭제 사유를 입력하세요</div>
         <form action="" method="post" id="formJoinCancel">
@@ -70,7 +70,7 @@
 <div id="modalCallCancel" class="modal">
     <div class="modal-content">
         <div class="modal-box al_r">
-            <button type="button" class="btn btn-close-modal">X</button>
+            <button type="button" class="btn btn-close-modal"><i class="fa fa-times"></i></button>
         </div>
         <div class="modal-box al_l">취소 사유를 입력하세요</div>
         <form id="formCallCancel" action="" method="post">
@@ -85,7 +85,7 @@
 <div id="modalAssignCancel" class="modal">
     <div class="modal-content">
         <div class="modal-box al_r">
-            <button type="button" class="btn btn-close-modal">X</button>
+            <button type="button" class="btn btn-close-modal"><i class="fa fa-times"></i></button>
         </div>
         <div class="modal-box al_l">
             
@@ -116,7 +116,7 @@
 <div id="modalGetMoney" class="modal">
     <div class="modal-content">
         <div class="modal-box al_r">
-            <button type="button" class="btn btn-close-modal">X</button>
+            <button type="button" class="btn btn-close-modal"><i class="fa fa-times"></i></button>
         </div>
         <div class="modal-box al_l">수금자 이름을 입력하세요</div>
         <form action="" method="post" id="formGetMoney">
@@ -132,7 +132,7 @@
 <div id="modalFixCancel" class="modal">
     <div class="modal-content">
         <div class="modal-box al_r">
-            <button type="button" class="btn btn-close-modal">X</button>
+            <button type="button" class="btn btn-close-modal"><i class="fa fa-times"></i></button>
         </div>
         <h1 class="detail">취소사유</h1>
         <form id="fixCancelForm" action="" method="post">
@@ -148,7 +148,7 @@
 <div id="modalJoinUpdate" class="modal">
     <div class="modal-content">
         <div class="modal-box al_r">
-            <button type="button" class="btn btn-close-modal">X</button>
+            <button type="button" class="btn btn-close-modal"><i class="fa fa-times"></i></button>
         </div>
         <div class="modal-box al_l">가입 내역 수정</div>
         <form action="" method="post">
@@ -178,7 +178,7 @@
 <div id="modalPayChargedCall" class="modal">
     <div class="modal-content">
         <div class="modal-box al_r">
-            <button type="button" class="btn btn-close-modal">X</button>
+            <button type="button" class="btn btn-close-modal"><i class="fa fa-times"></i></button>
         </div>
         <div class="modal-box al_l">
             <form>

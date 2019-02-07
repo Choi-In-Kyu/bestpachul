@@ -12,7 +12,7 @@
             <col width="10%">
             <col width="10%">
         </colgroup>
-        <thead>
+        <thead style="border-left: solid 2px #666; border-right: solid 2px #666">
         <tr>
             <th>#</th>
             <th>가입 시작일</th>
