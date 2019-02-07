@@ -19,7 +19,7 @@ header {position: relative;height: 160px;line-height: 180px;text-align: center;}
 .mobile_view .table .tr { background: #fff }
 .mobile_view .table > .tr > .td .td-6 { width: 75% }
 .mobile_view .btn-option.selected {color:#fff;background: var(--main-color-dark)}
-.mobile_view .table > .tr > .td > .container-jobs { width: 58%; margin-top: 16px }
+.mobile_view .table > .tr > .td .container-jobs { width: 58%; margin-top: 16px }
 .mobile_view .table > .tr > .td > .selector-work-field { width: 140px; }
 .mobile_view .btn {background: #ececec8c; color: #302f3a; font-weight: normal; font-size: 1.4rem; padding: 0; border-radius: 6px;}
 .mobile_view .btn-option { background: #f3f3f3; padding: 8px 10px; margin: 0 10px 10px; color: var(--cancel-gray); }
