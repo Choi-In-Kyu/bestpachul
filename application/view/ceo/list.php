@@ -21,8 +21,6 @@
         </colgroup>
         <thead>
         <tr>
-            <th class="order link"  id="refresh-employeeID"> #</th>
-
             <th class="al_c order link" ">근무일</th>
             <th class="al_c order link" ">근무시간</th>
             <th class="al_c order link" >직종</th>
