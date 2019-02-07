@@ -69,6 +69,11 @@
                       <strong class="callStatus"></strong>
                   </td>
               </tr>
+              <tr>
+                  <td colspan="4">
+                      <strong class="paidStatus"></strong>
+                  </td>
+              </tr>
           <?php endif; ?>
         </table>
     </form>
@@ -145,6 +150,7 @@
                 let percentage = (assignedNum / totalCallNum * 100).toFixed(0);
                 $('.assign-percentage').text("배정률 : " + percentage + "%");
                 $('.callStatus').text("총 " + totalCallNum + " (배정 " + assignedNum + " / 미배정 " + notAssignedNum + ")");
+                $('.paidStatus').text("미수금: " + number_format(totalPrice*1000) + "원");
             }
         });
     }
