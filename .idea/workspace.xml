@@ -5,42 +5,1151 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="efc5267d-1d74-4176-b63a-b747eff352b0" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/ajax/AjaxModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/ajax/AjaxModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/ajax/ajax.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/ajax/ajax.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/config/db.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/config/db.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/config/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/config/functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controller/company.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controller/company.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controller/controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/controller/controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/model/model.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/model/model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/model/model_call.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/model/model_call.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/model/model_company.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/model/model_company.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/model/model_employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/model/model_employee.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/view/call/call.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/view/call/call.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/view/call/callForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/view/call/callForm.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/view/call/callTable.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/view/call/callTable.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/view/call/fixTable.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/view/call/fixTable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/view/call/punk.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/view/ceo/ceo.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/view/ceo/ceo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/view/common/datepicker.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/view/common/datepicker.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/view/common/filter.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/view/common/filter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/view/common/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/view/common/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/view/common/modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/view/common/modal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/view/company/companyJoinTable.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/view/company/companyJoinTable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/view/company/companyTable.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/view/company/companyTable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/view/company/write.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/view/company/write.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/view/employee/available_date.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/view/employee/available_date.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/view/employee/employeeJoinTable.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/view/employee/employeeJoinTable.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/view/employee/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/view/employee/view.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/view/employee/write.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/view/employee/write.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/view/manage/black.php" beforeDir="false" afterPath="$PROJECT_DIR$/application/view/manage/black.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/.htaccess" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/.idea/bestpachul.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/ajax/AjaxModel.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/ajax/ajax.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/application.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/config/db.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/config/functions.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/config/lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/controller/call.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/controller/ceo.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/controller/company.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/controller/controller.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/controller/employee.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/controller/login.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/controller/manage.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/model/model.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/model/model_call.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/model/model_ceo.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/model/model_company.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/model/model_employee.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/model/model_login.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/model/model_manage.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/call/call.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/call/callForm.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/call/callTable.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/call/callTable_min.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/call/employeeTable.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/call/fix.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/call/fixTable.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/call/punk.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/call/write.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/ceo/call.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/ceo/ceo.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/ceo/home.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/ceo/list.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/ceo/pay.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/common/datepicker.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/common/filter.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/common/header.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/common/modal.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/company/company.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/company/companyJoinForm.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/company/companyJoinTable.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/company/companyTable.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/company/view.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/company/write.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/employee/available_date.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/employee/employee.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/employee/employeeAvailableDayTable.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/employee/employeeJoinTable.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/employee/employeeTable.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/employee/view.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/employee/write.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/login/login.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/application/view/manage/black.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/ChangeLog" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/README" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/RELEASE-DATE-4.0.10.20" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/browse_foreigners.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/changelog.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/chk_rel.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/composer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/config.sample.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/db_create.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/db_datadict.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/db_events.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/db_export.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/db_import.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/db_operations.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/db_printview.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/db_qbe.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/db_routines.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/db_search.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/db_sql.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/db_structure.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/db_tracking.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/db_triggers.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_sources/config.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_sources/copyright.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_sources/credits.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_sources/developers.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_sources/faq.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_sources/glossary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_sources/index.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_sources/intro.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_sources/other.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_sources/privileges.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_sources/require.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_sources/setup.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_sources/transformations.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_sources/user.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_sources/vendors.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_static/ajax-loader.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_static/basic.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_static/classic.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_static/comment-bright.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_static/comment-close.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_static/comment.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_static/default.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_static/doctools.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_static/down-pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_static/down.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_static/file.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_static/jquery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_static/minus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_static/plus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_static/pygments.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_static/searchtools.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_static/sidebar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_static/underscore.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_static/up-pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_static/up.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/_static/websupport.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/config.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/copyright.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/credits.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/developers.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/faq.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/genindex.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/glossary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/intro.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/other.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/privileges.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/require.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/search.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/searchindex.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/setup.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/transformations.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/user.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/doc/html/vendors.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/examples/config.manyhosts.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/examples/create_tables.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/examples/create_tables_drizzle.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/examples/openid.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/examples/signon-script.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/examples/signon.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/examples/upgrade_tables_mysql_4_1_2+.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/export.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/file_echo.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/gis_data_editor.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/import.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/import_status.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/index.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/OpenStreetMap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/ajax.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/canvg/MIT-LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/canvg/canvg.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/canvg/flashcanvas.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/canvg/flashcanvas.swf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/chart.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/codemirror/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/codemirror/lib/codemirror.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/codemirror/mode/mysql/mysql.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/common.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/cross_framing_protection.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/db_operations.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/db_search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/db_structure.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/export.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/functions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/get_image.js.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/get_scripts.js.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/gis_data_editor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/import.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/indexes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/jqplot/excanvas.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/jqplot/jquery.jqplot.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/jqplot/plugins/jqplot.barRenderer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/jqplot/plugins/jqplot.byteFormatter.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/jqplot/plugins/jqplot.canvasAxisLabelRenderer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/jqplot/plugins/jqplot.canvasTextRenderer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/jqplot/plugins/jqplot.categoryAxisRenderer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/jqplot/plugins/jqplot.cursor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/jqplot/plugins/jqplot.dateAxisRenderer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/jqplot/plugins/jqplot.highlighter.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/jqplot/plugins/jqplot.pieRenderer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/jqplot/plugins/jqplot.pointLabels.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/jquery/jquery-1.8.3.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/jquery/jquery-ui-1.9.2.custom.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/jquery/jquery-ui-timepicker-addon.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/jquery/jquery.ba-hashchange-1.3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/jquery/jquery.cookie.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/jquery/jquery.debounce-1.0.5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/jquery/jquery.event.drag-2.2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/jquery/jquery.fullscreen.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/jquery/jquery.json-2.4.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/jquery/jquery.menuResizer-1.0.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/jquery/jquery.mousewheel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/jquery/jquery.sortableTable.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/jquery/jquery.sprintf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/jquery/jquery.svg.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/jquery/jquery.tablesorter.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/keyhandler.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/makegrid.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/messages.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/navigation.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/OpenLayers.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/img/blank.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/img/cloud-popup-relative.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/img/drag-rectangle-off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/img/drag-rectangle-on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/img/east-mini.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/img/layer-switcher-maximize.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/img/layer-switcher-minimize.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/img/marker-blue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/img/marker-gold.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/img/marker-green.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/img/marker.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/img/measuring-stick-off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/img/measuring-stick-on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/img/north-mini.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/img/panning-hand-off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/img/panning-hand-on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/img/slider.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/img/south-mini.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/img/west-mini.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/img/zoom-minus-mini.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/img/zoom-plus-mini.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/img/zoom-world-mini.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/img/zoombar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/framedCloud.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/google.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/ie6-style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/add_point_off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/add_point_on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/blank.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/close.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/drag-rectangle-off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/drag-rectangle-on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/draw_line_off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/draw_line_on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/draw_point_off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/draw_point_on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/draw_polygon_off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/draw_polygon_on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/editing_tool_bar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/move_feature_off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/move_feature_on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/navigation_history.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/overview_replacement.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/pan-panel-NOALPHA.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/pan-panel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/pan_off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/pan_on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/panning-hand-off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/panning-hand-on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/remove_point_off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/remove_point_on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/ruler.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/save_features_off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/save_features_on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/view_next_off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/view_next_on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/view_previous_off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/view_previous_on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/zoom-panel-NOALPHA.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/img/zoom-panel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/openlayers/theme/default/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/pmd/ajax.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/pmd/history.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/pmd/iecanvas.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/pmd/init.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/pmd/move.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/querywindow.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/replication.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/rte.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/server_databases.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/server_plugins.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/server_privileges.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/server_status.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/server_status_advisor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/server_status_monitor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/server_status_queries.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/server_status_sorter.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/server_status_variables.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/server_variables.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/sql.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/tbl_change.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/tbl_chart.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/tbl_gis_visualization.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/tbl_relation.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/tbl_select.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/tbl_structure.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/tbl_zoom_plot_jqplot.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/js/whitelist.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/Advisor.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/Config.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/DBQbe.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/DbSearch.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/DisplayResults.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/Error.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/Error_Handler.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/File.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/Footer.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/Header.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/Index.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/List.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/List_Database.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/Menu.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/Message.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/OutputBuffering.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/PDF.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/PMA.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/Partition.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/RecentTable.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/Response.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/Scripts.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/ServerStatusData.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/StorageEngine.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/Table.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/TableSearch.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/Theme.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/Theme_Manager.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/Tracker.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/Types.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/Util.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/advisory_rules.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/bfShapeFiles/ShapeFile.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/bookmark.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/build_html_for_db.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/charset_conversion.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/check_user_privileges.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/cleanup.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/common.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/config.default.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/config.values.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/config/ConfigFile.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/config/Form.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/config/FormDisplay.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/config/FormDisplay.tpl.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/config/config_functions.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/config/messages.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/config/setup.forms.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/config/user_preferences.forms.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/config/validate.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/core.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/data_dictionary_relations.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/database_interface.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/db_common.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/db_info.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/db_table_exists.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/dbi/drizzle-wrappers.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/dbi/drizzle.dbi.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/dbi/dummy.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/dbi/mysql.dbi.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/dbi/mysqli.dbi.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/display_change_password.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/display_create_database.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/display_create_table.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/display_export.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/display_git_revision.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/display_import.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/display_import_ajax.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/display_select_lang.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/engines/bdb.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/engines/berkeleydb.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/engines/binlog.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/engines/innobase.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/engines/innodb.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/engines/memory.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/engines/merge.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/engines/mrg_myisam.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/engines/myisam.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/engines/ndbcluster.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/engines/pbxt.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/engines/performance_schema.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/error.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/file_listing.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/gis/pma_gis_factory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/gis/pma_gis_geometry.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/gis/pma_gis_geometrycollection.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/gis/pma_gis_linestring.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/gis/pma_gis_multilinestring.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/gis/pma_gis_multipoint.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/gis/pma_gis_multipolygon.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/gis/pma_gis_point.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/gis/pma_gis_polygon.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/gis/pma_gis_visualization.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/gis_visualization.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/iconv_wrapper.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/import.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/index.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/information_schema_relations.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/insert_edit.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/ip_allow_deny.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/js_escape.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/kanji-encoding.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/language_stats.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/logging.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/mime.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/mult_submits.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/mysql_charsets.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/navigation/Navigation.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/navigation/NavigationHeader.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/navigation/NavigationTree.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/navigation/NodeFactory.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/navigation/Nodes/Node.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/navigation/Nodes/Node_Column.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/navigation/Nodes/Node_Column_Container.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/navigation/Nodes/Node_Database.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/navigation/Nodes/Node_Event.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/navigation/Nodes/Node_Event_Container.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/navigation/Nodes/Node_Function.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/navigation/Nodes/Node_Function_Container.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/navigation/Nodes/Node_Index.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/navigation/Nodes/Node_Index_Container.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/navigation/Nodes/Node_Procedure.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/navigation/Nodes/Node_Procedure_Container.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/navigation/Nodes/Node_Table.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/navigation/Nodes/Node_Table_Container.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/navigation/Nodes/Node_Trigger.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/navigation/Nodes/Node_Trigger_Container.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/navigation/Nodes/Node_View.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/navigation/Nodes/Node_View_Container.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/opendocument.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/operations.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/parse_analyze.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/php-gettext/gettext.inc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/php-gettext/gettext.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/php-gettext/streams.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/phpseclib/Crypt/AES.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/phpseclib/Crypt/Random.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/phpseclib/Crypt/Rijndael.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugin_interface.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/AuthenticationPlugin.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/ExportPlugin.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/ImportPlugin.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/PluginManager.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/PluginObserver.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/TransformationsInterface.int.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/TransformationsPlugin.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/UploadInterface.int.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/auth/AuthenticationConfig.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/auth/AuthenticationCookie.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/auth/AuthenticationHttp.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/auth/AuthenticationSignon.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/export/ExportCodegen.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/export/ExportCsv.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/export/ExportExcel.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/export/ExportHtmlword.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/export/ExportJson.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/export/ExportLatex.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/export/ExportMediawiki.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/export/ExportOds.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/export/ExportOdt.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/export/ExportPdf.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/export/ExportPhparray.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/export/ExportSql.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/export/ExportTexytext.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/export/ExportXml.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/export/ExportYaml.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/export/PMA_ExportPdf.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/export/README" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/export/TableProperty.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/import/AbstractImportCsv.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/import/ImportCsv.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/import/ImportLdi.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/import/ImportMediawiki.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/import/ImportOds.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/import/ImportShp.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/import/ImportSql.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/import/ImportXml.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/import/README" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/import/ShapeFile.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/import/ShapeRecord.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/import/upload/UploadApc.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/import/upload/UploadNoplugin.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/import/upload/UploadProgress.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/import/upload/UploadSession.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/transformations/Application_Octetstream_Download.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/transformations/Application_Octetstream_Hex.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/transformations/Image_JPEG_Inline.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/transformations/Image_JPEG_Link.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/transformations/Image_PNG_Inline.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/transformations/README" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/transformations/TEMPLATE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/transformations/TEMPLATE_ABSTRACT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/transformations/Text_Plain_Append.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/transformations/Text_Plain_Dateformat.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/transformations/Text_Plain_External.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/transformations/Text_Plain_Formatted.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/transformations/Text_Plain_Imagelink.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/transformations/Text_Plain_Link.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/transformations/Text_Plain_Longtoipv4.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/transformations/Text_Plain_Sql.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/transformations/Text_Plain_Substring.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/transformations/abstract/AppendTransformationsPlugin.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/transformations/abstract/DateFormatTransformationsPlugin.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/transformations/abstract/DownloadTransformationsPlugin.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/transformations/abstract/ExternalTransformationsPlugin.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/transformations/abstract/FormattedTransformationsPlugin.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/transformations/abstract/HexTransformationsPlugin.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/transformations/abstract/ImageLinkTransformationsPlugin.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/transformations/abstract/InlineTransformationsPlugin.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/transformations/abstract/LongToIPv4TransformationsPlugin.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/transformations/abstract/SQLTransformationsPlugin.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/transformations/abstract/SubstringTransformationsPlugin.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/transformations/abstract/TextImageLinkTransformationsPlugin.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/plugins/transformations/abstract/TextLinkTransformationsPlugin.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/pmd_common.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/properties/PropertyItem.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/properties/options/OptionsPropertyGroup.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/properties/options/OptionsPropertyItem.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/properties/options/OptionsPropertyOneItem.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/properties/options/groups/OptionsPropertyMainGroup.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/properties/options/groups/OptionsPropertyRootGroup.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/properties/options/groups/OptionsPropertySubgroup.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/properties/options/items/BoolPropertyItem.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/properties/options/items/DocPropertyItem.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/properties/options/items/HiddenPropertyItem.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/properties/options/items/MessageOnlyPropertyItem.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/properties/options/items/RadioPropertyItem.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/properties/options/items/SelectPropertyItem.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/properties/options/items/TextPropertyItem.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/properties/plugins/ExportPluginProperties.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/properties/plugins/ImportPluginProperties.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/properties/plugins/PluginPropertyItem.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/relation.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/relation_cleanup.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/replication.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/replication_gui.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/rte/rte_events.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/rte/rte_export.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/rte/rte_footer.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/rte/rte_list.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/rte/rte_main.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/rte/rte_routines.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/rte/rte_triggers.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/rte/rte_words.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/sanitizing.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/schema/Dia_Relation_Schema.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/schema/Eps_Relation_Schema.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/schema/Export_Relation_Schema.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/schema/Pdf_Relation_Schema.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/schema/Svg_Relation_Schema.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/schema/User_Schema.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/select_lang.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/select_server.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/server_common.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/server_privileges.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/server_variables_doc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/session.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/special_schema_links.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/sql_query_form.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/sqlparser.data.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/sqlparser.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/sqlvalidator.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/sqlvalidator.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/string.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/string_mb.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/string_native.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/string_type_ctype.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/string_type_native.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/structure.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/sysinfo.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/tbl_columns_definition_form.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/tbl_common.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/tbl_info.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/tbl_views.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/tcpdf/LICENSE.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/tcpdf/README.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/tcpdf/config/tcpdf_config.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/tcpdf/encodings_maps.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/tcpdf/fonts/dejavu-fonts-ttf-2.33/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/tcpdf/fonts/dejavusans.ctg.z" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/tcpdf/fonts/dejavusans.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/tcpdf/fonts/dejavusans.z" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/tcpdf/fonts/dejavusansb.ctg.z" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/tcpdf/fonts/dejavusansb.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/tcpdf/fonts/dejavusansb.z" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/tcpdf/fonts/helvetica.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/tcpdf/htmlcolors.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/tcpdf/tcpdf.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/tcpdf/unicode_data.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/transformations.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/url_generating.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/user_preferences.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/user_preferences.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/vendor_config.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/zip.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/libraries/zip_extension.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/license.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/ar/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/bg/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/bn/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/ca/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/cs/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/da/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/de/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/el/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/en_GB/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/es/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/et/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/fi/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/fr/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/gl/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/hi/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/hr/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/hu/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/id/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/it/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/ja/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/ko/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/lt/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/si/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/sk/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/sl/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/sr@latin/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/sv/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/th/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/tr/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/uk/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/uz/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/uz@latin/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/zh_CN/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/locale/zh_TW/LC_MESSAGES/phpmyadmin.mo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/navigation.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/phpmyadmin.css.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/pmd_display_field.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/pmd_general.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/pmd_pdf.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/pmd_relation_new.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/pmd_relation_upd.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/pmd_save_pos.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/prefs_forms.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/prefs_manage.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/print.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/querywindow.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/schema_edit.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/schema_export.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/server_binlog.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/server_collations.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/server_databases.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/server_engines.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/server_export.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/server_import.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/server_plugins.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/server_privileges.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/server_replication.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/server_sql.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/server_status.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/server_status_advisor.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/server_status_monitor.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/server_status_queries.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/server_status_variables.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/server_variables.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/setup/ajax.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/setup/config.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/setup/frames/config.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/setup/frames/form.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/setup/frames/index.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/setup/frames/menu.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/setup/frames/servers.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/setup/index.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/setup/lib/ConfigGenerator.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/setup/lib/common.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/setup/lib/form_processing.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/setup/lib/index.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/setup/scripts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/setup/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/setup/validate.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/show_config_errors.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/sql.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/tbl_addfield.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/tbl_change.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/tbl_chart.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/tbl_create.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/tbl_export.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/tbl_get_field.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/tbl_gis_visualization.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/tbl_import.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/tbl_indexes.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/tbl_move_copy.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/tbl_operations.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/tbl_printview.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/tbl_relation.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/tbl_replace.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/tbl_row_action.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/tbl_select.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/tbl_sql.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/tbl_structure.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/tbl_tracking.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/tbl_triggers.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/tbl_zoom_select.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/dot.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/css/common.css.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/css/navigation.css.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/ajax_clock_small.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/arrow_ltr.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/arrow_rtl.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_bookmark.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_browse.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_calendar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_chart.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_close.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_column_add.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_comment.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_dbstatistics.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_deltbl.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_docs.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_drop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_edit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_empty.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_engine.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_event_add.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_events.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_export.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_ftext.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_globe.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_group.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_help.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_home.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_import.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_index.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_index_add.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_info.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_inline_edit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_insrow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_minus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_more.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_move.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_newdb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_newtbl.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_nextpage.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_plus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_primary.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_print.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_props.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_relations.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_routine_add.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_routines.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_save.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_sbrowse.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_search.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_selboard.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_select.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_snewtbl.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_spatial.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_sql.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_sqlhelp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_table_add.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_tblanalyse.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_tblexport.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_tblimport.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_tblops.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_tbloptimize.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_tipp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_trigger_add.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_triggers.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_unique.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_usradd.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_usrcheck.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_usrdrop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_usredit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_usrlist.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_view.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_view_add.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/b_views.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/bd_browse.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/bd_deltbl.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/bd_drop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/bd_edit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/bd_empty.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/bd_export.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/bd_ftext.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/bd_index.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/bd_insrow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/bd_nextpage.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/bd_primary.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/bd_sbrowse.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/bd_select.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/bd_spatial.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/bd_unique.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/cleardot.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/col_drop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/col_pointer.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/col_pointer_ver.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/east-mini.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/error.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/eye.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/eye_grey.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/logo_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/logo_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/more.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/new_data.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/new_data_hovered.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/new_data_selected.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/new_data_selected_hovered.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/new_struct.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/new_struct_hovered.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/new_struct_selected.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/new_struct_selected_hovered.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/north-mini.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/pause.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/play.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/s_asc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/s_asci.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/s_cancel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/s_cog.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/s_db.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/s_desc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/s_error.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/s_error2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/s_fulltext.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/s_host.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/s_lang.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/s_loggoff.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/s_notice.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/s_partialtext.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/s_passwd.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/s_really.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/s_reload.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/s_replication.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/s_rights.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/s_sortable.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/s_status.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/s_success.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/s_sync.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/s_tbl.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/s_theme.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/s_top.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/s_vars.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/s_views.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/south-mini.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/spacer.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/sprites.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/toggle-ltr.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/toggle-rtl.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/vertical_line.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/west-mini.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/window-new.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/zoom-minus-mini.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/zoom-plus-mini.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/img/zoom-world-mini.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/info.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/jquery/images/ui-bg_flat_0_aaaaaa_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/jquery/images/ui-bg_flat_75_ffffff_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/jquery/images/ui-bg_glass_55_fbf9ee_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/jquery/images/ui-bg_glass_65_ffffff_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/jquery/images/ui-bg_glass_75_dadada_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/jquery/images/ui-bg_glass_75_e6e6e6_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/jquery/images/ui-bg_glass_95_fef1ec_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/jquery/images/ui-bg_highlight-soft_75_cccccc_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/jquery/images/ui-icons_222222_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/jquery/images/ui-icons_2e83ff_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/jquery/images/ui-icons_454545_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/jquery/images/ui-icons_888888_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/jquery/images/ui-icons_cd0a0a_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/jquery/jquery-ui-1.9.2.custom.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/layout.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/screen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/original/sprites.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/css/codemirror.css.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/css/common.css.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/css/enum_editor.css.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/css/gis.css.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/css/jqplot.css.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/css/navigation.css.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/css/pmd.css.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/css/resizable-menu.css.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/css/rte.css.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/ajax_clock_small.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/arrow_ltr.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/arrow_rtl.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/asc_order.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_bookmark.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_browse.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_calendar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_chart.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_close.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_column_add.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_comment.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_dbstatistics.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_deltbl.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_docs.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_docsql.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_drop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_edit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_empty.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_engine.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_event_add.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_events.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_export.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_firstpage.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_ftext.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_globe.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_group.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_help.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_home.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_import.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_index.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_index_add.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_info.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_inline_edit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_insrow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_lastpage.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_minus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_more.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_move.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_newdb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_newtbl.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_nextpage.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_pdfdoc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_plus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_prevpage.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_primary.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_print.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_props.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_relations.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_routine_add.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_routines.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_save.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_sbrowse.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_sdb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_search.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_selboard.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_select.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_snewtbl.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_spatial.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_sql.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_sqldoc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_sqlhelp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_table_add.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_tblanalyse.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_tblexport.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_tblimport.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_tblops.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_tbloptimize.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_tipp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_trigger_add.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_triggers.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_unique.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_usradd.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_usrcheck.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_usrdrop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_usredit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_usrlist.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_view.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_view_add.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/b_views.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/bd_browse.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/bd_deltbl.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/bd_drop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/bd_edit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/bd_empty.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/bd_export.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/bd_firstpage.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/bd_ftext.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/bd_index.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/bd_insrow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/bd_lastpage.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/bd_nextpage.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/bd_prevpage.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/bd_primary.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/bd_sbrowse.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/bd_select.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/bd_spatial.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/bd_unique.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/col_drop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/col_pointer.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/col_pointer_ver.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/database.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/east-mini.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/error.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/eye.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/eye_grey.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/item.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/left_nav_bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/logo_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/logo_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/more.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/new_data.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/new_data_hovered.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/new_data_selected.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/new_data_selected_hovered.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/new_struct.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/new_struct_hovered.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/new_struct_selected.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/new_struct_selected_hovered.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/north-mini.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pause.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/php_sym.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/play.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pma_logo2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/2leftarrow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/2leftarrow_m.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/2rightarrow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/2rightarrow_m.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/FieldKey_small.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/Field_small.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/Field_small_char.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/Field_small_date.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/Field_small_int.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/Header.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/Header_Linked.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/and_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/ang_direct.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/bord.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/bottom.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/def.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/display_field.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/downarrow1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/downarrow2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/downarrow2_m.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/exec.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/exec_small.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/exitFullscreen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/grid.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/help.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/help_relation.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/left_panel_butt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/left_panel_tab.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/minus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/or_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/pdf.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/plus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/query_builder.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/relation.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/reload.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/resize.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/rightarrow1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/rightarrow2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/save.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/small_tab.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/table.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/toggle_lines.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/top_panel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/uparrow2_m.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/pmd/viewInFullscreen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_asc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_asci.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_attention.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_cancel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_cancel2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_cog.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_db.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_desc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_error.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_error2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_fulltext.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_host.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_info.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_lang.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_loggoff.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_notice.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_okay.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_partialtext.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_passwd.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_process.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_really.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_reload.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_replication.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_rights.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_sortable.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_status.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_success.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_sync.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_tbl.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_theme.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_top.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_vars.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/s_views.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/south-mini.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/spacer.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/sprites.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/toggle-ltr.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/toggle-rtl.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/vertical_line.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/west-mini.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/window-new.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/zoom-minus-mini.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/zoom-plus-mini.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/img/zoom-world-mini.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/info.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/jquery/images/ui-bg_flat_0_aaaaaa_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/jquery/images/ui-bg_flat_75_ffffff_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/jquery/images/ui-bg_glass_55_fbf9ee_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/jquery/images/ui-bg_glass_65_ffffff_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/jquery/images/ui-bg_glass_75_dadada_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/jquery/images/ui-bg_glass_75_e6e6e6_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/jquery/images/ui-bg_glass_95_fef1ec_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/jquery/images/ui-bg_highlight-soft_75_cccccc_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/jquery/images/ui-icons_222222_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/jquery/images/ui-icons_2e83ff_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/jquery/images/ui-icons_454545_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/jquery/images/ui-icons_888888_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/jquery/images/ui-icons_cd0a0a_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/jquery/jquery-ui-1.9.2.custom.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/layout.inc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/screen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/pmahomme/sprites.lib.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/sprites.css.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/themes/svg_gradient.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/transformation_overview.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/transformation_wrapper.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/url.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/user_password.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/version_check.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/view_create.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/view_operations.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/dbadmin/webapp.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/index.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/public/css/common.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/public/css/default.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/public/css/login.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/public/css/mobile.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/public/css/reset.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/public/css/toggle.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/public/img/cd-icons.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/public/img/favicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/public/img/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/public/js/ajax.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/public/js/call.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/public/js/ceo.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/public/js/common.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/public/js/create_call.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/public/js/datepicker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/public/js/employee.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/public/js/functions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bestpachul/public/js/mobile.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/common.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/mobile.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/mobile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/toggle.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/toggle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/call.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/call.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/ajax.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/ajax.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/common.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/create_call.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/create_call.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/datepicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/datepicker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/functions.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -76,7 +1185,7 @@
           <entry key="project.open.time.11" value="4" />
           <entry key="project.open.time.12" value="10" />
           <entry key="project.open.time.13" value="4" />
-          <entry key="project.open.time.14" value="5" />
+          <entry key="project.open.time.14" value="6" />
           <entry key="project.open.time.15" value="6" />
           <entry key="project.open.time.16" value="3" />
           <entry key="project.open.time.17" value="6" />
@@ -88,7 +1197,7 @@
           <entry key="project.open.time.27" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="56" />
+          <entry key="project.opened" value="57" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -100,7 +1209,7 @@
           <entry key="html" value="242" />
           <entry key="js" value="17923" />
           <entry key="md" value="28" />
-          <entry key="php" value="209774" />
+          <entry key="php" value="209805" />
           <entry key="svg" value="35" />
           <entry key="test" value="14" />
           <entry key="txt" value="45" />
@@ -112,7 +1221,7 @@
           <entry key="HTML" value="398" />
           <entry key="JavaScript" value="17922" />
           <entry key="Markdown" value="28" />
-          <entry key="PHP" value="209501" />
+          <entry key="PHP" value="209532" />
           <entry key="PLAIN_TEXT" value="138" />
           <entry key="SQL" value="113" />
           <entry key="SVG" value="35" />
@@ -134,7 +1243,7 @@
           <entry key="Image" value="9" />
           <entry key="JavaScript" value="394" />
           <entry key="Markdown" value="1" />
-          <entry key="PHP" value="3688" />
+          <entry key="PHP" value="3689" />
           <entry key="PLAIN_TEXT" value="4" />
           <entry key="SVG" value="10" />
           <entry key="htaccess" value="3" />
@@ -152,7 +1261,7 @@
           <entry key="html" value="17" />
           <entry key="js" value="394" />
           <entry key="md" value="1" />
-          <entry key="php" value="3686" />
+          <entry key="php" value="3687" />
           <entry key="png" value="9" />
           <entry key="svg" value="10" />
           <entry key="test" value="1" />
@@ -162,15 +1271,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/view/common/datepicker.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4500">
-              <caret line="250" column="36" selection-start-line="250" selection-start-column="36" selection-end-line="250" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/common.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -189,11 +1289,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/view/company/companyTable.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="30" column="66" selection-start-line="30" selection-start-column="66" selection-end-line="30" selection-end-column="66" />
+            <state relative-caret-position="295">
+              <caret line="37" column="12" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/config/db.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="4" column="39" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -353,7 +1462,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/application/view/company/companyForm.php" />
         <option value="$PROJECT_DIR$/application/view/company/companyAddJoin.php" />
         <option value="$PROJECT_DIR$/application/view/company/view.php" />
         <option value="$PROJECT_DIR$/application/view/employee/employeeAvailableDayTable.php" />
@@ -404,6 +1512,7 @@
         <option value="$PROJECT_DIR$/application/ajax/ajax.php" />
         <option value="$PROJECT_DIR$/application/view/common/modal.php" />
         <option value="$PROJECT_DIR$/application/view/company/companyTable.php" />
+        <option value="$PROJECT_DIR$/application/config/db.php" />
       </list>
     </option>
   </component>
@@ -416,7 +1525,7 @@
   <component name="PhpServers">
     <servers />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="width" value="1920" />
     <option name="height" value="1080" />
   </component>
@@ -426,7 +1535,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -545,6 +1653,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -698,6 +1807,7 @@
       <workItem from="1550115888140" duration="28027000" />
       <workItem from="1550233834994" duration="4800000" />
       <workItem from="1550247143499" duration="215000" />
+      <workItem from="1550463238487" duration="671000" />
     </task>
     <task id="LOCAL-00001" summary="refactor(css): refactor login css and header css">
       <created>1549443219680</created>
@@ -808,7 +1918,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1828090000" />
+    <option name="totallyTimeSpent" value="1828761000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -821,8 +1931,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17537314" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17697228" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -924,13 +2035,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/view/call/write.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="14" column="29" lean-forward="true" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/functions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="301">
@@ -1271,8 +2375,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/view/company/companyTable.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="30" column="66" selection-start-line="30" selection-start-column="66" selection-end-line="30" selection-end-column="66" />
+        <state relative-caret-position="295">
+          <caret line="37" column="12" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/config/db.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="39" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
         </state>
       </provider>
     </entry>

@@ -52,7 +52,7 @@ span.divider{display: inline-block;width: 0;height: 0.5em;border-left: 1px solid
 .ui-state-default {background: #fff !important; border: solid 0 !important; text-align: center !important; }
 .ui-datepicker-header { background: #dbdbdb !important; border: solid 0 !important; }
 .ui-datepicker-month { width: 33% !important; margin-left: 6px !important; }
-.ui-state-active {background: var(--main-color-dark) !important; color: #fff !important; }
+.ui-state-active {background: var(--main-color) !important; color: #fff !important; }
 .ui-datepicker-calendar { border-top: solid 0}
 
 /* board */

@@ -1,4 +1,4 @@
-let ajaxURL = "http://bestpachul.com/application/ajax/ajax.php";
+let ajaxURL = "http://bestpchul.com/application/ajax/ajax.php";
 let callForm = $('#callForm');
 let arr = [];
 let i = arr.length;

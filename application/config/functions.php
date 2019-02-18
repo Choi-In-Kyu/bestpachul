@@ -1,5 +1,5 @@
 <?php
-
+  
   Class Functions
   {
     public function content()
@@ -12,7 +12,7 @@
       echo "<script src='/public/js/call.js'></script>";
       echo "<script src='/public/js/ceo.js'></script>";
     }
-
+    
     public function initJoin($tableName)
     {
       //초기화 테스트
@@ -42,10 +42,10 @@
             $this->model->executeSQL("UPDATE join_{$tableName} SET `imminent` = '0' WHERE join_{$tableName}ID = {$joinID} LIMIT 1");
           }
         }
-
+        
       }
     }
-
+    
     //초기화 테스트
     public function initActCondition($list, $tableName)
     {
@@ -80,11 +80,11 @@
           }
         }
       }
-
-
+      
+      
       return $list;
     }
-
+    
     public function getActCondition($list, $tableName)
     {
       $tableID = $tableName . 'ID';
@@ -112,7 +112,7 @@
       }
       return $list;
     }
-
+    
     public function get_joinType($data)
     {
       if (isset($data['deposit'])) {
@@ -125,7 +125,7 @@
         return "만기됨";
       }
     }
-
+    
     public function get_joinPrice($data)
     {
       switch ($this->get_joinType($data)) {
@@ -140,7 +140,7 @@
           break;
       }
     }
-
+    
     public function imminent_check($table, $data)
     {
       $tableID = $table . "ID";
@@ -181,7 +181,7 @@
         return "-";
       }
     }
-
+    
     public function get_endDate($data, $tableName)
     {
       switch ($tableName) {
@@ -201,15 +201,14 @@
       }
       return $string;
     }
-
+    
     public function get_joinDetail($data)
     {
       if ($data['joinDetail']) {
         echo $data['joinDetail'];
         if ($data['deleted'] == 1) {
           echo "<br/>(삭제사유: " . $data['deleteDetail'] . ")";
-        }
-        elseif ($data['deleted'] == 0 && $data['activated'] == 0) {
+        } elseif ($data['deleted'] == 0 && $data['activated'] == 0) {
           echo "<br/>(가입 만기됨)";
         }
         if (isset($data['cancelDetail']) && $data['cancelDetail'] != '') {
@@ -225,14 +224,14 @@
         }
       }
     }
-
+    
     public function get_callDetail($data)
     {
-      $detail_array['plain'] = ($data['detail']) ? "<a class='call-detail'>".nl2br(strval($data['detail']))."</a>" : null;
-      $detail_array['cancel'] = ($data['cancelDetail']) ? "<a class='call-cancel-detail'>(취소사유:".nl2br(strval($data['cancelDetail'])).")<a>" : null;
-      echo (array_filter($detail_array)) ? implode('<br>',$detail_array) : '-';
+      $detail_array['plain'] = ($data['detail']) ? "<a class='call-detail'>" . nl2br(strval($data['detail'])) . "</a>" : null;
+      $detail_array['cancel'] = ($data['cancelDetail']) ? "<a class='call-cancel-detail'>(취소사유:" . nl2br(strval($data['cancelDetail'])) . ")<a>" : null;
+      echo (array_filter($detail_array)) ? implode('<br>', $detail_array) : '-';
     }
-
+    
     public function get_join_delete_btn($data, $tableName)
     {
       if ($data['activated'] == 1) {
@@ -244,7 +243,7 @@ HTML;
         return $data['deletedDate'];
       }
     }
-
+    
     public function get_deleteBtn($data, $tableName)
     {
       $tableID = $tableName . "ID";
@@ -258,7 +257,7 @@ HTML;
 HTML;
       }
     }
-
+    
     public function getPayBtn($data, $table, $column)
     {
       if ($data[$column] > 0) {
@@ -271,14 +270,14 @@ HTML;
 HTML;
         } else
           $price = number_format($data['price']);
-          $paid_message = '<br>수금('.$data['receiver'].")";
-          return <<<HTML
+        $paid_message = '<br>수금(' . $data['receiver'] . ")";
+        return <<<HTML
 <b class="paid">{$price}</b>{$paid_message}
 HTML;
-
+      
       } else return '무료';
     }
-
+    
     public function makeDetail($array)
     {
       foreach ($array as $key => $value) {
@@ -288,11 +287,11 @@ HTML;
       $string = implode("\n", $newArray);
       return $string;
     }
-
+    
     public function get_detail($data, $tableName)
     {
-      $companyDetail = array('좌탁여부', '테이블수', '그릇종류', '식기세척기', '상주직원수', '주방환경', '교통환경', '주요업무', '가입경로', '기타사항');
-      $employeeDetail = array('경력', '특기', '체류비자', '월급제', '4대보험', '자차소유', '추천인', '외모', '이상여부', '지각', '빵꾸', '기타사항', '상담자');
+      $companyDetail = array('좌탁여부', '테이블수', '그릇종류', '식기세척기', '상주직원수', '주방환경', '교통환경', '주요업무', '가입경로', '기타사항', '작성자');
+      $employeeDetail = array('경력', '특기', '체류비자', '월급제', '4대보험', '자차소유', '추천인', '외모', '이상여부', '지각', '빵꾸', '기타사항', '작성자');
       if (isset($data['detail'])) {
         return $data['detail'];
       } else {
@@ -304,10 +303,10 @@ HTML;
         }
       }
     }
-
+    
     public function joinColor($data, $tableName)
     {
-
+      
       if ($data['deleted'] == 1) {
         return "deleted";
       } else {
@@ -319,17 +318,17 @@ HTML;
         else echo "activated";
       }
     }
-
+    
     public function companyName($id)
     {
       return $this->model->select('company', "`companyID`={$id}", 'companyName');
     }
-
+    
     public function employeeName($id)
     {
       return $this->model->select('employee', "`employeeID`={$id}", 'employeeName');
     }
-
+    
     public function callType($data)
     {
       if (isset($data['point'])) return '포인트';
@@ -354,39 +353,58 @@ HTML;
 //      }
 //      else return null;
 //    }
-
-    public function assignType($data)
+    
+    public function assignType($data, $class = false)
     {
-      if (isset($data['point']) && $data['point'] > 0) return '(P)';
-      if (isset($data['price']) && $data['price'] > 0) return '(유)';
+      if (isset($data['point']) && $data['point'] > 0) {
+        if ($class) {
+          return 'point';
+        } else {
+          return '(P)';
+        }
+      } elseif (isset($data['price']) && $data['price'] > 0) {
+        if ($class) {
+          return 'charged';
+        } else {
+          return '(유)';
+        }
+      } else {
+        if ($class) {
+          return 'free';
+        } else {
+          return null;
+        }
+      }
+      
     }
-
+    
     public function timeType($data)
     {
-      $start = explode(':',$data['startTime']);
-      $end = explode(':',$data['endTime']);
+      $start = explode(':', $data['startTime']);
+      $end = explode(':', $data['endTime']);
       
       $start_hour = $start[0];
-      $start_minute = ($start[1] == '30') ? ':'.$start[1] : '시';
-      $start_time =$start_hour.$start_minute;
+      $start_minute = ($start[1] == '30') ? ':' . $start[1] : '시';
+      $start_time = $start_hour . $start_minute;
       
-  
-      $end_hour = ($end[0] < 25) ? $end[0] : '(익)'.(intval($end[0]) - 24);
-      $end_minute = ($end[1] == '30') ? ':'.$end[1] :'시';
-      $end_time = $end_hour.$end_minute;
+      
+      $end_hour = ($end[0] < 25) ? $end[0] : '(익)' . (intval($end[0]) - 24);
+      $end_minute = ($end[1] == '30') ? ':' . $end[1] : '시';
+      $end_time = $end_hour . $end_minute;
       
       $workTime = $end[0] - $start[0];
       if ($workTime >= 10) $result = '종일';
-      else {$result = ($start_hour < 12) ? '오전' : '오후';
+      else {
+        $result = ($start_hour < 12) ? '오전' : '오후';
       }
 //      return $result . "<br>" . date('H:i', strtotime($data['startTime'])) . "~" . date('H:i', strtotime($data['endTime']));
       $result .= "<br>";
       $result .= $start_time;
-      $result.="~";
-      $result.= $end_time;
+      $result .= "~";
+      $result .= $end_time;
       return $result;
     }
-
+    
     public function getTime($i)
     {
       if ($i < 12) {

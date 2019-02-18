@@ -1,4 +1,4 @@
-let mainUrl     = "http://bestpachul.com/";
+let mainUrl     = "http://bestpchul.com/";
 let pageType    = window.location.href.replace(mainUrl, '').split('/')[0];
 let pageAction  = window.location.href.replace(mainUrl, '').split('/')[1];
 let pageID      = window.location.href.replace(mainUrl, '').split('/')[2];

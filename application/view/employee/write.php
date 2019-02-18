@@ -139,13 +139,15 @@ AND (
                     <div class="tr">
                         <div class="td td-4">
                             <label for="">비고</label>
-                            <textarea class="textarea-detail" name="detail" required><?php echo $this->get_detail($this->employeeData,'employee');?></textarea>
+                            <textarea class="textarea-detail" name="detail" required>
+                              <?php //echo $this->get_detail($this->employeeData,'employee');?>
+                            </textarea>
                         </div>
                         <div class="td td-4" style="margin-top: 30px;">
                           <?php require_once 'employeeAvailableDayTable.php' ?>
                         </div>
                     </div>
-                  
+
                   <?php if ($this->employeeData['actCondition'] == "삭제됨") : ?>
                       <div class="tr">
                           <div class="td td-4">
@@ -155,7 +157,7 @@ AND (
                           </div>
                       </div>
                   <?php endif; ?>
-                  
+
                   <?php if (($this->param->action == 'view') && (sizeof($this->blackList) > 0)): ?>
                       <div class="tr">
                           <div class="td td-9">
@@ -225,7 +227,7 @@ AND (
                       </div>
                   <?php endif; ?>
                 </div>
-              
+
               <?php if (!isset($this->param->idx)) : ?>
                   <div class="title-table">
                       <h1>가입 정보</h1>
