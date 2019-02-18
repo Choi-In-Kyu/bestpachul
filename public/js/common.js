@@ -90,6 +90,19 @@ $('.update').click(function () {
     $('#updatePrice').val(parseInt(price.replace(',', '')));
     $('#updateDetail').text(joinDetail);
 });
+//콜 내역 수정
+$('.update-call').on('click',function () {
+    console.log('update call clicked');
+    let id = $(this).parent().attr('id');
+    let price = $(this).parent().find('.btn-money').text();
+    let detail = $(this).find('.call-detail').text();
+    $('#modalCallUpdate').show();
+    $('#formUpdateCall input[name=callID]').val(id);
+    $('#formUpdateCall input[name=price]').val(parseInt(price.replace(',', '')));
+    $('#formUpdateCall textarea[name=detail]').text(detail);
+});
+
+
 $(document).on('click','.btn-money',function () {
     let table = $(this).val().split('-')[0];
     let price = $(this).val().split('-')[1];
@@ -99,13 +112,14 @@ $(document).on('click','.btn-money',function () {
     $('#inputGetMoneyValue').val(price);
     $('#inputGetMoneyID').val(id);
 });
+
 $('#btnGetMoney').on('click',function () {
     let table       = $('#inputGetMoneyTable').val();
     let value       = $('#inputGetMoneyValue').val();
     let id          = $('#inputGetMoneyID').val();
     let receiver    = $('textarea#inputGetMoneyReceiver').val();
-    let btn         = $(document).find('.btn-money#'+id+'');
-    let td          = $('.btn-money#'+id).closest('td');
+    let btn         = $('tr#'+id).find('.btn-money')
+    let td          = btn.closest('td');
     $.ajax({
         type: "POST",
         method: "POST",
@@ -114,11 +128,12 @@ $('#btnGetMoney').on('click',function () {
         dataType: "text",
         success: function (data) {
             btn.hide();
-            td.html('수금완료('+receiver+')');
+            td.html('<b>'+btn.text()+'</b><br>수금('+receiver+')');
             $('.modal').hide();
         }
     });
 });
+
 // 모달 내에서 작동하는 함수
 $(document).on('click','.btn-call-cancel-modal', function () {
     event.stopPropagation();
@@ -134,8 +149,13 @@ $('#btnCallCancel').on('click', function () {
         dataType: "text",
         success: function (data) {
             let id = $('#callCancelID').val();
-            let tr = $('.tr-call[id=' + id + ']');
+            let tr = $('.callRow[id=' + id + ']');
             let btn = $('.btn-call-cancel-modal[id=' + id + ']');
+
+            console.log(data);
+            console.log(tr);
+
+
             $('#modalCallCancel').hide();
             btn.hide();
             tr.closest('td').html('취소됨');
@@ -207,9 +227,6 @@ $('.btn-restore').on('click', function () {
         }
     });
 });
-$('#btnGetMoney').on('click',function () {
-   console.log('test');
-});
 $(document).on('click','.btn-money',function () {
     event.stopPropagation();
     let table = $(this).val().split('-')[0];
@@ -219,10 +236,12 @@ $(document).on('click','.btn-money',function () {
     $('#inputGetMoneyValue').val(value);
 });
 $(document).on('click', '.assignCancelBtn', function () {
+    let employeeID = $(this).closest('td').attr('id');
     event.stopPropagation();
     $('#modalAssignCancel').show();
-    $('input[name=callID]').val(this.id);
-    $('input[name=employeeName]').val(this.innerText);
+    $('#modalAssignCancel input[name=callID]').val(this.id);
+    $('#modalAssignCancel input[name=employeeID]').val(employeeID);
+    // $('input[name=employeeName]').val(this.innerText);
 });
 
 //Iphone Style Toggle Checkbox

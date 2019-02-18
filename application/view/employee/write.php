@@ -1,8 +1,24 @@
+<?php
+  $current_employee_join =
+    $this->model->getTable("SELECT * FROM `join_employee` WHERE `employeeID` = '{$this->employeeData['employeeID']}' AND `activated` = '1' ORDER BY `endDate` DESC")[0];
+  $availableDateArray =
+    $this->model->getTable("
+SELECT * FROM
+`employee_available_date`
+WHERE (`employeeID` = '{$this->employeeData['employeeID']}')
+AND (
+(`availableDate` > '{$current_employee_join['startDate']}' AND `availableDate` < '{$current_employee_join['endDate']}') OR
+(`notAvailableDate` > '{$current_employee_join['startDate']}' AND `notAvailableDate` < '{$current_employee_join['endDate']}')
+)
+");
+?>
+
+
 <div class="board-write auto-center">
     <div class="title-table">
         <h1>
           <?php
-            echo "인력 정보";
+            echo "구직자 정보";
             if (isset ($this->employeeData)) echo " - " . $this->employeeData['employeeName'] . "(" . $this->employeeData['actCondition'] . ")";
           ?>
         </h1>
@@ -16,7 +32,7 @@
                 <div class="table">
                     <div class="tr">
                         <div class="td td-3">
-                            <label for="">인력명</label>
+                            <label for="">성명</label>
                             <input type="text" name="employeeName" size="20" required autofocus
                                    value="<?php echo $this->employeeData['employeeName']; ?>">
                         </div>
@@ -32,7 +48,7 @@
                             </datalist>
                         </div>
                         <div class="td td-3">
-                            <label for="">생일</label>
+                            <label for="">생년월일</label>
                             <input type="date" name="birthDate" size="20" required autofocus
                                    style="font-size: 15px; line-height: 0.8; padding: 5px 10px;"
                                    value="<?php echo $this->employeeData['birthDate']; ?>">
@@ -123,9 +139,7 @@
                     <div class="tr">
                         <div class="td td-4">
                             <label for="">비고</label>
-                            <textarea class="textarea-detail" name="detail" required>
-
-                            </textarea>
+                            <textarea class="textarea-detail" name="detail" required><?php echo $this->get_detail($this->employeeData,'employee');?></textarea>
                         </div>
                         <div class="td td-4" style="margin-top: 30px;">
                           <?php require_once 'employeeAvailableDayTable.php' ?>
@@ -149,7 +163,7 @@
                               <table>
                                   <thead>
                                   <tr>
-                                      <th width="150">업체명</th>
+                                      <th width="150">상호</th>
                                       <th width="150">종류</th>
                                       <th>사유</th>
                                   </tr>
@@ -176,7 +190,6 @@
                           </div>
                       </div>
                   <?php endif; ?>
-                  <?php $availableDateArray = $this->model->getTable("SELECT * FROM `employee_available_date` WHERE `employeeID` = '{$this->employeeData['employeeID']}'"); ?>
                   <?php if (($this->param->action == 'view') && (sizeof($availableDateArray) > 0)): ?>
                       <div class="tr">
                           <div class="td td-9">

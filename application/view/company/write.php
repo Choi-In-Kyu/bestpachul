@@ -3,7 +3,7 @@
     <div class="title-table">
         <h1 class="title-main">
           <?php
-            echo "업체정보";
+            echo "거래처정보";
             if (isset ($companyData)) echo " - " . $companyData['companyName'] . "(" . $companyData['actCondition'] . ")";
           ?>
         </h1>
@@ -49,7 +49,7 @@
                     </div>
                     <div class="tr">
                         <div class="td td-4">
-                            <label for="">업체전화</label>
+                            <label for="">거래처전화</label>
                             <input type="text" name="companyPhoneNumber" size="20" required
                                    value="<?php echo $companyData['companyPhoneNumber']; ?>">
                         </div>
@@ -104,7 +104,7 @@
                               <table>
                                   <thead>
                                   <tr>
-                                      <th width="150">인력명</th>
+                                      <th width="150">성명</th>
                                       <th width="150">종류</th>
                                       <th>사유</th>
                                   </tr>

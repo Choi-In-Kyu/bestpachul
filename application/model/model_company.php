@@ -17,7 +17,7 @@
             $this->insert('insert','ceo',$_POST);//사장 테이블에 입력
             $_POST['ceoID'] = $this->getLastID('ceo');
           }
-          $this->insert('insert','company', $_POST);//업체 테이블에 입력
+          $this->insert('insert','company', $_POST);//거래처 테이블에 입력
           $_POST['companyID'] = $this->getLastID('company');
           $this->insert('insert','join_company',$_POST);//가입 테이블에 입력
           $this->insert('insert','user',$_POST);//유저 테이블에 입력
@@ -53,9 +53,15 @@
           $price = $_POST['price'];
           $this->executeSQL("UPDATE join_company SET `price`= '{$price}', `joinDetail` = '{$detail}' WHERE join_companyID = '{$joinID}' LIMIT 1");
           break;
-        case 'callCancel':
-          $this->callCancel($_POST);
+        case 'update_call':
+          $callID = $_POST['callID'];
+          $detail = $_POST['detail'];
+          $price = $_POST['price'];
+          $this->executeSQL("UPDATE `call` SET `price` = '{$price}', `detail` = '{$detail}' WHERE `callID` = '{$callID}' LIMIT 1");
           break;
+//        case 'callCancel':
+//          $this->callCancel($_POST);
+//          break;
       }
     }
   }

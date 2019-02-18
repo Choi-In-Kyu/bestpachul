@@ -141,6 +141,13 @@
       return $tblArray;
     }
     
+//    public function update_call($_POST){
+//      $callID = $_POST['callID'];
+//      $detail = $_POST['detail'];
+//      $price = $_POST['price'];
+//      $this->executeSQL("UPDATE `call` SET `price` = '{$price}', `detail` = '{$detail}' WHERE `callID` = '{$callID}' LIMIT 1");
+//    }
+    
     public function getQuery($post, $table, $focus = null)
     {
       $tbl = $this->extractPost($post, $table);
@@ -182,7 +189,7 @@
     public function delete($post, $table)
     {
       $d = _TODAY;
-      //업체, 인력 삭제
+      //거래처, 구직자 삭제
       if (!isset ($post['joinID'])) {
         //main table delete
         $string = "UPDATE {$table} SET deleted=1, activated=0, deletedDate= '{$d}', deleteDetail = '{$post['deleteDetail']}' WHERE {$table}ID = '{$post['deleteID']}'";

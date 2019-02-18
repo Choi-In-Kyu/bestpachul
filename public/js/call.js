@@ -1,7 +1,7 @@
 //Datepicker의 오늘 날짜를 클릭 -> 콜 테이블을 오늘 날짜 기준으로 불러옴
-$(document).ready(function () {
-    $('.ui-state-highlight').click();
-});
+// $(document).ready(function () {
+//     $('.ui-state-highlight').click();
+// });
 $('.ui-datepicker-calendar').on('click', function () {
     $(this).addClass('selected');
     $(this).css('background', 'red');

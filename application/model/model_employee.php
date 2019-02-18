@@ -11,7 +11,7 @@
       header("Content-type:text/html;charset=utf8");
       switch ($_POST['action']) {
         case 'insert' :
-          $this->insert('insert','employee', $_POST);//인력 테이블에 입력
+          $this->insert('insert','employee', $_POST);//구직자 테이블에 입력
           foreach ($this->select('address') as $value){//존재하는 간단주소의 목록 확인
             foreach ($value as $item){
               $addressTable[] = $item;
@@ -75,6 +75,12 @@
           $detail = $_POST['joinDetail'];
           $price = $_POST['price'];
           $this->executeSQL("UPDATE join_employee SET `price` = '{$price}', `joinDetail` = '{$detail}' WHERE join_employeeID = '{$joinID}' LIMIT 1");
+          break;
+        case 'update_call':
+          $callID = $_POST['callID'];
+          $detail = $_POST['detail'];
+          $price = $_POST['price'];
+          $this->executeSQL("UPDATE `call` SET `price` = '{$price}', `detail` = '{$detail}' WHERE `callID` = '{$callID}' LIMIT 1");
           break;
       }
 //      unset($_POST);

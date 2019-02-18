@@ -1,12 +1,17 @@
 <style>
-    #modalAssignCancel .btn{width: 200px;}
-    form.search-form{    margin-top: 20px;
-        display: block;}
+    #modalAssignCancel .btn {
+        width: 200px;
+    }
 
+    form.search-form {
+        margin-top: 20px;
+        display: block;
+    }
 
     .wrap .search {
         position: relative
     }
+
     .wrap .search .searchTerm {
         display: inline;
         float: left;
@@ -16,9 +21,11 @@
         border: 3px solid #00B4CC;
         border-right: none;
     }
-    .wrap .search .searchTerm:focus{
+
+    .wrap .search .searchTerm:focus {
         color: #00B4CC;
     }
+
     .wrap .search .searchButton {
         display: inline;
         float: left;
@@ -38,7 +45,7 @@
 <div id="modalDelete" class="modal">
     <div class="modal-content">
         <div class="modal-box al_r">
-            <button type="button" class="btn btn-close-modal"><i class="fa fa-times"></i> </button>
+            <button type="button" class="btn btn-close-modal"><i class="fa fa-times"></i></button>
         </div>
         <div class="modal-box al_l">삭제 사유를 입력하세요</div>
         <form action="" method="post" id="formDelete">
@@ -62,7 +69,7 @@
             <input type="hidden" name="table" id="joinDeleteTable">
             <input type="hidden" name="id" id="joinDeleteID">
             <textarea name="detail"></textarea>
-            <button type="button" class="btn btn-danger" id="btnJoinCancel" >삭제</button>
+            <button type="button" class="btn btn-danger" id="btnJoinCancel">삭제</button>
         </form>
     </div>
 </div>
@@ -76,8 +83,11 @@
         <form id="formCallCancel" action="" method="post">
             <input type="hidden" name="action" value="callCancel">
             <input type="hidden" name="callID" id="callCancelID">
-            <textarea name="detail" id="detail" <?php if($this->param->page_type == 'ceo') echo "size='200'"?>></textarea>
-            <button id="btnCallCancel" type="button" class="btn <?php if($this->param->page_type == 'ceo') echo "btn-mobile"?> btn-insert">취소</button>
+            <textarea name="detail"
+                      id="detail" <?php if ($this->param->page_type == 'ceo') echo "size='200'" ?>></textarea>
+            <button id="btnCallCancel" type="button"
+                    class="btn <?php if ($this->param->page_type == 'ceo') echo "btn-mobile" ?> btn-insert">취소
+            </button>
         </form>
     </div>
 </div>
@@ -88,30 +98,72 @@
             <button type="button" class="btn btn-close-modal"><i class="fa fa-times"></i></button>
         </div>
         <div class="modal-box al_l">
-            
-            
-            
             <form action="" method="post">
                 <input type="hidden" name="action" value="assignCancel">
                 <input type="hidden" name="callID">
-                <input class="btn btn-insert" type="submit" value="배정취소">
+                <input type="hidden" name="employeeID">
+                <input class="btn btn-insert" type="button" value="배정취소" id="btnAssignCancel">
             </form>
-            
-            <input class="btn btn-insert" type="button" value="펑크">
-            <form class="search-form" action="" method="post">
+            <input class="btn btn-insert" type="button" value="펑크" id="btnPunk">
+            <form class="search-form" action="" method="post" id="formPunk">
                 <input type="hidden" name="action" value="punk">
                 <input type="hidden" name="callID">
-                <div class="wrap">
+                <input type="hidden" name="employeeID">
+                <div class="wrap" style="display: none;" id="wrapPunk">
                     <div class="search">
                         <input type="text" class="searchTerm" name="detail" placeholder="펑크 사유를 입력하세요">
-                        <button type="submit" class="searchButton">입력</button>
+                        <input type="button" class="searchButton" id="btnSubmitPunk" value="펑크"></input>
                     </div>
                 </div>
             </form>
-            
+
         </div>
     </div>
 </div>
+
+<script>
+    $('#modalAssignCancel #btnPunk').on('click', function () {
+        console.log('show me');
+        $('#modalAssignCancel #wrapPunk').show();
+    });
+    $('#modalAssignCancel #btnAssignCancel').on('click', function () {
+        let id = $('#modalAssignCancel input[name=callID]').val();
+        console.log(id);
+        $.ajax({
+            type: "POST",
+            method: "POST",
+            url: ajaxURL,
+            data: {action: 'assignCancel', callID: id},
+            dataType: "text",
+            success: function (data) {
+                alert('배정을 취소했습니다.');
+                $('.modal').hide();
+                $('tr.callRow#' + id).find('td.assignedEmployee').html(null);
+            }
+        });
+    });
+    $('#modalAssignCancel #btnSubmitPunk').on('click',function () {
+        let callID = $('#modalAssignCancel #formPunk input[name=callID]').val();
+        let employeeID = $('#modalAssignCancel #formPunk input[name=employeeID]').val();
+        let detail = $('#modalAssignCancel #formPunk input[name=detail]').val();
+        console.log(callID);
+        console.log(employeeID);
+        $.ajax({
+            type: "POST",
+            method: "POST",
+            url: ajaxURL,
+            data: {action: 'punk', callID: callID, employeeID:employeeID, detail:detail},
+            dataType: "text",
+            success: function (data) {
+                // console.log(JSON.parse(data));
+                alert('펑크 처리가 완료되었습니다.\n새로운 인력을 배정 해 주세요.');
+                $('.modal').hide();
+                $('tr.callRow#' + callID).find('td.assignedEmployee').html(null);
+            }
+        });
+    });
+</script>
+
 <!-- Join Cancel Modal -->
 <div id="modalGetMoney" class="modal">
     <div class="modal-content">
@@ -120,11 +172,11 @@
         </div>
         <div class="modal-box al_l">수금자 이름을 입력하세요</div>
         <form action="" method="post" id="formGetMoney">
-            <input type="hidden" name="table"   id="inputGetMoneyTable">
-            <input type="hidden" name="value"   id="inputGetMoneyValue">
-            <input type="hidden" name="id"      id="inputGetMoneyID">
+            <input type="hidden" name="table" id="inputGetMoneyTable">
+            <input type="hidden" name="value" id="inputGetMoneyValue">
+            <input type="hidden" name="id" id="inputGetMoneyID">
             <textarea name="receiver" id="inputGetMoneyReceiver"></textarea>
-            <button type="button" class="btn btn-submit" id="btnGetMoney" >수금완료</button>
+            <button type="button" class="btn btn-submit" id="btnGetMoney">수금완료</button>
         </form>
     </div>
 </div>
@@ -182,9 +234,42 @@
         </div>
         <div class="modal-box al_l">
             <form>
-                <input type="text" style="height: 50px;" id="pay-info"  value="국민은행 477002-04-040107">
+                <input type="text" style="height: 50px;" id="pay-info" value="국민은행 477002-04-040107">
                 <input id="copyBtn" class="btn btn-insert" type="submit" value="계좌번호 복사하기">
             </form>
         </div>
     </div>
 </div>
+<!-- Call Update Modal -->
+<div id="modalCallUpdate" class="modal">
+    <div class="modal-content">
+        <div class="modal-box al_r">
+            <button type="button" class="btn btn-close-modal"><i class="fa fa-times"></i></button>
+        </div>
+        <div class="modal-box al_l">콜 정보 수정</div>
+        <form id="formUpdateCall" action="" method="post">
+            <input type="hidden" name="action" value="update_call">
+            <input id="callID" type="hidden" name="callID">
+            <table>
+                <colgroup>
+                    <col width="25%">
+                    <col width="75%">
+                </colgroup>
+                <tr>
+                    <td class="td-title">콜비</td>
+                    <td><input type="number" id="price" name="price" min="0"></td>
+                </tr>
+                <tr>
+                    <td class="td-title">요청사항</td>
+                    <td><textarea id="detail" name="detail"></textarea></td>
+                </tr>
+            </table>
+            <div class="al_r">
+                <input class="btn btn-submit" type="submit" value="수정">
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+
+</script>

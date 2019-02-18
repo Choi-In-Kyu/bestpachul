@@ -207,8 +207,9 @@
       if ($data['joinDetail']) {
         echo $data['joinDetail'];
         if ($data['deleted'] == 1) {
-          echo "<br/>(" . $data['deleteDetail'] . ")";
-        } elseif ($data['deleted'] == 0 && $data['activated'] == 0) {
+          echo "<br/>(삭제사유: " . $data['deleteDetail'] . ")";
+        }
+        elseif ($data['deleted'] == 0 && $data['activated'] == 0) {
           echo "<br/>(가입 만기됨)";
         }
         if (isset($data['cancelDetail']) && $data['cancelDetail'] != '') {
@@ -227,19 +228,9 @@
 
     public function get_callDetail($data)
     {
-      if ($data['detail']) {
-        $string = $data['detail'];
-        if ($data['cancelDetail']) {
-          $string .= "<br/>" . "(취소사유: " . $data['cancelDetail'].")";
-        }
-      } else {
-        if ($data['cancelDetail']) {
-          $string = "(취소사유: " . $data['cancelDetail'].")";
-        } else {
-          $string = "-";
-        }
-      }
-      echo $string;
+      $detail_array['plain'] = ($data['detail']) ? "<a class='call-detail'>".nl2br(strval($data['detail']))."</a>" : null;
+      $detail_array['cancel'] = ($data['cancelDetail']) ? "<a class='call-cancel-detail'>(취소사유:".nl2br(strval($data['cancelDetail'])).")<a>" : null;
+      echo (array_filter($detail_array)) ? implode('<br>',$detail_array) : '-';
     }
 
     public function get_join_delete_btn($data, $tableName)
@@ -278,7 +269,13 @@ HTML;
 <i class="fa fa-won"></i>$val
 </button>
 HTML;
-        } else return '수금완료(' . $data['receiver'] . ")";
+        } else
+          $price = number_format($data['price']);
+          $paid_message = '<br>수금('.$data['receiver'].")";
+          return <<<HTML
+<b class="paid">{$price}</b>{$paid_message}
+HTML;
+
       } else return '무료';
     }
 
@@ -380,8 +377,7 @@ HTML;
       
       $workTime = $end[0] - $start[0];
       if ($workTime >= 10) $result = '종일';
-      else {
-        if ($start < 12) $result = '오전'; else $result = '오후';
+      else {$result = ($start_hour < 12) ? '오전' : '오후';
       }
 //      return $result . "<br>" . date('H:i', strtotime($data['startTime'])) . "~" . date('H:i', strtotime($data['endTime']));
       $result .= "<br>";

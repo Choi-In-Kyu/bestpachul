@@ -1,12 +1,16 @@
 .form-switch {
     display: inline-block;
-    cursor: pointer;
     -webkit-tap-highlight-color: transparent;
+}
+
+.form-switch b{
+    display: block;
 }
 
 .form-switch i {
     position: relative;
     display: inline-block;
+    cursor: pointer;
     margin-right: .5rem;
     width: 46px;
     height: 26px;

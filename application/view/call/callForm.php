@@ -1,6 +1,7 @@
 <form action="" id="callForm" method="post">
     <input type="hidden" name="action" id="formAction">
-    <input type="hidden" name="companyID" id="companyID" value="<?php if(isset($this->companyID)) echo $this->companyID?>">
+    <input type="hidden" name="companyID" id="companyID"
+           value="<?php if (isset($this->companyID)) echo $this->companyID ?>">
     <input type="hidden" name="employeeID" class="employee" id="employeeID">
     <input type="hidden" name="startTime" class="startTime" id="startTime">
     <input type="hidden" name="endTime" class="endTime" id="endTime">
@@ -11,11 +12,10 @@
     <input type="hidden" name="endDate" id="endDate" class="endDate">
     <input type="hidden" name="fixID" id="fixID">
     <input type="hidden" name="commission">
-    <div class="table">
-      
+    <div class="table" style="padding-bottom: 50px">
       
       <?php if ($this->param->page_type != 'ceo'): ?>
-          <!--인력이름, 상호명-->
+          <!--구직자이름, 상호명-->
           <div class="tr">
               <div class="td td-4">
                   <label for="">상호명</label>
@@ -30,9 +30,9 @@
                   </datalist>
               </div>
               <div class="td td-4">
-                  <label for="">인력명</label>
+                  <label for="">성명</label>
                   <input type="text" list="employeeList" name="employeeName" class="employee" id="employeeName"
-                         placeholder="배정할 인력을 입력하세요 (생략가능)">
+                         placeholder="배정할 구직자을 입력하세요 (생략가능)">
                   <datalist id="employeeList" class="input-field">
                     <?php foreach ($employeeList as $key => $data): ?>
                         <option value="<?php echo $data['employeeName'] ?>">
@@ -135,14 +135,17 @@
         <div class="tr">
             <div class="td td-9">
                 <label for="">임금</label>
-                <p id="salaryInfo" style="display:inline-table;    width: 100%; padding: 0 10px; margin: 0;">근무시간을 선택해주세요</p>
+                <p id="salaryInfo" style="display:inline-table;    width: 100%; padding: 0 10px; margin: 0;">근무시간을
+                    선택해주세요</p>
             </div>
         </div>
         <!--업종-->
         <div class="tr">
             <div class="td td-4">
                 <label for="">업종</label>
-                <select class="selector-work-field" name="workField" style="background: #fff; height: 40px; margin-right: 10px; font-size: 16px;" id="workField" form="callForm" required>
+                <select class="selector-work-field" name="workField"
+                        style="background: #fff; height: 40px; margin-right: 10px; font-size: 16px; padding: 3px;"
+                        id="workField" form="callForm" required>
                   <?php foreach ($this->workField_List as $key => $data): ?>
                       <option value="<?php echo $data['workField']; ?>">
                         <?php echo $data['workField'] ?>
@@ -175,11 +178,12 @@
         <div class="tr">
             <div class="td td-9">
                 <label for="" style="min-width: 200px;">기타 요청 사항</label>
-                <textarea name="detail" id="detail" cols="30" rows="6"></textarea>
+                <textarea name="detail" id="detail" cols="30" rows="6">
+                </textarea>
             </div>
         </div>
         <!--콜 보내기 버튼-->
-        <div class="btn-group al_r" style="position: fixed; bottom: 0; left: 0; right: 0; ">
+        <div class="btn-group al_r" style="position: fixed;bottom: 0;width: 100%;max-width: 500px;">
             <h1 class="callPrice"></h1>
             <button id="btnSendCall" class="btn btn-insert callBtn" type="button">콜 신청하기</button>
           <?php if ($this->param->page_type != 'ceo'): ?>

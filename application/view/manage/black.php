@@ -106,7 +106,7 @@ LEFT JOIN `company` on blackList.companyID = company.companyID
                 <div class="table" style="width: 100%">
                     <div class="tr">
                         <div class="td td-4">
-                            <label for="">인력명</label>
+                            <label for="">성명</label>
                             <input id="employeeName" type="text" list="employeeList" name="employeeName" required>
                             <datalist id="employeeList" class="input-field">
                               <?php foreach ($this->employee_List as $key => $data): ?>
@@ -184,7 +184,7 @@ LEFT JOIN `company` on blackList.companyID = company.companyID
         <thead>
         <tr>
             <th class="order link" id="refresh-blackListID">#</th>
-            <th class="order link" id="refresh-employeeName">인력명</th>
+            <th class="order link" id="refresh-employeeName">성명</th>
             <th class="order link" id="refresh-companyName">상호명</th>
             <th class="order link" id="refresh-ceoReg">구분</th>
             <th class="order link" id="refresh-detail">비고</th>
@@ -283,7 +283,7 @@ LEFT JOIN `company` on blackList.companyID = company.companyID
     //     console.log(table);
     //     let name = input_element.val();
     //     let input = input_element;
-    //     let type = (table ==='employee') ? '인력' : '업체';
+    //     let type = (table ==='employee') ? '구직자' : '거래처';
     //     $.ajax({
     //             type: "POST",
     //             method: "POST",

@@ -27,7 +27,7 @@ function dateFormat(date) {
     return date.getFullYear() + "-" + (month) + "-" + (day);
 }
 
-//인력 가입 자동입력 함수
+//구직자 가입 자동입력 함수
 function auto_insert_employee_join(type) {
     switch (type) {
         case 'today':
@@ -69,7 +69,7 @@ function set_validity(input_element, table){
     console.log(table);
     let name = input_element.val();
     let input = input_element;
-    let type = (table ==='employee') ? '인력' : '업체';
+    let type = (table ==='employee') ? '구직자' : '거래처';
     $.ajax({
             type: "POST",
             method: "POST",

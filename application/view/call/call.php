@@ -5,7 +5,7 @@
     </div>
   <?php endif; ?>
   <?php require_once _VIEW.'/common/datepicker.php' ?>
-  <?php $type = 'call'; require 'callTable.php' ?>
+  <?php require_once 'callTable.php' ?>
   <?php require_once 'employeeTable.php' ?>
 </div>
 <?php require_once _VIEW.'common/modal.php' ?>

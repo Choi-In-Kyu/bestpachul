@@ -17,23 +17,29 @@
       header("Content-type:text/html;charset=utf8");
       if (isset($_POST)) {
         switch ($_POST['action']) {
-          case 'punk':
-            $employeeID = $this->select('employee', "`employeeName` = '{$_POST['employeeName']}'", 'employeeID');
-            $this->executeSQL("INSERT INTO `punk` SET `callID` = '{$_POST['callID']}', `employeeID` = '{$employeeID}', `detail`='{$_POST['detail']}'");
-            $this->executeSQL("UPDATE `call` SET `employeeID` = NULL WHERE `callID` = '{$_POST['callID']}' LIMIT 1");
+          case 'update_call':
+            $callID = $_POST['callID'];
+            $detail = $_POST['detail'];
+            $price = $_POST['price'];
+            $this->executeSQL("UPDATE `call` SET `price` = '{$price}', `detail` = '{$detail}' WHERE `callID` = '{$callID}' LIMIT 1");
             break;
-          case 'callCancel':
-            $this->callCancel($_POST);
-            break;
-          case 'fixCancel':
-            $this->fixCancel($_POST);
-            break;
-          case 'assignCancel':
-            $this->executeSQL("UPDATE `call` SET employeeID = NULL WHERE `callID` = '{$_POST['callID']}' LIMIT 1");
-            break;
-          case 'call':
-            $this->call($_POST);
-            break;
+//          case 'punk':
+//            $employeeID = $this->select('employee', "`employeeName` = '{$_POST['employeeName']}'", 'employeeID');
+//            $this->executeSQL("INSERT INTO `punk` SET `callID` = '{$_POST['callID']}', `employeeID` = '{$employeeID}', `detail`='{$_POST['detail']}'");
+//            $this->executeSQL("UPDATE `call` SET `employeeID` = NULL WHERE `callID` = '{$_POST['callID']}' LIMIT 1");
+//            break;
+//          case 'callCancel':
+//            $this->callCancel($_POST);
+//            break;
+//          case 'fixCancel':
+//            $this->fixCancel($_POST);
+//            break;
+//          case 'assignCancel':
+//            $this->executeSQL("UPDATE `call` SET employeeID = NULL WHERE `callID` = '{$_POST['callID']}' LIMIT 1");
+//            break;
+//          case 'call':
+//            $this->call($_POST);
+//            break;
         }
       }
     }

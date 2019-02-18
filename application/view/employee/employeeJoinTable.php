@@ -25,7 +25,7 @@
         </thead>
         <tbody>
         <?php foreach ($this->joinList as $key => $data): ?>
-            <tr class="tr-employee <?php echo $this->joinColor($data, 'employee'); ?>">
+            <tr class="tr-employee <?php echo $this->joinColor($data, 'employee'); ?>" id="<?php echo $data['join_employeeID']?>">
                 <td class="al_c update join_id"><?php echo $data['join_employeeID'] ?></td>
                 <td class="al_c"><?php echo $data['startDate'] ?></td>
                 <td class="al_c"><?php echo $this->get_endDate($data, 'employee') ?></td>
@@ -48,30 +48,6 @@
             <div class="title-table">
                 <h1>가입 정보</h1>
             </div>
-<!--            <table>-->
-<!--                <tr>-->
-<!--                    <td>가입시작일</td>-->
-<!--                    <td><input type="date" id="startDate" name="startDate" required></td>-->
-<!--                    <td>가입만기일</td>-->
-<!--                    <td><input type="date" id="endDate" name="endDate" required></td>-->
-<!--                    <td>-->
-<!--                        <button type="button" class="btn btn-insert" onclick="auto_insert_employee_join('today')">오늘부터</button>-->
-<!--                        <button type="button" class="btn btn-insert" onclick="auto_insert_employee_join('extend')">가입연장</button>-->
-<!--                    </td>-->
-<!--                </tr>-->
-<!--                <tr>-->
-<!--                    <td>가입금액</td>-->
-<!--                    <td><input type="number" id="price" name="price" value="50000" min="0" required></td>-->
-<!--                    <td>가입비고</td>-->
-<!--                    <td><textarea name="joinDetail"></textarea></td>-->
-<!--                    <td>-->
-<!--                        <label for="">수금</label>-->
-<!--                        <input type="checkbox" id="paid" name="paid" value="1">-->
-<!--                        <label for="">수금자</label>-->
-<!--                        <input type="text" id="paid" name="receiver" value="지명희">-->
-<!--                    </td>-->
-<!--                </tr>-->
-<!--            </table>-->
             <div class="table table-add-join" id="employeeAddJoinTable">
                 <div class="tr">
                     <div class="td">

@@ -87,7 +87,7 @@
       $order = ($_POST['order']) ? $_POST['order'] : $this->param->page_type . "ID";
       $direction = ($_POST['direction']) ? $_POST['direction'] : "DESC";
       $this->list = $this->model->getList($condition, $order, $direction);
-      //초기화 테스트
+//      초기화 테스트
       $this->initJoin($tableName);
       $this->list = $this->initActCondition($this->list, $tableName);
       $this->list = $this->getActCondition($this->list, $tableName);
@@ -95,10 +95,23 @@
     
     function getCallTable()
     {
-      $sql = "SELECT * FROM `call`";
+      $sql = "SELECT * FROM `call` ";
       $table = $this->param->page_type;
-      if (in_array($table, ['company', 'employee'])) $sql .= " WHERE `{$table}ID` = '{$this->param->idx}' ";
-      $sql.= " ORDER BY `workDate` ASC";
+      $today = _TODAY;
+      if (in_array($table, ['company', 'employee'])) $condition['table']= " `{$table}ID` = '{$this->param->idx}' ";
+      if($_POST['date']) $condition['date'] =  " `workDate` = '{$_POST['date']}'";
+      
+      $year   = ($_POST['year']) ?  $_POST['year'] : date('Y', strtotime(_TODAY));
+      $month  = ($_POST['month']) ? $_POST['month'] : date('m', strtotime(_TODAY));
+      
+      if($_POST['year'])  $condition['year']    = " (YEAR(workDate) = '{$year}' )";
+      if($_POST['month']) $condition['month']   = " (YEAR(workDate) = '{$year}' AND MONTH(workDate) = '{$month}') ";
+      if($_POST['week'])  $condition['week']    = " (YEARWEEK(workDate)) = (YEARWEEK(curdate()))";
+      
+      if(! ($condition['date'] || $condition['year'] || $condition['month'] || $condition['week'] )) $condition['date'] = " `workDate` = '{$today}' ";
+      $sql .= ($condition) ? " WHERE ".implode(' AND ', $condition) : null;
+      $sql .= ($this->param->page_type == 'call') ? " ORDER BY `callID` DESC" : " ORDER BY `workDate` ASC";
+  
       return $this->model->getTable($sql);
     }
     
@@ -108,14 +121,20 @@
       return $this->model->getTable("SELECT * FROM `blackList` WHERE `{$tbl}ID` = '{$this->param->idx}' ORDER BY `ceoReg` DESC");
     }
     
-    function get_fixType($data)
+    function get_fixType($data, $class=false)
     {
       if ($data['fixID'] > 0) {
         if ($this->model->select('fix', "`fixID`='{$data['fixID']}'", 'monthlySalary') > 0) {
-          return '(월급)';
+          if($class) return 'salary';
+          else return '(월급)';
         } else {
-          return '(고정)';
+          if($class) return 'fixed';
+          else return '(고정)';
         }
+      }
+      else{
+        if($class) return 'normal';
+        else return null;
       }
     }
     
@@ -136,6 +155,10 @@
           }
         }
       } else return 'deleted';
+    }
+  
+    function get_punk_list($callID){
+      return $this->model->getTable("SELECT * FROM `punk` WHERE `callID` = '{$callID}'");
     }
     
   }

@@ -19,7 +19,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>으뜸 파출</title>
+    <title>마이잡오피스 - 으뜸 파출</title>
     <!--css-->
     <link rel="icon" href="<?php echo _IMG ?>favicon.png" type="image/png">
     <link rel="stylesheet" href="<?php echo _CSS ?>default.css?<?php echo time(); ?>">
@@ -30,7 +30,7 @@
     <!--js-->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-    <script src="/public/js/datepicker.js"></script>
+    <!--<script src="/public/js/datepicker.js"></script>-->
     <!--toggle-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,12 +44,12 @@
             </div>
             <div class="dropdown ">
                 <button class="dropbtn <?php echo $selectArr[0] ?>"
-                        onClick='location.href="<?php echo _URL ?>company"'>업체관리
+                        onClick='location.href="<?php echo _URL ?>company"'>거래처관리
                 </button>
             </div>
             <div class="dropdown ">
                 <button class=" dropbtn <?php echo $selectArr[1] ?>"
-                        onClick='location.href="<?php echo _URL ?>employee"'>인력관리
+                        onClick='location.href="<?php echo _URL ?>employee"'>구직자관리
                 </button>
                 <div class="dropdown-content">
                     <a class="" href="<?php echo _URL ?>employee/available_date">근무 가능일/불가능일</a>
@@ -62,7 +62,6 @@
                 <div class="dropdown-content">
                     <a class="" href="<?php echo _URL ?>call/write">콜 만들기</a>
                     <a class="" href="<?php echo _URL ?>call/fix">고정콜/월급제 관리</a>
-                    <a class="" href="<?php echo _URL ?>call/punk">펑크관리</a>
                 </div>
             </div>
             <div class="dropdown ">

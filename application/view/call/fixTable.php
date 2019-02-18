@@ -21,13 +21,13 @@
 <div class="inline" style="width: 64%;">
     <table id="fixTable" width="100%">
         <colgroup>
-          <?php foreach (['구분', '근무시작일', '근무종료일', '요일', '상호명', '인력', '업종', '시작시간', '끝시간', '비고', '월급', '수수료', '취소'] as $value): ?>
+          <?php foreach (['구분', '근무시작일', '근무종료일', '요일', '상호명', '구직자', '업종', '시작시간', '끝시간', '비고', '월급', '수수료', '취소'] as $value): ?>
               <col width="auto">
           <?php endforeach; ?>
         </colgroup>
         <thead>
         <tr>
-          <?php foreach (['구분', '근무시작일', '근무종료일', '요일', '상호명', '인력', '업종', '시작시간', '끝시간', '비고', '월급', '수수료', '취소'] as $value): ?>
+          <?php foreach (['구분', '근무시작일', '근무종료일', '요일', '상호명', '구직자', '업종', '시작시간', '끝시간', '비고', '월급', '수수료', '취소'] as $value): ?>
               <th class="link"><?php echo $value ?></th>
           <?php endforeach; ?>
         </tr>
@@ -45,12 +45,12 @@
                 <td class="al_l"><?php echo $data['endDate'] . "(" . $dayofweek[date('w', strtotime($data['endDate']))] . ")" ?></td>
                 <td class="al_l"><?php echo get_dow_kor($data['dayofweek']) ?></td>
                 <td class="al_l">
-                    <a href="http://bestpachul.com/company/view/<?php echo $data['companyID'] ?>" class="link">
+                    <a href="http://bestpchul.com/company/view/<?php echo $data['companyID'] ?>" class="link">
                       <?php echo $companyName ?>
                     </a>
                 </td>
                 <td class="al_l">
-                    <a href="http://bestpachul.com/employee/view/<?php echo $data['employeeID'] ?>" class="link">
+                    <a href="http://bestpchul.com/employee/view/<?php echo $data['employeeID'] ?>" class="link">
                       <?php echo $employeeName ?>
                     </a>
                 </td>

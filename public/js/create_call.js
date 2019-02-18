@@ -8,6 +8,8 @@ let first_end_hour = 15;//근무 종료 시간 기본값
 let work_field = $('#workField');
 let work_date = $('#workDate');
 
+let detail = $('#detail');
+
 $(document).ready(function () {//다른 js 파일 모두 불러온 뒤 함수 내용이 실행됨
     reset_call_form();
     if(pageType !== 'ceo'){
@@ -26,8 +28,8 @@ function reset_call_form() {
     start_hour.val(first_start_hour);
     end_hour.val(first_end_hour);
     work_field.val('주방보조');
+    detail.val('내용:\n작성자: ');
     $('input.workDate').prop('min', today);
-    $('#detail').val(null);
     $('.workDate').val(tomorrow);
     $('.employee').val(null);
     map_time_to_btn(first_start_hour,first_end_hour);
@@ -293,7 +295,9 @@ function input_employee() {
 function send_call() {
     $('#btnSendCall').on('click', function () {
         if (confirm("콜을 신청하시겠습니까?")) {
+            console.log('콜을 신청하시겠습니까? - 확인 버튼 누름');
             $('#formAction').val('call');
+            console.log('폼 액션 value call로 설정');
             $.ajax({
                 type: "POST",
                 method: "POST",
@@ -302,6 +306,7 @@ function send_call() {
                 dataType: "text",
                 async: false,
                 success: function (data) {
+                    console.log('성공입니다.');
                     console.log(data);
                     alert('콜을 보냈습니다!');
                     if (pageType !== 'call') {

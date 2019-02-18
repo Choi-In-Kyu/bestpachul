@@ -66,16 +66,18 @@
         break;
         
       case 'call' :
+        $companyID = $_POST['companyID'];
+        $workDate = $_POST['workDate'];
+        $joinType = $obj->joinType($companyID,null,$workDate)['joinType'];
         $obj->call($_POST);
-        if($obj->joinType($_POST['companyID'],null,$_POST['workDate'])['joinType'] == 'gujwa') {
+        if($joinType == 'gujwa') {
           $obj->reset($_POST);
         }
+        echo json_encode([$companyID, $workDate, $joinType]);
         break;
       case 'cancel':
         $obj->cancel($_POST);
         if ($obj->joinType($id) == 'gujwa') {
-//          $result = $obj->reset($_POST);
-//          echo $result;
           $obj->reset($_POST);
         }
         break;
@@ -125,8 +127,16 @@
         echo json_encode($obj->assign($_POST));
         break;
       case 'assignCancel':
-        $obj->executeSQL("UPDATE `call` SET employeeID = NULL WHERE `callID` = '{$_POST['callID']}' LIMIT 1");
-        echo 'success';
+        $sql = "UPDATE `call` SET `employeeID` = NULL WHERE `callID` = '{$_POST['callID']}' LIMIT 1";
+        $obj->executeSQL($sql);
+        echo $sql;
+        break;
+      case 'punk':
+        $assign_cancel_sql = "UPDATE `call` SET `employeeID` = NULL WHERE `callID` = '{$_POST['callID']}' LIMIT 1";
+        $employee_punk_sql = "INSERT INTO `punk` (`callID` ,`employeeID` ,`detail`) VALUES ('{$_POST['callID']}' ,  '{$_POST['employeeID']}',  '{$_POST['detail']}')";
+        echo json_encode([$assign_cancel_sql,$employee_punk_sql]);
+        $obj->executeSQL($assign_cancel_sql);
+        $obj->executeSQL($employee_punk_sql);
         break;
       case 'fetchCallTable':
         $result['body'] = $obj->fetchCallTable($_POST)[0];
@@ -138,7 +148,7 @@
         break;
       case 'callCancel':
         $obj->callCancel($_POST);
-        $obj->reset($_POST);
+        echo json_encode($obj->reset($_POST));
         break;
       case 'delete':
         $table = $_POST['table'];
